@@ -57,10 +57,10 @@ class ArrayQueue(AbstractStack):
          expands size of the array.
          Time Complexity: O(n)
         """
-        newArray = [None] * len(self.array) * 2 # double the size of the array
+        new_array = [None] * len(self.array) * 2 # double the size of the array
         for i, element in enumerate(self.array):
-            newArray[i] = element
-        self.array = newArray
+            new_array[i] = element
+        self.array = new_array
 
     def __iter__(self):
         probe = self.top - 1
