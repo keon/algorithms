@@ -1,5 +1,3 @@
-
-
 def merge_sort(arr):
     """ Merge Sort
         Complexity: O(n log(n))
@@ -36,3 +34,7 @@ def merge(left, right):
         arr.extend(right[right_cursor:])
     return arr
 
+array = [1,5, 7,4,3,2,1,9,0,10,43,64]
+print(array)
+print(merge_sort(array, 0, len(array)-1))
+print(array)

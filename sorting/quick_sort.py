@@ -1,9 +1,6 @@
-array = [1,5, 7,4,3,2,1,9,0,10,43,64]
-
-
 def quick_sort(arr, first, last):
     """ Quicksort
-        Complexity: O(n log(n))
+        Complexity: best O(n) avg O(n log(n)), worst O(N^2)
     """
     if first < last:
         pos = partition(arr, first, last)
@@ -12,14 +9,15 @@ def quick_sort(arr, first, last):
         quick_sort(arr, pos+1, last)
 
 def partition(arr, first, last):
-    pivot = first
+    wall = first
     for pos in xrange(first, last):
-        if arr[pos] < arr[last]:
-            arr[pos], arr[pivot] = arr[pivot], arr[pos]
-            pivot += 1
-    arr[pivot], arr[last] = arr[last], arr[pivot]
-    return pivot
+        if arr[pos] < arr[last]: # last is the pivot
+            arr[pos], arr[wall] = arr[wall], arr[pos]
+            wall += 1
+    arr[wall], arr[last] = arr[last], arr[wall]
+    return wall
 
+array = [1,5, 7,4,3,2,1,9,0,10,43,64]
 print(array)
 print(quick_sort(array, 0, len(array)-1))
 print(array)
