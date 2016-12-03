@@ -4,13 +4,13 @@ class Node():
         self.left = None
         self.right = None
 
-# def max_height(root):
-    # if not root:
-        # return 0
-    # return max(maxDepth(root.left), maxDepth(root.right)) + 1
+def min_height_recursive(root):
+    if not root:
+        return 0
+    return max(maxDepth(root.left), maxDepth(root.right)) + 1
 
 # iterative
-def max_height(root):
+def min_height(root):
     if not root:
         return 0
     height = 0

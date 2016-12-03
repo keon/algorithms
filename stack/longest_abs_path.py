@@ -33,7 +33,7 @@
             # print("maxlen: ", maxLength)
     # return maxLength
 
-def lengthLongestPath(input):
+def length_longest_path(input):
     """
     :type input: str
     :rtype: int
