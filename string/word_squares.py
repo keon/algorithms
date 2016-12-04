@@ -17,5 +17,5 @@ def word_squares(words):
         build([word])
     return squares
 
-dic = ["at","baba","atan","atal"]
+dic = ["atan","baba","atan","atal"]
 print(word_squares(dic))
