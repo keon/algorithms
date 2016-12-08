@@ -3,17 +3,17 @@
 
 def missing_ranges(nums, lo, hi):
     res = []
-    next_num = lo
+    start = lo
     for num in nums:
-        if num < next_num:
+        if num < start:
             continue
-        if num == next_num:
-            next_num += 1
+        if num == start:
+            start += 1
             continue
-        res.append(get_range(next_num, num-1))
-        next_num = num + 1
-    if next_num <= hi:
-        res.append(get_range(next_num, hi))
+        res.append(get_range(start, num-1))
+        start = num + 1
+    if start <= hi:
+        res.append(get_range(start, hi))
     return res
 
 def get_range(n1, n2):
