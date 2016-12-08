@@ -23,10 +23,10 @@ def max_killed_enemies(grid):
     for i in range(m):
         for j in range(n):
             if j == 0 or grid[i][j-1] == 'W':
-                row_e = col_kills(grid, i, j)
+                row_e = row_kills(grid, i, j)
 
             if i == 0 or grid[i-1][j] == 'W':
-                col_e = col_kills(grid, i, j)
+                col_e[j] = col_kills(grid, i, j)
 
             if grid[i][j] == '0':
                 max_killed = max(max_killed, row_e + col_e[j])
@@ -52,7 +52,8 @@ def col_kills(grid, i, j):
     return num
 
 grid = [
-["0", "E", "0", "0"],
+["0", "E", "0", "E"],
+["E", "E", "E", "0"],
 ["E", "0", "W", "E"],
 ["0", "E", "0", "0"]]
 print(grid)
