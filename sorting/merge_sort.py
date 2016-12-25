@@ -2,13 +2,12 @@ def merge_sort(arr):
     """ Merge Sort
         Complexity: O(n log(n))
     """
-    size = len(arr)
-    half = size/2
     # Our recursive base case
-    if size <= 1:
+    if len(arr)<= 1:
         return arr
+    mid = len(arr)/2
     # Perform merge_sort recursively on both halves
-    left, right = merge_sort(arr[half:]), merge_sort(arr[:half])
+    left, right = merge_sort(arr[mid:]), merge_sort(arr[:mid])
 
     # Merge each side together
     return merge(left, right)

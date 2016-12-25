@@ -11,7 +11,7 @@ def reverse_words(string):
     reverse(arr, 0, n-1)
 
     start = None
-    for i in range(n-1):
+    for i in range(n):
         if arr[i] == " ":
            if start:
                 reverse(arr, start, i-1)
