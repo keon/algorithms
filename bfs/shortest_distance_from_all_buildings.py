@@ -1,8 +1,11 @@
 import collections
 
-## do BFS from each building, and decrement all empty place for every building visit
-## when grid[i][j] == -b_nums, it means that grid[i][j] are already visited from all b_nums
-## and use dist to record distances from b_nums
+"""
+do BFS from each building, and decrement all empty place for every building visit
+when grid[i][j] == -b_nums, it means that grid[i][j] are already visited from all b_nums
+and use dist to record distances from b_nums
+"""
+
 def shortest_distance(grid):
     if not grid or not grid[0]:
         return -1
