@@ -17,29 +17,29 @@
 # Each step swap with 0 only.
 
 
-def count_moves(beg,end):
+def garage(beg, end):
     i = 0
-    count = 0
+    moves = 0
     while beg != end:
         if beg[i] != 0 and beg[i] != end[i]:
-            current_car = beg[i]
-            empty_slot = beg.index(0)
+            car = beg[i]
+            empty = beg.index(0)
             final_pos = end.index(beg[i])
-            if empty_slot != final_pos:
-                beg[final_pos], beg[empty_slot] = beg[empty_slot], beg[final_pos]
+            if empty != final_pos:
+                beg[final_pos], beg[empty] = beg[empty], beg[final_pos]
                 print beg
-                empty_slot = beg.index(0)
-                beg[beg.index(current_car)], beg[empty_slot] = beg[empty_slot], beg[beg.index(current_car)]
+                empty = beg.index(0)
+                beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
                 print beg
-                count += 2
+                moves += 2
             else:
-                beg[beg.index(current_car)], beg[empty_slot] = beg[empty_slot], beg[beg.index(current_car)]
+                beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
                 print beg
-                count += 1
+                moves += 1
         i += 1
         if i == len(beg):
             i = 0
-    return count
+    return moves
                 
                 
 initial = [1,2,3,0,4]
