@@ -17,32 +17,33 @@
 # Each step swap with 0 only.
 
 
-def garage(beg, end):
-    moves = 0
+def count_moves(beg,end):
     i = 0
-    while beg != end :
-        if beg[i] != end[i] and beg[i] != 0:
-            car = beg[i] #car that we will move
-            empty = beg.index(0)
-            beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
-            moves += 1
-            ## move car that's not in correct place into free space
-            print(beg)
-            if beg.index(car) != end.index(car):
-                # if the recently moved car is still not in its correct place
-                # then we want to move another car into the free space where
-                # it will be in its correct position
-                beg[beg.index(end[i])] = 0
-                beg[i] = end[i]
-                print(beg)
-                moves += 1
-        i += 1 #move onto the next car, check again
+    count = 0
+    while beg != end:
+        if beg[i] != 0 and beg[i] != end[i]:
+            current_car = beg[i]
+            empty_slot = beg.index(0)
+            final_pos = end.index(beg[i])
+            if empty_slot != final_pos:
+                beg[final_pos], beg[empty_slot] = beg[empty_slot], beg[final_pos]
+                print beg
+                empty_slot = beg.index(0)
+                beg[beg.index(current_car)], beg[empty_slot] = beg[empty_slot], beg[beg.index(current_car)]
+                print beg
+                count += 2
+            else:
+                beg[beg.index(current_car)], beg[empty_slot] = beg[empty_slot], beg[beg.index(current_car)]
+                print beg
+                count += 1
+        i += 1
         if i == len(beg):
             i = 0
-    return moves
-
+    return count
+                
+                
 initial = [1,2,3,0,4]
 final = [0,3,2,1,4]
-print("initial:", initial)
-print("final:", final)
-print(garage(initial, final))
+print ('Initially:',initial)
+print ('Final',final)
+print count_moves(initial,final)
