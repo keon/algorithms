@@ -44,6 +44,6 @@ def count_moves(beg,end):
                 
 initial = [1,2,3,0,4]
 final = [0,3,2,1,4]
-print ('Initially:',initial)
-print ('Final',final)
-print count_moves(initial,final)
+print("initial:", initial)
+print("final:", final)
+print(garage(initial, final))
