@@ -15,7 +15,7 @@
 # [0,3,2,1,4].
 # We can swap 1 with 0 in the initial array to get [0,2,3,1,4] and so on.
 # Each step swap with 0 only.
-
+#Edited by cyberking-saga
 
 def garage(beg, end):
     i = 0
