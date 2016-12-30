@@ -18,29 +18,30 @@
 
 
 def garage(beg, end):
-    moves = 0
     i = 0
-    while beg != end :
-        if beg[i] != end[i] and beg[i] != 0:
-            car = beg[i] #car that we will move
+    moves = 0
+    while beg != end:
+        if beg[i] != 0 and beg[i] != end[i]:
+            car = beg[i]
             empty = beg.index(0)
-            beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
-            moves += 1
-            ## move car that's not in correct place into free space
-            print(beg)
-            if beg.index(car) != end.index(car):
-                # if the recently moved car is still not in its correct place
-                # then we want to move another car into the free space where
-                # it will be in its correct position
-                beg[beg.index(end[i])] = 0
-                beg[i] = end[i]
-                print(beg)
+            final_pos = end.index(beg[i])
+            if empty != final_pos:
+                beg[final_pos], beg[empty] = beg[empty], beg[final_pos]
+                print beg
+                empty = beg.index(0)
+                beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
+                print beg
+                moves += 2
+            else:
+                beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
+                print beg
                 moves += 1
-        i += 1 #move onto the next car, check again
+        i += 1
         if i == len(beg):
             i = 0
     return moves
-
+                
+                
 initial = [1,2,3,0,4]
 final = [0,3,2,1,4]
 print("initial:", initial)
