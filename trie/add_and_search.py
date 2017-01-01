@@ -13,12 +13,13 @@ search(“bad”) -> true
 search(“.ad”) -> true
 search(“b..”) -> true
 """
+import collections
 
 class TrieNode(object):
-    def __init__(self, letter, isTerminal=False):
+    def __init__(self, letter, is_terminal=False):
         self.children = dict()
         self.letter = letter
-        self.isTerminal = isTerminal
+        self.is_terminal = is_terminal
 
 class WordDictionary(object):
     def __init__(self):
@@ -30,7 +31,7 @@ class WordDictionary(object):
             if letter not in cur.children:
                 cur.children[letter] = TrieNode(letter)
             cur = cur.children[letter]
-        cur.isTerminal = True
+        cur.is_terminal = True
 
     def search(self, word, node=None):
         cur = node
@@ -41,7 +42,7 @@ class WordDictionary(object):
             if letter == ".":
                 if i == len(word) - 1: # if last character
                     for child in cur.children.itervalues():
-                        if child.isTerminal:
+                        if child.is_terminal:
                             return True
                     return False
                 for child in cur.children.itervalues():
@@ -52,5 +53,27 @@ class WordDictionary(object):
             if letter not in cur.children:
                 return False
             cur = cur.children[letter]
-        return cur.isTerminal
+        return cur.is_terminal
 
+class WordDictionary2(object):
+    def __init__(self):
+        self.word_dict = collections.defaultdict(list)
+
+
+    def addWord(self, word):
+        if word:
+            self.word_dict[len(word)].append(word)
+
+    def search(self, word):
+        if not word:
+            return False
+        if '.' not in word:
+            return word in self.word_dict[len(word)]
+        for v in self.word_dict[len(word)]:
+            # match xx.xx.x with yyyyyyy
+            for i, ch in enumerate(word):
+                if ch != v[i] and ch != '.':
+                    break
+            else:
+                return True
+        return False
