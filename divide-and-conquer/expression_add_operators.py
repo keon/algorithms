@@ -23,16 +23,15 @@ def add_operator(num, target):
     return res
 
 def helper(res, path, num, target, pos, prev, multed):
-    print(res, path, num, target, pos, prev, multed)
     if pos == len(num):
         if (target == prev):
             res.append(path)
         return
     for i in range(pos, len(num)):
-        if i != pos and num[pos] == '0': break
+        if i != pos and num[pos] == '0': # all digits have to be used
+            break
         cur = int(num[pos:i+1])
-        print(cur)
-        if (pos == 0):
+        if pos == 0:
             helper(res, path + str(cur), num, target, i+1, cur, cur)
         else:
             helper(res, path + "+" + str(cur), num, target, i+1, prev + cur, cur)
@@ -44,4 +43,11 @@ def helper(res, path, num, target, pos, prev, multed):
 s = "123"
 target = 6
 print(add_operator(s, target))
+# "232", 8 -> ["2*3+2", "2+3*2"]
+s = "232"
+target = 8
+print(add_operator(s, target))
 
+s = "123045"
+target = 3
+print(add_operator(s, target))
