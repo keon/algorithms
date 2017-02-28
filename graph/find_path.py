@@ -34,7 +34,6 @@ def find_all_path(graph, start, end, path=[]):
                 paths.append(newpath)
     return paths
 
-
 def find_shortest_path(graph, start, end, path=[]):
     path = path + [start]
     if start == end:

@@ -40,10 +40,10 @@ def garage(beg, end):
         if i == len(beg):
             i = 0
     return moves
-                
-                
-initial = [1,2,3,0,4]
-final = [0,3,2,1,4]
-print("initial:", initial)
-print("final:", final)
-print(garage(initial, final))
+
+if __name__ == "__main__":
+    initial = [1,2,3,0,4]
+    final = [0,3,2,1,4]
+    print("initial:", initial)
+    print("final:", final)
+    print(garage(initial, final))
