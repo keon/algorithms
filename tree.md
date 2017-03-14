@@ -1,10 +1,3 @@
-# Pythonic Data Structures and Algorithms
-
-Minimal and clean examples of data structures and algorithms.
-
-List of Implementations:
-
-```
 .
 ├── array
 │   ├── circular_counter.py
@@ -206,5 +199,4 @@ List of Implementations:
 └── union-find
     └── count_islands.py
 
-```
-
+26 directories, 173 files
