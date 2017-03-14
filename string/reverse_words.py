@@ -24,10 +24,8 @@ def reverse_words(string):
                 start = i
     return "".join(arr)
 
-test = "I am keon kim and I like pizza"
-print(test)
-print(reverse_words(test))
 
-
-
-
+if __name__ == "__main__":
+    test = "I am keon kim and I like pizza"
+    print(test)
+    print(reverse_words(test))

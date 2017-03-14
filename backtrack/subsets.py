@@ -17,6 +17,9 @@
 # ]
 
 
+# O(2**n)
+
+
 def subsets(nums):
     res = []
     backtrack(res, nums, [], 0)
@@ -43,6 +46,13 @@ def backtrack(res, nums, stack, pos):
         # backtrack(res, nums, cur+[nums[pos]], pos+1)
         # backtrack(res, nums, cur, pos+1)
 
+
+# Iteratively
+def subsets2(self, nums):
+    res = [[]]
+    for num in sorted(nums):
+        res += [item+[num] for item in res]
+    return res
 
 test = [1,2,3]
 print(test)

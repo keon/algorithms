@@ -1,13 +1,10 @@
 # invert a binary tree
 
 def reverse(root):
-    temp = root.right
-    root.right = root.left
-    root.left = temp
-    # alternatively, root.left, root.right = root.right, root.left
-    if root.left is not None:
+    if not root:
+        return
+    root.left, root.right = root.right, root.left
+    if root.left:
         reverse(root.left)
-    if root.right is not None:
+    if root.right:
         reverse(root.right)
-
-

@@ -4,28 +4,38 @@ class Node():
         self.left = None
         self.right = None
 
-def min_height_recursive(root):
+
+def minDepth(self, root):
+    """
+    :type root: TreeNode
+    :rtype: int
+    """
     if not root:
         return 0
-    return max(maxDepth(root.left), maxDepth(root.right)) + 1
+    if not root.left or not root.right:
+        return max(self.minDepth(root.left), self.minDepth(root.right))+1
+    return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+
 
 # iterative
 def min_height(root):
     if not root:
         return 0
     height = 0
-    queue = [root]
-    while queue:
+    level = [root]
+    while level:
         height += 1
-        level = []
-        while queue:
-            node = queue.pop(0)
+        new_level = []
+        for node in level:
+            if not node.left and not node.right:
+                return height
             if node.left:
-                level.append(node.left)
+                new_level.append(node.left)
             if node.right:
-                level.append(node.right)
-        queue = level
+                new_level.append(node.right)
+        level = new_level
     return height
+
 
 def print_tree(root):
     if root:

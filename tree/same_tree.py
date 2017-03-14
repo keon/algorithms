@@ -1,9 +1,11 @@
-# Given two binary trees, write a function to check if they are identical.
-# (For simplicity, we will not consider the rotations of the tree to be
-# identical.) We are given the roots for both binary trees.
-# We need to simply traverse both trees at the same time and compare the
-# node values. We can traverse in a breadth first or a depth first manner.
-# We will show the depth first search here.
+"""
+Given two binary trees, write a function to check
+if they are equal or not.
+
+Two binary trees are considered equal if they are
+structurally identical and the nodes have the same value.
+"""
+
 
 def isSameTree(p, q):
     if not p and not q:
@@ -17,5 +19,3 @@ def isSameTree(p, q):
 
 # Space Complexity O(min(height1, height2))
 # levels of recursion is the mininum height between the two trees.
-
-
