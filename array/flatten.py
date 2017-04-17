@@ -15,13 +15,9 @@ Output: [2, 1, 3, 4, 5, 6, 7, 8]
 
 
 def list_flatten(l, a=None):
-    # check a
-    if a is None:
-        # initialize with empty list
-        a = []
-
+    a = list(a) if isinstance(a, (list, tuple)) else []
     for i in l:
-        if isinstance(i, list):
+        if isinstance(i, (list, tuple)):
             list_flatten(i, a)
         else:
             a.append(i)
