@@ -6,15 +6,12 @@ with a maximum error P from the actual square root of N.
 Example:
 Given N = 5 and P = 0.001, can produce output O such that
 2.235 < O > 2.237. Actual square root of 5 being 2.236.
-
-public static double squareRoot(int N, float P) {
-    double guess = N / 2;
-
-    while( Math.abs( guess*guess - N ) > P) {
-       guess  = ( guess + (  N / guess ) ) / 2;
-    }
-    return guess;
-}
 """
 
+def square_root(n,p):
+	guess = float(n) / 2
 
+	while abs(guess * guess - n) > p:
+		guess = (guess + (n / guess)) / 2
+
+	return guess
