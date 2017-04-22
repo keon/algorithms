@@ -173,7 +173,7 @@ List of Implementations:
 ├── tmp
 │   └── temporary.md
 ├── tree
-|   ├── Segment Tree
+|   ├── Segment_Tree
 |   |   ├── segment_tree.py
 │   ├── binary_tree_paths.py
 │   ├── bintree2list.py
