@@ -1,4 +1,10 @@
+"""
+Given a binary tree, the following function performs iterative inorder
+traversal of the tree.
 
+T(n)- O(n)
+S(n)- O(n)
+"""
 
 def inorder(root):
     res = []
