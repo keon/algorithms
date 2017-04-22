@@ -1,8 +1,12 @@
-# Pythonic Data Structures and Algorithms
+Pythonic Data Structures and Algorithms
+=========================================
 
-Minimal and clean examples of data structures and algorithms.
+Minimal and clean example implementations of data structures and algorithms in Python.
+
 
 List of Implementations:
+========================
+
 
 ```
 .
@@ -99,6 +103,9 @@ List of Implementations:
 │   ├── randomized_set.py
 │   └── valid_sudoku.py
 ├── math
+|   ├── gcd.py
+|   ├── prime_test.py
+|   ├── primes_sieve_of_eratosthenes.py
 │   ├── generate_strobogrammtic.py
 │   ├── is_strobogrammatic.py
 │   ├── nth_digit.py
@@ -166,6 +173,8 @@ List of Implementations:
 ├── tmp
 │   └── temporary.md
 ├── tree
+|   ├── Segment_Tree
+|   |   ├── segment_tree.py
 │   ├── binary_tree_paths.py
 │   ├── bintree2list.py
 │   ├── bst
