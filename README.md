@@ -109,7 +109,8 @@ List of Implementations:
 │   ├── generate_strobogrammtic.py
 │   ├── is_strobogrammatic.py
 │   ├── nth_digit.py
-│   └── sqrt_precision_factor.py
+│   ├── sqrt_precision_factor.py
+│   └── pythagoras.py
 ├── matrix
 │   ├── bomb_enemy.py
 │   ├── matrix_rotation.txt
