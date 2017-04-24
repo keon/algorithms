@@ -3,14 +3,14 @@ input two of the three side in right angled triangle and return the third. use "
 """
 
 def pythagoras(opposite,adjacent,hypotenuse):
-    if opposite == str("?"):
-        print ("Solving for opposite")
-        return ((hypotenuse**2) - (adjacent**2))**0.5
-    elif adjacent == str("?"):
-        print ("Solving for adjacent")
-        return ((hypotenuse**2) - (opposite**2))**0.5
-    elif hypotenuse == str("?"):
-        print ("Solving for hypotenuse")
-        return ((opposite**2)+(adjacent**2))**0.5
-    else:
-        return "you already know the answer!"
+    try:
+        if opposite == str("?"):
+            return ("Opposite = " + str(((hypotenuse**2) - (adjacent**2))**0.5))
+        elif adjacent == str("?"):
+            return ("Adjacent = " + str(((hypotenuse**2) - (opposite**2))**0.5))
+        elif hypotenuse == str("?"):
+            return ("Hypotenuse = " + str(((opposite**2) + (adjacent**2))**0.5))
+        else:
+            return "You already know the answer!"
+    except:
+        print ("Error, check your input. You must know 2 of the 3 variables.")
