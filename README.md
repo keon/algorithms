@@ -98,7 +98,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [sqrt_precision_factor](math/sqrt_precision_factor.py)
     - [pythagoras](math/pythagoras.py)
 - [matrix](matrix)
-    - [matrix_rotation.txt](matrix_rotation.txt)
+    - [matrix_rotation.txt](matrix/matrix_rotation.txt)
     - [bomb_enemy](matrix/bomb_enemy.py)
     - [rotate_image](matrix/rotate_image.py)
     - [sparse_dot_vector](matrix/sparse_dot_vector.py)
