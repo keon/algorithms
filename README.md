@@ -191,15 +191,15 @@ Minimal and clean example implementations of data structures and algorithms in P
 - [union-find](union-find)
     - [count_islands](union-find/count_islands.py)
 
-## List of Design
+## List of Designs
 
 - [design](design)
-    - [alarm_system.md](design/alarm_system.md)
-    - [all_o_one_ds.md](design/all_o_one_ds.md)
-    - [calculator.md](design/calculator.md)
-    - [excel_table.md](design/excel_table.md)
-    - [LRUcache.md](design/LRUcache.md)
-    - [nearby_drivers.md](design/nearby_drivers.md)
-    - [ride_sharing.md](design/ride_sharing.md)
-    - [task_runner.md](design/task_runner.md)
-    - [twitter_feeds.md](design/twitter_feeds.md)
+    - [alarm_system](design/alarm_system.md)
+    - [all_o_one_ds](design/all_o_one_ds.md)
+    - [calculator](design/calculator.md)
+    - [excel_table](design/excel_table.md)
+    - [LRUcache](design/LRUcache.md)
+    - [nearby_drivers](design/nearby_drivers.md)
+    - [ride_sharing](design/ride_sharing.md)
+    - [task_runner](design/task_runner.md)
+    - [twitter_feeds](design/twitter_feeds.md)
