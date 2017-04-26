@@ -30,45 +30,45 @@ from extended_gcd import * # extended_gcd
 generate a prime with k bits
 """
 def genprime(k):
-	while True:
-		n = random.randrange(2 ** (k - 1),2 ** k)
-		if is_prime(n,128):
-			return n
+    while True:
+        n = random.randrange(2 ** (k - 1),2 ** k)
+        if is_prime(n,128):
+            return n
 
 """
 calculate the inverse of a mod m
 that is, find b such that (a * b) % m == 1
 """
 def modinv(a, m):
-		x, y, g = extended_gcd(a,m)
-		return x % m
+        x, y, g = extended_gcd(a,m)
+        return x % m
 
 """
 the RSA key generating algorithm
 k is the number of bits in n
 """
 def generate_key(k):
-	# size in bits of p and q need to add up to the size of n
-	p_size = k / 2
-	q_size = k - p_size
-	
-	e = genprime(k) # in many cases, e is also chosen to be a small constant
-	
-	while True:
-		p = genprime(k / 2)
-		if p % e != 1:
-			break
-	
-	while True:
-		q = genprime(k - k / 2)
-		if q % e != 1:
-			break
-	
-	n = p * q
-	l = (p - 1) * (q - 1) # calculate totient function
-	d = modinv(e,l)
-	
-	return n, e, d
+    # size in bits of p and q need to add up to the size of n
+    p_size = k / 2
+    q_size = k - p_size
+    
+    e = genprime(k) # in many cases, e is also chosen to be a small constant
+    
+    while True:
+        p = genprime(k / 2)
+        if p % e != 1:
+            break
+    
+    while True:
+        q = genprime(k - k / 2)
+        if q % e != 1:
+            break
+    
+    n = p * q
+    l = (p - 1) * (q - 1) # calculate totient function
+    d = modinv(e,l)
+    
+    return n, e, d
 
 """
 sample usage:
