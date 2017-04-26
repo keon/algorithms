@@ -10,7 +10,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [circular_counter](array/circular_counter.py)
     - [flatten](array/flatten.py)
     - [garage](array/garage.py)
-    - [longest_non_repeat](arraylongest_non_repeat.py/)
+    - [longest_non_repeat](array/longest_non_repeat.py/)
     - [merge_intervals](array/merge_intervals.py)
     - [missing_ranges](array/missing_ranges.py)
     - [plus_one](array/plus_one.py)
