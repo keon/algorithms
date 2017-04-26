@@ -12,28 +12,23 @@ eg: for given string -> "appletablet"
 "thing", {"thing"} -> 1
 """
 
-class MakeSentence(object):
+count = 0
 
-    def __init__(self, example_string, dictionarys):
-        self.count = 0
-        self.example_string = example_string
-        self.dictionarys = dictionarys
-
-    def run(self):
-        self.make_sentence(self.example_string, self.dictionarys)
-        print(self.count)
-
-    def make_sentence(self, str_piece, dictionarys):
-        if len(str_piece) == 0:
-            return True
-        for i in range(0, len(str_piece)):
-            prefix, suffix = str_piece[0:i], str_piece[i:]
-            if ((prefix in dictionarys and suffix in dictionarys)
-                    or (prefix in dictionarys and self.make_sentence(suffix, dictionarys))):
-                self.count += 1
+def make_sentence(str_piece, dictionarys):
+    global count
+    if len(str_piece) == 0:
         return True
+    for i in range(0, len(str_piece)):
+        prefix, suffix = str_piece[0:i], str_piece[i:]
+        if ((prefix in dictionarys and suffix in dictionarys)
+                or (prefix in dictionarys
+                    and make_sentence(suffix, dictionarys))):
+            count += 1
+    return True
+
 
 if __name__ == "__main__":
     dictionarys = ["", "app", "let", "t", "apple", "applet"]
-    make_sentence = MakeSentence("applet", dictionarys)
-    make_sentence.run()
+    word = "applet"
+    make_sentence(word, dictionarys)
+    print count
