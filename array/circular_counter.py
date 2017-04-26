@@ -16,7 +16,7 @@ def josepheus(int_list, skip):
   idx = 0
   while len(int_list)>0:
     idx = (skip+idx)%len(int_list) #hashing to keep changing the index to every 3rd
-    print int_list.pop(idx)
+    print(int_list.pop(idx))
 
 
 josepheus(a,3)

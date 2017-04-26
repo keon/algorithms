@@ -27,14 +27,14 @@ def garage(beg, end):
             final_pos = end.index(beg[i])
             if empty != final_pos:
                 beg[final_pos], beg[empty] = beg[empty], beg[final_pos]
-                print beg
+                print(beg)
                 empty = beg.index(0)
                 beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
-                print beg
+                print(beg)
                 moves += 2
             else:
                 beg[beg.index(car)], beg[empty] = beg[empty], beg[beg.index(car)]
-                print beg
+                print(beg)
                 moves += 1
         i += 1
         if i == len(beg):

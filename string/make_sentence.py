@@ -2,44 +2,33 @@
 For a given string and dictionary, how many sentences can you make from the
 string, such that all the words are contained in the dictionary.
 
-// eg: for given string -> "appletablet"
-// "apple", "tablet"
-// "applet", "able", "t"
-// "apple", "table", "t"
-// "app", "let", "able", "t"
+eg: for given string -> "appletablet"
+"apple", "tablet"
+"applet", "able", "t"
+"apple", "table", "t"
+"app", "let", "able", "t"
 
-// "applet", {app, let, apple, t, applet} => 3
-// "thing", {"thing"} -> 1
+"applet", {app, let, apple, t, applet} => 3
+"thing", {"thing"} -> 1
 """
 
-// Example program
-#include <iostream>
-#include <string>
-#include <set>
-#include <vector>
+count = 0
 
-using namespace std;
+def make_sentence(str_piece, dictionarys):
+    global count
+    if len(str_piece) == 0:
+        return True
+    for i in range(0, len(str_piece)):
+        prefix, suffix = str_piece[0:i], str_piece[i:]
+        if ((prefix in dictionarys and suffix in dictionarys)
+                or (prefix in dictionarys
+                    and make_sentence(suffix, dictionarys))):
+            count += 1
+    return True
 
 
-bool foo(string s, set<string> dic, int &cnt){
-    if(s.empty())
-        return true;
-
-    for(int i=0;i<s.length();++i){
-        string prefix = s.substr(0,i), suffix = s.substr(i);
-       if((dic.count(prefix)&&dic.count(suffix))
-            ||(dic.count(prefix)&&foo(suffix,dic,cnt))){
-
-            cnt++;
-        }
-    }
-    return true;
-}
-int main()
-{
-    string s = "applet";
-    set<string> dic{"","app","let","t","apple","applet"};
-    int cnt = 0;
-    foo(s,dic,cnt);
-    cout<<cnt;
-}
+if __name__ == "__main__":
+    dictionarys = ["", "app", "let", "t", "apple", "applet"]
+    word = "applet"
+    make_sentence(word, dictionarys)
+    print count
