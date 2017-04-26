@@ -17,4 +17,4 @@ def extended_gcd(a,b):
 		old_s, s = s, old_s - quotient * s
 		old_t, t = t, old_t - quotient * t
 	
-	return old_s,old_t,old_r
+	return old_s, old_t, old_r

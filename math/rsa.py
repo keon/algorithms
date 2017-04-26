@@ -45,25 +45,30 @@ def modinv(a, m):
 
 """
 the RSA key generating algorithm
+k is the number of bits in n
 """
 def generate_key(k):
-	e = genprime(k)
+	# size in bits of p and q need to add up to the size of n
+	p_size = k / 2
+	q_size = k - p_size
+	
+	e = genprime(k) # in many cases, e is also chosen to be a small constant
 	
 	while True:
-		p = genprime(k/2)
+		p = genprime(k / 2)
 		if p % e != 1:
 			break
 	
 	while True:
-		q = genprime(k - k/2)
+		q = genprime(k - k / 2)
 		if q % e != 1:
 			break
 	
 	n = p * q
-	l = (p - 1) * (q - 1)
+	l = (p - 1) * (q - 1) # calculate totient function
 	d = modinv(e,l)
 	
-	return n,e,d
+	return n, e, d
 
 """
 sample usage:
@@ -71,5 +76,5 @@ n,e,d = generate_key(1024)
 data = 1337
 encrypted = pow(data,e,n)
 decrypted = pow(encrypted,d,n)
-assert decrypted == encrypted
+assert decrypted == data
 """
