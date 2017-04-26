@@ -38,7 +38,7 @@ def is_prime(n, k):
         
         return True
     
-    for _ in xrange(k):
+    for _ in range(k):
         if valid_witness(random.randrange(2, n - 2)):
             return False
     
