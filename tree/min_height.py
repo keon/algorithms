@@ -51,6 +51,6 @@ tree.left.left.right  = Node(100)
 tree.left.right = Node(30)
 tree.right.left = Node(36)
 
-height = max_height(tree)
+height = min_height(tree)
 print_tree(tree)
 print("height:", height)
