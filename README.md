@@ -65,17 +65,21 @@ List of Implementations:
 │   ├── sudoku_solver.py
 │   └── walls_and_gates.py
 ├── dp
+|   ├── knapsack.py
+|   ├── longest_palindromic_subsequence.py
 │   ├── buy_sell_stock.py
 │   ├── climbing_stairs.py
 │   ├── combination_sum.py
 │   ├── house_robber.py
-│   ├── longest_increasing.py
+│   ├── longest_increasing.py 
 │   ├── max_product_subarray.py
 │   ├── max_subarray.py
 │   ├── num_decodings.py
 │   ├── regex_matching.py
 │   └── word_break.py
 ├── graph
+|   ├── max_flow_dfs.py
+|   ├── max_flow_bfs.py
 │   ├── clone_graph.py
 │   ├── find_path.py
 │   ├── graph.py

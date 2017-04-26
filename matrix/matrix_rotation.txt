@@ -1,4 +1,4 @@
-I'd like to add a little more detail.
+﻿I'd like to add a little more detail.
 In this answer, key concepts are repeated, the pace is slow and intentionally
 repetitive. The solution provided here is not the most syntactically compact,
 it is however intended for those who wish to learn what matrix rotation is and
@@ -239,8 +239,8 @@ and column positions when moving inwards to the next layer.
     +-----------+---------+---------+---------+
     |   Layer   |  Rows   | Columns | Rotate? |
     +-----------+---------+---------+---------+
-    | Outermost | 0 and 4 | 0 and 4 | Yes	  |
-    | Inner     | 1 and 3 | 1 and 3 | Yes	  |
+    | Outermost | 0 and 4 | 0 and 4 | Yes     |
+    | Inner     | 1 and 3 | 1 and 3 | Yes     |
     | Innermost | 2       | 2       | No      |
     +-----------+---------+---------+---------+
 
