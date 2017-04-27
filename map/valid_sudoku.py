@@ -5,7 +5,7 @@ The Sudoku board could be partially filled, where empty cells are filled with
 the character '.'.
 """
 
-def isValidSudoku(self, board):
+def is_valid_sudoku(self, board):
     seen = []
     for i, row in enumerate(board):
         for j, c in enumerate(row):
