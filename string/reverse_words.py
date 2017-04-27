@@ -13,14 +13,14 @@ def reverse_words(string):
     start = None
     for i in range(n):
         if arr[i] == " ":
-           if start:
+           if start is not None:
                 reverse(arr, start, i-1)
                 start = None
         elif i == n-1:
-            if start:
+            if start is not None:
                 reverse(arr, start, i)
         else:
-            if not start:
+            if start is None:
                 start = i
     return "".join(arr)
 
