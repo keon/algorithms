@@ -19,7 +19,15 @@ def iterative(s):
 print(iterative(s))
 
 def pythonic(s):
-    r = list(reversed(s))
-    return "".join(r)
+	r = list(reversed(s))
+	return "".join(r)
 
 print(pythonic(s))
+
+def pythonic2(str):
+	res = ""
+	for s in str:
+		res = s + res
+	return res
+
+print(pythonic2(s))
