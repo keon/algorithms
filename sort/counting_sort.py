@@ -5,7 +5,7 @@ def couting_sort(arr,k):
 	"""
 	temp_arr = [0]*(k+1)
 	for i in range(0,len(arr)):
-		temp_arr[arr[i]]= temp_arr[arr[i]]+1
+		temp_arr[arr[i]] = temp_arr[arr[i]]+1
 	#temp_array[i] is the times the number i appear in arr
 	print(temp_arr)
 	for i in range(1, k+1):
