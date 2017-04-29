@@ -19,7 +19,7 @@ Example:
 from collections import deque
 import re
 
-numericValue = re.compile('\d+(\.\d+)?')
+numeric_value = re.compile('\d+(\.\d+)?')
 
 __operators__ = "+-/*"
 __parenthesis__ = "()"
@@ -30,7 +30,7 @@ __priority__ = {
 	'/': 1,
 }
 
-def isOperator(token):
+def is_operator(token):
 	"""
 	Check if token it's a operator
 
@@ -38,7 +38,7 @@ def isOperator(token):
 	"""
 	return token in __operators__
 
-def higherPriority(op1, op2):
+def higher_priority(op1, op2):
 	"""
 	Check if op1 have higher priority than op2
 
@@ -61,14 +61,14 @@ def calc(n2, n1, operator):
 	elif operator == '/': return n1 / n2
 	return 0
 
-def applyOperation(opStack, outStack):
+def apply_operation(op_stack, out_stack):
 	"""
 	Apply operation to the first 2 items of the output queue
 
-	opStack Deque (reference)
-	outStack Deque (reference)
+	op_stack Deque (reference)
+	out_stack Deque (reference)
 	"""
-	outStack.append(calc(outStack.pop(), outStack.pop(), opStack.pop()))
+	out_stack.append(calc(out_stack.pop(), out_stack.pop(), op_stack.pop()))
 
 def parse(expression):
 	"""
@@ -98,23 +98,23 @@ def evaluate(expression):
 	expression String: The expression
 	type Type (optional): Number type [int, float]
 	"""
-	opStack  = deque() # operator stack
-	outStack = deque() # output stack (values)
+	op_stack  = deque() # operator stack
+	out_stack = deque() # output stack (values)
 	for token in parse(expression):
-		if numericValue.match(token):
-			outStack.append(float(token))
+		if numeric_value.match(token):
+			out_stack.append(float(token))
 		elif token == '(':
-			opStack.append(token)
+			op_stack.append(token)
 		elif token == ')':
-			while len(opStack) > 0 and opStack[-1] != '(':
-				applyOperation(opStack, outStack)
-			opStack.pop() # Remove remaining '('
-		else: # isOperator(token)
-			while len(opStack) > 0 and isOperator(opStack[-1]) and higherPriority(opStack[-1], token):
-				applyOperation(opStack, outStack)
-			opStack.append(token)
+			while len(op_stack) > 0 and op_stack[-1] != '(':
+				apply_operation(op_stack, out_stack)
+			op_stack.pop() # Remove remaining '('
+		else: # is_operator(token)
+			while len(op_stack) > 0 and is_operator(op_stack[-1]) and higher_priority(op_stack[-1], token):
+				apply_operation(op_stack, out_stack)
+			op_stack.append(token)
 
-	while len(opStack) > 0:
-		applyOperation(opStack, outStack)
+	while len(op_stack) > 0:
+		apply_operation(op_stack, out_stack)
 
-	return outStack[-1]
+	return out_stack[-1]
