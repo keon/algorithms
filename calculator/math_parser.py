@@ -4,7 +4,7 @@ Contributed by izanbf1803.
 Example:
 -------------------------------------------------------------------------------------------------
 	Code:
-		|	exp = "2452 * (3 * 6 + 1) * 6 / 235"
+		|	exp = "2452 * (3 * 6.5 + 1) * 6 / 235"
 		|	print("Expression:", exp)
 		|	print("Parsed expression:", mp.parse(exp))
 		|	print("Evaluation result:", mp.evaluate(exp))
@@ -17,6 +17,9 @@ Example:
 """
 
 from collections import deque
+import re
+
+numericValue = re.compile('\d+(\.\d+)?')
 
 __operators__ = "+-/*"
 __parenthesis__ = "()"
@@ -76,7 +79,7 @@ def parse(expression):
 	result = []
 	current = ""
 	for i in expression:
-		if i.isdigit():
+		if i.isdigit() or i == '.':
 			current += i
 		else:
 			if len(current) > 0:
@@ -98,7 +101,7 @@ def evaluate(expression):
 	opStack  = deque() # operator stack
 	outStack = deque() # output stack (values)
 	for token in parse(expression):
-		if token.isdigit():
+		if numericValue.match(token):
 			outStack.append(float(token))
 		elif token == '(':
 			opStack.append(token)
