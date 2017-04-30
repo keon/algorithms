@@ -32,6 +32,9 @@ def merge(left, right):
     for i in range(right_cursor,len(right)):
         arr.append(right[i])
 
+   # Return result
+    return arr
+
 array = [1,5, 7,4,3,2,1,9,0,10,43,64]
 print(array)
 print(merge_sort(array))
