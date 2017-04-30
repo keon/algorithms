@@ -1,11 +1,11 @@
 def counting_sort(arr):
-	"""Couting_sort
-		Sorting a array which has no element greater than k
-		Creating a new temp_arr,where temp_arr[i] contain the number of
-		element less than or equal to i in the arr
-		Then placing the number i into a correct position in the result_arr
-		return the result_arr
-		Complexity: 0(n)
+    """ Couting_sort
+    Sorting a array which has no element greater than k
+    Creating a new temp_arr,where temp_arr[i] contain the number of
+	element less than or equal to i in the arr
+	Then placing the number i into a correct position in the result_arr
+	return the result_arr
+	Complexity: 0(n)
 	"""
 	
 	m = min(arr)
