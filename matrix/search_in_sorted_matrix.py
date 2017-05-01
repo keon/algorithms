@@ -6,7 +6,7 @@
 #
 
 
-def searchInaSortedMatrix(mat, m, n, key):
+def search_in_a_sorted_matrix(mat, m, n, key):
     i, j = m-1, 0
     while i >= 0 and j < n:
         if key == mat[i][j]:
@@ -28,7 +28,7 @@ def main():
           ]
     key = 13
     print (mat)
-    searchInaSortedMatrix(mat, len(mat), len(mat[0]), key)
+    search_in_a_sorted_matrix(mat, len(mat), len(mat[0]), key)
 
 
 if __name__ == '__main__':
