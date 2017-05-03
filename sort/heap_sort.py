@@ -2,13 +2,12 @@ def max_heap_sort(arr):
     """ Heap Sort that uses a max heap to sort an array in ascending order
         Complexity: O(n log(n))
     """
-    for i in range(len(arr)-1,-1,-1):
+    for i in range(len(arr)-1,0,-1):
         max_heapify(arr, i)
-
+        
         temp = arr[0]
         arr[0] = arr[i]
         arr[i] = temp
-
 
 def max_heapify(arr, end):
     """ Max heapify helper for max_heap_sort
