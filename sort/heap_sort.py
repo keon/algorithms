@@ -4,9 +4,10 @@ def heap_sort(arr):
     """
     pass
 
-def heapify(arr):
-    last_index = len(arr)-1
-    last_parent = int(last_index/2)
+def heapify(arr, end):
+    """ Max heapify helper for heap_sort
+    """
+    last_parent = int(end/2)
 
     # Iterate from last parent to first
     for parent in range(last_parent,-1,-1):
@@ -16,7 +17,7 @@ def heapify(arr):
         while current_parent <= last_parent:
             # Find greatest child of current_parent
             child = 2*current_parent + 1
-            if child + 1 <= last_index and arr[child] < arr[child+1]:
+            if child + 1 <= end and arr[child] < arr[child+1]:
                 child = child + 1
 
             # Swap if child is greater than parent
@@ -34,7 +35,7 @@ def heapify(arr):
 array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
 print(array)
 print("After first heapify:")
-heapify(array)
+heapify(array, len(array)-1)
 is_heap = True
 for i in range(0, int((len(array)-1)/2)+1):
     if array[i] < array[2*i+1]:
