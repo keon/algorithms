@@ -4,10 +4,11 @@ def heap_sort(arr):
     """
     pass
 
+
 def heapify(arr, end):
     """ Max heapify helper for heap_sort
     """
-    last_parent = int(end/2)
+    last_parent = int((end-1)/2)
 
     # Iterate from last parent to first
     for parent in range(last_parent,-1,-1):
@@ -35,12 +36,12 @@ def heapify(arr, end):
 array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
 print(array)
 print("After first heapify:")
-heapify(array, len(array)-1)
 is_heap = True
-for i in range(0, int((len(array)-1)/2)+1):
+end = len(array)-2
+heapify(array, end)
+for i in range(0, int((end-1)/2)+1):
     if array[i] < array[2*i+1]:
-        is_heap = False
-    if 2*i + 2 <= len(array)-1 and array[i] < array[2*i + 2]:
+    if 2*i + 2 <= end and array[i] < array[2*i + 2]:
         is_heap = False
 print(array)
 print(is_heap)
