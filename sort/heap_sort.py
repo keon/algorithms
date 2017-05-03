@@ -2,7 +2,13 @@ def heap_sort(arr):
     """ Heapsort
         Complexity: O(n log(n))
     """
-    pass
+
+    for i in range(len(arr)-1,-1,-1):
+        heapify(arr, i)
+
+        temp = arr[0]
+        arr[0] = arr[i]
+        arr[i] = temp
 
 
 def heapify(arr, end):
@@ -41,9 +47,10 @@ end = len(array)-2
 heapify(array, end)
 for i in range(0, int((end-1)/2)+1):
     if array[i] < array[2*i+1]:
+        is_heap = False
     if 2*i + 2 <= end and array[i] < array[2*i + 2]:
         is_heap = False
 print(array)
 print(is_heap)
-# heap_sort(array)
-# print(array)
+heap_sort(array)
+print(array)
