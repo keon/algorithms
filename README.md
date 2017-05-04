@@ -93,7 +93,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [valid_sudoku](map/valid_sudoku.py)
 - [math](math)
     - [extended_gcd](math/extended_gcd.py)
-    - [gcd](math/gcd.py)
+    - [gcd/lcm](math/gcd.py)
     - [prime_test](math/prime_test.py)
     - [primes_sieve_of_eratosthenes](math/primes_sieve_of_eratosthenes.py)
     - [generate_strobogrammtic](math/generate_strobogrammtic.py)
