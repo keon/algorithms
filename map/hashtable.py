@@ -99,6 +99,29 @@ class HashTable(object):
         return self._len
 
 
+class ResizableHashTable(HashTable):
+    MIN_SIZE = 8
+
+    def __init__(self):
+        super().__init__(self.MIN_SIZE)
+
+    def put(self, key, value):
+        rv = super().put(key, value)
+        # increase size of dict * 2 if filled >= 2/3 size (like python dict)
+        if len(self) >= (self.size * 2) / 3:
+            self.__resize()
+
+    def __resize(self):
+        keys, values = self._keys, self._values
+        self.size *= 2  # this will be the new size
+        self._len = 0
+        self._keys = [self._empty] * self.size
+        self._values = [self._empty] * self.size
+        for key, value in zip(keys, values):
+            if key is not self._empty and key is not self._deleted:
+                self.put(key, value)
+
+
 class TestHashTable(TestCase):
     def test_one_entry(self):
         m = HashTable(10)
@@ -165,3 +188,13 @@ class TestHashTable(TestCase):
         self.assertEqual(0, len(m))
         m.put(11, 42)
         self.assertEqual(1, len(m))
+
+    def test_resizable_hash_table(self):
+        m = ResizableHashTable()
+        self.assertEqual(ResizableHashTable.MIN_SIZE, m.size)
+        for i in range(ResizableHashTable.MIN_SIZE):
+            m.put(i, 'foo')
+        self.assertEqual(ResizableHashTable.MIN_SIZE * 2, m.size)
+        self.assertEqual('foo', m.get(1))
+        self.assertEqual('foo', m.get(3))
+        self.assertEqual('foo', m.get(ResizableHashTable.MIN_SIZE - 1))
