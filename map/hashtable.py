@@ -7,6 +7,7 @@ del Delete the key-value pair from the map using a statement of the form del map
 len() Return the number of key-value pairs stored in the map.
 in Return True for a statement of the form key in map, if the given key is in the map, False otherwise.
 """
+from unittest import TestCase
 
 
 class HashTable(object):
@@ -52,3 +53,10 @@ class HashTable(object):
 
     def __setitem__(self, key, value):
         self.put(key, value)
+
+
+class TestHashTable(TestCase):
+    def test_one_entry(self):
+        m = HashTable(10)
+        m.put(1, '1')
+        self.assertEqual('1', m.get(1))
