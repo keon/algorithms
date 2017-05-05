@@ -51,6 +51,23 @@ class HashTable(object):
                 # table is full and wrapped around
                 return None
 
+    def del_(self, key):
+        initial_hash = hash_ = self.hash(key)
+        while True:
+            if self._keys[hash_] is self._empty:
+                # That key was never assigned
+                return None
+            elif self._keys[hash_] == key:
+                # key found, assign with deleted sentinel
+                self._keys[hash_] = self._deleted
+                self._values[hash_] = self._deleted
+                return
+
+            hash_ = self.rehash(hash_)
+            if initial_hash == hash_:
+                # table is full and wrapped around
+                return None
+
     def hash(self, key):
         return key % self.size
 
@@ -96,3 +113,16 @@ class TestHashTable(TestCase):
         for i in range(10, 20):
             m.put(i, i)
         self.assertEqual(None, m.get(1))
+
+    def test_delete_key(self):
+        m = HashTable(10)
+        m.put(1, 1)
+        m.del_(1)
+        self.assertEqual(None, m.get(1))
+
+    def test_delete_key_and_reassign(self):
+        m = HashTable(10)
+        m.put(1, 1)
+        m.del_(1)
+        m.put(1, 2)
+        self.assertEqual(2, m.get(1))
