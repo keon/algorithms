@@ -37,7 +37,19 @@ class HashTable(object):
             hash_ = self.rehash(hash_)
 
     def get(self, key):
-        pass
+        initial_hash = hash_ = self.hash(key)
+        while True:
+            if self._keys[hash_] is self._empty:
+                # That key was never assigned
+                return None
+            elif self._keys[hash_] == key and self._values[hash_]:
+                # key found
+                return self._values[hash_]
+            elif initial_hash == hash_:
+                # table is full and wrapped around
+                return None
+
+            hash_ = self.rehash(hash_)
 
     def hash(self, key):
         return key % self.size
