@@ -20,7 +20,7 @@ class HashTable(object):
         self._values = [self._empty] * size  # values
 
     def put(self, key, value):
-        hash_ = self.hash(key)
+        initial_hash = hash_ = self.hash(key)
 
         while True:
             if self._keys[hash_] is self._empty or self._keys[hash_] is self._deleted:
@@ -35,6 +35,10 @@ class HashTable(object):
                 return
 
             hash_ = self.rehash(hash_)
+
+            if initial_hash == hash_:
+                # table is full
+                raise ValueError("Table is full")
 
     def get(self, key):
         initial_hash = hash_ = self.hash(key)
@@ -126,3 +130,11 @@ class TestHashTable(TestCase):
         m.del_(1)
         m.put(1, 2)
         self.assertEqual(2, m.get(1))
+
+    def test_assigning_to_full_table_throws_error(self):
+        m = HashTable(3)
+        m.put(1, 1)
+        m.put(2, 2)
+        m.put(3, 3)
+        with self.assertRaises(ValueError):
+            m.put(4, 4)
