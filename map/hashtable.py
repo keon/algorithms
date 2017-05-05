@@ -42,14 +42,14 @@ class HashTable(object):
             if self._keys[hash_] is self._empty:
                 # That key was never assigned
                 return None
-            elif self._keys[hash_] == key and self._values[hash_]:
+            elif self._keys[hash_] == key:
                 # key found
                 return self._values[hash_]
-            elif initial_hash == hash_:
-                # table is full and wrapped around
-                return None
 
             hash_ = self.rehash(hash_)
+            if initial_hash == hash_:
+                # table is full and wrapped around
+                return None
 
     def hash(self, key):
         return key % self.size
@@ -72,3 +72,27 @@ class TestHashTable(TestCase):
         m = HashTable(10)
         m.put(1, '1')
         self.assertEqual('1', m.get(1))
+
+    def test_add_entry_bigger_than_table_size(self):
+        m = HashTable(10)
+        m.put(11, '1')
+        self.assertEqual('1', m.get(11))
+
+    def test_get_none_if_key_missing_and_hash_collision(self):
+        m = HashTable(10)
+        m.put(1, '1')
+        self.assertEqual(None, m.get(11))
+
+    def test_two_entries_with_same_hash(self):
+        m = HashTable(10)
+        m.put(1, '1')
+        m.put(11, '11')
+        self.assertEqual('1', m.get(1))
+        self.assertEqual('11', m.get(11))
+
+    def test_get_on_full_table_does_halts(self):
+        # and does not search forever
+        m = HashTable(10)
+        for i in range(10, 20):
+            m.put(i, i)
+        self.assertEqual(None, m.get(1))
