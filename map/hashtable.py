@@ -11,30 +11,30 @@ from unittest import TestCase
 
 
 class HashTable(object):
+    _empty = object()
+    _deleted = object()
+
     def __init__(self, size=11):
         self.size = size
-        self.keys = [None] * size  # keys
-        self.values = [None] * size  # values
+        self._keys = [self._empty] * size  # keys
+        self._values = [self._empty] * size  # values
 
     def put(self, key, value):
-        hash_value = self.hash(key)
+        hash_ = self.hash(key)
 
-        if hash_value not in keys:
-            self.keys[hash_value] = key
-            self.values[hash_value] = value
-        else:
-            if self.keys[hash_value] == key:  # replace
-                self.values[hash_value] = value
-            else:  # probing
-                rehashval = self.rehash(key)
-                while self.keys[rehashval] is not None and \
-                                self.keys[rehashval] != key:
-                    rehashval = self.rehash(rehashval)
-                if keys[rehashval] is None:
-                    self.keys[rehashval] = key
-                    self.values[rehashval] = value
-                else:
-                    self.values[rehashval] = value  # replacee
+        while True:
+            if self._keys[hash_] is self._empty or self._keys[hash_] is self._deleted:
+                # can assign to hash_ index
+                self._keys[hash_] = key
+                self._values[hash_] = value
+                return
+            elif self._keys[hash_] == key:
+                # key already exists here, assign over
+                self._keys[hash_] = key
+                self._values[hash_] = value
+                return
+
+            hash_ = self.rehash(hash_)
 
     def get(self, key):
         pass
