@@ -34,7 +34,7 @@ class HashTable(object):
                 self._values[hash_] = value
                 return
 
-            hash_ = self.rehash(hash_)
+            hash_ = self._rehash(hash_)
 
             if initial_hash == hash_:
                 # table is full
@@ -50,7 +50,7 @@ class HashTable(object):
                 # key found
                 return self._values[hash_]
 
-            hash_ = self.rehash(hash_)
+            hash_ = self._rehash(hash_)
             if initial_hash == hash_:
                 # table is full and wrapped around
                 return None
@@ -67,7 +67,7 @@ class HashTable(object):
                 self._values[hash_] = self._deleted
                 return
 
-            hash_ = self.rehash(hash_)
+            hash_ = self._rehash(hash_)
             if initial_hash == hash_:
                 # table is full and wrapped around
                 return None
@@ -75,7 +75,7 @@ class HashTable(object):
     def hash(self, key):
         return key % self.size
 
-    def rehash(self, old_hash):
+    def _rehash(self, old_hash):
         """
         linear probing
         """
