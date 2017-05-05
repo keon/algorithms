@@ -95,6 +95,9 @@ class HashTable(object):
     def __setitem__(self, key, value):
         self.put(key, value)
 
+    def __len__(self):
+        return self._len
+
 
 class TestHashTable(TestCase):
     def test_one_entry(self):
@@ -146,3 +149,19 @@ class TestHashTable(TestCase):
         m.put(3, 3)
         with self.assertRaises(ValueError):
             m.put(4, 4)
+
+    def test_len_trivial(self):
+        m = HashTable(10)
+        self.assertEqual(0, len(m))
+        for i in range(10):
+            m.put(i, i)
+            self.assertEqual(i + 1, len(m))
+
+    def test_len_after_deletions(self):
+        m = HashTable(10)
+        m.put(1, 1)
+        self.assertEqual(1, len(m))
+        m.del_(1)
+        self.assertEqual(0, len(m))
+        m.put(11, 42)
+        self.assertEqual(1, len(m))
