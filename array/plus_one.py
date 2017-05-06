@@ -36,3 +36,13 @@ def plus_one(digits):
     new_num = [0] * (n+1)
     new_num[0] = 1
     return new_num
+## another implementation, convert list to string, then to integer, then increment that integer
+def plusone(digits):
+        num=""
+        for d in digits:
+            num+=str(d)
+        incremented=str(int(num)+1)
+        incrementedAsList=[]
+        for i in incremented:
+            incrementedAsList.append(int(i))
+        return incrementedAsList    
