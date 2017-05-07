@@ -3,6 +3,10 @@ Reverse a singly linked list.
 """
 
 
+#
+# Iterative solution
+# T(n)- O(n)
+#
 def reverse_list(head):
     """
     :type head: ListNode
@@ -17,3 +21,21 @@ def reverse_list(head):
         current.next = prev
         prev = current
     return prev
+
+
+#
+# Recursive solution
+# T(n)- O(n)
+#
+def reverse_list_recursive(head):
+    """
+    :type head: ListNode
+    :rtype: ListNode
+    """
+    if head is None or head.next is None:
+        return head
+    p = head.next
+    head.next = None
+    revrest = self.reverse(p)
+    p.next = head
+    return revrest
