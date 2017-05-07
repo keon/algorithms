@@ -22,6 +22,7 @@ def reverse_list(head):
         prev = current
     return prev
 
+
 #
 # Recursive solution
 # T(n)- O(n)
