@@ -28,6 +28,10 @@ def reverse_list(head):
 # T(n)- O(n)
 #
 def reverse_list_recursive(head):
+    """
+    :type head: ListNode
+    :rtype: ListNode
+    """
     if head is None or head.next is None:
         return head
     p = head.next
