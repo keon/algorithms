@@ -38,6 +38,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [shortest_distance_from_all_buildings](bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](bfs/word_ladder.py)
 - [bit](bit)
+    - [bytes_int_conversion](bit/bytes_int_conversion.py)
     - [count_ones](bit/count_ones.py)
     - [power_of_two](bit/power_of_two.py)
     - [reverse_bits](bit/reverse_bits.py)
