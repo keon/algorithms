@@ -1,6 +1,7 @@
 def find_missing_number(nums):
-    """Returns the missing number from a sorted list of integers
-    in O(n) time and space.
+    """Returns the missing number from a sorted list of unique
+    integers in O(n) time and space. The difference between
+    consecutive integers cannot be more than 1.
 
     >>> find_missing([i for i in range(-2000, 10000) if i != 1234])
     1234
