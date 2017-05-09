@@ -9,6 +9,7 @@ def int_to_bytes_big_endian(num):
         num >>= 8
     return bytes(bytestr)
 
+
 def int_to_bytes_little_endian(num):
     bytestr = []
     while num > 0:
@@ -16,12 +17,14 @@ def int_to_bytes_little_endian(num):
         num >>= 8
     return bytes(bytestr)
 
+
 def bytes_big_endian_to_int(bytestr):
     num = 0
     for b in bytestr:
         num <<= 8
         num += b
     return num
+
 
 def bytes_little_endian_to_int(bytestr):
     num = 0
