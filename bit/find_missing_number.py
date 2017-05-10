@@ -7,14 +7,9 @@ def find_missing_number(nums):
     1234
     """
 
-    # Force odd length
-    if len(nums) & 1 == 0:
-        nums.append(nums[-1] + 1)
-
     missing = 0
     for i, num in enumerate(nums):
-        if num != 0:
-            missing ^= num
+        missing ^= num
         missing ^= i + 1
 
     return missing
