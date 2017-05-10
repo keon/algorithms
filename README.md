@@ -40,6 +40,7 @@ Minimal and clean example implementations of data structures and algorithms in P
 - [bit](bit)
     - [bytes_int_conversion](bit/bytes_int_conversion.py)
     - [count_ones](bit/count_ones.py)
+    - [find_missing_number](bit/find_missing_number.py)
     - [power_of_two](bit/power_of_two.py)
     - [reverse_bits](bit/reverse_bits.py)
     - [single_number2](bit/single_number2.py)
