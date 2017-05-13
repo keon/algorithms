@@ -36,6 +36,7 @@ max_product_so_far: 6, [6]
 '''
 
 def subarray_with_max_product(arr):
+    ''' arr is list of positive/negitive numbers '''
     l = len(arr)
     product_so_far = max_product_end = 1
     max_start_i = 0
@@ -43,7 +44,6 @@ def subarray_with_max_product(arr):
 
     for i in range(l):
         max_product_end *= arr[i]
-
         if max_product_end < 0:
             max_product_end = 1
             max_start_i = i + 1
