@@ -24,15 +24,15 @@ def max_product(nums):
 '''
 Another approach that would print max product and the subarray
 
-Example:  
+Examples:
 subarray_with_max_product([2,3,6,-1,-1,9,5])
-max_product_so_far: 45, [9, 5]
-
-subarray_with_max_product([2,3,6,-1,-1,4,5])
-max_product_so_far: 36, [2, 3, 6]
-
-subarray_with_max_product([-2,-3,6,-1,-9,-5])
-max_product_so_far: 6, [6]
+    #=> max_product_so_far: 45, [-1, -1, 9, 5]
+subarray_with_max_product([-2,-3,6,0,-7,-5])
+    #=> max_product_so_far: 36, [-2, -3, 6]
+subarray_with_max_product([-4,-3,-2,-1])
+    #=> max_product_so_far: 24, [-4, -3, -2, -1]
+subarray_with_max_product([-3,0,1])
+    #=> max_product_so_far: 1, [1]
 '''
 
 def subarray_with_max_product(arr):
@@ -41,16 +41,24 @@ def subarray_with_max_product(arr):
     product_so_far = max_product_end = 1
     max_start_i = 0
     so_far_start_i = so_far_end_i = 0
+    all_negitive_flag = True
 
     for i in range(l):
         max_product_end *= arr[i]
-        if max_product_end < 0:
-            max_product_end = 1
-            max_start_i = i + 1
+        if arr[i] > 0: all_negitive_flag = False
 
-        if product_so_far < max_product_end:
+        if max_product_end <= 0:
+            max_product_end = arr[i]
+            max_start_i = i
+
+        if product_so_far <= max_product_end:
             product_so_far = max_product_end
             so_far_end_i = i
             so_far_start_i = max_start_i
-    print "max_product_so_far: %s, %s" % (product_so_far,\
-	arr[so_far_start_i:so_far_end_i + 1])
+    
+    if all_negitive_flag:
+        print "max_product_so_far: %s, %s" % \
+            (reduce(lambda x, y: x * y, arr), arr)
+    else:
+        print "max_product_so_far: %s, %s" % (product_so_far,\
+	       arr[so_far_start_i:so_far_end_i + 1])
