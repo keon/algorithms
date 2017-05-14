@@ -73,17 +73,18 @@ def min_heapify(arr, start):
             else:
                 break
 
-import timeit
+if __name__ == '__main__':
+	import timeit
 
-array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
-print("array:")
-print(array)
-print("Max Heapify:")
-max_heap_sort(array)
-print(array)
-array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
-print("Min Heapify:")
-min_heap_sort(array)
-print(array)
-print("Max Heapify Time:", timeit.timeit('max_heap_sort(array)', setup="from __main__ import max_heap_sort, array",number=10000))
-print("Min Heapify Time:", timeit.timeit('min_heap_sort(array)', setup="from __main__ import min_heap_sort, array",number=10000))
+	array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
+	print("array:")
+	print(array)
+	print("Max Heapify:")
+	max_heap_sort(array)
+	print(array)
+	array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
+	print("Min Heapify:")
+	min_heap_sort(array)
+	print(array)
+	print("Max Heapify Time:", timeit.timeit('max_heap_sort(array)', setup="from __main__ import max_heap_sort, array",number=10000))
+	print("Min Heapify Time:", timeit.timeit('min_heap_sort(array)', setup="from __main__ import min_heap_sort, array",number=10000))
