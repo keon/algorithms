@@ -52,4 +52,5 @@ def subarray_with_max_product(arr):
             product_so_far = max_product_end
             so_far_end_i = i
             so_far_start_i = max_start_i
-    print "max_product_so_far: %s, %s"%(product_so_far, arr[so_far_start_i:so_far_end_i+1])
+    print "max_product_so_far: %s, %s" % (product_so_far,\
+	arr[so_far_start_i:so_far_end_i + 1])
