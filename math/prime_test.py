@@ -10,7 +10,6 @@ def prime_test(n):
         return True
     if n%2==0 or n%3==0:
         return False
-
     j = 5
     while(j*j <= n):
         if n%(j)==0 or n%(j+2)==0:
