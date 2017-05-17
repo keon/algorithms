@@ -33,9 +33,8 @@ def plus_one(digits):
             digits[i] += 1
             return digits
         digits[i] = 0
-    new_num = [0] * (n+1)
-    new_num[0] = 1
-    return new_num
+    digits.insert(0, 1)
+    return digits
 
 
 def plus_1(num_arr):
