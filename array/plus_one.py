@@ -36,3 +36,11 @@ def plus_one(digits):
     new_num = [0] * (n+1)
     new_num[0] = 1
     return new_num
+
+
+def plus_1(num_arr):
+    for idx, digit in reversed(list(enumerate(num_arr))):
+        num_arr[idx] = (num_arr[idx] + 1) % 10
+        if num_arr[idx]:
+            return num_arr
+    return [1] + num_arr
