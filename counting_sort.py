@@ -1,6 +1,6 @@
 def counting_sort(arr):
 	"""
-    Couting_sort
+    Counting_sort
 	Sorting a array which has no element greater than k
 	Creating a new temp_arr,where temp_arr[i] contain the number of
 	element less than or equal to i in the arr	
