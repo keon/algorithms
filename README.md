@@ -135,6 +135,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [sort_colors](sort/sort_colors.py)
     - [topsort](sort/topsort.py)
     - [wiggle_sort](sort/wiggle_sort.py)
+    - [counting_sort](sort/counting_sort.py)
 - [stack](stack)
     - [longest_abs_path](stack/longest_abs_path.py)
     - [simplify_path](stack/simplify_path.py)
