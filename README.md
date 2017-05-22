@@ -112,6 +112,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [sparse_dot_vector](matrix/sparse_dot_vector.py)
     - [sparse_mul](matrix/sparse_mul.py)
     - [spiral_traversal](matrix/spiral_traversal.py)
+    - [count_paths](matrix/count_paths.py)
 - [queue](queue)
     - [max_sliding_window](queue/max_sliding_window.py)
     - [moving_average](queue/moving_average.py)
