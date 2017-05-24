@@ -23,12 +23,13 @@ In this case, no transaction is done, i.e. max profit = 0.
 def max_profit(prices):
     """
     input: [7, 1, 5, 3, 6, 4]
-    diff : [X,-6, 5,-2, 3,-2]
+    diff : [X,-6, 4,-2, 3,-2]
     :type prices: List[int]
     :rtype: int
     """
     cur_max, max_so_far = 0, 0
     for i in range(1, len(prices)):
-        cur_max = max(0, cur_max + prices[i] - prices[i-1])
+        for j in range(i, len(prices))
+            cur_max = max(0, prices[j] - prices[i])
         max_so_far = max(max_so_far, cur_max)
     return max_so_far
