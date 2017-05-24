@@ -17,7 +17,7 @@ def all_perms(elements):
         return tmp
 
 word = "abc"
-print list(all_perms(word))
+print(list(all_perms(word)))
 
 def anagram(s1,s2):
     c1 = [0]*26
