@@ -20,7 +20,21 @@ In this case, no transaction is done, i.e. max profit = 0.
 """
 
 
-def max_profit(prices):
+# O(n^2) time
+def max_profit_naive(prices):
+    """
+    :type prices: List[int]
+    :rtype: int
+    """
+    max_so_far = 0
+    for i in range(0, len(prices) - 1):
+        for j in range(i + 1, len(prices)):
+            max_so_far = max(max_so_far, prices[j] - prices[i])
+    return max_so_far
+
+
+# O(n) time
+def max_profit_optimized(prices):
     """
     input: [7, 1, 5, 3, 6, 4]
     diff : [X,-6, 4,-2, 3,-2]
@@ -29,7 +43,6 @@ def max_profit(prices):
     """
     cur_max, max_so_far = 0, 0
     for i in range(1, len(prices)):
-        for j in range(i, len(prices))
-            cur_max = max(0, prices[j] - prices[i])
+        cur_max = max(0, cur_max + prices[i] - prices[i-1])
         max_so_far = max(max_so_far, cur_max)
     return max_so_far
