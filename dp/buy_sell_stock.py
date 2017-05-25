@@ -37,7 +37,7 @@ def max_profit_naive(prices):
 def max_profit_optimized(prices):
     """
     input: [7, 1, 5, 3, 6, 4]
-    diff : [X,-6, 4,-2, 3,-2]
+    diff : [X, -6, 4, -2, 3, -2]
     :type prices: List[int]
     :rtype: int
     """
