@@ -27,12 +27,14 @@ def primes(x):
     assert(x >= 0)
     # If x is even, exclude x from list (-1):
     sieve_size = (x//2 - 1) if x % 2 == 0 else (x//2)
-    sieve = [1 for v in range(sieve_size)] # Sieve
-    primes = [2] # List of Primes
+    sieve = [1 for v in range(sieve_size)]   # Sieve
+    primes = []                              # List of Primes
+    if x >= 2:
+        primes.append(2)                     # Add 2 by default
     for i in range(0, sieve_size):
         if sieve[i] == 1:
             value_at_i = i*2 + 3
             primes.append(value_at_i)
             for j in range(i, sieve_size, value_at_i):
-                sieve[j]=0
+                sieve[j] = 0
     return primes
