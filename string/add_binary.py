@@ -21,5 +21,6 @@ def add_binary(a, b):
             c += ord(b[j]) - zero
             j -= 1
         s = chr(c % 2 + zero) + s
+        # c //= 2 for python3
         c /= 2
     return s
