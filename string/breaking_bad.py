@@ -16,8 +16,22 @@ longest length. (ex. 'Microsoft' matches 'i' and 'cro')
 My solution:
 (I sorted the symbols array in descending order of length and ran loop over
 chemicals array to find a symbol match(using indexOf in javascript) which
-worked. But I din't make it through the interview, I am guessing my solution
-was O(n2) and they expected an efficient algorithm.
+worked. But I didn't make it through the interview, I am guessing my solution
+was O(n^2) and they expected an efficient algorithm.
+
+
+note:
+This approach didn't pass interview because it did wrong in conditions like:
+
+input:
+chemicals = ['Amazon', 'Microsoft', 'Google']
+symbols = ['I', 'Am', 'cro', 'Na', 'le', 'abc', 'o']  # add 'o' here
+
+expected:
+['[am]azon', 'mi[cro]soft', 'goog[le]']
+
+exact output:
+['[Am]azon', 'Mi[cro]soft', 'Goog[le]', 'Amaz[o]n', 'Micr[o]s[o]ft', 'G[o][o]gle']
 """
 
 chemicals = ['Amazon', 'Microsoft', 'Google']
@@ -35,8 +49,27 @@ def match_symbol(chemicals, symbols):
 
     return combined
 
+print(match_symbol(chemicals, symbols))
 
-print match_symbol(chemicals, symbols)
+
+# An improved version of above, get right output.
+def match_symbol_1(symbols, words):
+    import re
+    bracketed_list = []
+    for w in words:
+        longest_match=''
+        for s in symbols:
+            matchs = re.findall(s, w)
+            for m in matchs:
+                longest_match = m if len(longest_match) < len(m) else longest_match
+        bracketed.append(re.sub(longest_match, '[{}]'.format(longest_match), w))
+    return bracketed_list
+
+symbols = ['I', 'Am', 'cro', 'Na', 'le', 'abc', 'o']
+words = ['Amazon', 'Microsoft', 'Google']
+print(match_symbol_1(symbols, words))
+# >>> ['[Am]azon', 'Mi[cro]soft', 'Goog[le]']
+
 
 """
 One approach is to use a Trie for the dictionary (the symbols), and then match
