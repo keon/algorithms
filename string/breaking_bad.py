@@ -52,7 +52,20 @@ def match_symbol(chemicals, symbols):
 print(match_symbol(chemicals, symbols))
 
 
-# An improved version of above, get right output.
+
+"""
+An improved version of above, get right output.
+
+symbols = ['I', 'Am', 'cro', 'Na', 'le', 'abc', 'o']
+words = ['Amazon', 'Microsoft', 'Google']
+print(match_symbol_1(symbols, words))
+>>> ['[Am]azon', 'Mi[cro]soft', 'Goog[le]']
+
+O(mn) time
+m = len(symbols), n = len(words)
+Assuming re.findall(s, w) is O(1) time.
+"""
+
 def match_symbol_1(symbols, words):
     import re
     bracketed_list = []
@@ -65,10 +78,6 @@ def match_symbol_1(symbols, words):
         bracketed.append(re.sub(longest_match, '[{}]'.format(longest_match), w))
     return bracketed_list
 
-symbols = ['I', 'Am', 'cro', 'Na', 'le', 'abc', 'o']
-words = ['Amazon', 'Microsoft', 'Google']
-print(match_symbol_1(symbols, words))
-# >>> ['[Am]azon', 'Mi[cro]soft', 'Goog[le]']
 
 
 """
