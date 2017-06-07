@@ -33,13 +33,16 @@ def plus_one(digits):
             digits[i] += 1
             return digits
         digits[i] = 0
-    digits.insert(0, 1)
-    return digits
-
-
-def plus_1(num_arr):
-    for idx, digit in reversed(list(enumerate(num_arr))):
-        num_arr[idx] = (num_arr[idx] + 1) % 10
-        if num_arr[idx]:
-            return num_arr
-    return [1] + num_arr
+    new_num = [0] * (n+1)
+    new_num[0] = 1
+    return new_num
+## another implementation, convert list to string, then to integer, then increment that integer
+def plusone(digits):
+        num=""
+        for d in digits:
+            num+=str(d)
+        incremented=str(int(num)+1)
+        incrementedAsList=[]
+        for i in incremented:
+            incrementedAsList.append(int(i))
+        return incrementedAsList    
