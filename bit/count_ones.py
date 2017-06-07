@@ -14,6 +14,8 @@ def count_ones(n):
     :type n: int
     :rtype: int
     """
+    if n < 0:
+        return
     counter = 0
     while n:
         counter += n & 1
