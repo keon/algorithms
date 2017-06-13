@@ -60,6 +60,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [climbing_stairs](dp/climbing_stairs.py)
     - [combination_sum](dp/combination_sum.py)
     - [house_robber](dp/house_robber.py)
+    - [knapsack](dp/knapsack.py)
     - [longest_increasing](dp/longest_increasing.py)
     - [max_product_subarray](dp/max_product_subarray.py)
     - [max_subarray](dp/max_subarray.py)
