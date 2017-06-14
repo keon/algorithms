@@ -44,7 +44,7 @@ def contains_cycle(graph):
     traversal_states = {vertex: TraversalState.WHITE for vertex in graph}
     for vertex, state in traversal_states.items():
         if (state == TraversalState.WHITE and
-            is_in_cycle(graph, traversal_states, vertex)):
+           is_in_cycle(graph, traversal_states, vertex)):
             return True
     return False
 
