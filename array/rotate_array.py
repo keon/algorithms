@@ -28,6 +28,10 @@ def rotate_one_by_one(nums, k):
         nums[0] = temp
 
 
+#
+# Reverse segments of the array, followed by the entire array
+# T(n)- O(n)
+#
 def rotate(nums, k):
     """
     :type nums: List[int]
