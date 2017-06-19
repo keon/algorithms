@@ -2,7 +2,7 @@
 
 https://en.wikipedia.org/wiki/Bubble_sort
 
-Complexity: O(N^2)
+Worst-case performance: O(N^2)
 
 """
 

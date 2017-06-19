@@ -130,6 +130,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [randomized_set](set/randomized_set.py)
 - [sort](sort)
     - [bubble_sort](sort/bubble_sort.py)
+    - [comb_sort](sort/comb_sort.py)
     - [counting_sort](sort/counting_sort.py)
     - [heap_sort](sort/heap_sort.py)
     - [insertion_sort](sort/insertion_sort.py)
