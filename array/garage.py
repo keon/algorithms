@@ -18,23 +18,19 @@
 # Edited by cyberking-saga
 
 def garage(initial, final):
-    i = 0
     steps = 0
     while initial != final:
-        if initial[i] != 0 and initial[i] != final[i]:
-            zero = initial.index(0)
-            final_pos = final.index(initial[i])
-            if zero != final_pos:
-                # two swaps required
-                initial[final_pos], initial[zero] = initial[zero], initial[final_pos]
-                zero = initial.index(0)
-                initial[i], initial[zero] = initial[zero], initial[i]
-                steps += 2
-            else:
-                # one swap is enough
-                initial[i], initial[zero] = initial[zero], initial[i]
-                steps += 1
-        i = (i + 1) % len(initial)
+        zero = initial.index(0)
+        if zero != final.index(0):
+            car_to_move = final[zero]
+            pos = initial.index(car_to_move)
+            initial[zero], initial[pos] = initial[pos], initial[zero]
+        else:
+            for i in range(len(initial)):
+                if initial[i] != final[i]:
+                    initial[zero], initial[i] = initial[i], initial[zero]
+                    break
+        steps += 1
     return steps
 
 if __name__ == "__main__":
