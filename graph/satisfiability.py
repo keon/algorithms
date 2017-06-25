@@ -1,6 +1,7 @@
 '''
 Given a formula in conjunctive normal form (2-CNF), finds a way to assign
-True/False values to all variables to satisfy all clauses, or reports there.
+True/False values to all variables to satisfy all clauses, or reports there
+is no solution.
 
 https://en.wikipedia.org/wiki/2-satisfiability
 '''
