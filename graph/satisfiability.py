@@ -1,8 +1,17 @@
 '''
-Given a formula in conjunctive normal form (2-CNF), finds a way to assign True/False
-values to all variables to satisfy all clauses, or reports there.
+Given a formula in conjunctive normal form (2-CNF), finds a way to assign
+True/False values to all variables to satisfy all clauses, or reports there.
+
+https://en.wikipedia.org/wiki/2-satisfiability
 '''
 
+
+''' Format:
+        - each clause is a pair of literals
+        - each literal in the form (name, is_neg)
+          where name is an arbitrary identifier,
+          and is_neg is true if the literal is negated
+'''
 formula = [(('x', False), ('y', False)),
            (('y', True), ('y', True)),
            (('a', False), ('b', False)),
@@ -32,6 +41,7 @@ def add_edge(graph, vertex_from, vertex_to):
 
     graph[vertex_from].append(vertex_to)
 
+''' Computes the strongly connected components of a graph '''
 def scc(graph):
     order = []
     vis = {vertex : False for vertex in graph}
@@ -52,11 +62,13 @@ def scc(graph):
     current_comp = 0
     for v in reversed(order):
         if not vis[v]:
+            # Each dfs will visit exactly one component
             dfs(v, current_comp, vertex_scc, graph, vis)
             current_comp += 1
 
     return vertex_scc
 
+''' Builds the implication graph from the formula '''
 def build_graph(formula):
     graph = {}
     
@@ -77,15 +89,15 @@ def solve_sat(formula):
     
     for (var, _) in graph:
         if vertex_scc[(var, False)] == vertex_scc[(var, True)]:
-            return None
+            return None # The formula is contradictory
             
-    comp_repr = {}
+    comp_repr = {} # An arbitrary representant from each component
     
     for vertex in graph:
         if not vertex_scc[vertex] in comp_repr:
             comp_repr[vertex_scc[vertex]] = vertex
             
-    comp_value = {}
+    comp_value = {} # True/False value for each strongly connected component
     components = sorted(vertex_scc.values())
     
     for comp in components:
