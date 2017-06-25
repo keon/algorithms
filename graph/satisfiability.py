@@ -18,6 +18,7 @@ formula = [(('x', False), ('y', False)),
            (('a', True), ('c', True)),
            (('c', False), ('b', True))]
 
+
 def dfs_transposed(v, graph, order, vis):
     vis[v] = True
 
@@ -27,38 +28,41 @@ def dfs_transposed(v, graph, order, vis):
 
     order.append(v)
 
+
 def dfs(v, current_comp, vertex_scc, graph, vis):
     vis[v] = True
     vertex_scc[v] = current_comp
-    
+
     for u in graph[v]:
         if not vis[u]:
             dfs(u, current_comp, vertex_scc, graph, vis)
-            
+
+
 def add_edge(graph, vertex_from, vertex_to):
-    if not vertex_from in graph:
+    if vertex_from not in graph:
         graph[vertex_from] = []
 
     graph[vertex_from].append(vertex_to)
 
-''' Computes the strongly connected components of a graph '''
+
 def scc(graph):
+    ''' Computes the strongly connected components of a graph '''
     order = []
-    vis = {vertex : False for vertex in graph}
-    
-    graph_transposed = {vertex : [] for vertex in graph}
-    
+    vis = {vertex: False for vertex in graph}
+
+    graph_transposed = {vertex: [] for vertex in graph}
+
     for (v, neighbours) in graph.iteritems():
         for u in neighbours:
             add_edge(graph_transposed, u, v)
-                
+
     for v in graph:
         if not vis[v]:
             dfs_transposed(v, graph_transposed, order, vis)
 
-    vis = {vertex : False for vertex in graph}
+    vis = {vertex: False for vertex in graph}
     vertex_scc = {}
-    
+
     current_comp = 0
     for v in reversed(order):
         if not vis[v]:
@@ -68,10 +72,11 @@ def scc(graph):
 
     return vertex_scc
 
-''' Builds the implication graph from the formula '''
+
 def build_graph(formula):
+    ''' Builds the implication graph from the formula '''
     graph = {}
-    
+
     for clause in formula:
         for (lit, _) in clause:
             for neg in [False, True]:
@@ -80,40 +85,40 @@ def build_graph(formula):
     for ((a_lit, a_neg), (b_lit, b_neg)) in formula:
         add_edge(graph, (a_lit, a_neg), (b_lit, not b_neg))
         add_edge(graph, (b_lit, b_neg), (a_lit, not a_neg))
-    
+
     return graph
+
 
 def solve_sat(formula):
     graph = build_graph(formula)
     vertex_scc = scc(graph)
-    
+
     for (var, _) in graph:
         if vertex_scc[(var, False)] == vertex_scc[(var, True)]:
-            return None # The formula is contradictory
-            
-    comp_repr = {} # An arbitrary representant from each component
-    
+            return None  # The formula is contradictory
+
+    comp_repr = {}  # An arbitrary representant from each component
+
     for vertex in graph:
         if not vertex_scc[vertex] in comp_repr:
             comp_repr[vertex_scc[vertex]] = vertex
-            
-    comp_value = {} # True/False value for each strongly connected component
+
+    comp_value = {}  # True/False value for each strongly connected component
     components = sorted(vertex_scc.values())
-    
+
     for comp in components:
-        if not comp in comp_value:
+        if comp not in comp_value:
             comp_value[comp] = False
-            
+
             (lit, neg) = comp_repr[comp]
             comp_value[vertex_scc[(lit, not neg)]] = True
-            
-    value = {var : comp_value[vertex_scc[(var, False)]] for (var, _) in graph}
-    
+
+    value = {var: comp_value[vertex_scc[(var, False)]] for (var, _) in graph}
+
     return value
 
-if __name__== '__main__':
+if __name__ == '__main__':
     result = solve_sat(formula)
-    
+
     for (variable, assign) in result.iteritems():
         print variable, ":", assign
-    
