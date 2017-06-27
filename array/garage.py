@@ -17,6 +17,7 @@
 # Each step swap with 0 only.
 # Edited by cyberking-saga
 
+
 def garage(initial, final):
     steps = 0
     while initial != final:
@@ -34,8 +35,8 @@ def garage(initial, final):
     return steps
 
 if __name__ == "__main__":
-    initial = [1,2,3,0,4]
-    final = [0,3,2,1,4]
+    initial = [1, 2, 3, 0, 4]
+    final = [0, 3, 2, 1, 4]
     print("initial:", initial)
     print("final:", final)
     print(garage(initial, final))
