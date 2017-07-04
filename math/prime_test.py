@@ -10,9 +10,9 @@ def prime_test(n):
         return True
     if n%2==0 or n%3==0:
         return False
-    j = 6
-    while(j*j < n):
-        if n%(j-1)==0 or n%(j+1)==0:
+    j = 5
+    while(j*j <= n):
+        if n%(j)==0 or n%(j+2)==0:
             return False
         j += 6
     return True

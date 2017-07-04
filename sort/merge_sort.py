@@ -26,14 +26,15 @@ def merge(left, right):
         else:
             arr.append(right[right_cursor])
             right_cursor+=1
-    # Add the left overs if there's any left to the result
-    if left:
-        arr.extend(left[left_cursor:])
-    if right:
-        arr.extend(right[right_cursor:])
+   # Add the left overs if there's any left to the result
+    for i in range(left_cursor,len(left)):
+        arr.append(left[i])
+    for i in range(right_cursor,len(right)):
+        arr.append(right[i])
+
+   # Return result
     return arr
 
 array = [1,5, 7,4,3,2,1,9,0,10,43,64]
 print(array)
-print(merge_sort(array, 0, len(array)-1))
-print(array)
+print(merge_sort(array))
