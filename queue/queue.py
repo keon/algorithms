@@ -88,9 +88,8 @@ class LinkedListQueue(AbstractQueue):
         if not self.front:
             self.front = node
             self.rear = node
-        else:
-            node.next = self.rear
-            self.rear = node
+        node.next = self.rear
+        self.rear = node
         self.top += 1
 
     def dequeue(self):
@@ -99,7 +98,6 @@ class LinkedListQueue(AbstractQueue):
         value = self.front.value
         if self.front is self.rear:
             self.front = None
-            self.rear = None
         self.front = self.front.next
         self.top -= 1
         return value
