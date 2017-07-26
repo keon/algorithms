@@ -12,7 +12,7 @@ these three numbers satisfy
 ((x ** e) ** d) % n == x % n
 
 to use this system for encryption, n and e are made publicly available, and d is kept secret
-a number x can be encrypted by computing (x ** e) % d
+a number x can be encrypted by computing (x ** e) % n
 the original number can then be recovered by computing (E ** d) % n, where E is
 the encrypted number
 
