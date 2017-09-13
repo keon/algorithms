@@ -26,29 +26,31 @@ class AbstractQueue:
             result += str(element) + '\n'
         return result[:-1] + '\n------'
 
-class ArrayQueue(AbstractStack):
+class ArrayQueue(AbstractQueue):
     def __init__(self, size=10):
         """
         Initialize python List with size of 10 or user given input.
         Python List type is a dynamic array, so we have to restrict its
         dynamic nature to make it work like a static array.
         """
-        AbstractStack.__init__(self)
+        AbstractQueue.__init__(self)
         self.array = [None] * size
         self.front = 0
         self.rear = 0
 
     def enqueue(self, value):
-        if self.top == len(self.array):
+        if self.rear == len(self.array):
             self.expand()
-        self.array[self.top] = value
+        self.array[self.rear] = value
+        self.rear += 1
         self.top += 1
 
     def dequeue(self):
         if self.isEmpty():
-            raise IndexError("stack is empty")
-        value = self.array[self.top - 1]
-        self.array[self.top - 1] = None
+            raise IndexError("Queue is empty")
+        value = self.array[self.front]
+        self.array[self.front] = None
+        self.front -= 1
         self.top -= 1
         return value
 
@@ -63,7 +65,7 @@ class ArrayQueue(AbstractStack):
         self.array = new_array
 
     def __iter__(self):
-        probe = self.top - 1
+        probe = self.rear
         while True:
             if probe < 0:
                 raise StopIteration
@@ -75,7 +77,7 @@ class QueueNode(object):
         self.value = value
         self.next = None
 
-class LinkedListQueue(AbstractStack):
+class LinkedListQueue(AbstractQueue):
     def __init__(self):
         AbstractQueue.__init__(self)
         self.front = None
@@ -83,12 +85,11 @@ class LinkedListQueue(AbstractStack):
 
     def enqueue(self, value):
         node = QueueNode(value)
-        if not front:
+        if not self.front:
             self.front = node
             self.rear = node
-        else:
-            self.rear.next = node
-            self.rear = node
+        node.next = self.rear
+        self.rear = node
         self.top += 1
 
     def dequeue(self):
@@ -96,19 +97,19 @@ class LinkedListQueue(AbstractStack):
             raise IndexError("Queue is empty")
         value = self.front.value
         if self.front is self.rear:
-            self.rear = None
+            self.front = None
         self.front = self.front.next
         self.top -= 1
         return value
 
     def __iter__(self):
-        probe = self.head
+        probe = self.rear
         while True:
             if probe is None:
                 raise StopIteration
             yield probe.value
             probe = probe.next
 
-class HeapPriorityQueue(AbstractStack):
+class HeapPriorityQueue(AbstractQueue):
     def __init__(self):
         pass
