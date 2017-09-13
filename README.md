@@ -68,6 +68,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [regex_matching](dp/regex_matching.py)
     - [word_break](dp/word_break.py)
 - [graph](graph)
+    - [2-sat](graph/satisfiability.py)
     - [clone_graph](graph/clone_graph.py)
     - [cycle_detection](graph/cycle_detection.py)
     - [find_path](graph/find_path.py)
