@@ -10,6 +10,28 @@ there are at least 3 different ways to solve this problem.
 """
 
 
+#
+# Rotate the entire array 'k' times
+# T(n)- O(nk)
+#
+def rotate_one_by_one(nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: void Do not return anything, modify nums in-place instead.
+    """
+    n = len(nums)
+    for i in range(k):
+        temp = nums[n-1]
+        for j in range(n-1, 0, -1):
+            nums[j] = nums[j-1]
+        nums[0] = temp
+
+
+#
+# Reverse segments of the array, followed by the entire array
+# T(n)- O(n)
+#
 def rotate(nums, k):
     """
     :type nums: List[int]
