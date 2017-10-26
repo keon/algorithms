@@ -22,4 +22,7 @@ def pythonic(s):
     r = list(reversed(s))
     return "".join(r)
 
-print(pythonic(s))
+def ultra_pythonic(s):
+    return s[::-1]
+
+print(ultra_pythonic(s))
