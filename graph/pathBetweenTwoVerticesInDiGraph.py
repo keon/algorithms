@@ -4,48 +4,48 @@ class Graph:
 	def __init__(self,v):
 		self.v = v
 		self.graph = defaultdict(list)
-		self.hasPath = False
+		self.has_path = False
 
-	def addEdge(self,u,v):
+	def add_edge(self,u,v):
 		self.graph[u].append(v)
 
-	def DFS(self,x,y):
+	def dfs(self,x,y):
 		visited = [False] * self.v
-		self.DFSUtil(visited,x,y,)
+		self.dfsutil(visited,x,y,)
 
-	def DFSUtil(self,visited,x,y):
+	def dfsutil(self,visited,x,y):
 		visited[x] = True
 		for i in self.graph[x]:
 			if y in self.graph[x]:
-				self.hasPath = True
+				self.has_path = True
 				return
 			if(not(visited[i])):
-				self.DFSUtil(visited,x,i)
+				self.dfsutil(visited,x,i)
 
-	def isReachable(self,x,y):
-		self.hasPath = False
-		self.DFS(x,y)
-		return self.hasPath
+	def is_reachable(self,x,y):
+		self.has_path = False
+		self.dfs(x,y)
+		return self.has_path
 
 
 # Create a graph given in the above diagram
 g = Graph(4)
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
+g.add_edge(0, 1)
+g.add_edge(0, 2)
+g.add_edge(1, 2)
+g.add_edge(2, 0)
+g.add_edge(2, 3)
+g.add_edge(3, 3)
  
 u =1; v = 3
  
-if g.isReachable(u, v):
+if g.is_reachable(u, v):
     print("There is a path from %d to %d" % (u,v))
 else :
     print("There is no path from %d to %d" % (u,v))
  
 u = 3; v = 1
-if g.isReachable(u, v) :
+if g.is_reachable(u, v) :
     print("There is a path from %d to %d" % (u,v))
 else :
     print("There is no path from %d to %d" % (u,v))
