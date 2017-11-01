@@ -22,11 +22,11 @@ def find_all_cliques(edges):
                 nays.add(compsub.pop())
 
     def get_connected(vertex, old_set):
-        newSet = set()
+        new_set = set()
         for neighbor in edges[str(vertex)]:
             if neighbor in old_set:
-                newSet.add(neighbor)
-        return newSet
+                new_set.add(neighbor)
+        return new_set
 
     compsub = []
     solutions = []
