@@ -40,7 +40,6 @@ class Graph:
         print(self.tc)
 
 
-# Create a graph given in the above diagram
 g = Graph(4)
 g.addEdge(0, 1)
 g.addEdge(0, 2)
