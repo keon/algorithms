@@ -1,5 +1,5 @@
 
-[English](https://github.com/yunshuipiao/algorithms/blob/master/README.md) | 简体中文
+### [English](https://github.com/yunshuipiao/algorithms/blob/master/README.md) | 简体中文
 
 Python版数据结构和算法
 =========================================
