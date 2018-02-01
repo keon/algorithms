@@ -39,7 +39,7 @@ def merge_intervals(l):
     out = [l.pop(0)]
     for i in l:
         if out[-1][-1] >= i[0]:
-            out[-1][-1] = i[-1]
+            out[-1][-1] = max(out[-1][-1], i[-1])
         else:
             out.append(i)
     return out
