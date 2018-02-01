@@ -11,17 +11,33 @@
 # Note that the answer must be a substring,
 # "pwke" is a subsequence and not a substring.
 
-def longest_non_repeat(s):
-    start, maxlen = 0, 0
-    used_char = {}
-    for i, char in enumerate(s):
-        if char in used_char and start <= used_char[char]:
-            start = used_char[char] + 1
-        else:
-            maxlen = max(maxlen, i-start+1)
-        used_char[char] = i
-    return maxlen
+def longest_non_repeat(string):
+    if string is None:
+        return 0
+    temp = []
+    max_len = 0
+    for i in string:
+        if i in temp:
+            temp = []
+        temp.append(i)
+        max_len = max(max_len, len(temp))
+    return max_len
 
-a = "abcabcdefbb"
-print(a)
-print(longest_non_repeat(a))
+def longest_non_repeat_two(string):
+    if string is None:
+        return 0
+    start, max_len = 0, 0
+    user_char = {}
+    for index, char in enumerate(string):
+        if char in user_char and start <= user_char[char]:
+            start = user_char[char] + 1
+        else:
+            max_len = max(max_len, index - start + 1)
+        user_char[char] = index
+    return  max_len
+
+if __name__ == '__main__':
+    a = "abcabcdefbb"
+    print(a)
+    print(longest_non_repeat(a))
+    print(longest_non_repeat_two(a))
