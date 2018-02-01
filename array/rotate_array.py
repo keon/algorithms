@@ -50,3 +50,9 @@ def reverse(array, a, b):
         array[a], array[b] = array[b], array[a]
         a += 1
         b -= 1
+
+def rotate_array(array, k):
+    if array is None:
+        return None
+    length = len(array)
+    return array[length - k:] + array[:length - k]

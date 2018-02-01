@@ -31,6 +31,19 @@ def print_intervals(intervals):
         res.append('['+str(i.start)+','+str(i.end)+']')
     print("".join(res))
 
+def merge_intervals(l):
+    #sort
+    if l is None:
+        return None
+    l.sort(key=lambda i: i[0])
+    out = [l.pop(0)]
+    for i in l:
+        if out[-1][-1] >= i[0]:
+            out[-1][-1] = max(out[-1][-1], i[-1])
+        else:
+            out.append(i)
+    return out
+
 if __name__ == "__main__":
     given = [[1,3],[2,6],[8,10],[15,18]]
     intervals = []
@@ -38,3 +51,4 @@ if __name__ == "__main__":
         intervals.append(Interval(l,r))
     print_intervals(intervals)
     print_intervals(merge(intervals))
+    print(merge_intervals[given])
