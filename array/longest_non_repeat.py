@@ -27,13 +27,13 @@ def longest_non_repeat_two(string):
     if string is None:
         return 0
     start, max_len = 0, 0
-    user_char = {}
+    used_char = {}
     for index, char in enumerate(string):
-        if char in user_char and start <= user_char[char]:
-            start = user_char[char] + 1
+        if char in used_char and start <= used_char[char]:
+            start = used_char[char] + 1
         else:
             max_len = max(max_len, index - start + 1)
-        user_char[char] = index
+        used_char[char] = index
     return  max_len
 
 if __name__ == '__main__':
