@@ -23,7 +23,7 @@ Minimal and clean example implementations of data structures and algorithms in P
 - [backtrack](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
-    - [array_sum_combinations](backtrack/array_sum_combination.py)
+    - [array_sum_combinations](backtrack/array_sum_combinations.py)
     - [combination_sum](backtrack/combination_sum.py)
     - [expression_add_operators](backtrack/expression_add_operators.py)
     - [factor_combinations](backtrack/factor_combinations.py)
