@@ -43,7 +43,7 @@ def getFactors(self, n):
         while i * i <= n:
             if n % i == 0:
                 combis.append(combi + [i, n/i]),
-                todo.append(n/i, i, combi+[i]),
+                todo.append( [n / i, i, combi+[i] ] )  # python3: n // i
             i += 1
     return combis
 
