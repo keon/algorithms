@@ -42,8 +42,8 @@ def getFactors(self, n):
         n, i, combi = todo.pop()
         while i * i <= n:
             if n % i == 0:
-                combis += combi + [i, n/i],
-                todo += (n/i, i, combi+[i]),
+                combis.append(combi + [i, n/i]),
+                todo.append( [n / i, i, combi+[i] ] )  # python3: n // i
             i += 1
     return combis
 
@@ -53,7 +53,7 @@ def getFactors(self, n):
     def factor(n, i, combi, combis):
         while i * i <= n:
             if n % i == 0:
-                combis += combi + [i, n/i],
+                combis.append(combi + [i, n/i]),
                 factor(n/i, i, combi+[i], combis)
             i += 1
         return combis
