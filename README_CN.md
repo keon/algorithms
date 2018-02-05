@@ -28,7 +28,7 @@ python版数据结构和算法实现的简约版小示例
     - [expression_add_operators：给表达式添加运算符](backtrack/expression_add_operators.py)
     - [factor_combinations：因素组合](backtrack/factor_combinations.py)
     - [generate_abbreviations：缩写生成](backtrack/generate_abbreviations.py)
-    - [generate_parenthesis：插入生成](backtrack/generate_parenthesis.py)
+    - [generate_parenthesis：括号生成](backtrack/generate_parenthesis.py)
     - [letter_combination：字母组合](backtrack/letter_combination.py)
     - [palindrome_partitioning：字符串的所有回文子串](backtrack/palindrome_partitioning.py)
     - [pattern_match：模式匹配](backtrack/pattern_match.py)
