@@ -77,6 +77,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [graph](graph/graph.py)
     - [traversal](graph/traversal.py)
     - [markov_chain](graph/markov_chain.py)
+    - [tarjan](graph/tarjan.py)
 - [heap](heap)
     - [merge_sorted_k_lists](heap/merge_sorted_k_lists.py)
     - [skyline](heap/skyline.py)
