@@ -8,18 +8,18 @@ representation 00000000000000000000000000001011,
 so the function should return 3.
 
 T(n)- O(log n)
-"""
-
+Number of loops is
+equal to the number of 1s in the binary representation."""
 
 def count_ones(n):
-    """
-    :type n: int
-    :rtype: int
-    """
-    if n < 0:
-        return
-    counter = 0
+    """Using Brian Kernighan’s Algorithm. (Recursive Approach)"""
+    if not n: return 0
+    return 1 + count_ones(n & (n-1))
+
+def countSetBits(n):
+    """Using Brian Kernighan’s Algorithm. (Iterative Approach)"""
+    count = 0
     while n:
-        counter += n & 1
-        n >>= 1
-    return counter
+        n &= (n-1) 
+        count += 1
+    return count
