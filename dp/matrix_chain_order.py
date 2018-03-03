@@ -7,10 +7,8 @@ Space Complexity: O(n^2)
 '''
 def MatrixChainOrder(array):
     N=len(array)
-    Matrix=[[0 for x in range(N)] for x in range(N)]
-    Sol=[[0 for x in range(N)] for x in range(N)]
-    for i in range(1,N):
-        Matrix[i][i]=0
+    Matrix=[[0 * N] * N]
+    Sol=[[0 * N] * N]
 
     for ChainLength in range(2,N):
         for a in range(1,N-ChainLength+1):
