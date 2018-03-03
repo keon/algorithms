@@ -7,21 +7,21 @@ Space Complexity: O(n^2)
 '''
 def MatrixChainOrder(array):
     N=len(array)
-    Matrix=[[0 * N] * N]
-    Sol=[[0 * N] * N]
-
+    Matrix = [[0 for x in range(N)] for x in range(N)]
+    Sol = [[0 for x in range(N)] for x in range(N)]
     for ChainLength in range(2,N):
         for a in range(1,N-ChainLength+1):
             b = a+ChainLength-1
 
             Matrix[a][b] = sys.maxsize
-            for c in range(a , b):
+            for c in range(a, b):
                 cost = Matrix[a][c] + Matrix[c+1][b] + array[a-1]*array[c]*array[b]
                 if cost < Matrix[a][b]:
                     Matrix[a][b] = cost
                     Sol[a][b] = c
     return Matrix , Sol
 #Print order of matrix with Ai as Matrix
+
 def PrintOptimalSolution(OptimalSolution,i,j):
     if i==j:
         print("A" + str(i),end = " ")
