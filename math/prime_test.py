@@ -22,7 +22,7 @@ def prime_test(n):
     # prime numbers are greater than 1
     if num > 1:
     # check for factors
-        for i in range(2,num):
+        for i in range(2, int(num ** 0.5) + 1):
            if (num % i) == 0:
                #print(num,"is not a prime number")
                #print(i,"times",num//i,"is",num)
