@@ -7,24 +7,9 @@ def reverse(array, i, j):
 
 def reverse_words(string):
     arr = string.strip().split()  # arr is list of words
-
     n = len(arr)
     reverse(arr, 0, n-1)
     return " ".join(arr)
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
