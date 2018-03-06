@@ -3,9 +3,9 @@ INT_MIN = -32767
  
 # Returns the best obtainable price for a rod of length n and
 # price[] as prices of different pieces
-def cutRod(price, n):
-    val = [0 for x in range(n+1)]
-    val[0] = 0
+def cutRod(price):
+    n = len(price)
+    val = [0]*(n+1)
  
     # Build the table val[] in bottom up manner and return
     # the last entry from the table
@@ -19,7 +19,6 @@ def cutRod(price, n):
  
 # Driver program to test above functions
 arr = [1, 5, 8, 9, 10, 17, 17, 20]
-size = len(arr)
-print("Maximum Obtainable Value is " + str(cutRod(arr, size)))
+print("Maximum Obtainable Value is " + str(cutRod(arr)))
  
 # This code is contributed by Bhavya Jain
