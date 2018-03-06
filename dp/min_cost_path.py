@@ -4,6 +4,11 @@ from station 0 to station N-1,
 where cost of moving from ith station to jth station is given as:
 
 Matrix of size (N x N)
+where Matrix[i][j] denotes the cost of moving from
+station i --> station j   for i < j
+
+NOTE that values where Matrix[i][j] and i > j does not 
+mean anything, and hence represented by -1 or INF
 """ 
 
 INF = float("inf")
