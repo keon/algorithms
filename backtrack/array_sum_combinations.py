@@ -64,9 +64,9 @@ backtrack([])
 
 import itertools
 from functools import partial
-A = [1,2,3,3]
-B = [2,3,3,4]
-C = [1,2,2,2]
+A = [1, 2, 3, 3]
+B = [2, 3, 3, 4]
+C = [1, 2, 2, 2]
 S = 7
 
 def check_sum(N, *nums):
@@ -83,4 +83,4 @@ res = set()
 for s in sums:
     if s[0] == True and s[1] not in res:
         res.add(s[1])
-print res
+print(res)
