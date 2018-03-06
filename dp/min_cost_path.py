@@ -1,5 +1,5 @@
 """
-To find min cost path 
+To find minimum cost path 
 from station 0 to station N-1,
 where cost of moving from ith station to jth station is given as:
 
@@ -16,6 +16,9 @@ Minimum cost is obtained as from  { 0 --> 1 --> 3}
 the Output will be:
 
 The Minimum cost to reach station 4 is 65
+
+Time Complexity: O(n^2)
+Space Complexity: O(n)
 """ 
 
 INF = float("inf")
