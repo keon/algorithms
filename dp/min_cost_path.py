@@ -1,4 +1,6 @@
 """
+author @goswami-rahul
+
 To find minimum cost path 
 from station 0 to station N-1,
 where cost of moving from ith station to jth station is given as:
@@ -44,4 +46,8 @@ if __name__ == '__main__':
              [-1, -1,  0, 70],         
              [-1, -1, -1,  0] ]        # cost[i][j] = -1 for i > j
     N = len(cost)
-    print("The Minimum cost to reach station %d is %d" % (N, min_cost(cost)))
+    
+    mcost = min_cost(cost)
+    assert mcost == 65
+    
+    print("The Minimum cost to reach station %d is %d" % (N, mcost))
