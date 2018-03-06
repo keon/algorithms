@@ -6,23 +6,10 @@ def reverse(array, i, j):
         j -= 1
 
 def reverse_words(string):
-    arr = list(string)
+    arr = string.strip().split()  # arr is list of words
     n = len(arr)
     reverse(arr, 0, n-1)
-
-    start = None
-    for i in range(n):
-        if arr[i] == " ":
-           if start is not None:
-                reverse(arr, start, i-1)
-                start = None
-        elif i == n-1:
-            if start is not None:
-                reverse(arr, start, i)
-        else:
-            if start is None:
-                start = i
-    return "".join(arr)
+    return " ".join(arr)
 
 
 if __name__ == "__main__":
