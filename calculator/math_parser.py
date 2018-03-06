@@ -14,6 +14,8 @@ Example:
         |   Parsed expression: ['2452', '*', '(', '3', '*', '6', '+', '1', ')', '*', '6', '/', '235']
         |   Evaluation result: 1189.4808510638297
 -------------------------------------------------------------------------------------------------
+
+Now added '^' operator for exponents. (by @goswami-rahul)
 """
 
 from collections import deque
@@ -21,13 +23,14 @@ import re
 
 numeric_value = re.compile('\d+(\.\d+)?')
 
-__operators__ = "+-/*"
+__operators__ = "+-/*^"
 __parenthesis__ = "()"
 __priority__ = {
     '+': 0,
     '-': 0,
     '*': 1,
     '/': 1,
+    '^': 2
 }
 
 def is_operator(token):
@@ -59,6 +62,7 @@ def calc(n2, n1, operator):
     elif operator == '+': return n1 + n2
     elif operator == '*': return n1 * n2
     elif operator == '/': return n1 / n2
+    elif operator == '^': return n1 ** n2
     return 0
 
 def apply_operation(op_stack, out_stack):
