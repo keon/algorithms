@@ -1,4 +1,6 @@
 """
+author @goswami-rahul
+
 To find minimum cost path 
 from station 0 to station N-1,
 where cost of moving from ith station to jth station is given as:
