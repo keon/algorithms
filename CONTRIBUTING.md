@@ -4,7 +4,7 @@ We love pull requests from everyone. By contributing to this repository, you
 agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Get Started
-First [Fork][fork] the repository and then clone it using:
+First [fork][fork] the repository and then clone it using:
 
     git clone git@github.com:your-username/algorithms.git
 
