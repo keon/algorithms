@@ -33,9 +33,9 @@ def merge_k_lists(lists):
     q = PriorityQueue()
     for node in lists:
         if node: q.put((node.val,node))
-    while q.qsize()>0:
-        curr.next = q.get()[1]
-        curr=curr.next
+    while not q.empty():
+        curr.next = q.get()[1]     # These two lines seem to 
+        curr=curr.next             # be equivalent to :-   curr = q.get()[1]
         if curr.next: q.put((curr.next.val, curr.next))
     return dummy.next
 
