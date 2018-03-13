@@ -14,7 +14,7 @@ def palindromic_substrings(s):
     return results
 
 # There's two loops.
-# The outer loop checks each length of initial substring (in descending length order) to see if it is a palindrome. If so, it recurses on the rest of the string and loops over the returned values, adding the initial substring to each item before adding it to the results.
+# The outer loop checks each length of initial substring (in descending length order) to see if it is a palindrome. If so, it recurses on the rest of the mystring and loops over the returned values, adding the initial substring to each item before adding it to the results.
 
 # A slightly more Pythonic approach would be to make a recursive generator:
 

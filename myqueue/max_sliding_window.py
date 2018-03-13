@@ -1,5 +1,6 @@
 import collections
 
+
 # Keep indexes of good candidates in deque d.
 # The indexes in d are from the current window, they're increasing,
 # and their corresponding nums are decreasing.
@@ -29,6 +30,6 @@ def max_sliding_window(nums, k):
     return out
 
 
-array = [1,3,-1,-3,5,3,6,7]
+array = [1, 3, -1, -3, 5, 3, 6, 7]
 
-print(max_sliding_window(array))
+print(max_sliding_window(array, 5))

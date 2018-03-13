@@ -24,10 +24,10 @@ class Solution(object):
         m, n = len(s) + 1, len(p) + 1
         matches = [[False] * n  for _ in range(m)]
 
-        # Match empty string with empty pattern
+        # Match empty mystring with empty pattern
         matches[0][0] = True
 
-        # Match empty string with .*
+        # Match empty mystring with .*
         for i, element in enumerate(p[1:], 2):
             matches[0][i] = matches[0][i - 2] and element == '*'
 
