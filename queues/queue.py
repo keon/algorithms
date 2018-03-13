@@ -20,11 +20,6 @@ class AbstractQueue:
     def __len__(self):
         return self.top
 
-    def __str__(self):
-        result = '------\n'
-        for element in self:
-            result += str(element) + '\n'
-        return result[:-1] + '\n------'
 
 class ArrayQueue(AbstractQueue):
     def __init__(self, size=10):
@@ -59,7 +54,7 @@ class ArrayQueue(AbstractQueue):
          expands size of the array.
          Time Complexity: O(n)
         """
-        new_array = [None] * len(self.array) * 2 # double the size of the array
+        new_array = [None] * len(self.array) * 2  # double the size of the array
         for i, element in enumerate(self.array):
             new_array[i] = element
         self.array = new_array
@@ -72,10 +67,12 @@ class ArrayQueue(AbstractQueue):
             yield self.array[probe]
             probe -= 1
 
+
 class QueueNode(object):
     def __init__(self, value):
         self.value = value
         self.next = None
+
 
 class LinkedListQueue(AbstractQueue):
     def __init__(self):
@@ -113,6 +110,6 @@ class LinkedListQueue(AbstractQueue):
             yield probe.value
             probe = probe.next
 
+
 class HeapPriorityQueue(AbstractQueue):
-    def __init__(self):
-        pass
+    pass
