@@ -5,6 +5,9 @@ Pythonic Data Structures and Algorithms
 
 Minimal and clean example implementations of data structures and algorithms in Python.
 
+## Contributing
+Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
+
 
 ## List of Implementations
 
