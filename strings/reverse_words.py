@@ -5,10 +5,12 @@ def reverse(array, i, j):
         i += 1
         j -= 1
 
+
 def reverse_words(string):
     arr = string.strip().split()  # arr is list of words
     n = len(arr)
     reverse(arr, 0, n-1)
+
     return " ".join(arr)
 
 
