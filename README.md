@@ -1,5 +1,7 @@
 English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md)
 
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+
 Pythonic Data Structures and Algorithms
 =========================================
 
