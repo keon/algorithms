@@ -51,4 +51,4 @@ if __name__ == "__main__":
         intervals.append(Interval(l,r))
     print_intervals(intervals)
     print_intervals(merge(intervals))
-    print(merge_intervals[given])
+    print(merge_intervals(given))

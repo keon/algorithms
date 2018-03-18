@@ -24,3 +24,8 @@ def is_strobogrammatic(num):
         i += 1
         j -= 1
     return True
+
+
+def is_strobogrammatic2(num: str):
+    """Another implementation."""
+    return num == num[::-1].replace('6', '#').replace('9', '6').replace('#', '9')
