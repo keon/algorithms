@@ -51,7 +51,6 @@ def row_kills(grid, i, j):
 # calculate killed enemies for  column j from row i
 def col_kills(grid, i, j):
     num = 0
-    # more efficient. calls the function only once!
     len_col = len(grid)
     while i < len_col and grid[i][j] != 'W':
         if grid[i][j] == 'E':
