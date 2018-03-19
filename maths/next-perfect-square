@@ -1,4 +1,4 @@
-This program will look for the next perfect square.
+# This program will look for the next perfect square.
 
 """
 Check the argument to see if it is a perfect square itself, if it is not then return -1 otherwise look for the next perfect square
@@ -14,7 +14,7 @@ def find_next_square(sq):
     return -1
     
     
-Another way:
+# Another way:
 
 def find_next_square(sq):
     x = sq**0.5    
