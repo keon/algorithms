@@ -15,6 +15,7 @@
 
 # return 3. (Placing a bomb at (1,1) kills 3 enemies)
 
+
 def max_killed_enemies(grid):
     if not grid: return 0
     m, n = len(grid), len(grid[0])
@@ -59,13 +60,35 @@ def col_kills(grid, i, j):
     return num
                 
 
-grid = [
-["0", "E", "0", "E"],
-["E", "E", "E", "0"],
-["E", "0", "W", "E"],
-["0", "E", "0", "0"]]
-print(grid)
 
-print(max_killed_enemies(grid))
+# ----------------- TESTS -------------------------
 
+"""
+    Testsuite for the project
+"""
+
+import unittest 
+
+class TestBombEnemy(unittest.TestCase):
+    def test_3x4(self):
+        grid1 = [["0","E","0","0"],
+                ["E","0","W","E"],
+                ["0","E","0","0"]]
+        self.assertEqual(3,max_killed_enemies(grid1))
+    def test_4x4(self):
+        grid1 = [
+                ["0", "E", "0", "E"],
+                ["E", "E", "E", "0"],
+                ["E", "0", "W", "E"],
+                ["0", "E", "0", "0"]]
+        grid2 = [
+                ["0", "0", "0", "E"],
+                ["E", "0", "0", "0"],
+                ["E", "0", "W", "E"],
+                ["0", "E", "0", "0"]]
+        self.assertEqual(5,max_killed_enemies(grid1))
+        self.assertEqual(3,max_killed_enemies(grid2))
+
+if __name__ == "__main__":
+    unittest.main()
 
