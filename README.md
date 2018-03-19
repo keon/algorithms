@@ -120,6 +120,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [gcd/lcm](maths/gcd.py)
     - [generate_strobogrammtic](maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](maths/is_strobogrammatic.py)
+    - [next_perfect_square](maths/next_perfect_square.py)
     - [nth_digit](maths/nth_digit.py)
     - [prime_test](maths/prime_test.py)
     - [primes_sieve_of_eratosthenes](maths/primes_sieve_of_eratosthenes.py)
