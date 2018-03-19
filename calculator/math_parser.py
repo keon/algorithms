@@ -20,7 +20,6 @@ Now added '^' operator for exponents. (by @goswami-rahul)
 
 from collections import deque
 import re
-import sys
 
 numeric_value = re.compile('\d+(\.\d+)?')
 
@@ -90,7 +89,7 @@ def parse(expression):
             if len(current) > 0:
                 result.append(current)
                 current = ""
-            if (i in __operators__) or (i in __parenthesis__):
+            if i in __operators__ or i in __parenthesis__:
                 result.append(i)
             else:
                 raise Exception("invalid syntax " + i)
@@ -133,15 +132,15 @@ def main():
     """
         simple user-interface
     """
-    print ("\t\tCalculator\n\n")
+    print("\t\tCalculator\n\n")
     userInput = input("expression or exit: ")
     while userInput != "exit":
         try:
-            print ("The result is {0}".format(evaluate(userInput)))
+            print("The result is {0}".format(evaluate(userInput)))
         except Exception:
-            print ("invalid syntax!")
+            print("invalid syntax!")
         userInput = input("expression or exit: ")
-    print ("program end")
+    print("program end")
         
 
 if __name__ == "__main__":
