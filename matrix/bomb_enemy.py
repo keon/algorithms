@@ -40,7 +40,6 @@ def max_killed_enemies(grid):
 # calculate killed enemies for row i from column j
 def row_kills(grid, i, j):
     num = 0
-    # more efficient. calls the function only once!
     len_row = len(grid[0])
     while j < len_row and grid[i][j] != 'W':
         if grid[i][j] == 'E':
