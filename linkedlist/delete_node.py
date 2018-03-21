@@ -9,5 +9,7 @@ the linked list should become 1 -> 2 -> 4 after calling your function.
 
 
 def delete_node(node):
+    if node is None or node.next is None:
+        raise ValueError
     node.val = node.next.val
     node.next = node.next.next

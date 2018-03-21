@@ -89,8 +89,11 @@ def parse(expression):
             if len(current) > 0:
                 result.append(current)
                 current = ""
-            if i != ' ':
+            if i in __operators__ or i in __parenthesis__:
                 result.append(i)
+            else:
+                raise Exception("invalid syntax " + i)
+                
     if len(current) > 0:
         result.append(current)
     return result
@@ -104,7 +107,8 @@ def evaluate(expression):
     """
     op_stack  = deque() # operator stack
     out_stack = deque() # output stack (values)
-    for token in parse(expression):
+    tokens = parse(expression) # calls the function only once!
+    for token in tokens:
         if numeric_value.match(token):
             out_stack.append(float(token))
         elif token == '(':
@@ -122,3 +126,22 @@ def evaluate(expression):
         apply_operation(op_stack, out_stack)
 
     return out_stack[-1]
+
+
+def main():
+    """
+        simple user-interface
+    """
+    print("\t\tCalculator\n\n")
+    userInput = input("expression or exit: ")
+    while userInput != "exit":
+        try:
+            print("The result is {0}".format(evaluate(userInput)))
+        except Exception:
+            print("invalid syntax!")
+        userInput = input("expression or exit: ")
+    print("program end")
+        
+
+if __name__ == "__main__":
+    main()
