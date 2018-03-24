@@ -230,3 +230,12 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [tree](tree/tree.py)
 - [union-find](union-find)
     - [count_islands](union-find/count_islands.py)
+
+## Contributors
+The repo is maintained by  
+[Keon Kim]()  
+[Rahul Goswami]()  
+[Ankit Agarwal]()  
+
+And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors) 
+who helped in building the repo.
