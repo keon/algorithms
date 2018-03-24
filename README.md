@@ -233,9 +233,9 @@ Thanks for your interest in contributing! There are many ways to contribute to t
 
 ## Contributors
 The repo is maintained by  
-[Keon Kim]()  
-[Rahul Goswami]()  
-[Ankit Agarwal]()  
+[Keon Kim](https://github.com/keon)  
+[Rahul Goswami](https://github.com/goswami-rahul)  
+[Ankit Agarwal](https://github.com/ankit167)
 
 And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors) 
 who helped in building the repo.
