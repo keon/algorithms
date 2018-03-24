@@ -40,6 +40,12 @@ Whenever you want a new algorithm to be added, or find some bugs in the existing
 just [submit an issue][newissue] and feel free to discuss over it.
 Or you may resolve any of the [existing issues][issues].
 
+## Collaborators
+You can ask for any help or clarifications from the collaborators.  
+[Keon Kim](https://github.com/keon)  
+[Rahul Goswami](https://github.com/goswami-rahul)  
+[Ankit Agarwal](https://github.com/ankit167)
+
 [fork]: https://help.github.com/articles/fork-a-repo/
 [docstr]: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 [commit]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
