@@ -19,7 +19,7 @@ class Node:
         self.next = None
 
 
-def add_two_numbers(left:"Node", right:"Node")->"Node":
+def add_two_numbers(left: Node, right: Node )-> Node:
     head = Node(0)
     current = head
     sum = 0
@@ -39,7 +39,7 @@ def add_two_numbers(left:"Node", right:"Node")->"Node":
     return head.next
 
 
-def convert_to_list(number : int) -> "Node":
+def convert_to_list(number : int) -> Node:
     """
         converts a positive integer into a (reversed) linked list.
         for example: give 112
@@ -62,7 +62,7 @@ def convert_to_list(number : int) -> "Node":
         print("number must be positive!")
 
 
-def convert_to_str(l : "Node") -> str:
+def convert_to_str(l : Node) -> str:
     """
         converts the non-negative number list into a string.
     """
