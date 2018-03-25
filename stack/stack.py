@@ -53,9 +53,12 @@ class ArrayStack(AbstractStack):
         return value
 
     def peek(self):
+        """
+            returns the current top element of the stack.
+        """
         if self.isEmpty():
             raise IndexError("stack is empty")
-        return self.array[self.top]
+        return self.array[self.top -1]
 
     def expand(self):
         """
