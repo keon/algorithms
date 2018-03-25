@@ -12,6 +12,8 @@
 # size() returns the number of items on the stack.
 #    It needs no parameters and returns an integer.
 
+import unittest
+
 class AbstractStack:
     def __init__(self):
         self.top = 0
@@ -114,3 +116,65 @@ class LinkedListStack(AbstractStack):
                 raise StopIteration
             yield probe.value
             probe = probe.next
+
+
+class TestSuite (unittest.TestCase):
+    """
+        Test suite for the stack data structures (above)
+    """
+    def test_ArrayStack(self):
+        stack = ArrayStack()
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        # test __iter__()
+        it = stack.__iter__()
+        self.assertEqual(3,next(it))
+        self.assertEqual(2,next(it))
+        self.assertEqual(1,next(it))
+        try:
+            next(it)
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+        # test __len__()
+        self.assertEqual(3,stack.__len__())
+        # test isEmpty()
+        self.assertFalse(stack.isEmpty())
+        # test peek()
+        self.assertEqual(3,stack.peek())
+        # test pop()
+        self.assertEqual(3,stack.pop())
+        self.assertEqual(2,stack.pop())
+        self.assertEqual(1,stack.pop())
+        self.assertTrue(stack.isEmpty())
+    def test_LinkedListStack(self):
+        stack = LinkedListStack()
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        # test __iter__()
+        it = stack.__iter__()
+        self.assertEqual(3,next(it))
+        self.assertEqual(2,next(it))
+        self.assertEqual(1,next(it))
+        try:
+            next(it)
+            self.assertTrue(False)
+        except:
+            self.assertTrue(True)
+        # test __len__()
+        self.assertEqual(3,stack.__len__())
+        # test isEmpty()
+        self.assertFalse(stack.isEmpty())
+        # test peek()
+        self.assertEqual(3,stack.peek())
+        # test pop()
+        self.assertEqual(3,stack.pop())
+        self.assertEqual(2,stack.pop())
+        self.assertEqual(1,stack.pop())
+        self.assertTrue(stack.isEmpty())
+        
+        
+if __name__ == "__main__":
+    unittest.main()
