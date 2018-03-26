@@ -27,9 +27,9 @@ def prime_test2(n):
                 # print(num, "is not a prime number")
                 # print(i, "times", num//i, "is", num)
                 return False
-        else:
-            # print(num, "is a prime number")
-            return True
+        
+        # print(num, "is a prime number")
+        return True
 
     # if input number is less than
     # or equal to 1, it is not prime
