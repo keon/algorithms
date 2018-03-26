@@ -1,7 +1,7 @@
 """
 prime_test(n) returns a True if n is a prime number else it returns False
 """
-
+import unittest
 
 def prime_test(n):
     if n <= 1:
@@ -27,11 +27,37 @@ def prime_test2(n):
                 # print(num, "is not a prime number")
                 # print(i, "times", num//i, "is", num)
                 return False
-        else:
-            # print(num, "is a prime number")
-            return True
+        
+        # print(num, "is a prime number")
+        return True
 
     # if input number is less than
     # or equal to 1, it is not prime
     else:
         return False
+
+
+class TestSuite (unittest.TestCase):
+    def test_prime_test(self):
+        """
+            checks all prime numbers between 2 up to 100.
+            Between 2 up to 100 exists 25 prime numbers!
+        """
+        counter = 0
+        for i in range(2,101):
+            if prime_test(i):
+                counter += 1
+        self.assertEqual(25,counter)
+    def test_prime_test2(self):
+        """
+            checks all prime numbers between 2 up to 100.
+            Between 2 up to 100 exists 25 prime numbers!
+        """
+        counter = 0
+        for i in range(2,101):
+            if prime_test(i):
+                counter += 1
+        self.assertEqual(25,counter)
+        
+if __name__ == "__main__":
+    unittest.main()
