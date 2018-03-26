@@ -7,8 +7,9 @@ The brackets must close in the correct order,
 "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 """
 
+import unittest
 
-def is_valid(s:"str")->"bool":
+def is_valid(s: str) -> bool:
     stack = []
     dic = { ")":"(",
             "}":"{",
@@ -25,14 +26,17 @@ def is_valid(s:"str")->"bool":
     return stack == []
 
 
+class TestSuite (unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_is_valid(self):
+        self.assertTrue(is_valid("[]"))
+        self.assertTrue(is_valid("[]()[]"))
+        self.assertFalse(is_valid("[[[]]"))
+        self.assertTrue(is_valid("{([])}"))
+        self.assertFalse(is_valid("(}"))
+
+
 if __name__ == "__main__":
-    paren = "[]"
-    print(paren, is_valid(paren))
-    paren = "[]()[]"
-    print(paren, is_valid(paren))
-    paren = "[[[]]"
-    print(paren, is_valid(paren))
-    paren = "{([])}"
-    print(paren, is_valid(paren))
-    paren = "(}"
-    print(paren, is_valid(paren))
+    unittest.main()
