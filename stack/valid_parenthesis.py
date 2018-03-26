@@ -9,7 +9,7 @@ The brackets must close in the correct order,
 
 import unittest
 
-def is_valid(s : str)-> bool:
+def is_valid(s: str) -> bool:
     stack = []
     dic = { ")":"(",
             "}":"{",
