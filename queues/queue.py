@@ -1,71 +1,78 @@
-# Queue Abstract Data Type (ADT)
-# * Queue() creates a new queue that is empty.
-#   It needs no parameters and returns an empty queue.
-# * enqueue(item) adds a new item to the rear of the queue.
-#   It needs the item and returns nothing.
-# * dequeue() removes the front item from the queue.
-#   It needs no parameters and returns the item. The queue is modified.
-# * isEmpty() tests to see whether the queue is empty.
-#   It needs no parameters and returns a boolean value.
-# * size() returns the number of items in the queue.
-#   It needs no parameters and returns an integer.
+"""
+Queue Abstract Data Type (ADT)
+* Queue() creates a new queue that is empty.
+  It needs no parameters and returns an empty queue.
+* enqueue(item) adds a new item to the rear of the queue.
+  It needs the item and returns nothing.
+* dequeue() removes the front item from the queue.
+  It needs no parameters and returns the item. The queue is modified.
+* isEmpty() tests to see whether the queue is empty.
+  It needs no parameters and returns a boolean value.
+* size() returns the number of items in the queue.
+  It needs no parameters and returns an integer.
+* peek() returns the front element of the queue.
+"""
+import unittest
+
 
 class AbstractQueue:
     def __init__(self):
-        self.top = 0
+        self._size = 0
 
-    def isEmpty(self):
-        return self.top == 0
+    def is_empty(self):
+        return self._size == 0
 
     def __len__(self):
-        return self.top
+        return self._size
 
 
 class ArrayQueue(AbstractQueue):
-    def __init__(self, size=10):
+    def __init__(self, capacity=10):
         """
-        Initialize python List with size of 10 or user given input.
+        Initialize python List with capacity of 10 or user given input.
         Python List type is a dynamic array, so we have to restrict its
         dynamic nature to make it work like a static array.
         """
         AbstractQueue.__init__(self)
-        self.array = [None] * size
-        self.front = 0
-        self.rear = 0
+        self._array = [None] * capacity
+        self._front = 0
+        self._rear = 0
 
     def enqueue(self, value):
-        if self.rear == len(self.array):
+        if self._rear == len(self._array):
             self.expand()
-        self.array[self.rear] = value
-        self.rear += 1
-        self.top += 1
+        self._array[self._rear] = value
+        self._rear += 1
+        self._size += 1
 
     def dequeue(self):
-        if self.isEmpty():
+        if self.is_empty():
             raise IndexError("Queue is empty")
-        value = self.array[self.front]
-        self.array[self.front] = None
-        self.front -= 1
-        self.top -= 1
+        value = self._array[self._front]
+        self._array[self._front] = None
+        self._front += 1
+        self._size -= 1
         return value
 
     def expand(self):
-        """
-         expands size of the array.
+        """expands size of the array.
          Time Complexity: O(n)
         """
-        new_array = [None] * len(self.array) * 2  # double the size of the array
-        for i, element in enumerate(self.array):
-            new_array[i] = element
-        self.array = new_array
+        self._array += [None] * len(self._array)
+
+    def peek(self):
+        """returns the front element of queue."""
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self._array[self._front]
 
     def __iter__(self):
-        probe = self.rear
+        probe = self._front
         while True:
-            if probe < 0:
+            if probe == self._rear:
                 raise StopIteration
-            yield self.array[probe]
-            probe -= 1
+            yield self._array[probe]
+            probe += 1
 
 
 class QueueNode(object):
@@ -77,33 +84,39 @@ class QueueNode(object):
 class LinkedListQueue(AbstractQueue):
     def __init__(self):
         AbstractQueue.__init__(self)
-        self.front = None
-        self.rear = None
+        self._front = None
+        self._rear = None
 
     def enqueue(self, value):
         node = QueueNode(value)
-        if not self.front:
-            self.front = node
-            self.rear = node
+        if self._front is None:
+            self._front = node
+            self._rear = node
         else:
-            self.rear.next = node
-            self.rear = node
-        self.top += 1
+            self._rear.next = node
+            self._rear = node
+        self._size += 1
 
     def dequeue(self):
-        if self.isEmpty():
+        if self.is_empty():
             raise IndexError("Queue is empty")
-        value = self.front.value
-        if self.front is self.rear:
-            self.front = None
-            self.rear = None
+        value = self._front.value
+        if self._front is self._rear:
+            self._front = None
+            self._rear = None
         else:
-            self.front = self.front.next
-        self.top -= 1
+            self._front = self._front.next
+        self._size -= 1
         return value
 
+    def peek(self):
+        """returns the front element of queue."""
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self._front.value
+
     def __iter__(self):
-        probe = self.rear
+        probe = self._front
         while True:
             if probe is None:
                 raise StopIteration
@@ -111,5 +124,74 @@ class LinkedListQueue(AbstractQueue):
             probe = probe.next
 
 
+# TODO
 class HeapPriorityQueue(AbstractQueue):
     pass
+
+
+class TestSuite(unittest.TestCase):
+    """
+        Test suite for the Queue data structures.
+    """
+
+    def test_ArrayQueue(self):
+        queue = ArrayQueue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+
+        # test __iter__()
+        it = iter(queue)
+        self.assertEqual(1, next(it))
+        self.assertEqual(2, next(it))
+        self.assertEqual(3, next(it))
+        self.assertRaises(StopIteration, next, it)
+
+        # test __len__()
+        self.assertEqual(3, len(queue))
+
+        # test is_empty()
+        self.assertFalse(queue.is_empty())
+
+        # test peek()
+        self.assertEqual(1, queue.peek())
+
+        # test dequeue()
+        self.assertEqual(1, queue.dequeue())
+        self.assertEqual(2, queue.dequeue())
+        self.assertEqual(3, queue.dequeue())
+
+        self.assertTrue(queue.is_empty())
+
+    def test_LinkedListQueue(self):
+        queue = LinkedListQueue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+
+        # test __iter__()
+        it = iter(queue)
+        self.assertEqual(1, next(it))
+        self.assertEqual(2, next(it))
+        self.assertEqual(3, next(it))
+        self.assertRaises(StopIteration, next, it)
+
+        # test __len__()
+        self.assertEqual(3, len(queue))
+
+        # test is_empty()
+        self.assertFalse(queue.is_empty())
+
+        # test peek()
+        self.assertEqual(1, queue.peek())
+
+        # test dequeue()
+        self.assertEqual(1, queue.dequeue())
+        self.assertEqual(2, queue.dequeue())
+        self.assertEqual(3, queue.dequeue())
+
+        self.assertTrue(queue.is_empty())
+
+
+if __name__ == "__main__":
+    unittest.main()

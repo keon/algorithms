@@ -18,13 +18,13 @@ import unittest
 
 class AbstractStack:
     def __init__(self):
-        self.top = -1
+        self._top = -1
 
     def is_empty(self):
-        return self.top == -1
+        return self._top == -1
 
     def __len__(self):
-        return self.top + 1
+        return self._top + 1
 
     def __str__(self):
         result = '------\n'
@@ -44,41 +44,40 @@ class ArrayStack(AbstractStack):
         dynamic nature to make it work like a static array.
         """
         super().__init__()
-        self.top = -1
-        self.array = [None] * size
+        self._array = [None] * size
 
     def push(self, value):
-        self.top += 1
-        if self.top == len(self.array):
+        self._top += 1
+        if self._top == len(self._array):
             self.expand()
-        self.array[self.top] = value
+        self._array[self._top] = value
 
     def pop(self):
         if self.is_empty():
             raise IndexError("stack is empty")
-        value = self.array[self.top]
-        self.top -= 1
+        value = self._array[self._top]
+        self._top -= 1
         return value
 
     def peek(self):
         """returns the current top element of the stack."""
         if self.is_empty():
             raise IndexError("stack is empty")
-        return self.array[self.top]
+        return self._array[self._top]
 
     def expand(self):
         """
          expands size of the array.
          Time Complexity: O(n)
         """
-        self.array += [None] * len(self.array)  # double the size of the array
+        self._array += [None] * len(self._array)  # double the size of the array
 
     def __iter__(self):
-        probe = self.top
+        probe = self._top
         while True:
             if probe == -1:
                 raise StopIteration
-            yield self.array[probe]
+            yield self._array[probe]
             probe -= 1
 
 
@@ -98,14 +97,14 @@ class LinkedListStack(AbstractStack):
         node = StackNode(value)
         node.next = self.head
         self.head = node
-        self.top += 1
+        self._top += 1
 
     def pop(self):
         if self.is_empty():
             raise IndexError("stack is empty")
         value = self.head.value
         self.head = self.head.next
-        self.top -= 1
+        self._top -= 1
         return value
 
     def peek(self):
