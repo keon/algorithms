@@ -23,7 +23,7 @@ def all_perms(elements):
             for i in range(len(elements)):
                 tmp.append(perm[:i] + elements[0:1] + perm[i:])
         return tmp
-        
+
 
 def anagram(s1,s2):
     c1 = [0]*26
@@ -49,6 +49,9 @@ class TestSuite (unittest.TestCase):
         allPerms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
         for i in range(len(allPerms)):
             self.assertEqual(allPerms[i],next(it))
+    def test_angram(self):
+        self.assertTrue(anagram('apple','pleap'))
+        self.assertFalse(anagram("apple","cherry"))
 
 
 if __name__ == "__main__":
