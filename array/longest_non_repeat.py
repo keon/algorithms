@@ -45,22 +45,32 @@ def longest_non_repeat_two(string):
         used_char[char] = index
     return max_len
 
+import unittest
 
+class TestLongestNonRepeat(unittest.TestCase):
+
+    def test_longest_non_repeat(self):
+
+        string = "abcabcbb"
+        self.assertEqual(longest_non_repeat(string), 3)
+
+        string = "bbbbb"
+        self.assertEqual(longest_non_repeat(string), 1)
+        
+        string = "pwwkew"
+        self.assertEqual(longest_non_repeat(string), 3)
+
+    def test_longest_non_repeat_two(self):
+        
+        string = "abcabcbb"
+        self.assertEqual(longest_non_repeat_two(string), 3)
+
+        string = "bbbbb"
+        self.assertEqual(longest_non_repeat_two(string), 1)
+        
+        string = "pwwkew"
+        self.assertEqual(longest_non_repeat_two(string), 3)
+        
 if __name__ == "__main__":
-    import unittest
-
-    class TestLongestNonRepeat(unittest.TestCase):
-
-        def test_longest_non_repeat_1(self):
-            string = "abcabcbb"
-            self.assertEqual(longest_non_repeat(string), 3)
-
-        def test_longest_non_repeat_2(self):
-            string = "bbbbb"
-            self.assertEqual(longest_non_repeat(string), 1)
-
-        def test_longest_non_repeat_3(self):
-            string = "pwwkew"
-            self.assertEqual(longest_non_repeat(string), 3)
-
+    
     unittest.main()
