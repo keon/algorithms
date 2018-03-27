@@ -1,4 +1,7 @@
 """
+Given an array and a number k
+Find the max elements of each of its sub-arrays of length k.
+
 Keep indexes of good candidates in deque d.
 The indexes in d are from the current window, they're increasing,
 and their corresponding nums are decreasing.
