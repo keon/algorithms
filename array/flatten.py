@@ -1,25 +1,12 @@
-from collections import Iterable
-from types import GeneratorType
-
 """
 Implement Flatten Arrays.
 Given an array that may contain nested arrays,
 produce a single resultant array.
-
->>> nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
->>> flattened = flatten(nested_list)
->>> assert next(flattened) == 2
->>> assert next(flattened) == 1
->>> assert next(flattened) == 3
->>> assert next(flattened) == 4
->>> assert next(flattened) == 5
->>> assert next(flattened) == 6
->>> assert next(flattened) == 7
->>> assert next(flattened) == 8
 """
+from collections.abc import Iterable
 
 
-def flatten(iterable: Iterable) -> GeneratorType:
+def flatten(iterable):
     """
     Takes as input multi dimensional iterable and
     returns generator which produces one dimensional output.
@@ -32,5 +19,19 @@ def flatten(iterable: Iterable) -> GeneratorType:
 
 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    import unittest
+
+    class TestFlatten(unittest.TestCase):
+        def test_flatten(self):
+            nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
+            flattened = flatten(nested_list)
+            self.assertEqual(next(flattened), 2)
+            self.assertEqual(next(flattened), 1)
+            self.assertEqual(next(flattened), 3)
+            self.assertEqual(next(flattened), 4)
+            self.assertEqual(next(flattened), 5)
+            self.assertEqual(next(flattened), 6)
+            self.assertEqual(next(flattened), 7)
+            self.assertEqual(next(flattened), 8)
+
+    unittest.main()

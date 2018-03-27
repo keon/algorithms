@@ -1,19 +1,5 @@
 """
 Given a collection of intervals, merge all overlapping intervals.
-
-For example,
-Given [1,3],[2,6],[8,10],[15,18],
-return [1,6],[8,10],[15,18].
-
->>> intervals_data = [[1,3],[2,6],[8,10],[15,18]]
->>> intervals = []
->>> for start, end in intervals_data:
-...     intervals.append(Interval(start, end))
->>>
->>> assert repr(Interval.merge(intervals)) == \
-    "[Interval [1, 6], Interval [8, 10], Interval [15, 18]]"
->>> # assert repr(Interval.merge_v2(intervals)) == \
-    "[Interval [1, 6], Interval [8, 10], Interval [15, 18]]"
 """
 
 
@@ -22,7 +8,6 @@ class Interval:
     In mathematics, a (real) interval is a set of real
     numbers with the property that any number that lies
     between two numbers in the set is also included in the set.
-    https://en.wikipedia.org/wiki/Interval_(mathematics)
     """
 
     def __init__(self, start=0, end=0):
@@ -30,10 +15,10 @@ class Interval:
         self.end = end
 
     def __repr__(self):
-        return f"Interval [{self.start}, {self.end}]"
+        return f"Interval ({self.start}, {self.end})"
 
     def __iter__(self):
-        return range(self.start, self.end)
+        return iter(range(self.start, self.end))
 
     def __getitem__(self, index):
         if index < 0:
@@ -47,6 +32,15 @@ class Interval:
         if self.start >= item >= self.end:
             return True
         return False
+
+    def __eq__(self, other):
+        if self.start == other.start and self.end == other.end:
+            return True
+        return False
+
+    def as_list(self):
+        """ Return interval as list. """
+        return list(self)
 
     @staticmethod
     def merge(intervals):
@@ -69,21 +63,41 @@ class Interval:
             res.append(repr(i))
         print("".join(res))
 
-    # Intervals should support item assignment ?
-    # @staticmethod
-    # def merge_v2(intervals):
-    #     if intervals is None:
-    #         return None
-    #     intervals.sort(key=lambda i: i.start)
-    #     out = [intervals.pop(0)]
-    #     for i in intervals:
-    #         if out[-1][-1] >= i[0]:
-    #             out[-1][-1] = max(out[-1][-1], i[-1])
-    #         else:
-    #             out.append(i)
-    #     return out
+    @staticmethod
+    def merge_v2(intervals):
+        """ Merges intervals in the form of list. """
+        if intervals is None:
+            return None
+        intervals.sort(key=lambda i: i[0])
+        out = [intervals.pop(0)]
+        for i in intervals:
+            if out[-1][-1] >= i[0]:
+                out[-1][-1] = max(out[-1][-1], i[-1])
+            else:
+                out.append(i)
+        return out
 
 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    import unittest
+
+    class TestMergeInterval(unittest.TestCase):
+
+        def test_merge(self):
+            interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+            intervals = [Interval(i[0], i[1]) for i in interval_list]
+            merged_intervals = Interval.merge(intervals)
+            self.assertEqual(
+                merged_intervals,
+                [Interval(1, 6), Interval(8, 10), Interval(15, 18)]
+            )
+
+        def test_merge_v2(self):
+            interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+            merged_intervals = Interval.merge_v2(interval_list)
+            self.assertEqual(
+                merged_intervals,
+                [[1, 6], [8, 10], [15, 18]]
+            )
+
+    unittest.main()

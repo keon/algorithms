@@ -7,11 +7,6 @@ Given "bbbbb", the answer is "b", with the length of 1.
 Given "pwwkew", the answer is "wke", with the length of 3.
 Note that the answer must be a substring,
 "pwke" is a subsequence and not a substring.
-
->>> assert longest_non_repeat("abcabcbb") == 3
->>> assert longest_non_repeat("bbbbb") == 1
->>> assert longest_non_repeat("pwwkew") == 3
-
 """
 
 
@@ -52,5 +47,20 @@ def longest_non_repeat_two(string):
 
 
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+    import unittest
+
+    class TestLongestNonRepeat(unittest.TestCase):
+
+        def test_longest_non_repeat_1(self):
+            string = "abcabcbb"
+            self.assertEqual(longest_non_repeat(string), 3)
+
+        def test_longest_non_repeat_2(self):
+            string = "bbbbb"
+            self.assertEqual(longest_non_repeat(string), 1)
+
+        def test_longest_non_repeat_3(self):
+            string = "pwwkew"
+            self.assertEqual(longest_non_repeat(string), 3)
+
+    unittest.main()
