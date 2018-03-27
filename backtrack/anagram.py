@@ -41,7 +41,7 @@ def anagram(s1,s2):
     stillOK = True
     while j<26 and stillOK:
         if c1[j]==c2[j]:
-            j = j + 1
+            j += 1
         else:
             stillOK = False
 
