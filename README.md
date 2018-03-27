@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/R
 Pythonic Data Structures and Algorithms
 =========================================
 
-Minimal and clean example implementations of data structures and algorithms in Python.
+Minimal and clean example implementations of data structures and algorithms in Python 3.
 
 ## Contributing
 Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
