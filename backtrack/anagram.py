@@ -7,7 +7,7 @@ def all_perms_iter(elements):
     if len(elements) <=1:
         yield elements
     else:
-        for perm in all_perms(elements[1:]):
+        for perm in all_perms_iter(elements[1:]):
             for i in range(len(elements)):
                 yield perm[:i] + elements[0:1] + perm[i:]
 
