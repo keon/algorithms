@@ -61,6 +61,6 @@ def combination_sum_bottom_up(nums, target):
 
 
 combination_sum_topdown([1, 2, 3], 4)
-print dp[4]
+print(dp[4])
 
-print combination_sum_bottom_up([1, 2, 3], 4)
+print(combination_sum_bottom_up([1, 2, 3], 4))

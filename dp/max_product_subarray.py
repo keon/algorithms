@@ -5,6 +5,7 @@ Find the contiguous subarray within an array
 For example, given the array [2,3,-2,4],
 the contiguous subarray [2,3] has the largest product = 6.
 """
+from functools import reduce
 
 
 def max_product(nums):
@@ -35,6 +36,7 @@ subarray_with_max_product([-3,0,1])
     #=> max_product_so_far: 1, [1]
 '''
 
+
 def subarray_with_max_product(arr):
     ''' arr is list of positive/negative numbers '''
     l = len(arr)
@@ -45,7 +47,8 @@ def subarray_with_max_product(arr):
 
     for i in range(l):
         max_product_end *= arr[i]
-        if arr[i] > 0: all_negative_flag = False
+        if arr[i] > 0:
+            all_negative_flag = False
 
         if max_product_end <= 0:
             max_product_end = arr[i]
@@ -55,10 +58,10 @@ def subarray_with_max_product(arr):
             product_so_far = max_product_end
             so_far_end_i = i
             so_far_start_i = max_start_i
-    
+
     if all_negative_flag:
-        print "max_product_so_far: %s, %s" % \
-            (reduce(lambda x, y: x * y, arr), arr)
+        print("max_product_so_far: %s, %s" %
+              (reduce(lambda x, y: x * y, arr), arr))
     else:
-        print "max_product_so_far: %s, %s" % (product_so_far,\
-	       arr[so_far_start_i:so_far_end_i + 1])
+        print("max_product_so_far: %s, %s" %
+              (product_so_far, arr[so_far_start_i:so_far_end_i + 1]))

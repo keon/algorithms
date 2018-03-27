@@ -4,11 +4,13 @@ pointer which could point to any node in the list or null.
 
 Return a deep copy of the list.
 """
+from collections import defaultdict
 
-class Solution:
-# @param head, a RandomListNode
-# @return a RandomListNode
-def copyRandomList(self, head):
+
+class Solution0:
+  # @param head, a RandomListNode
+  # @return a RandomListNode
+  def copyRandomList(self, head):
     dic = dict()
     m = n = head
     while m:
@@ -20,12 +22,12 @@ def copyRandomList(self, head):
         n = n.next
     return dic.get(head)
 
-#O(n)
-class Solution:
-# @param head, a RandomListNode
-# @return a RandomListNode
-def copyRandomList(self, head):
-    copy = collections.defaultdict(lambda: RandomListNode(0))
+
+class Solution1:  # O(n)
+  # @param head, a RandomListNode
+  # @return a RandomListNode
+  def copyRandomList(self, head):
+    copy = defaultdict(lambda: RandomListNode(0))
     copy[None] = None
     node = head
     while node:
