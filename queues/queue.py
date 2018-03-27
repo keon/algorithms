@@ -13,34 +13,61 @@ Queue Abstract Data Type (ADT)
 * peek() returns the front element of the queue.
 """
 import unittest
+from abc import ABCMeta, abstractmethod
 
 
-class AbstractQueue:
+class AbstractQueue(metaclass=ABCMeta):
+
     def __init__(self):
         self._size = 0
-
-    def is_empty(self):
-        return self._size == 0
 
     def __len__(self):
         return self._size
 
+    def is_empty(self):
+        return self._size == 0
+
+    @abstractmethod
+    def enqueue(self, value):
+        pass
+
+    @abstractmethod
+    def dequeue(self):
+        pass
+
+    @abstractmethod
+    def peek(self):
+        pass
+
+    @abstractmethod
+    def __iter__(self):
+        pass
+
 
 class ArrayQueue(AbstractQueue):
+
     def __init__(self, capacity=10):
         """
         Initialize python List with capacity of 10 or user given input.
         Python List type is a dynamic array, so we have to restrict its
         dynamic nature to make it work like a static array.
         """
-        AbstractQueue.__init__(self)
+        super().__init__()
         self._array = [None] * capacity
         self._front = 0
         self._rear = 0
 
+    def __iter__(self):
+        probe = self._front
+        while True:
+            if probe == self._rear:
+                return
+            yield self._array[probe]
+            probe += 1
+
     def enqueue(self, value):
         if self._rear == len(self._array):
-            self.expand()
+            self._expand()
         self._array[self._rear] = value
         self._rear += 1
         self._size += 1
@@ -54,38 +81,39 @@ class ArrayQueue(AbstractQueue):
         self._size -= 1
         return value
 
-    def expand(self):
-        """expands size of the array.
-         Time Complexity: O(n)
-        """
-        self._array += [None] * len(self._array)
-
     def peek(self):
         """returns the front element of queue."""
         if self.is_empty():
             raise IndexError("Queue is empty")
         return self._array[self._front]
 
-    def __iter__(self):
-        probe = self._front
-        while True:
-            if probe == self._rear:
-                raise StopIteration
-            yield self._array[probe]
-            probe += 1
+    def _expand(self):
+        """expands size of the array.
+         Time Complexity: O(n)
+        """
+        self._array += [None] * len(self._array)
 
 
-class QueueNode(object):
+class QueueNode:
     def __init__(self, value):
         self.value = value
         self.next = None
 
 
 class LinkedListQueue(AbstractQueue):
+
     def __init__(self):
-        AbstractQueue.__init__(self)
+        super().__init__()
         self._front = None
         self._rear = None
+
+    def __iter__(self):
+        probe = self._front
+        while True:
+            if probe is None:
+                return
+            yield probe.value
+            probe = probe.next
 
     def enqueue(self, value):
         node = QueueNode(value)
@@ -115,18 +143,25 @@ class LinkedListQueue(AbstractQueue):
             raise IndexError("Queue is empty")
         return self._front.value
 
-    def __iter__(self):
-        probe = self._front
-        while True:
-            if probe is None:
-                raise StopIteration
-            yield probe.value
-            probe = probe.next
-
 
 # TODO
 class HeapPriorityQueue(AbstractQueue):
-    pass
+
+    def __init__(self):
+        super().__init__()
+        pass
+
+    def __iter__(self):
+        pass
+
+    def enqueue(self, value):
+        pass
+
+    def dequeue(self):
+        pass
+
+    def peek(self):
+        pass
 
 
 class TestSuite(unittest.TestCase):
@@ -194,4 +229,5 @@ class TestSuite(unittest.TestCase):
 
 
 if __name__ == "__main__":
+
     unittest.main()

@@ -14,26 +14,39 @@ size() returns the number of items on the stack.
    It needs no parameters and returns an integer.
 """
 import unittest
+from abc import ABCMeta, abstractmethod
 
 
-class AbstractStack:
+class AbstractStack(metaclass=ABCMeta):
+    """Abstract Class for Stacks."""
     def __init__(self):
         self._top = -1
-
-    def is_empty(self):
-        return self._top == -1
 
     def __len__(self):
         return self._top + 1
 
     def __str__(self):
-        result = '------\n'
-        for element in self:
-            result += str(element) + '\n'
-        return result[:-1] + '\n------'
+        result = " ".join(map(str, self))
+        return 'Top-> ' + result
 
+    def is_empty(self):
+        return self._top == -1
+
+    @abstractmethod
     def __iter__(self):
-        raise NotImplementedError
+        pass
+
+    @abstractmethod
+    def push(self, value):
+        pass
+
+    @abstractmethod
+    def pop(self):
+        pass
+
+    @abstractmethod
+    def peek(self):
+        pass
 
 
 class ArrayStack(AbstractStack):
@@ -46,10 +59,18 @@ class ArrayStack(AbstractStack):
         super().__init__()
         self._array = [None] * size
 
+    def __iter__(self):
+        probe = self._top
+        while True:
+            if probe == -1:
+                return
+            yield self._array[probe]
+            probe -= 1
+
     def push(self, value):
         self._top += 1
         if self._top == len(self._array):
-            self.expand()
+            self._expand()
         self._array[self._top] = value
 
     def pop(self):
@@ -65,23 +86,15 @@ class ArrayStack(AbstractStack):
             raise IndexError("stack is empty")
         return self._array[self._top]
 
-    def expand(self):
+    def _expand(self):
         """
          expands size of the array.
          Time Complexity: O(n)
         """
         self._array += [None] * len(self._array)  # double the size of the array
 
-    def __iter__(self):
-        probe = self._top
-        while True:
-            if probe == -1:
-                raise StopIteration
-            yield self._array[probe]
-            probe -= 1
 
-
-class StackNode(object):
+class StackNode:
     """Represents a single stack node."""
     def __init__(self, value):
         self.value = value
@@ -89,9 +102,18 @@ class StackNode(object):
 
 
 class LinkedListStack(AbstractStack):
+
     def __init__(self):
         super().__init__()
         self.head = None
+
+    def __iter__(self):
+        probe = self.head
+        while True:
+            if probe is None:
+                return
+            yield probe.value
+            probe = probe.next
 
     def push(self, value):
         node = StackNode(value)
@@ -101,7 +123,7 @@ class LinkedListStack(AbstractStack):
 
     def pop(self):
         if self.is_empty():
-            raise IndexError("stack is empty")
+            raise IndexError("Stack is empty")
         value = self.head.value
         self.head = self.head.next
         self._top -= 1
@@ -109,16 +131,8 @@ class LinkedListStack(AbstractStack):
 
     def peek(self):
         if self.is_empty():
-            raise IndexError("stack is empty")
+            raise IndexError("Stack is empty")
         return self.head.value
-
-    def __iter__(self):
-        probe = self.head
-        while True:
-            if probe is None:
-                raise StopIteration
-            yield probe.value
-            probe = probe.next
 
     # optional
     """
@@ -148,6 +162,9 @@ class TestSuite(unittest.TestCase):
         # test __len__()
         self.assertEqual(3, len(stack))
 
+        # test __str__()
+        self.assertEqual(str(stack), "Top-> 3 2 1")
+
         # test is_empty()
         self.assertFalse(stack.is_empty())
 
@@ -163,6 +180,7 @@ class TestSuite(unittest.TestCase):
 
     def test_LinkedListStack(self):
         stack = LinkedListStack()
+
         stack.push(1)
         stack.push(2)
         stack.push(3)
@@ -176,6 +194,9 @@ class TestSuite(unittest.TestCase):
 
         # test __len__()
         self.assertEqual(3, len(stack))
+
+        # test __str__()
+        self.assertEqual(str(stack), "Top-> 3 2 1")
 
         # test is_empty()
         self.assertFalse(stack.is_empty())
