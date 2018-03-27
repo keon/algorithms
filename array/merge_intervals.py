@@ -77,27 +77,26 @@ class Interval:
                 out.append(i)
         return out
 
+import unittest
+
+class TestMergeInterval(unittest.TestCase):
+
+    def test_merge(self):
+        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+        intervals = [Interval(i[0], i[1]) for i in interval_list]
+        merged_intervals = Interval.merge(intervals)
+        self.assertEqual(
+            merged_intervals,
+            [Interval(1, 6), Interval(8, 10), Interval(15, 18)]
+        )
+
+    def test_merge_v2(self):
+        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+        merged_intervals = Interval.merge_v2(interval_list)
+        self.assertEqual(
+            merged_intervals,
+            [[1, 6], [8, 10], [15, 18]]
+        )
 
 if __name__ == "__main__":
-    import unittest
-
-    class TestMergeInterval(unittest.TestCase):
-
-        def test_merge(self):
-            interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
-            intervals = [Interval(i[0], i[1]) for i in interval_list]
-            merged_intervals = Interval.merge(intervals)
-            self.assertEqual(
-                merged_intervals,
-                [Interval(1, 6), Interval(8, 10), Interval(15, 18)]
-            )
-
-        def test_merge_v2(self):
-            interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
-            merged_intervals = Interval.merge_v2(interval_list)
-            self.assertEqual(
-                merged_intervals,
-                [[1, 6], [8, 10], [15, 18]]
-            )
-
     unittest.main()
