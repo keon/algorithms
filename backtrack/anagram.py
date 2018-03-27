@@ -1,4 +1,7 @@
 def all_perms(elements):
+    """
+        iterator: returns a perumation by each call. 
+    """
     if len(elements) <=1:
         yield elements
     else:
@@ -7,6 +10,9 @@ def all_perms(elements):
                 yield perm[:i] + elements[0:1] + perm[i:]
 
 def all_perms(elements):
+    """
+        returns a list with the permuations.
+    """
     if len(elements) <=1:
         return elements
     else:
