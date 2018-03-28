@@ -118,8 +118,9 @@ def solve_sat(formula):
 
     return value
 
+
 if __name__ == '__main__':
     result = solve_sat(formula)
 
     for (variable, assign) in result.iteritems():
-        print variable, ":", assign
+        print("{}:{}".format(variable, assign))
