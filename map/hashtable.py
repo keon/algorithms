@@ -14,8 +14,8 @@ class HashTable(object):
     in Return True for a statement of the form key in map, if the given key is in the map, False otherwise.
     """
 
-    _empty = object()
-    _deleted = object()
+    _empty = None
+    _deleted = None
 
     def __init__(self, size=11):
         self.size = size
@@ -27,7 +27,7 @@ class HashTable(object):
         initial_hash = hash_ = self.hash(key)
 
         while True:
-            if self._keys[hash_] is self._empty or self._keys[hash_] is self._deleted:
+            if not self._keys[hash_]:
                 # can assign to hash_ index
                 self._keys[hash_] = key
                 self._values[hash_] = value
@@ -35,7 +35,6 @@ class HashTable(object):
                 return
             elif self._keys[hash_] == key:
                 # key already exists here, assign over
-                #self._keys[hash_] = key
                 self._values[hash_] = value
                 return
 
