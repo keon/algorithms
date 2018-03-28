@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 
 
@@ -198,3 +199,6 @@ class TestHashTable(TestCase):
         self.assertEqual('foo', m.get(1))
         self.assertEqual('foo', m.get(3))
         self.assertEqual('foo', m.get(ResizableHashTable.MIN_SIZE - 1))
+
+if __name__ == "__main__":
+    unittest.main()
