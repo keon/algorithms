@@ -25,7 +25,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [summary_ranges](array/summary_ranges.py)
     - [three_sum](array/three_sum.py)
     - [two_sum](array/two_sum.py)
-    - [move_zeros_to_end] (array/move_zeros_to_end.py)
+    - [move_zeros_to_end](array/move_zeros_to_end.py)
 - [backtrack](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
