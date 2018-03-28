@@ -6,11 +6,6 @@ Input: 2 3
 Output: 5
 """
 
-try:
-    raw_input          # Python 2
-except NameError:
-    raw_input = input  # Python 3
-
 
 def addWithoutOperator(x, y):
     while y != 0:
@@ -21,7 +16,7 @@ def addWithoutOperator(x, y):
 
 
 def main():
-    x, y = map(int, raw_input().split())
+    x, y = map(int, input('Enter two positive integers: ').split())
     addWithoutOperator(x, y)
 
 

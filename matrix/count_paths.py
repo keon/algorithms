@@ -9,11 +9,6 @@
 # T(n)- O(mn), S(n)- O(mn)
 #
 
-try:
-    raw_input          # Python 2
-except NameError:
-    raw_input = input  # Python 3
-
 
 def count_paths(m, n):
     if m < 1 or n < 1:
@@ -36,7 +31,7 @@ def count_paths(m, n):
 
 
 def main():
-    m, n = map(int, raw_input().split())
+    m, n = map(int, input('Enter two positive integers: ').split())
     count_paths(m, n)
 
 
