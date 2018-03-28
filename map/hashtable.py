@@ -35,7 +35,7 @@ class HashTable(object):
                 return
             elif self._keys[hash_] == key:
                 # key already exists here, assign over
-                self._keys[hash_] = key
+                #self._keys[hash_] = key
                 self._values[hash_] = value
                 return
 
