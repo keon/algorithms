@@ -6,19 +6,16 @@ The time complexity of the below algorithm is O(n).
 """
 
 def move_zeros(array):
-    if len(array) < 1:
-        return array
-    else:
-        list = []
-        zeros = 0
+    result = []
+    zeros = 0
 
-        for i in array:
-            if not i and type(i) is int or type(i) is float:
-                zeros += 1
-            else:
-                list.append(i)
+    for i in array:
+        if not i and type(i) is int or type(i) is float:
+            zeros += 1
+        else:
+            result.append(i)
 
-    for i in range(0, zeros):
-        list.append(0)
+for i in range(0, zeros):
+    result.append(0)
 
-    return list
+return result
