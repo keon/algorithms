@@ -24,34 +24,29 @@ def all_perms(elements):
                 tmp.append(perm[:i] + elements[0:1] + perm[i:])
         return tmp
 
-
 def anagram(s1,s2):
     c1 = [0]*26
     c2 = [0]*26
-
     for i in range(len(s1)):
         pos = ord(s1[i])-ord('a')
         c1[pos] = c1[pos] + 1
-
     for i in range(len(s2)):
         pos = ord(s2[i])-ord('a')
         c2[pos] = c2[pos] + 1
-
     return c1 == c2
-
 
 class TestSuite (unittest.TestCase):
     def test_all_perms(self):
-        allPerms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
-        self.assertEqual(allPerms,all_perms("abc"))
+        perms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
+        self.assertEqual(perms, all_perms("abc"))
     def test_all_perms_iter(self):
         it = all_perms_iter("abc")
-        allPerms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
-        for i in range(len(allPerms)):
-            self.assertEqual(allPerms[i],next(it))
+        perms = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
+        for i in range(len(perms)):
+            self.assertEqual(perms[i], next(it))
     def test_angram(self):
-        self.assertTrue(anagram('apple','pleap'))
-        self.assertFalse(anagram("apple","cherry"))
+        self.assertTrue(anagram('apple', 'pleap'))
+        self.assertFalse(anagram("apple", "cherry"))
 
 
 if __name__ == "__main__":
