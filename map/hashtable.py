@@ -47,7 +47,7 @@ class HashTable(object):
     def get(self, key):
         initial_hash = hash_ = self.hash(key)
         while True:
-            if self._keys[hash_] is self._empty:
+            if not self._keys[hash_]:
                 # That key was never assigned
                 return None
             elif self._keys[hash_] == key:
@@ -62,7 +62,7 @@ class HashTable(object):
     def del_(self, key):
         initial_hash = hash_ = self.hash(key)
         while True:
-            if self._keys[hash_] is self._empty:
+            if not self._keys[hash_]:
                 # That key was never assigned
                 return None
             elif self._keys[hash_] == key:
@@ -118,7 +118,7 @@ class ResizableHashTable(HashTable):
         self._keys = [self._empty] * self.size
         self._values = [self._empty] * self.size
         for key, value in zip(keys, values):
-            if key is not self._empty and key is not self._deleted:
+            if key:
                 self.put(key, value)
 
 
