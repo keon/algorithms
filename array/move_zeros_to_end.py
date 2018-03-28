@@ -10,12 +10,10 @@ def move_zeros(array):
     zeros = 0
 
     for i in array:
-        if not i and type(i) is int or type(i) is float:
+        if i is 0 or i is 0.0:  # not using `not i` to avoid `False`, `[]`, etc.
             zeros += 1
         else:
             result.append(i)
-
-for i in range(0, zeros):
-    result.append(0)
-
-return result
+    
+    result.extend([0] * zeros)
+    return result
