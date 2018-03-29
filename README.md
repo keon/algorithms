@@ -129,7 +129,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [rabin_miller](maths/rabin_miller.py)
     - [rsa](maths/rsa.py)
     - [sqrt_precision_factor](maths/sqrt_precision_factor.py)
-    - [Summing_digits](maths/Summing_digits.py)
+    - [summing_digits](maths/summing_digits.py)
 - [matrix](matrix)
     - [bomb_enemy](matrix/bomb_enemy.py)
     - [copy_transform](matrix/copy_transform.py)
