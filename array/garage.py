@@ -30,9 +30,11 @@ Sequence :
 2 3 0 1 4
 0 3 2 1 4
 """
+import unittest
 
 
 def garage(initial, final):
+
     initial = initial[::]     # create a copy to prevent changes in original 'initial'.
     steps = 0
     seq = []                  # list of each step in sequence
@@ -49,15 +51,22 @@ def garage(initial, final):
                     break
         seq.append(initial[::])
         steps += 1
-    seq = "\n".join(" ".join(map(str, s)) for s in seq)   # convert to string
+
     return steps, seq
 
+
+class TestSuite(unittest.TestCase):
+
+    def test_garage(self):
+
+        initial = [1, 2, 3, 0, 4]
+        final = [0, 3, 2, 1, 4]
+        steps, seq = garage(initial, final)
+
+        self.assertEqual(steps, 4)
+        self.assertListEqual(seq, [[0, 2, 3, 1, 4], [2, 0, 3, 1, 4], [2, 3, 0, 1, 4], [0, 3, 2, 1, 4]])
+
+
 if __name__ == "__main__":
-    initial = [1, 2, 3, 0, 4]
-    final = [0, 3, 2, 1, 4]
-    print("initial:", initial)
-    print("final:  ", final)
-    steps, seq = garage(initial, final)
-    print("No. of Steps = ", steps)
-    print("Steps Sequence : ")
-    print(seq)
+
+    unittest.main()
