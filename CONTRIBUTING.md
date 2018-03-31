@@ -36,9 +36,7 @@ Some things that will increase the chance that your pull request is accepted:
 
 
 ## Issues
-Whenever you want a new algorithm to be added, or find some bugs in the existing algorithms, 
-just [submit an issue][newissue] and feel free to discuss over it.
-Or you may resolve any of the [existing issues][issues].
+Submit a [new issue][newissue] if there is an algorithm to add, or if a bug was found in an existing algorithm. Before submitting a new issue please review the [existing issues][issues] to avoid creating duplicates. Also, consider resolving current issues or contributing to the discussion on an issue.
 
 ## Collaborators
 You can ask for any help or clarifications from the collaborators.  
