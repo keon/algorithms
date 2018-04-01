@@ -42,12 +42,14 @@ def strobogrammaticInRange(low, high):
     """
     res = []
     count = 0
-    for i in range(len(low), len(high)+1):
+    low_len = len(low)
+    high_len = len(high)
+    for i in range(low_len, high_len + 1):
         res.extend(helper2(i, i))
     for perm in res:
-        if len(perm) == len(low) and int(perm) < int(low):
+        if len(perm) == low_len and int(perm) < int(low):
             continue
-        elif len(perm) == len(high) and int(perm) > int(high):
+        elif len(perm) == high_len and int(perm) > int(high):
             continue
         else:
             count += 1
