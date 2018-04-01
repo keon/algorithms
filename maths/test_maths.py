@@ -2,11 +2,12 @@ from base_conversion import int2base,base2int
 from extended_gcd import extended_gcd
 from gcd import gcd,lcm
 from generate_strobogrammtic import gen_strobogrammatic,strobogrammaticInRange
+from is_strobogrammatic import is_strobogrammatic,is_strobogrammatic2
 
 import unittest
 
 
-class TestBaseConversion (unittest.TestCase):
+class TestBaseConversion(unittest.TestCase):
     """
     Test for the file base_conversion.py
 
@@ -24,7 +25,7 @@ class TestBaseConversion (unittest.TestCase):
         self.assertEqual(255,base2int("FF",16))
 
 
-class TestExtendedGcd (unittest.TestCase):
+class TestExtendedGcd(unittest.TestCase):
     """[summary]
     Test for the file extended_gcd.py
 
@@ -37,7 +38,7 @@ class TestExtendedGcd (unittest.TestCase):
         self.assertEqual((0,1,17),extended_gcd(13,17))
 
 
-class TestGcd (unittest.TestCase):
+class TestGcd(unittest.TestCase):
     """[summary]
     Test for the file gcd.py
 
@@ -65,6 +66,21 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     def test_strobogrammaticInRange(self):
         self.assertEqual(4,strobogrammaticInRange("10","100"))
 
+
+class TestIsStrobogrammatic(unittest.TestCase):
+    """[summary]
+    Test for the file is_strobogrammatic.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_is_strobogrammatic(self):
+        self.assertTrue(is_strobogrammatic("69"))
+        self.assertFalse(is_strobogrammatic("14"))
+    def test_is_strobogrammatic2(self):
+        self.assertTrue(is_strobogrammatic2("69"))
+        self.assertFalse(is_strobogrammatic2("14"))
 
 
 if __name__ == "__main__":
