@@ -14,8 +14,7 @@ def gen_strobogrammatic(n):
     :type n: int
     :rtype: List[str]
     """
-    result = helper(n, n)
-    return result
+    return helper(n, n)
 
 
 def helper(n, length):
@@ -55,7 +54,7 @@ def strobogrammaticInRange(low, high):
     return count
 
 
-def helper2(self, n, length):
+def helper2(n, length):
     if n == 0:
         return [""]
     if n == 1:
@@ -70,3 +69,6 @@ def helper2(self, n, length):
         res.append("9"+mid+"6")
         res.append("8"+mid+"8")
     return res
+
+print(gen_strobogrammatic(2))
+print(strobogrammaticInRange("10","100"))
