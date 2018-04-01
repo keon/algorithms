@@ -3,6 +3,7 @@ from extended_gcd import extended_gcd
 from gcd import gcd,lcm
 from generate_strobogrammtic import gen_strobogrammatic,strobogrammaticInRange
 from is_strobogrammatic import is_strobogrammatic,is_strobogrammatic2
+from next_perfect_square import find_next_square,find_next_square2
 
 import unittest
 
@@ -81,6 +82,22 @@ class TestIsStrobogrammatic(unittest.TestCase):
     def test_is_strobogrammatic2(self):
         self.assertTrue(is_strobogrammatic2("69"))
         self.assertFalse(is_strobogrammatic2("14"))
+
+
+class TestNextPerfectSquare(unittest.TestCase):
+    """[summary]
+    Test for the file next_perfect_square.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_find_next_square(self):
+        self.assertEqual(36,find_next_square(25))
+        self.assertEqual(1,find_next_square(0))
+    def test_find_next_square2(self):
+        self.assertEqual(36,find_next_square2(25))
+        self.assertEqual(1,find_next_square2(0))
 
 
 if __name__ == "__main__":
