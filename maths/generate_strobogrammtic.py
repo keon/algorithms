@@ -69,6 +69,3 @@ def helper2(n, length):
         res.append("9"+mid+"6")
         res.append("8"+mid+"8")
     return res
-
-print(gen_strobogrammatic(2))
-print(strobogrammaticInRange("10","100"))
