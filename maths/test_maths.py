@@ -1,4 +1,5 @@
 from base_conversion import int2base,base2int
+from extended_gcd import extended_gcd
 import unittest
 
 
@@ -17,6 +18,18 @@ class TestBaseConversion (unittest.TestCase):
         self.assertEqual(5,base2int("101",2))
         self.assertEqual(0,base2int("0",2))
         self.assertEqual(255,base2int("FF",16))
+
+
+class TestExtendedGcd (unittest.TestCase):
+    """[summary]
+    Test for the file extended_gcd.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_extended_gcd(self):
+        self.assertEqual((0,1,2),extended_gcd(8,2))
+        self.assertEqual((0,1,17),extended_gcd(13,17))
 
 
 if __name__ == "__main__":
