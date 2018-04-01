@@ -26,6 +26,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [three_sum](array/three_sum.py)
     - [two_sum](array/two_sum.py)
     - [move_zeros_to_end](array/move_zeros_to_end.py)
+    - [delete_nth](array/delete_nth.py)
 - [backtrack](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
