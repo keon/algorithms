@@ -1,12 +1,15 @@
 from base_conversion import int2base,base2int
 from extended_gcd import extended_gcd
 from gcd import gcd,lcm
+from generate_strobogrammtic import gen_strobogrammatic,strobogrammaticInRange
+
 import unittest
 
 
 class TestBaseConversion (unittest.TestCase):
     """
     Test for the file base_conversion.py
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -24,6 +27,7 @@ class TestBaseConversion (unittest.TestCase):
 class TestExtendedGcd (unittest.TestCase):
     """[summary]
     Test for the file extended_gcd.py
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -36,6 +40,7 @@ class TestExtendedGcd (unittest.TestCase):
 class TestGcd (unittest.TestCase):
     """[summary]
     Test for the file gcd.py
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -45,6 +50,21 @@ class TestGcd (unittest.TestCase):
         self.assertEqual(1,gcd(13,17))
     def test_lcm(self):
         self.assertEqual(24,lcm(8,12))
+
+
+class TestGenerateStroboGrammatic(unittest.TestCase):
+    """[summary]
+    Test for the file generate_strobogrammatic.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_gen_strobomatic(self):
+        self.assertEqual(['88', '11', '96', '69'],gen_strobogrammatic(2))
+    def test_strobogrammaticInRange(self):
+        self.assertEqual(4,strobogrammaticInRange("10","100"))
+
 
 
 if __name__ == "__main__":
