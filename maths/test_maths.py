@@ -1,5 +1,6 @@
 from base_conversion import int2base,base2int
 from extended_gcd import extended_gcd
+from gcd import gcd,lcm
 import unittest
 
 
@@ -30,6 +31,20 @@ class TestExtendedGcd (unittest.TestCase):
     def test_extended_gcd(self):
         self.assertEqual((0,1,2),extended_gcd(8,2))
         self.assertEqual((0,1,17),extended_gcd(13,17))
+
+
+class TestGcd (unittest.TestCase):
+    """[summary]
+    Test for the file gcd.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_gcd(self):
+        self.assertEqual(4,gcd(8,12))
+        self.assertEqual(1,gcd(13,17))
+    def test_lcm(self):
+        self.assertEqual(24,lcm(8,12))
 
 
 if __name__ == "__main__":
