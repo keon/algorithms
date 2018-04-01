@@ -1,27 +1,42 @@
-## find missing ranges between low and high in the given array.
-# ex) [3, 5] lo=1 hi=10 => answer: [1->2, 4, 6->10]
+"""
+Find missing ranges between low and high in the given array.
+Ex) [3, 5] lo=1 hi=10 => answer: [(1, 2), (4, 4), (6, 10)]
+"""
+import unittest
 
-def missing_ranges(nums, lo, hi):
+
+def missing_ranges(arr, lo, hi):
+
     res = []
     start = lo
-    for num in nums:
-        if num < start:
-            continue
-        if num == start:
+
+    for n in arr:
+
+        if n == start:
             start += 1
-            continue
-        res.append(get_range(start, num-1))
-        start = num + 1
+        elif n > start:
+            res.append((start, n-1))
+            start = n + 1
+
     if start <= hi:
-        res.append(get_range(start, hi))
+        res.append((start, hi))
+
     return res
 
-def get_range(n1, n2):
-    if n1 == n2:
-        return str(n1)
-    else:
-        return str(n1) + "->" + str(n2)
 
-nums = [3, 5, 10, 11, 12, 15, 19]
-print("original:", nums)
-print("missing range: ", missing_ranges(nums,0,20))
+class TestSuite(unittest.TestCase):
+
+    def test_missing_ranges(self):
+
+        arr = [3, 5, 10, 11, 12, 15, 19]
+
+        self.assertListEqual(missing_ranges(arr, 0, 20),
+                             [(0, 2), (4, 4), (6, 9), (13, 14), (16, 18), (20, 20)])
+
+        self.assertListEqual(missing_ranges(arr, 6, 100),
+                             [(6, 9), (13, 14), (16, 18), (20, 100)])
+
+
+if __name__ == '__main__':
+
+    unittest.main()

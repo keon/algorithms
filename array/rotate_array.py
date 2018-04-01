@@ -8,51 +8,84 @@ Note:
 Try to come up as many solutions as you can,
 there are at least 3 different ways to solve this problem.
 """
+import unittest
 
 
-#
-# Rotate the entire array 'k' times
-# T(n)- O(nk)
-#
-def rotate_one_by_one(nums, k):
+def rotate_v1(array, k):
     """
-    :type nums: List[int]
+    Rotate the entire array 'k' times
+    T(n)- O(nk)
+
+    :type array: List[int]
     :type k: int
-    :rtype: void Do not return anything, modify nums in-place instead.
+    :rtype: void Do not return anything, modify array in-place instead.
     """
-    n = len(nums)
+    array = array[:]
+    n = len(array)
     for i in range(k):
-        temp = nums[n-1]
+        temp = array[n - 1]
         for j in range(n-1, 0, -1):
-            nums[j] = nums[j-1]
-        nums[0] = temp
+            array[j] = array[j - 1]
+        array[0] = temp
+    return array
 
 
-#
-# Reverse segments of the array, followed by the entire array
-# T(n)- O(n)
-#
-def rotate(nums, k):
+def rotate_v2(array, k):
     """
-    :type nums: List[int]
+    Reverse segments of the array, followed by the entire array
+    T(n)- O(n)
+    :type array: List[int]
     :type k: int
     :rtype: void Do not return anything, modify nums in-place instead.
     """
-    n = len(nums)
+    array = array[:]
+
+    def reverse(arr, a, b):
+        while a < b:
+            arr[a], arr[b] = arr[b], arr[a]
+            a += 1
+            b -= 1
+
+    n = len(array)
     k = k % n
-    reverse(nums, 0, n - k - 1)
-    reverse(nums, n - k, n - 1)
-    reverse(nums, 0, n - 1)
+    reverse(array, 0, n - k - 1)
+    reverse(array, n - k, n - 1)
+    reverse(array, 0, n - 1)
+    return array
 
 
-def reverse(array, a, b):
-    while a < b:
-        array[a], array[b] = array[b], array[a]
-        a += 1
-        b -= 1
-
-def rotate_array(array, k):
+def rotate_v3(array, k):
     if array is None:
         return None
     length = len(array)
+    k = k % length
     return array[length - k:] + array[:length - k]
+
+
+class TestSuite(unittest.TestCase):
+
+    def test_rotate_v1(self):
+
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v1([1, 2], k=111), [2, 1])
+
+    def test_rotate_v2(self):
+
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v2([1, 2], k=111), [2, 1])
+
+    def test_rotate_v3(self):
+
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v3([1, 2], k=111), [2, 1])
+
+
+if __name__ == '__main__':
+
+    unittest.main()
