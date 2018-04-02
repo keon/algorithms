@@ -49,9 +49,11 @@ def single_number2(nums):
 
 class TestSuite(unittest.TestCase):
 
-    def test_single_number(self):
+    def setUp(self):
 
         random.seed("test")
+
+    def test_single_number(self):
 
         self.assertEqual(3, single_number([4, 2, 3, 2, 1, 1, 4, 2, 4, 1]))
 
@@ -64,8 +66,6 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(single, single_number(nums))
 
     def test_single_number2(self):
-
-        random.seed("test")
 
         self.assertEqual(3, single_number2([4, 2, 3, 2, 1, 1, 4, 2, 4, 1]))
 
