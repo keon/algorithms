@@ -54,7 +54,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [single_number2](bit/single_number2.py)
     - [single_number](bit/single_number.py)
     - [subsets](bit/subsets.py)
-    - [add_without_operator](bit/add_without_operator.py)
+    - [add_bitwise_operator](bit/add_without_operator.py)
 - [calculator](calculator)
     - [math_parser](calculator/math_parser.py)
 - [dfs](dfs)

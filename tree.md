@@ -34,7 +34,7 @@
 │   ├── shortest_distance_from_all_buildings.py
 │   └── word_ladder.py
 ├── bit
-│   ├── add_without_operator.py
+│   ├── add_bitwise_operator.py
 │   ├── bytes_int_conversion.py
 │   ├── count_ones.py
 │   ├── find_missing_number.py
