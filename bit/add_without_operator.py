@@ -10,7 +10,7 @@ import unittest
 
 def add_bitwise_operator(x, y):
 
-    while y != 0:
+    while y:
         carry = x & y
         x = x ^ y
         y = carry << 1
