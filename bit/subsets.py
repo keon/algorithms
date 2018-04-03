@@ -7,44 +7,53 @@ Note: The solution set must not contain duplicate subsets.
 For example,
 If nums = [1,2,3], a solution is:
 
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],
-  [1,3],
-  [2,3],
-  [1,2],
-  []
-]
+{
+    (1, 2),
+    (1, 3),
+    (1,),
+    (2,),
+    (3,),
+    (1, 2, 3),
+    (),
+    (2, 3)
+}
 """
+import unittest
 
 
-def subnets(nums):
-    nums.sort()
-    total = 2 ** len(nums)  # or 1 << len(nums)
-    res = [] * total
+def subsets(nums):
+    """
+    :param nums: List[int]
+    :return: Set[tuple]
+    """
+    n = len(nums)
+    total = 1 << n
+    res = set()
 
     for i in range(total):
-        res.append([])
+        subset = tuple(num for j, num in enumerate(nums) if i & 1 << j)
+        res.add(subset)
 
-    for i in range(len(nums)):
-        for j in range(total):
-            if ((j >> i) & 1) > 0:  # i & 1 << j
-                res[j].append(nums[i])
     return res
 
 
-def subsets2(self, nums):
-    res = []
-    nums.sort()
-    for i in range(1 << len(nums)):
-        tmp = []
-        for j in range(len(nums)):
-            if i & 1 << j:  # if i >> j & 1:
-                tmp.append(nums[j])
-        res.append(tmp)
-    return res
+class TestSuite(unittest.TestCase):
+
+    def test_subsets(self):
+
+        self.assertSetEqual(subsets([1, 2, 3]),
+                            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)})
+
+        self.assertSetEqual(subsets([10, 20, 30, 40]),
+                            {(10, 40), (10, 20, 40), (10, 30), (10, 20, 30, 40), (40,),
+                             (10, 30, 40), (30,), (20, 30), (30, 40), (10,), (),
+                             (10, 20), (20, 40), (20, 30, 40), (10, 20, 30), (20,)})
+
+
+if __name__ == '__main__':
+
+    unittest.main()
+
 
 """
 this explanation is from leet_nik @ leetcode

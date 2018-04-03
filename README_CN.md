@@ -48,7 +48,7 @@ python版数据结构和算法实现的简约版小示例
     - [single_number2：寻找出现1次的数（2)](bit/single_number2.py)
     - [single_number:寻找出现1次的数（1)](bit/single_number.py)
     - [subsets: 求所有子集](bit/subsets.py)
-    - [add_without_operator：无操作符的加法](bit/add_without_operator.py)
+    - [add_bitwise_operator：无操作符的加法](bit/add_bitwise_operator.py)
 - [calculator：计算](calculator)
     - [math_parser: 数字解析](calculator/math_parser.py)
 - [dfs：深度优先搜索](dfs)
