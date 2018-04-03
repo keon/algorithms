@@ -26,7 +26,6 @@ def subsets(nums):
     :param nums: List[int]
     :return: Set[tuple]
     """
-    # nums.sort()  # no need for sort
     n = len(nums)
     total = 1 << n
     res = set()
