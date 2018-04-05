@@ -41,7 +41,7 @@ class TestSuite(unittest.TestCase):
 
     def test_first_cyclic_node(self):
 
-        # create linkedlist => A -> B -> C -> D -> E -> C
+        # create linked list => A -> B -> C -> D -> E -> C
         head = Node('A')
         head.next = Node('B')
         curr = head.next
