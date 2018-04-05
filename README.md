@@ -111,6 +111,8 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [reverse](linkedlist/reverse.py)
     - [rotate_list](linkedlist/rotate_list.py)
     - [swap_in_pairs](linkedlist/swap_in_pairs.py)
+    - [is_sort](linkedlist/is_sort.py)
+    - [remove_range](linkedlist/remove_range.py)
 - [map](map)
     - [hashtable](map/hashtable.py)
     - [longest_common_subsequence](map/longest_common_subsequence.py)
@@ -242,5 +244,5 @@ The repo is maintained by
 * [Christian Bender](https://github.com/christianbender)
 * [Ankit Agarwal](https://github.com/ankit167)
 
-And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors) 
+And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
 who helped in building the repo.
