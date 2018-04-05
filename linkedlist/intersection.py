@@ -1,15 +1,19 @@
+"""
+   This function takes two lists and returns the node they have in common, if any.
+   In this example:
+   1 -> 3 -> 5
+               \
+                7 -> 9 -> 11
+               /
+   2 -> 4 -> 6
+   ...we would return 7.
+   Note that the node itself is the unique identifier, not the value of the node.
+   """
+import unittest
+
+
 def intersection(h1, h2):
-    """
-    This function takes two lists and returns the node they have in common, if any.
-    In this example:
-    1 -> 3 -> 5
-                \
-                 7 -> 9 -> 11
-                /
-    2 -> 4 -> 6
-    ...we would return 7.
-    Note that the node itself is the unique identifier, not the value of the node.
-    """
+
     count = 0
     flag = None
     h1_orig = h1
