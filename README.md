@@ -111,7 +111,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [reverse](linkedlist/reverse.py)
     - [rotate_list](linkedlist/rotate_list.py)
     - [swap_in_pairs](linkedlist/swap_in_pairs.py)
-    - [is_sort](linkedlist/is_sort.py)
+    - [is_sorted](linkedlist/is_sorted.py)
     - [remove_range](linkedlist/remove_range.py)
 - [map](map)
     - [hashtable](map/hashtable.py)
