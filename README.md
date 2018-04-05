@@ -112,6 +112,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [rotate_list](linkedlist/rotate_list.py)
     - [swap_in_pairs](linkedlist/swap_in_pairs.py)
     - [is_sort](linkedlist/is_sort.py)
+    - [remove_range](linkedlist/remove_range.py)
 - [map](map)
     - [hashtable](map/hashtable.py)
     - [longest_common_subsequence](map/longest_common_subsequence.py)
