@@ -178,6 +178,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [stutter](stack/stutter.py)
     - [switch_pairs](stack/switch_pairs.py)
     - [is_consecutive](stack/is_consecutive.py)
+    - [remove_min](stack/remove_min.py)
 - [strings](strings)
     - [add_binary](strings/add_binary.py)
     - [breaking_bad](strings/breaking_bad.py)
