@@ -175,6 +175,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [simplify_path](stack/simplify_path.py)
     - [stack](stack/stack.py)
     - [valid_parenthesis](stack/valid_parenthesis.py)
+    - [stutter](stack/stutter.py)
 - [strings](strings)
     - [add_binary](strings/add_binary.py)
     - [breaking_bad](strings/breaking_bad.py)
