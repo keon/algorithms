@@ -9,7 +9,7 @@
 def binary_search(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
-        mid = lo + (hi - lo) // 2
+        mid = (hi + lo) // 2
         val = array[mid]
         if val == query:
             return mid
