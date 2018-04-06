@@ -8,7 +8,7 @@
 def firstOccurance(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
-        mid = lo + (hi-lo) // 2
+        mid = (hi + lo) // 2
         print("lo: ", lo, " hi: ", hi, " mid: ", mid)
         if (mid == 0 and array[mid] == query) or \
            (array[mid] == query and array[mid-1] < query):

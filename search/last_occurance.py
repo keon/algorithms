@@ -8,7 +8,7 @@
 def lastOccurance(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
-        mid = lo + (hi - lo) // 2
+        mid = (hi + lo) // 2
         if (array[mid] == query and mid == len(array)-1) or \
            (array[mid] == query and array[mid+1] > query):
             return mid
