@@ -29,7 +29,7 @@ except:
     xrange = range
 
 class Sudoku: 
-    def __init__ (self, board,row,col):
+    def __init__ (self, board, row, col):
         self.board = board
         self.row = row
         self.col = col
