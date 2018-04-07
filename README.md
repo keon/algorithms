@@ -119,6 +119,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [randomized_set](map/randomized_set.py)
     - [valid_sudoku](map/valid_sudoku.py)
 - [maths](maths)
+    - [function_chaining](maths/function_chaining.py)
     - [base_conversion](maths/base_conversion.py)
     - [extended_gcd](maths/extended_gcd.py)
     - [gcd/lcm](maths/gcd.py)
