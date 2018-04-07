@@ -31,10 +31,9 @@ class Sudoku:
         self.board = board
         self.row = row
         self.col = col
-        self.val = self.PossibleVals()
-        self.Solver()
+        self.val = self.possible_values()
 
-    def PossibleVals(self):
+    def possible_values(self):
         a = "123456789"
         d, val = {}, {}
         for i in xrange(self.row):
@@ -51,20 +50,20 @@ class Sudoku:
             val[(i,j)] = [n for n in a if n not in inval ]
         return val
 
-    def Solver(self):
+    def solve(self):
         if len(self.val)==0:
             return True
         kee = min(self.val.keys(), key=lambda x: len(self.val[x]))
         nums = self.val[kee]
         for n in nums:
             update = {kee:self.val[kee]}
-            if self.ValidOne(n, kee, update): # valid choice
-                if self.Solver(): # keep solving
+            if self.valid_one(n, kee, update): # valid choice
+                if self.solve(): # keep solving
                     return True
             self.undo(kee, update) # invalid choice or didn't solve it => undo
         return False
 
-    def ValidOne(self, n, kee, update):
+    def valid_one(self, n, kee, update):
         self.board[kee[0]][kee[1]] = n
         del self.val[kee]
         i, j = kee
@@ -101,6 +100,9 @@ class Sudoku:
             resp += "\n"
         return resp
 
+# simple test case
 board = [["5","3","."], ["6",".", "."],[".","9","8"]]
 testObj = Sudoku(board,3,3)
+print(testObj)
+testObj.solve()
 print(testObj)
