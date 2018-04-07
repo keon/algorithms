@@ -96,13 +96,20 @@ class Sudoku:
         resp = ""
         for i in range(self.row):
             for j in range(self.col):
-                resp += " {0} ".format(board[i][j])
+                resp += " {0} ".format(self.board[i][j])
             resp += "\n"
         return resp
 
-# simple test case
-board = [["5","3","."], ["6",".", "."],[".","9","8"]]
-testObj = Sudoku(board,3,3)
-print(testObj)
-testObj.solve()
-print(testObj)
+def main():
+    """[summary]
+    simple test case
+    """
+
+    board = [["5","3","."], ["6",".", "."],[".","9","8"]]
+    testObj = Sudoku(board,3,3)
+    print(testObj)
+    testObj.solve()
+    print(testObj)  
+
+if __name__ == "__main__":
+    main()
