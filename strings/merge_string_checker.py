@@ -9,7 +9,7 @@ part2:    o   e   a r s   = oears
 """
 
 # Recursive Solution
-def is_merge(s, part1, part2):
+def is_merge_recursive(s, part1, part2):
     if not part1:
       return s == part2
     if not part2:
@@ -23,7 +23,7 @@ def is_merge(s, part1, part2):
     return False
 
 # An iterative approach
-def is_merge(s, part1, part2):
+def is_merge_iterative(s, part1, part2):
     tuple_list = [(s, part1, part2)]
     while tuple_list:
         string, p1, p2 = tuple_list.pop()            
