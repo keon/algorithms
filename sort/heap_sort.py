@@ -1,15 +1,16 @@
+import unittest
 def max_heap_sort(arr):
     """ Heap Sort that uses a max heap to sort an array in ascending order
         Complexity: O(n log(n))
     """
     for i in range(len(arr)-1,0,-1):
         max_heapify(arr, i)
-        
+
         temp = arr[0]
         arr[0] = arr[i]
         arr[i] = temp
+    return arr
 
-	
 def max_heapify(arr, end):
     """ Max heapify helper for max_heap_sort
     """
@@ -36,7 +37,7 @@ def max_heapify(arr, end):
             # If no swap occured, no need to keep iterating
             else:
                 break
-		
+
 
 def min_heap_sort(arr):
     """ Heap Sort that uses a min heap to sort an array in ascending order
@@ -44,7 +45,7 @@ def min_heap_sort(arr):
     """
     for i in range(0, len(arr)-1):
         min_heapify(arr, i)
-	
+    return arr
 
 def min_heapify(arr, start):
     """ Min heapify helper for min_heap_sort
@@ -76,18 +77,15 @@ def min_heapify(arr, start):
             else:
                 break
 
-if __name__ == '__main__':
-	import timeit
-
-	array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
-	print("array:")
-	print(array)
-	print("Max Heapify:")
-	max_heap_sort(array)
-	print(array)
-	array = [1,5,65,23,57,1232,-1,-5,-2,242,100,4,423,2,564,9,0,10,43,64]
-	print("Min Heapify:")
-	min_heap_sort(array)
-	print(array)
-	print("Max Heapify Time:", timeit.timeit('max_heap_sort(array)', setup="from __main__ import max_heap_sort, array",number=10000))
-	print("Min Heapify Time:", timeit.timeit('min_heap_sort(array)', setup="from __main__ import min_heap_sort, array",number=10000))
+class TestSuite(unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_max_heap_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         max_heap_sort([1, 5, 65, 23, 57, 1232]))
+    def test_min_heap_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         min_heap_sort([1, 5, 65, 23, 57, 1232]))
+if __name__ == "__main__":
+    unittest.main()

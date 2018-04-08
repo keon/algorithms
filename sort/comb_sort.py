@@ -5,7 +5,7 @@ https://en.wikipedia.org/wiki/Comb_sort
 Worst-case performance: O(N^2)
 
 """
-
+import unittest
 from math import floor
 
 
@@ -32,10 +32,14 @@ def comb_sort(arr):
                 swap(i, i + gap)
                 sorted = False
             i = i + 1
+    return arr
 
-
-array = [1, 5, 65, 23, 57, 1232, -1, -5, -2, 242, 100,
-         4, 423, 2, 564, 9, 0, 10, 43, 64, 32, 1, 999]
-print(array)
-comb_sort(array)
-print(array)
+class TestSuite(unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_comb_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         comb_sort([1, 5, 65, 23, 57, 1232]))
+if __name__ == "__main__":
+    unittest.main()
