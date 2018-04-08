@@ -23,11 +23,6 @@ for the board lol).
 
 import unittest
 
-try:
-    xrange
-except:
-    xrange = range
-
 class Sudoku: 
     def __init__ (self, board, row, col):
         self.board = board
@@ -38,8 +33,8 @@ class Sudoku:
     def possible_values(self):
         a = "123456789"
         d, val = {}, {}
-        for i in xrange(self.row):
-            for j in xrange(self.col):
+        for i in range(self.row):
+            for j in range(self.col):
                 ele = self.board[i][j]
                 if ele != ".":
                     d[("r", i)] = d.get(("r", i), []) + [ele]
