@@ -98,6 +98,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [merge_sorted_k_lists](heap/merge_sorted_k_lists.py)
     - [skyline](heap/skyline.py)
     - [sliding_window_max](heap/sliding_window_max.py)
+    - [binary_heap](heap/binary_heap.py)
 - [linkedlist](linkedlist)
     - [add_two_numbers](linkedlist/add_two_numbers.py)
     - [copy_random_pointer](linkedlist/copy_random_pointer.py)
