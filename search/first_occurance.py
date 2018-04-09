@@ -8,16 +8,14 @@ import unittest
 
 def firstOccurance(array, query):
     lo, hi = 0, len(array) - 1
-    while lo <= hi:
-        mid = (hi + lo) // 2
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
         #print("lo: ", lo, " hi: ", hi, " mid: ", mid)
-        if lo == hi:
-            break
         if array[mid] < query:
             lo = mid + 1
         else:
             hi = mid
-    if array[lo] == query:
+    if lo < len(array) and array[lo] == query:
       return lo
 
 class TestSuite(unittest.TestCase):
