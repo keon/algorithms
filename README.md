@@ -182,6 +182,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [remove_min](stack/remove_min.py)
     - [is_sorted](stack/is_sorted.py)
 - [strings](strings)
+    - [merge_string_checker](strings/merge_string_checker.py)
     - [add_binary](strings/add_binary.py)
     - [breaking_bad](strings/breaking_bad.py)
     - [decode_string](strings/decode_string.py)
