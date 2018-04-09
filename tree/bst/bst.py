@@ -31,10 +31,6 @@ class bst(object):
     def recur_size(self, root):
         if root is None:
             return 0
-        elif root.left is None:
-            return 1 + self.recur_size(root.right)
-        elif root.right is None:
-            return 1 + self.recur_size(root.left)
         else:
             return 1 + self.recur_size(root.left) + self.recur_size(root.right)
 
@@ -43,16 +39,13 @@ class bst(object):
         Using recursion. Complexity O(logN)
     """
     def search(self, data):
-        if self.root:
-            return self.recur_search(self.root, data)
-        else:
-            return False
+        return self.recur_search(self.root, data)
 
     def recur_search(self, root, data):
+        if root is None:
+            return False
         if root.data == data:
             return True
-        elif root.left is None and root.right is None:
-            return False
         elif data > root.data:     # Go to right root
             return self.recur_search(root.right, data)
         else:                      # Go to left root
