@@ -214,6 +214,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
         - [successor](tree/bst/successor.py)
         - [unique_bst](tree/bst/unique_bst.py)
         - [depth_sum](tree/bst/depth_sum.py)
+        - [count_left_node](tree/bst/count_left_node.py)
     - [red_black_tree](tree/red_black_tree)
         - [red_black_tree](tree/red_black_tree/red_black_tree.py)
     - [segment_tree](tree/segment_tree)
