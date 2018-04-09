@@ -216,6 +216,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
         - [depth_sum](tree/bst/depth_sum.py)
         - [count_left_node](tree/bst/count_left_node.py)
         - [num_empty](tree/bst/num_empty.py)
+        - [height](tree/bst/height.py)
     - [red_black_tree](tree/red_black_tree)
         - [red_black_tree](tree/red_black_tree/red_black_tree.py)
     - [segment_tree](tree/segment_tree)
