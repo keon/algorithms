@@ -1,3 +1,4 @@
+import unittest
 def insertion_sort(arr):
     """ Insertion Sort
         Complexity: O(n^2)
@@ -11,4 +12,16 @@ def insertion_sort(arr):
             pos = pos-1
         # Break and do the final swap
         arr[pos] = cursor
+     
     return arr
+
+class TestSuite(unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_insertion_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         insertion_sort([1, 5, 65, 23, 57, 1232]))
+
+if __name__ == "__main__":
+    unittest.main()

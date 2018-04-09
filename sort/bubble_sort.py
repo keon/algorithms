@@ -5,7 +5,7 @@ https://en.wikipedia.org/wiki/Bubble_sort
 Worst-case performance: O(N^2)
 
 """
-
+import unittest
 
 def bubble_sort(arr):
 
@@ -20,9 +20,14 @@ def bubble_sort(arr):
             if arr[i - 1] > arr[i]:
                 swap(i - 1, i)
                 swapped = True
+    return arr
 
-array = [1, 5, 65, 23, 57, 1232, -1, -5, -2, 242, 100,
-         4, 423, 2, 564, 9, 0, 10, 43, 64, 32, 1, 999]
-print(array)
-bubble_sort(array)
-print(array)
+class TestSuite(unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_bubble_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         bubble_sort([1, 5, 65, 23, 57, 1232]))
+if __name__ == "__main__":
+    unittest.main()

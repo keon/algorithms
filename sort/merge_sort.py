@@ -1,3 +1,4 @@
+import unittest
 def merge_sort(arr):
     """ Merge Sort
         Complexity: O(n log(n))
@@ -35,6 +36,12 @@ def merge(left, right):
    # Return result
     return arr
 
-array = [1,5, 7,4,3,2,1,9,0,10,43,64]
-print(array)
-print(merge_sort(array))
+class TestSuite(unittest.TestCase):
+    """
+        test suite for the function (above)
+    """
+    def test_merge_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         merge_sort([1, 5, 65, 23, 57, 1232]))
+if __name__ == "__main__":
+    unittest.main()
