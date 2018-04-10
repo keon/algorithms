@@ -1,16 +1,16 @@
-from delete_nth import delete_nth, delete_nth_naive
-from flatten import flatten, flatten_iter
-from garage import garage
-from josephus_problem import josephus
-from longest_non_repeat import longest_non_repeat, longest_non_repeat_two
-from merge_intervals import Interval, merge_v2
-from missing_ranges import missing_ranges
-from move_zeros_to_end import move_zeros
-from plus_one import plus_one, plus_one_v2, plus_one_v3
-from rotate_array import rotate_v1, rotate_v2, rotate_v3
-from summary_ranges import summary_ranges
-from three_sum import three_sum
-from two_sum import two_sum
+from array.delete_nth import delete_nth, delete_nth_naive
+from array.flatten import flatten, flatten_iter
+from array.garage import garage
+from array.josephus_problem import josephus
+from array.longest_non_repeat import longest_non_repeat, longest_non_repeat_two
+from array.merge_intervals import Interval, merge_v2
+from array.missing_ranges import missing_ranges
+from array.move_zeros_to_end import move_zeros
+from array.plus_one import plus_one, plus_one_v2, plus_one_v3
+from array.rotate_array import rotate_v1, rotate_v2, rotate_v3
+from array.summary_ranges import summary_ranges
+from array.three_sum import three_sum
+from array.two_sum import two_sum
 
 import unittest
 
@@ -274,5 +274,5 @@ class TestSuite(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    
+
     unittest.main()
