@@ -13,7 +13,6 @@ A solution set is:
   (-1, -1, 2)
 }
 """
-import unittest
 
 
 def three_sum(array):
@@ -47,19 +46,3 @@ def three_sum(array):
                 l += 1
                 r -= 1
     return res
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_three_sum(self):
-
-        self.assertSetEqual(three_sum([-1, 0, 1, 2, -1, -4]),
-                            {(-1, 0, 1), (-1, -1, 2)})
-
-        self.assertSetEqual(three_sum([-1, 3, 1, 2, -1, -4, -2]),
-                            {(-4, 1, 3), (-2, -1, 3), (-1, -1, 2)})
-
-
-if __name__ == "__main__":
-
-    unittest.main()
