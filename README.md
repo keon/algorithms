@@ -11,6 +11,10 @@ Minimal and clean example implementations of data structures and algorithms in P
 Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
 
 
+## Tests
+To run the tests, clone the repo and run :  
+ ```pytest```
+
 ## List of Implementations
 
 - [array](array)
