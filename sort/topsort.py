@@ -2,57 +2,47 @@
 Given a list of system packages,
 some packages cannot be installed until the other packages are installed.
 Provide a valid sequence to install all of the packages.
-
 e.g.
 a relies on b
 b relies on c
-
 then a valid sequence is [c, b, a]
 """
-
-depGraph = {
-
-    "a" : [ "b" ],
-    "b" : [ "c" ],
-    "c" :  [ 'e'],
-    'e' : [ ],
-    "d" : [ ],
-    "f" : ["e" , "d"]
-}
+import unittest
 
 
-given = [ "b", "c", "a", "d", "e", "f" ]
+def topological_sort(G):
 
-def retDeps(visited, start):
-    queue = []
-    out = []
-    queue.append(start)
-    while queue:
-        newNode = queue.pop(0)
-        if newNode not in visited:
-            visited.add(newNode)
-        for child in depGraph[newNode]:
-            queue.append(child)
-            out.append(child)
-    out.append(start)
-    return out
-
-
-def retDepGraph():
+    def topological_sort_util(G, out, visited, start):
+        if start in visited:
+          return
+        visited.add(start)
+        for child in G[start]:
+          topological_sort_util(G, out, visited, child)
+        out.append(start)
+    
     visited = set()
     out = []
-    # visited.add(given[0])
-    for pac in given:
-        if pac in visited:
-            continue
-        visited.add(pac)
-        #out.append(pac)
-        if pac in depGraph:
-            # find all children
-            for child in depGraph[pac]:
-                if child in visited:
-                    continue
-                out.extend(retDeps(visited, child))
-        out.append(pac)
-    print(out)
-retDepGraph()
+    for pac in G:
+      topological_sort_util(G, out, visited, pac)
+    return out
+  
+
+class TestSuite(unittest.TestCase):
+    
+    def test_topological_sort(self):
+        
+        dependencies = {
+                        "a" : ["b"],
+                        "b" : ["c"],
+                        "c" : ["e"],
+                        'e' : [],
+                        "d" : [],
+                        "f" : ["e", "d"]
+                        }
+        self.assertListEqual(topological_sort(dependencies),
+                             ['e', 'c', 'b', 'a', 'd', 'f'])
+
+
+if __name__ == '__main__':
+    
+    unittest.main()
