@@ -9,7 +9,7 @@ import unittest
 def firstOccurance(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
-        mid = lo + (hi - lo) // 2
+        mid = (lo + hi) // 2
         #print("lo: ", lo, " hi: ", hi, " mid: ", mid)
         if lo == hi:
             break
