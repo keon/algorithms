@@ -8,9 +8,10 @@ For example:
 Input: consider 123456789 members sitting in a circular fashion,
 Output: 369485271
 """
+import unittest
 
 
-def josepheus(int_list, skip):
+def josephus(int_list, skip):
     skip = skip - 1  # list starts with 0 index
     idx = 0
     len_list = (len(int_list))
@@ -19,22 +20,23 @@ def josepheus(int_list, skip):
         yield int_list.pop(idx)
         len_list -= 1
 
-import unittest
 
-class TestJosepheus(unittest.TestCase):
-    def test_josepheues(self):
+class TestJosephus(unittest.TestCase):
+
+    def test_josephus(self):
         a = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-        josepheus_generator = josepheus(a, 3)
-        self.assertEqual(next(josepheus_generator), '3')
-        self.assertEqual(next(josepheus_generator), '6')
-        self.assertEqual(next(josepheus_generator), '9')
-        self.assertEqual(next(josepheus_generator), '4')
-        self.assertEqual(next(josepheus_generator), '8')
-        self.assertEqual(next(josepheus_generator), '5')
-        self.assertEqual(next(josepheus_generator), '2')
-        self.assertEqual(next(josepheus_generator), '7')
-        self.assertEqual(next(josepheus_generator), '1')
-        self.assertRaises(StopIteration, next, josepheus_generator)
+        josephus_generator = josephus(a, 3)
+        self.assertEqual(next(josephus_generator), '3')
+        self.assertEqual(next(josephus_generator), '6')
+        self.assertEqual(next(josephus_generator), '9')
+        self.assertEqual(next(josephus_generator), '4')
+        self.assertEqual(next(josephus_generator), '8')
+        self.assertEqual(next(josephus_generator), '5')
+        self.assertEqual(next(josephus_generator), '2')
+        self.assertEqual(next(josephus_generator), '7')
+        self.assertEqual(next(josephus_generator), '1')
+        self.assertRaises(StopIteration, next, josephus_generator)
+
 
 if __name__ == "__main__":
     
