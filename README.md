@@ -14,9 +14,10 @@ Thanks for your interest in contributing! There are many ways to contribute to t
 ## List of Implementations
 
 - [array](array)
-    - [circular_counter](array/circular_counter.py)
+    - [delete_nth](array/delete_nth.py)
     - [flatten](array/flatten.py)
     - [garage](array/garage.py)
+    - [josephus_problem](array/josephus_problem.py)
     - [longest_non_repeat](array/longest_non_repeat.py/)
     - [merge_intervals](array/merge_intervals.py)
     - [missing_ranges](array/missing_ranges.py)
@@ -26,7 +27,6 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [three_sum](array/three_sum.py)
     - [two_sum](array/two_sum.py)
     - [move_zeros_to_end](array/move_zeros_to_end.py)
-    - [delete_nth](array/delete_nth.py)
 - [backtrack](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
