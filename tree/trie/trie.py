@@ -4,10 +4,14 @@ Implement a trie with insert, search, and startsWith methods.
 Note:
 You may assume that all inputs are consist of lowercase letters a-z.
 """
+import collections
+
+
 class TrieNode:
     def __init__(self):
         self.children = collections.defaultdict(TrieNode)
         self.is_word = False
+
 
 class Trie:
     def __init__(self):

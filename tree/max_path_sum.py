@@ -1,14 +1,15 @@
 
-maximum = float("-inf")
 
 def max_path_sum(root):
-    helper(root)
+    maximum = float("-inf")
+    helper(root, maximum)
     return maximum
 
-def helper(root):
+
+def helper(root, maximum):
     if not root:
         return 0
-    left = helper(root.left)
-    right = helper(root.right)
+    left = helper(root.left, maximum)
+    right = helper(root.right, maximum)
     maximum = max(maximum, left+right+root.val)
-    return root.val + max(left, right)
+    return root.val + maximum
