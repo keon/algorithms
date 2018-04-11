@@ -65,7 +65,7 @@ def valid_solution(board):
 
 
 # Using set
-def validSolution (board):
+def valid_solution_set (board):
     valid = set(range(1, 10))
     
     for row in board:
