@@ -26,7 +26,7 @@ Visually, the graph looks like the following:
          / \
          \_/
 """
-
+import collections
 
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
