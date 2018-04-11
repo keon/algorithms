@@ -75,21 +75,23 @@ def clone_graph2(node):
                 dic[node].neighbors.append(dic[neighbor])
     return node_copy
 
+
 # DFS recursively
-def cloneGraph(self, node):
+def clone_graph(node):
     if not node:
         return
-    nodeCopy = UndirectedGraphNode(node.label)
-    dic = {node: nodeCopy}
-    self.dfs(node, dic)
-    return nodeCopy
+    node_copy = UndirectedGraphNode(node.label)
+    dic = {node: node_copy}
+    dfs(node, dic)
+    return node_copy
 
-def dfs(self, node, dic):
+
+def dfs(node, dic):
     for neighbor in node.neighbors:
         if neighbor not in dic:
-            neighborCopy = UndirectedGraphNode(neighbor.label)
-            dic[neighbor] = neighborCopy
-            dic[node].neighbors.append(neighborCopy)
-            self.dfs(neighbor, dic)
+            neighbor_copy = UndirectedGraphNode(neighbor.label)
+            dic[neighbor] = neighbor_copy
+            dic[node].neighbors.append(neighbor_copy)
+            dfs(neighbor, dic)
         else:
             dic[node].neighbors.append(dic[neighbor])

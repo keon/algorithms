@@ -36,6 +36,6 @@ def reverse_list_recursive(head):
         return head
     p = head.next
     head.next = None
-    revrest = self.reverse(p)
+    revrest = reverse_list_recursive(p)
     p.next = head
     return revrest

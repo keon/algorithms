@@ -15,7 +15,7 @@ class Interval:
         self.end = end
 
     def __repr__(self):
-        return f"Interval ({self.start}, {self.end})"
+        return "Interval ({}, {})".format(self.start, self.end)
 
     def __iter__(self):
         return iter(range(self.start, self.end))
