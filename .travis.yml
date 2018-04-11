@@ -10,7 +10,7 @@ matrix:
         - python: nightly
         - python: pypy3
 install:
-    #- pip install -r requirements.txt
+    - pip install -r requirements.txt
     - pip install flake8  # pytest  # add another testing frameworks later
 before_script:
     # stop the build if there are Python syntax errors or undefined names
@@ -18,7 +18,7 @@ before_script:
     # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
     - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 script:
-    - true  # pytest --capture=sys  # add other tests here
+    - pytest
 notifications:
     on_success: change
     on_failure: change  # `always` will be the setting once code changes slow down

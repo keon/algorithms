@@ -1,0 +1,15 @@
+{
+  "array/test_array.py::TestDeleteNth": true,
+  "array/test_array.py::TestFlatten": true,
+  "array/test_array.py::TestGarage": true,
+  "array/test_array.py::TestJosephus": true,
+  "array/test_array.py::TestLongestNonRepeat": true,
+  "array/test_array.py::TestMergeInterval": true,
+  "array/test_array.py::TestMissingRanges": true,
+  "array/test_array.py::TestMoveZeros": true,
+  "array/test_array.py::TestPlusOne": true,
+  "array/test_array.py::TestRotateArray": true,
+  "array/test_array.py::TestSuite": true,
+  "array/test_array.py::TestSummaryRanges": true,
+  "array/test_array.py::TestThreeSum": true
+}

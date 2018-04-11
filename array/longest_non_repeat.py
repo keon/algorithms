@@ -8,7 +8,6 @@ Given "pwwkew", the answer is "wke", with the length of 3.
 Note that the answer must be a substring,
 "pwke" is a subsequence and not a substring.
 """
-import unittest
 
 
 def longest_non_repeat(string):
@@ -45,33 +44,3 @@ def longest_non_repeat_two(string):
             max_len = max(max_len, index - start + 1)
         used_char[char] = index
     return max_len
-
-
-class TestLongestNonRepeat(unittest.TestCase):
-
-    def test_longest_non_repeat(self):
-
-        string = "abcabcbb"
-        self.assertEqual(longest_non_repeat(string), 3)
-
-        string = "bbbbb"
-        self.assertEqual(longest_non_repeat(string), 1)
-        
-        string = "pwwkew"
-        self.assertEqual(longest_non_repeat(string), 3)
-
-    def test_longest_non_repeat_two(self):
-        
-        string = "abcabcbb"
-        self.assertEqual(longest_non_repeat_two(string), 3)
-
-        string = "bbbbb"
-        self.assertEqual(longest_non_repeat_two(string), 1)
-        
-        string = "pwwkew"
-        self.assertEqual(longest_non_repeat_two(string), 3)
-        
-
-if __name__ == "__main__":
-    
-    unittest.main()

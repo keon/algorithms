@@ -5,16 +5,18 @@ produce a single resultant array.
 """
 from collections import Iterable
 
+
 # return list
-def flatten(inputArr, outputArr=None):
-    if outputArr is None:
-        outputArr = []
-    for ele in inputArr:
+def flatten(input_arr, output_arr=None):
+    if output_arr is None:
+        output_arr = []
+    for ele in input_arr:
         if isinstance(ele, Iterable):
-            flatten(ele, outputArr)
+            flatten(ele, output_arr)
         else:
-            outputArr.append(ele)
-    return outputArr
+            output_arr.append(ele)
+    return output_arr
+
 
 # returns iterator
 def flatten_iter(iterable):
@@ -27,52 +29,3 @@ def flatten_iter(iterable):
             yield from flatten(element)
         else:
             yield element
-
-import unittest
-
-class TestFlatten(unittest.TestCase):
-    def test_flatten(self):
-        nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
-        flattened = flatten(nested_list)
-        self.assertEqual(flattened, [2, 1, 3, 4, 5, 6, 7, 8])
-        
-        nested_list = [[3, [4, 5], 6], 7, [8]]
-        flattened = flatten(nested_list)
-        self.assertEqual(flattened, [3, 4, 5, 6, 7, 8])
-        
-        nested_list = [[], [8]]
-        flattened = flatten(nested_list)
-        self.assertEqual(flattened, [8])
-        
-    def test_flatten_iter(self):
-        nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
-        flattened = flatten_iter(nested_list)
-        self.assertEqual(next(flattened), 2)
-        self.assertEqual(next(flattened), 1)
-        self.assertEqual(next(flattened), 3)
-        self.assertEqual(next(flattened), 4)
-        self.assertEqual(next(flattened), 5)
-        self.assertEqual(next(flattened), 6)
-        self.assertEqual(next(flattened), 7)
-        self.assertEqual(next(flattened), 8)
-        self.assertRaises(StopIteration, next, flattened)
-        
-        nested_list = [[3, [4, 5], 6], 7, [8]]
-        flattened = flatten_iter(nested_list)
-        self.assertEqual(next(flattened), 3)
-        self.assertEqual(next(flattened), 4)
-        self.assertEqual(next(flattened), 5)
-        self.assertEqual(next(flattened), 6)
-        self.assertEqual(next(flattened), 7)
-        self.assertEqual(next(flattened), 8)
-        self.assertRaises(StopIteration, next, flattened)
-        
-        nested_list = [[], [8]]
-        flattened = flatten_iter(nested_list)
-        self.assertEqual(next(flattened), 8) 
-        self.assertRaises(StopIteration, next, flattened)
-
-
-if __name__ == "__main__":
-    
-    unittest.main()
