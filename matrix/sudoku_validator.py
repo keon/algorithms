@@ -84,7 +84,7 @@ def valid_solution_set (board):
     return True
 
 # test cases
-# Can be run on both functions but to avoid congestion I'll leave testing all the functions to the reader.
+# To avoid congestion I'll leave testing all the functions to the reader. Just change the name of the function in the below test cases.
 import unittest
 class TestSuite(unittest.TestCase):
     def test_valid(self):
