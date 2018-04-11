@@ -23,7 +23,7 @@ def domain_name(url):
     return actual_domain[0]
 
 
-    # pythonic onliner
+    # pythonic one liner
     def domain_name(url):
     return url.split("//")[-1].split("www.")[-1].split(".")[0]
 
