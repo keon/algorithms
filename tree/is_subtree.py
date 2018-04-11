@@ -43,6 +43,7 @@
 
 # Follow up:
 # What if one tree is significantly lager than the other?
+import collections
 
 
 def is_subtree(big, small):
