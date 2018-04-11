@@ -6,16 +6,15 @@ The board is always 9 cells by 9 cells, and every cell only contains integers fr
 """
 
 # Using dict/hash-table
-def validSolution(board):
-    print(board)
-    from collections import defaultdict
-    for i in range(0, len(board)):
+from collections import defaultdict
+def valid_solution_hashtable(board):
+    for i in range(len(board)):
         dict_row = defaultdict(int)
         dict_col = defaultdict(int)
-        for j in range(0, len(board[0])):
+        for j in range(len(board[0])):
             value_row = board[i][j]
             value_col = board[j][i]
-            if value_row == 0 or value_col == 0:
+            if not value_row or value_col == 0:
                 return False
             if value_row in dict_row:
                 return False
@@ -39,8 +38,8 @@ def validSolution(board):
 
 
 # Without hash-table/dict
-correct = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-def validSolution(board):
+def valid_solution(board):
+    correct = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     # check rows
     for row in board:
         if sorted(row) != correct:
@@ -63,3 +62,52 @@ def validSolution(board):
     
     # if everything correct
     return True
+
+
+# Using set
+def valid_solution_set (board):
+    valid = set(range(1, 10))
+    
+    for row in board:
+        if set(row) != valid: 
+            return False
+    
+    for col in [[row[i] for row in board] for i in range(9)]:
+        if set(col) != valid: 
+            return False
+    
+    for x in range(3):
+        for y in range(3):
+            if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
+                return False
+    
+    return True
+
+# test cases
+# To avoid congestion I'll leave testing all the functions to the reader. Just change the name of the function in the below test cases.
+import unittest
+class TestSuite(unittest.TestCase):
+    def test_valid(self):
+        self.assertTrue(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+                         [6, 7, 2, 1, 9, 5, 3, 4, 8],
+                         [1, 9, 8, 3, 4, 2, 5, 6, 7],
+                         [8, 5, 9, 7, 6, 1, 4, 2, 3],
+                         [4, 2, 6, 8, 5, 3, 7, 9, 1],
+                         [7, 1, 3, 9, 2, 4, 8, 5, 6],
+                         [9, 6, 1, 5, 3, 7, 2, 8, 4],
+                         [2, 8, 7, 4, 1, 9, 6, 3, 5],
+                         [3, 4, 5, 2, 8, 6, 1, 7, 9]])
+        
+        def test_invalid(self):
+            self.assertFalse(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+                         [6, 7, 2, 1, 9, 0, 3, 4, 9],
+                         [1, 0, 0, 3, 4, 2, 5, 6, 0],
+                         [8, 5, 9, 7, 6, 1, 0, 2, 0],
+                         [4, 2, 6, 8, 5, 3, 7, 9, 1],
+                         [7, 1, 3, 9, 2, 4, 8, 5, 6],
+                         [9, 0, 1, 5, 3, 7, 2, 1, 4],
+                         [2, 8, 7, 4, 1, 9, 6, 3, 5],
+                         [3, 0, 0, 4, 8, 1, 1, 7, 9]])
+                             
+if __name__ == "__main__":
+    unittest.main()
