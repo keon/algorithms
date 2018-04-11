@@ -259,6 +259,8 @@ The repo is maintained by
 * [Rahul Goswami](https://github.com/goswami-rahul)
 * [Christian Bender](https://github.com/christianbender)
 * [Ankit Agarwal](https://github.com/ankit167)
+* [Hai Hoang Dang](https://github.com/danghai)
+* [Sa'd](https://github.com/SaadBenn)
 
 And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
 who helped in building the repo.
