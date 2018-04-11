@@ -110,7 +110,7 @@ class bst(object):
                  /          /    \
                 7         20      30
                          /
-                       13
+                       18
 """
 
 class TestSuite(unittest.TestCase):
@@ -126,7 +126,7 @@ class TestSuite(unittest.TestCase):
         self.tree.insert(7)
         self.tree.insert(20)
         self.tree.insert(30)
-        self.tree.insert(13)
+        self.tree.insert(18)
 
     def test_search(self):
         self.assertTrue(self.tree.search(24))
