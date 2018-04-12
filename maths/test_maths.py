@@ -159,6 +159,13 @@ class TestPythagoras(unittest.TestCase):
 
 
 class TestRabinMiller(unittest.TestCase):
+    """[summary]
+    Test for the file rabin_miller.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
     def test_is_prime(self):
         self.assertTrue(is_prime(7,2))
         self.assertTrue(is_prime(13,11))
