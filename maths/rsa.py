@@ -30,18 +30,22 @@ from extended_gcd import * # extended_gcd
 generate a prime with k bits
 """
 def genprime(k):
+    random.seed()
     while True:
         n = random.randrange(2 ** (k - 1),2 ** k)
         if is_prime(n,128):
             return n
+
 
 """
 calculate the inverse of a mod m
 that is, find b such that (a * b) % m == 1
 """
 def modinv(a, m):
-        x, y, g = extended_gcd(a,m)
-        return x % m
+        b = 1
+        while ((a*b) % m != 1):
+            b += 1
+        return b
 
 """
 the RSA key generating algorithm
@@ -70,11 +74,11 @@ def generate_key(k):
     
     return n, e, d
 
-"""
-sample usage:
-n,e,d = generate_key(1024)
-data = 1337
-encrypted = pow(data,e,n)
-decrypted = pow(encrypted,d,n)
-assert decrypted == data
-"""
+
+#sample usage:
+# n,e,d = generate_key(16)
+# data = 20
+# encrypted = pow(data,e,n)
+# decrypted = pow(encrypted,d,n)
+# assert decrypted == data
+
