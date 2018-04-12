@@ -8,19 +8,21 @@ part1:  c   d   w         = cdw
 part2:    o   e   a r s   = oears
 """
 
+
 # Recursive Solution
 def is_merge_recursive(s, part1, part2):
     if not part1:
-      return s == part2
+        return s == part2
     if not part2:
-      return s == part1
+        return s == part1
     if not s:
-      return part1 + part2 == ''
-    if s[0] == part1[0] and is_merge(s[1:], part1[1:], part2):
-      return True
-    if s[0] == part2[0] and is_merge(s[1:], part1, part2[1:]):
-      return True
+        return part1 + part2 == ''
+    if s[0] == part1[0] and is_merge_recursive(s[1:], part1[1:], part2):
+        return True
+    if s[0] == part2[0] and is_merge_recursive(s[1:], part1, part2[1:]):
+        return True
     return False
+
 
 # An iterative approach
 def is_merge_iterative(s, part1, part2):

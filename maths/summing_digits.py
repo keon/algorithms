@@ -15,19 +15,19 @@ def sum_dig_pow(a, b):
     for number in range(a, b + 1):
         exponent = 1  # set to 1
         sum = 0    # set to 1
-        number_as_string = str(i)
+        number_as_string = str(number)
 
-        tokens = list(map(int, number_as_string)) # parse the string into individual digits
+        tokens = list(map(int, number_as_string))  # parse the string into individual digits
 
         for k in tokens:
             sum = sum + (k ** exponent)
-            exponent +=1
+            exponent += 1
 
         if sum == number:
             result.append(number)
     return result
 
-# Some test cases:
 
-sum_dig_pow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
-sum_dig_pow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+# Some test cases:
+assert sum_dig_pow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+assert sum_dig_pow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]

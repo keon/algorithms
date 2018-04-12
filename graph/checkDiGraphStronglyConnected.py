@@ -2,7 +2,7 @@ from collections import defaultdict
 
 class Graph:
 	def __init__(self,v):
-		self.v = v;
+		self.v = v
 		self.graph = defaultdict(list)
 
 	def add_edge(self,u,v):

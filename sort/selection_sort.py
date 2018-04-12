@@ -1,4 +1,6 @@
 import unittest
+
+
 def selection_sort(arr):
     """ Selection Sort
         Complexity: O(n^2)
@@ -9,7 +11,7 @@ def selection_sort(arr):
             # "Select" the correct value
             if arr[j] < arr[minimum]:
                 minimum = j
-        # Using a pythonic swap
+
         arr[minimum], arr[i] = arr[i], arr[minimum]
     return arr
 
@@ -23,5 +25,5 @@ class TestSuite(unittest.TestCase):
                          selection_sort([1, 5, 65, 23, 57, 1232]))
 
         
-if_name__ == "__main__":
+if __name__ == "__main__":
     unittest.main()
