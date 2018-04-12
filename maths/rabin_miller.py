@@ -22,7 +22,7 @@ with a 4 ** -k chance of being wrong
 """
 def is_prime(n, k):
     #precondition
-    assert(n >= 5, "the to tested number must been >= 5")
+    assert n >= 5, "the to tested number must been >= 5"
 
     r, d = pow2_factor(n - 1)
     
