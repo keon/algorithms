@@ -6,6 +6,7 @@ from is_strobogrammatic import is_strobogrammatic,is_strobogrammatic2
 from next_perfect_square import find_next_square,find_next_square2
 from primes_sieve_of_eratosthenes import primes
 from prime_test import prime_test, prime_test2
+from pythagoras import pythagoras
 
 import unittest
 
@@ -117,7 +118,7 @@ class TestPrimesSieveOfEratosthenes(unittest.TestCase):
 class TestPrimeTest (unittest.TestCase):
     """[summary]
     Test for the file prime_test.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -143,6 +144,18 @@ class TestPrimeTest (unittest.TestCase):
                 counter += 1
         self.assertEqual(25,counter)
         
+
+class TestPythagoras(unittest.TestCase):
+    """[summary]
+    Test for the file pythagoras.py 
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_pythagoras(self):
+        self.assertEqual("Hypotenuse = 3.605551275463989",pythagoras(3, 2, "?"))
+
 
 if __name__ == "__main__":
     unittest.main()
