@@ -8,6 +8,7 @@ from primes_sieve_of_eratosthenes import primes
 from prime_test import prime_test, prime_test2
 from pythagoras import pythagoras
 from rabin_miller import is_prime 
+from rsa import encrypt, decrypt, generate_key
 
 import unittest
 
@@ -161,7 +162,7 @@ class TestPythagoras(unittest.TestCase):
 class TestRabinMiller(unittest.TestCase):
     """[summary]
     Test for the file rabin_miller.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -170,6 +171,23 @@ class TestRabinMiller(unittest.TestCase):
         self.assertTrue(is_prime(7,2))
         self.assertTrue(is_prime(13,11))
         self.assertFalse(is_prime(6,2))
+
+
+# class TestRSA(unittest.TestCase):
+#     """[summary]
+#     Test for the file rsa.py
+
+#     Arguments:
+#         unittest {[type]} -- [description]
+#     """
+#     def test_encrypt_decrypt(self):
+#         self.assertEqual(7,decrypt(encrypt(7, 23, 143), 47, 143))
+#     def test_key_generator(self):
+#         n, e, d = generate_key(32)
+#         data = 2
+#         en = encrypt(data, e, n)
+#         dec = decrypt(en, d, n)
+#         self.assertEqual(data,dec)
 
 if __name__ == "__main__":
     unittest.main()

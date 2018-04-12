@@ -30,8 +30,9 @@ from extended_gcd import * # extended_gcd
 generate a prime with k bits
 """
 def genprime(k):
+    random.seed()
     while True:
-        n = random.randrange(2 ** (k - 1),2 ** k)
+        n = random.randrange(int(2 ** (k - 1)),int(2 ** k))
         if is_prime(n,128):
             return n
 
@@ -68,7 +69,14 @@ def generate_key(k):
     l = (p - 1) * (q - 1) # calculate totient function
     d = modinv(e,l)
     
-    return n, e, d
+    return int(n), int(e), int(d)
+
+def encrypt(data, e, n):
+    return pow(int(data), int(e), int(n))
+
+def decrypt(data, d, n):
+    return pow(int(data), int(d), int(n))
+
 
 """
 sample usage:
