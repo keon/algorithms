@@ -33,13 +33,3 @@ def comb_sort(arr):
                 sorted = False
             i = i + 1
     return arr
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_comb_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         comb_sort([1, 5, 65, 23, 57, 1232]))
-if __name__ == "__main__":
-    unittest.main()
