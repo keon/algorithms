@@ -173,21 +173,21 @@ class TestRabinMiller(unittest.TestCase):
         self.assertFalse(is_prime(6,2))
 
 
-# class TestRSA(unittest.TestCase):
-#     """[summary]
-#     Test for the file rsa.py
+class TestRSA(unittest.TestCase):
+    """[summary]
+    Test for the file rsa.py
 
-#     Arguments:
-#         unittest {[type]} -- [description]
-#     """
-#     def test_encrypt_decrypt(self):
-#         self.assertEqual(7,decrypt(encrypt(7, 23, 143), 47, 143))
-#     def test_key_generator(self):
-#         n, e, d = generate_key(32)
-#         data = 2
-#         en = encrypt(data, e, n)
-#         dec = decrypt(en, d, n)
-#         self.assertEqual(data,dec)
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_encrypt_decrypt(self):
+        self.assertEqual(7,decrypt(encrypt(7, 23, 143), 47, 143))
+    def test_key_generator(self):
+        n, e, d = generate_key(8)
+        data = 2
+        en = encrypt(data, e, n)
+        dec = decrypt(en, d, n)
+        self.assertEqual(data,dec)
 
 if __name__ == "__main__":
     unittest.main()
