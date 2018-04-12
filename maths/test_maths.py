@@ -4,6 +4,7 @@ from gcd import gcd,lcm
 from generate_strobogrammtic import gen_strobogrammatic,strobogrammaticInRange
 from is_strobogrammatic import is_strobogrammatic,is_strobogrammatic2
 from next_perfect_square import find_next_square,find_next_square2
+from primes_sieve_of_eratosthenes import primes
 
 import unittest
 
@@ -98,6 +99,18 @@ class TestNextPerfectSquare(unittest.TestCase):
     def test_find_next_square2(self):
         self.assertEqual(36,find_next_square2(25))
         self.assertEqual(1,find_next_square2(0))
+
+
+class TestPrimesSieveOfEratosthenes(unittest.TestCase):
+    """[summary]
+    Test for the file primes_sieve_of_eratosthenes.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_primes(self):
+        self.assertEqual([2, 3, 5, 7],primes(7))
 
 
 if __name__ == "__main__":
