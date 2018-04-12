@@ -7,6 +7,7 @@ from next_perfect_square import find_next_square,find_next_square2
 from primes_sieve_of_eratosthenes import primes
 from prime_test import prime_test, prime_test2
 from pythagoras import pythagoras
+from rabin_miller import is_prime 
 
 import unittest
 
@@ -156,6 +157,12 @@ class TestPythagoras(unittest.TestCase):
     def test_pythagoras(self):
         self.assertEqual("Hypotenuse = 3.605551275463989",pythagoras(3, 2, "?"))
 
+
+class TestRabinMiller(unittest.TestCase):
+    def test_is_prime(self):
+        self.assertTrue(is_prime(7,2))
+        self.assertTrue(is_prime(13,11))
+        self.assertFalse(is_prime(6,2))
 
 if __name__ == "__main__":
     unittest.main()
