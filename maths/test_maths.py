@@ -5,6 +5,7 @@ from generate_strobogrammtic import gen_strobogrammatic,strobogrammaticInRange
 from is_strobogrammatic import is_strobogrammatic,is_strobogrammatic2
 from next_perfect_square import find_next_square,find_next_square2
 from primes_sieve_of_eratosthenes import primes
+from prime_test import prime_test, prime_test2
 
 import unittest
 
@@ -112,6 +113,36 @@ class TestPrimesSieveOfEratosthenes(unittest.TestCase):
     def test_primes(self):
         self.assertEqual([2, 3, 5, 7],primes(7))
 
+
+class TestPrimeTest (unittest.TestCase):
+    """[summary]
+    Test for the file prime_test.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_prime_test(self):
+        """
+            checks all prime numbers between 2 up to 100.
+            Between 2 up to 100 exists 25 prime numbers!
+        """
+        counter = 0
+        for i in range(2,101):
+            if prime_test(i):
+                counter += 1
+        self.assertEqual(25,counter)
+    def test_prime_test2(self):
+        """
+            checks all prime numbers between 2 up to 100.
+            Between 2 up to 100 exists 25 prime numbers!
+        """
+        counter = 0
+        for i in range(2,101):
+            if prime_test(i):
+                counter += 1
+        self.assertEqual(25,counter)
+        
 
 if __name__ == "__main__":
     unittest.main()
