@@ -30,6 +30,7 @@ from extended_gcd import * # extended_gcd
 generate a prime with k bits
 """
 def genprime(k):
+    random.seed()
     while True:
         n = random.randrange(2 ** (k - 1),2 ** k)
         if is_prime(n,128):
