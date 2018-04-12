@@ -36,13 +36,16 @@ def genprime(k):
         if is_prime(n,128):
             return n
 
+
 """
 calculate the inverse of a mod m
 that is, find b such that (a * b) % m == 1
 """
 def modinv(a, m):
-        x, y, g = extended_gcd(a,m)
-        return x % m
+        b = 1
+        while ((a*b) % m != 1):
+            b += 1
+        return b
 
 """
 the RSA key generating algorithm
@@ -78,11 +81,11 @@ def decrypt(data, d, n):
     return pow(int(data), int(d), int(n))
 
 
-"""
-sample usage:
-n,e,d = generate_key(1024)
-data = 1337
-encrypted = pow(data,e,n)
-decrypted = pow(encrypted,d,n)
-assert decrypted == data
-"""
+
+#sample usage:
+# n,e,d = generate_key(16)
+# data = 20
+# encrypted = pow(data,e,n)
+# decrypted = pow(encrypted,d,n)
+# assert decrypted == data
+

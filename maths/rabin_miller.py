@@ -38,7 +38,11 @@ def is_prime(n, k):
             return False
         
         for _ in range(r - 1):
+<<<<<<< HEAD
             x = pow(int(x), 2, int(n))
+=======
+            x = pow(int(x), int(2), int(n))
+>>>>>>> fixed_rsa
             
             if x == 1:
                 return True
