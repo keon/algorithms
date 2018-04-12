@@ -5,6 +5,7 @@ from heap_sort import max_heap_sort, min_heap_sort
 from insertion_sort import insertion_sort
 from merge_sort import merge_sort
 from quick_sort import quick_sort
+from selection_sort import selection_sort
 
 import unittest
 
@@ -40,6 +41,10 @@ class TestSuite(unittest.TestCase):
         def test_quick_sort(self):
             self.assertEqual([1, 5, 23, 57, 65, 1232],
                              quick_sort([1, 5, 65, 23, 57, 1232], 0, 5))
+
+        def test_selection_sort(self):
+            self.assertEqual([1, 5, 23, 57, 65, 1232],
+                             selection_sort([1, 5, 65, 23, 57, 1232]))
 
 if __name__ == "__main__":
     unittest.main()
