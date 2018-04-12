@@ -140,6 +140,7 @@ To run the tests, clone the repo and run :
     - [sqrt_precision_factor](maths/sqrt_precision_factor.py)
     - [summing_digits](maths/summing_digits.py)
 - [matrix](matrix)
+    - [sudoku_validator](matrix/sudoku_validator.py)
     - [bomb_enemy](matrix/bomb_enemy.py)
     - [copy_transform](matrix/copy_transform.py)
     - [count_paths](matrix/count_paths.py)
