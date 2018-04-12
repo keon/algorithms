@@ -2,6 +2,7 @@ from bubble_sort import bubble_sort
 from comb_sort import comb_sort
 from counting_sort import counting_sort
 from heap_sort import max_heap_sort, min_heap_sort
+from insertion_sort import insertion_sort
 
 import unittest
 
@@ -25,6 +26,10 @@ class TestSuite(unittest.TestCase):
                              max_heap_sort([1, 5, 65, 23, 57, 1232]))
             self.assertEqual([1, 5, 23, 57, 65, 1232],
                              min_heap_sort([1, 5, 65, 23, 57, 1232]))
+
+        def test_insertion_sort(self):
+            self.assertEqual([1, 5, 23, 57, 65, 1232],
+                             insertion_sort([1, 5, 65, 23, 57, 1232]))
 
 if __name__ == "__main__":
     unittest.main()
