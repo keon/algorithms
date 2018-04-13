@@ -90,6 +90,22 @@ class TestSuite(unittest.TestCase):
         # bin(2**32 - 1) => 11111111111111111111111111111111
         self.assertEqual(2**32 - 1, reverse_bits(2**32 - 1))
 
+    def test_single_number(self):
+
+        random.seed('test')
+
+        self.assertEqual(0, single_number([1, 0, 2, 1, 2, 3, 3]))
+        self.assertEqual(101, single_number([101]))
+
+        single = random.randint(1, 100000)
+        nums = [random.randint(1, 100000) for _ in range(1000)]
+        nums *= 2  # nums contains pairs of random integers
+        nums.append(single)
+        random.shuffle(nums)
+
+        self.assertEqual(single, single_number(nums))
+
+
 
 
 if __name__ == '__main__':
