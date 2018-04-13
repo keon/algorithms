@@ -5,7 +5,6 @@ https://en.wikipedia.org/wiki/Comb_sort
 Worst-case performance: O(N^2)
 
 """
-import unittest
 from math import floor
 
 
