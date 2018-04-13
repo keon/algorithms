@@ -17,10 +17,6 @@ integers and mod by 3,
 the remaining should be the exact bit of the single number.
 In this way, you get the 32 bits of the single number.
 """
-import unittest
-import random
-
-
 def single_number(nums):
     """
     :type nums: List[int]

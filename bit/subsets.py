@@ -18,9 +18,6 @@ If nums = [1,2,3], a solution is:
     (2, 3)
 }
 """
-import unittest
-
-
 def subsets(nums):
     """
     :param nums: List[int]
@@ -35,26 +32,6 @@ def subsets(nums):
         res.add(subset)
 
     return res
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_subsets(self):
-
-        self.assertSetEqual(subsets([1, 2, 3]),
-                            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)})
-
-        self.assertSetEqual(subsets([10, 20, 30, 40]),
-                            {(10, 40), (10, 20, 40), (10, 30), (10, 20, 30, 40), (40,),
-                             (10, 30, 40), (30,), (20, 30), (30, 40), (10,), (),
-                             (10, 20), (20, 40), (20, 30, 40), (10, 20, 30), (20,)})
-
-
-if __name__ == '__main__':
-
-    unittest.main()
-
-
 """
 this explanation is from leet_nik @ leetcode
 This is an amazing solution. Learnt a lot.
