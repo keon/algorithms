@@ -33,7 +33,7 @@ def valid_solution_hashtable(board):
                 for l in range(3):
                     grid_add += board[i*3+k][j*3+l]
             if grid_add != 45:
-                return False    
+                return False
     return True
 
 
@@ -44,22 +44,22 @@ def valid_solution(board):
     for row in board:
         if sorted(row) != correct:
             return False
-    
+
     # check columns
     for column in zip(*board):
         if sorted(column) != correct:
             return False
-    
+
     # check regions
     for i in range(3):
         for j in range(3):
             region = []
             for line in board[i*3:(i+1)*3]:
                 region += line[j*3:(j+1)*3]
-            
+
             if sorted(region) != correct:
                 return False
-    
+
     # if everything correct
     return True
 
@@ -67,20 +67,20 @@ def valid_solution(board):
 # Using set
 def valid_solution_set (board):
     valid = set(range(1, 10))
-    
+
     for row in board:
-        if set(row) != valid: 
+        if set(row) != valid:
             return False
-    
+
     for col in [[row[i] for row in board] for i in range(9)]:
-        if set(col) != valid: 
+        if set(col) != valid:
             return False
-    
+
     for x in range(3):
         for y in range(3):
             if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
                 return False
-    
+
     return True
 
 # test cases
@@ -88,7 +88,7 @@ def valid_solution_set (board):
 import unittest
 class TestSuite(unittest.TestCase):
     def test_valid(self):
-        self.assertTrue(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+        self.assertTrue(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2],
                          [6, 7, 2, 1, 9, 5, 3, 4, 8],
                          [1, 9, 8, 3, 4, 2, 5, 6, 7],
                          [8, 5, 9, 7, 6, 1, 4, 2, 3],
@@ -96,10 +96,10 @@ class TestSuite(unittest.TestCase):
                          [7, 1, 3, 9, 2, 4, 8, 5, 6],
                          [9, 6, 1, 5, 3, 7, 2, 8, 4],
                          [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                         [3, 4, 5, 2, 8, 6, 1, 7, 9]])
-        
+                         [3, 4, 5, 2, 8, 6, 1, 7, 9]]))
+
     def test_invalid(self):
-        self.assertFalse(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
+        self.assertFalse(valid_solution([[5, 3, 4, 6, 7, 8, 9, 1, 2],
                          [6, 7, 2, 1, 9, 0, 3, 4, 9],
                          [1, 0, 0, 3, 4, 2, 5, 6, 0],
                          [8, 5, 9, 7, 6, 1, 0, 2, 0],
@@ -107,7 +107,7 @@ class TestSuite(unittest.TestCase):
                          [7, 1, 3, 9, 2, 4, 8, 5, 6],
                          [9, 0, 1, 5, 3, 7, 2, 1, 4],
                          [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                         [3, 0, 0, 4, 8, 1, 1, 7, 9]])
-                             
+                         [3, 0, 0, 4, 8, 1, 1, 7, 9]]))
+
 if __name__ == "__main__":
     unittest.main()
