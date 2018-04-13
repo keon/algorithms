@@ -105,7 +105,15 @@ class TestSuite(unittest.TestCase):
 
         self.assertEqual(single, single_number(nums))
 
+    def test_single_number2(self):
 
+        self.assertEqual(3, single_number2([4, 2, 3, 2, 1, 1, 4, 2, 4, 1]))
+        single = random.randint(1, 100000)
+        nums = [random.randint(1, 100000) for _ in range(1000)]
+        nums *= 3  # nums contains triplets of random integers
+        nums.append(single)
+        random.shuffle(nums)
+        self.assertEqual(single, single_number2(nums))
 
 
 if __name__ == '__main__':
