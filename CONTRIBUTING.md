@@ -3,11 +3,16 @@
 We love pull requests from everyone. By contributing to this repository, you
 agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Get Started
-First [fork][fork] the repository and then clone it using:
+## Get Started  
 
-    git clone git@github.com:your-username/algorithms.git
+* First [fork][fork] the repository and then clone it using:
 
+    git clone git@github.com:your-username/algorithms.git  
+
+* After that create a branch for your changes. For example:  
+  * add_XXX if you will add new algorithms or data structures.  
+  * fix_XXX if you will fixe a bug on a certain algorithm or data structure.  
+  * test_XXX if you wrote a test/s.  
 
 You may contribute by:
 - implementing new algorithms in the repo. Be sure to keep it under
