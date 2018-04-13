@@ -5,8 +5,6 @@ https://en.wikipedia.org/wiki/Bubble_sort
 Worst-case performance: O(N^2)
 
 """
-import unittest
-
 def bubble_sort(arr):
 
     def swap(i, j):
