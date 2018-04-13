@@ -1,4 +1,3 @@
-import unittest
 def counting_sort(arr):
 	"""
     Counting_sort
@@ -35,15 +34,3 @@ def counting_sort(arr):
 		temp_arr[arr[i]] = temp_arr[arr[i]]-1
 
 	return result_arr
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_counting_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         counting_sort([1, 5, 65, 23, 57, 1232]))
-        self.assertEqual([-1232, -65, -57, -23, -5, -1],
-                         counting_sort([-1, -5, -65, -23, -57, -1232]))
-if __name__ == "__main__":
-    unittest.main()

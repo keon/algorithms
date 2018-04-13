@@ -1,4 +1,3 @@
-import unittest
 def quick_sort(arr, first, last):
     """ Quicksort
         Complexity: best O(n) avg O(n log(n)), worst O(N^2)
@@ -17,14 +16,3 @@ def partition(arr, first, last):
             wall += 1
     arr[wall], arr[last] = arr[last], arr[wall]
     return wall
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_quick_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         quick_sort([1, 5, 65, 23, 57, 1232], 0, 5))
-
-if __name__ == "__main__":
-    unittest.main()
