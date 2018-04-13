@@ -17,7 +17,7 @@ agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 You may contribute by:
 - implementing new algorithms in the repo. Be sure to keep it under
 right section (e.g. [array](array), [dp](dp), etc). Make a new section for it if
-it doesn't fall under any section.
+it doesn't fall under any section. Make sure that your implementation works.  
 - optimizing or improving the existing algorithms.
 - adding a different solution for the problem.
 - finding and fixing bugs.
