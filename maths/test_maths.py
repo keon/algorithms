@@ -12,7 +12,6 @@ from rsa import encrypt, decrypt, generate_key
 
 import unittest
 
-
 class TestBaseConversion(unittest.TestCase):
     """
     Test for the file base_conversion.py
@@ -182,12 +181,14 @@ class TestRSA(unittest.TestCase):
     """
     def test_encrypt_decrypt(self):
         self.assertEqual(7,decrypt(encrypt(7, 23, 143), 47, 143))
-    def test_key_generator(self):
-        n, e, d = generate_key(8)
-        data = 2
-        en = encrypt(data, e, n)
-        dec = decrypt(en, d, n)
-        self.assertEqual(data,dec)
+    def test_key_generator(self): # this test takes a while!
+        for i in range(100):
+            print("step {0}".format(i))
+            n, e, d = generate_key(26)
+            data = 2
+            en = encrypt(data, e, n)
+            dec = decrypt(en, d, n)
+            self.assertEqual(data,dec)
 
 if __name__ == "__main__":
     unittest.main()
