@@ -70,5 +70,14 @@ class TestSuite(unittest.TestCase):
         random.shuffle(nums)
         self.assertEqual(12345, find_missing_number2(nums))
 
+    def test_is_power_of_two(self):
+
+        self.assertTrue(is_power_of_two(64))
+        self.assertFalse(is_power_of_two(91))
+        self.assertTrue(is_power_of_two(2**1001))
+        self.assertTrue(is_power_of_two(1))
+        self.assertFalse(is_power_of_two(0))
+
+
 if __name__ == '__main__':
     unittest.main()
