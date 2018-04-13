@@ -78,6 +78,19 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_power_of_two(1))
         self.assertFalse(is_power_of_two(0))
 
+    def test_reverse_bits(self):
+
+        self.assertEqual(43261596, reverse_bits(964176192))
+        self.assertEqual(964176192, reverse_bits(43261596))
+        self.assertEqual(1, reverse_bits(2147483648))
+
+        # bin(0) => 00000000000000000000000000000000
+        self.assertEqual(0, reverse_bits(0))
+
+        # bin(2**32 - 1) => 11111111111111111111111111111111
+        self.assertEqual(2**32 - 1, reverse_bits(2**32 - 1))
+
+
 
 if __name__ == '__main__':
     unittest.main()
