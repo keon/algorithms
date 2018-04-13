@@ -1,7 +1,7 @@
 """
 Rabin-Miller primality test
 returning False implies that n is guaranteed composite
-returning True means that n is probaly prime
+returning True means that n is probably prime
 with a 4 ** -k chance of being wrong
 """
 import random
