@@ -13,4 +13,4 @@ def pythagoras(opposite,adjacent,hypotenuse):
         else:
             return "You already know the answer!"
     except:
-        print ("Error, check your input. You must know 2 of the 3 variables.")
+        raise ValueError("invalid argument were given.")
