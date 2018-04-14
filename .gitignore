@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 .idea/
 .cache/
+.pytest_cache/
