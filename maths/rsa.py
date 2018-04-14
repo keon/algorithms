@@ -26,6 +26,7 @@ import random
 from rabin_miller import * # is_prime
 from extended_gcd import * # extended_gcd
 
+
 """
 generate a prime with k bits
 """
