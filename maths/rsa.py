@@ -22,7 +22,6 @@ a number very quickly:
 """
 
 import random
-import math
 
 from rabin_miller import * # is_prime
 from extended_gcd import * # extended_gcd
