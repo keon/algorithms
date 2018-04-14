@@ -53,38 +53,4 @@ class Tarjan(object):
                 if w == v:
                     break
             sccs.append(scc)
-
-
-
-if __name__ == '__main__':
-    # Graph from https://en.wikipedia.org/wiki/File:Scc.png
-    example = {
-        'A': ['B'],
-        'B': ['C', 'E', 'F'],
-        'C': ['D', 'G'],
-        'D': ['C', 'H'],
-        'E': ['A', 'F'],
-        'F': ['G'],
-        'G': ['F'],
-        'H': ['D', 'G']
-    }
-
-    g = Tarjan(example)
-    print(g.sccs)
-
-    # Graph from https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm#/media/File:Tarjan%27s_Algorithm_Animation.gif
-    example = {
-        'A': ['E'],
-        'B': ['A'],
-        'C': ['B', 'D'],
-        'D': ['C'],
-        'E': ['B'],
-        'F': ['B', 'E', 'G'],
-        'G': ['F', 'C'],
-        'H': ['G', 'H', 'D']
-    }
-
-    g = Tarjan(example)
-    print(g.sccs)
-
     
