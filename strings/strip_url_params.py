@@ -6,10 +6,16 @@ Removes any query string parameters specified within the 2nd argument (optional 
 An example:
 www.saadbenn.com?a=1&b=2&a=2') // returns 'www.saadbenn.com?a=1&b=2'
 """
+import unittest
+from collections import defaultdict
+import urllib
+import urllib.parse
 
 # Here is a very non-pythonic grotesque solution
-from collections import defaultdict
-def strip_url_params(url, params_to_strip=[]):
+def strip_url_params1(url, params_to_strip=None):
+    
+    if not params_to_strip:
+        params_to_strip = []
     if url:
         result = '' # final result to be returned
         tokens = url.split('?')
@@ -63,7 +69,7 @@ def strip_url_params(url, params_to_strip=[]):
     return result
 
 # A very friendly pythonic solution (easy to follow)
-def strip_url_params(url, param_to_strip=[]):
+def strip_url_params2(url, param_to_strip=[]):
     if '?' not in url:
         return url
 
@@ -77,30 +83,36 @@ def strip_url_params(url, param_to_strip=[]):
 
 
 # Here is my friend's solution using python's builtin libraries
-import urlparse
-import urllib
-def strip_url_params(url, strip=None):
+def strip_url_params3(url, strip=None):
     if not strip: strip = []
     
-    parse = urlparse.urlparse(url)
-    query = urlparse.parse_qs(parse.query)
+    parse = urllib.parse.urlparse(url)
+    query = urllib.parse.parse_qs(parse.query)
     
-    query = {k: v[0] for k, v in query.iteritems() if k not in strip}
-    query = urllib.urlencode(query)
+    query = {k: v[0] for k, v in query.items() if k not in strip}
+    query = urllib.parse.urlencode(query)
     new = parse._replace(query=query)
     
     return new.geturl()
 
 
-import unittest
 class TestSuite(unittest.TestCase):
 
-    def test_valid(self):
-        self.assertEqual(strip_url_params("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        
-    def test_invalid(self):
-        self.assertEqual(strip_url_params("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1&b=2")
+    def test_strip_url_params1(self):
+    
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
 
+    
+    def test_strip_url_params2(self):
+    
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    
+    def test_strip_url_params3(self):
+    
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
 
 if __name__ == "__main__":
     unittest.main()
