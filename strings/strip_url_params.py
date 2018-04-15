@@ -64,16 +64,16 @@ def strip_url_params(url, params_to_strip=[]):
 
 # A very friendly pythonic solution (easy to follow)
 def strip_url_params(url, param_to_strip=[]):
-if '?' not in url:
-    return url
+    if '?' not in url:
+        return url
 
-queries = (url.split('?')[1]).split('&')
-queries_obj = [query[0] for query in queries]
-for i in range(len(queries_obj) - 1, 0, -1):
-    if queries_obj[i] in param_to_strip or queries_obj[i] in queries_obj[0:i]:
-        queries.pop(i)
+    queries = (url.split('?')[1]).split('&')
+    queries_obj = [query[0] for query in queries]
+    for i in range(len(queries_obj) - 1, 0, -1):
+        if queries_obj[i] in param_to_strip or queries_obj[i] in queries_obj[0:i]:
+            queries.pop(i)
 
-return url.split('?')[0] + '?' + '&'.join(queries)
+    return url.split('?')[0] + '?' + '&'.join(queries)
 
 
 # Here is my friend's solution using python's builtin libraries
