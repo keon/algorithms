@@ -53,27 +53,15 @@ def is_valid_coordinates_regular_expression(coordinates):
 
 
 class TestSuite(unittest.TestCase):
-	
-    def test_valid(self):
-    	valid_coordinates = [
-    		"-23, 25",
-    		"4, -3",
-    		"90, 180",
-    		"-90, -180"]
+	def test_valid(self):
+		valid_coordinates = ["-23, 25","4, -3","90, 180","-90, -180"]
+		for coordinate in valid_coordinates:
+			self.assertTrue(is_valid_coordinates(coordinate))
 
-    	for coordinate in valid_coordinates:
-    		self.assertTrue(is_valid_coordinates(coordinate))
-
-    def test_invalid(self):
-    	invalid_coordinates = [
-		"23.234, - 23.4234",
-		"99.234, 12.324",
-		"6.325624, 43.34345.345",
-		"0, 1,2",
-		"23.245, 1e1"]
-
-	for coordinate in invalid_coordinates:
-    		self.assertFalse(is_valid_coordinates(coordinate))
+	def test_invalid(self):
+		invalid_coordinates = ["23.234, - 23.4234","99.234, 12.324","6.325624, 43.34345.345","0, 1,2","23.245, 1e1"]
+		for coordinate in invalid_coordinates:
+			self.assertFalse(is_valid_coordinates(coordinate))
 
 
 if __name__ == "__main__":
