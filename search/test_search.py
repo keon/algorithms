@@ -33,6 +33,13 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(0, last_occurance(array, 1))
         self.assertEqual(13, last_occurance(array, 6))
 
+    def test_search_insert(self):
+        array = [1,3,5,6]
+        self.assertEqual(2, search_insert(array, 5))
+        self.assertEqual(1, search_insert(array, 2))
+        self.assertEqual(4, search_insert(array, 7))
+        self.assertEqual(0, search_insert(array, 0))
+
 if __name__ == '__main__':
 
     unittest.main()
