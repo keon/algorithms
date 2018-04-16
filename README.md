@@ -189,6 +189,7 @@ To run the tests, clone the repo and run :
     - [is_sorted](stack/is_sorted.py)
 - [strings](strings)
     - [strip_url_params](strings/strip_url_params.py)
+    - [validate_coordinates](strings/validate_coordinates.py)
     - [domain_extractor](strings/domain_extractor.py)
     - [merge_string_checker](strings/merge_string_checker.py)
     - [add_binary](strings/add_binary.py)
