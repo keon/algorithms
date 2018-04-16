@@ -1,4 +1,4 @@
-from binary_search import binary_search
+from binary_search import binary_search, binary_search_recur
 from first_occurance import first_occurance
 from last_occurance import last_occurance
 from search_insert import search_insert
@@ -27,6 +27,11 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(11, binary_search(array, 6))
         self.assertEqual(None, binary_search(array, 7))
         self.assertEqual(None, binary_search(array, -1))
+        # Test binary_search_recur
+        self.assertEqual(10, binary_search_recur(array, 0, 11, 5))
+        self.assertEqual(11, binary_search_recur(array, 0, 11, 6))
+        self.assertEqual(-1, binary_search_recur(array, 0, 11, 7))
+        self.assertEqual(-1, binary_search_recur(array, 0, 11, -1))
 
     def test_last_occurance(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
