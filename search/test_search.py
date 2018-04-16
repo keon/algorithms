@@ -5,6 +5,7 @@ from search_insert import search_insert
 from two_sum import two_sum, two_sum1, two_sum2
 from search_range import search_range
 from find_min_rotate import find_min_rotate, find_min_rotate_recur
+from search_rotate import search_rotate, search_rotate_recur
 
 import unittest
 
@@ -77,6 +78,13 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(0, find_min_rotate_recur(array, 0, 6))
         array = [10, 20, -1, 0, 1, 2, 3, 4, 5]
         self.assertEqual(-1, find_min_rotate_recur(array, 0, 8))
+
+    def test_search_rotate(self):
+        array = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]
+        self.assertEqual(8, search_rotate(array, 5))
+        self.assertEqual(-1, search_rotate(array, 9))
+        self.assertEqual(8, search_rotate_recur(array, 0, 11, 5))
+        self.assertEqual(-1, search_rotate_recur(array, 0, 11, 9))
 
 if __name__ == '__main__':
 
