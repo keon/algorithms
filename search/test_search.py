@@ -4,6 +4,7 @@ from last_occurance import last_occurance
 from search_insert import search_insert
 from two_sum import two_sum, two_sum1, two_sum2
 from search_range import search_range
+from find_min_rotate import find_min_rotate, find_min_rotate_recur
 
 import unittest
 
@@ -65,6 +66,17 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([3, 5], search_range(array, 8))
         self.assertEqual([1, 2], search_range(array, 7))
         self.assertEqual([-1, -1], search_range(array, 11))
+
+    def test_find_min_rotate(self):
+        array = [4, 5, 6, 7, 0, 1, 2]
+        self.assertEqual(0, find_min_rotate(array))
+        array = [10, 20, -1, 0, 1, 2, 3, 4, 5]
+        self.assertEqual(-1, find_min_rotate(array))
+        # Test find min using recursion
+        array = [4, 5, 6, 7, 0, 1, 2]
+        self.assertEqual(0, find_min_rotate_recur(array, 0, 6))
+        array = [10, 20, -1, 0, 1, 2, 3, 4, 5]
+        self.assertEqual(-1, find_min_rotate_recur(array, 0, 8))
 
 if __name__ == '__main__':
 
