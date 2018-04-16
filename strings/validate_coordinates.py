@@ -72,7 +72,7 @@ class TestSuite(unittest.TestCase):
 		"0, 1,2",
 		"23.245, 1e1"]
 
-		for coordinate in invalid_coordinates:
+	for coordinate in invalid_coordinates:
     		self.assertFalse(is_valid_coordinates(coordinate))
 
 
