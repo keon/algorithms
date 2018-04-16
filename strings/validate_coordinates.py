@@ -19,7 +19,7 @@ N23.43345, E32.6457
 """
 # I'll be adding my attempt as well as my friend's solution (took us ~ 1 hour)
 
-# my attempt 
+# my attempt
 def is_valid_coordinates_0(coordinates):
     print(coordinates)
     for char in coordinates:
@@ -51,7 +51,7 @@ import re
 def is_valid_coordinates_regular_expression(coordinates):
     return bool(re.match("-?(\d|[1-8]\d|90)\.?\d*, -?(\d|[1-9]\d|1[0-7]\d|180)\.?\d*$", coordinates))  
 
-
+import unittest
 class TestSuite(unittest.TestCase):
 	def test_valid(self):
 		valid_coordinates = ["-23, 25","4, -3","90, 180","-90, -180"]
