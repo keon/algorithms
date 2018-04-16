@@ -3,6 +3,7 @@ from first_occurance import first_occurance
 from last_occurance import last_occurance
 from search_insert import search_insert
 from two_sum import two_sum, two_sum1, two_sum2
+from search_range import search_range
 
 import unittest
 
@@ -53,6 +54,12 @@ class TestSuite(unittest.TestCase):
         # test two_sum2
         self.assertEqual([1, 2], two_sum2(array, 9))
         self.assertEqual([2, 4], two_sum2(array, 22))
+
+    def test_search_range(self):
+        array = [5, 7, 7, 8, 8, 8, 10]
+        self.assertEqual([3, 5], search_range(array, 8))
+        self.assertEqual([1, 2], search_range(array, 7))
+        self.assertEqual([-1, -1], search_range(array, 11))
 
 if __name__ == '__main__':
 
