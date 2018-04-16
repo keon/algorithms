@@ -1,6 +1,8 @@
 from binary_search import binary_search
 from first_occurance import first_occurance
 from last_occurance import last_occurance
+from search_insert import search_insert
+from two_sum import two_sum, two_sum1, two_sum2
 
 import unittest
 
@@ -39,6 +41,18 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(1, search_insert(array, 2))
         self.assertEqual(4, search_insert(array, 7))
         self.assertEqual(0, search_insert(array, 0))
+
+    def test_two_sum(self):
+        array = [2, 7, 11, 15]
+        # test two_sum
+        self.assertEqual([1, 2], two_sum(array, 9))
+        self.assertEqual([2, 4], two_sum(array, 22))
+        # test two_sum1
+        self.assertEqual([1, 2], two_sum1(array, 9))
+        self.assertEqual([2, 4], two_sum1(array, 22))
+        # test two_sum2
+        self.assertEqual([1, 2], two_sum2(array, 9))
+        self.assertEqual([2, 4], two_sum2(array, 22))
 
 if __name__ == '__main__':
 
