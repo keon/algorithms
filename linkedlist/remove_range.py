@@ -9,12 +9,6 @@ List becomes: [8, 13, 17, 23, 0, 92]
 
 legal range of the list (0 < start index < end index < size of list).
 """
-
-class Node:
-    def __init__(self,x):
-        self.val = x
-        self.next = None
-
 def remove_range(head, start, end):
     assert(start <= end)
     # Case: remove node at head
@@ -32,29 +26,3 @@ def remove_range(head, start, end):
             if current != None and current.next != None:
                 current.next = current.next.next
     return head
-
-if __name__ == "__main__":
-    # Test case: middle case.
-    head = Node(None)
-    head = Node(0)
-    head.next = Node(1)
-    head.next.next = Node(2)
-    head.next.next.next = Node(3)
-    head.next.next.next.next = Node(4)
-    result = remove_range(head,1,3)  # Expect output: 0 4
-    # Test case: taking out the front node
-    head = Node(None)
-    head = Node(0)
-    head.next = Node(1)
-    head.next.next = Node(2)
-    head.next.next.next = Node(3)
-    head.next.next.next.next = Node(4)
-    result = remove_range(head,0,1)  # Expect output: 2 3 4
-    # Test case: removing all the nodes
-    head = Node(None)
-    head = Node(0)
-    head.next = Node(1)
-    head.next.next = Node(2)
-    head.next.next.next = Node(3)
-    head.next.next.next.next = Node(4)
-    result = remove_range(head,0,7)  # Expect output: Null
