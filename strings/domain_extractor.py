@@ -23,8 +23,8 @@ def domain_name(url):
     return actual_domain[0]
 
 
-    # pythonic one liner
-    def domain_name(url):
+# pythonic one liner
+def domain_name(url):
     return url.split("//")[-1].split("www.")[-1].split(".")[0]
 
 
@@ -32,11 +32,10 @@ import unittest
 class TestSuite(unittest.TestCase):
 
     def test_valid(self):
-        self.assertTrue(domain_name("https://github.com/SaadBenn"), "github")
-        
+        self.assertEqual(domain_name("https://github.com/SaadBenn"), "github")
+             
     def test_invalid(self):
-        self.assert_equals(domain_name("http://google.com"), "http")
-
+        self.assertEqual(domain_name("http://google.com"), "http")
 
 if __name__ == "__main__":
     unittest.main()

@@ -22,13 +22,14 @@ def add_operator(num, target):
     helper(res, "", num, target, 0, 0, 0)
     return res
 
+
 def helper(res, path, num, target, pos, prev, multed):
     if pos == len(num):
-        if (target == prev):
+        if target == prev:
             res.append(path)
         return
     for i in range(pos, len(num)):
-        if i != pos and num[pos] == '0': # all digits have to be used
+        if i != pos and num[pos] == '0':  # all digits have to be used
             break
         cur = int(num[pos:i+1])
         if pos == 0:

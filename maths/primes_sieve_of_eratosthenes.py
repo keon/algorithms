@@ -31,7 +31,7 @@ def primes(x):
     primes = []                              # List of Primes
     if x >= 2:
         primes.append(2)                     # Add 2 by default
-    for i in range(0, sieve_size):
+    for i in range(sieve_size):
         if sieve[i] == 1:
             value_at_i = i*2 + 3
             primes.append(value_at_i)

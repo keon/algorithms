@@ -1,6 +1,7 @@
 English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md)
 
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 
 Pythonic Data Structures and Algorithms
 =========================================
@@ -11,12 +12,17 @@ Minimal and clean example implementations of data structures and algorithms in P
 Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
 
 
+## Tests
+To run the tests, clone the repo and run :  
+ ```pytest```
+
 ## List of Implementations
 
 - [array](array)
-    - [circular_counter](array/circular_counter.py)
+    - [delete_nth](array/delete_nth.py)
     - [flatten](array/flatten.py)
     - [garage](array/garage.py)
+    - [josephus_problem](array/josephus_problem.py)
     - [longest_non_repeat](array/longest_non_repeat.py/)
     - [merge_intervals](array/merge_intervals.py)
     - [missing_ranges](array/missing_ranges.py)
@@ -26,7 +32,6 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [three_sum](array/three_sum.py)
     - [two_sum](array/two_sum.py)
     - [move_zeros_to_end](array/move_zeros_to_end.py)
-    - [delete_nth](array/delete_nth.py)
 - [backtrack](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
@@ -183,6 +188,7 @@ Thanks for your interest in contributing! There are many ways to contribute to t
     - [remove_min](stack/remove_min.py)
     - [is_sorted](stack/is_sorted.py)
 - [strings](strings)
+    - [strip_url_params](strings/strip_url_params.py)
     - [domain_extractor](strings/domain_extractor.py)
     - [merge_string_checker](strings/merge_string_checker.py)
     - [add_binary](strings/add_binary.py)
@@ -257,6 +263,8 @@ The repo is maintained by
 * [Rahul Goswami](https://github.com/goswami-rahul)
 * [Christian Bender](https://github.com/christianbender)
 * [Ankit Agarwal](https://github.com/ankit167)
+* [Hai Hoang Dang](https://github.com/danghai)
+* [Saad](https://github.com/SaadBenn)
 
 And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
 who helped in building the repo.

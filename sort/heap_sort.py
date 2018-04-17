@@ -1,4 +1,3 @@
-import unittest
 def max_heap_sort(arr):
     """ Heap Sort that uses a max heap to sort an array in ascending order
         Complexity: O(n log(n))
@@ -76,16 +75,3 @@ def min_heapify(arr, start):
             # If no swap occured, no need to keep iterating
             else:
                 break
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_max_heap_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         max_heap_sort([1, 5, 65, 23, 57, 1232]))
-    def test_min_heap_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         min_heap_sort([1, 5, 65, 23, 57, 1232]))
-if __name__ == "__main__":
-    unittest.main()

@@ -1,7 +1,6 @@
 """
 Given a collection of intervals, merge all overlapping intervals.
 """
-import unittest
 
 
 class Interval:
@@ -16,7 +15,7 @@ class Interval:
         self.end = end
 
     def __repr__(self):
-        return f"Interval ({self.start}, {self.end})"
+        return "Interval ({}, {})".format(self.start, self.end)
 
     def __iter__(self):
         return iter(range(self.start, self.end))
@@ -77,27 +76,3 @@ def merge_v2(intervals):
         else:
             out.append(i)
     return out
-
-
-class TestMergeInterval(unittest.TestCase):
-
-    def test_merge(self):
-        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
-        intervals = [Interval(i[0], i[1]) for i in interval_list]
-        merged_intervals = Interval.merge(intervals)
-        self.assertEqual(
-            merged_intervals,
-            [Interval(1, 6), Interval(8, 10), Interval(15, 18)]
-        )
-
-    def test_merge_v2(self):
-        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
-        merged_intervals = merge_v2(interval_list)
-        self.assertEqual(
-            merged_intervals,
-            [[1, 6], [8, 10], [15, 18]]
-        )
-
-
-if __name__ == "__main__":
-    unittest.main()

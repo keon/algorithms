@@ -61,5 +61,5 @@ st= "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdirectory1\n\tsubdir2\n\t\tsubsubd
 st2 = "a\n\tb1\n\t\tf1.txt\n\taaaaa\n\t\tf2.txt"
 print("path:", st2)
 
-print("answer:", lengthLongestPath(st2))
+print("answer:", length_longest_path(st2))
 

@@ -8,7 +8,6 @@ Note:
 Try to come up as many solutions as you can,
 there are at least 3 different ways to solve this problem.
 """
-import unittest
 
 
 def rotate_v1(array, k):
@@ -60,32 +59,3 @@ def rotate_v3(array, k):
     length = len(array)
     k = k % length
     return array[length - k:] + array[:length - k]
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_rotate_v1(self):
-
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
-        self.assertListEqual(rotate_v1([1, 2], k=111), [2, 1])
-
-    def test_rotate_v2(self):
-
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
-        self.assertListEqual(rotate_v2([1, 2], k=111), [2, 1])
-
-    def test_rotate_v3(self):
-
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
-        self.assertListEqual(rotate_v3([1, 2], k=111), [2, 1])
-
-
-if __name__ == '__main__':
-
-    unittest.main()

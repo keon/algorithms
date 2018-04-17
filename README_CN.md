@@ -9,7 +9,7 @@ python版数据结构和算法实现的简约版小示例
 ## 实现列表
 
 - [array:数组](array)
-    - [circular_counter：约瑟夫环](array/circular_counter.py)
+    - [circular_counter：约瑟夫环](array/josephus_problem.py)
     - [flatten：数组降维](array/flatten.py)
     - [garage：停车场](array/garage.py)
     - [longest_non_repeat：最长不重复子串](array/longest_non_repeat.py/)

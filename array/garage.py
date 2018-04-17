@@ -30,7 +30,6 @@ Sequence :
 2 3 0 1 4
 0 3 2 1 4
 """
-import unittest
 
 
 def garage(initial, final):
@@ -53,20 +52,3 @@ def garage(initial, final):
         steps += 1
 
     return steps, seq
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_garage(self):
-
-        initial = [1, 2, 3, 0, 4]
-        final = [0, 3, 2, 1, 4]
-        steps, seq = garage(initial, final)
-
-        self.assertEqual(steps, 4)
-        self.assertListEqual(seq, [[0, 2, 3, 1, 4], [2, 0, 3, 1, 4], [2, 3, 0, 1, 4], [0, 3, 2, 1, 4]])
-
-
-if __name__ == "__main__":
-
-    unittest.main()
