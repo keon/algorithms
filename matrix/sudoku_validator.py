@@ -44,10 +44,12 @@ def valid_solution(board):
     for row in board:
         if sorted(row) != correct:
             return False
+
     # check columns
     for column in zip(*board):
         if sorted(column) != correct:
             return False
+
     # check regions
     for i in range(3):
         for j in range(3):
@@ -57,7 +59,7 @@ def valid_solution(board):
 
             if sorted(region) != correct:
                 return False
-    
+
     # if everything correct
     return True
 
@@ -78,6 +80,7 @@ def valid_solution_set (board):
         for y in range(3):
             if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
                 return False
+
     return True
 
 # test cases
