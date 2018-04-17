@@ -5,6 +5,7 @@ from swap_in_pairs import swap_pairs
 from rotate_list import rotate_right
 from is_cyclic import is_cyclic
 from merge_two_list import merge_two_list, merge_two_list_recur
+from is_palindrome import is_palindrome, is_palindrome_stack, is_palindrome_dict
 
 import unittest
 
@@ -24,6 +25,19 @@ def convert(head):
     return ret
 
 class TestSuite(unittest.TestCase):
+    def setUp(self):
+        # list test for palindrome
+        self.l = Node('A')
+        self.l.next = Node('B')
+        self.l.next.next = Node('C')
+        self.l.next.next.next = Node('B')
+        self.l.next.next.next.next = Node('A')
+
+        self.l1 = Node('A')
+        self.l1.next = Node('B')
+        self.l1.next.next = Node('C')
+        self.l1.next.next.next = Node('B')
+
     def test_reverse_list(self):
         head = Node(1)
         head.next = Node(2)
@@ -143,6 +157,16 @@ class TestSuite(unittest.TestCase):
         head2.next.next = Node(4)
         self.assertEqual([1, 1, 2, 3, 4, 4],
                          convert(merge_two_list_recur(head1, head2)))
+
+    def test_is_palindrome(self):
+        self.assertTrue(is_palindrome(self.l))
+        self.assertFalse(is_palindrome(self.l1))
+    def test_is_palindrome_stack(self):
+        self.assertTrue(is_palindrome_stack(self.l))
+        self.assertFalse(is_palindrome_stack(self.l1))
+    def test_is_palindrome_dict(self):
+        self.assertTrue(is_palindrome_dict(self.l))
+        self.assertFalse(is_palindrome_dict(self.l1))
 
 if __name__ == "__main__":
     unittest.main()
