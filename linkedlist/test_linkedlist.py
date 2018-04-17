@@ -4,6 +4,7 @@ from remove_range import remove_range
 from swap_in_pairs import swap_pairs
 from rotate_list import rotate_right
 from is_cyclic import is_cyclic
+from merge_two_list import merge_two_list, merge_two_list_recur
 
 import unittest
 
@@ -119,6 +120,29 @@ class TestSuite(unittest.TestCase):
             curr.next = Node(i)
             curr = curr.next
         self.assertFalse(is_cyclic(head))
+
+    def test_merge_two_list(self):
+        """
+        Input: head1:1->2->4, head2: 1->3->4
+        Output: 1->1->2->3->4->4
+        """
+        head1 = Node(1)
+        head1.next = Node(2)
+        head1.next.next = Node(4)
+        head2 = Node(1)
+        head2.next = Node(3)
+        head2.next.next = Node(4)
+        self.assertEqual([1, 1, 2, 3, 4, 4],
+                         convert(merge_two_list(head1, head2)))
+        # Test recursive
+        head1 = Node(1)
+        head1.next = Node(2)
+        head1.next.next = Node(4)
+        head2 = Node(1)
+        head2.next = Node(3)
+        head2.next.next = Node(4)
+        self.assertEqual([1, 1, 2, 3, 4, 4],
+                         convert(merge_two_list_recur(head1, head2)))
 
 if __name__ == "__main__":
     unittest.main()
