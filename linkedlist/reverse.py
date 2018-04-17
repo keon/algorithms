@@ -1,8 +1,10 @@
 """
-Reverse a singly linked list.
+Reverse a singly linked list. For example:
+
+1 --> 2 --> 3 --> 4
+After reverse:
+4 --> 3 --> 2 --> 1
 """
-
-
 #
 # Iterative solution
 # T(n)- O(n)
