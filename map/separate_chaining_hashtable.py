@@ -1,5 +1,4 @@
 import unittest
-from unittest import TestCase
 
 
 class Node(object):
@@ -15,7 +14,19 @@ class Node(object):
 
 class SeparateChainingHashTable(object):
     """
+    HashTable Data Type:
     By having each bucket contain a linked list of elements that are hashed to that bucket.
+
+    Usage:
+    >>> table = SeparateChainingHashTable() # Create a new, empty map.
+    >>> table.put('hello', 'world') # Add a new key-value pair.
+    >>> len(table) # Return the number of key-value pairs stored in the map.
+    1
+    >>> table.get('hello') # Get value by key.
+    'world'
+    >>> del table['hello'] # Equivalent to `table.del_('hello')`, deleting key-value pair.
+    >>> table.get('hello') is None # Return `None` if a key doesn't exist.
+    True
     """
     _empty = None
 
@@ -29,14 +40,13 @@ class SeparateChainingHashTable(object):
         node_ = self._table[hash_]
         if node_ is self._empty:
             self._table[hash_] = Node(key, value)
-            self._len += 1
-            return
-        while node_.next is not None:
-            if node_.key == key:
-                node_.value = value
-                return
-            node_ = node_.next
-        node_.next = Node(key, value)
+        else:
+            while node_.next is not None:
+                if node_.key == key:
+                    node_.value = value
+                    return
+                node_ = node_.next
+            node_.next = Node(key, value)
         self._len += 1
 
     def get(self, key):
@@ -78,7 +88,7 @@ class SeparateChainingHashTable(object):
         self.put(key, value)
 
 
-class TestSeparateChainingHashTable(TestCase):
+class TestSeparateChainingHashTable(unittest.TestCase):
     def test_one_entry(self):
         m = SeparateChainingHashTable(10)
         m.put(1, '1')
