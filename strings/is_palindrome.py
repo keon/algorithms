@@ -59,8 +59,7 @@ def is_palidrome_reverse(s):
 
 # Variation 2
 def is_palidrome_two_pointer(s):
-
-	for i in range(0 : len(s)/2):
+	for i in range(0, len(s)/2):
 		if (s[i] != s[len(s) - i - 1]):
 			return False
 	return True
