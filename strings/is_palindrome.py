@@ -51,15 +51,16 @@ def string_reverse(s):
 
 def is_palidrome_reverse(s):
 	reversed_string = string_reverse(s)
-
-	if (s == reversed_string):
+	
+	# can also get rid of the string_reverse function and just do this return s == s[::-1] in one line.
+	if (s == reversed_string): 
 		return True
 	return False	
 
 
 # Variation 2
 def is_palidrome_two_pointer(s):
-	for i in range(0, len(s)/2):
+	for i in range(0, len(s)//2):
 		if (s[i] != s[len(s) - i - 1]):
 			return False
 	return True
