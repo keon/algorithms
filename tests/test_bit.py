@@ -1,11 +1,11 @@
-from add_bitwise_operator import add_bitwise_operator
-from count_ones import count_ones_iter, count_ones_recur
-from find_missing_number import find_missing_number, find_missing_number2
-from power_of_two import is_power_of_two
-from reverse_bits import reverse_bits
-from single_number import single_number
-from single_number2 import single_number2
-from subsets import subsets
+from bit.add_bitwise_operator import add_bitwise_operator
+from bit.count_ones import count_ones_iter, count_ones_recur
+from bit.find_missing_number import find_missing_number, find_missing_number2
+from bit.power_of_two import is_power_of_two
+from bit.reverse_bits import reverse_bits
+from bit.single_number import single_number
+from bit.single_number2 import single_number2
+from bit.subsets import subsets
 
 import unittest
 import random

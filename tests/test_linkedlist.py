@@ -1,11 +1,11 @@
-from reverse import reverse_list, reverse_list_recursive
-from is_sorted import is_sorted
-from remove_range import remove_range
-from swap_in_pairs import swap_pairs
-from rotate_list import rotate_right
-from is_cyclic import is_cyclic
-from merge_two_list import merge_two_list, merge_two_list_recur
-from is_palindrome import is_palindrome, is_palindrome_stack, is_palindrome_dict
+from linkedlist.reverse import reverse_list, reverse_list_recursive
+from linkedlist.is_sorted import is_sorted
+from linkedlist.remove_range import remove_range
+from linkedlist.swap_in_pairs import swap_pairs
+from linkedlist.rotate_list import rotate_right
+from linkedlist.is_cyclic import is_cyclic
+from linkedlist.merge_two_list import merge_two_list, merge_two_list_recur
+from linkedlist.is_palindrome import is_palindrome, is_palindrome_stack, is_palindrome_dict
 
 import unittest
 
