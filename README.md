@@ -121,6 +121,7 @@ To run the tests, clone the repo and run :
     - [remove_range](linkedlist/remove_range.py)
 - [map](map)
     - [hashtable](map/hashtable.py)
+    - [separate_chaining_hashtable](map/separate_chaining_hashtable.py)
     - [longest_common_subsequence](map/longest_common_subsequence.py)
     - [randomized_set](map/randomized_set.py)
     - [valid_sudoku](map/valid_sudoku.py)

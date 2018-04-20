@@ -2,10 +2,6 @@ import unittest
 
 
 class Node(object):
-    key = None
-    value = None
-    next = None
-
     def __init__(self, key=None, value=None, next=None):
         self.key = key
         self.value = value
