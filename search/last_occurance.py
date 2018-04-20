@@ -3,9 +3,7 @@
 # Approach- Binary Search
 # T(n)- O(log n)
 #
-
-
-def lastOccurance(array, query):
+def last_occurance(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
         mid = (hi + lo) // 2
@@ -16,32 +14,3 @@ def lastOccurance(array, query):
             lo = mid + 1
         else:
             hi = mid - 1
-
-
-def main():
-    array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
-    print(array)
-    print("-----SEARCH-----")
-    query = 3
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = 5
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = 7
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = 1
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = -1
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = 9
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-    print("-----SEARCH-----")
-    query = 6
-    print("found last: ", query, " in index:", lastOccurance(array, query))
-
-if __name__ == "__main__":
-    main()

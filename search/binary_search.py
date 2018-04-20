@@ -4,8 +4,6 @@
 #       increasing order.
 # T(n): O(log n)
 #
-
-
 def binary_search(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
@@ -19,19 +17,13 @@ def binary_search(array, query):
             hi = mid - 1
     return None
 
-
-def main():
-    array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
-    print(array)
-    print("-----SEARCH-----")
-    print("found: ", 5, " in index:", binary_search(array, 5))
-    print("-----SEARCH-----")
-    print("found: ", 6, " in index:", binary_search(array, 6))
-    print("-----SEARCH-----")
-    print("found: ", 7, " in index:", binary_search(array, 7))
-    print("-----SEARCH-----")
-    print("found: ", -1, " in index:", binary_search(array, -1))
-    print("-----SEARCH-----")
-
-if __name__ == "__main__":
-    main()
+def binary_search_recur(array, low, high, val):
+    if low > high:       # error case
+        return -1
+    mid = (low + high) // 2
+    if val < array[mid]:
+        return binary_search_recur(array, low, mid - 1, val)
+    elif val > array[mid]:
+        return binary_search_recur(array, mid + 1, high, val)
+    else:
+        return mid

@@ -30,7 +30,7 @@ Push to your fork and [submit a pull request][pr].
 We will review and may suggest some changes or improvements or alternatives.
 Some things that will increase the chance that your pull request is accepted:
 
-* All algorithms should be written in **Python 3**. 
+* All algorithms should be written in **Python 3**.
 (There are a few algorithms still in _Python 2_ syntax. You can start by converting
 [those][issue120] to _Python 3_.)
 * Write clean and understandable code.
@@ -45,14 +45,20 @@ Submit a [new issue][newissue] if there is an algorithm to add, or if a bug was 
 
 ## Collaborators
 You can ask for any help or clarifications from the collaborators.  
-[Keon Kim](https://github.com/keon)  
-[Rahul Goswami](https://github.com/goswami-rahul)  
+[Keon Kim](https://github.com/keon)
+
+[Rahul Goswami](https://github.com/goswami-rahul)
+
 [Ankit Agarwal](https://github.com/ankit167)
+
+[Hai Hoang Dang](https://github.com/danghai)
+
+[Saad](https://github.com/SaadBenn)
 
 [fork]: https://help.github.com/articles/fork-a-repo/
 [docstr]: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 [commit]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [pr]: https://github.com/keon/algorithms/compare/
-[newissue]: https://github.com/keon/algorithms/issues/new 
+[newissue]: https://github.com/keon/algorithms/issues/new
 [issue120]: https://github.com/keon/algorithms/issues/120
 [issues]: https://github.com/keon/algorithms/issues/
