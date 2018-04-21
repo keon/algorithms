@@ -13,7 +13,10 @@ e.g. for n = 00010100000000000000000000000000
 only 2 iterations are required.
 
 Number of loops is
-equal to the number of 1s in the binary representation."""
+equal to the number of 1s in the binary representation.
+"""
+
+
 def count_ones_recur(n):
     """Using Brian Kernighan’s Algorithm. (Recursive Approach)"""
 
