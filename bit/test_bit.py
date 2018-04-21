@@ -1,6 +1,7 @@
 from bit.add_bitwise_operator import add_bitwise_operator
 from bit.count_ones import count_ones_iter, count_ones_recur
 from bit.find_missing_number import find_missing_number, find_missing_number2
+from bit.flip_bit_longest_seq import flip_bit_longest_seq
 from bit.power_of_two import is_power_of_two
 from bit.reverse_bits import reverse_bits
 from bit.single_number import single_number
@@ -82,6 +83,17 @@ class TestSuite(unittest.TestCase):
         nums = [i for i in range(100000) if i != 12345]
         random.shuffle(nums)
         self.assertEqual(12345, find_missing_number2(nums))
+
+    def test_flip_bit_longest_seq(self):
+
+        # 1775: 11011101111
+        self.assertEqual(8, flip_bit_longest_seq(1775))
+        # 5: 101
+        self.assertEqual(3, flip_bit_longest_seq(5))
+        # 71: 1000111
+        self.assertEqual(4, flip_bit_longest_seq(71))
+        # 0: 0
+        self.assertEqual(1, flip_bit_longest_seq(0))
 
     def test_is_power_of_two(self):
 
