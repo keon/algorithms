@@ -62,7 +62,7 @@ def kth_to_last(head, k):
     return p2
 
 
-def printLinkedList(head):
+def print_linked_list(head):
     string = ""
     while head.next:
         string += head.val + " -> "
@@ -89,7 +89,7 @@ def test():
     d.next = c2
     c2.next = f
     f.next = g
-    printLinkedList(a1)
+    print_linked_list(a1)
 
     # test kth_to_last_eval
     kth = kth_to_last_eval(a1, 4)

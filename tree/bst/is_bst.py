@@ -21,7 +21,7 @@ Binary tree [1,2,3], return false.
 """
 
 
-def is_BST(root):
+def is_bst(root):
     """
     :type root: TreeNode
     :rtype: bool

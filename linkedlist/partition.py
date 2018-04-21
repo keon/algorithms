@@ -18,7 +18,7 @@ class Node():
         self.next = None
 
 
-def printLinkedList(head):
+def print_linked_list(head):
     string = ""
     while head.next:
         string += str(head.val) + " -> "
@@ -67,9 +67,9 @@ def test():
     e.next = f
     f.next = g
 
-    printLinkedList(a)
+    print_linked_list(a)
     partition(a, 5)
-    printLinkedList(a)
+    print_linked_list(a)
 
 
 if __name__ == '__main__':

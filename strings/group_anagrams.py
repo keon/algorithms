@@ -13,7 +13,7 @@ Return:
 
 
 class Solution(object):
-    def groupAnagrams(self, strs):
+    def group_anagrams(self, strs):
         d = {}
         ans = []
         k = 0

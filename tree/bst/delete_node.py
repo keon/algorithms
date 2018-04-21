@@ -38,7 +38,7 @@ Another valid answer is [5,2,6,null,4,null,7].
 """
 
 class Solution(object):
-    def deleteNode(self, root, key):
+    def delete_node(self, root, key):
         """
         :type root: TreeNode
         :type key: int

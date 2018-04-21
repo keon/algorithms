@@ -37,19 +37,19 @@ into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 import heapq
 
-def get_skyline(LRH):
+def get_skyline(lrh):
     """
     Wortst Time Complexity: O(NlogN)
     :type buildings: List[List[int]]
     :rtype: List[List[int]]
     """
     skyline, live = [], []
-    i, n = 0, len(LRH)
+    i, n = 0, len(lrh)
     while i < n or live:
-        if not live or i < n and LRH[i][0] <= -live[0][1]:
-            x = LRH[i][0]
-            while i < n and LRH[i][0] == x:
-                heapq.heappush(live, (-LRH[i][2], -LRH[i][1]))
+        if not live or i < n and lrh[i][0] <= -live[0][1]:
+            x = lrh[i][0]
+            while i < n and lrh[i][0] == x:
+                heapq.heappush(live, (-lrh[i][2], -lrh[i][1]))
                 i += 1
         else:
             x = -live[0][1]
