@@ -1,11 +1,11 @@
-from binary_search import binary_search, binary_search_recur
-from first_occurance import first_occurance
-from last_occurance import last_occurance
-from search_insert import search_insert
-from two_sum import two_sum, two_sum1, two_sum2
-from search_range import search_range
-from find_min_rotate import find_min_rotate, find_min_rotate_recur
-from search_rotate import search_rotate, search_rotate_recur
+from search.binary_search import binary_search, binary_search_recur
+from search.first_occurance import first_occurance
+from search.last_occurance import last_occurance
+from search.search_insert import search_insert
+from search.two_sum import two_sum, two_sum1, two_sum2
+from search.search_range import search_range
+from search.find_min_rotate import find_min_rotate, find_min_rotate_recur
+from search.search_rotate import search_rotate, search_rotate_recur
 
 import unittest
 

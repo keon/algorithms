@@ -13,8 +13,20 @@ Thanks for your interest in contributing! There are many ways to contribute to t
 
 
 ## Tests
-To run the tests, clone the repo and run :  
- ```pytest```
+
+### Use unittest
+For running all tests write down:
+
+    $ python3 -m unittest discover tests
+
+For running some specific tests you can do this as following (Ex: sort):
+
+    $ python3 -m unittest tests.test_sort
+
+### Use pytest
+For running all tests write down:
+
+    $ python3 -m pytest tests
 
 ## List of Implementations
 
