@@ -29,7 +29,6 @@ For example remove_min() in a min heap:
 55 90 87             55  90                 55  90
 
 """
-import unittest
 from abc import ABCMeta, abstractmethod
 
 class AbstractHeap(metaclass=ABCMeta):
@@ -114,37 +113,3 @@ class BinaryHeap(AbstractHeap):
         self.heap.pop()
         self.perc_down(1)
         return ret
-
-class TestSuite(unittest.TestCase):
-    """
-        Test suite for the Binary_Heap data structures
-    """
-    def setUp(self):
-        self.min_heap = BinaryHeap()
-        self.min_heap.insert(4)
-        self.min_heap.insert(50)
-        self.min_heap.insert(7)
-        self.min_heap.insert(55)
-        self.min_heap.insert(90)
-        self.min_heap.insert(87)
-
-    def test_insert(self):
-        # Before insert 2: [0, 4, 50, 7, 55, 90, 87]
-        # After insert:  [0, 2, 50, 4, 55, 90, 87, 7]
-        self.min_heap.insert(2)
-        self.assertEqual([0, 2, 50, 4, 55, 90, 87, 7],
-                          self.min_heap.heap)
-        self.assertEqual(7, self.min_heap.currentSize)
-
-    def test_remove_min(self):
-        ret = self.min_heap.remove_min()
-        # Before remove_min : [0, 4, 50, 7, 55, 90, 87]
-        # After remove_min: [7, 50, 87, 55, 90]
-        # Test return value
-        self.assertEqual(4,ret)
-        self.assertEqual([0, 7, 50, 87, 55, 90],
-                          self.min_heap.heap)
-        self.assertEqual(5, self.min_heap.currentSize)
-
-if __name__ == "__main__":
-    unittest.main()
