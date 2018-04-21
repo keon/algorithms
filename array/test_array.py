@@ -3,6 +3,7 @@ from array.flatten import flatten, flatten_iter
 from array.garage import garage
 from array.josephus_problem import josephus
 from array.longest_non_repeat import longest_non_repeat, longest_non_repeat_two
+from array.max_ones_index import max_ones_index
 from array.merge_intervals import Interval, merge_v2
 from array.missing_ranges import missing_ranges
 from array.move_zeros_to_end import move_zeros
@@ -145,6 +146,15 @@ class TestLongestNonRepeat(unittest.TestCase):
         self.assertEqual(longest_non_repeat_two(string), 3)
 
 
+class TestMaxOnesIndex(unittest.TestCase):
+
+    def test_max_ones_index(self):
+
+        self.assertEqual(9, max_ones_index([1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(3, max_ones_index([1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(-1, max_ones_index([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
+
+
 class TestMergeInterval(unittest.TestCase):
 
     def test_merge(self):
@@ -263,7 +273,7 @@ class TestThreeSum(unittest.TestCase):
                             {(-4, 1, 3), (-2, -1, 3), (-1, -1, 2)})
 
 
-class TestSuite(unittest.TestCase):
+class TestTwoSum(unittest.TestCase):
 
     def test_two_sum(self):
 
