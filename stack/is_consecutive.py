@@ -16,7 +16,6 @@ Note: There are 2 solutions:
 first_is_consecutive: it uses a single stack as auxiliary storage
 second_is_consecutive: it uses a single queue as auxiliary storage
 """
-import unittest
 import collections
 
 def first_is_consecutive(stack):
@@ -57,19 +56,3 @@ def second_is_consecutive(stack):
         stack.append(q.pop())
 
     return True
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_is_consecutive(self):
-        self.assertTrue(first_is_consecutive([3, 4, 5, 6, 7]))
-        self.assertFalse(first_is_consecutive([3, 4, 6, 7]))
-        self.assertFalse(first_is_consecutive([3, 2, 1]))
-
-        self.assertTrue(second_is_consecutive([3, 4, 5, 6, 7]))
-        self.assertFalse(second_is_consecutive([3, 4, 6, 7]))
-        self.assertFalse(second_is_consecutive([3, 2, 1]))
-
-if __name__ == "__main__":
-    unittest.main()

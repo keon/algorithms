@@ -18,7 +18,6 @@ Note: There are 2 solutions:
 first_switch_pairs: it uses a single stack as auxiliary storage
 second_switch_pairs: it uses a single queue as auxiliary storage
 """
-import unittest
 import collections
 
 def first_switch_pairs(stack):
@@ -61,24 +60,3 @@ def second_switch_pairs(stack):
         stack.append(first)
 
     return stack
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_switch_pairs(self):
-        # Test case: even number of values in stack
-        # bottom [3, 8, 17, 9, 1, 10] top
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1, 10]))
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1, 10]))
-        # Test case: odd number of values in stack
-        # bottom [3, 8, 17, 9, 1] top
-        self.assertEqual([8, 3, 9, 17, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1]))
-        self.assertEqual([8, 3, 9, 17, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1]))
-
-if __name__ == "__main__":
-    unittest.main()
