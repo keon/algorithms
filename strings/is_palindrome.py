@@ -72,9 +72,9 @@ def is_palidrome_two_pointer(s):
 # Variation 3
 def is_palindrome_stack(s):
 	stack = []
-	for i in range(len(s) // 2, len(s)):
-	    stack.append(s[i])
-	for i in range(0, len(s) // 2):
-	    if s[i] != stack.pop():
-		return False
+	for i in range(len(s)//2, len(s)):
+		stack.append(s[i])
+	for i in range(0, len(s)//2):
+		if s[i] != stack.pop():
+			return False
 	return True	
