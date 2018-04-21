@@ -50,4 +50,4 @@ if __name__ == '__main__':
     mcost = min_cost(cost)
     assert mcost == 65
     
-    print("The Minimum cost to reach station %d is %d" % (N, mcost))
+    print("The Minimum cost to reach station %d is %d" % (total_len, mcost))
