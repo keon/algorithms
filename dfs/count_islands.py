@@ -27,18 +27,18 @@ def num_islands(grid):
     for i, row in enumerate(grid):
         for j, col in enumerate(grid[i]):
             if col == '1':
-                DFS(grid, i, j)
+                dfs(grid, i, j)
                 count += 1
     return count
 
 
-def DFS(grid, i, j):
+def dfs(grid, i, j):
     if (i < 0 or i >= len(grid)) or (j < 0 or len(grid[0])):
         return
     if grid[i][j] != '1':
         return
     grid[i][j] = '0'
-    DFS(grid, i+1, j)
-    DFS(grid, i-1, j)
-    DFS(grid, i, j+1)
-    DFS(grid, i, j-1)
+    dfs(grid, i+1, j)
+    dfs(grid, i-1, j)
+    dfs(grid, i, j+1)
+    dfs(grid, i, j-1)

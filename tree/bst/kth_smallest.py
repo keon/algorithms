@@ -21,7 +21,7 @@ def kth_smallest(root, k):
 
 
 class Solution(object):
-    def kthSmallest(self, root, k):
+    def kth_smallest(self, root, k):
         """
         :type root: TreeNode
         :type k: int
@@ -51,4 +51,4 @@ if __name__ == '__main__':
     n2.left, n2.right = n4, n5
     n3.left, n3.right = n6, n7
     print(kth_smallest(n1, 2))
-    print(Solution().kthSmallest(n1, 2))
+    print(Solution().kth_smallest(n1, 2))

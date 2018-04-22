@@ -3,7 +3,7 @@ class Node():
         self.val = val
         self.next = None
 
-def removeDups(head):
+def remove_dups(head):
     """
     Time Complexity: O(N)
     Space Complexity: O(N)
@@ -18,7 +18,7 @@ def removeDups(head):
             prev = head
         head = head.next
 
-def removeDupsWithoutSet(head):
+def remove_dups_wothout_set(head):
     """
     Time Complexity: O(N^2)
     Space Complexity: O(1)
@@ -33,7 +33,7 @@ def removeDupsWithoutSet(head):
                 runner = runner.next
         current = current.next
 
-def printLinkedList(head):
+def print_linked_list(head):
     string = ""
     while head.next:
         string += head.val + " -> "
@@ -60,7 +60,7 @@ d.next = c2
 c2.next = f
 f.next = g
 
-removeDups(a1)
-printLinkedList(a1)
-removeDupsWithoutSet(a1)
-printLinkedList(a1)
+remove_dups(a1)
+print_linked_list(a1)
+remove_dups_wothout_set(a1)
+print_linked_list(a1)

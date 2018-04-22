@@ -38,7 +38,7 @@ Operation #4: addLand(2, 1) turns the water at grid[2][1] into a land.
 
 
 class Solution(object):
-    def numIslands2(self, m, n, positions):
+    def num_islands2(self, m, n, positions):
         ans = []
         islands = Union()
         for p in map(tuple, positions):
