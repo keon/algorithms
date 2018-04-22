@@ -10,8 +10,9 @@ This is a good question to ask during an interview.
 For the purpose of this problem,
 we define empty string as valid palindrome.
 """
+from string import ascii_letters
 
-import string
+
 def is_palindrome(s):
     """
     :type s: str
@@ -29,23 +30,26 @@ def is_palindrome(s):
         i, j = i+1, j-1
     return True
 
-
 """
 Here is a bunch of other variations of is_palindrome function.
+
 Variation 1:
 Find the reverse of the string and compare it with the original string
+
 Variation 2:
 Loop from the start to length/2 and check the first character and last character
 and so on... for instance s[0] compared with s[n-1], s[1] == s[n-2]...
+
 Variation 3:
 Using stack idea. 
+
 Note: We are assuming that we are just checking a one word string. To check if a complete sentence 
-"""    
+"""  
 def remove_punctuation(s):
     """
     Remove punctuation, case sensitivity and spaces
     """
-    return "".join(i.lower() for i in s if i in string.ascii_letters)
+    return "".join(i.lower() for i in s if i in ascii_letters)
 
 # Variation 1
 def string_reverse(s):
