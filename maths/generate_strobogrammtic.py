@@ -34,7 +34,7 @@ def helper(n, length):
     return result
 
 
-def strobogrammatic_in_range(low, high):
+def strobogrammaticInRange(low, high):
     """
     :type low: str
     :type high: str
