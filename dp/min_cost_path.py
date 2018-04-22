@@ -27,17 +27,17 @@ INF = float("inf")
 
 def min_cost(cost):
  
-    N = len(cost)
+    n = len(cost)
     # dist[i] stores minimum cost from 0 --> i.
-    dist = [INF] * N
+    dist = [INF] * n
 
     dist[0] = 0   # cost from 0 --> 0 is zero.
   
-    for i in range(N):
-        for j in range(i+1,N):
+    for i in range(n):
+        for j in range(i+1,n):
             dist[j] = min(dist[j], dist[i] + cost[i][j])
   
-    return dist[N-1]
+    return dist[n-1]
 
 if __name__ == '__main__':
     
@@ -45,9 +45,9 @@ if __name__ == '__main__':
              [-1,  0, 40, 50],         # going from i --> j
              [-1, -1,  0, 70],         
              [-1, -1, -1,  0] ]        # cost[i][j] = -1 for i > j
-    N = len(cost)
+    total_len = len(cost)
     
     mcost = min_cost(cost)
     assert mcost == 65
     
-    print("The Minimum cost to reach station %d is %d" % (N, mcost))
+    print("The Minimum cost to reach station %d is %d" % (total_len, mcost))

@@ -15,7 +15,7 @@ class Job:
 # returns -1 if all jobs before index conflict with it.
 # The array jobs[] is sorted in increasing order of finish
 # time.
-def binarySearch(job, start_index):
+def binary_search(job, start_index):
  
     # Initialize 'lo' and 'hi' for Binary Search
     lo = 0
@@ -51,12 +51,12 @@ def schedule(job):
     for i in range(1, n):
  
         # Find profit including the current job
-        inclProf = job[i].profit
-        l = binarySearch(job, i)
+        incl_prof = job[i].profit
+        l = binary_search(job, i)
         if (l != -1):
-            inclProf += table[l];
+            incl_prof += table[l];
  
         # Store maximum of including and excluding
-        table[i] = max(inclProf, table[i - 1])
+        table[i] = max(incl_prof, table[i - 1])
  
     return table[n-1]

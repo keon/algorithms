@@ -1,9 +1,7 @@
-import unittest
-
 from maths.base_conversion import int2base, base2int
 from maths.extended_gcd import extended_gcd
 from maths.gcd import gcd, lcm
-from maths.generate_strobogrammtic import gen_strobogrammatic, strobogrammaticInRange
+from maths.generate_strobogrammtic import gen_strobogrammatic, strobogrammatic_in_range
 from maths.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from maths.next_perfect_square import find_next_square, find_next_square2
 from maths.prime_test import prime_test
@@ -11,6 +9,8 @@ from maths.primes_sieve_of_eratosthenes import primes
 from maths.pythagoras import pythagoras
 from maths.rabin_miller import is_prime
 from maths.rsa import encrypt, decrypt, generate_key
+
+import unittest
 
 
 class TestBaseConversion(unittest.TestCase):
@@ -72,8 +72,8 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     def test_gen_strobomatic(self):
         self.assertEqual(['88', '11', '96', '69'], gen_strobogrammatic(2))
 
-    def test_strobogrammaticInRange(self):
-        self.assertEqual(4, strobogrammaticInRange("10", "100"))
+    def test_strobogrammatic_in_range(self):
+        self.assertEqual(4, strobogrammatic_in_range("10", "100"))
 
 
 class TestIsStrobogrammatic(unittest.TestCase):
@@ -199,6 +199,7 @@ class TestRSA(unittest.TestCase):
     #         en = encrypt(data, e, n)
     #         dec = decrypt(en, d, n)
     #         self.assertEqual(data,dec)
+
 
 if __name__ == "__main__":
     unittest.main()

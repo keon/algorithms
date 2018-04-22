@@ -5,7 +5,7 @@ class Node():
         self.right = None
 
 
-def minDepth(self, root):
+def min_depth(self, root):
     """
     :type root: TreeNode
     :rtype: int

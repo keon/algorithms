@@ -7,7 +7,7 @@ def is_palindrome(head):
         fast = fast.next.next
         slow = slow.next
     second = slow.next
-    slow.next = None # Don't forget here! But forget still works!
+    slow.next = None  # Don't forget here! But forget still works!
     # reverse the second part
     node = None
     while second:
@@ -23,6 +23,7 @@ def is_palindrome(head):
         node = node.next
         head = head.next
     return True
+
 
 def is_palindrome_stack(head):
     if not head or not head.next:
@@ -80,7 +81,7 @@ def is_palindrome_dict(head):
         else:
             step = 0
             for i in range(0, len(v)):
-                if v[i] + v[len(v)-1-step] != checksum:
+                if v[i] + v[len(v) - 1 - step] != checksum:
                     return False
                 step += 1
         if middle > 1:

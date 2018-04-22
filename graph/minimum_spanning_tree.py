@@ -22,7 +22,7 @@ class DisjointSet:
         for i in range(n):
             self.parent[i] = i # Make all nodes his own parent, creating n sets.
 
-    def mergeSet(self, a, b):
+    def merge_set(self, a, b):
         # Args:
         #   a, b (int): Indexes of nodes whose sets will be merged.
 
@@ -39,12 +39,12 @@ class DisjointSet:
             self.parent[b] = a # Merge set(b) and set(a)
             self.size[a] += self.size[b] # Add size of old set(b) to set(a)
 
-    def findSet(self, a):
+    def find_set(self, a):
         if self.parent[a] != a: 
             # Very important, memoize result of the 
             # recursion in the list to optimize next
             # calls and make this operation practically constant, O(1)
-            self.parent[a] = self.findSet(self.parent[a])
+            self.parent[a] = self.find_set(self.parent[a])
 
         # node <a> it's the set root, so we can return that index
         return self.parent[a]
@@ -76,7 +76,7 @@ def kruskal(n, edges, ds):
         set_u = ds.findSet(edge.u) # Set of the node <u>
         set_v = ds.findSet(edge.v) # Set of the node <v>
         if set_u != set_v:
-            ds.mergeSet(set_u, set_v)
+            ds.merge_set(set_u, set_v)
             mst.append(edge)
             if len(mst) == n-1: 
                 # If we have selected n-1 edges, all the other 

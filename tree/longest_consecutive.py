@@ -33,11 +33,11 @@ def longest_consecutive(root):
     if not root:
         return 0
     maxlen = 0
-    DFS(root, 0, root.val, maxlen)
+    dfs(root, 0, root.val, maxlen)
     return maxlen
 
 
-def DFS(root, cur, target, maxlen):
+def dfs(root, cur, target, maxlen):
     if not root:
         return
     if root.val == target:
@@ -45,5 +45,5 @@ def DFS(root, cur, target, maxlen):
     else:
         cur = 1
     maxlen = max(cur, maxlen)
-    DFS(root.left, cur, root.val+1, maxlen)
-    DFS(root.right, cur, root.val+1, maxlen)
+    dfs(root.left, cur, root.val+1, maxlen)
+    dfs(root.right, cur, root.val+1, maxlen)
