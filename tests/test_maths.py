@@ -1,16 +1,16 @@
 import unittest
 
-from base_conversion import int2base, base2int
-from extended_gcd import extended_gcd
-from gcd import gcd, lcm
-from generate_strobogrammtic import gen_strobogrammatic, strobogrammaticInRange
-from is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
-from next_perfect_square import find_next_square, find_next_square2
-from prime_test import prime_test
-from primes_sieve_of_eratosthenes import primes
-from pythagoras import pythagoras
-from rabin_miller import is_prime
-from rsa import encrypt, decrypt, generate_key
+from maths.base_conversion import int2base, base2int
+from maths.extended_gcd import extended_gcd
+from maths.gcd import gcd, lcm
+from maths.generate_strobogrammtic import gen_strobogrammatic, strobogrammaticInRange
+from maths.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
+from maths.next_perfect_square import find_next_square, find_next_square2
+from maths.prime_test import prime_test
+from maths.primes_sieve_of_eratosthenes import primes
+from maths.pythagoras import pythagoras
+from maths.rabin_miller import is_prime
+from maths.rsa import encrypt, decrypt, generate_key
 
 
 class TestBaseConversion(unittest.TestCase):
