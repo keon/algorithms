@@ -76,8 +76,8 @@ C = [1, 2, 2, 2]
 S = 7
 
 
-def check_sum(N, *nums):
-    if sum(x for x in nums) == N:
+def check_sum(n, *nums):
+    if sum(x for x in nums) == n:
         return (True, nums)
     else:
         return (False, nums)

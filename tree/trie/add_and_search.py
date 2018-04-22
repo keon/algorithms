@@ -25,7 +25,7 @@ class WordDictionary(object):
     def __init__(self):
         self.root = TrieNode("")
 
-    def addWord(self, word):
+    def add_word(self, word):
         cur = self.root
         for letter in word:
             if letter not in cur.children:
@@ -60,7 +60,7 @@ class WordDictionary2(object):
         self.word_dict = collections.defaultdict(list)
 
 
-    def addWord(self, word):
+    def add_word(self, word):
         if word:
             self.word_dict[len(word)].append(word)
 

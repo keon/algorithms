@@ -133,13 +133,13 @@ def main():
         simple user-interface
     """
     print("\t\tCalculator\n\n")
-    userInput = input("expression or exit: ")
-    while userInput != "exit":
+    user_input = input("expression or exit: ")
+    while user_input != "exit":
         try:
-            print("The result is {0}".format(evaluate(userInput)))
+            print("The result is {0}".format(evaluate(user_input)))
         except Exception:
             print("invalid syntax!")
-        userInput = input("expression or exit: ")
+            user_input = input("expression or exit: ")
     print("program end")
         
 

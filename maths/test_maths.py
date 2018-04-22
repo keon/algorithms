@@ -3,7 +3,7 @@ import unittest
 from base_conversion import int2base, base2int
 from extended_gcd import extended_gcd
 from gcd import gcd, lcm
-from generate_strobogrammtic import gen_strobogrammatic, strobogrammaticInRange
+from generate_strobogrammtic import gen_strobogrammatic, strobogrammatic_in_range
 from is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from next_perfect_square import find_next_square, find_next_square2
 from prime_test import prime_test
@@ -73,7 +73,7 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
         self.assertEqual(['88', '11', '96', '69'], gen_strobogrammatic(2))
 
     def test_strobogrammaticInRange(self):
-        self.assertEqual(4, strobogrammaticInRange("10", "100"))
+        self.assertEqual(4, strobogrammatic_in_range("10", "100"))
 
 
 class TestIsStrobogrammatic(unittest.TestCase):

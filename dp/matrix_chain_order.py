@@ -7,11 +7,11 @@ Space Complexity: O(n^2)
 INF = float("inf")
 
 def matrix_chain_order(array):
-    N=len(array)
-    matrix = [[0 for x in range(N)] for x in range(N)]
-    sol = [[0 for x in range(N)] for x in range(N)]
-    for chain_length in range(2,N):
-        for a in range(1,N-chain_length+1):
+    n=len(array)
+    matrix = [[0 for x in range(n)] for x in range(n)]
+    sol = [[0 for x in range(n)] for x in range(n)]
+    for chain_length in range(2,n):
+        for a in range(1,n-chain_length+1):
             b = a+chain_length-1
 
             matrix[a][b] = INF

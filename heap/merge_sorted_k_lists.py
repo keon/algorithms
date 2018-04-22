@@ -14,7 +14,7 @@ class ListNode(object):
         self.next = None
 
 
-def mergeKLists(lists):
+def merge_k_lists(lists):
     dummy = node = ListNode(0)
     h = [(n.val, n) for n in lists if n]
     heapify(h)

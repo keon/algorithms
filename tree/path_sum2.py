@@ -23,17 +23,17 @@ def path_sum(root, sum):
     if not root:
         return []
     res = []
-    DFS(root, sum, [], res)
+    dfs(root, sum, [], res)
     return res
 
-def DFS(root, sum, ls, res):
+def dfs(root, sum, ls, res):
     if not root.left and not root.right and root.val == sum:
         ls.append(root.val)
         res.append(ls)
     if root.left:
-        DFS(root.left, sum-root.val, ls+[root.val], res)
+        dfs(root.left, sum-root.val, ls+[root.val], res)
     if root.right:
-        DFS(root.right, sum-root.val, ls+[root.val], res)
+        dfs(root.right, sum-root.val, ls+[root.val], res)
 
 
 # DFS with stack

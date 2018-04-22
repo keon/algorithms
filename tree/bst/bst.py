@@ -14,7 +14,7 @@ class Node(object):
         self.left = None
         self.right = None
 
-class bst(object):
+class BST(object):
     def __init__(self):
         self.root = None
 
@@ -115,7 +115,7 @@ class bst(object):
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
-        self.tree = bst()
+        self.tree = BST()
         self.tree.insert(10)
         self.tree.insert(15)
         self.tree.insert(6)
