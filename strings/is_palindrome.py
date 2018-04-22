@@ -11,7 +11,7 @@ For the purpose of this problem,
 we define empty string as valid palindrome.
 """
 
-
+import string
 def is_palindrome(s):
     """
     :type s: str
