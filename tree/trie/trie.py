@@ -31,7 +31,7 @@ class Trie:
                 return False
         return current.is_word
 
-    def startsWith(self, prefix):
+    def starts_with(self, prefix):
         current = self.root
         for letter in prefix:
             current = current.children.get(letter)

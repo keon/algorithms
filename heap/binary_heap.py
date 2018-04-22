@@ -51,7 +51,7 @@ class AbstractHeap(metaclass=ABCMeta):
     @abstractmethod
     def remove_min(self,i):
         pass
-class Binary_Heap(AbstractHeap):
+class BinaryHeap(AbstractHeap):
     def __init__(self):
         self.currentSize = 0
         self.heap = [(0)]
@@ -120,7 +120,7 @@ class TestSuite(unittest.TestCase):
         Test suite for the Binary_Heap data structures
     """
     def setUp(self):
-        self.min_heap = Binary_Heap()
+        self.min_heap = BinaryHeap()
         self.min_heap.insert(4)
         self.min_heap.insert(50)
         self.min_heap.insert(7)
