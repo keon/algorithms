@@ -6,19 +6,41 @@ It can be shared across graph algorithms.
 class Node(object):
     def __init__(self, name):
         self.name = name
+
+    @staticmethod
+    def get_name(obj):
+        if isinstance(obj, Node):
+            return obj.name
+        elif isinstance(obj, str):
+            return obj
+        return''
     
     def __eq__(self, obj):
-        if isinstance(obj, Node):
-            return obj.name == self.name
-        elif isinstance(obj, str):
-            return obj == self.name
-        return False
+        return self.name == self.get_name(obj)
 
     def __repr__(self):
         return self.name
     
     def __hash__(self):
         return hash(self.name)
+
+    def __ne__(self, obj):
+        return self.name != self.get_name(obj)
+
+    def __lt__(self, obj):
+        return self.name < self.get_name(obj)
+
+    def __le__(self, obj):
+        return self.name <= self.get_name(obj)
+
+    def __gt__(self, obj):
+        return self.name > self.get_name(obj)
+
+    def __ge__(self, obj):
+        return self.name >= self.get_name(obj)
+
+    def __bool__(self):
+        return self.name
 
 class DirectedEdge(object):
     def __init__(self, node_from, node_to):
