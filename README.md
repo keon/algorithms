@@ -75,6 +75,7 @@ For running all tests write down:
     - [add_bitwise_operator](bit/add_bitwise_operator.py)
     - [bit_operation](bit/bit_operation.py)
     - [swap_pair](bit/swap_pair.py)
+    - [find_difference](bit/find_difference.py)
 - [calculator](calculator)
     - [math_parser](calculator/math_parser.py)
 - [dfs](dfs)

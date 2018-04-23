@@ -8,6 +8,7 @@ from bit.single_number2 import single_number2
 from bit.subsets import subsets
 from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
 from bit.swap_pair import swap_pair
+from bit.find_difference import find_difference
 
 import unittest
 import random
@@ -151,6 +152,9 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(41, swap_pair(22))
         # 10: 1010   --> 5 : 0101
         self.assertEqual(5, swap_pair(10))
+
+    def test_find_difference(self):
+        self.assertEqual('e', find_difference("abcd", "abecd"))
 
 if __name__ == '__main__':
     unittest.main()
