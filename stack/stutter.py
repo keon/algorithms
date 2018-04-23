@@ -11,7 +11,6 @@ Note: There are 2 solutions:
 first_stutter: it uses a single stack as auxiliary storage
 second_stutter: it uses a single queue as auxiliary storage
 """
-import unittest
 import collections
 
 def first_stutter(stack):
@@ -43,16 +42,3 @@ def second_stutter(stack):
         stack.append(val)
 
     return stack
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_stutter(self):
-        # Test case: bottom [3, 7, 1, 14, 9] top
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         first_stutter([3, 7, 1, 14, 9]))
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         second_stutter([3, 7, 1, 14, 9]))
-
-if __name__ == "__main__":
-    unittest.main()

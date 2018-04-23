@@ -13,10 +13,7 @@ isEmpty() tests to see whether the stack is empty.
 size() returns the number of items on the stack.
    It needs no parameters and returns an integer.
 """
-import unittest
 from abc import ABCMeta, abstractmethod
-
-
 class AbstractStack(metaclass=ABCMeta):
     """Abstract Class for Stacks."""
     def __init__(self):
@@ -133,84 +130,3 @@ class LinkedListStack(AbstractStack):
         if self.is_empty():
             raise IndexError("Stack is empty")
         return self.head.value
-
-    # optional
-    """
-    def is_empty(self):
-        return self.head is None
-    """
-
-
-class TestSuite(unittest.TestCase):
-    """
-        Test suite for the stack data structures (above)
-    """
-
-    def test_ArrayStack(self):
-        stack = ArrayStack()
-        stack.push(1)
-        stack.push(2)
-        stack.push(3)
-
-        # test __iter__()
-        it = iter(stack)
-        self.assertEqual(3, next(it))
-        self.assertEqual(2, next(it))
-        self.assertEqual(1, next(it))
-        self.assertRaises(StopIteration, next, it)
-
-        # test __len__()
-        self.assertEqual(3, len(stack))
-
-        # test __str__()
-        self.assertEqual(str(stack), "Top-> 3 2 1")
-
-        # test is_empty()
-        self.assertFalse(stack.is_empty())
-
-        # test peek()
-        self.assertEqual(3, stack.peek())
-
-        # test pop()
-        self.assertEqual(3, stack.pop())
-        self.assertEqual(2, stack.pop())
-        self.assertEqual(1, stack.pop())
-
-        self.assertTrue(stack.is_empty())
-
-    def test_LinkedListStack(self):
-        stack = LinkedListStack()
-
-        stack.push(1)
-        stack.push(2)
-        stack.push(3)
-
-        # test __iter__()
-        it = iter(stack)
-        self.assertEqual(3, next(it))
-        self.assertEqual(2, next(it))
-        self.assertEqual(1, next(it))
-        self.assertRaises(StopIteration, next, it)
-
-        # test __len__()
-        self.assertEqual(3, len(stack))
-
-        # test __str__()
-        self.assertEqual(str(stack), "Top-> 3 2 1")
-
-        # test is_empty()
-        self.assertFalse(stack.is_empty())
-
-        # test peek()
-        self.assertEqual(3, stack.peek())
-
-        # test pop()
-        self.assertEqual(3, stack.pop())
-        self.assertEqual(2, stack.pop())
-        self.assertEqual(1, stack.pop())
-
-        self.assertTrue(stack.is_empty())
-
-
-if __name__ == "__main__":
-    unittest.main()

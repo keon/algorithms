@@ -9,8 +9,6 @@ The function should return false
 bottom [1, 2, 3, 4, 5, 6] top
 The function should return true
 """
-import unittest
-
 def is_sorted(stack):
     storage_stack = []
     for i in range(len(stack)):
@@ -30,15 +28,3 @@ def is_sorted(stack):
         stack.append(storage_stack.pop())
 
     return True
-
-class TestSuite(unittest.TestCase):
-    """
-        test suite for the function (above)
-    """
-    def test_stutter(self):
-        # Test case: bottom [6, 3, 5, 1, 2, 4] top
-        self.assertFalse(is_sorted([6, 3, 5, 1, 2, 4]))
-        self.assertTrue(is_sorted([1, 2, 3, 4, 5, 6]))
-
-if __name__ == "__main__":
-    unittest.main()

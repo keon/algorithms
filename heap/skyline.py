@@ -34,7 +34,6 @@ There must be no consecutive horizontal lines of equal height in the output skyl
 into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 """
-
 import heapq
 
 def get_skyline(lrh):
@@ -59,7 +58,3 @@ def get_skyline(lrh):
         if not skyline or height != skyline[-1][1]:
             skyline += [x, height],
     return skyline
-
-buildings = [ [2, 9, 10], [3, 7, 15], [5, 12, 12], [15, 20, 10], [19, 24, 8] ]
-# [ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ]
-print(get_skyline(buildings))
