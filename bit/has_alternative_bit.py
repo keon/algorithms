@@ -31,7 +31,7 @@ def has_alternative_bit(n):
         n = n >> 1
     return True    
 
-# Time Comolexity - O(1)
+# Time Complexity - O(1)
 def has_alternative_bit_fast(n):
     mask1 = int('aaaaaaaa', 16)  # for bits ending with zero (...1010)
     mask2 = int('55555555', 16)  # for bits ending with one  (...0101)
