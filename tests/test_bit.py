@@ -9,6 +9,7 @@ from bit.subsets import subsets
 from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
 from bit.swap_pair import swap_pair
 from bit.find_difference import find_difference
+from bit.has_alternative_bit import has_alternative_bit
 
 import unittest
 import random
@@ -155,6 +156,12 @@ class TestSuite(unittest.TestCase):
 
     def test_find_difference(self):
         self.assertEqual('e', find_difference("abcd", "abecd"))
+
+    def test_has_alternative_bit(self):
+        self.assertTrue(has_alternative_bit(5))
+        self.assertFalse(has_alternative_bit(7))
+        self.assertFalse(has_alternative_bit(11))
+        self.assertTrue(has_alternative_bit(10))
 
 if __name__ == '__main__':
     unittest.main()
