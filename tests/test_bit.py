@@ -7,6 +7,7 @@ from bit.single_number import single_number
 from bit.single_number2 import single_number2
 from bit.subsets import subsets
 from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
+from bit.swap_pair import swap_pair
 
 import unittest
 import random
@@ -144,6 +145,12 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(30, update_bit(22, 3, 1))
         # 22 = 10110 --> after update bit at 2nd position with value 0: 20 = 10010
         self.assertEqual(18, update_bit(22, 2, 0))
+
+    def test_swap_pair(self):
+        # 22: 10110  --> 41: 101001
+        self.assertEqual(41, swap_pair(22))
+        # 10: 1010   --> 5 : 0101
+        self.assertEqual(5, swap_pair(10))
 
 if __name__ == '__main__':
     unittest.main()
