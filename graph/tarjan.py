@@ -3,7 +3,7 @@ Implements Tarjan's algorithm for finding strongly connected components
 in a graph.
 https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
 """
-from graph import DirectedGraph
+from graph.graph import DirectedGraph
 
 class Tarjan(object):
     def __init__(self, dict_graph):
@@ -52,5 +52,6 @@ class Tarjan(object):
                 scc.append(w)
                 if w == v:
                     break
+            scc.sort()
             sccs.append(scc)
     

@@ -1,4 +1,4 @@
-from tarjan import Tarjan
+from graph.tarjan import Tarjan
 
 import unittest
 
@@ -25,7 +25,7 @@ class TestTarjan(unittest.TestCase):
         }
 
         g = Tarjan(example)
-        self.assertEqual(g.sccs, [['F', 'G'], ['H', 'D', 'C'], ['E', 'B', 'A']])
+        self.assertEqual(g.sccs, [['F', 'G'], ['C', 'D', 'H'], ['A', 'B', 'E']])
 
     def test_tarjan_example_2(self):
         # Graph from https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm#/media/File:Tarjan%27s_Algorithm_Animation.gif
@@ -41,4 +41,4 @@ class TestTarjan(unittest.TestCase):
         }
 
         g = Tarjan(example)
-        self.assertEqual(g.sccs, [['B', 'E', 'A'], ['D', 'C'], ['G', 'F'], ['H']])
+        self.assertEqual(g.sccs, [['A', 'B', 'E'], ['C', 'D'], ['F', 'G'], ['H']])
