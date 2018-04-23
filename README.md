@@ -73,6 +73,7 @@ For running all tests write down:
     - [single_number](bit/single_number.py)
     - [subsets](bit/subsets.py)
     - [add_bitwise_operator](bit/add_bitwise_operator.py)
+    - [bit_operation](bit/bit_operation.py)
 - [calculator](calculator)
     - [math_parser](calculator/math_parser.py)
 - [dfs](dfs)

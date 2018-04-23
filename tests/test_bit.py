@@ -6,6 +6,7 @@ from bit.reverse_bits import reverse_bits
 from bit.single_number import single_number
 from bit.single_number2 import single_number2
 from bit.subsets import subsets
+from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
 
 import unittest
 import random
@@ -124,6 +125,25 @@ class TestSuite(unittest.TestCase):
                             {(10, 40), (10, 20, 40), (10, 30), (10, 20, 30, 40), (40,),
                              (10, 30, 40), (30,), (20, 30), (30, 40), (10,), (),
                              (10, 20), (20, 40), (20, 30, 40), (10, 20, 30), (20,)})
+
+    def test_get_bit(self):
+        # 22 = 10110
+        self.assertEqual(1, get_bit(22, 2))
+        self.assertEqual(0, get_bit(22, 3))
+
+    def test_set_bit(self):
+        # 22 = 10110  --> after set bit at 3th position: 30 = 11110
+        self.assertEqual(30, set_bit(22, 3))
+
+    def test_clear_bit(self):
+        # 22 = 10110 --> after clear bit at 2nd position: 20 = 10010
+        self.assertEqual(18, clear_bit(22, 2))
+
+    def test_update_bit(self):
+        # 22 = 10110 --> after update bit at 3th position with value 1: 30 = 11110
+        self.assertEqual(30, update_bit(22, 3, 1))
+        # 22 = 10110 --> after update bit at 2nd position with value 0: 20 = 10010
+        self.assertEqual(18, update_bit(22, 2, 0))
 
 if __name__ == '__main__':
     unittest.main()
