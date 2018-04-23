@@ -1,16 +1,16 @@
-from array.delete_nth import delete_nth, delete_nth_naive
-from array.flatten import flatten, flatten_iter
-from array.garage import garage
-from array.josephus_problem import josephus
-from array.longest_non_repeat import longest_non_repeat, longest_non_repeat_two
-from array.merge_intervals import Interval, merge_v2
-from array.missing_ranges import missing_ranges
-from array.move_zeros_to_end import move_zeros
-from array.plus_one import plus_one, plus_one_v2, plus_one_v3
-from array.rotate_array import rotate_v1, rotate_v2, rotate_v3
-from array.summary_ranges import summary_ranges
-from array.three_sum import three_sum
-from array.two_sum import two_sum
+from arrays.delete_nth import delete_nth, delete_nth_naive
+from arrays.flatten import flatten, flatten_iter
+from arrays.garage import garage
+from arrays.josephus_problem import josephus
+from arrays.longest_non_repeat import longest_non_repeat, longest_non_repeat_two
+from arrays.merge_intervals import Interval, merge_v2
+from arrays.missing_ranges import missing_ranges
+from arrays.move_zeros_to_end import move_zeros
+from arrays.plus_one import plus_one, plus_one_v2, plus_one_v3
+from arrays.rotate_array import rotate_v1, rotate_v2, rotate_v3
+from arrays.summary_ranges import summary_ranges
+from arrays.three_sum import three_sum
+from arrays.two_sum import two_sum
 
 import unittest
 
