@@ -16,6 +16,7 @@ Input: 10
 Output: True because The binary representation of 10 is: 1010.
 """
 
+# Time Complexity - O(number of bits in n)
 def has_alternative_bit(n):
     first_bit = 0
     second_bit = 0
@@ -29,3 +30,9 @@ def has_alternative_bit(n):
             return True
         n = n >> 1
     return True    
+
+# Time Comolexity - O(1)
+def has_alternative_bit_fast(n):
+    mask1 = int('aaaaaaaa', 16)  # for bits ending with zero (...1010)
+    mask2 = int('55555555', 16)  # for bits ending with one  (...0101)
+    return mask1 == (n + (n ^ mask1)) or mask2 == (n + (n ^ mask2))
