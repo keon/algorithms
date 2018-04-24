@@ -16,6 +16,7 @@ from strings.one_edit_distance import is_one_edit, is_one_edit2
 from strings.rabin_karp import rabin_karp
 from strings.reverse_string import *
 from strings.reverse_vowel import reverse_vowel
+from strings.reverse_words import reverse_words
 
 import unittest
 
@@ -278,6 +279,19 @@ class TestReverseVowel(unittest.TestCase):
 
     def test_reverse_vowel(self):
         self.assertEqual("holle", reverse_vowel("hello"))
+
+
+class TestReverseWords(unittest.TestCase):
+    """[summary]
+    Test for the file reverse_words.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_reverse_words(self):
+        self.assertEqual("pizza like I and kim keon am I", \
+        reverse_words("I am keon kim and I like pizza"))
 
 
 if __name__ == "__main__":
