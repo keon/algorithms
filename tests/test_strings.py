@@ -4,6 +4,7 @@ from strings.decode_string import decode_string
 from strings.delete_reoccurring import delete_reoccurring_characters
 from strings.domain_extractor import domain_name_1, domain_name_2
 from strings.encode_decode import encode, decode
+from strings.group_anagrams import group_anagrams
 
 import unittest
 
@@ -94,6 +95,18 @@ class TestEncodeDecode(unittest.TestCase):
     def test_decode(self):
         self.assertEqual(['keon', 'is', 'awesome'], decode("4:keon2:is7:awesome"))
 
+
+class TestGroupAnagrams(unittest.TestCase):
+    """[summary]
+    Test for the file group_anagrams.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_group_anagrams(self):
+        self.assertEqual([['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']], \
+        group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 
 if __name__ == "__main__":
     unittest.main()
