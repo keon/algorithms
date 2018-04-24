@@ -56,13 +56,13 @@ class TestDecodeString(unittest.TestCase):
 class TestDeleteReoccurring(unittest.TestCase):
     """[summary]
     Test for the file delete_reoccurring.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
 
     def test_delete_reoccurring_characters(self):
-        self.assertEqual("abc",delete_reoccurring_characters("aaabcccc"))
+        self.assertEqual("abc", delete_reoccurring_characters("aaabcccc"))
 
 
 if __name__ == "__main__":
