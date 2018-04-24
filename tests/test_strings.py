@@ -20,7 +20,7 @@ from strings.reverse_words import reverse_words
 from strings.roman_to_int import roman_to_int
 from strings.strip_url_params import *
 from strings.validate_coordinates import *
-
+from strings.word_squares import word_squares
 
 import unittest
 
@@ -334,7 +334,7 @@ class TestRomanToInt(unittest.TestCase):
 class TestValidateCoordinates(unittest.TestCase):
     """[summary]
     Test for the file validate_coordinates.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -347,6 +347,19 @@ class TestValidateCoordinates(unittest.TestCase):
         invalid_coordinates = ["23.234, - 23.4234","99.234, 12.324","6.325624, 43.34345.345","0, 1,2","23.245, 1e1"]
         for coordinate in invalid_coordinates:
             self.assertFalse(is_valid_coordinates_0(coordinate))
+
+
+class TestWordSquares(unittest.TestCase):
+    """[summary]
+    Test for the file word_squares.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_word_squares(self):
+        self.assertEqual([['wall', 'area', 'lead', 'lady'], ['ball', 'area', 'lead', 'lady']], \
+        word_squares(["area","lead","wall","lady","ball"]))
 
 
 if __name__ == "__main__":

@@ -65,6 +65,3 @@ def word_squares(words):
         build([word])
     return squares
 
-dic =["area","lead","wall","lady","ball"]
-print(word_squares(dic))
-
