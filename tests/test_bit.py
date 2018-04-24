@@ -10,6 +10,7 @@ from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
 from bit.swap_pair import swap_pair
 from bit.find_difference import find_difference
 from bit.has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
+from bit.insert_bit import insert_one_bit, insert_mult_bits
 
 import unittest
 import random
@@ -169,6 +170,29 @@ class TestSuite(unittest.TestCase):
         self.assertFalse(has_alternative_bit_fast(11))
         self.assertTrue(has_alternative_bit_fast(10))
 
-        
+    def test_insert_one_bit(self):
+        """
+        Input: num = 10101 (21)
+        insert_one_bit(num, 1, 2): 101101 (45)
+        insert_one_bit(num, 0 ,2): 101001 (41)
+        insert_one_bit(num, 1, 5): 110101 (53)
+        insert_one_bit(num, 1, 0): 101010 (42)
+        """
+        self.assertEqual(45, insert_one_bit(21, 1, 2))
+        self.assertEqual(41, insert_one_bit(21, 0, 2))
+        self.assertEqual(53, insert_one_bit(21, 1, 5))
+        self.assertEqual(43, insert_one_bit(21, 1, 0))
+
+    def test_insert_mult_bits(self):
+        """
+        Input: num = 101 (5)
+        insert_mult_bits(num, 7, 3, 1): 101111 (47)
+        insert_mult_bits(num, 7, 3, 0): 101111 (47)
+        insert_mult_bits(num, 7, 3, 3): 111101 (61)
+        """
+        self.assertEqual(47, insert_mult_bits(5, 7, 3, 1))
+        self.assertEqual(47, insert_mult_bits(5, 7, 3, 0))
+        self.assertEqual(61, insert_mult_bits(5, 7, 3, 3))
+
 if __name__ == '__main__':
     unittest.main()
