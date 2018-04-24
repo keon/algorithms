@@ -36,9 +36,3 @@ def decode_string(s):
         else:
             cur_string += c
     return cur_string
-
-a = "3[a]2[bc]" #"aaabcbc".
-b = "3[a2[c]]" #"accaccacc".
-
-print(decode_string(a))
-print(decode_string(b))

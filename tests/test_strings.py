@@ -1,5 +1,6 @@
 from strings.add_binary import add_binary
 from strings.breaking_bad import match_symbol, match_symbol_1, bracket
+from strings.decode_string import decode_string
 
 import unittest
 
@@ -35,7 +36,21 @@ class TestBreakingBad(unittest.TestCase):
     def test_match_symbol_1(self):
         self.assertEqual(['[Am]azon', 'Mi[cro]soft', 'Goog[le]'], match_symbol_1(self.words,self.symbols))
     def test_bracket(self):
-        self.assertEqual(('[Am]azon', 'Mi[cro]soft', 'Goog[le]'),bracket(self.words, self.symbols))
+        self.assertEqual(('[Am]azon', 'Mi[cro]soft', 'Goog[le]'), bracket(self.words, self.symbols))
+
+
+class TestDecodeString(unittest.TestCase):
+    """[summary]
+    Test for the file decode_string.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_decode_string(self):
+        self.assertEqual("aaabcbc", decode_string("3[a]2[bc]"))
+        self.assertEqual("accaccacc", decode_string("3[a2[c]]"))
+
 
 if __name__ == "__main__":
     unittest.main()
