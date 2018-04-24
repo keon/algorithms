@@ -6,6 +6,8 @@ from strings.domain_extractor import domain_name_1, domain_name_2
 from strings.encode_decode import encode, decode
 from strings.group_anagrams import group_anagrams
 from strings.int_to_roman import int_to_roman
+from strings.is_palindrome import is_palindrome, is_palindrome_reverse, \
+is_palindrome_two_pointer, is_palindrome_stack
 
 import unittest
 
@@ -113,7 +115,7 @@ class TestGroupAnagrams(unittest.TestCase):
 class TestIntToRoman(unittest.TestCase):
     """[summary]
     Test for the file int_to_roman.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -122,6 +124,32 @@ class TestIntToRoman(unittest.TestCase):
         self.assertEqual("DCXLIV", int_to_roman(644))
         self.assertEqual("I", int_to_roman(1))
         self.assertEqual("MMMCMXCIX", int_to_roman(3999))
+
+
+class TestIsPalindrome(unittest.TestCase):
+    """[summary]
+    Test for the file is_palindrome.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_is_palindrome(self):
+        # 'Otto' is a old german name.
+        self.assertTrue(is_palindrome("Otto"))
+        self.assertFalse(is_palindrome("house"))
+    def test_is_palindrome_reverse(self):
+        # 'Otto' is a old german name.
+        self.assertTrue(is_palindrome_reverse("Otto"))
+        self.assertFalse(is_palindrome_reverse("house"))
+    def test_is_palindrome_two_pointer(self):
+        # 'Otto' is a old german name.
+        self.assertTrue(is_palindrome_two_pointer("Otto"))
+        self.assertFalse(is_palindrome_two_pointer("house"))
+    def test_is_palindrome_stack(self):
+        # 'Otto' is a old german name.
+        self.assertTrue(is_palindrome_stack("Otto"))
+        self.assertFalse(is_palindrome_stack("house"))
 
 
 if __name__ == "__main__":
