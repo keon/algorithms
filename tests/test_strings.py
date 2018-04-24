@@ -11,6 +11,7 @@ is_palindrome_two_pointer, is_palindrome_stack
 from strings.license_number import license_number
 from strings.make_sentence import make_sentence
 from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
+from strings.multiply_strings import multiply
 
 import unittest
 
@@ -197,6 +198,21 @@ class TestMergeStringChecker(unittest.TestCase):
         self.assertTrue(is_merge_recursive("codewars", "cdw", "oears"))
     def test_is_merge_iterative(self):
         self.assertTrue(is_merge_iterative("codewars", "cdw", "oears"))
+
+
+class TestMultiplyStrings(unittest.TestCase):
+    """[summary]
+    Test for the file multiply_strings.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_multiply(self):
+        self.assertEqual("23", multiply("1", "23"))
+        self.assertEqual("529", multiply("23", "23"))
+        self.assertEqual("0", multiply("0", "23"))
+        self.assertEqual("1000000", multiply("100", "10000"))
 
 
 if __name__ == "__main__":
