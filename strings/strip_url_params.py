@@ -6,7 +6,6 @@ Removes any query string parameters specified within the 2nd argument (optional 
 An example:
 www.saadbenn.com?a=1&b=2&a=2') // returns 'www.saadbenn.com?a=1&b=2'
 """
-import unittest
 from collections import defaultdict
 import urllib
 import urllib.parse

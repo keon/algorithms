@@ -28,13 +28,11 @@ def is_valid_coordinates_0(coordinates):
     l = coordinates.split(", ")
     if len(l) != 2:
         return False
-    print(l)
     try:
         latitude = float(l[0])
         longitude = float(l[1])
     except:
         return False
-    print(latitude, longitude)
     return -90 <= latitude <= 90 and -180 <= longitude <= 180
 
 # friends solutions
@@ -49,19 +47,3 @@ def is_valid_coordinates_1(coordinates):
 # using regular expression
 def is_valid_coordinates_regular_expression(coordinates):
     return bool(re.match("-?(\d|[1-8]\d|90)\.?\d*, -?(\d|[1-9]\d|1[0-7]\d|180)\.?\d*$", coordinates))  
-
-import unittest
-class TestSuite(unittest.TestCase):
-	def test_valid(self):
-		valid_coordinates = ["-23, 25","4, -3","90, 180","-90, -180"]
-		for coordinate in valid_coordinates:
-			self.assertTrue(is_valid_coordinates_0(coordinate))
-
-	def test_invalid(self):
-		invalid_coordinates = ["23.234, - 23.4234","99.234, 12.324","6.325624, 43.34345.345","0, 1,2","23.245, 1e1"]
-		for coordinate in invalid_coordinates:
-			self.assertFalse(is_valid_coordinates_0(coordinate))
-
-
-if __name__ == "__main__":
-    unittest.main()  

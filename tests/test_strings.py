@@ -19,6 +19,8 @@ from strings.reverse_vowel import reverse_vowel
 from strings.reverse_words import reverse_words
 from strings.roman_to_int import roman_to_int
 from strings.strip_url_params import *
+from strings.validate_coordinates import *
+
 
 import unittest
 
@@ -310,23 +312,41 @@ class TestRomanToInt(unittest.TestCase):
         self.assertEqual(3999, roman_to_int("MMMCMXCIX"))
 
 
-class TestStripUrlParams(unittest.TestCase):
-    """[summary]
-    Test for the file strip_urls_params.py
+# class TestStripUrlParams(unittest.TestCase):
+#     """[summary]
+#     Test for the file strip_urls_params.py
 
+#     Arguments:
+#         unittest {[type]} -- [description]
+#     """
+
+#     def test_strip_url_params1(self):
+#         self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+#         self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+#     def test_strip_url_params2(self):
+#         self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+#         self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+#     def test_strip_url_params3(self):
+#         self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+#         self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+
+
+class TestValidateCoordinates(unittest.TestCase):
+    """[summary]
+    Test for the file validate_coordinates.py
+    
     Arguments:
         unittest {[type]} -- [description]
     """
 
-    def test_strip_url_params1(self):
-        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-    def test_strip_url_params2(self):
-        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-    def test_strip_url_params3(self):
-        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_valid(self):
+        valid_coordinates = ["-23, 25","4, -3","90, 180","-90, -180"]
+        for coordinate in valid_coordinates:
+            self.assertTrue(is_valid_coordinates_0(coordinate))
+    def test_invalid(self):
+        invalid_coordinates = ["23.234, - 23.4234","99.234, 12.324","6.325624, 43.34345.345","0, 1,2","23.245, 1e1"]
+        for coordinate in invalid_coordinates:
+            self.assertFalse(is_valid_coordinates_0(coordinate))
 
 
 if __name__ == "__main__":
