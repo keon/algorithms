@@ -9,6 +9,7 @@ from strings.int_to_roman import int_to_roman
 from strings.is_palindrome import is_palindrome, is_palindrome_reverse, \
 is_palindrome_two_pointer, is_palindrome_stack
 from strings.license_number import license_number
+from strings.make_sentence import make_sentence
 
 import unittest
 
@@ -167,6 +168,21 @@ class TestLicenseNumber(unittest.TestCase):
         self.assertEqual("ab-cdf-ddf", license_number("a-bc-dfd-df", 3))
         self.assertEqual("abcd-fddf", license_number("a-bc-dfd-df", 4))
         self.assertEqual("abc-dfddf", license_number("a-bc-dfd-df", 5))
+
+
+class TestMakeSentence(unittest.TestCase):
+    """[summary]
+    Test for the file make_sentence.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_make_sentence(self):
+        dictionarys = ["", "app", "let", "t", "apple", "applet"]
+        word = "applet"
+        self.assertTrue(make_sentence(word, dictionarys))
+
 
 if __name__ == "__main__":
     unittest.main()
