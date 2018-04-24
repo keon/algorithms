@@ -13,6 +13,7 @@ from strings.make_sentence import make_sentence
 from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
 from strings.multiply_strings import multiply
 from strings.one_edit_distance import is_one_edit, is_one_edit2
+from strings.rabin_karp import rabin_karp
 
 import unittest
 
@@ -232,6 +233,20 @@ class TestOneEditDistance(unittest.TestCase):
         self.assertTrue(is_one_edit2("abc", "abd"))
         self.assertFalse(is_one_edit2("abc", "aed"))
         self.assertFalse(is_one_edit2("abcd", "abcd"))
+
+
+class TestRabinKarp(unittest.TestCase):
+    """[summary]
+    Test for the file rabin_karp.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_rabin_karp(self):
+        self.assertEqual(3, rabin_karp("abc", "zsnabckfkd"))
+        self.assertEqual(None, rabin_karp("abc", "zsnajkskfkd"))
+
 
 if __name__ == "__main__":
     unittest.main()
