@@ -6,7 +6,6 @@ Removes any query string parameters specified within the 2nd argument (optional 
 An example:
 www.saadbenn.com?a=1&b=2&a=2') // returns 'www.saadbenn.com?a=1&b=2'
 """
-import unittest
 from collections import defaultdict
 import urllib
 import urllib.parse
@@ -94,25 +93,3 @@ def strip_url_params3(url, strip=None):
     new = parse._replace(query=query)
     
     return new.geturl()
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_strip_url_params1(self):
-    
-        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-
-    
-    def test_strip_url_params2(self):
-    
-        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-    
-    def test_strip_url_params3(self):
-    
-        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-
-if __name__ == "__main__":
-    unittest.main()

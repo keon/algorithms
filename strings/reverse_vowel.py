@@ -11,7 +11,3 @@ def reverse_vowel(s):
         s[i], s[j] = s[j], s[i]
         i, j = i + 1, j - 1
     return "".join(s)
-
-test = "hello"
-print(test)
-print(reverse_vowel(test))

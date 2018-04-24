@@ -25,10 +25,3 @@ def make_sentence(str_piece, dictionarys):
             if suffix in dictionarys or make_sentence(suffix, dictionarys):
                 count += 1
     return True
-
-
-if __name__ == "__main__":
-    dictionarys = ["", "app", "let", "t", "apple", "applet"]
-    word = "applet"
-    make_sentence(word, dictionarys)
-    print(count)

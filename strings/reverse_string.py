@@ -4,9 +4,6 @@ def recursive(s):
         return s
     return recursive(s[l//2:]) + recursive(s[:l//2])
 
-s = "hello there"
-print(recursive(s))
-
 def iterative(s):
     r = list(s)
     i, j = 0, len(s) - 1
@@ -16,13 +13,9 @@ def iterative(s):
         j -= 1
     return "".join(r)
 
-print(iterative(s))
-
 def pythonic(s):
     r = list(reversed(s))
     return "".join(r)
 
 def ultra_pythonic(s):
     return s[::-1]
-
-print(ultra_pythonic(s))

@@ -10,7 +10,7 @@ Note: The idea is not to use any built-in libraries such as re (regular expressi
 """
 
 # Non pythonic way
-def domain_name(url):
+def domain_name_1(url):
 	#grab only the non http(s) part
     full_domain_name = url.split('//')[-1] 
     #grab the actual one depending on the len of the list  
@@ -24,19 +24,6 @@ def domain_name(url):
 
 
 # pythonic one liner
-def domain_name(url):
+def domain_name_2(url):
     return url.split("//")[-1].split("www.")[-1].split(".")[0]
 
-
-import unittest
-class TestSuite(unittest.TestCase):
-
-    def test_valid(self):
-        self.assertEqual(domain_name("https://github.com/SaadBenn"), "github")
-        
-    def test_invalid(self):
-        self.assertEqual(domain_name("http://google.com"), "http")
-
-
-if __name__ == "__main__":
-    unittest.main()

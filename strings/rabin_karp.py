@@ -5,7 +5,7 @@ class RollingHash:
     def __init__(self, text, size_word):
         self.text = text
         self.hash = 0
-        self.sizeWord = size_word
+        self.size_word = size_word
 
         for i in range(0, size_word):
             #ord maps the character to a number
@@ -20,7 +20,7 @@ class RollingHash:
     def move_window(self):
         if self.window_end <= len(self.text) - 1:
             #remove left letter from hash value
-            self.hash -= (ord(self.text[self.window_start]) - ord("a")+1)*26**(self.sizeWord-1)
+            self.hash -= (ord(self.text[self.window_start]) - ord("a")+1)*26**(self.size_word-1)
             self.hash *= 26
             self.hash += ord(self.text[self.window_end])- ord("a")+1
             self.window_start += 1
