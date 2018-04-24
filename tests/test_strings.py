@@ -14,6 +14,7 @@ from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
 from strings.multiply_strings import multiply
 from strings.one_edit_distance import is_one_edit, is_one_edit2
 from strings.rabin_karp import rabin_karp
+from strings.reverse_string import *
 
 import unittest
 
@@ -247,6 +248,24 @@ class TestRabinKarp(unittest.TestCase):
         self.assertEqual(3, rabin_karp("abc", "zsnabckfkd"))
         self.assertEqual(None, rabin_karp("abc", "zsnajkskfkd"))
 
+
+class TestReverseString(unittest.TestCase):
+    """[summary]
+    Test for the file reverse_string.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_recursive(self):
+        self.assertEqual("ereht olleh", recursive("hello there"))
+    def test_iterative(self):
+        self.assertEqual("ereht olleh", iterative("hello there"))
+    def test_pythonic(self):
+        self.assertEqual("ereht olleh", pythonic("hello there"))
+    def test_ultra_pythonic(self):
+        self.assertEqual("ereht olleh", ultra_pythonic("hello there"))
+    
 
 if __name__ == "__main__":
     unittest.main()
