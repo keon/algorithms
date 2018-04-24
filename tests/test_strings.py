@@ -2,6 +2,7 @@ from strings.add_binary import add_binary
 from strings.breaking_bad import match_symbol, match_symbol_1, bracket
 from strings.decode_string import decode_string
 from strings.delete_reoccurring import delete_reoccurring_characters
+from strings.domain_extractor import domain_name
 
 import unittest
 
@@ -63,6 +64,20 @@ class TestDeleteReoccurring(unittest.TestCase):
 
     def test_delete_reoccurring_characters(self):
         self.assertEqual("abc", delete_reoccurring_characters("aaabcccc"))
+
+
+class TestDomainExtractor(unittest.TestCase):
+    """[summary]
+    Test for the file domain_extractor.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_valid(self):
+        self.assertEqual(domain_name("https://github.com/SaadBenn"), "github")
+    def test_invalid(self):
+        self.assertEqual(domain_name("http://google.com"), "google")
 
 
 if __name__ == "__main__":
