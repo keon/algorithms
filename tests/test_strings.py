@@ -8,6 +8,7 @@ from strings.group_anagrams import group_anagrams
 from strings.int_to_roman import int_to_roman
 from strings.is_palindrome import is_palindrome, is_palindrome_reverse, \
 is_palindrome_two_pointer, is_palindrome_stack
+from strings.license_number import license_number
 
 import unittest
 
@@ -151,6 +152,21 @@ class TestIsPalindrome(unittest.TestCase):
         self.assertTrue(is_palindrome_stack("Otto"))
         self.assertFalse(is_palindrome_stack("house"))
 
+
+class TestLicenseNumber(unittest.TestCase):
+    """[summary]
+    Test for the file license_number.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_license_number(self):
+        self.assertEqual("a-b-c-d-f-d-d-f", license_number("a-bc-dfd-df", 1))
+        self.assertEqual("ab-cd-fd-df", license_number("a-bc-dfd-df", 2))
+        self.assertEqual("ab-cdf-ddf", license_number("a-bc-dfd-df", 3))
+        self.assertEqual("abcd-fddf", license_number("a-bc-dfd-df", 4))
+        self.assertEqual("abc-dfddf", license_number("a-bc-dfd-df", 5))
 
 if __name__ == "__main__":
     unittest.main()
