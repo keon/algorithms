@@ -17,6 +17,7 @@ from strings.rabin_karp import rabin_karp
 from strings.reverse_string import *
 from strings.reverse_vowel import reverse_vowel
 from strings.reverse_words import reverse_words
+from strings.roman_to_int import roman_to_int
 
 import unittest
 
@@ -292,6 +293,20 @@ class TestReverseWords(unittest.TestCase):
     def test_reverse_words(self):
         self.assertEqual("pizza like I and kim keon am I", \
         reverse_words("I am keon kim and I like pizza"))
+
+
+class TestRomanToInt(unittest.TestCase):
+    """[summary]
+    Test for the file roman_to_int.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_roman_to_int(self):
+        self.assertEqual(621, roman_to_int("DCXXI"))
+        self.assertEqual(1, roman_to_int("I"))
+        self.assertEqual(3999, roman_to_int("MMMCMXCIX"))
 
 
 if __name__ == "__main__":
