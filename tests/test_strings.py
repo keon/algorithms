@@ -1,6 +1,7 @@
 from strings.add_binary import add_binary
 from strings.breaking_bad import match_symbol, match_symbol_1, bracket
 from strings.decode_string import decode_string
+from strings.delete_reoccurring import delete_reoccurring_characters
 
 import unittest
 
@@ -50,6 +51,18 @@ class TestDecodeString(unittest.TestCase):
     def test_decode_string(self):
         self.assertEqual("aaabcbc", decode_string("3[a]2[bc]"))
         self.assertEqual("accaccacc", decode_string("3[a2[c]]"))
+
+
+class TestDeleteReoccurring(unittest.TestCase):
+    """[summary]
+    Test for the file delete_reoccurring.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_delete_reoccurring_characters(self):
+        self.assertEqual("abc",delete_reoccurring_characters("aaabcccc"))
 
 
 if __name__ == "__main__":
