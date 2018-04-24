@@ -10,6 +10,7 @@ from strings.is_palindrome import is_palindrome, is_palindrome_reverse, \
 is_palindrome_two_pointer, is_palindrome_stack
 from strings.license_number import license_number
 from strings.make_sentence import make_sentence
+from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
 
 import unittest
 
@@ -182,6 +183,20 @@ class TestMakeSentence(unittest.TestCase):
         dictionarys = ["", "app", "let", "t", "apple", "applet"]
         word = "applet"
         self.assertTrue(make_sentence(word, dictionarys))
+
+
+class TestMergeStringChecker(unittest.TestCase):
+    """[summary]
+    Test for the file merge_string_checker.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_is_merge_recursive(self):
+        self.assertTrue(is_merge_recursive("codewars", "cdw", "oears"))
+    def test_is_merge_iterative(self):
+        self.assertTrue(is_merge_iterative("codewars", "cdw", "oears"))
 
 
 if __name__ == "__main__":
