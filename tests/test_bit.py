@@ -11,6 +11,7 @@ from bit.swap_pair import swap_pair
 from bit.find_difference import find_difference
 from bit.has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
 from bit.insert_bit import insert_one_bit, insert_mult_bits
+from bit.remove_bit import remove_bit
 
 import unittest
 import random
@@ -193,6 +194,17 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(47, insert_mult_bits(5, 7, 3, 1))
         self.assertEqual(47, insert_mult_bits(5, 7, 3, 0))
         self.assertEqual(61, insert_mult_bits(5, 7, 3, 3))
+
+    def test_remove_bit(self):
+        """
+        Input: num = 10101 (21)
+        remove_bit(num, 2): output = 1001 (9)
+        remove_bit(num, 4): output = 101 (5)
+        remove_bit(num, 0): output = 1010 (10)
+        """
+        self.assertEqual(9, remove_bit(21, 2))
+        self.assertEqual(5, remove_bit(21, 4))
+        self.assertEqual(10, remove_bit(21, 0))
 
 if __name__ == '__main__':
     unittest.main()

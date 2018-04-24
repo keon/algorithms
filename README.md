@@ -78,6 +78,7 @@ For running all tests write down:
     - [find_difference](bit/find_difference.py)
     - [has_alternative_bit](bit/has_alternative_bit.py)
     - [insert_bit](bit/insert_bit.py)
+    - [remove_bit](bit/remove_bit.py)
 - [calculator](calculator)
     - [math_parser](calculator/math_parser.py)
 - [dfs](dfs)
