@@ -99,7 +99,7 @@ class TestEncodeDecode(unittest.TestCase):
 class TestGroupAnagrams(unittest.TestCase):
     """[summary]
     Test for the file group_anagrams.py
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -107,6 +107,7 @@ class TestGroupAnagrams(unittest.TestCase):
     def test_group_anagrams(self):
         self.assertEqual([['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']], \
         group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
 
 if __name__ == "__main__":
     unittest.main()
