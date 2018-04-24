@@ -28,10 +28,3 @@ def decode(s):
         strs.append(s[index+1: index+1+size])
         i = index+1+size
     return strs
-
-strs = "keon is awesome"
-print(strs)
-enc = encode(strs)
-print(enc)
-dec = decode(enc)
-print(dec)

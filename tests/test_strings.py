@@ -3,6 +3,7 @@ from strings.breaking_bad import match_symbol, match_symbol_1, bracket
 from strings.decode_string import decode_string
 from strings.delete_reoccurring import delete_reoccurring_characters
 from strings.domain_extractor import domain_name_1, domain_name_2
+from strings.encode_decode import encode, decode
 
 import unittest
 
@@ -78,6 +79,20 @@ class TestDomainExtractor(unittest.TestCase):
         self.assertEqual(domain_name_1("https://github.com/SaadBenn"), "github")
     def test_invalid(self):
         self.assertEqual(domain_name_2("http://google.com"), "google")
+
+
+class TestEncodeDecode(unittest.TestCase):
+    """[summary]
+    Test for the file encode_decode.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_encode(self):
+        self.assertEqual("4:keon2:is7:awesome", encode("keon is awesome"))
+    def test_decode(self):
+        self.assertEqual(['keon', 'is', 'awesome'], decode("4:keon2:is7:awesome"))
 
 
 if __name__ == "__main__":
