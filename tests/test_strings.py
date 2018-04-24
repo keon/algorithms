@@ -15,6 +15,7 @@ from strings.multiply_strings import multiply
 from strings.one_edit_distance import is_one_edit, is_one_edit2
 from strings.rabin_karp import rabin_karp
 from strings.reverse_string import *
+from strings.reverse_vowel import reverse_vowel
 
 import unittest
 
@@ -266,6 +267,18 @@ class TestReverseString(unittest.TestCase):
     def test_ultra_pythonic(self):
         self.assertEqual("ereht olleh", ultra_pythonic("hello there"))
     
+
+class TestReverseVowel(unittest.TestCase):
+    """[summary]
+    Test for the file reverse_vowel.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_reverse_vowel(self):
+        self.assertEqual("holle", reverse_vowel("hello"))
+
 
 if __name__ == "__main__":
     unittest.main()
