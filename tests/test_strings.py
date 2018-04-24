@@ -18,6 +18,7 @@ from strings.reverse_string import *
 from strings.reverse_vowel import reverse_vowel
 from strings.reverse_words import reverse_words
 from strings.roman_to_int import roman_to_int
+from strings.strip_url_params import *
 
 import unittest
 
@@ -307,6 +308,25 @@ class TestRomanToInt(unittest.TestCase):
         self.assertEqual(621, roman_to_int("DCXXI"))
         self.assertEqual(1, roman_to_int("I"))
         self.assertEqual(3999, roman_to_int("MMMCMXCIX"))
+
+
+class TestStripUrlParams(unittest.TestCase):
+    """[summary]
+    Test for the file strip_urls_params.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_strip_url_params1(self):
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_strip_url_params2(self):
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_strip_url_params3(self):
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
 
 
 if __name__ == "__main__":
