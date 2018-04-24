@@ -12,6 +12,7 @@ from strings.license_number import license_number
 from strings.make_sentence import make_sentence
 from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
 from strings.multiply_strings import multiply
+from strings.one_edit_distance import is_one_edit, is_one_edit2
 
 import unittest
 
@@ -214,6 +215,23 @@ class TestMultiplyStrings(unittest.TestCase):
         self.assertEqual("0", multiply("0", "23"))
         self.assertEqual("1000000", multiply("100", "10000"))
 
+
+class TestOneEditDistance(unittest.TestCase):
+    """[summary]
+    Test for the file one_edit_distance.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_is_one_edit(self):
+        self.assertTrue(is_one_edit("abc", "abd"))
+        self.assertFalse(is_one_edit("abc", "aed"))
+        self.assertFalse(is_one_edit("abcd", "abcd"))
+    def test_is_one_edit2(self):
+        self.assertTrue(is_one_edit2("abc", "abd"))
+        self.assertFalse(is_one_edit2("abc", "aed"))
+        self.assertFalse(is_one_edit2("abcd", "abcd"))
 
 if __name__ == "__main__":
     unittest.main()
