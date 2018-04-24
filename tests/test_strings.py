@@ -5,6 +5,7 @@ from strings.delete_reoccurring import delete_reoccurring_characters
 from strings.domain_extractor import domain_name_1, domain_name_2
 from strings.encode_decode import encode, decode
 from strings.group_anagrams import group_anagrams
+from strings.int_to_roman import int_to_roman
 
 import unittest
 
@@ -107,6 +108,20 @@ class TestGroupAnagrams(unittest.TestCase):
     def test_group_anagrams(self):
         self.assertEqual([['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']], \
         group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
+
+class TestIntToRoman(unittest.TestCase):
+    """[summary]
+    Test for the file int_to_roman.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_int_to_roman(self):
+        self.assertEqual("DCXLIV", int_to_roman(644))
+        self.assertEqual("I", int_to_roman(1))
+        self.assertEqual("MMMCMXCIX", int_to_roman(3999))
 
 
 if __name__ == "__main__":
