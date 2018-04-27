@@ -212,6 +212,7 @@ For running all tests write down:
     - [remove_min](stack/remove_min.py)
     - [is_sorted](stack/is_sorted.py)
 - [strings](strings)
+    - [fizzbuzz](strings/fizzbuzz.py)
     - [delete_reoccurring_characters](strings/delete_reoccurring_characters.py)
     - [strip_url_params](strings/strip_url_params.py)
     - [validate_coordinates](strings/validate_coordinates.py)
