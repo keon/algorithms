@@ -5,6 +5,7 @@ from bit.power_of_two import is_power_of_two
 from bit.reverse_bits import reverse_bits
 from bit.single_number import single_number
 from bit.single_number2 import single_number2
+from bit.single_number3 import single_number3
 from bit.subsets import subsets
 from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
 from bit.swap_pair import swap_pair
@@ -120,6 +121,12 @@ class TestSuite(unittest.TestCase):
         nums.append(single)
         random.shuffle(nums)
         self.assertEqual(single, single_number2(nums))
+
+    def test_single_number3(self):
+        self.assertEqual(sorted([2,5]),
+                         sorted(single_number3([2, 1, 5, 6, 6, 1])))
+        self.assertEqual(sorted([4,3]),
+                         sorted(single_number3([9, 9, 4, 3])))
 
     def test_subsets(self):
 
