@@ -12,6 +12,9 @@ matrix:
 install:
     - pip install -r requirements.txt
     - pip install flake8  # pytest  # add another testing frameworks later
+    - pip install python-coveralls
+    - pip install coverage
+    - pip install nose
 before_script:
     # stop the build if there are Python syntax errors or undefined names
     - flake8 . --count --select=E901,E999,F821,F822,F823 --show-source --statistics
@@ -22,6 +25,11 @@ script:
     - python3 -m unittest discover tests
     # Check pytest running
     - python3 -m pytest tests
+    # Run nose with coverage support
+    - nosetests --with-coverage
 notifications:
     on_success: change
     on_failure: change  # `always` will be the setting once code changes slow down
+
+after_success:
+  - coveralls
