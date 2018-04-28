@@ -4,7 +4,7 @@ from maths.gcd import gcd, lcm
 from maths.generate_strobogrammtic import gen_strobogrammatic, strobogrammatic_in_range
 from maths.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from maths.next_perfect_square import find_next_square, find_next_square2
-from maths.prime_test import prime_test, prime_test2
+from maths.prime_check import prime_check, prime_check2
 from maths.primes_sieve_of_eratosthenes import primes
 from maths.pythagoras import pythagoras
 from maths.rabin_miller import is_prime
@@ -137,7 +137,7 @@ class TestPrimeTest(unittest.TestCase):
         """
         counter = 0
         for i in range(2, 101):
-            if prime_test(i):
+            if prime_check(i):
                 counter += 1
         self.assertEqual(25, counter)
 
@@ -148,7 +148,7 @@ class TestPrimeTest(unittest.TestCase):
         """
         counter = 0
         for i in range(2, 101):
-            if prime_test2(i):
+            if prime_check2(i):
                 counter += 1
         self.assertEqual(25, counter)
 

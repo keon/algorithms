@@ -154,7 +154,7 @@ For running all tests write down:
     - [next_bigger](maths/next_bigger.py)
     - [next_perfect_square](maths/next_perfect_square.py)
     - [nth_digit](maths/nth_digit.py)
-    - [prime_test](maths/prime_test.py)
+    - [prime_check](maths/prime_check.py)
     - [primes_sieve_of_eratosthenes](maths/primes_sieve_of_eratosthenes.py)
     - [pythagoras](maths/pythagoras.py)
     - [rabin_miller](maths/rabin_miller.py)
