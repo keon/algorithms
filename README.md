@@ -2,6 +2,7 @@ English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/R
 
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
 Pythonic Data Structures and Algorithms
 =========================================
@@ -153,7 +154,7 @@ For running all tests write down:
     - [next_bigger](maths/next_bigger.py)
     - [next_perfect_square](maths/next_perfect_square.py)
     - [nth_digit](maths/nth_digit.py)
-    - [prime_test](maths/prime_test.py)
+    - [prime_check](maths/prime_check.py)
     - [primes_sieve_of_eratosthenes](maths/primes_sieve_of_eratosthenes.py)
     - [pythagoras](maths/pythagoras.py)
     - [rabin_miller](maths/rabin_miller.py)

@@ -2,7 +2,7 @@
 prime_test(n) returns a True if n is a prime number else it returns False
 """
 
-def prime_test(n):
+def prime_check(n):
     if n <= 1:
         return False
     if n == 2 or n == 3:
@@ -17,7 +17,7 @@ def prime_test(n):
     return True
 
 
-def prime_test2(n):
+def prime_check2(n):
     # prime numbers are greater than 1
     if n > 1:
         # check for factors
@@ -26,7 +26,7 @@ def prime_test2(n):
                 # print(num, "is not a prime number")
                 # print(i, "times", num//i, "is", num)
                 return False
-        
+
         # print(num, "is a prime number")
         return True
 
