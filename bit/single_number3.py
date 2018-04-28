@@ -31,15 +31,15 @@ def single_number3(nums):
     :type nums: List[int]
     :rtype: List[int]
     """
-    # isolate a+b from pairs using XOR
+    # isolate a^b from pairs using XOR
     ab = 0
     for n in nums:
         ab ^= n
 
-    # isolate right most bit from a+b
+    # isolate right most bit from a^b
     right_most = ab & (-ab)
 
-    # isolate a and b from a+b
+    # isolate a and b from a^b
     a, b = 0, 0
     for n in nums:
         if n & right_most:
