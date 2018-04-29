@@ -12,10 +12,7 @@ Queue Abstract Data Type (ADT)
   It needs no parameters and returns an integer.
 * peek() returns the front element of the queue.
 """
-import unittest
 from abc import ABCMeta, abstractmethod
-
-
 class AbstractQueue(metaclass=ABCMeta):
 
     def __init__(self):
@@ -99,7 +96,6 @@ class QueueNode:
         self.value = value
         self.next = None
 
-
 class LinkedListQueue(AbstractQueue):
 
     def __init__(self):
@@ -142,92 +138,3 @@ class LinkedListQueue(AbstractQueue):
         if self.is_empty():
             raise IndexError("Queue is empty")
         return self._front.value
-
-
-# TODO
-class HeapPriorityQueue(AbstractQueue):
-
-    def __init__(self):
-        super().__init__()
-        pass
-
-    def __iter__(self):
-        pass
-
-    def enqueue(self, value):
-        pass
-
-    def dequeue(self):
-        pass
-
-    def peek(self):
-        pass
-
-
-class TestSuite(unittest.TestCase):
-    """
-        Test suite for the Queue data structures.
-    """
-
-    def test_ArrayQueue(self):
-        queue = ArrayQueue()
-        queue.enqueue(1)
-        queue.enqueue(2)
-        queue.enqueue(3)
-
-        # test __iter__()
-        it = iter(queue)
-        self.assertEqual(1, next(it))
-        self.assertEqual(2, next(it))
-        self.assertEqual(3, next(it))
-        self.assertRaises(StopIteration, next, it)
-
-        # test __len__()
-        self.assertEqual(3, len(queue))
-
-        # test is_empty()
-        self.assertFalse(queue.is_empty())
-
-        # test peek()
-        self.assertEqual(1, queue.peek())
-
-        # test dequeue()
-        self.assertEqual(1, queue.dequeue())
-        self.assertEqual(2, queue.dequeue())
-        self.assertEqual(3, queue.dequeue())
-
-        self.assertTrue(queue.is_empty())
-
-    def test_LinkedListQueue(self):
-        queue = LinkedListQueue()
-        queue.enqueue(1)
-        queue.enqueue(2)
-        queue.enqueue(3)
-
-        # test __iter__()
-        it = iter(queue)
-        self.assertEqual(1, next(it))
-        self.assertEqual(2, next(it))
-        self.assertEqual(3, next(it))
-        self.assertRaises(StopIteration, next, it)
-
-        # test __len__()
-        self.assertEqual(3, len(queue))
-
-        # test is_empty()
-        self.assertFalse(queue.is_empty())
-
-        # test peek()
-        self.assertEqual(1, queue.peek())
-
-        # test dequeue()
-        self.assertEqual(1, queue.dequeue())
-        self.assertEqual(2, queue.dequeue())
-        self.assertEqual(3, queue.dequeue())
-
-        self.assertTrue(queue.is_empty())
-
-
-if __name__ == "__main__":
-
-    unittest.main()

@@ -23,7 +23,5 @@ def reconstruct_queue(people):
     queue = []
     people.sort(key=lambda x: (-x[0], x[1]))
     for h, k in people:
-        queue.insert(k, (h, k))
+        queue.insert(k, [h, k])
     return queue
-
-
