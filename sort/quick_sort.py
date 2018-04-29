@@ -1,6 +1,6 @@
 def quick_sort(arr, first, last):
     """ Quicksort
-        Complexity: best O(n) avg O(n log(n)), worst O(N^2)
+        Complexity: best O(n log(n)) avg O(n log(n)), worst O(N^2)
     """
     if first < last:
         pos = partition(arr, first, last)
