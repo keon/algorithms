@@ -17,7 +17,9 @@ def fib_recursive(n):
     if n <= 1:
         return n
     else:
-        return fibRecursive(n-1) + fibRecursive(n-2)
+        return fib_recursive(n-1) + fib_recursive(n-2)
+
+# print(fib_recursive(35)) # => 9227465 (slow)
 
 def fib_list(n):
     """[summary]
@@ -40,4 +42,4 @@ def fib_list(n):
         list_results.append(list_results[i-1] + list_results[i-2])
     return list_results[n]
 
-print(fib_list(100)) # => 354224848179261915075
+# print(fib_list(100)) # => 354224848179261915075
