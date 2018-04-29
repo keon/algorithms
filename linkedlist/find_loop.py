@@ -19,10 +19,10 @@ class LinkedList:
 		self.root = None
 
 	# Function to insert a new node at the beginning
-    def push(self, new_data):
-        new_node = Node(new_data)
-        new_node.next = self.head
-        self.head = new_node	
+	def push(self, new_data):
+		new_node = Node(new_data)
+		new_node.next = self.head
+		self.head = new_node	
 
 	def find_loop_start(self):
 		if self.root is None or self.root.next is None:
