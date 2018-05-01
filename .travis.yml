@@ -21,12 +21,16 @@ before_script:
     # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
     - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 script:
+    # Check python install package
+    - pip3 install -e .
     # Check unittest running
     - python3 -m unittest discover tests
     # Check pytest running
     - python3 -m pytest tests
     # Run nose with coverage support
     - nosetests --with-coverage
+    # Check python uninstall package
+    - pip3 uninstall -y algorithms
 notifications:
     on_success: change
     on_failure: change  # `always` will be the setting once code changes slow down

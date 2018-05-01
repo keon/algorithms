@@ -29,6 +29,27 @@ For running all tests write down:
 
     $ python3 -m pytest tests
 
+## Install
+If you want to use the API algorithms in your code, it is as simple as:
+
+    $ pip3 install .
+
+You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
+
+```python3
+from sort import merge_sort
+
+if __name__ == "__main__":
+    my_list = [1, 8, 3, 5, 6]
+    my_list = merge_sort.merge_sort(my_list)
+    print(my_list)
+```
+
+## Uninstall
+If you want to uninstall algorithms, it is as simple as:
+
+    $ pip3 uninstall -y algorithms
+
 ## List of Implementations
 
 - [array](array)
