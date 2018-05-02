@@ -23,16 +23,15 @@ class Graph():
         dist[src] = 0
         min_dist_set = [False] * self.vertices
  
-        for cout in range(self.vertices):
-		#minimum distance vertex that is not processed
+	for cout in range(self.vertices):
+	#minimum distance vertex that is not processed
 		u = self.min_distance(dist, min_dist_set)
 		
- 		#put minimum distance vertex in shortest tree
+ 	#put minimum distance vertex in shortest tree
 		min_dist_set[u] = True
-		
-		# Update dist value of the adjacent vertices
+	
+	# Update dist value of the adjacent vertices
 		for v in range(self.vertices):
 			if self.graph[u][v] > 0 and min_dist_set[v] == False and dist[v] > dist[u] + self.graph[u][v]:
 				dist[v] = dist[u] + self.graph[u][v]
-	
 	return dist
