@@ -1,6 +1,6 @@
 #The stack remains always ordered such that the highest value is at the top and the lowest at the bottom
 
-class Stack:
+class orderedStack:
      def __init__(self):
          self.items = []
          
@@ -11,11 +11,11 @@ class Stack:
          self.items.append(item)
 	     
      def push(self, item): #push method to maintain order when pushing new elements
-         temp=Stack()
-         if self.isEmpty() or item>self.peek():
+         temp = Stack()
+         if self.isEmpty() or item > self.peek():
              self.pushT(item)
          else:
-             while (item<self.peek()) and (not self.isEmpty()):
+             while (item < self.peek()) and (not self.isEmpty()):
                  temp.pushT(self.pop())
              self.pushT(item)
              while not(temp.isEmpty()):
@@ -31,17 +31,3 @@ class Stack:
          
      def size(self):
          return len(self.items)
-         
-     def printStack(self):
-	     sz=self.size()
-	     for i in range(0, sz):
-	 	    print(self.items[sz-i-1])
-
-#MAIN
-s=Stack()
-s.push(1)
-s.push(12)
-s.push(8)
-s.push(3)
-s.pop()
-s.printStack()
