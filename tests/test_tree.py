@@ -4,8 +4,13 @@ from tree.bst.bst_closest_value import closest_value
 from tree.bst.depth_sum import depth_sum
 from tree.bst.height import height
 from tree.bst.is_bst import is_bst
-from tree.bst.kth_smallest import Solution
-from tree.bst.bst import BST, Node
+from tree.bst.kth_smallest import kth_smallest
+from tree.bst.lowest_common_ancestor import lowest_common_ancestor
+from tree.bst.num_empty import num_empty
+from tree.bst.predecessor import predecessor
+from tree.bst.serialize_deserialize import serialize, deserialize
+from tree.bst.unique_bst import num_trees
+from tree.bst.bst import BST
 import unittest
 
 
@@ -54,10 +59,43 @@ class TestBST(unittest.TestCase):
         self.assertTrue(is_bst(self.bst.get_root()))
 
     def test_kth_smallest(self):
-        solution = Solution()
-        self.assertEqual(solution.kth_smallest(self.bst.get_root(), 5), 10)
-        self.assertNotEqual(solution.kth_smallest(self.bst.get_root(), 1), 10)
+        self.assertEqual(kth_smallest(self.bst.get_root(), 5), 10)
+        self.assertNotEqual(kth_smallest(self.bst.get_root(), 1), 10)
 
+    def test_lowest_common_ancestor(self):
+        root = self.bst.get_root()  # 10
+        node_1 = root.left  # 6
+        node_2 = root.right  # 15
+        node_3 = root.right.right  # 24
+        node_4 = root.right.right.right  # 30
+        self.assertEqual(lowest_common_ancestor(self.bst.get_root(), node_1, node_2), root)
+        self.assertEqual(lowest_common_ancestor(self.bst.get_root(), node_3, node_4), node_3)
+
+    def test_num_empty(self):
+        self.assertEqual(num_empty(self.bst.get_root()), 12)
+
+    def test_predecessor(self):
+
+        """
+            TODO: @Kim who wrote this code, it s not working as it should be.
+        """
+        pass
+        #  self.assertEqual(predecessor(self.bst.get_root(), self.bst.get_root()), None)
+        #  self.assertEqual(predecessor(self.bst.get_root(), self.bst.get_root().right), self.bst.get_root())
+
+    def test_serialize_deserialize(self):
+        pass
+
+    def test_successor(self):
+        """
+            TODO: @Kim who wrote this code, it s not working as it should be.
+        """
+        pass
+
+    def test_unique_bst(self):
+        # Todo: self.assertEqual(num_trees(0), 0)
+        self.assertEqual(num_trees(1), 1)
+        self.assertEqual(num_trees(3), 5)
 
 def create_bst_tree():
     """
@@ -89,22 +127,13 @@ def create_bst_tree():
     return tree
 
 
-
-
 def is_balanced(tree):
     """"
        To check if a tree is height-balanced, get the height of left and right subtrees.
        Return true if difference between heights is not more than 1 and left and right subtrees are balanced, otherwise return false.
     """
     if tree.val:
-        return abs(get_height(tree.left) - get_height(tree.right)) < 2
-
-
-def get_height(tree):
-    if not tree:
-        return 0
-    return 1 + get_height(tree.left) + get_height(tree.right)
-
+        return abs(height(tree.left) - height(tree.right)) < 2
 
 
 if __name__ == '__name__':
