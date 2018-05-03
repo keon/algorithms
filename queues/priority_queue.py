@@ -1,8 +1,12 @@
 """
-Implementation of priority queue
+Implementation of priority queue using linear array.
+Insertion - O(n)
+Extract min/max Node - O(1)
 """
+import collections
 
-class PriorityQueueNode:	
+
+class PriorityQueueNode:
 	def __init__(self, data, priority):
 		self.data = data
 		self.priority = priority
@@ -12,30 +16,24 @@ class PriorityQueueNode:
 
 class PriorityQueue:
 	def __init__(self):
-		self.priority_queue_list = []
+		self.priority_queue_list = collections.deque()
+
+	def __repr__(self):
+	    return "PriorityQueue({!r})".format(list(self.priority_queue_list))
 
 	def size(self):
 		return len(self.priority_queue_list)
 
-	def insert(self, node):
-		# if queue is empty
-		if self.size() == 0:
-			self.priority_queue_list.append(node)
-		else:
-			 # traverse the queue to find the right place for new node
-			 for index, current in enumerate(self.priority_queue_list):
-			 	if current.priority < node.priority:
-			 		# if we have traversed the complete queue
-			 		if index == self.size() - 1:
-			 			# add new node at the end
-			 			self.priority_queue_list.insert(index + 1, node)
-			 		else:
-			 			continue
-			 	else:
-			 		self.priority_queue_list.insert(index, node)
-			 		return True
+	def push(self, item, priority=None):
+		priority = item if priority is None else priority
+		node = PriorityQueueNode(item, priority)
+		for index, current in enumerate(self.priority_queue_list):
+			if current.priority > node.priority:
+				self.priority_queue_list.insert(index, node)
+				return
+		# when traversed complete queue
+		self.priority_queue_list.append(node)
 
-	def delete(self):
-		# remove the first node from the queue
-		return self.priority_queue_list.pop(0)
-										
+	def pop(self):
+		# remove and return the first node from the queue
+		return self.priority_queue_list.popleft()

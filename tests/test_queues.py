@@ -1,7 +1,7 @@
 from queues.queue import ArrayQueue, LinkedListQueue
 from queues.max_sliding_window import max_sliding_window
 from queues.reconstruct_queue import reconstruct_queue
-
+from queues.priority_queue import PriorityQueue, PriorityQueueNode
 import unittest
 
 class TestQueue(unittest.TestCase):
@@ -84,6 +84,19 @@ class TestSuite(unittest.TestCase):
     def test_reconstruct_queue(self):
         self.assertEqual([[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]],
                          reconstruct_queue([[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]))
+
+class TestPriorityQueue(unittest.TestCase):
+    """
+        Test suite for the PriorityQueue data structures.
+    """
+    def test_PriorityQueue(self):
+        queue = PriorityQueue()
+        queue.push(3)
+        queue.push(4)
+        queue.push(1)
+        queue.push(6)
+        self.assertEqual(4,queue.size())
+        self.assertEqual(str(1) + ": " + str(1),str(queue.pop()))
 
 if __name__ == "__main__":
 
