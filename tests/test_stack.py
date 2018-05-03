@@ -137,8 +137,8 @@ class TestOrderedStack(unittest.TestCase):
         stack.push(1)
         stack.push(4)
         stack.push(3)
+        stack.push(6)
         "bottom - > 1 3 4 6 "
-        self.assertEqual([1, 3, 4, 6], stack.push(6))
         self.assertEqual(6, stack.pop())
         self.assertEqual(4, stack.peek())
         self.assertEqual(3, stack.size())
