@@ -6,7 +6,7 @@ Extract min/max Node - O(1)
 import collections
 
 
-class PriorityQueueNode:	
+class PriorityQueueNode:
 	def __init__(self, data, priority):
 		self.data = data
 		self.priority = priority
@@ -20,7 +20,7 @@ class PriorityQueue:
 
 	def __repr__(self):
 	    return "PriorityQueue({!r})".format(list(self.priority_queue_list))
-	
+
 	def size(self):
 		return len(self.priority_queue_list)
 
