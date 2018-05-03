@@ -32,7 +32,7 @@ For running all tests write down:
 ## Install
 If you want to use the API algorithms in your code, it is as simple as:
 
-    $ pip3 install .
+    $ pip3 install git+https://github.com/keon/algorithms
 
 You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
 
