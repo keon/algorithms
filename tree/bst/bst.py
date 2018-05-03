@@ -5,14 +5,17 @@ Implement Binary Search Tree. It has method:
     3. Size
     4. Traversal (Preorder, Inorder, Postorder)
 """
+from tree.tree import TreeNode
 
-import unittest
 
-class Node(object):
-    def __init__(self, data):
-        self.data = data
-        self.left = None
-        self.right = None
+class Node(TreeNode):
+    """
+    Workaround for the different usage of BST(.data) and TreeNode(.val) but are actually the same
+    """
+    def __init__(self, val):
+        super().__init__(val)
+        self.data = self.val
+
 
 class BST(object):
     def __init__(self):
@@ -98,42 +101,3 @@ class BST(object):
             self.preorder(root.left)
             self.preorder(root.right)
             print(str(root.data), end = ' ')
-
-"""
-    The tree is created for testing:
-
-                    10
-                 /      \
-               6         15
-              / \       /   \
-            4     9   12      24
-                 /          /    \
-                7         20      30
-                         /
-                       18
-"""
-
-class TestSuite(unittest.TestCase):
-    def setUp(self):
-        self.tree = BST()
-        self.tree.insert(10)
-        self.tree.insert(15)
-        self.tree.insert(6)
-        self.tree.insert(4)
-        self.tree.insert(9)
-        self.tree.insert(12)
-        self.tree.insert(24)
-        self.tree.insert(7)
-        self.tree.insert(20)
-        self.tree.insert(30)
-        self.tree.insert(18)
-
-    def test_search(self):
-        self.assertTrue(self.tree.search(24))
-        self.assertFalse(self.tree.search(50))
-
-    def test_size(self):
-        self.assertEqual(11, self.tree.size())
-
-if __name__ == '__main__':
-    unittest.main()
