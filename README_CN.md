@@ -3,23 +3,82 @@
 Python版数据结构和算法
 =========================================
 
-python版数据结构和算法实现的简约版小示例
+python版数据结构和算法实现的简约版小示例  
 
+谢谢关注。有多种方法可以贡献你的代码。[从这里开始吧](https://github.com/keon/algorithms/blob/master/CONTRIBUTING.md)  
+
+[或者可以用不同语言来完成上述算法，期待加入](https://github.com/yunshuipiao/sw-algorithms)：https://github.com/yunshuipiao/sw-algorithms
+
+## 测试
+
+### 单元测试
+如下代码可以运行全部测试：  
+```
+
+python3 -m unittest discover tests
+
+```
+
+针对特定模块(比如：sort)的测试， 可以使用如下代码：  
+```
+
+python3 -m unittest tests.test_sort
+
+```
+
+### 使用pytest
+如下代码运行所有测试代码：  
+```
+
+pyhton3 -m pytest tests
+
+```
+
+## 安装
+如果想在代码中使用算法API， 可按如下步骤进行：
+```
+
+pip3 install git+https://github.com/keon/algorithms
+
+```
+
+通过创建python文件(比如：在sort模块使用merge_sort)进行测试： 
+```
+
+from sort import merge_sort
+
+if __name__ == "__main__":
+    my_list = [1, 8, 3, 5, 6]
+    my_list = merge_sort.merge_sort(my_list)
+    print(my_list)
+    
+```
+
+## 卸载
+如下代码可卸载该API：
+
+```
+
+pip3 uninstall -y algorithms
+
+```
 
 ## 实现列表
 
-- [array:数组](array)
-    - [circular_counter：约瑟夫环](array/josephus_problem.py)
-    - [flatten：数组降维](array/flatten.py)
-    - [garage：停车场](array/garage.py)
-    - [longest_non_repeat：最长不重复子串](array/longest_non_repeat.py/)
-    - [merge_intervals：合并重叠间隔](array/merge_intervals.py)
-    - [missing_ranges：遗失的范围](array/missing_ranges.py)
-    - [plus_one：加一运算](array/plus_one.py)
-    - [rotate_array：反转数组](array/rotate_array.py)
-    - [summary_ranges：数组范围](array/summary_ranges.py)
-    - [three_sum：三数和为零](array/three_sum.py)
-    - [two_sum：两数和](array/two_sum.py)
+- [array:数组](arrays)
+    - [delete_nth: 删除第n项](arrays/delete_nth.py)
+    - [flatten：数组降维](arrays/flatten.py)
+    - [garage：停车场](arrays/garage.py)
+    - [josephus_problem: 约瑟夫问题](arrays/josephus_problem.py)
+    - [longest_non_repeat：最长不重复子串](arrays/longest_non_repeat.py/)
+    - [merge_intervals：合并重叠间隔](arrays/merge_intervals.py)
+    - [missing_ranges：遗失的范围](arrays/missing_ranges.py)
+    - [plus_one：加一运算](arrays/plus_one.py)
+    - [rotate_array：反转数组](arrays/rotate_array.py)
+    - [summary_ranges：数组范围](arrays/summary_ranges.py)
+    - [three_sum：三数和为零](arrays/three_sum.py)
+    - [two_sum：两数和](arrays/two_sum.py)
+    - [move_zeros_to_end: 0后置问题](arrays/move_zeros_to_end.py)
 - [backtrack：回溯](backtrack)
     - [general_solution.md：一般方法](backtrack/)
     - [anagram：同字母异序词](backtrack/anagram.py)
@@ -28,7 +87,7 @@ python版数据结构和算法实现的简约版小示例
     - [expression_add_operators：给表达式添加运算符](backtrack/expression_add_operators.py)
     - [factor_combinations：因素组合](backtrack/factor_combinations.py)
     - [generate_abbreviations：缩写生成](backtrack/generate_abbreviations.py)
-    - [generate_parenthesis：插入生成](backtrack/generate_parenthesis.py)
+    - [generate_parenthesis：括号生成](backtrack/generate_parenthesis.py)
     - [letter_combination：字母组合](backtrack/letter_combination.py)
     - [palindrome_partitioning：字符串的所有回文子串](backtrack/palindrome_partitioning.py)
     - [pattern_match：模式匹配](backtrack/pattern_match.py)
@@ -212,5 +271,17 @@ python版数据结构和算法实现的简约版小示例
         - [trie：字典](tree/trie/trie.py)
 - [union-find：并查集](union-find)
     - [count_islands：岛计数](union-find/count_islands.py)
-- [或者可以用不同语言来完成上述算法，期待加入](https://github.com/yunshuipiao/sw-algorithms)
+ 
+
+## 贡献
+谢谢主要维护人员：
+
+* [Keon Kim](https://github.com/keon)
+* [Rahul Goswami](https://github.com/goswami-rahul)
+* [Christian Bender](https://github.com/christianbender)
+* [Ankit Agarwal](https://github.com/ankit167)
+* [Hai Hoang Dang](https://github.com/danghai)
+* [Saad](https://github.com/SaadBenn)
+
+以及[所有贡献者](https://github.com/keon/algorithms/graphs/contributors)
 

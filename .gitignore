@@ -1,5 +1,7 @@
 __pycache__/
 *.py[cod]
+*.iml
+*.xml
 .idea/
 .cache/
 .pytest_cache/
