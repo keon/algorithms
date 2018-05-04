@@ -49,11 +49,14 @@ def fib_iter(n):
     Works iterative approximate O(n)
 
     Arguments:
-        n {[type]} -- [description]
+        n {[int]} -- [description]
     
     Returns:
-        [type] -- [description]
+        [int] -- [description]
     """
+
+    # precondition
+    assert n >= 0, 'n must be positive integer'
 
     fib_1 = 0
     fib_2 = 1
