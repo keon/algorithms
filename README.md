@@ -99,6 +99,7 @@ For running all tests write down:
     - [regex_matching](dp/regex_matching.py)
     - [rod_cut](dp/rod_cut.py)
     - [word_break](dp/word_break.py)
+    - [fibonacci](dp/fib.py)
 - [graph](graph)
     - [strongly_connected](graph/checkDiGraphStronglyConnected.py)
     - [clone_graph](graph/clone_graph.py)
