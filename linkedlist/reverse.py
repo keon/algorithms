@@ -1,8 +1,10 @@
 """
-Reverse a singly linked list.
+Reverse a singly linked list. For example:
+
+1 --> 2 --> 3 --> 4
+After reverse:
+4 --> 3 --> 2 --> 1
 """
-
-
 #
 # Iterative solution
 # T(n)- O(n)
@@ -36,6 +38,6 @@ def reverse_list_recursive(head):
         return head
     p = head.next
     head.next = None
-    revrest = self.reverse(p)
+    revrest = reverse_list_recursive(p)
     p.next = head
     return revrest

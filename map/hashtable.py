@@ -1,5 +1,5 @@
 from unittest import TestCase
-
+import unittest
 
 class HashTable(object):
     """
@@ -154,9 +154,11 @@ class TestHashTable(TestCase):
 
     def test_delete_key(self):
         m = HashTable(10)
-        m.put(1, 1)
+        for i in range(5):
+            m.put(i, i**2)
         m.del_(1)
         self.assertEqual(None, m.get(1))
+        self.assertEqual(4,m.get(2))
 
     def test_delete_key_and_reassign(self):
         m = HashTable(10)
@@ -198,3 +200,13 @@ class TestHashTable(TestCase):
         self.assertEqual('foo', m.get(1))
         self.assertEqual('foo', m.get(3))
         self.assertEqual('foo', m.get(ResizableHashTable.MIN_SIZE - 1))
+        
+    def test_fill_up_the_limit(self):
+        m = HashTable(10)
+        for i in range(10):
+            m.put(i,i**2)
+        for i in range(10):
+            self.assertEqual(i**2,m.get(i))
+
+if __name__ == "__main__":
+    unittest.main()

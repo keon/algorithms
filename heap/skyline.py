@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 A city's skyline is the outer contour of the silhouette formed by all the buildings
 in that city when viewed from a distance.
@@ -33,22 +34,21 @@ There must be no consecutive horizontal lines of equal height in the output skyl
 into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 """
-
 import heapq
 
-def get_skyline(LRH):
+def get_skyline(lrh):
     """
     Wortst Time Complexity: O(NlogN)
     :type buildings: List[List[int]]
     :rtype: List[List[int]]
     """
     skyline, live = [], []
-    i, n = 0, len(LRH)
+    i, n = 0, len(lrh)
     while i < n or live:
-        if not live or i < n and LRH[i][0] <= -live[0][1]:
-            x = LRH[i][0]
-            while i < n and LRH[i][0] == x:
-                heapq.heappush(live, (-LRH[i][2], -LRH[i][1]))
+        if not live or i < n and lrh[i][0] <= -live[0][1]:
+            x = lrh[i][0]
+            while i < n and lrh[i][0] == x:
+                heapq.heappush(live, (-lrh[i][2], -lrh[i][1]))
                 i += 1
         else:
             x = -live[0][1]
@@ -58,9 +58,3 @@ def get_skyline(LRH):
         if not skyline or height != skyline[-1][1]:
             skyline += [x, height],
     return skyline
-
-buildings = [ [2, 9, 10], [3, 7, 15], [5, 12, 12], [15, 20, 10], [19, 24, 8] ]
-# [ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ]
-print(get_skyline(buildings))
-
-

@@ -5,7 +5,7 @@ def merge_sort(arr):
     # Our recursive base case
     if len(arr)<= 1:
         return arr
-    mid = len(arr)/2
+    mid = len(arr)//2
     # Perform merge_sort recursively on both halves
     left, right = merge_sort(arr[mid:]), merge_sort(arr[:mid])
 
@@ -34,7 +34,3 @@ def merge(left, right):
 
    # Return result
     return arr
-
-array = [1,5, 7,4,3,2,1,9,0,10,43,64]
-print(array)
-print(merge_sort(array))

@@ -23,22 +23,22 @@ depGraph = {
 
 given = [ "b", "c", "a", "d", "e", "f" ]
 
-def retDeps(visited, start):
+def ret_deps(visited, start):
     queue = []
     out = []
     queue.append(start)
     while queue:
-        newNode = queue.pop(0)
-        if newNode not in visited:
-            visited.add(newNode)
-        for child in depGraph[newNode]:
+        new_node = queue.pop(0)
+        if new_node not in visited:
+            visited.add(new_node)
+        for child in depGraph[new_node]:
             queue.append(child)
             out.append(child)
     out.append(start)
     return out
 
 
-def retDepGraph():
+def ret_dep_graph():
     visited = set()
     out = []
     # visited.add(given[0])
@@ -52,7 +52,7 @@ def retDepGraph():
             for child in depGraph[pac]:
                 if child in visited:
                     continue
-                out.extend(retDeps(visited, child))
+                out.extend(ret_deps(visited, child))
         out.append(pac)
     print(out)
-retDepGraph()
+ret_dep_graph()

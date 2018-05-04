@@ -18,9 +18,10 @@ isMatch("aa", ".*") → true
 isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
 """
+import unittest
 
 class Solution(object):
-    def isMatch(self, s, p):
+    def is_match(self, s, p):
         m, n = len(s) + 1, len(p) + 1
         matches = [[False] * n  for _ in range(m)]
 

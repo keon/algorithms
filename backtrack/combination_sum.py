@@ -15,11 +15,13 @@ A solution set is:
 ]
 """
 
-def combinationSum(self, candidates, target):
+
+def combination_sum(self, candidates, target):
     res = []
     candidates.sort()
     self.dfs(candidates, target, 0, [], res)
     return res
+
 
 def dfs(self, nums, target, index, path, res):
     if target < 0:
