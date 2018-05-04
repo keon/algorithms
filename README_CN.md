@@ -13,32 +13,55 @@ python版数据结构和算法实现的简约版小示例
 
 ### 单元测试
 如下代码可以运行全部测试：  
-```python3 -m unittest discover tests```
+```
+
+python3 -m unittest discover tests
+
+```
 
 针对特定模块(比如：sort)的测试， 可以使用如下代码：  
-```python3 -m unittest tests.test_sort```
+```
+
+python3 -m unittest tests.test_sort
+
+```
 
 ### 使用pytest
 如下代码运行所有测试代码：  
-```pyhton3 -m pytest tests```
+```
+
+pyhton3 -m pytest tests
+
+```
 
 ## 安装
 如果想在代码中使用算法API， 可按如下步骤进行：
-```pip3 install git+https://github.com/keon/algorithms```
+```
+
+pip3 install git+https://github.com/keon/algorithms
+
+```
 
 通过创建python文件(比如：在sort模块使用merge_sort)进行测试： 
 ```
+
 from sort import merge_sort
 
 if __name__ == "__main__":
     my_list = [1, 8, 3, 5, 6]
     my_list = merge_sort.merge_sort(my_list)
     print(my_list)
+    
 ```
 
 ## 卸载
 如下代码可卸载该API：
-`pip3 uninstall -y algorithms`
+
+```
+
+pip3 uninstall -y algorithms
+
+```
 
 ## 实现列表
 
