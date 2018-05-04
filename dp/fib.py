@@ -43,3 +43,28 @@ def fib_list(n):
     return list_results[n]
 
 # print(fib_list(100)) # => 354224848179261915075
+
+def fib_iter(n):
+    """[summary]
+    Works iterative approximate O(n)
+
+    Arguments:
+        n {[type]} -- [description]
+    
+    Returns:
+        [type] -- [description]
+    """
+
+    fib_1 = 0
+    fib_2 = 1
+    sum = 0
+    if n <= 1:
+        return n
+    for i in range(n-1):
+        sum = fib_1 + fib_2
+        fib_1 = fib_2
+        fib_2 = sum
+    return sum
+
+# => 354224848179261915075
+# print(fib_iter(100))
