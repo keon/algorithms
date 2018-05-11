@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 [![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
-Pythonic Data Structures and Algorithms
+Pythonische Datenstrukturen und Algorithmen
 =========================================
 
 In diesem Repository finden Sie eine große Auswahl an Algorithmen und Datenstrukturen implementiert in Python 3.  
@@ -314,7 +314,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
 - [union-find](union-find)
     - [count_islands](union-find/count_islands.py)
 
-## Contributors
+## Mitwirkende  
 
 Das Projekt wird von folgenden Personen betreut.  
 
