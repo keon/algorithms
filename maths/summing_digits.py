@@ -14,16 +14,16 @@ def sum_dig_pow(a, b):
     
     for number in range(a, b + 1):
         exponent = 1  # set to 1
-        sum = 0    # set to 1
+        summation = 0    # set to 1
         number_as_string = str(number)
 
         tokens = list(map(int, number_as_string))  # parse the string into individual digits
 
         for k in tokens:
-            sum = sum + (k ** exponent)
+            summation = summation + (k ** exponent)
             exponent += 1
 
-        if sum == number:
+        if summation == number:
             result.append(number)
     return result
 
