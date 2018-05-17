@@ -8,6 +8,7 @@ from strings.group_anagrams import group_anagrams
 from strings.int_to_roman import int_to_roman
 from strings.is_palindrome import is_palindrome, is_palindrome_reverse, \
 is_palindrome_two_pointer, is_palindrome_stack
+from strings.is_rotated import is_rotated
 from strings.license_number import license_number
 from strings.make_sentence import make_sentence
 from strings.merge_string_checker import is_merge_recursive, is_merge_iterative
@@ -163,6 +164,22 @@ class TestIsPalindrome(unittest.TestCase):
         # 'Otto' is a old german name.
         self.assertTrue(is_palindrome_stack("Otto"))
         self.assertFalse(is_palindrome_stack("house"))
+
+
+class TestIsRotated(unittest.TestCase):
+    """[summary]
+    Test for the file is_rotated.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_is_rotated(self):
+        self.assertTrue(is_rotated("hello", "hello"))
+        self.assertTrue(is_rotated("hello", "llohe"))
+        self.assertFalse(is_rotated("hello", "helol"))
+        self.assertFalse(is_rotated("hello", "lloh"))
+        self.assertTrue(is_rotated("", ""))
 
 
 class TestLicenseNumber(unittest.TestCase):
