@@ -179,6 +179,7 @@ class TestIsRotated(unittest.TestCase):
         self.assertTrue(is_rotated("hello", "llohe"))
         self.assertFalse(is_rotated("hello", "helol"))
         self.assertFalse(is_rotated("hello", "lloh"))
+        self.assertTrue(is_rotated("", ""))
 
 
 class TestLicenseNumber(unittest.TestCase):
