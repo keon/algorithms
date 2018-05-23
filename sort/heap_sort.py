@@ -14,7 +14,7 @@ def max_heap_sort(arr):
 def max_heapify(arr, end):
     """ Max heapify helper for max_heap_sort
     """
-    last_parent = int((end - 1) / 2)
+    last_parent = (end - 1) // 2
 
     # Iterate from last parent to first
     for parent in range(last_parent, -1, -1):
@@ -29,10 +29,7 @@ def max_heapify(arr, end):
 
             # Swap if child is greater than parent
             if arr[child] > arr[current_parent]:
-                temp = arr[current_parent]
-                arr[current_parent] = arr[child]
-                arr[child] = temp
-
+                arr[current_parent], arr[child] = arr[child], arr[current_parent]
                 current_parent = child
             # If no swap occured, no need to keep iterating
             else:
@@ -54,7 +51,7 @@ def min_heapify(arr, start):
     # Offset last_parent by the start (last_parent calculated as if start index was 0)
     # All array accesses need to be offset by start
     end = len(arr) - 1
-    last_parent = int((end - start - 1) / 2)
+    last_parent = (end - start - 1) // 2
 
     # Iterate from last parent to first
     for parent in range(last_parent, -1, -1):
@@ -70,10 +67,8 @@ def min_heapify(arr, start):
 
             # Swap if child is less than parent
             if arr[child + start] < arr[current_parent + start]:
-                temp = arr[current_parent + start]
-                arr[current_parent + start] = arr[child + start]
-                arr[child + start] = temp
-
+                arr[current_parent + start], arr[child + start] = \
+                    arr[child + start], arr[current_parent + start]
                 current_parent = child
             # If no swap occured, no need to keep iterating
             else:
