@@ -89,14 +89,14 @@ class BST(object):
 
     def inorder(self, root):
         if root:
-            self.preorder(root.left)
+            self.inorder(root.left)
             print(str(root.data), end = ' ')
-            self.preorder(root.right)
+            self.inorder(root.right)
 
     def postorder(self, root):
         if root:
-            self.preorder(root.left)
-            self.preorder(root.right)
+            self.postorder(root.left)
+            self.postorder(root.right)
             print(str(root.data), end = ' ')
 
 """
