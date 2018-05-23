@@ -9,7 +9,6 @@ from math import floor
 
 
 def comb_sort(arr):
-
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
 
@@ -18,7 +17,7 @@ def comb_sort(arr):
     shrink = 1.3
     sorted = False
     while not sorted:
-        gap = int(floor(gap/shrink))
+        gap = int(floor(gap / shrink))
         if gap > 1:
             sorted = False
         else:
