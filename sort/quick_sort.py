@@ -1,8 +1,10 @@
-def quick_sort(arr):
+def quick_sort(arr, first=0, last=-999):
     """ Quick sort
         Complexity: best O(n log(n)) avg O(n log(n)), worst O(N^2)
     """
-    return quick_sort_recur(arr, 0, len(arr)-1)
+    if last == -999:
+        last = len(arr) - 1
+    return quick_sort_recur(arr, first, last)
 
 
 def quick_sort_recur(arr, first, last):
