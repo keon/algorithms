@@ -5,8 +5,9 @@ https://en.wikipedia.org/wiki/Bubble_sort
 Worst-case performance: O(N^2)
 
 """
-def bubble_sort(arr):
 
+
+def bubble_sort(arr):
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
 

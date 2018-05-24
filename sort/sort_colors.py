@@ -25,6 +25,6 @@ def sort_colors(nums):
 
 
 if __name__ == "__main__":
-    nums = [0,1,1,1,2,2,2,1,1,1,0,0,0,0,1,1,1,0,0,2,2]
+    nums = [0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2, 2]
     sort_colors(nums)
     print(nums)
