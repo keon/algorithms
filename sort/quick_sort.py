@@ -2,7 +2,7 @@ def quick_sort(arr):
     """ Quick sort
         Complexity: best O(n log(n)) avg O(n log(n)), worst O(N^2)
     """
-    return quick_sort_recur(arr, 0, len(arr))
+    return quick_sort_recur(arr, 0, len(arr) - 1)
 
 
 def quick_sort_recur(arr, first, last):
