@@ -64,7 +64,7 @@ class Interval:
         print("".join(res))
 
 
-def merge_v2(intervals):
+def merge_intervals(intervals):
     """ Merges intervals in the form of list. """
     if intervals is None:
         return None

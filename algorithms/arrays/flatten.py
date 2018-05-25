@@ -26,6 +26,6 @@ def flatten_iter(iterable):
     """
     for element in iterable:
         if isinstance(element, Iterable):
-            yield from flatten(element)
+            yield from flatten_iter(element)
         else:
             yield element
