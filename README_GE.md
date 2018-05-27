@@ -1,40 +1,45 @@
-English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md) | [Deutsch](README_GE.md)  
+[English](README.md) | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md) | Deutsch
 
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 [![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
-Pythonic Data Structures and Algorithms
+Pythonische Datenstrukturen und Algorithmen
 =========================================
 
-Minimal and clean example implementations of data structures and algorithms in Python 3.
+In diesem Repository finden Sie eine große Auswahl an Algorithmen und Datenstrukturen implementiert in Python 3.  
 
-## Contributing
-Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
+## Beteiligen  
 
+Sie können sich gerne auch an diesem Projekt beteiligen. Zum Beispiel selbst Algorithmen und Datenstrukturen beisteuern, oder bereits bestehende Implementierungen verbessern, oder auch dokumentieren. Fühlen Sie sich frei und machen Sie einen Pull-Request. Alternativ können Sie auch den Issue-Tracker benutzen um auf Probleme (Bugs) in bereits bestehenden Implementierungen hinzuweisen.  
+
+In diesem Projekt halten wir uns an die [PEP8](https://www.python.org/dev/peps/pep-0008/) Codestyle Konventionen.  
 
 ## Tests
 
-### Use unittest
-For running all tests write down:
+### Benutzen der Unittests
+
+Um alle Tests laufen zu lassen, tippen Sie die unten stehende Befehlzeile in die Kommandozeile:   
 
     $ python3 -m unittest discover tests
 
-For running some specific tests you can do this as following (Ex: sort):
+Um einen besonderen Test laufen zu lassen, tippen Sie folgendes:  
 
     $ python3 -m unittest tests.test_sort
 
-### Use pytest
-For running all tests write down:
+### Benutzen von pytest
+
+Zum ausführen aller Tests:  
 
     $ python3 -m pytest tests
 
 ## Install
-If you want to use the API algorithms in your code, it is as simple as:
+
+Wenn Sie das Projekt installieren wollen, um es als Module in Ihren Projekten nutzen zu können. Dann tippen Sie unten stehende Befehlzeile in die Kommandozeile:  
 
     $ pip3 install git+https://github.com/keon/algorithms
 
-You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
+Sie können die Installation testen in dem Sie unten stehenden Code in eine Datei packen und ausführen.  
 
 ```python3
 from sort import merge_sort
@@ -46,11 +51,13 @@ if __name__ == "__main__":
 ```
 
 ## Uninstall
-If you want to uninstall algorithms, it is as simple as:
+
+Um das Projekt zu deinstallieren tippen Sie folgendes:  
 
     $ pip3 uninstall -y algorithms
 
-## List of Implementations
+
+## Liste von Implementierungen  
 
 - [arrays](arrays)
     - [delete_nth](arrays/delete_nth.py)
@@ -307,8 +314,9 @@ If you want to uninstall algorithms, it is as simple as:
 - [union-find](union-find)
     - [count_islands](union-find/count_islands.py)
 
-## Contributors
-The repo is maintained by
+## Mitwirkende  
+
+Das Projekt wird von folgenden Personen betreut.  
 
 * [Keon Kim](https://github.com/keon)
 * [Rahul Goswami](https://github.com/goswami-rahul)
@@ -317,5 +325,5 @@ The repo is maintained by
 * [Hai Hoang Dang](https://github.com/danghai)
 * [Saad](https://github.com/SaadBenn)
 
-And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
-who helped in building the repo.
+Und danke an alle [Contributors](https://github.com/keon/algorithms/graphs/contributors)
+die geholfen haben das Projekt aufzubauen!  

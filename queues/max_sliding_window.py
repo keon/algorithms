@@ -18,9 +18,6 @@ For each index i:
 """
 
 import collections
-import unittest
-
-
 def max_sliding_window(arr, k):
     qi = collections.deque()  # queue storing indexes of elements
     result = []
@@ -33,23 +30,3 @@ def max_sliding_window(arr, k):
         if i >= k - 1:
             result.append(arr[qi[0]])
     return result
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_max_sliding_window(self):
-
-        array = [1, 3, -1, -3, 5, 3, 6, 7]
-        self.assertEqual(max_sliding_window(array, k=5), [5, 5, 6, 7])
-        self.assertEqual(max_sliding_window(array, k=3), [3, 3, 5, 5, 6, 7])
-        self.assertEqual(max_sliding_window(array, k=7), [6, 7])
-
-        array = [8, 5, 10, 7, 9, 4, 15, 12, 90, 13]
-        self.assertEqual(max_sliding_window(array, k=4), [10, 10, 10, 15, 15, 90, 90])
-        self.assertEqual(max_sliding_window(array, k=7), [15, 15, 90, 90])
-        self.assertEqual(max_sliding_window(array, k=2), [8, 10, 10, 9, 9, 15, 15, 90, 90])
-
-
-if __name__ == '__main__':
-
-    unittest.main()

@@ -6,6 +6,7 @@ from stack.switch_pairs import first_switch_pairs, second_switch_pairs
 from stack.valid_parenthesis import is_valid
 from stack.simplify_path import simplify_path
 from stack.stack import ArrayStack, LinkedListStack
+from stack.ordered_stack import OrderedStack
 
 import unittest
 class TestSuite(unittest.TestCase):
@@ -128,6 +129,20 @@ class TestStack(unittest.TestCase):
         self.assertEqual(1, stack.pop())
 
         self.assertTrue(stack.is_empty())
+
+class TestOrderedStack(unittest.TestCase):
+    def test_OrderedStack(self):
+        stack = OrderedStack()
+        self.assertTrue(stack.is_empty())
+        stack.push(1)
+        stack.push(4)
+        stack.push(3)
+        stack.push(6)
+        "bottom - > 1 3 4 6 "
+        self.assertEqual(6, stack.pop())
+        self.assertEqual(4, stack.peek())
+        self.assertEqual(3, stack.size())
+
 
 if __name__ == "__main__":
     unittest.main()
