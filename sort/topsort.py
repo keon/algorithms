@@ -1,58 +1,79 @@
-"""
-Given a list of system packages,
-some packages cannot be installed until the other packages are installed.
-Provide a valid sequence to install all of the packages.
-e.g.
-a relies on b
-b relies on c
-then a valid sequence is [c, b, a]
-"""
+import unittest
 
-depGraph = {
+GRAY, BLACK = 0, 1
 
-    "a": ["b"],
-    "b": ["c"],
-    "c": ['e'],
-    'e': [],
-    "d": [],
-    "f": ["e", "d"]
-}
+def topological_sort_recursive(graph):
+    order, enter, state = [], set(graph), {}
+    
+    def dfs(node):
+        state[node] = GRAY
+        #print(node)
+        for k in graph.get(node, ()):
+            sk = state.get(k, None)
+            if sk == GRAY: raise ValueError("cycle")
+            if sk == BLACK: continue
+            enter.discard(k)
+            dfs(k)
+        order.append(node)
+        state[node] = BLACK
+        
+    while enter: dfs(enter.pop())
+    return order
 
-given = ["b", "c", "a", "d", "e", "f"]
+def topological_sort(graph):
+    order, enter, state = [], set(graph), {}
+    
+    def is_ready(node):
+        lst = graph.get(node, ())
+        if len(lst) == 0:
+            return True
+        for k in lst:
+            sk = state.get(k, None)
+            if sk == GRAY: raise ValueError("cycle")
+            if sk != BLACK:
+                return False
+        return True
+        
+    while enter:
+        node = enter.pop()
+        stack = []
+        while True:
+            state[node] = GRAY
+            stack.append(node)
+            for k in graph.get(node, ()):
+                sk = state.get(k, None)
+                if sk == GRAY: raise ValueError("cycle")
+                if sk == BLACK: continue
+                enter.discard(k)
+                stack.append(k)
+            while stack and is_ready(stack[-1]):
+                node = stack.pop()
+                order.append(node)
+                state[node] = BLACK
+            if len(stack) == 0:
+                break
+            node = stack.pop()
+        
+    return order
 
+class TestSuite(unittest.TestCase):
+    def setUp(self):
+        self.depGraph = {
+                        "a" : [ "b" ],
+                        "b" : [ "c" ],
+                        "c" :  [ 'e'],
+                        'e' : [ 'g' ],
+                        "d" : [ ],
+                        "f" : ["e" , "d"],
+                        "g" : [ ]
+                    }
+        
+    def test_order(self):
+        res = topological_sort_recursive(self.depGraph)
+        #print(res)
+        self.assertTrue(res.index('g')<res.index('e'))
+        res = topological_sort_recursive(self.depGraph)
+        self.assertTrue(res.index('g')<res.index('e'))
 
-def ret_deps(visited, start):
-    queue = []
-    out = []
-    queue.append(start)
-    while queue:
-        new_node = queue.pop(0)
-        if new_node not in visited:
-            visited.add(new_node)
-        for child in depGraph[new_node]:
-            queue.append(child)
-            out.append(child)
-    out.append(start)
-    return out
-
-
-def ret_dep_graph():
-    visited = set()
-    out = []
-    # visited.add(given[0])
-    for pac in given:
-        if pac in visited:
-            continue
-        visited.add(pac)
-        # out.append(pac)
-        if pac in depGraph:
-            # find all children
-            for child in depGraph[pac]:
-                if child in visited:
-                    continue
-                out.extend(ret_deps(visited, child))
-        out.append(pac)
-    print(out)
-
-
-ret_dep_graph()
+if __name__ == '__main__':
+    unittest.main()
