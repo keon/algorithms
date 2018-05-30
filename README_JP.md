@@ -1,40 +1,37 @@
-English | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語
 
-[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
-[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
-[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
-
-Pythonic Data Structures and Algorithms
+pythonのデータ構造とアルゴリズム
 =========================================
 
-Minimal and clean example implementations of data structures and algorithms in Python 3.
+Python 3で開発された簡単で明確なデータ構造とアルゴリズムの例を紹介します。
 
-## Contributing
-Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
+## 貢献
+貢献に興味を持っていただきありがとうございます。 このプロジェクトに貢献する方法はたくさんあります。 
 
+[簡単にコミュニティへ貢献するには](CONTRIBUTING_JP.md)
 
-## Tests
+## テスト
 
-### Use unittest
-For running all tests write down:
+### unittestを使用
+すべてのテストを実行するには：
 
     $ python3 -m unittest discover tests
 
-For running some specific tests you can do this as following (Ex: sort):
+特定のテストを実行するためには、（例: ソート）：
 
     $ python3 -m unittest tests.test_sort
 
-### Use pytest
-For running all tests write down:
+### pytestを使用
+すべてのテストを実行するには：
 
     $ python3 -m pytest tests
 
-## Install
-If you want to use the API algorithms in your code, it is as simple as:
+## インストール
+自分のコードでAPIアルゴリズムを活用したい場合は、以下のコードで簡単に実行することができます。
 
     $ pip3 install git+https://github.com/keon/algorithms
 
-You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
+Pythonファイルを作成してテストを行うことができます：（例：「sort」の「merge_sort」を使用）
 
 ```python3
 from sort import merge_sort
@@ -45,14 +42,14 @@ if __name__ == "__main__":
     print(my_list)
 ```
 
-## Uninstall
-If you want to uninstall algorithms, it is as simple as:
+## 削除
+アルゴリズムを削除する場合は、次のコードで簡単に実行することができます：
 
     $ pip3 uninstall -y algorithms
 
-## List of Implementations
+## アルゴリズムのリスト
 
-- [arrays](arrays)
+- [arrays : 配列](arrays)
     - [delete_nth](arrays/delete_nth.py)
     - [flatten](arrays/flatten.py)
     - [garage](arrays/garage.py)
@@ -61,12 +58,12 @@ If you want to uninstall algorithms, it is as simple as:
     - [merge_intervals](arrays/merge_intervals.py)
     - [missing_ranges](arrays/missing_ranges.py)
     - [plus_one](arrays/plus_one.py)
-    - [rotate_array](arrays/rotate_array.py)
+    - [rotate_array](arrays/rotate_array.py)
     - [summary_ranges](arrays/summary_ranges.py)
     - [three_sum](arrays/three_sum.py)
     - [two_sum](arrays/two_sum.py)
     - [move_zeros_to_end](arrays/move_zeros_to_end.py)
-- [backtrack](backtrack)
+- [backtrack : バックトラッキング](backtrack)
     - [general_solution.md](backtrack/)
     - [anagram](backtrack/anagram.py)
     - [array_sum_combinations](backtrack/array_sum_combinations.py)
@@ -82,10 +79,10 @@ If you want to uninstall algorithms, it is as simple as:
     - [permute_unique](backtrack/permute_unique.py)
     - [subsets](backtrack/subsets.py)
     - [subsets_unique](backtrack/subsets_unique.py)
-- [bfs](bfs)
+- [bfs : 幅優先探索](bfs)
     - [shortest_distance_from_all_buildings](bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](bfs/word_ladder.py)
-- [bit](bit)
+- [bit : ビット](bit)
     - [bytes_int_conversion](bit/bytes_int_conversion.py)
     - [count_ones](bit/count_ones.py)
     - [find_missing_number](bit/find_missing_number.py)
@@ -102,15 +99,15 @@ If you want to uninstall algorithms, it is as simple as:
     - [has_alternative_bit](bit/has_alternative_bit.py)
     - [insert_bit](bit/insert_bit.py)
     - [remove_bit](bit/remove_bit.py)
-- [calculator](calculator)
+- [calculator : 計算機](calculator)
     - [math_parser](calculator/math_parser.py)
-- [dfs](dfs)
+- [dfs : 深さ優先探索](dfs)
     - [all_factors](dfs/all_factors.py)
     - [count_islands](dfs/count_islands.py)
     - [pacific_atlantic](dfs/pacific_atlantic.py)
     - [sudoku_solver](dfs/sudoku_solver.py)
     - [walls_and_gates](dfs/walls_and_gates.py)
-- [dp](dp)
+- [dp : 動的計画法](dp)
     - [buy_sell_stock](dp/buy_sell_stock.py)
     - [climbing_stairs](dp/climbing_stairs.py)
     - [coin_change](dp/coin_change.py)
@@ -129,7 +126,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [rod_cut](dp/rod_cut.py)
     - [word_break](dp/word_break.py)
     - [fibonacci](dp/fib.py)
-- [graph](graph)
+- [graph : グラフ](graph)
     - [strongly_connected](graph/checkDiGraphStronglyConnected.py)
     - [clone_graph](graph/clone_graph.py)
     - [cycle_detection](graph/cycle_detection.py)
@@ -141,12 +138,12 @@ If you want to uninstall algorithms, it is as simple as:
     - [satisfiability](graph/satisfiability.py)
     - [tarjan](graph/tarjan.py)
     - [traversal](graph/traversal.py)
-- [heap](heap)
+- [heap : ヒープ](heap)
     - [merge_sorted_k_lists](heap/merge_sorted_k_lists.py)
     - [skyline](heap/skyline.py)
     - [sliding_window_max](heap/sliding_window_max.py)
     - [binary_heap](heap/binary_heap.py)
-- [linkedlist](linkedlist)
+- [linkedlist : 連結リスト](linkedlist)
     - [add_two_numbers](linkedlist/add_two_numbers.py)
     - [copy_random_pointer](linkedlist/copy_random_pointer.py)
     - [delete_node](linkedlist/delete_node.py)
@@ -161,13 +158,13 @@ If you want to uninstall algorithms, it is as simple as:
     - [swap_in_pairs](linkedlist/swap_in_pairs.py)
     - [is_sorted](linkedlist/is_sorted.py)
     - [remove_range](linkedlist/remove_range.py)
-- [map](map)
+- [map : マップ](map)
     - [hashtable](map/hashtable.py)
     - [separate_chaining_hashtable](map/separate_chaining_hashtable.py)
     - [longest_common_subsequence](map/longest_common_subsequence.py)
     - [randomized_set](map/randomized_set.py)
     - [valid_sudoku](map/valid_sudoku.py)
-- [maths](maths)
+- [maths : 数学](maths)
     - [base_conversion](maths/base_conversion.py)
     - [extended_gcd](maths/extended_gcd.py)
     - [gcd/lcm](maths/gcd.py)
@@ -183,7 +180,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [rsa](maths/rsa.py)
     - [sqrt_precision_factor](maths/sqrt_precision_factor.py)
     - [summing_digits](maths/summing_digits.py)
-- [matrix](matrix)
+- [matrix : 行列](matrix)
     - [sudoku_validator](matrix/sudoku_validator.py)
     - [bomb_enemy](matrix/bomb_enemy.py)
     - [copy_transform](matrix/copy_transform.py)
@@ -194,13 +191,13 @@ If you want to uninstall algorithms, it is as simple as:
     - [sparse_dot_vector](matrix/sparse_dot_vector.py)
     - [sparse_mul](matrix/sparse_mul.py)
     - [spiral_traversal](matrix/spiral_traversal.py)
-- [queues](queues)
+- [queues : キュー](queues)
     - [max_sliding_window](queues/max_sliding_window.py)
     - [moving_average](queues/moving_average.py)
     - [queue](queues/queue.py)
     - [reconstruct_queue](queues/reconstruct_queue.py)
     - [zigzagiterator](queues/zigzagiterator.py)
-- [search](search)
+- [search : サーチ](search)
     - [binary_search](search/binary_search.py)
     - [first_occurance](search/first_occurance.py)
     - [last_occurance](search/last_occurance.py)
@@ -209,10 +206,10 @@ If you want to uninstall algorithms, it is as simple as:
     - [search_range](search/search_range.py)
     - [find_min_rotate](search/find_min_rotate.py)
     - [search_rotate](search/search_rotate.py)
-- [set](set)
+- [set : セット](set)
     - [randomized_set](set/randomized_set.py)
     - [set_covering](set/set_covering.py)
-- [sort](sort)
+- [sort : ソート](sort)
     - [bubble_sort](sort/bubble_sort.py)
     - [comb_sort](sort/comb_sort.py)
     - [counting_sort](sort/counting_sort.py)
@@ -225,7 +222,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [sort_colors](sort/sort_colors.py)
     - [topsort](sort/topsort.py)
     - [wiggle_sort](sort/wiggle_sort.py)
-- [stack](stack)
+- [stack : スタック](stack)
     - [longest_abs_path](stack/longest_abs_path.py)
     - [simplify_path](stack/simplify_path.py)
     - [stack](stack/stack.py)
@@ -235,7 +232,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [is_consecutive](stack/is_consecutive.py)
     - [remove_min](stack/remove_min.py)
     - [is_sorted](stack/is_sorted.py)
-- [strings](strings)
+- [strings : 文字列](strings)
     - [fizzbuzz](strings/fizzbuzz.py)
     - [delete_reoccurring_characters](strings/delete_reoccurring_characters.py)
     - [strip_url_params](strings/strip_url_params.py)
@@ -259,7 +256,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [reverse_words](strings/reverse_words.py)
     - [roman_to_int](strings/roman_to_int.py)
     - [word_squares](strings/word_squares.py)
-- [tree](tree)
+- [tree : 木構造](tree)
     - [bst](tree/tree/bst)
         - [array2bst](tree/bst/array2bst.py)
         - [bst_closest_value](tree/bst/bst_closest_value.py)
@@ -304,11 +301,11 @@ If you want to uninstall algorithms, it is as simple as:
     - [pretty_print](tree/pretty_print.py)
     - [same_tree](tree/same_tree.py)
     - [tree](tree/tree.py)
-- [union-find](union-find)
+- [union-find : 素集合データ構造](union-find)
     - [count_islands](union-find/count_islands.py)
 
-## Contributors
-The repo is maintained by
+## 貢献者
+本リポジトリは次の方によって維持されています
 
 * [Keon Kim](https://github.com/keon)
 * [Rahul Goswami](https://github.com/goswami-rahul)
@@ -317,5 +314,4 @@ The repo is maintained by
 * [Hai Hoang Dang](https://github.com/danghai)
 * [Saad](https://github.com/SaadBenn)
 
-And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
-who helped in building the repo.
+また、[全ての貢献者](https://github.com/keon/algorithms/graphs/contributors)に感謝を伝えます。

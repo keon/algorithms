@@ -1,4 +1,4 @@
-[English](https://github.com/yunshuipiao/algorithms/blob/master/README.md) | 简体中文
+[English](https://github.com/yunshuipiao/algorithms/blob/master/README.md) | 简体中文 | [日本語](README_JP.md)
 
 Python版数据结构和算法
 =========================================
