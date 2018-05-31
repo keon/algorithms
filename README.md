@@ -37,11 +37,11 @@ If you want to use the API algorithms in your code, it is as simple as:
 You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
 
 ```python3
-from sort import merge_sort
+from algorithms.sort import merge_sort
 
 if __name__ == "__main__":
     my_list = [1, 8, 3, 5, 6]
-    my_list = merge_sort.merge_sort(my_list)
+    my_list = merge_sort(my_list)
     print(my_list)
 ```
 

@@ -17,22 +17,6 @@ integers and mod by 3,
 the remaining should be the exact bit of the single number.
 In this way, you get the 32 bits of the single number.
 """
-def single_number(nums):
-    """
-    :type nums: List[int]
-    :rtype: int
-    """
-    res = 0
-    for i in range(0, 32):
-        count = 0
-        for num in nums:
-            if (num >> i) & 1:
-                count += 1
-        res |= ((count % 3) << i)
-    if res >= 2**31:
-        res -= 2**32
-    return res
-
 
 # Another awesome answer
 def single_number2(nums):

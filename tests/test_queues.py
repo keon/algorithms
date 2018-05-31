@@ -1,7 +1,10 @@
-from queues.queue import ArrayQueue, LinkedListQueue
-from queues.max_sliding_window import max_sliding_window
-from queues.reconstruct_queue import reconstruct_queue
-from queues.priority_queue import PriorityQueue, PriorityQueueNode
+from algorithms.queues import (
+    ArrayQueue, LinkedListQueue,
+    max_sliding_window,
+    reconstruct_queue,
+    PriorityQueue, PriorityQueueNode
+)
+
 import unittest
 
 class TestQueue(unittest.TestCase):
