@@ -1,11 +1,13 @@
-from sort.bubble_sort import bubble_sort
-from sort.comb_sort import comb_sort
-from sort.counting_sort import counting_sort
-from sort.heap_sort import max_heap_sort, min_heap_sort
-from sort.insertion_sort import insertion_sort
-from sort.merge_sort import merge_sort
-from sort.quick_sort import quick_sort
-from sort.selection_sort import selection_sort
+from algorithms.sort import (
+    bubble_sort,
+    comb_sort,
+    counting_sort,
+    max_heap_sort, min_heap_sort,
+    insertion_sort,
+    merge_sort,
+    quick_sort,
+    selection_sort
+)
 
 import unittest
 
