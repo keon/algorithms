@@ -6,6 +6,8 @@ from sort.insertion_sort import insertion_sort
 from sort.merge_sort import merge_sort
 from sort.quick_sort import quick_sort
 from sort.selection_sort import selection_sort
+from sort.bucket_sort import bucket_sort
+from sort.shell_sort import shell_sort
 
 import unittest
 
@@ -46,6 +48,15 @@ class TestSuite(unittest.TestCase):
     def test_selection_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          selection_sort([1, 5, 65, 23, 57, 1232]))
+
+    def test_bucket_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        bucket_sort([1, 5, 65, 23, 57, 1232]))
+
+    def test_shell_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        shell_sort([1, 5, 65, 23, 57, 1232]))
+                                          
 
 
 if __name__ == "__main__":
