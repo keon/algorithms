@@ -45,15 +45,16 @@ class TestSuite(unittest.TestCase):
 
     def test_selection_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         selection_sort([1, 5, 65, 23, 57, 1232])
-                        
+                         selection_sort([1, 5, 65, 23, 57, 1232]))
+
     def test_bucket_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         bucket_sort([1, 5, 65, 23, 57, 1232])
-                         
+                        bucket_sort([1, 5, 65, 23, 57, 1232]))
+
     def test_shell_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         shell_sort([1, 5, 65, 23, 57, 1232])                     
+                        shell_sort([1, 5, 65, 23, 57, 1232]))
+                                          
 
 
 if __name__ == "__main__":
