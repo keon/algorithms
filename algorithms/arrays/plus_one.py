@@ -7,7 +7,7 @@ digit is at the head of the list.
 """
 
 
-def plus_one(digits):
+def plus_one_v1(digits):
     """
     :type digits: List[int]
     :rtype: List[int]

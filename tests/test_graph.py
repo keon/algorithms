@@ -1,4 +1,4 @@
-from graph.tarjan import Tarjan
+from algorithms.graph import Tarjan
 
 import unittest
 
