@@ -10,7 +10,7 @@ Note that the answer must be a substring,
 """
 
 
-def longest_non_repeat(string):
+def longest_non_repeat_v1(string):
     """
     Finds the length of the longest substring
     without repeating characters.
@@ -27,7 +27,7 @@ def longest_non_repeat(string):
     return max_len
 
 
-def longest_non_repeat_two(string):
+def longest_non_repeat_v2(string):
     """
     Finds the length of the longest substring
     without repeating characters.

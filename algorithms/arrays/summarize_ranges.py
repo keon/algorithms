@@ -6,7 +6,7 @@ For example, given [0, 1, 2, 4, 5, 7], return [(0, 2), (4, 5), (7, 7)].
 """
 
 
-def summary_ranges(array):
+def summarize_ranges(array):
     """
     :type array: List[int]
     :rtype: List[]

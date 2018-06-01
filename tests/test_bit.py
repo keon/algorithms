@@ -1,18 +1,20 @@
-from bit.add_bitwise_operator import add_bitwise_operator
-from bit.count_ones import count_ones_iter, count_ones_recur
-from bit.find_missing_number import find_missing_number, find_missing_number2
-from bit.power_of_two import is_power_of_two
-from bit.reverse_bits import reverse_bits
-from bit.single_number import single_number
-from bit.single_number2 import single_number2
-from bit.single_number3 import single_number3
-from bit.subsets import subsets
-from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
-from bit.swap_pair import swap_pair
-from bit.find_difference import find_difference
-from bit.has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
-from bit.insert_bit import insert_one_bit, insert_mult_bits
-from bit.remove_bit import remove_bit
+from algorithms.bit import (
+    add_bitwise_operator,
+    count_ones_iter, count_ones_recur,
+    find_missing_number, find_missing_number2,
+    is_power_of_two,
+    reverse_bits,
+    single_number,
+    single_number2,
+    single_number3,
+    subsets,
+    get_bit, set_bit, clear_bit, update_bit,
+    swap_pair,
+    find_difference,
+    has_alternative_bit, has_alternative_bit_fast,
+    insert_one_bit, insert_mult_bits,
+    remove_bit
+)
 
 import unittest
 import random
