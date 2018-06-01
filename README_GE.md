@@ -1,4 +1,4 @@
-[English](README.md) | [简体中文](https://github.com/yunshuipiao/algorithms/blob/master/README_CN.md) | Deutsch | [日本語](README_JP.md)
+[English](README.md) | [简体中文](README_CN.md) | Deutsch | [日本語](README_JP.md)
 
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
@@ -65,6 +65,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [garage](algorithms/arrays/garage.py)
     - [josephus_problem](algorithms/arrays/josephus_problem.py)
     - [longest_non_repeat](algorithms/arrays/longest_non_repeat.py/)
+    - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [merge_intervals](algorithms/arrays/merge_intervals.py)
     - [missing_ranges](algorithms/arrays/missing_ranges.py)
     - [plus_one](algorithms/arrays/plus_one.py)
@@ -95,7 +96,9 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
 - [bit](algorithms/bit)
     - [bytes_int_conversion](algorithms/bit/bytes_int_conversion.py)
     - [count_ones](algorithms/bit/count_ones.py)
+    - [count_flips_to_convert](algorithms/bit/count_flips_to_convert.py)
     - [find_missing_number](algorithms/bit/find_missing_number.py)
+    - [flip_bit_longest_sequence](algorithms/bit/flip_bit_longest_sequence.py)
     - [power_of_two](algorithms/bit/power_of_two.py)
     - [reverse_bits](algorithms/bit/reverse_bits.py)
     - [single_number](algorithms/bit/single_number.py)

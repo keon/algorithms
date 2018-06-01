@@ -1,4 +1,4 @@
-[English](https://github.com/yunshuipiao/algorithms/blob/master/README.md) | 简体中文 | [日本語](README_JP.md)
+[English](README.md) | 简体中文 | [Deutsch](README_GE.md) | [日本語](README_JP.md) 
 
 Python版数据结构和算法
 =========================================
@@ -70,7 +70,8 @@ pip3 uninstall -y algorithms
     - [flatten：数组降维](algorithms/arrays/flatten.py)
     - [garage：停车场](algorithms/arrays/garage.py)
     - [josephus_problem: 约瑟夫问题](algorithms/arrays/josephus_problem.py)
-    - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/)
+    - [max_ones_index](algorithms/arrays/max_ones_index.py)
+    - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/) 
     - [merge_intervals：合并重叠间隔](algorithms/arrays/merge_intervals.py)
     - [missing_ranges：遗失的范围](algorithms/arrays/missing_ranges.py)
     - [plus_one：加一运算](algorithms/arrays/plus_one.py)
@@ -101,7 +102,9 @@ pip3 uninstall -y algorithms
 - [bit：位操作](algorithms/bit)
     - [bytes_int_conversion：字节整数转换](algorithms/bit/bytes_int_conversion.py)
     - [count_ones：统计1出现的次数](algorithms/bit/count_ones.py)
+    - [count_flips_to_convert](algorithms/bit/count_flips_to_convert.py)
     - [find_missing_number：寻找缺失数](algorithms/bit/find_missing_number.py)
+    - [flip_bit_longest_sequence](algorithms/bit/flip_bit_longest_sequence.py)
     - [power_of_two：2的n次方数判断](algorithms/bit/power_of_two.py)
     - [reverse_bits：反转位](algorithms/bit/reverse_bits.py)
     - [single_number2：寻找出现1次的数（2)](algorithms/bit/single_number2.py)
