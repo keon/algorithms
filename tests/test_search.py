@@ -89,17 +89,12 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(8, search_rotate_recur(array, 0, 11, 5))
         self.assertEqual(-1, search_rotate_recur(array, 0, 11, 9))
 
-    def jump_search(self):
+    def test_jump_search(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
-        self.assertEqual(10, binary_search(array, 5))
-        self.assertEqual(11, binary_search(array, 6))
-        self.assertEqual(None, binary_search(array, 7))
-        self.assertEqual(None, binary_search(array, -1))
-        # Test binary_search_recur
-        self.assertEqual(10, binary_search_recur(array, 0, 11, 5))
-        self.assertEqual(11, binary_search_recur(array, 0, 11, 6))
-        self.assertEqual(-1, binary_search_recur(array, 0, 11, 7))
-        self.assertEqual(-1, binary_search_recur(array, 0, 11, -1))
+        self.assertEqual(10, jump_search(array, 5))
+        self.assertEqual(11, jump_search(array, 6))
+        self.assertEqual(-1, jump_search(array, 7))
+        self.assertEqual(-1, jump_search(array, -1))
         
 if __name__ == '__main__':
 
