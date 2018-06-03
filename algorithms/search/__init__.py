@@ -6,4 +6,3 @@ from .two_sum import *
 from .search_range import *
 from .find_min_rotate import *
 from .search_rotate import *
-from .jump_search import *
