@@ -24,4 +24,4 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(res.index('g') < res.index('e'))
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()
