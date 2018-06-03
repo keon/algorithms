@@ -6,8 +6,7 @@ from algorithms.search import (
     two_sum, two_sum1, two_sum2,
     search_range,
     find_min_rotate, find_min_rotate_recur,
-    search_rotate, search_rotate_recur,
-    jump_search
+    search_rotate, search_rotate_recur
 )
 
 import unittest
