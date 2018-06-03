@@ -6,7 +6,8 @@ from algorithms.search import (
     two_sum, two_sum1, two_sum2,
     search_range,
     find_min_rotate, find_min_rotate_recur,
-    search_rotate, search_rotate_recur
+    search_rotate, search_rotate_recur,
+    jump_search
 )
 
 import unittest
@@ -88,6 +89,18 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(8, search_rotate_recur(array, 0, 11, 5))
         self.assertEqual(-1, search_rotate_recur(array, 0, 11, 9))
 
+    def jump_search(self):
+        array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
+        self.assertEqual(10, binary_search(array, 5))
+        self.assertEqual(11, binary_search(array, 6))
+        self.assertEqual(None, binary_search(array, 7))
+        self.assertEqual(None, binary_search(array, -1))
+        # Test binary_search_recur
+        self.assertEqual(10, binary_search_recur(array, 0, 11, 5))
+        self.assertEqual(11, binary_search_recur(array, 0, 11, 6))
+        self.assertEqual(-1, binary_search_recur(array, 0, 11, 7))
+        self.assertEqual(-1, binary_search_recur(array, 0, 11, -1))
+        
 if __name__ == '__main__':
 
     unittest.main()
