@@ -1,5 +1,3 @@
-import unittest
-
 GRAY, BLACK = 0, 1
 
 def topological_sort_recursive(graph):
@@ -31,7 +29,8 @@ def topological_sort(graph):
             return True
         for k in lst:
             sk = state.get(k, None)
-            if sk == GRAY: raise ValueError("cycle")
+            if sk == GRAY: 
+                raise ValueError("cycle")
             if sk != BLACK:
                 return False
         return True
@@ -44,8 +43,10 @@ def topological_sort(graph):
             stack.append(node)
             for k in graph.get(node, ()):
                 sk = state.get(k, None)
-                if sk == GRAY: raise ValueError("cycle")
-                if sk == BLACK: continue
+                if sk == GRAY: 
+                    raise ValueError("cycle")
+                if sk == BLACK: 
+                    continue
                 enter.discard(k)
                 stack.append(k)
             while stack and is_ready(stack[-1]):
@@ -57,25 +58,3 @@ def topological_sort(graph):
             node = stack.pop()
         
     return order
-
-class TestSuite(unittest.TestCase):
-    def setUp(self):
-        self.depGraph = {
-                        "a" : [ "b" ],
-                        "b" : [ "c" ],
-                        "c" :  [ 'e'],
-                        'e' : [ 'g' ],
-                        "d" : [ ],
-                        "f" : ["e" , "d"],
-                        "g" : [ ]
-                    }
-        
-    def test_order(self):
-        res = topological_sort_recursive(self.depGraph)
-        #print(res)
-        self.assertTrue(res.index('g') < res.index('e'))
-        res = topological_sort_recursive(self.depGraph)
-        self.assertTrue(res.index('g') < res.index('e'))
-
-if __name__ == '__main__':
-    unittest.main()
