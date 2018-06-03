@@ -53,7 +53,7 @@ if __name__ == "__main__":
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
     - [garage](algorithms/arrays/garage.py)
-    - [josephus_problem](algorithms/arrays/josephus_problem.py)
+    - [josephus_problem](algorithms/arrays/josephus.py)
     - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [longest_non_repeat](algorithms/arrays/longest_non_repeat.py/)
     - [merge_intervals](algorithms/arrays/merge_intervals.py)
