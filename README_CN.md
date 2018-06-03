@@ -69,7 +69,7 @@ pip3 uninstall -y algorithms
     - [delete_nth: 删除第n项](algorithms/arrays/delete_nth.py)
     - [flatten：数组降维](algorithms/arrays/flatten.py)
     - [garage：停车场](algorithms/arrays/garage.py)
-    - [josephus_problem: 约瑟夫问题](algorithms/arrays/josephus_problem.py)
+    - [josephus_problem: 约瑟夫问题](algorithms/arrays/josephus.py)
     - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/) 
     - [merge_intervals：合并重叠间隔](algorithms/arrays/merge_intervals.py)
