@@ -1,4 +1,4 @@
-[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語 | [한국어](README_KR.md)
 
 pythonのデータ構造とアルゴリズム
 =========================================
