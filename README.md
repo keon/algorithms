@@ -172,6 +172,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
 - [maths](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
+    - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
