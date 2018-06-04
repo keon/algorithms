@@ -179,6 +179,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
 - [maths](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
+    - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
