@@ -226,6 +226,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [meeting_rooms](algorithms/sort/meeting_rooms.py)
     - [merge_sort](algorithms/sort/merge_sort.py)
     - [quick_sort](algorithms/sort/quick_sort.py)
+    - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort](algorithms/sort/selection_sort.py)
     - [shell_sort](algorithms/sort/shell_sort.py)
     - [sort_colors](algorithms/sort/sort_colors.py)
