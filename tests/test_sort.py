@@ -1,11 +1,15 @@
-from sort.bubble_sort import bubble_sort
-from sort.comb_sort import comb_sort
-from sort.counting_sort import counting_sort
-from sort.heap_sort import max_heap_sort, min_heap_sort
-from sort.insertion_sort import insertion_sort
-from sort.merge_sort import merge_sort
-from sort.quick_sort import quick_sort
-from sort.selection_sort import selection_sort
+from algorithms.sort import (
+    bubble_sort,
+    comb_sort,
+    counting_sort,
+    max_heap_sort, min_heap_sort,
+    insertion_sort,
+    merge_sort,
+    quick_sort,
+    selection_sort,
+    bucket_sort,
+    shell_sort
+)
 
 import unittest
 
@@ -46,6 +50,15 @@ class TestSuite(unittest.TestCase):
     def test_selection_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          selection_sort([1, 5, 65, 23, 57, 1232]))
+
+    def test_bucket_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        bucket_sort([1, 5, 65, 23, 57, 1232]))
+
+    def test_shell_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        shell_sort([1, 5, 65, 23, 57, 1232]))
+                                          
 
 
 if __name__ == "__main__":

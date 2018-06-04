@@ -1,6 +1,8 @@
-from heap.binary_heap import BinaryHeap
-from heap.skyline import get_skyline
-from heap.sliding_window_max import max_sliding_window
+from algorithms.heap import (
+    BinaryHeap,
+    get_skyline,
+    max_sliding_window
+)
 
 import unittest
 

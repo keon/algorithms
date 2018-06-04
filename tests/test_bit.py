@@ -1,23 +1,32 @@
-from bit.add_bitwise_operator import add_bitwise_operator
-from bit.count_ones import count_ones_iter, count_ones_recur
-from bit.find_missing_number import find_missing_number, find_missing_number2
-from bit.power_of_two import is_power_of_two
-from bit.reverse_bits import reverse_bits
-from bit.single_number import single_number
-from bit.single_number2 import single_number2
-from bit.single_number3 import single_number3
-from bit.subsets import subsets
-from bit.bit_operation import get_bit, set_bit, clear_bit, update_bit
-from bit.swap_pair import swap_pair
-from bit.find_difference import find_difference
-from bit.has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
-from bit.insert_bit import insert_one_bit, insert_mult_bits
-from bit.remove_bit import remove_bit
+from algorithms.bit import (
+    add_bitwise_operator,
+    count_ones_iter, count_ones_recur,
+    count_flips_to_convert,
+    find_missing_number, find_missing_number2,
+    flip_bit_longest_seq,
+    is_power_of_two,
+    reverse_bits,
+    single_number,
+    single_number2,
+    single_number3,
+    subsets,
+    get_bit, set_bit, clear_bit, update_bit,
+    swap_pair,
+    find_difference,
+    has_alternative_bit, has_alternative_bit_fast,
+    insert_one_bit, insert_mult_bits,
+    remove_bit
+)
 
 import unittest
 import random
 
+
 class TestSuite(unittest.TestCase):
+
+    def setUp(self):
+        """Initialize seed."""
+        random.seed("test")
 
     def test_add_bitwise_operator(self):
         self.assertEqual(5432 + 97823, add_bitwise_operator(5432, 97823))
@@ -53,9 +62,15 @@ class TestSuite(unittest.TestCase):
         # 0 -> 0
         self.assertEqual(0, count_ones_iter(0))
 
-    def setUp(self):
-        """Initialize seed."""
-        random.seed("test")
+    def test_count_flips_to_convert(self):
+        # 29: 11101 and 15: 01111
+        self.assertEqual(2, count_flips_to_convert(29, 15))
+        # 45: 0000101101 and 987: 1111011011
+        self.assertEqual(8, count_flips_to_convert(45, 987))
+        # 34: 100010
+        self.assertEqual(0, count_flips_to_convert(34, 34))
+        # 34: 100010 and 53: 110101
+        self.assertEqual(4, count_flips_to_convert(34, 53))
 
     def test_find_missing_number(self):
 
@@ -76,6 +91,16 @@ class TestSuite(unittest.TestCase):
         nums = [i for i in range(100000) if i != 12345]
         random.shuffle(nums)
         self.assertEqual(12345, find_missing_number2(nums))
+
+    def test_flip_bit_longest_seq(self):
+        # 1775: 11011101111
+        self.assertEqual(8, flip_bit_longest_seq(1775))
+        # 5: 101
+        self.assertEqual(3, flip_bit_longest_seq(5))
+        # 71: 1000111
+        self.assertEqual(4, flip_bit_longest_seq(71))
+        # 0: 0
+        self.assertEqual(1, flip_bit_longest_seq(0))
 
     def test_is_power_of_two(self):
 
@@ -212,6 +237,7 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(9, remove_bit(21, 2))
         self.assertEqual(5, remove_bit(21, 4))
         self.assertEqual(10, remove_bit(21, 0))
+
 
 if __name__ == '__main__':
     unittest.main()

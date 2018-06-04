@@ -1,16 +1,19 @@
-from arrays.delete_nth import delete_nth, delete_nth_naive
-from arrays.flatten import flatten, flatten_iter
-from arrays.garage import garage
-from arrays.josephus_problem import josephus
-from arrays.longest_non_repeat import longest_non_repeat, longest_non_repeat_two
-from arrays.merge_intervals import Interval, merge_v2
-from arrays.missing_ranges import missing_ranges
-from arrays.move_zeros_to_end import move_zeros
-from arrays.plus_one import plus_one, plus_one_v2, plus_one_v3
-from arrays.rotate_array import rotate_v1, rotate_v2, rotate_v3
-from arrays.summary_ranges import summary_ranges
-from arrays.three_sum import three_sum
-from arrays.two_sum import two_sum
+from algorithms.arrays import (
+    delete_nth, delete_nth_naive,
+    flatten_iter, flatten,
+    garage,
+    josephus,
+    longest_non_repeat_v1, longest_non_repeat_v2,
+    Interval, merge_intervals,
+    missing_ranges,
+    move_zeros,
+    plus_one_v1, plus_one_v2, plus_one_v3,
+    rotate_v1, rotate_v2, rotate_v3,
+    summarize_ranges,
+    three_sum,
+    two_sum,
+    max_ones_index
+)
 
 import unittest
 
@@ -37,15 +40,19 @@ class TestDeleteNth(unittest.TestCase):
 
     def test_delete_nth_naive(self):
 
-        self.assertListEqual(delete_nth_naive([20, 37, 20, 21, 37, 21, 21], n=1),
+        self.assertListEqual(delete_nth_naive(
+                             [20, 37, 20, 21, 37, 21, 21], n=1),
                              [20, 37, 21])
-        self.assertListEqual(delete_nth_naive([1, 1, 3, 3, 7, 2, 2, 2, 2], n=3),
+        self.assertListEqual(delete_nth_naive(
+                             [1, 1, 3, 3, 7, 2, 2, 2, 2], n=3),
                              [1, 1, 3, 3, 7, 2, 2, 2])
-        self.assertListEqual(delete_nth_naive([1, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1], n=3),
+        self.assertListEqual(delete_nth_naive(
+                             [1, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1], n=3),
                              [1, 2, 3, 1, 1, 2, 2, 3, 3, 4, 5])
         self.assertListEqual(delete_nth_naive([], n=5),
                              [])
-        self.assertListEqual(delete_nth_naive([1, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1], n=0),
+        self.assertListEqual(delete_nth_naive(
+                             [1, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1], n=0),
                              [])
 
     def test_delete_nth(self):
@@ -117,32 +124,44 @@ class TestGarage(unittest.TestCase):
         steps, seq = garage(initial, final)
 
         self.assertEqual(steps, 4)
-        self.assertListEqual(seq, [[0, 2, 3, 1, 4], [2, 0, 3, 1, 4], [2, 3, 0, 1, 4], [0, 3, 2, 1, 4]])
+        self.assertListEqual(seq, [[0, 2, 3, 1, 4],
+                                   [2, 0, 3, 1, 4],
+                                   [2, 3, 0, 1, 4],
+                                   [0, 3, 2, 1, 4]])
 
 
 class TestLongestNonRepeat(unittest.TestCase):
 
-    def test_longest_non_repeat(self):
+    def test_longest_non_repeat_v1(self):
 
         string = "abcabcbb"
-        self.assertEqual(longest_non_repeat(string), 3)
+        self.assertEqual(longest_non_repeat_v1(string), 3)
 
         string = "bbbbb"
-        self.assertEqual(longest_non_repeat(string), 1)
+        self.assertEqual(longest_non_repeat_v1(string), 1)
 
         string = "pwwkew"
-        self.assertEqual(longest_non_repeat(string), 3)
+        self.assertEqual(longest_non_repeat_v1(string), 3)
 
-    def test_longest_non_repeat_two(self):
+    def test_longest_non_repeat_v2(self):
 
         string = "abcabcbb"
-        self.assertEqual(longest_non_repeat_two(string), 3)
+        self.assertEqual(longest_non_repeat_v2(string), 3)
 
         string = "bbbbb"
-        self.assertEqual(longest_non_repeat_two(string), 1)
+        self.assertEqual(longest_non_repeat_v2(string), 1)
 
         string = "pwwkew"
-        self.assertEqual(longest_non_repeat_two(string), 3)
+        self.assertEqual(longest_non_repeat_v2(string), 3)
+
+
+class TestMaxOnesIndex(unittest.TestCase):
+
+    def test_max_ones_index(self):
+
+        self.assertEqual(9, max_ones_index([1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(3, max_ones_index([1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(-1, max_ones_index([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
 
 class TestMergeInterval(unittest.TestCase):
@@ -156,9 +175,9 @@ class TestMergeInterval(unittest.TestCase):
             [Interval(1, 6), Interval(8, 10), Interval(15, 18)]
         )
 
-    def test_merge_v2(self):
+    def test_merge_intervals(self):
         interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
-        merged_intervals = merge_v2(interval_list)
+        merged_intervals = merge_intervals(interval_list)
         self.assertEqual(
             merged_intervals,
             [[1, 6], [8, 10], [15, 18]]
@@ -172,7 +191,8 @@ class TestMissingRanges(unittest.TestCase):
         arr = [3, 5, 10, 11, 12, 15, 19]
 
         self.assertListEqual(missing_ranges(arr, 0, 20),
-                             [(0, 2), (4, 4), (6, 9), (13, 14), (16, 18), (20, 20)])
+                             [(0, 2), (4, 4), (6, 9),
+                              (13, 14), (16, 18), (20, 20)])
 
         self.assertListEqual(missing_ranges(arr, 6, 100),
                              [(6, 9), (13, 14), (16, 18), (20, 100)])
@@ -191,64 +211,79 @@ class TestMoveZeros(unittest.TestCase):
 
 class TestPlusOne(unittest.TestCase):
 
-    def test_plus_one(self):
+    def test_plus_one_v1(self):
 
-        self.assertListEqual(plus_one([0]), [1])
-        self.assertListEqual(plus_one([9]), [1, 0])
-        self.assertListEqual(plus_one([1, 0, 9]), [1, 1, 0])
-        self.assertListEqual(plus_one([9, 9, 8, 0, 0, 9]), [9, 9, 8, 0, 1, 0])
-        self.assertListEqual(plus_one([9, 9, 9, 9]), [1, 0, 0, 0, 0])
+        self.assertListEqual(plus_one_v1([0]), [1])
+        self.assertListEqual(plus_one_v1([9]), [1, 0])
+        self.assertListEqual(plus_one_v1([1, 0, 9]), [1, 1, 0])
+        self.assertListEqual(plus_one_v1([9, 9, 8, 0, 0, 9]),
+                             [9, 9, 8, 0, 1, 0])
+        self.assertListEqual(plus_one_v1([9, 9, 9, 9]),
+                             [1, 0, 0, 0, 0])
 
     def test_plus_one_v2(self):
 
         self.assertListEqual(plus_one_v2([0]), [1])
         self.assertListEqual(plus_one_v2([9]), [1, 0])
         self.assertListEqual(plus_one_v2([1, 0, 9]), [1, 1, 0])
-        self.assertListEqual(plus_one_v2([9, 9, 8, 0, 0, 9]), [9, 9, 8, 0, 1, 0])
-        self.assertListEqual(plus_one_v2([9, 9, 9, 9]), [1, 0, 0, 0, 0])
+        self.assertListEqual(plus_one_v2([9, 9, 8, 0, 0, 9]),
+                             [9, 9, 8, 0, 1, 0])
+        self.assertListEqual(plus_one_v2([9, 9, 9, 9]),
+                             [1, 0, 0, 0, 0])
 
     def test_plus_one_v3(self):
 
         self.assertListEqual(plus_one_v3([0]), [1])
         self.assertListEqual(plus_one_v3([9]), [1, 0])
         self.assertListEqual(plus_one_v3([1, 0, 9]), [1, 1, 0])
-        self.assertListEqual(plus_one_v3([9, 9, 8, 0, 0, 9]), [9, 9, 8, 0, 1, 0])
-        self.assertListEqual(plus_one_v3([9, 9, 9, 9]), [1, 0, 0, 0, 0])
+        self.assertListEqual(plus_one_v3([9, 9, 8, 0, 0, 9]),
+                             [9, 9, 8, 0, 1, 0])
+        self.assertListEqual(plus_one_v3([9, 9, 9, 9]),
+                             [1, 0, 0, 0, 0])
 
 
 class TestRotateArray(unittest.TestCase):
 
     def test_rotate_v1(self):
 
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=3),
+                                       [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=1),
+                                       [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v1([1, 2, 3, 4, 5, 6, 7], k=7),
+                                       [1, 2, 3, 4, 5, 6, 7])
         self.assertListEqual(rotate_v1([1, 2], k=111), [2, 1])
 
     def test_rotate_v2(self):
 
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=3),
+                                       [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=1),
+                                       [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v2([1, 2, 3, 4, 5, 6, 7], k=7),
+                                       [1, 2, 3, 4, 5, 6, 7])
         self.assertListEqual(rotate_v2([1, 2], k=111), [2, 1])
 
     def test_rotate_v3(self):
 
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=3), [5, 6, 7, 1, 2, 3, 4])
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=1), [7, 1, 2, 3, 4, 5, 6])
-        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=7), [1, 2, 3, 4, 5, 6, 7])
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=3),
+                                       [5, 6, 7, 1, 2, 3, 4])
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=1),
+                                       [7, 1, 2, 3, 4, 5, 6])
+        self.assertListEqual(rotate_v3([1, 2, 3, 4, 5, 6, 7], k=7),
+                                       [1, 2, 3, 4, 5, 6, 7])
         self.assertListEqual(rotate_v3([1, 2], k=111), [2, 1])
 
 
 class TestSummaryRanges(unittest.TestCase):
 
-    def test_summary_ranges(self):
+    def test_summarize_ranges(self):
 
-        self.assertListEqual(summary_ranges([0, 1, 2, 4, 5, 7]),
+        self.assertListEqual(summarize_ranges([0, 1, 2, 4, 5, 7]),
                              [(0, 2), (4, 5), (7, 7)])
-        self.assertListEqual(summary_ranges([-5, -4, -3, 1, 2, 4, 5, 6]),
+        self.assertListEqual(summarize_ranges([-5, -4, -3, 1, 2, 4, 5, 6]),
                              [(-5, -3), (1, 2), (4, 6)])
-        self.assertListEqual(summary_ranges([-2, -1, 0, 1, 2]),
+        self.assertListEqual(summarize_ranges([-2, -1, 0, 1, 2]),
                              [(-2, 2)])
 
 
