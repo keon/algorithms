@@ -9,7 +9,8 @@ from algorithms.maths import (
     primes,
     pythagoras,
     is_prime,
-    encrypt, decrypt, generate_key
+    encrypt, decrypt, generate_key,
+    combination
 )
 
 import unittest
@@ -202,6 +203,17 @@ class TestRSA(unittest.TestCase):
     #         dec = decrypt(en, d, n)
     #         self.assertEqual(data,dec)
 
+class TestCombination(unittest.TestCase):
+    """[summary]
+    Test for the file rsa.py
 
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_combination(self):
+        self.assertEqual(10, combination(5, 2))
+        self.assertEqual(252, combination(10, 5))
+        
 if __name__ == "__main__":
     unittest.main()
