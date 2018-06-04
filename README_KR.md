@@ -217,6 +217,7 @@ if __name__ == "__main__":
     - [meeting_rooms](algorithms/sort/meeting_rooms.py)
     - [merge_sort](algorithms/sort/merge_sort.py)
     - [quick_sort](algorithms/sort/quick_sort.py)
+    - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort](algorithms/sort/selection_sort.py)
     - [sort_colors](algorithms/sort/sort_colors.py)
     - [topsort](algorithms/sort/topsort.py)
