@@ -207,6 +207,7 @@ pip3 uninstall -y algorithms
     - [meeting_rooms：会议室](algorithms/sort/meeting_rooms.py)
     - [merge_sort：归并排序](algorithms/sort/merge_sort.py)
     - [quick_sort：快速排序](algorithms/sort/quick_sort.py)
+    - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort：选择排序](algorithms/sort/selection_sort.py)
     - [shell_sort](algorithms/sort/shell_sort.py)
     - [sort_colors：颜色排序](algorithms/sort/sort_colors.py)
