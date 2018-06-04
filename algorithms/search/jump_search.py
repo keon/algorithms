@@ -6,6 +6,7 @@ def jump_search(arr,target):
         All items in list must be sorted like binary search
 
         Find block that contains target value and search it linearly in that block
+        It returns a first target value in array
 
         reference: https://en.wikipedia.org/wiki/Jump_search
 
