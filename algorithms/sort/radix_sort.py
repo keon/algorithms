@@ -1,7 +1,7 @@
-'''
+"""
 radix sort
 complexity: O(nk) . n is the size of input list and k is the digit length of the number
-'''
+"""
 def radix_sort(arr):
     is_done = False
     position = 1
@@ -11,7 +11,7 @@ def radix_sort(arr):
         is_done = True
 
         for num in arr:
-            digit_number = (int)(num/position)%10
+            digit_number = num // position % 10
             queue_list[digit_number].append(num)
             if is_done and digit_number > 0:
                 is_done = False
