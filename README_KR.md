@@ -165,6 +165,7 @@ if __name__ == "__main__":
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
 - [maths : 수학 계산](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
+    - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
