@@ -164,6 +164,7 @@ pip3 uninstall -y algorithms
     - [valid_sudoku：有效数独](algorithms/map/valid_sudoku.py)
 - [math：数学问题](algorithms/maths)
     - [extended_gcd：扩展欧几里得算法](algorithms/maths/extended_gcd.py)
+    - [combination](algorithms/maths/combination.py)
     - [gcd/lcm：最大公约数和最小公倍数](algorithms/maths/gcd.py)
     - [prime_test：主要测试](algorithms/maths/prime_test.py)
     - [primes_sieve_of_eratosthenes：埃拉托色尼的质数筛](algorithms/maths/primes_sieve_of_eratosthenes.py)
