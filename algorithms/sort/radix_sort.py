@@ -23,3 +23,4 @@ def radix_sort(arr):
                 index += 1
 
         position *= 10
+    return arr
