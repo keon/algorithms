@@ -1,6 +1,6 @@
 [English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語 | [한국어](README_KR.md)
 
-pythonのデータ構造とアルゴリズム
+Pythonのデータ構造とアルゴリズム
 =========================================
 
 Python 3で開発された簡単で明確なデータ構造とアルゴリズムの例を紹介します。
@@ -169,6 +169,7 @@ if __name__ == "__main__":
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
 - [maths : 数学](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
+    - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
