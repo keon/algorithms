@@ -1,6 +1,9 @@
+# Time complexity is the same as DFS, which is O(V + E)
+# Space complexity: O(V)
+
 GRAY, BLACK = 0, 1
 
-def topological_sort_recursive(graph):
+def top_sort_recursive(graph):
     order, enter, state = [], set(graph), {}
     
     def dfs(node):
@@ -20,7 +23,7 @@ def topological_sort_recursive(graph):
     while enter: dfs(enter.pop())
     return order
 
-def topological_sort(graph):
+def top_sort(graph):
     order, enter, state = [], set(graph), {}
     
     def is_ready(node):
