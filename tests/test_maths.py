@@ -1,7 +1,7 @@
 from algorithms.maths import (
     int2base, base2int,
     extended_gcd,
-    factorial,
+    factorial, factorial_recur,
     gcd, lcm,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
