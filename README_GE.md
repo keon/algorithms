@@ -181,6 +181,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
+    - [factorial](algorithms/maths/factorial.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
