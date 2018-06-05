@@ -1,3 +1,4 @@
+from .bogo_sort import *
 from .bubble_sort import *
 from .comb_sort import *
 from .counting_sort import *
