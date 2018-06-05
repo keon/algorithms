@@ -10,4 +10,4 @@ def linear_search(array, query):
         if array[i] == query:
             return i
 
-    return None
+    return -1
