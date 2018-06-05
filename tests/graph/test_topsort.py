@@ -1,5 +1,5 @@
 from algorithms.sort import (
-    topological_sort, topological_sort_recursive
+    top_sort, top_sort_recursive
 )
 
 import unittest
@@ -17,10 +17,10 @@ class TestSuite(unittest.TestCase):
                         }
         
     def test_topsort(self):
-        res = topological_sort_recursive(self.depGraph)
+        res = top_sort_recursive(self.depGraph)
         #print(res)
         self.assertTrue(res.index('g') < res.index('e'))
-        res = topological_sort_recursive(self.depGraph)
+        res = top_sort(self.depGraph)
         self.assertTrue(res.index('g') < res.index('e'))
 
 if __name__ == '__main__':
