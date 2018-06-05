@@ -1,5 +1,6 @@
 from .base_conversion import *
 from .extended_gcd import *
+from .factorial import *
 from .gcd import *
 from .generate_strobogrammtic import *
 from .is_strobogrammatic import *
