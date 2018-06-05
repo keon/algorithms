@@ -2,6 +2,7 @@ from algorithms.search import (
     binary_search, binary_search_recur,
     first_occurance,
     last_occurance,
+    linear_search,
     search_insert,
     two_sum, two_sum1, two_sum2,
     search_range,
@@ -44,6 +45,13 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(None, last_occurance(array, 7))
         self.assertEqual(0, last_occurance(array, 1))
         self.assertEqual(13, last_occurance(array, 6))
+        
+    def test_linear_search(self):
+        array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
+        self.assertEqual(6, linear_search(array, 4))
+        self.assertEqual(10, linear_search(array, 5))
+        self.assertEqual(-1, linear_search(array, 7))
+        self.assertEqual(-1, linear_search(array, -1))
 
     def test_search_insert(self):
         array = [1,3,5,6]
