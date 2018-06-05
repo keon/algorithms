@@ -18,8 +18,8 @@ import unittest
 
 class TestSuite(unittest.TestCase):
     def test_bogo_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         bogo_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertEqual([1, 5, 23],
+                         bogo_sort([1, 23, 5]))
    
     def test_bubble_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
