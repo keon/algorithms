@@ -7,7 +7,7 @@ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 """
 
 
-def letter_combinations(digits:"str")->"List[str]":
+def letter_combinations(digits: str)->list[str]:
     if digits == "":
         return []
     kmaps = {

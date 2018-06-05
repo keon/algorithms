@@ -65,7 +65,7 @@ if __name__ == "__main__":
 - [backtrack : 백트래킹](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
     - [anagram](algorithms/backtrack/anagram.py)
-    - [array_sum_combinations](algorithms/backtrack/array_sum_combinations.py)
+    - [array_sum_combinationss](algorithms/backtrack/array_sum_combinationss.py)
     - [combination_sum](algorithms/backtrack/combination_sum.py)
     - [expression_add_operators](algorithms/backtrack/expression_add_operators.py)
     - [factor_combinations](algorithms/backtrack/factor_combinations.py)
