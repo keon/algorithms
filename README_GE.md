@@ -215,6 +215,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [binary_search](algorithms/search/binary_search.py)
     - [first_occurance](algorithms/search/first_occurance.py)
     - [last_occurance](algorithms/search/last_occurance.py)
+    - [linear_search](algorithms/search/linear_search.py)
     - [search_insert](algorithms/search/search_insert.py)
     - [two_sum](algorithms/search/two_sum.py)
     - [search_range](algorithms/search/search_range.py)
