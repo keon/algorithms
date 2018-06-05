@@ -214,6 +214,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [search_range](algorithms/search/search_range.py)
     - [find_min_rotate](algorithms/search/find_min_rotate.py)
     - [search_rotate](algorithms/search/search_rotate.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)

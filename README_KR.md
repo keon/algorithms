@@ -1,4 +1,4 @@
-English(README_EN.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
 
 Python 버전 자료구조 및 알고리즘
 =========================================
@@ -11,7 +11,7 @@ Python 3로 구현한 간단하고 명확한 자료구조와 알고리즘들의 
 
 ## 테스트 종류들
 
-### 단위별 테스트 사용
+### unittest 사용
 아래 명시된 모든 테스트 실행하기:
 
     $ python3 -m unittest discover tests
@@ -206,6 +206,7 @@ if __name__ == "__main__":
     - [search_range](algorithms/search/search_range.py)
     - [find_min_rotate](algorithms/search/find_min_rotate.py)
     - [search_rotate](algorithms/search/search_rotate.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set : 집합](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)

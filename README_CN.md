@@ -195,6 +195,7 @@ pip3 uninstall -y algorithms
     - [count_elem：元素计数](algorithms/search/count_elem.py)
     - [first_occurance：首次出现](algorithms/search/first_occurance.py)
     - [last_occurance：最后一次出现](algorithms/search/last_occurance.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set：集合](algorithms/set)
     - [randomized_set：随机集合](algorithms/set/randomized_set.py)
     - [set_covering：集合覆盖](algorithms/set/set_covering.py)
