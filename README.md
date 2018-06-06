@@ -235,6 +235,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [sort_colors](algorithms/sort/sort_colors.py)
     - [topsort](algorithms/sort/topsort.py)
     - [wiggle_sort](algorithms/sort/wiggle_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
 - [stack](algorithms/stack)
     - [longest_abs_path](algorithms/stack/longest_abs_path.py)
     - [simplify_path](algorithms/stack/simplify_path.py)
