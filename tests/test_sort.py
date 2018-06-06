@@ -26,9 +26,9 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
                          bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232]))
         self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
-                         bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232],True))
+                         bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232],False))
         self.assertEqual([1232, 65, 57, 23, 5, 3, 2, 1],
-                         bitonic_sort([1, 2, 3, 5, 65, 23, 57, 1232],False))  
+                         bitonic_sort([1, 2, 3, 5, 65, 23, 57, 1232],True))  
    
     def test_bubble_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
