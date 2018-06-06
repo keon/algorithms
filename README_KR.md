@@ -214,6 +214,7 @@ if __name__ == "__main__":
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
 - [sort : 정렬 알고리즘](algorithms/sort)
+    - [bitonic_sort](algorithms/sort/bitonic_sort.py)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
     - [comb_sort](algorithms/sort/comb_sort.py)
