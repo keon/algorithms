@@ -220,6 +220,7 @@ if __name__ == "__main__":
 - [sort : 정렬 알고리즘](algorithms/sort)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
     - [comb_sort](algorithms/sort/comb_sort.py)
     - [counting_sort](algorithms/sort/counting_sort.py)
     - [heap_sort](algorithms/sort/heap_sort.py)

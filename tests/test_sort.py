@@ -10,7 +10,8 @@ from algorithms.sort import (
     selection_sort,
     bucket_sort,
     shell_sort,
-    radix_sort
+    radix_sort,
+    cocktail_shaker_sort
 )
 
 import unittest
@@ -68,7 +69,10 @@ class TestSuite(unittest.TestCase):
     def test_radix_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                         radix_sort([1, 5, 65, 23, 57, 1232]))
-                                          
+     
+    def test_cocktail_shaker_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        cocktail_shaker_sort([1, 5, 65, 23, 57, 1232]))
 
 
 if __name__ == "__main__":

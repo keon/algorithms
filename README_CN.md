@@ -209,6 +209,7 @@ pip3 uninstall -y algorithms
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort：冒泡排序](algorithms/sort/bubble_sort.py)
     - [bucket_sort](algorithms/sort/bucket_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
     - [comb_sort：梳排序](algorithms/sort/comb_sort.py)
     - [counting_sort：计数排序](algorithms/sort/counting_sort.py)
     - [heap_sort：堆排序](algorithms/sort/heap_sort.py)
