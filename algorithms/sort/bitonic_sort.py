@@ -29,13 +29,12 @@ def bitonic_sort(arr, reverse=False):
     
     #end of function(compare and bitionic_merge) definition
     n = len(arr)
-    
+    if n <= 1:
+        return arr
     # checks if n is power of two
     if (n and (not(n & (n - 1))) ):
         raise ValueError("the size of input should be power of two")
     
-    if n <= 1:
-        return arr
     left = bitonic_sort(arr[:n // 2], True)
     right = bitonic_sort(arr[n // 2:], False)
 
