@@ -67,7 +67,7 @@ if __name__ == "__main__":
     - [three_sum](algorithms/arrays/three_sum.py)
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros_to_end](algorithms/arrays/move_zeros_to_end.py)
-    - [most_frequent_value](algorithms/arrays/most_frequent_value.py)
+    - [top_1](algorithms/arrays/top_1.py)
     - [trimmean](algorithms/arrays/trimmean.py)
 - [backtrack : 백트래킹](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
