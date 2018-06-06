@@ -15,7 +15,7 @@
 │   └── two_sum.py
 ├── backtrack
 │   ├── anagram.py
-│   ├── array_sum_combinationss.py
+│   ├── array_sum_combinations.py
 │   ├── combination_sum.py
 │   ├── expression_add_operators.py
 │   ├── factor_combinations.py

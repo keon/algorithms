@@ -83,7 +83,7 @@ pip3 uninstall -y algorithms
 - [backtrack：回溯](algorithms/backtrack)
     - [general_solution.md：一般方法](algorithms/backtrack/)
     - [anagram：同字母异序词](algorithms/backtrack/anagram.py)
-    - [array_sum_combinationss：数组和](algorithms/backtrack/array_sum_combinationss.py)
+    - [array_sum_combinations：数组和](algorithms/backtrack/array_sum_combinations.py)
     - [combination_sum：和的合并](algorithms/backtrack/combination_sum.py)
     - [expression_add_operators：给表达式添加运算符](algorithms/backtrack/expression_add_operators.py)
     - [factor_combinations：因素组合](algorithms/backtrack/factor_combinations.py)

@@ -1,7 +1,10 @@
 from algorithms.backtrack import (
     add_operators,
-    permute, permute_iter, anagram,
-    array_sum_combinations, unique_array_sum_combinations,
+    permute,
+    permute_iter,
+    anagram,
+    array_sum_combinations,
+    unique_array_sum_combinations,
     combination_sum,
     find_words,
     pattern_match,
