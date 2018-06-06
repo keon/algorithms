@@ -1,4 +1,4 @@
-from algorithms.queues import (
+from algorithms.queue import (
     ArrayQueue, LinkedListQueue,
     max_sliding_window,
     reconstruct_queue,
