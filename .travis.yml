@@ -1,6 +1,8 @@
 group: travis_latest
 language: python
-cache: pip
+cache:
+  directories:
+    - $HOME/.cache/pip
 python:
     - 3.6
     #- nightly
