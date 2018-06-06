@@ -1,5 +1,9 @@
 [English](README.md) | 简体中文 | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md)
 
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
+
 Python版数据结构和算法
 =========================================
 
@@ -205,6 +209,7 @@ pip3 uninstall -y algorithms
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort：冒泡排序](algorithms/sort/bubble_sort.py)
     - [bucket_sort](algorithms/sort/bucket_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
     - [comb_sort：梳排序](algorithms/sort/comb_sort.py)
     - [counting_sort：计数排序](algorithms/sort/counting_sort.py)
     - [gnome_sort](algorithms/sort/gnome_sort.py)

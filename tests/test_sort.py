@@ -11,7 +11,8 @@ from algorithms.sort import (
     bucket_sort,
     shell_sort,
     radix_sort,
-    gnome_sort
+    gnome_sort,
+    cocktail_shaker_sort,
 )
 
 import unittest
@@ -74,6 +75,9 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          gnome_sort([1, 5, 65, 23, 57, 1232]))
                                           
+    def test_cocktail_shaker_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                        cocktail_shaker_sort([1, 5, 65, 23, 57, 1232]))
 
 
 if __name__ == "__main__":
