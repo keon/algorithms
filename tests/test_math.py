@@ -1,4 +1,4 @@
-from algorithms.maths import (
+from algorithms.math import (
     int2base, base2int,
     extended_gcd,
     factorial, factorial_recur,
