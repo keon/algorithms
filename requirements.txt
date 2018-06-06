@@ -3,3 +3,4 @@ python-coveralls
 coverage
 nose
 pytest
+tox
