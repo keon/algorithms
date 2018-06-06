@@ -11,14 +11,14 @@ def bitonic_sort(*args):
     """
     
     #input can be (arr, direction(inc or dec)) or just (arr) with default order(increase)
-    n = len(arr)
+    
     arr = args[0]
     if len(args)==2:
         direction = args[1]
     else:
         direction = True
         
-        
+    n = len(arr)
     def compare(arr, direction):
         n = len(arr)//2
         for i in range(n):
