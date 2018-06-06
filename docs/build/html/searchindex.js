@@ -1,1 +1,0 @@
-Search.setIndex({docnames:["index"],envversion:53,filenames:["index.rst"],objects:{},objnames:{},objtypes:{},terms:{The:0,clean:0,consist:0,data:0,exampl:0,implement:0,index:0,minim:0,modul:0,packag:0,page:0,search:0,structur:0},titles:["algorithms"],titleterms:{algorithm:0,document:[],indic:0,tabl:0,welcom:[]}})

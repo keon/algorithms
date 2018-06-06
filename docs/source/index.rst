@@ -1,32 +1,38 @@
-algorithms
-===========
+.. image:: /_static/algorithms_logo.png
+   :target: https://github.com/keon/algorithms
+   :scale: 50 %
 
 The :mod:`algorithms` package consists of
 minimal and clean example implementations of data structures and algorithms.
 
-.. algorithms documentation master file, created by
-   sphinx-quickstart on Tue Jun  5 01:13:41 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. toctree::
+   :maxdepth: 2
+   :caption:  Package Reference
 
- .. toctree::
-    :maxdepth: 2
-    :caption:  Package Reference
-
-    self
-    torchtext.data <data>
-    torchtext.datasets <datasets>
-    torchtext.vocab <vocab>
-    torchtext.utils <utils>
-    examples
-
- .. automodule:: torchtext
-    :members:
-
+   self
+   algorithms.arrays <arrays>
+   algorithms.backtrack <backtrack>
+   algorithms.bfs <bfs>
+   algorithms.bit <bit>
+   algorithms.dfs <dfs>
+   algorithms.dp <dp>
+   algorithms.graph <graph>
+   algorithms.heap <heap>
+   algorithms.linkedlist <linkedlist>
+   algorithms.map <map>
+   algorithms.maths <maths>
+   algorithms.matrix <matrix>
+   algorithms.queues <queues>
+   algorithms.search <search>
+   algorithms.set <set>
+   algorithms.sort <sort>
+   algorithms.stack <stack>
+   algorithms.strings <strings>
+   algorithms.tree <tree>
+   examples
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`

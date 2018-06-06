@@ -1,4 +1,4 @@
-<p align="center"><img width="40%" src="docs/source/_static/img/algorithms_logo.png" /></p>
+<p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
 
 English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md)
 
