@@ -28,6 +28,10 @@ def bitonic_sort(arr, reverse=False):
         return left + right
     
     #end of function(compare and bitionic_merge) definition
+    # checks if n is power of two
+    if (n and (not(n & (n - 1))) ):
+        raise ValueError("the size of input should be power of two")
+    
     n = len(arr)
     if n <= 1:
         return arr
