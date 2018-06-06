@@ -75,7 +75,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros_to_end](algorithms/arrays/move_zeros_to_end.py)
     - [top_1](algorithms/array/top_1.py)
-    - [trimmean](algorithms/arrays/trimmean.py)
+    - [trimmean](algorithms/array/trimmean.py)
 - [backtrack](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
     - [anagram](algorithms/backtrack/anagram.py)
