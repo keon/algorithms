@@ -9,8 +9,6 @@ def bitonic_sort(arr, reverse=False):
     
     reference: https://en.wikipedia.org/wiki/Bitonic_sorter
     """
-
-    n = len(arr)
     def compare(arr, reverse):
         n = len(arr)//2
         for i in range(n):
@@ -28,7 +26,9 @@ def bitonic_sort(arr, reverse=False):
         left = bitonic_merge(arr[:n // 2], reverse)
         right = bitonic_merge(arr[n // 2:], reverse)
         return left + right
-        
+    
+    #end of function(compare and bitionic_merge) definition
+    n = len(arr)
     if n <= 1:
         return arr
     
