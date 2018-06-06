@@ -1,4 +1,4 @@
-from algorithms.arrays import (
+from algorithms.array import (
     delete_nth, delete_nth_naive,
     flatten_iter, flatten,
     garage,
