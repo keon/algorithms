@@ -69,6 +69,7 @@ if __name__ == "__main__":
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros](algorithms/arrays/move_zeros.py)
     - [top_1](algorithms/array/top_1.py)
+    - [trimmean](algorithms/array/trimmean.py)
 - [backtrack : バックトラッキング](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
     - [anagram](algorithms/backtrack/anagram.py)
