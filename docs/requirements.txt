@@ -1,0 +1,21 @@
+# Progress bars on iterators
+tqdm
+sphinx_rtd_theme
+
+# Downloading data and other files
+requests
+
+# Required for tests only:
+
+# Style-checking for PEP8
+flake8
+
+# Run unit tests
+pytest
+
+# Lets pytest find our code by automatically modifying PYTHONPATH
+pytest-pythonpath
+
+# Coverage statistics
+pytest-cov
+codecov
