@@ -1,4 +1,4 @@
-def bitonic_sort(arr, direction):
+def bitonic_sort(*args):
     """
     bitonic sort is sorting algorithm to use multiple process, but this code not containing parallel process
     It can sort only array that sizes power of 2
@@ -9,14 +9,21 @@ def bitonic_sort(arr, direction):
     
     reference: https://en.wikipedia.org/wiki/Bitonic_sorter
     """
-    n = len(arr)
     
+    #input can be (arr, direction(inc or dec)) or just (arr) with default order(increase)
+    n = len(arr)
+    arr = args[0]
+    if len(args)==2:
+        direction = args[1]
+    else:
+        direction = True
+        
+        
     def compare(arr, direction):
         n = len(arr)//2
         for i in range(n):
             if direction == (arr[i] > arr[i+n]):
                 arr[i], arr[i+n] = arr[i+n], arr[i]
-        print(arr)
         return arr
 
     def bitonic_merge(arr, direction):
