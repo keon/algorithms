@@ -9,7 +9,8 @@ from algorithms.sort import (
     selection_sort,
     bucket_sort,
     shell_sort,
-    radix_sort
+    radix_sort,
+    cocktail_shaker_sort
 )
 
 import unittest
