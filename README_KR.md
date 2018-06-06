@@ -1,4 +1,8 @@
-English(README_EN.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
+
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
 Python 버전 자료구조 및 알고리즘
 =========================================
@@ -11,7 +15,7 @@ Python 3로 구현한 간단하고 명확한 자료구조와 알고리즘들의 
 
 ## 테스트 종류들
 
-### 단위별 테스트 사용
+### unittest 사용
 아래 명시된 모든 테스트 실행하기:
 
     $ python3 -m unittest discover tests
@@ -52,13 +56,14 @@ if __name__ == "__main__":
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
     - [garage](algorithms/arrays/garage.py)
-    - [josephus_problem](algorithms/arrays/josephus_problem.py)
+    - [josephus_problem](algorithms/arrays/josephus.py)
     - [longest_non_repeat](algorithms/arrays/longest_non_repeat.py/)
+    - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [merge_intervals](algorithms/arrays/merge_intervals.py)
     - [missing_ranges](algorithms/arrays/missing_ranges.py)
     - [plus_one](algorithms/arrays/plus_one.py)
-    - [rotate_array](algorithms/arrays/rotate_array.py)
-    - [summary_ranges](algorithms/arrays/summary_ranges.py)
+    - [rotate](algorithms/arrays/rotate.py)
+    - [summarize_ranges](algorithms/arrays/summarize_ranges.py)
     - [three_sum](algorithms/arrays/three_sum.py)
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros_to_end](algorithms/arrays/move_zeros_to_end.py)
@@ -167,7 +172,9 @@ if __name__ == "__main__":
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
 - [maths : 수학 계산](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
+    - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
+    - [factorial](algorithms/maths/factorial.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
@@ -202,15 +209,18 @@ if __name__ == "__main__":
     - [binary_search](algorithms/search/binary_search.py)
     - [first_occurance](algorithms/search/first_occurance.py)
     - [last_occurance](algorithms/search/last_occurance.py)
+    - [linear_search](algorithms/search/linear_search.py)
     - [search_insert](algorithms/search/search_insert.py)
     - [two_sum](algorithms/search/two_sum.py)
     - [search_range](algorithms/search/search_range.py)
     - [find_min_rotate](algorithms/search/find_min_rotate.py)
     - [search_rotate](algorithms/search/search_rotate.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set : 집합](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
 - [sort : 정렬 알고리즘](algorithms/sort)
+    - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
     - [comb_sort](algorithms/sort/comb_sort.py)
     - [counting_sort](algorithms/sort/counting_sort.py)
@@ -222,7 +232,7 @@ if __name__ == "__main__":
     - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort](algorithms/sort/selection_sort.py)
     - [sort_colors](algorithms/sort/sort_colors.py)
-    - [topsort](algorithms/sort/topsort.py)
+    - [top_sort](algorithms/sort/top_sort.py)
     - [wiggle_sort](algorithms/sort/wiggle_sort.py)
 - [stack : 스택](algorithms/stack)
     - [longest_abs_path](algorithms/stack/longest_abs_path.py)

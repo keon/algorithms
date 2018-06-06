@@ -1,6 +1,7 @@
 from algorithms.maths import (
     int2base, base2int,
     extended_gcd,
+    factorial, factorial_recur,
     gcd, lcm,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
@@ -9,7 +10,8 @@ from algorithms.maths import (
     primes,
     pythagoras,
     is_prime,
-    encrypt, decrypt, generate_key
+    encrypt, decrypt, generate_key,
+    combination
 )
 
 import unittest
@@ -202,6 +204,37 @@ class TestRSA(unittest.TestCase):
     #         dec = decrypt(en, d, n)
     #         self.assertEqual(data,dec)
 
+class TestCombination(unittest.TestCase):
+    """[summary]
+    Test for the file combination.py
 
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_combination(self):
+        self.assertEqual(10, combination(5, 2))
+        self.assertEqual(252, combination(10, 5))
+        
+class TestFactorial(unittest.TestCase):
+    """[summary]
+    Test for the file factorial.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_factorial(self):
+        self.assertEqual(1, factorial(0))
+        self.assertEqual(120, factorial(5))
+        self.assertEqual(3628800, factorial(10))
+        
+    def test_factorial_recur(self):
+        self.assertEqual(1, factorial_recur(0))
+        self.assertEqual(120, factorial_recur(5))
+        self.assertEqual(3628800, factorial_recur(10))
+        
 if __name__ == "__main__":
     unittest.main()
+    
+    

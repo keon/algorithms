@@ -1,5 +1,9 @@
 [English](README.md) | 简体中文 | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md)
 
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
+
 Python版数据结构和算法
 =========================================
 
@@ -75,8 +79,8 @@ pip3 uninstall -y algorithms
     - [merge_intervals：合并重叠间隔](algorithms/arrays/merge_intervals.py)
     - [missing_ranges：遗失的范围](algorithms/arrays/missing_ranges.py)
     - [plus_one：加一运算](algorithms/arrays/plus_one.py)
-    - [rotate_array：反转数组](algorithms/arrays/rotate_array.py)
-    - [summary_ranges：数组范围](algorithms/arrays/summary_ranges.py)
+    - [rotate：反转数组](algorithms/arrays/rotate.py)
+    - [summarize_ranges：数组范围](algorithms/arrays/summarize_ranges.py)
     - [three_sum：三数和为零](algorithms/arrays/three_sum.py)
     - [two_sum：两数和](algorithms/arrays/two_sum.py)
     - [move_zeros_to_end: 0后置问题](algorithms/arrays/move_zeros_to_end.py)
@@ -166,6 +170,8 @@ pip3 uninstall -y algorithms
     - [valid_sudoku：有效数独](algorithms/map/valid_sudoku.py)
 - [math：数学问题](algorithms/maths)
     - [extended_gcd：扩展欧几里得算法](algorithms/maths/extended_gcd.py)
+    - [combination](algorithms/maths/combination.py)
+    - [factorial](algorithms/maths/factorial.py)
     - [gcd/lcm：最大公约数和最小公倍数](algorithms/maths/gcd.py)
     - [prime_test：主要测试](algorithms/maths/prime_test.py)
     - [primes_sieve_of_eratosthenes：埃拉托色尼的质数筛](algorithms/maths/primes_sieve_of_eratosthenes.py)
@@ -196,10 +202,13 @@ pip3 uninstall -y algorithms
     - [count_elem：元素计数](algorithms/search/count_elem.py)
     - [first_occurance：首次出现](algorithms/search/first_occurance.py)
     - [last_occurance：最后一次出现](algorithms/search/last_occurance.py)
+    - [linear_search](algorithms/search/linear_search.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set：集合](algorithms/set)
     - [randomized_set：随机集合](algorithms/set/randomized_set.py)
     - [set_covering：集合覆盖](algorithms/set/set_covering.py)
 - [sort：排序](algorithms/sort)
+    - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort：冒泡排序](algorithms/sort/bubble_sort.py)
     - [bucket_sort](algorithms/sort/bucket_sort.py)
     - [comb_sort：梳排序](algorithms/sort/comb_sort.py)
@@ -213,7 +222,7 @@ pip3 uninstall -y algorithms
     - [selection_sort：选择排序](algorithms/sort/selection_sort.py)
     - [shell_sort](algorithms/sort/shell_sort.py)
     - [sort_colors：颜色排序](algorithms/sort/sort_colors.py)
-    - [topsort：top排序](algorithms/sort/topsort.py)
+    - [top_sort：top排序](algorithms/sort/top_sort.py)
     - [wiggle_sort：摇摆排序](algorithms/sort/wiggle_sort.py)
 - [stack：栈](algorithms/stack)
     - [longest_abs_path：最长相对路径](algorithms/stack/longest_abs_path.py)
