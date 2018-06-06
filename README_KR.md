@@ -1,5 +1,9 @@
 [English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
 
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
+
 Python 버전 자료구조 및 알고리즘
 =========================================
 
