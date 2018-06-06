@@ -13,7 +13,7 @@ from algorithms.array import (
     three_sum,
     two_sum,
     max_ones_index,
-    most_frequent_value,
+    top_1,
     trimmean
 )
 
@@ -309,14 +309,14 @@ class TestSuite(unittest.TestCase):
 
         self.assertIsNone(two_sum([-3, 5, 2, 3, 8, -9], target=6))
 
-class TestMostFrequentValue(unittest.TestCase):
+class TestTop1(unittest.TestCase):
     
-    def test_most_frequent_value(self):
+    def test_top_1(self):
         
-        self.assertListEqual(most_frequent_value(
+        self.assertListEqual(top_1(
                              [20, 37, 20, 21, 37, 21, 21]),
                              [21])
-        self.assertListEqual(most_frequent_value(
+        self.assertListEqual(top_1(
                              [1, 1, 2, 2, 3, 4]),
                              [1, 2])
         
