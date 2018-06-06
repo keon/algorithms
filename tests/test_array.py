@@ -12,7 +12,9 @@ from algorithms.arrays import (
     summarize_ranges,
     three_sum,
     two_sum,
-    max_ones_index
+    max_ones_index,
+    most_frequent_value,
+    trimmean
 )
 
 import unittest
@@ -306,6 +308,26 @@ class TestSuite(unittest.TestCase):
         self.assertTupleEqual((0, 3), two_sum([-3, 5, 2, 3, 8, -9], target=0))
 
         self.assertIsNone(two_sum([-3, 5, 2, 3, 8, -9], target=6))
+
+class TestMostFrequentValue(unittest.TestCase):
+    
+    def test_most_frequent_value(self):
+        
+        self.assertListEqual(most_frequent_value(
+                             [20, 37, 20, 21, 37, 21, 21]),
+                             [21])
+        self.assertListEqual(most_frequent_value(
+                             [1, 1, 2, 2, 3, 4]),
+                             [1, 2])
+        
+class TestTrimmean(unittest.TestCase):
+    
+    def test_trimmean(self):
+        
+        self.assertEqual(trimmean([1,2,3,4,5,6,7,8,9,10], 20),
+                                  5.5)
+        self.assertEqual(trimmean([1,2,3,4,5], 40),
+                                  3.0) 
 
 
 if __name__ == '__main__':
