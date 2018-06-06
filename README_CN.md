@@ -217,6 +217,7 @@ pip3 uninstall -y algorithms
     - [sort_colors：颜色排序](algorithms/sort/sort_colors.py)
     - [topsort：top排序](algorithms/sort/topsort.py)
     - [wiggle_sort：摇摆排序](algorithms/sort/wiggle_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
 - [stack：栈](algorithms/stack)
     - [longest_abs_path：最长相对路径](algorithms/stack/longest_abs_path.py)
     - [simplify_path：简化路径](algorithms/stack/simplify_path.py)
