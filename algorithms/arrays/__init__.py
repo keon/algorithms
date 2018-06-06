@@ -6,9 +6,11 @@ from .longest_non_repeat import *
 from .max_ones_index import *
 from .merge_intervals import *
 from .missing_ranges import *
+from .most_frequent_value import *
 from .move_zeros import *
 from .plus_one import *
 from .rotate import *
 from .summarize_ranges import *
 from .three_sum import *
+from .trimmean import *
 from .two_sum import *
