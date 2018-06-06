@@ -69,7 +69,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [three_sum](algorithms/arrays/three_sum.py)
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros_to_end](algorithms/arrays/move_zeros_to_end.py)
-    - [most_frequent_value](algorithms/arrays/most_frequent_value.py)
+    - [top_1](algorithms/array/top_1.py)
     - [trimmean](algorithms/arrays/trimmean.py)
 - [backtrack](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
