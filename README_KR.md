@@ -66,7 +66,7 @@ if __name__ == "__main__":
     - [summarize_ranges](algorithms/array/summarize_ranges.py)
     - [three_sum](algorithms/array/three_sum.py)
     - [two_sum](algorithms/array/two_sum.py)
-    - [move_zeros_to_end](algorithms/array/move_zeros_to_end.py)
+    - [move_zeros](algorithms/array/move_zeros.py)
     - [top_1](algorithms/array/top_1.py)
     - [trimmean](algorithms/array/trimmean.py)
 - [backtrack : 백트래킹](algorithms/backtrack)
