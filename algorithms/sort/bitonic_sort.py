@@ -32,7 +32,7 @@ def bitonic_sort(arr, reverse=False):
     if n <= 1:
         return arr
     # checks if n is power of two
-    if (n and (not(n & (n - 1))) ):
+    if not (n and (not(n & (n - 1))) ):
         raise ValueError("the size of input should be power of two")
     
     left = bitonic_sort(arr[:n // 2], True)
