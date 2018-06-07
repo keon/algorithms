@@ -8,6 +8,9 @@ def insertion_sort(arr, simulation=False):
     for i in range(len(arr)):
         cursor = arr[i]
         pos = i
+        
+        temp = arr[:]
+        
         while pos > 0 and arr[pos - 1] > cursor:
             # Swap the number down the list
             arr[pos] = arr[pos - 1]
@@ -15,6 +18,7 @@ def insertion_sort(arr, simulation=False):
         # Break and do the final swap
         arr[pos] = cursor
         if simulation:
-            print(arr)
+            if temp != arr:
+                print(arr)
 
     return arr
