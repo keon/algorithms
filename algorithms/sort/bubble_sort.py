@@ -10,14 +10,14 @@ Default is simulation = False
 """
 
 
-def bubble_sort(arr,simulation=False):
+def bubble_sort(arr, simulation=False):
     def swap(i, j):
         arr[i], arr[j] = arr[j], arr[i]
 
     n = len(arr)
     swapped = True
     
-    if simulation == True:
+    if simulation:
         print(arr)
     
     while swapped:
@@ -26,6 +26,7 @@ def bubble_sort(arr,simulation=False):
             if arr[i - 1] > arr[i]:
                 swap(i - 1, i)
                 swapped = True
-                if simulation == True:
+                if simulation:
                     print(arr)
+                    
     return arr
