@@ -1,3 +1,4 @@
+from .bitonic_sort import *
 from .bogo_sort import *
 from .bubble_sort import *
 from .comb_sort import *

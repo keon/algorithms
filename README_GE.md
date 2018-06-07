@@ -227,6 +227,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
 - [sort](algorithms/sort)
+    - [bitonic_sort](algorithms/sort/bitonic_sort.py)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
     - [bucket_sort](algorithms/sort/bucket_sort.py)

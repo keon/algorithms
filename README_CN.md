@@ -206,6 +206,7 @@ pip3 uninstall -y algorithms
     - [randomized_set：随机集合](algorithms/set/randomized_set.py)
     - [set_covering：集合覆盖](algorithms/set/set_covering.py)
 - [sort：排序](algorithms/sort)
+    - [bitonic_sort](algorithms/sort/bitonic_sort.py)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort：冒泡排序](algorithms/sort/bubble_sort.py)
     - [bucket_sort](algorithms/sort/bucket_sort.py)
