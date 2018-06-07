@@ -2,13 +2,12 @@ def selection_sort(arr, simulation=False):
     """ Selection Sort
         Complexity: O(n^2)
     """
+    iteration = 0
     if simulation:
-        print(arr)
+        print("iteration",iteration,":",arr)
         
     for i in range(len(arr)):
         minimum = i
-        
-        temp = arr[:]
         
         for j in range(i + 1, len(arr)):
             # "Select" the correct value
@@ -18,7 +17,7 @@ def selection_sort(arr, simulation=False):
         arr[minimum], arr[i] = arr[i], arr[minimum]
         
         if simulation:
-            if temp != arr:
-                print(arr)
+                iteration = iteration + 1
+                print("iteration",iteration,":",arr)
             
     return arr
