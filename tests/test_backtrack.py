@@ -68,7 +68,8 @@ class TestArrayCombinationSum(unittest.TestCase):
         answer = [[1, 2, 4], [1, 3, 3], [1, 3, 3], [1, 3, 3],
                   [1, 3, 3], [1, 4, 2], [2, 2, 3], [2, 2, 3],
                   [2, 3, 2], [2, 3, 2], [3, 2, 2], [3, 2, 2]]
-        self.assertEqual(array_sum_combinations(A, B, C, target), answer)
+        answer.sort()
+        self.assertListEqual(sorted(array_sum_combinations(A, B, C, target)), answer)
 
     def test_unique_array_sum_combinations(self):
         A = [1, 2, 3, 3]
@@ -77,7 +78,8 @@ class TestArrayCombinationSum(unittest.TestCase):
         target = 7
         answer = [(2, 3, 2), (3, 2, 2), (1, 2, 4),
                   (1, 4, 2), (2, 2, 3), (1, 3, 3)]
-        self.assertEqual(unique_array_sum_combinations(A, B, C, target), answer)
+        answer.sort()
+        self.assertListEqual(sorted(unique_array_sum_combinations(A, B, C, target)), answer)
 
 
 class TestCombinationSum(unittest.TestCase):
