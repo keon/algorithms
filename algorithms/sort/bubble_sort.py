@@ -18,7 +18,7 @@ def bubble_sort(arr,simulation=False):
     swapped = True
     
     if simulation == True:
-        print arr
+        print(arr)
     
     while swapped:
         swapped = False
@@ -27,5 +27,5 @@ def bubble_sort(arr,simulation=False):
                 swap(i - 1, i)
                 swapped = True
                 if simulation == True:
-                    print arr
+                    print(arr)
     return arr
