@@ -1,7 +1,10 @@
-def insertion_sort(arr):
+def insertion_sort(arr, simulation=False):
     """ Insertion Sort
         Complexity: O(n^2)
     """
+    if simulation:
+        print(arr)
+        
     for i in range(len(arr)):
         cursor = arr[i]
         pos = i
@@ -11,5 +14,7 @@ def insertion_sort(arr):
             pos = pos - 1
         # Break and do the final swap
         arr[pos] = cursor
+        if simulation:
+            print(arr)
 
     return arr
