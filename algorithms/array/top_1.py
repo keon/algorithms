@@ -21,11 +21,7 @@ def top_1(arr):
         else:
             values[i] = 1
 
-    a = list(values.values())
-
-    a.sort()
-
-    f_val = a[len(a)-1]
+    f_val = max(values.values())
         
     for i in values.keys():
         if values[i] == f_val:
