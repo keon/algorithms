@@ -1,4 +1,4 @@
-from algorithms.strings import (
+from algorithms.string import (
     add_binary,
     match_symbol, match_symbol_1, bracket,
     decode_string,

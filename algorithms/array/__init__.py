@@ -11,4 +11,6 @@ from .plus_one import *
 from .rotate import *
 from .summarize_ranges import *
 from .three_sum import *
+from .top_1 import *
+from .trimmean import *
 from .two_sum import *
