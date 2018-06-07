@@ -7,6 +7,9 @@ def selection_sort(arr, simulation=False):
         
     for i in range(len(arr)):
         minimum = i
+        
+        temp = arr[:]
+        
         for j in range(i + 1, len(arr)):
             # "Select" the correct value
             if arr[j] < arr[minimum]:
@@ -15,6 +18,7 @@ def selection_sort(arr, simulation=False):
         arr[minimum], arr[i] = arr[i], arr[minimum]
         
         if simulation:
-            print(arr)
+            if temp != arr:
+                print(arr)
             
     return arr
