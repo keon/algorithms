@@ -232,6 +232,7 @@ if __name__ == "__main__":
     - [insertion_sort](algorithms/sort/insertion_sort.py)
     - [meeting_rooms](algorithms/sort/meeting_rooms.py)
     - [merge_sort](algorithms/sort/merge_sort.py)
+    - [pancake_sort](algorithms/sort/pancake_sort.py)
     - [quick_sort](algorithms/sort/quick_sort.py)
     - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort](algorithms/sort/selection_sort.py)
