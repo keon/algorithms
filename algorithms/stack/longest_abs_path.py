@@ -46,7 +46,7 @@ def length_longest_path(input):
         depth = s.count('\t')    # the depth of current dir or file
         print("depth: ", depth)
         print("stack: ", stack)
-        print("curlen: ", currlen)
+        print("curlen: ", curr_len)
         while len(stack) > depth:    # go back to the correct depth
             curr_len -= stack.pop()
         stack.append(len(s.strip('\t'))+1)   # 1 is the length of '/'
