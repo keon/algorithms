@@ -47,7 +47,7 @@ def recur_depth_sum(root, n):
 """
 
 class TestSuite(unittest.TestCase):
-    def setup(self):
+    def setUp(self):
         self.tree = bst()
         self.tree.insert(9)
         self.tree.insert(6)
