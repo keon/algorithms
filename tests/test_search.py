@@ -1,7 +1,7 @@
 from algorithms.search import (
     binary_search, binary_search_recur,
-    first_occurance,
-    last_occurance,
+    first_occurrence,
+    last_occurrence,
     linear_search,
     search_insert,
     two_sum, two_sum1, two_sum2,
@@ -15,17 +15,17 @@ import unittest
 
 class TestSuite(unittest.TestCase):
 
-    def test_first_occurance(self):
+    def test_first_occurrence(self):
         def helper(array, query):
             idx = array.index(query) if query in array else None
             return idx
         array = [1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
-        self.assertEqual(first_occurance(array, 1), helper(array, 1))
-        self.assertEqual(first_occurance(array, 3), helper(array, 3))
-        self.assertEqual(first_occurance(array, 5), helper(array, 5))
-        self.assertEqual(first_occurance(array, 6), helper(array, 6))
-        self.assertEqual(first_occurance(array, 7), helper(array, 7))
-        self.assertEqual(first_occurance(array, -1), helper(array, -1))
+        self.assertEqual(first_occurrence(array, 1), helper(array, 1))
+        self.assertEqual(first_occurrence(array, 3), helper(array, 3))
+        self.assertEqual(first_occurrence(array, 5), helper(array, 5))
+        self.assertEqual(first_occurrence(array, 6), helper(array, 6))
+        self.assertEqual(first_occurrence(array, 7), helper(array, 7))
+        self.assertEqual(first_occurrence(array, -1), helper(array, -1))
 
     def test_binary_search(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
@@ -39,13 +39,13 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(-1, binary_search_recur(array, 0, 11, 7))
         self.assertEqual(-1, binary_search_recur(array, 0, 11, -1))
 
-    def test_last_occurance(self):
+    def test_last_occurrence(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
-        self.assertEqual(5, last_occurance(array, 3))
-        self.assertEqual(10, last_occurance(array, 5))
-        self.assertEqual(None, last_occurance(array, 7))
-        self.assertEqual(0, last_occurance(array, 1))
-        self.assertEqual(13, last_occurance(array, 6))
+        self.assertEqual(5, last_occurrence(array, 3))
+        self.assertEqual(10, last_occurrence(array, 5))
+        self.assertEqual(None, last_occurrence(array, 7))
+        self.assertEqual(0, last_occurrence(array, 1))
+        self.assertEqual(13, last_occurrence(array, 6))
         
     def test_linear_search(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
