@@ -45,7 +45,7 @@ class TestDecimalToBinaryIP(unittest.TestCase):
         unittest {[type]} -- [description]
     """
 
-    def test_int2base(self):
+    def test_decimal_to_binary_ip(self):
         self.assertEqual("00000000.00000000.00000000.00000000", decimal_to_binary_ip("0.0.0.0"))
         self.assertEqual("11111111.11111111.11111111.11111111", decimal_to_binary_ip("255.255.255.255"))
         self.assertEqual("11000000.10101000.00000000.00000001", decimal_to_binary_ip("192.168.0.1"))
