@@ -48,7 +48,7 @@ def num_empty(root):
 """
 
 class TestSuite(unittest.TestCase):
-    def setUp(self):
+    def setup(self):
         self.tree = bst()
         self.tree.insert(9)
         self.tree.insert(6)

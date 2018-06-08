@@ -10,12 +10,12 @@ class SegmentTree:
         self.fn = function
         self.maketree(0,0,len(arr)-1)
 
-    def maketree(self,i,l,r):
+    def make_tree(self,i,l,r):
         if l==r:
             self.segment[i] = self.arr[l]
         elif l<r:
-            self.maketree(2*i+1,l,int((l+r)/2))
-            self.maketree(2*i+2,int((l+r)/2)+1,r)
+            self.make_tree(2*i+1,l,int((l+r)/2))
+            self.make_tree(2*i+2,int((l+r)/2)+1,r)
             self.segment[i] = self.fn(self.segment[2*i+1],self.segment[2*i+2])
 
     def __query(self,i,L,R,l,r):
