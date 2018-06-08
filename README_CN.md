@@ -87,6 +87,8 @@ pip3 uninstall -y algorithms
     - [three_sum：三数和为零](algorithms/arrays/three_sum.py)
     - [two_sum：两数和](algorithms/arrays/two_sum.py)
     - [move_zeros: 0后置问题](algorithms/arrays/move_zeros.py)
+    - [top_1](algorithms/array/top_1.py)
+    - [trimmean](algorithms/array/trimmean.py)
 - [backtrack：回溯](algorithms/backtrack)
     - [general_solution.md：一般方法](algorithms/backtrack/)
     - [anagram：同字母异序词](algorithms/backtrack/anagram.py)
