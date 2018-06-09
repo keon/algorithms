@@ -8,7 +8,7 @@ base2int('F', 16) return 15.
 
 import string
 
-def int2base(n, base):
+def int_to_base(n, base):
     """
         :type n: int
         :type base: int
@@ -31,7 +31,7 @@ def int2base(n, base):
         return res[::-1]
 
 
-def base2int(s, base):
+def base_to_int(s, base):
     """
         Note : You can use int() built-in function instread of this.
         :type s: str

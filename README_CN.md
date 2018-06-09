@@ -216,6 +216,7 @@ pip3 uninstall -y algorithms
     - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
     - [comb_sort：梳排序](algorithms/sort/comb_sort.py)
     - [counting_sort：计数排序](algorithms/sort/counting_sort.py)
+    - [cycle_sort](algorithms/sort/cycle_sort.py)
     - [gnome_sort](algorithms/sort/gnome_sort.py)
     - [heap_sort：堆排序](algorithms/sort/heap_sort.py)
     - [insertion_sort：插入排序](algorithms/sort/insertion_sort.py)

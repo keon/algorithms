@@ -1,5 +1,5 @@
 from algorithms.maths import (
-    int2base, base2int,
+    int_to_base, base_to_int,
     decimal_to_binary_ip,
     extended_gcd,
     factorial, factorial_recur,
@@ -27,9 +27,9 @@ class TestBaseConversion(unittest.TestCase):
     """
 
     def test_int2base(self):
-        self.assertEqual("101", int2base(5, 2))
-        self.assertEqual("0", int2base(0, 2))
-        self.assertEqual("FF", int2base(255, 16))
+        self.assertEqual("101", int_to_base(5, 2))
+        self.assertEqual("0", int_to_base(0, 2))
+        self.assertEqual("FF", int_to_base(255, 16))
 
     def test_base2int(self):
         self.assertEqual(5, base2int("101", 2))

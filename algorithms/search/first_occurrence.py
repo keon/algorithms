@@ -3,7 +3,7 @@
 # Approach- Binary Search
 # T(n)- O(log n)
 #
-def first_occurance(array, query):
+def first_occurrence(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
         mid = (lo + hi) // 2
