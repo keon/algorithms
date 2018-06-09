@@ -14,14 +14,12 @@ def bfs(grid):
     q = [(0,0,0)]
     visit = [[0]*m for _ in range(n)]
     if grid[0][0] == 0:
-        print("-1")
-        return
+        return -1
     visit[0][0] = 1
     while q:
         i, j, step = q.pop(0)
         if i == n-1 and j == m-1:
-            print(step)
-            return
+            return step
         for dir in range(4):
             x = i + dx[dir]
             y = j + dy[dir]
@@ -29,4 +27,4 @@ def bfs(grid):
                 if grid[x][y] ==1 and visit[x][y] == 0:
                     visit[x][y] = 1
                     q.append((x,y,step+1))
-    print("-1")
+    return -1
