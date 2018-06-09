@@ -6,7 +6,7 @@ only step on the columns whose value is 1
 if there is no path, it returns -1
 '''
 
-def bfs(grid):
+def maze_search(grid):
     dx = [0,0,-1,1]
     dy = [-1,1,0,0]
     n = len(grid)
