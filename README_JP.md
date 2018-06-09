@@ -38,7 +38,7 @@ Python 3で開発された簡単で明確なデータ構造とアルゴリズム
 
     $ pip3 install git+https://github.com/keon/algorithms
 
-Pythonファイルを作成してテストを行うことができます：（例：「sort」の「merge_sort」を使用）
+Pythonファイルを作成してテストを実行することができます：（例：「sort」の「merge_sort」を使用）
 
 ```python3
 from sort import merge_sort
