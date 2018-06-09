@@ -8,7 +8,7 @@ class TestSuite(unittest.TestCase):
     
     def test_maze_search(self):
         grid = [[1,0,1,1,1,1],[1,0,1,0,1,0],[1,0,1,0,1,1],[1,1,1,0,1,1]]
-        self.assertEqual(14, maze(grid))
+        self.assertEqual(14, maze_search(grid))
         
 if __name__ == "__main__":
     unittest.main()
