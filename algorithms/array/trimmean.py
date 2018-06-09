@@ -4,7 +4,7 @@ So, this algorithms, fix some percentage to neglect when making mean. For exampl
 worst 10% value.
 
 This algorithm gets array and percentage to neglect. After sorted, if index of array is larger or smaller or wanted ratio, we don't
-compute it.
+compute it by modify array.
 
 Compleity: O(n)
 """
