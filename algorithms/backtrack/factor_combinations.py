@@ -3,7 +3,8 @@ Numbers can be regarded as product of its factors. For example,
 
 8 = 2 x 2 x 2;
   = 2 x 4.
-Write a function that takes an integer n and return all possible combinations of its factors.
+Write a function that takes an integer n
+and return all possible combinations of its factors.
 
 Note:
 You may assume that n is always positive.
@@ -49,7 +50,7 @@ def get_factors(n):
 
 
 # Recursive:
-def get_factors_recur(n):
+def recursive_get_factors(n):
 
     def factor(n, i, combi, combis):
         while i * i <= n:

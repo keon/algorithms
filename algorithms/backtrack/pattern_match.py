@@ -20,33 +20,23 @@ def pattern_match(pattern, string):
     :type string: str
     :rtype: bool
     """
-    return backtrack(pattern, string, {})
+    def backtrack(pattern, string, dic):
 
+        if len(pattern) == 0 and len(string) > 0:
+            return False
 
-def backtrack(pattern, string, dic):
-    print(dic)
-    if len(pattern) == 0 and len(string) > 0:
+        if len(pattern) == len(string) == 0:
+            return True
+
+        for end in range(1, len(string)-len(pattern)+2):
+            if pattern[0] not in dic and string[:end] not in dic.values():
+                dic[pattern[0]] = string[:end]
+                if backtrack(pattern[1:], string[end:], dic):
+                    return True
+                del dic[pattern[0]]
+            elif pattern[0] in dic and dic[pattern[0]] == string[:end]:
+                if backtrack(pattern[1:], string[end:], dic):
+                    return True
         return False
-    if len(pattern) == len(string) == 0:
-        return True
-    for end in range(1, len(string)-len(pattern)+2):
-        if pattern[0] not in dic and string[:end] not in dic.values():
-            dic[pattern[0]] = string[:end]
-            if backtrack(pattern[1:], string[end:], dic):
-                return True
-            del dic[pattern[0]]
-        elif pattern[0] in dic and dic[pattern[0]] == string[:end]:
-            if backtrack(pattern[1:], string[end:], dic):
-                return True
-    return False
 
-if __name__ == "__main__":
-    pattern1 = "abab"
-    string1 = "redblueredblue"
-    pattern2 = "aaaa"
-    string2 = "asdasdasdasd"
-    pattern3 = "aabb"
-    string3 = "xyzabcxzyabc"
-    print(pattern_match(pattern1, string1))
-    print(pattern_match(pattern2, string2))
-    print(pattern_match(pattern3, string3))
+    return backtrack(pattern, string, {})

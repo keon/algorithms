@@ -1,6 +1,7 @@
 from algorithms.maths import (
-    int2base, base2int,
+    int_to_base, base_to_int,
     extended_gcd,
+    factorial, factorial_recur,
     gcd, lcm,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
@@ -9,7 +10,8 @@ from algorithms.maths import (
     primes,
     pythagoras,
     is_prime,
-    encrypt, decrypt, generate_key
+    encrypt, decrypt, generate_key,
+    combination
 )
 
 import unittest
@@ -24,14 +26,14 @@ class TestBaseConversion(unittest.TestCase):
     """
 
     def test_int2base(self):
-        self.assertEqual("101", int2base(5, 2))
-        self.assertEqual("0", int2base(0, 2))
-        self.assertEqual("FF", int2base(255, 16))
+        self.assertEqual("101", int_to_base(5, 2))
+        self.assertEqual("0", int_to_base(0, 2))
+        self.assertEqual("FF", int_to_base(255, 16))
 
     def test_base2int(self):
-        self.assertEqual(5, base2int("101", 2))
-        self.assertEqual(0, base2int("0", 2))
-        self.assertEqual(255, base2int("FF", 16))
+        self.assertEqual(5, base_to_int("101", 2))
+        self.assertEqual(0, base_to_int("0", 2))
+        self.assertEqual(255, base_to_int("FF", 16))
 
 
 class TestExtendedGcd(unittest.TestCase):
@@ -202,6 +204,37 @@ class TestRSA(unittest.TestCase):
     #         dec = decrypt(en, d, n)
     #         self.assertEqual(data,dec)
 
+class TestCombination(unittest.TestCase):
+    """[summary]
+    Test for the file combination.py
 
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_combination(self):
+        self.assertEqual(10, combination(5, 2))
+        self.assertEqual(252, combination(10, 5))
+        
+class TestFactorial(unittest.TestCase):
+    """[summary]
+    Test for the file factorial.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_factorial(self):
+        self.assertEqual(1, factorial(0))
+        self.assertEqual(120, factorial(5))
+        self.assertEqual(3628800, factorial(10))
+        
+    def test_factorial_recur(self):
+        self.assertEqual(1, factorial_recur(0))
+        self.assertEqual(120, factorial_recur(5))
+        self.assertEqual(3628800, factorial_recur(10))
+        
 if __name__ == "__main__":
     unittest.main()
+    
+    

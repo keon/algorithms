@@ -3,6 +3,7 @@ from .flatten import *
 from .garage import *
 from .josephus import *
 from .longest_non_repeat import *
+from .max_ones_index import *
 from .merge_intervals import *
 from .missing_ranges import *
 from .move_zeros import *

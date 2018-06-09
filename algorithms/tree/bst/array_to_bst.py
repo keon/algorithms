@@ -11,11 +11,11 @@ class TreeNode(object):
         self.right = None
 
 
-def array2bst(nums):
+def array_to_bst(nums):
     if not nums:
         return None
     mid = len(nums)//2
     node = TreeNode(nums[mid])
-    node.left = array2bst(nums[:mid])
-    node.right = array2bst(nums[mid+1:])
+    node.left = array_to_bst(nums[:mid])
+    node.right = array_to_bst(nums[mid+1:])
     return node

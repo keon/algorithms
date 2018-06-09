@@ -4,28 +4,28 @@ class Node():
         self.left = None
         self.right = None
 
-def bintree2list(root):
+def bin_tree_to_list(root):
     """
     type root: root class
     """
     if not root:
         return root
-    root = bintree2list_util(root)
+    root = bin_tree_to_list_util(root)
     while root.left:
         root = root.left
     return root
 
-def bintree2list_util(root):
+def bin_tree_to_list_util(root):
     if not root:
         return root
     if root.left:
-        left = bintree2list_util(root.left)
+        left = bin_tree_to_list_util(root.left)
         while left.right:
             left = left.right
         left.right = root
         root.left = left
     if root.right:
-        right = bintree2list_util(root.right)
+        right = bin_tree_to_list_util(root.right)
         while right.left:
             right = right.left
         right.left = root
@@ -45,5 +45,5 @@ tree.left.left.right  = Node(100)
 tree.left.right = Node(30)
 tree.right.left = Node(36)
 
-head = bintree2list(tree)
+head = bin_tree_to_list(tree)
 print_tree(head)

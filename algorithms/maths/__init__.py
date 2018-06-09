@@ -1,5 +1,6 @@
 from .base_conversion import *
 from .extended_gcd import *
+from .factorial import *
 from .gcd import *
 from .generate_strobogrammtic import *
 from .is_strobogrammatic import *
@@ -9,3 +10,4 @@ from .primes_sieve_of_eratosthenes import *
 from .pythagoras import *
 from .rabin_miller import *
 from .rsa import *
+from .combination import *

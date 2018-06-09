@@ -1,16 +1,19 @@
-from algorithms.arrays import delete_nth, delete_nth_naive
-from algorithms.arrays import flatten, flatten_iter
-from algorithms.arrays import garage
-from algorithms.arrays import josephus
-from algorithms.arrays import longest_non_repeat_v1, longest_non_repeat_v2
-from algorithms.arrays import Interval, merge_intervals
-from algorithms.arrays import missing_ranges
-from algorithms.arrays import move_zeros
-from algorithms.arrays import plus_one_v1, plus_one_v2, plus_one_v3
-from algorithms.arrays import rotate_v1, rotate_v2, rotate_v3
-from algorithms.arrays import summarize_ranges
-from algorithms.arrays import three_sum
-from algorithms.arrays import two_sum
+from algorithms.arrays import (
+    delete_nth, delete_nth_naive,
+    flatten_iter, flatten,
+    garage,
+    josephus,
+    longest_non_repeat_v1, longest_non_repeat_v2,
+    Interval, merge_intervals,
+    missing_ranges,
+    move_zeros,
+    plus_one_v1, plus_one_v2, plus_one_v3,
+    rotate_v1, rotate_v2, rotate_v3,
+    summarize_ranges,
+    three_sum,
+    two_sum,
+    max_ones_index
+)
 
 import unittest
 
@@ -150,6 +153,15 @@ class TestLongestNonRepeat(unittest.TestCase):
 
         string = "pwwkew"
         self.assertEqual(longest_non_repeat_v2(string), 3)
+
+
+class TestMaxOnesIndex(unittest.TestCase):
+
+    def test_max_ones_index(self):
+
+        self.assertEqual(9, max_ones_index([1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(3, max_ones_index([1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1]))
+        self.assertEqual(-1, max_ones_index([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
 
 class TestMergeInterval(unittest.TestCase):

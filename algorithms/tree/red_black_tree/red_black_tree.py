@@ -202,7 +202,7 @@ class RBTree:
             node_min.left = node.left
             node_min.left.parent = node_min
             node_min.color = node.color
-        # when node is black ,then need to fix it with 4 cases
+        # when node is black, then need to fix it with 4 cases
         if node_color == 0:
             self.delete_fixup(temp_node)
 
