@@ -326,6 +326,7 @@ If you want to uninstall algorithms, it is as simple as:
 - [unix](algorithms/unix)
     - [path](algorithms/unix/path/)
         - [join_with_slash](algorithms/unix/path/join_with_slash.py)
+        - [full_path](algorithms/unix/path/full_path.py)
 - [union-find](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
 
