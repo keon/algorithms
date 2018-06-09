@@ -26,15 +26,15 @@ class TestBaseConversion(unittest.TestCase):
         unittest {[type]} -- [description]
     """
 
-    def test_int2base(self):
+    def test_int_to_base(self):
         self.assertEqual("101", int_to_base(5, 2))
         self.assertEqual("0", int_to_base(0, 2))
         self.assertEqual("FF", int_to_base(255, 16))
 
-    def test_base2int(self):
-        self.assertEqual(5, base2int("101", 2))
-        self.assertEqual(0, base2int("0", 2))
-        self.assertEqual(255, base2int("FF", 16))
+    def test_base_to_int(self):
+        self.assertEqual(5, base_to_int("101", 2))
+        self.assertEqual(0, base_to_int("0", 2))
+        self.assertEqual(255, base_to_int("FF", 16))
         
         
 class TestDecimalToBinaryIP(unittest.TestCase):
