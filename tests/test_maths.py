@@ -1,5 +1,6 @@
 from algorithms.maths import (
     int_to_base, base_to_int,
+    decimal_to_binary_ip,
     extended_gcd,
     factorial, factorial_recur,
     gcd, lcm,
@@ -25,15 +26,29 @@ class TestBaseConversion(unittest.TestCase):
         unittest {[type]} -- [description]
     """
 
-    def test_int2base(self):
+    def test_int_to_base(self):
         self.assertEqual("101", int_to_base(5, 2))
         self.assertEqual("0", int_to_base(0, 2))
         self.assertEqual("FF", int_to_base(255, 16))
 
-    def test_base2int(self):
+    def test_base_to_int(self):
         self.assertEqual(5, base_to_int("101", 2))
         self.assertEqual(0, base_to_int("0", 2))
         self.assertEqual(255, base_to_int("FF", 16))
+        
+        
+class TestDecimalToBinaryIP(unittest.TestCase):
+    """
+    Test for the file decimal_to_binary_ip.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_decimal_to_binary_ip(self):
+        self.assertEqual("00000000.00000000.00000000.00000000", decimal_to_binary_ip("0.0.0.0"))
+        self.assertEqual("11111111.11111111.11111111.11111111", decimal_to_binary_ip("255.255.255.255"))
+        self.assertEqual("11000000.10101000.00000000.00000001", decimal_to_binary_ip("192.168.0.1"))
 
 
 class TestExtendedGcd(unittest.TestCase):
