@@ -104,6 +104,7 @@ pip3 uninstall -y algorithms
     - [subsets：子集](algorithms/backtrack/subsets.py)
     - [subsets_unique：唯一子集](algorithms/backtrack/subsets_unique.py)
 - [bfs：广度优先搜索](algorithms/bfs)
+    - [maze_search](algorithms/bfs/maze_search.py)
     - [shortest_distance_from_all_buildings：所有建筑物的最短路径：](algorithms/bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder：词语阶梯](algorithms/bfs/word_ladder.py)
 - [bit：位操作](algorithms/bit)
