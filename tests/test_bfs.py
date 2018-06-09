@@ -1,5 +1,7 @@
 from algorithms.bfs import (
-    maze_search
+    maze_search,
+    shortest_distance_from_all_buildings,
+    word_ladder
 )
 
 import unittest
