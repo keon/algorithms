@@ -12,7 +12,7 @@ def bfs(grid):
     n = len(grid)
     m = len(grid[0])
     q = [(0,0,0)]
-    visit[[0]*m for _ in range(n)]
+    visit = [[0]*m for _ in range(n)]
     if grid[0][0] == 0:
         print("-1")
         return
