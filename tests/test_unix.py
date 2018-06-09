@@ -1,6 +1,7 @@
 from algorithms.unix import (
     join_with_slash,
-    full_path
+    full_path,
+    split
 )
 import os
 import unittest
@@ -20,3 +21,15 @@ class TestUnixPath(unittest.TestCase):
         # ~/file_name
         expect_path = "{}/{}".format(os.path.expanduser('~'), file_name)
         self.assertEqual(expect_path, full_path("~/{}".format(file_name)))
+
+    def test_split(self):
+        # Test url path
+        path = "https://algorithms/unix/test.py"
+        expect_result = split(path)
+        self.assertEqual("https://algorithms/unix", expect_result[0])
+        self.assertEqual("test.py", expect_result[1])
+        # Test file path
+        path = "algorithms/unix/test.py"
+        expect_result = split(path)
+        self.assertEqual("algorithms/unix", expect_result[0])
+        self.assertEqual("test.py", expect_result[1])
