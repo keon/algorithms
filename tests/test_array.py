@@ -316,7 +316,7 @@ class TestTrimmean(unittest.TestCase):
         self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), 5.5)
         self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), 6.0)
         
-class TestTop1(unittest.Testcae):
+class TestTop1(unittest.TestCase):
     
     def test_top_1(self):
         self.assertListEqual(top_1([1 , 1, 2, 2, 3]), [1, 2])
