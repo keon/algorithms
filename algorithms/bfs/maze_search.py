@@ -1,4 +1,7 @@
 '''
+BFS time complexity : O(|E|)
+BFS space complexity : O(|V|)
+
 do BFS from (0,0) of the grid and get the minimum number of steps needed to get to the lower right column
 
 only step on the columns whose value is 1
@@ -20,9 +23,9 @@ def maze_search(grid):
         i, j, step = q.pop(0)
         if i == n-1 and j == m-1:
             return step
-        for dir in range(4):
-            x = i + dx[dir]
-            y = j + dy[dir]
+        for k in range(4):
+            x = i + dx[k]
+            y = j + dy[k]
             if x>=0 and x<n and y>=0 and y<m:
                 if grid[x][y] ==1 and visit[x][y] == 0:
                     visit[x][y] = 1
