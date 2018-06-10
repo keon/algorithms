@@ -142,6 +142,7 @@ pip3 uninstall -y algorithms
     - [regex_matching：正则匹配](algorithms/dp/regex_matching.py)
     - [word_break：单词分割](algorithms/dp/word_break.py)
 - [graph：图](graph)
+    - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [2-sat：2-sat](algorithms/graph/satisfiability.py)
     - [clone_graph：克隆图](algorithms/graph/clone_graph.py)
     - [cycle_detection：判断圈算法](algorithms/graph/cycle_detection.py)
