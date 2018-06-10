@@ -1,4 +1,4 @@
-def max_heap_sort(arr, simulation = False):
+def max_heap_sort(arr, simulation=False):
     """ Heap Sort that uses a max heap to sort an array in ascending order
         Complexity: O(n log(n))
     """
@@ -44,7 +44,7 @@ def max_heapify(arr, end, simulation, iteration):
     arr[0], arr[end] = arr[end], arr[0]
     return iteration
 
-def min_heap_sort(arr, simulation = False):
+def min_heap_sort(arr, simulation=False):
     """ Heap Sort that uses a min heap to sort an array in ascending order
         Complexity: O(n log(n))
     """
