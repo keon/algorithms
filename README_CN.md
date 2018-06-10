@@ -287,6 +287,8 @@ pip3 uninstall -y algorithms
     - [traversal：遍历](algorithms/tree/traversal)
         - [inorder：中序遍历](algorithms/tree/traversal/inorder.py)
         - [level_order：层次遍历](algorithms/tree/traversal/level_order.py)
+        - [postorder](algorithms/tree/traversal/postorder.py)
+        - [preorder](algorithms/tree/traversal/preorder.py)
         - [zigzag：锯齿形遍历](algorithms/tree/traversal/zigzag.py)
     - [tree：树](algorithms/tree/tree.py)
     - [trie：字典树](algorithms/tree/trie)
