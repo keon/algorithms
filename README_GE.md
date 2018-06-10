@@ -94,6 +94,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [subsets](algorithms/backtrack/subsets.py)
     - [subsets_unique](algorithms/backtrack/subsets_unique.py)
 - [bfs](algorithms/bfs)
+    - [maze_search](algorithms/bfs/maze_search.py)
     - [shortest_distance_from_all_buildings](algorithms/bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](algorithms/bfs/word_ladder.py)
 - [bit](algorithms/bit)
