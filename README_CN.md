@@ -85,6 +85,8 @@ pip3 uninstall -y algorithms
     - [rotate：反转数组](algorithms/arrays/rotate.py)
     - [summarize_ranges：数组范围](algorithms/arrays/summarize_ranges.py)
     - [three_sum：三数和为零](algorithms/arrays/three_sum.py)
+    - [trimmean](algorithms/arrays/trimmean.py)
+    - [top_1](algorithms/arrays/top_1.py)
     - [two_sum：两数和](algorithms/arrays/two_sum.py)
     - [move_zeros: 0后置问题](algorithms/arrays/move_zeros.py)
 - [backtrack：回溯](algorithms/backtrack)
