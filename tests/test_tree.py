@@ -5,6 +5,14 @@ from algorithms.tree.traversal import (
 
 import unittest
 
+class Node:
+
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+
 class TestTraversal(unittest.TestCase):
     
     def test_preorder(self):
