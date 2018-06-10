@@ -328,6 +328,11 @@ If you want to uninstall algorithms, it is as simple as:
     - [pretty_print](algorithms/tree/pretty_print.py)
     - [same_tree](algorithms/tree/same_tree.py)
     - [tree](algorithms/tree/tree.py)
+- [unix](algorithms/unix)
+    - [path](algorithms/unix/path/)
+        - [join_with_slash](algorithms/unix/path/join_with_slash.py)
+        - [full_path](algorithms/unix/path/full_path.py)
+        - [split](algorithms/unix/path/split.py)
 - [union-find](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
 
