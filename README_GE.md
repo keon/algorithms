@@ -309,6 +309,8 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [traversal](algorithms/tree/traversal)
         - [inorder](algorithms/tree/traversal/inorder.py)
         - [level_order](algorithms/tree/traversal/level_order.py)
+        - [postorder](algorithms/tree/traversal/postorder.py)
+        - [preorder](algorithms/tree/traversal/preorder.py)
         - [zigzag](algorithms/tree/traversal/zigzag.py)
     - [trie](algorithms/tree/trie)
         - [add_and_search](algorithms/tree/trie/add_and_search.py)
