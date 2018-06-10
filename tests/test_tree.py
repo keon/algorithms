@@ -1,6 +1,8 @@
 from algorithms.tree.traversal import (
     preorder,
-    postorder
+    preorder_rec,
+    postorder,
+    postorder_rec
 )
 
 import unittest
