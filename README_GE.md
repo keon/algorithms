@@ -75,6 +75,8 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [rotate](algorithms/arrays/rotate.py)
     - [summarize_ranges](algorithms/arrays/summarize_ranges.py)
     - [three_sum](algorithms/arrays/three_sum.py)
+    - [trimmean](algorithms/arrays/trimmean.py)
+    - [top_1](algorithms/arrays/top_1.py)
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros](algorithms/arrays/move_zeros.py)
 - [backtrack](algorithms/backtrack)
