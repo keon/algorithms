@@ -1,4 +1,4 @@
-''''''
+"""
 
 Bipartite graph is a graph whose vertices can be divided into two disjoint and independent sets.
 (https://en.wikipedia.org/wiki/Bipartite_graph)
@@ -6,7 +6,7 @@ Bipartite graph is a graph whose vertices can be divided into two disjoint and i
 Time complexity is O(|E|)
 Space complexity is O(|V|)
 
-''''''
+"""
 
 def check_bipartite(adj_list):
 
