@@ -313,8 +313,8 @@ class TestTrimmean(unittest.TestCase):
 
     def test_trimmean(self):
 
-        self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), 5.5)
-        self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), 6.0)
+        self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20), 5.5)
+        self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 20), 6.0)
         
 class TestTop1(unittest.TestCase):
     
