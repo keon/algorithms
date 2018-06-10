@@ -137,6 +137,7 @@ if __name__ == "__main__":
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
 - [graph : 그래프](algorithms/graph)
+    - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
     - [clone_graph](algorithms/graph/clone_graph.py)
     - [cycle_detection](algorithms/graph/cycle_detection.py)
