@@ -7,6 +7,7 @@ from algorithms.maths import (
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
     find_next_square, find_next_square2,
+    modular_exponential,
     prime_check, prime_check2,
     primes,
     pythagoras,
@@ -111,6 +112,16 @@ class TestIsStrobogrammatic(unittest.TestCase):
         self.assertTrue(is_strobogrammatic2("69"))
         self.assertFalse(is_strobogrammatic2("14"))
 
+class TestModularExponential(unittest.TestCase):
+    """[summary]
+    Test for the file modular_Exponential.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_modular_Exponential(self):
+        self.assertEqual(1, modular_Exponential(5, 117, 19))
 
 class TestNextPerfectSquare(unittest.TestCase):
     """[summary]
