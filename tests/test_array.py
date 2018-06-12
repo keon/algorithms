@@ -14,7 +14,8 @@ from algorithms.arrays import (
     two_sum,
     max_ones_index,
     trimmean,
-    top_1
+    top_1,
+    limit
 )
 
 import unittest
