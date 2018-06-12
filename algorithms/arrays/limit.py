@@ -7,24 +7,24 @@ If array, Min, Max value was given, it returns array that contains values of giv
 which was larger than Min, and lower than Max. You need to give 'unlimit' to use only Min
 or Max.
 
-ex) limit([1,2,3,4,5], 'unlimit', 3) = [1,2,3]
+ex) limit([1,2,3,4,5], None, 3) = [1,2,3]
 
 Complexity = O(n)
 """
 
-def limit(arr, Min='unlimit', Max='unlimit'):
+def limit(arr, min_lim = None, max_lim = None):
     result = []
-    if Min == 'unlimit':
+    if min_lim == None:
         for i in arr:
-            if i<=Max:
+            if i<= max_lim:
                 result.append(i)
-    elif Max == 'unlimit':
+    elif max_lim == None:
         for i in arr:
-            if i>=Min:
+            if i >= min_lim:
                 result.append(i)
     else:
         for i in arr:
-            if i>=Min and i<=Max:
+            if i >= min_lim and i <= max_lim:
                 result.append(i)
 
     return result
