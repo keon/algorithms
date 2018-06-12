@@ -328,7 +328,7 @@ class TestLimit(unittest.TestCase):
     def test_limit(self):
         self.assertListEqual(limit([1, 2, 3, 4, 5], 2, 4), [2, 3, 4])
         self.assertListEqual(limit([1, 2, 3, 4, 5], 2), [2, 3, 4, 5])
-        self.assertListEqual(limit([1, 2, 3, 4, 5], 'unlimit', 4), [1, 2, 3, 4])
+        self.assertListEqual(limit([1, 2, 3, 4, 5], None, 4), [1, 2, 3, 4])
 
         
 
