@@ -14,7 +14,8 @@ from algorithms.arrays import (
     two_sum,
     max_ones_index,
     trimmean,
-    top_1
+    top_1,
+    limit
 )
 
 import unittest
@@ -322,6 +323,14 @@ class TestTop1(unittest.TestCase):
         self.assertListEqual(top_1([1 , 1, 2, 2, 3]), [1, 2])
         self.assertListEqual(top_1([1, 2, 3, 324, 234, 23, 23, 1, 23, 23]), [23])
 
+class TestLimit(unittest.TestCase):
+    
+    def test_limit(self):
+        self.assertListEqual(limit([1, 2, 3, 4, 5], 2, 4), [2, 3, 4])
+        self.assertListEqual(limit([1, 2, 3, 4, 5], 2), [2, 3, 4, 5])
+        self.assertListEqual(limit([1, 2, 3, 4, 5], None, 4), [1, 2, 3, 4])
+
+        
 
 
 if __name__ == '__main__':

@@ -78,6 +78,7 @@ pip3 uninstall -y algorithms
     - [garage：停车场](algorithms/arrays/garage.py)
     - [josephus_problem: 约瑟夫问题](algorithms/arrays/josephus.py)
     - [max_ones_index](algorithms/arrays/max_ones_index.py)
+    - [limit](algorithms/arrays/limit.py)
     - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/) 
     - [merge_intervals：合并重叠间隔](algorithms/arrays/merge_intervals.py)
     - [missing_ranges：遗失的范围](algorithms/arrays/missing_ranges.py)
