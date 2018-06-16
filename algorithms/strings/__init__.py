@@ -21,3 +21,6 @@ from .roman_to_int import *
 from .strip_url_params import *
 from .validate_coordinates import *
 from .word_squares import *
+from .unique_morse import *
+from .judge_circle import *
+from .strong_password import *

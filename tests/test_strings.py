@@ -23,7 +23,10 @@ from algorithms.strings import (
     strip_url_params1, strip_url_params2, strip_url_params3,
     is_valid_coordinates_0, is_valid_coordinates_1,
     is_valid_coordinates_regular_expression,
-    word_squares
+    word_squares,
+    convert_morse_word, unique_morse,
+    judge_circle,
+    strong_password
 )
 
 import unittest
@@ -291,7 +294,7 @@ class TestReverseString(unittest.TestCase):
         self.assertEqual("ereht olleh", pythonic("hello there"))
     def test_ultra_pythonic(self):
         self.assertEqual("ereht olleh", ultra_pythonic("hello there"))
-    
+
 
 class TestReverseVowel(unittest.TestCase):
     """[summary]
@@ -381,6 +384,22 @@ class TestWordSquares(unittest.TestCase):
         self.assertEqual([['wall', 'area', 'lead', 'lady'], ['ball', 'area', 'lead', 'lady']], \
         word_squares(["area","lead","wall","lady","ball"]))
 
+class TestUniqueMorse(unittest.TestCase):
+    def test_convert_morse_word(self):
+        self.assertEqual("--...-.", convert_morse_word("gin"))
+        self.assertEqual("--...--.", convert_morse_word("msg"))
+    def test_unique_morse(self):
+        self.assertEqual(2, unique_morse(["gin", "zen", "gig", "msg"]))
+
+class TestJudgeCircle(unittest.TestCase):
+    def test_judge_circle(self):
+        self.assertTrue(judge_circle("UDLRUD"))
+        self.assertFalse(judge_circle("LLRU"))
+
+class TestStrongPassword(unittest.TestCase):
+    def test_strong_password(self):
+        self.assertEqual(3, strong_password(3,"Ab1"))
+        self.assertEqual(1, strong_password(11,"#Algorithms"))
 
 if __name__ == "__main__":
     unittest.main()
