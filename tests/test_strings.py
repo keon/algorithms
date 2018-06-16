@@ -25,7 +25,8 @@ from algorithms.strings import (
     is_valid_coordinates_regular_expression,
     word_squares,
     convert_morse_word, unique_morse,
-    judge_circle
+    judge_circle,
+    strong_password
 )
 
 import unittest
@@ -394,6 +395,11 @@ class TestJudgeCircle(unittest.TestCase):
     def test_judge_circle(self):
         self.assertTrue(judge_circle("UDLRUD"))
         self.assertFalse(judge_circle("LLRU"))
+
+class TestStrongPassword(unittest.TestCase):
+    def test_strong_password(self):
+        self.assertEqual(3, strong_password(3,"Ab1"))
+        self.assertEqual(1, strong_password(11,"#Algorithms"))
 
 if __name__ == "__main__":
     unittest.main()
