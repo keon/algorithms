@@ -23,7 +23,8 @@ from algorithms.strings import (
     strip_url_params1, strip_url_params2, strip_url_params3,
     is_valid_coordinates_0, is_valid_coordinates_1,
     is_valid_coordinates_regular_expression,
-    word_squares
+    word_squares,
+    convert_morse_word, unique_morse
 )
 
 import unittest
@@ -291,7 +292,7 @@ class TestReverseString(unittest.TestCase):
         self.assertEqual("ereht olleh", pythonic("hello there"))
     def test_ultra_pythonic(self):
         self.assertEqual("ereht olleh", ultra_pythonic("hello there"))
-    
+
 
 class TestReverseVowel(unittest.TestCase):
     """[summary]
@@ -380,6 +381,13 @@ class TestWordSquares(unittest.TestCase):
     def test_word_squares(self):
         self.assertEqual([['wall', 'area', 'lead', 'lady'], ['ball', 'area', 'lead', 'lady']], \
         word_squares(["area","lead","wall","lady","ball"]))
+
+class TestUniqueMorse(unittest.TestCase):
+    def test_convert_morse_word(self):
+        self.assertEqual("--...-.", convert_morse_word("gin"))
+        self.assertEqual("--...--.", convert_morse_word("msg"))
+    def test_unique_morse(self):
+        self.assertEqual(2, unique_morse(["gin", "zen", "gig", "msg"]))
 
 
 if __name__ == "__main__":
