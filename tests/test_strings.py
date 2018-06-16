@@ -24,7 +24,8 @@ from algorithms.strings import (
     is_valid_coordinates_0, is_valid_coordinates_1,
     is_valid_coordinates_regular_expression,
     word_squares,
-    convert_morse_word, unique_morse
+    convert_morse_word, unique_morse,
+    judge_circle
 )
 
 import unittest
@@ -389,6 +390,10 @@ class TestUniqueMorse(unittest.TestCase):
     def test_unique_morse(self):
         self.assertEqual(2, unique_morse(["gin", "zen", "gig", "msg"]))
 
+class TestJudgeCircle(unittest.TestCase):
+    def test_judge_circle(self):
+        self.assertTrue(judge_circle("UDLRUD"))
+        self.assertFalse(judge_circle("LLRU"))
 
 if __name__ == "__main__":
     unittest.main()
