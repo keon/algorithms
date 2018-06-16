@@ -24,3 +24,4 @@ from .word_squares import *
 from .unique_morse import *
 from .judge_circle import *
 from .strong_password import *
+from .caesar_cipher import *

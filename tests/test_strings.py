@@ -26,7 +26,8 @@ from algorithms.strings import (
     word_squares,
     convert_morse_word, unique_morse,
     judge_circle,
-    strong_password
+    strong_password,
+    caesar_cipher
 )
 
 import unittest
@@ -400,6 +401,11 @@ class TestStrongPassword(unittest.TestCase):
     def test_strong_password(self):
         self.assertEqual(3, strong_password(3,"Ab1"))
         self.assertEqual(1, strong_password(11,"#Algorithms"))
+
+class TestCaesarCipher(unittest.TestCase):
+    def test_caesar_cipher(self):
+        self.assertEqual("Lipps_Asvph!", caesar_cipher("Hello_World!", 4))
+        self.assertEqual("okffng-Qwvb", caesar_cipher("middle-Outz", 2))
 
 if __name__ == "__main__":
     unittest.main()

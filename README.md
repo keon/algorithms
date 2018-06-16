@@ -287,6 +287,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [unique_morse](algorithms/strings/unique_morse.py)
     - [judge_circle](algorithms/strings/judge_circle.py)
     - [strong_password](algorithms/strings/strong_password.py)
+    - [caesar_cipher](algorithms/strings/caesar_cipher.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
