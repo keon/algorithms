@@ -28,7 +28,8 @@ from algorithms.strings import (
     judge_circle,
     strong_password,
     caesar_cipher,
-    contain_string
+    contain_string,
+    count_binary_substring
 )
 
 import unittest
@@ -413,6 +414,12 @@ class TestContainString(unittest.TestCase):
         self.assertEqual(-1, contain_string("mississippi", "issipi"))
         self.assertEqual(0, contain_string("Hello World", ""))
         self.assertEqual(2, contain_string("hello", "ll"))
+
+class TestContainString(unittest.TestCase):
+    def test_count_binary_substring(self):
+        self.assertEqual(6, count_binary_substring("00110011"))
+        self.assertEqual(4, count_binary_substring("10101"))
+        self.assertEqual(3, count_binary_substring("00110"))
 
 if __name__ == "__main__":
     unittest.main()
