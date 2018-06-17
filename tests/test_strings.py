@@ -27,6 +27,10 @@ from algorithms.strings import (
     convert_morse_word, unique_morse,
     judge_circle,
     strong_password
+    strong_password,
+    caesar_cipher,
+    contain_string,
+    count_binary_substring
 )
 
 import unittest
@@ -400,6 +404,23 @@ class TestStrongPassword(unittest.TestCase):
     def test_strong_password(self):
         self.assertEqual(3, strong_password(3,"Ab1"))
         self.assertEqual(1, strong_password(11,"#Algorithms"))
+
+class TestCaesarCipher(unittest.TestCase):
+    def test_caesar_cipher(self):
+        self.assertEqual("Lipps_Asvph!", caesar_cipher("Hello_World!", 4))
+        self.assertEqual("okffng-Qwvb", caesar_cipher("middle-Outz", 2))
+
+class TestContainString(unittest.TestCase):
+    def test_contain_string(self):
+        self.assertEqual(-1, contain_string("mississippi", "issipi"))
+        self.assertEqual(0, contain_string("Hello World", ""))
+        self.assertEqual(2, contain_string("hello", "ll"))
+
+class TestContainString(unittest.TestCase):
+    def test_count_binary_substring(self):
+        self.assertEqual(6, count_binary_substring("00110011"))
+        self.assertEqual(4, count_binary_substring("10101"))
+        self.assertEqual(3, count_binary_substring("00110"))
 
 if __name__ == "__main__":
     unittest.main()
