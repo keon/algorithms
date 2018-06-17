@@ -26,7 +26,6 @@ from algorithms.strings import (
     word_squares,
     convert_morse_word, unique_morse,
     judge_circle,
-    strong_password
     strong_password,
     caesar_cipher,
     contain_string,
@@ -416,7 +415,7 @@ class TestContainString(unittest.TestCase):
         self.assertEqual(0, contain_string("Hello World", ""))
         self.assertEqual(2, contain_string("hello", "ll"))
 
-class TestContainString(unittest.TestCase):
+class TestCountBinarySubstring(unittest.TestCase):
     def test_count_binary_substring(self):
         self.assertEqual(6, count_binary_substring("00110011"))
         self.assertEqual(4, count_binary_substring("10101"))
