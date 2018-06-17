@@ -26,6 +26,7 @@ from algorithms.strings import (
     word_squares,
     convert_morse_word, unique_morse,
     judge_circle,
+    strong_password
     strong_password,
     caesar_cipher,
     contain_string,
