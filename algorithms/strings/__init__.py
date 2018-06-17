@@ -25,3 +25,4 @@ from .unique_morse import *
 from .judge_circle import *
 from .strong_password import *
 from .caesar_cipher import *
+from .contain_string import *

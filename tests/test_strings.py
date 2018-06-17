@@ -27,7 +27,8 @@ from algorithms.strings import (
     convert_morse_word, unique_morse,
     judge_circle,
     strong_password,
-    caesar_cipher
+    caesar_cipher,
+    contain_string
 )
 
 import unittest
@@ -406,6 +407,12 @@ class TestCaesarCipher(unittest.TestCase):
     def test_caesar_cipher(self):
         self.assertEqual("Lipps_Asvph!", caesar_cipher("Hello_World!", 4))
         self.assertEqual("okffng-Qwvb", caesar_cipher("middle-Outz", 2))
+
+class TestContainString(unittest.TestCase):
+    def test_contain_string(self):
+        self.assertEqual(-1, contain_string("mississippi", "issipi"))
+        self.assertEqual(0, contain_string("Hello World", ""))
+        self.assertEqual(2, contain_string("hello", "ll"))
 
 if __name__ == "__main__":
     unittest.main()
