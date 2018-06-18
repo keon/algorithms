@@ -216,8 +216,8 @@ class TestCombination(unittest.TestCase):
         self.assertEqual(10, combination(5, 2))
         self.assertEqual(252, combination(10, 5))
     def test_combination_memo(self):
-        self.assertEqual(10272278170, combination_memo(50, 10, {}))
-        self.assertEqual(847660528, combination_memo(40, 10, {}))
+        self.assertEqual(10272278170, combination_memo(50, 10))
+        self.assertEqual(847660528, combination_memo(40, 10))
 class TestFactorial(unittest.TestCase):
     """[summary]
     Test for the file factorial.py
