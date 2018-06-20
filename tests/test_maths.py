@@ -8,8 +8,8 @@ from algorithms.maths import (
     is_strobogrammatic, is_strobogrammatic2,
     modular_exponential,
     find_next_square, find_next_square2,
-    prime_check, prime_check2,
-    primes,
+    prime_check,
+    get_primes,
     pythagoras,
     is_prime,
     encrypt, decrypt,
@@ -158,7 +158,8 @@ class TestPrimesSieveOfEratosthenes(unittest.TestCase):
     """
 
     def test_primes(self):
-        self.assertEqual([2, 3, 5, 7], primes(7))
+        self.assertListEqual([2, 3, 5, 7], get_primes(7))
+        self.assertRaises(ValueError, get_primes, -42)
 
 
 class TestPrimeTest(unittest.TestCase):
@@ -177,17 +178,6 @@ class TestPrimeTest(unittest.TestCase):
         counter = 0
         for i in range(2, 101):
             if prime_check(i):
-                counter += 1
-        self.assertEqual(25, counter)
-
-    def test_prime_test2(self):
-        """
-            checks all prime numbers between 2 up to 100.
-            Between 2 up to 100 exists 25 prime numbers!
-        """
-        counter = 0
-        for i in range(2, 101):
-            if prime_check2(i):
                 counter += 1
         self.assertEqual(25, counter)
 
