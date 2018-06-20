@@ -1,11 +1,10 @@
-"""
-extended GCD algorithm
-return s,t,g
-such that a s + b t = GCD(a, b)
-and s and t are coprime
-"""
+def extended_gcd(a, b):
+    """Extended GCD algorithm.
+    Return s, t, g
+    such that a * s + b * t = GCD(a, b)
+    and s and t are co-prime.
+    """
 
-def extended_gcd(a,b):
     old_s, s = 1, 0
     old_t, t = 0, 1
     old_r, r = a, b
