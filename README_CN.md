@@ -183,6 +183,7 @@ pip3 uninstall -y algorithms
     - [primes_sieve_of_eratosthenes：埃拉托色尼的质数筛](algorithms/maths/primes_sieve_of_eratosthenes.py)
     - [generate_strobogrammtic：生成对称数](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic：判断对称数](algorithms/maths/is_strobogrammatic.py)
+    - [modular_exponential](algorithms/maths/modular_exponential.py)
     - [nth_digit：第n位](algorithms/maths/nth_digit.py)
     - [rabin_miller：米勒-拉宾素性检验](algorithms/maths/rabin_miller.py)
     - [rsa：rsa加密](algorithms/maths/rsa.py)

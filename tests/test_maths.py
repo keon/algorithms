@@ -6,12 +6,13 @@ from algorithms.maths import (
     gcd, lcm,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
+    modular_exponential,
     find_next_square, find_next_square2,
     prime_check, prime_check2,
     primes,
     pythagoras,
     is_prime,
-    encrypt, decrypt, generate_key,
+    encrypt, decrypt,
     combination, combination_memo
 )
 
@@ -110,6 +111,22 @@ class TestIsStrobogrammatic(unittest.TestCase):
     def test_is_strobogrammatic2(self):
         self.assertTrue(is_strobogrammatic2("69"))
         self.assertFalse(is_strobogrammatic2("14"))
+
+
+class TestModularExponential(unittest.TestCase):
+    """[summary]
+    Test for the file modular_Exponential.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_modular_exponential(self):
+        self.assertEqual(1, modular_exponential(5, 117, 19))
+        self.assertEqual(pow(1243, 65321, 10**9 + 7),
+                         modular_exponential(1243, 65321, 10**9 + 7))
+        self.assertEqual(1, modular_exponential(12, 0, 78))
+        self.assertRaises(ValueError, modular_exponential, 12, -2, 455)
 
 
 class TestNextPerfectSquare(unittest.TestCase):
