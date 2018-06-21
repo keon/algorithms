@@ -1,11 +1,12 @@
-'''
-Using sieve of Eratosthenes, primes(x) returns list of all primes less than x
+"""
+Return list of all primes less than n,
+Using sieve of Eratosthenes.
 
 Modification:
 We don't need to check all even numbers, we can make the sieve excluding even
 numbers and adding 2 to the primes list by default.
 
-We are going to make an array of: x / 2 - 1 if number is even, else x / 2 
+We are going to make an array of: x / 2 - 1 if number is even, else x / 2
 (The -1 with even number it's to exclude the number itself)
 Because we just need numbers [from 3..x if x is odd]
 
@@ -21,20 +22,25 @@ For x = 11:
 
 With this, we have reduced the array size to a half,
 and complexity it's also a half now.
-'''
+"""
 
-def primes(x):
-    assert(x >= 0)
+
+def get_primes(n):
+    """Return list of all primes less than n,
+    Using sieve of Eratosthenes.
+    """
+    if n <= 0:
+        raise ValueError("'n' must be a positive integer.")
     # If x is even, exclude x from list (-1):
-    sieve_size = (x//2 - 1) if x % 2 == 0 else (x//2)
-    sieve = [1 for v in range(sieve_size)]   # Sieve
-    primes = []                              # List of Primes
-    if x >= 2:
-        primes.append(2)                     # Add 2 by default
+    sieve_size = (n // 2 - 1) if n % 2 == 0 else (n // 2)
+    sieve = [True for _ in range(sieve_size)]   # Sieve
+    primes = []      # List of Primes
+    if n >= 2:
+        primes.append(2)      # 2 is prime by default
     for i in range(sieve_size):
-        if sieve[i] == 1:
+        if sieve[i]:
             value_at_i = i*2 + 3
             primes.append(value_at_i)
             for j in range(i, sieve_size, value_at_i):
-                sieve[j] = 0
+                sieve[j] = False
     return primes

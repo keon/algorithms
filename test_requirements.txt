@@ -1,0 +1,6 @@
+flake8
+python-coveralls
+coverage
+nose
+pytest
+tox

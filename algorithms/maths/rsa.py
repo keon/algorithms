@@ -24,20 +24,19 @@ a number very quickly:
 import random
 
 
-def modinv(a, m):
-    """calculate the inverse of a mod m
-    that is, find b such that (a * b) % m == 1"""
-    b = 1
-    while not (a * b) % m == 1:
-        b += 1
-    return b
-
-
 def generate_key(k, seed=None):
     """
     the RSA key generating algorithm
     k is the number of bits in n
     """
+
+    def modinv(a, m):
+        """calculate the inverse of a mod m
+        that is, find b such that (a * b) % m == 1"""
+        b = 1
+        while not (a * b) % m == 1:
+            b += 1
+        return b
 
     def gen_prime(k, seed=None):
         """generate a prime with k bits"""
