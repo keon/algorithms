@@ -1,7 +1,8 @@
 from algorithms.unix import (
     join_with_slash,
     full_path,
-    split
+    split,
+    simplify_path_v1, simplify_path_v2
 )
 import os
 import unittest
@@ -33,3 +34,9 @@ class TestUnixPath(unittest.TestCase):
         expect_result = split(path)
         self.assertEqual("algorithms/unix", expect_result[0])
         self.assertEqual("test.py", expect_result[1])
+
+    def test_simplify_path(self):
+        self.assertEqual("/", simplify_path_v1("/../"))
+        self.assertEqual("/home/foo", simplify_path_v1("/home//foo/"))
+        self.assertEqual("/", simplify_path_v2("/../"))
+        self.assertEqual("/home/foo", simplify_path_v2("/home//foo/"))
