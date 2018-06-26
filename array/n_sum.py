@@ -11,15 +11,6 @@ def compareClosure(a, b):
         return 0
 
 
-def otherCompareClosure(a, b):
-    if a < b:
-        return -1
-    elif a > b:
-        return 1
-    else:
-        return 0
-
-
 class NSum:
     def __init__(self, **kv):
         self._sumClosure = kv.get('sumClosure', sumClosure)
@@ -81,6 +72,16 @@ class NSum:
         for result in results_set:
             results.append(sorted(list(result)))
         return sorted(results)
+
+
+# test
+def otherCompareClosure(a, b):
+    if a < b:
+        return -1
+    elif a > b:
+        return 1
+    else:
+        return 0
 
 
 def main():
