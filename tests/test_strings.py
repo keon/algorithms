@@ -29,7 +29,8 @@ from algorithms.strings import (
     strong_password,
     caesar_cipher,
     contain_string,
-    count_binary_substring
+    count_binary_substring,
+    repeat_string
 )
 
 import unittest
@@ -420,6 +421,11 @@ class TestCountBinarySubstring(unittest.TestCase):
         self.assertEqual(6, count_binary_substring("00110011"))
         self.assertEqual(4, count_binary_substring("10101"))
         self.assertEqual(3, count_binary_substring("00110"))
+
+class TestCountBinarySubstring(unittest.TestCase):
+    def test_repeat_string(self):
+        self.assertEqual(3, repeat_string("abcd","cdabcdab"))
+        self.assertEqual(4, repeat_string("bb", "bbbbbbb"))
 
 if __name__ == "__main__":
     unittest.main()

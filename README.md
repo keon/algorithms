@@ -291,6 +291,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [caesar_cipher](algorithms/strings/caesar_cipher.py)
     - [contain_string](algorithms/strings/contain_string.py)
     - [count_binary_substring](algorithms/strings/count_binary_substring.py)
+    - [repeat_string](algorithms/strings/repeat_string.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
@@ -343,6 +344,7 @@ If you want to uninstall algorithms, it is as simple as:
         - [join_with_slash](algorithms/unix/path/join_with_slash.py)
         - [full_path](algorithms/unix/path/full_path.py)
         - [split](algorithms/unix/path/split.py)
+        - [simplify_path](algorithms/unix/path/simplify_path.py)
 - [union-find](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
 
