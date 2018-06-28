@@ -13,27 +13,27 @@ __sum_closure = None
 __compare_closure = None
 
 
-def sum_closure(a, b):
+def n_sum(n, nums, target, **kv):
+    global __sum_closure
+    global __compare_closure
+
+    __sum_closure = kv.get('sum_closure', __sum_closure_default)
+    __compare_closure = kv.get('compare_closure', __compare_closure_default)
+    nums.sort()
+    return __n_sum(n, nums, target)
+
+
+def __sum_closure_default(a, b):
     return a + b
 
 
-def compare_closure(a, b):
+def __compare_closure_default(a, b):
     if a < b:
         return -1
     elif a > b:
         return 1
     else:
         return 0
-
-
-def n_sum(n, nums, target, **kv):
-    global __sum_closure
-    global __compare_closure
-
-    __sum_closure = kv.get('sum_closure', sum_closure)
-    __compare_closure = kv.get('compare_closure', compare_closure)
-    nums.sort()
-    return __n_sum(n, nums, target)
 
 
 def __n_sum(n, nums, target):
