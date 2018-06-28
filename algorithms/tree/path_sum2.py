@@ -26,6 +26,7 @@ def path_sum(root, sum):
     dfs(root, sum, [], res)
     return res
 
+
 def dfs(root, sum, ls, res):
     if root.left is None and root.right is None and root.val == sum:
         ls.append(root.val)

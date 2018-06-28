@@ -5,6 +5,7 @@ def binary_tree_paths(root):
     dfs(res, root, str(root.val))
     return res
 
+
 def dfs(res, root, cur):
     if root.left is None and root.right is None:
         res.append(cur)

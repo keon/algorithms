@@ -1,5 +1,3 @@
-
-
 def max_path_sum(root):
     maximum = float("-inf")
     helper(root, maximum)

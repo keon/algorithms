@@ -1,9 +1,9 @@
-
 def is_balanced(root):
     """
     O(N) solution
     """
     return -1 != get_depth(root)
+
 
 def get_depth(root):
     """

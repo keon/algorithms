@@ -12,17 +12,14 @@
             # 7
 # should return 4.
 
+from tree.tree import TreeNode
 
-class Node:
-    def __init__(self, val = None):
-        self.left = None
-        self.right = None
-        self.val = val
 
 class DeepestLeft:
     def __init__(self):
         self.depth = 0
         self.Node = None
+
 
 def find_deepest_left(root, is_left, depth, res):
     if not root:
@@ -33,13 +30,14 @@ def find_deepest_left(root, is_left, depth, res):
     find_deepest_left(root.left, True, depth + 1, res)
     find_deepest_left(root.right, False, depth + 1, res)
 
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-root.right.right = Node(6)
-root.right.right.right = Node(7)
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.right = TreeNode(6)
+root.right.right.right = TreeNode(7)
 
 res = DeepestLeft()
 find_deepest_left(root, True, 1, res)
