@@ -21,28 +21,28 @@ Bonus points if you could solve it both recursively and iteratively.
 
 # TC: O(b) SC: O(log n)
 def is_symmetric(root):
-    if not root:
+    if root is None:
         return True
     return helper(root.left, root.right)
 
 
 def helper(p, q):
-    if not p and not q:
+    if p is None and q is None:
         return True
-    if not p or not q or q.val != p.val:
+    if p is not None or q is not None or q.val != p.val:
         return False
     return helper(p.left, q.right) and helper(p.right, q.left)
 
 
 def is_symmetric_iterative(root):
-    if not root:
+    if root is None:
         return True
     stack = [[root.left, root.right]]
     while stack:
         left, right = stack.pop()  # popleft
-        if not left and not right:
+        if left is None and right is None:
             continue
-        if not left or not right:
+        if left is None or right is None:
             return False
         if left.val == right.val:
             stack.append([left.left, right.right])

@@ -64,9 +64,9 @@ def is_subtree(big, small):
 
 
 def comp(p, q):
-    if not p and not q:
+    if p is None and q is None:
         return True
-    if p and q:
+    if p is not None and q is not None:
         return p.val == q.val and comp(p.left,q.left) and comp(p.right, q.right)
     return False
 

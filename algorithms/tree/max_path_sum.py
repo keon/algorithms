@@ -7,7 +7,7 @@ def max_path_sum(root):
 
 
 def helper(root, maximum):
-    if not root:
+    if root is None:
         return 0
     left = helper(root.left, maximum)
     right = helper(root.right, maximum)

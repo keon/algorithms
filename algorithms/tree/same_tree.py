@@ -8,9 +8,9 @@ structurally identical and the nodes have the same value.
 
 
 def is_same_tree(p, q):
-    if not p and not q:
+    if p is None and q is None:
         return True
-    if p and q and p.val == q.val:
+    if p is not None and q is not None and p.val == q.val:
         return is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right)
     return False
 

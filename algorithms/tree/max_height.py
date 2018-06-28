@@ -19,7 +19,7 @@ class Node():
 
 # iterative
 def max_height(root):
-    if not root:
+    if root is None:
         return 0
     height = 0
     queue = [root]
@@ -28,15 +28,15 @@ def max_height(root):
         level = []
         while queue:
             node = queue.pop(0)
-            if node.left:
+            if node.left is not None:
                 level.append(node.left)
-            if node.right:
+            if node.right is not None:
                 level.append(node.right)
         queue = level
     return height
 
 def print_tree(root):
-    if root:
+    if root is not None:
         print(root.val)
         print_tree(root.left)
         print_tree(root.right)
