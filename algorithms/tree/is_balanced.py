@@ -17,17 +17,16 @@ def get_depth(root):
         return -1
     return 1 + max(left, right)
 
-################################
 
-def is_balanced(root):
-    """
-    O(N^2) solution
-    """
-    left = max_height(root.left)
-    right = max_height(root.right)
-    return abs(left-right) <= 1 and is_balanced(root.left) and is_balanced(root.right)
+# def is_balanced(root):
+#     """
+#     O(N^2) solution
+#     """
+#     left = max_height(root.left)
+#     right = max_height(root.right)
+#     return abs(left-right) <= 1 and is_balanced(root.left) and is_balanced(root.right)
 
-def max_height(root):
-    if root is None:
-        return 0
-    return max(max_height(root.left), max_height(root.right)) + 1
+# def max_height(root):
+#     if root is None:
+#         return 0
+#     return max(max_height(root.left), max_height(root.right)) + 1
