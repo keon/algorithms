@@ -339,23 +339,23 @@ class TestRomanToInt(unittest.TestCase):
         self.assertEqual(3999, roman_to_int("MMMCMXCIX"))
 
 
-# class TestStripUrlParams(unittest.TestCase):
-#     """[summary]
-#     Test for the file strip_urls_params.py
+class TestStripUrlParams(unittest.TestCase):
+    """[summary]
+    Test for the file strip_urls_params.py
 
-#     Arguments:
-#         unittest {[type]} -- [description]
-#     """
+    Arguments:
+        unittest {[type]} -- [description]
+    """
 
-#     def test_strip_url_params1(self):
-#         self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-#         self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-#     def test_strip_url_params2(self):
-#         self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-#         self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
-#     def test_strip_url_params3(self):
-#         self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
-#         self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_strip_url_params1(self):
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params1("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_strip_url_params2(self):
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params2("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
+    def test_strip_url_params3(self):
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2&a=2"), "www.saadbenn.com?a=1&b=2")
+        self.assertEqual(strip_url_params3("www.saadbenn.com?a=1&b=2", ['b']), "www.saadbenn.com?a=1")
 
 
 class TestValidateCoordinates(unittest.TestCase):
