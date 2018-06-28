@@ -31,15 +31,16 @@ def find_deepest_left(root, is_left, depth, res):
     find_deepest_left(root.right, False, depth + 1, res)
 
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.left.left = TreeNode(4)
-root.left.right = TreeNode(5)
-root.right.right = TreeNode(6)
-root.right.right.right = TreeNode(7)
+if __name__ == '__main__':
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.right = TreeNode(6)
+    root.right.right.right = TreeNode(7)
 
-res = DeepestLeft()
-find_deepest_left(root, True, 1, res)
-if res.Node:
-    print(res.Node.val)
+    res = DeepestLeft()
+    find_deepest_left(root, True, 1, res)
+    if res.Node:
+        print(res.Node.val)

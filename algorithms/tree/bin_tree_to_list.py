@@ -37,13 +37,14 @@ def print_tree(root):
         root = root.right
 
 
-tree = TreeNode(10)
-tree.left = TreeNode(12)
-tree.right = TreeNode(15)
-tree.left.left = TreeNode(25)
-tree.left.left.right = TreeNode(100)
-tree.left.right = TreeNode(30)
-tree.right.left = TreeNode(36)
+if __name__ == '__main__':
+    tree = TreeNode(10)
+    tree.left = TreeNode(12)
+    tree.right = TreeNode(15)
+    tree.left.left = TreeNode(25)
+    tree.left.left.right = TreeNode(100)
+    tree.left.right = TreeNode(30)
+    tree.right.left = TreeNode(36)
 
-head = bin_tree_to_list(tree)
-print_tree(head)
+    head = bin_tree_to_list(tree)
+    print_tree(head)
