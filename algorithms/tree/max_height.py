@@ -5,15 +5,16 @@ The maximum depth is the number of nodes along the
 longest path from the root node down to the farthest leaf node.
 """
 
+# def max_height(root):
+#     if not root:
+#         return 0
+#     return max(maxDepth(root.left), maxDepth(root.right)) + 1
+
+# iterative
 
 from tree.tree import TreeNode
 
-# def max_height(root):
-    # if not root:
-        # return 0
-    # return max(maxDepth(root.left), maxDepth(root.right)) + 1
 
-# iterative
 def max_height(root):
     if root is None:
         return 0
