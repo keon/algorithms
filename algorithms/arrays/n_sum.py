@@ -1,3 +1,14 @@
+"""
+Given an array of n integers, are there elements a, b, .. , n in nums
+such that a + b + .. + n = target?
+
+Find all unique triplets in the array which gives the sum of target.
+
+Example:
+    Given n = 4, nums = [1, 0, -1, 0, -2, 2], target = 0,
+    return [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+"""
+
 __sum_closure = None
 __compare_closure = None
 
@@ -40,9 +51,10 @@ def __n_sum(n, nums, target):
                                        nums[index + 1:],
                                        target - num)
             n_minus1_results = __append_num_to_each_tuple(num,
-                                                    n_minus1_results)
+                                                          n_minus1_results)
             results = results.union(n_minus1_results)
     return __convert_type(results)
+
 
 def __two_sum(nums, target):
     nums.sort()
