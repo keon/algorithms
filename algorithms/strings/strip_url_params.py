@@ -10,8 +10,6 @@ from collections import defaultdict
 import urllib
 import urllib.parse
 
-from collections import OrderedDict
-
 # Here is a very non-pythonic grotesque solution
 def strip_url_params1(url, params_to_strip=None):
     
@@ -39,7 +37,7 @@ def strip_url_params1(url, params_to_strip=None):
                     string = ''
                 else:
                     string += char
-            dict = OrderedDict()
+            dict = defaultdict(int)
             # logic for checking whether we should add the string to our result
             for i in key_value_string:
                 _token = i.split('=')
