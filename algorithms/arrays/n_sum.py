@@ -15,11 +15,10 @@ def n_sum(n, nums, target, **kv):
     def __sum_closure_default(a, b):
         return a + b
 
-
-    def __compare_closure_default(a, b):
-        if a < b:
+    def __compare_closure_default(num, taget):
+        if num < taget:
             return -1
-        elif a > b:
+        elif num > taget:
             return 1
         else:
             return 0
