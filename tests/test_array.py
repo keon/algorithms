@@ -310,22 +310,25 @@ class TestSuite(unittest.TestCase):
         self.assertTupleEqual((0, 3), two_sum([-3, 5, 2, 3, 8, -9], target=0))
 
         self.assertIsNone(two_sum([-3, 5, 2, 3, 8, -9], target=6))
-        
+
+
 class TestTrimmean(unittest.TestCase):
 
     def test_trimmean(self):
 
         self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20), 5.5)
         self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 20), 6.0)
-        
+
+
 class TestTop1(unittest.TestCase):
-    
+
     def test_top_1(self):
         self.assertListEqual(top_1([1 , 1, 2, 2, 3]), [1, 2])
         self.assertListEqual(top_1([1, 2, 3, 324, 234, 23, 23, 1, 23, 23]), [23])
 
+
 class TestLimit(unittest.TestCase):
-    
+
     def test_limit(self):
         self.assertListEqual(limit([1, 2, 3, 4, 5], 2, 4), [2, 3, 4])
         self.assertListEqual(limit([1, 2, 3, 4, 5], 2), [2, 3, 4, 5])
