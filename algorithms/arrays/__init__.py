@@ -15,4 +15,4 @@ from .trimmean import *
 from .top_1 import *
 from .two_sum import *
 from .limit import *
-from .n_sum import n_sum
+from .n_sum import *
