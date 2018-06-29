@@ -5,8 +5,27 @@ such that a + b + .. + n = target?
 Find all unique triplets in the array which gives the sum of target.
 
 Example:
-    Given n = 4, nums = [1, 0, -1, 0, -2, 2], target = 0,
-    return [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+    basic:
+        Given:
+            n = 4, nums = [1, 0, -1, 0, -2, 2], target = 0,
+        return [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+
+    advanced:
+        Given:
+            n = 2
+            nums = [[-3, 0], [-2, 1], [2, 2], [3, 3], [8, 4], [-9, 5]]
+            taget = -5
+            def sum(a, b):
+                return [a[0] + b[1], a[1] + b[0]]
+            def compare(num, taget):
+                if num[0] < taget:
+                    return -1
+                elif if num[0] > taget:
+                    return 1
+                else:
+                    return 0
+        return [[-9, 5], [8, 4]]
+        because -9 + 4 = -5
 """
 
 
