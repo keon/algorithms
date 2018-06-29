@@ -23,6 +23,8 @@ def n_sum(n, nums, target, **kv):
         else:
             return 0
 
+    def __same_closure_default(a, b):
+        return a == b
 
     def __n_sum(n, nums, target):
         if n == 2:
@@ -32,7 +34,7 @@ def n_sum(n, nums, target, **kv):
             prev_num = None
             for index, num in enumerate(nums):
                 if prev_num is not None and \
-                    __compare_closure(prev_num, num) == 0:
+                    __same_closure(prev_num, num):
                     continue
                 prev_num = num
                 n_minus1_results = __n_sum(n - 1,
@@ -61,10 +63,10 @@ def n_sum(n, nums, target, **kv):
                 lt += 1
                 rt -= 1
                 while (lt < len(nums) and
-                       __compare_closure(nums[lt - 1], nums[lt]) == 0):
+                       __same_closure(nums[lt - 1], nums[lt])):
                     lt += 1
                 while (0 <= rt and
-                       __compare_closure(nums[rt], nums[rt + 1]) == 0):
+                       __same_closure(nums[rt], nums[rt + 1])):
                     rt -= 1
         return results
 
@@ -85,6 +87,7 @@ def n_sum(n, nums, target, **kv):
         return sorted(results)
 
     __sum_closure = kv.get('sum_closure', __sum_closure_default)
+    __same_closure = kv.get('same_closure', __same_closure_default)
     __compare_closure = kv.get('compare_closure', __compare_closure_default)
     nums.sort()
     return __n_sum(n, nums, target)
