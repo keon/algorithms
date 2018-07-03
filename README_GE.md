@@ -1,6 +1,6 @@
 <p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
 
-[English](README.md) | [Brazilian Portuguese](README_PTBR.md) | [简体中文](README_CN.md) | Deutsch | [日本語](README_JP.md) | [한국어](README_KR.md)
+[English](README.md) | [简体中文](README_CN.md) | Deutsch | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -14,7 +14,7 @@ In diesem Repository finden Sie eine große Auswahl an Algorithmen und Datenstru
 
 ## Beteiligen  
 
-Sie können sich gerne auch an diesem Projekt beteiligen. Zum Beispiel selbst Algorithmen und Datenstrukturen beisteuern, oder bereits bestehende Implementierungen verbessern, oder auch dokumentieren. Fühlen Sie sich frei und machen Sie einen Pull-Request. Alternativ können Sie auch den Issue-Tracker benutzen um auf Probleme (Bugs) in bereits bestehenden Implementierungen hinzuweisen.  
+Sie können sich gerne auch an diesem Projekt beteiligen. Zum Beispiel selbst Algorithmen und Datenstrukturen beisteuern, oder bereits bestehende Implementierungen verbessern, oder auch dokumentieren. Fühlen Sie sich frei und machen Sie einen Pull-Request. Alternativ können Sie auch den Issue-Tracker benutzen um auf Probleme (Bugs) in bereits bestehenden Implementierungen hinzuweisen.
 
 In diesem Projekt halten wir uns an die [PEP8](https://www.python.org/dev/peps/pep-0008/) Codestyle Konventionen.  
 
