@@ -177,8 +177,10 @@ class TestMergeInterval(unittest.TestCase):
     def test_Interval(self):
         interval = Interval(1, 3)
         self.assertTrue(1 in interval)
-        self.assertTrue(2 in interval)
-        self.assertFalse(3 in interval)
+        self.assertTrue(3 in interval)
+        self.assertFalse(4 in interval)
+        self.assertEqual(list(interval), [1, 2, 3])
+        self.assertEqual(len(interval), 3)
 
     def test_merge(self):
         interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
