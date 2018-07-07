@@ -21,7 +21,7 @@ def longest_non_repeat_v1(string):
     max_len = 0
     for i in string:
         if i in temp:
-            temp = []
+            temp = temp[temp.index(i) + 1:]
         temp.append(i)
         max_len = max(max_len, len(temp))
     return max_len
