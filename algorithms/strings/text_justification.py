@@ -1,5 +1,4 @@
-'''
-
+"""
 Given an array of words and a width maxWidth, format the text such that each line
 has exactly maxWidth characters and is fully (left and right) justified.
 
@@ -19,7 +18,6 @@ A word is defined as a character sequence consisting of non-space characters onl
 Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
 The input array words contains at least one word.
 
-
 Example:
 Input:
 words = ["What","must","be","acknowledgment","shall","be"]
@@ -30,70 +28,62 @@ Output:
   "acknowledgment  ",
   "shall be        "
 ]
-'''
+"""
 
 
-def text_justification(words, maxWidth):
+def text_justification(words, max_width):
     '''
     :type words: list
-    :type maxWidth: int
+    :type max_width: int
     :rtype: list
     '''
-    ret=[]  #return value
-    rowLen = 0  # current length of strs in a row
-    rowWords = []  # current words in a row
-    index = 0   # the index of current word in words
-    isFirstWord = True  # is current word the first in a row
+    ret = []  # return value
+    row_len = 0  # current length of strs in a row
+    row_words = []  # current words in a row
+    index = 0  # the index of current word in words
+    is_first_word = True  # is current word the first in a row
     while index < len(words):
-        while rowLen <= maxWidth and index < len(words):
-            if len(words[index]) > maxWidth:
-                raise Exception("there exists word whose length is larger than maxWidth")
-            tmp = rowLen
-            rowWords.append(words[index])
+        while row_len <= max_width and index < len(words):
+            if len(words[index]) > max_width:
+                raise ValueError("there exists word whose length is larger than max_width")
+            tmp = row_len
+            row_words.append(words[index])
             tmp += len(words[index])
-            if not isFirstWord:
+            if not is_first_word:
                 tmp += 1  # except for the first word, each word should have at least a ' ' before it.
-            if tmp > maxWidth:
-                rowWords.pop()
+            if tmp > max_width:
+                row_words.pop()
                 break
-            rowLen = tmp
+            row_len = tmp
             index += 1
-            isFirstWord = False
-        # here we have already got a row of str , then we should supplement enough ' ' to make sure the length is maxWidth.
+            is_first_word = False
+        # here we have already got a row of str , then we should supplement enough ' ' to make sure the length is max_width.
         row = ""
         # if the row is the last
         if index == len(words):
-            for word in rowWords:
+            for word in row_words:
                 row += (word + ' ')
             row = row[:-1]
-            row += ' ' * (maxWidth - len(row))
+            row += ' ' * (max_width - len(row))
         # not the last row and more than one word
-        elif len(rowWords) != 1:
-            spaceNum = maxWidth - rowLen
-            spaceNumOfEachInterval = spaceNum // (len(rowWords) - 1)
-            spaceNumRest = spaceNum - spaceNumOfEachInterval * (len(rowWords) - 1)
-            for j in range(len(rowWords)):
-                row += rowWords[j]
-                if j != len(rowWords) - 1:
-                    row += ' ' * (1 + spaceNumOfEachInterval)
-                if spaceNumRest > 0:
+        elif len(row_words) != 1:
+            space_num = max_width - row_len
+            space_num_of_each_interval = space_num // (len(row_words) - 1)
+            space_num_rest = space_num - space_num_of_each_interval * (len(row_words) - 1)
+            for j in range(len(row_words)):
+                row += row_words[j]
+                if j != len(row_words) - 1:
+                    row += ' ' * (1 + space_num_of_each_interval)
+                if space_num_rest > 0:
                     row += ' '
-                    spaceNumRest -= 1
+                    space_num_rest -= 1
         # row with only one word
         else:
-            row+=rowWords[0]
-            row+=' '*(maxWidth-len(row))
+            row += row_words[0]
+            row += ' ' * (max_width - len(row))
         ret.append(row)
         # after a row , reset those value
-        rowLen=0
-        rowWords=[]
-        isFirstWord=True
-    return  ret
-
-
-if __name__=='__main__':
-    words=["This", "is", "an", "example", "of", "text", "justification."]
-    maxWidth=16
-    ret=text_justification(words,maxWidth)
-    for row in ret:
-        print(row)
+        row_len = 0
+        row_words = []
+        is_first_word = True
+    return ret
