@@ -1,6 +1,6 @@
 <p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
 
-[English](README.md) | [Brazilian Portuguese](README_PTBR.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | 한국어
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | 한국어 | [Português](README_PTBR.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -14,7 +14,6 @@ Python 3로 구현한 간단하고 명확한 자료구조와 알고리즘들의 
 
 ## 기여 활동
 프로젝트 활동 참여에 관심을 가져주셔서 감사합니다! 여러가지 방법으로 이 프로젝트에 기여해주세요. [기여 방법 소개](CONTRIBUTING.md)
-
 
 ## 테스트 종류들
 
