@@ -112,6 +112,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [has_alternative_bit](algorithms/bit/has_alternative_bit.py)
     - [insert_bit](algorithms/bit/insert_bit.py)
     - [remove_bit](algorithms/bit/remove_bit.py)
+    - [binary_gap](algorithms/bit/binary_gap.py)
 - [calculator](algorithms/calculator)
     - [math_parser](algorithms/calculator/math_parser.py)
 - [dfs](algorithms/dfs)
