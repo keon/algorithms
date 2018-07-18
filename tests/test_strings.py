@@ -31,7 +31,8 @@ from algorithms.strings import (
     contain_string,
     count_binary_substring,
     repeat_string,
-    text_justification
+    text_justification,
+    min_distance
 )
 
 import unittest
@@ -468,6 +469,11 @@ class TestTextJustification(unittest.TestCase):
                          text_justification(["What", "must", "be", "acknowledgment", "shall", "be"]
                                             , 16)
                          )
+
+class TestMinDistance(unittest.TestCase):
+    def test_min_distance(self):
+        self.assertEqual(2, min_distance("sea", "eat"))
+        self.assertEqual(6, min_distance("abAlgocrithmf", "Algorithmmd"))
 
 
 if __name__ == "__main__":
