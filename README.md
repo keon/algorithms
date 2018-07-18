@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/jbeguna04/algorithms/master/LogoDesins/logotype1blue.png"></p>
+
 English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
