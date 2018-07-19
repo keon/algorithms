@@ -1,4 +1,4 @@
-<p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/jbeguna04/algorithms/master/LogoDesins/logotype1blue.png"></p>
 
 [English](README.md) | 简体中文 | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md)
 
@@ -79,7 +79,7 @@ pip3 uninstall -y algorithms
     - [josephus_problem: 约瑟夫问题](algorithms/arrays/josephus.py)
     - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [limit](algorithms/arrays/limit.py)
-    - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/) 
+    - [longest_non_repeat：最长不重复子串](algorithms/arrays/longest_non_repeat.py/)
     - [merge_intervals：合并重叠间隔](algorithms/arrays/merge_intervals.py)
     - [missing_ranges：遗失的范围](algorithms/arrays/missing_ranges.py)
     - [plus_one：加一运算](algorithms/arrays/plus_one.py)

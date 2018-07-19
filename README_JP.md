@@ -1,4 +1,4 @@
-<p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/jbeguna04/algorithms/master/LogoDesins/logotype1blue.png"></p>
 
 [English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語 | [한국어](README_KR.md) | [Português](README_PTBR.md)
 
@@ -13,7 +13,7 @@ Pythonのデータ構造とアルゴリズム
 Python 3で開発された簡単で明確なデータ構造とアルゴリズムの例を紹介します。
 
 ## 貢献
-貢献に興味を持っていただきありがとうございます。 このプロジェクトに貢献する方法はたくさんあります。 
+貢献に興味を持っていただきありがとうございます。 このプロジェクトに貢献する方法はたくさんあります。
 
 [簡単にコミュニティへ貢献するには](CONTRIBUTING_JP.md)
 
