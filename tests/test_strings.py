@@ -32,7 +32,8 @@ from algorithms.strings import (
     count_binary_substring,
     repeat_string,
     text_justification,
-    min_distance
+    min_distance,
+    longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3
 )
 
 import unittest
@@ -474,6 +475,18 @@ class TestMinDistance(unittest.TestCase):
     def test_min_distance(self):
         self.assertEqual(2, min_distance("sea", "eat"))
         self.assertEqual(6, min_distance("abAlgocrithmf", "Algorithmmd"))
+
+class TestLongestCommonPrefix(unittest.TestCase):
+    def test_longest_common_prefix(self):
+        # Test first solution
+        self.assertEqual("fl", longest_common_prefix_v1(["flower","flow","flight"]))
+        self.assertEqual("", longest_common_prefix_v1(["dog","racecar","car"]))
+        # Test second solution
+        self.assertEqual("fl", longest_common_prefix_v2(["flower","flow","flight"]))
+        self.assertEqual("", longest_common_prefix_v2(["dog","racecar","car"]))
+        # Test third solution
+        self.assertEqual("fl", longest_common_prefix_v3(["flower","flow","flight"]))
+        self.assertEqual("", longest_common_prefix_v3(["dog","racecar","car"]))
 
 
 if __name__ == "__main__":

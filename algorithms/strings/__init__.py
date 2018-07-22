@@ -30,3 +30,4 @@ from .count_binary_substring import *
 from .repeat_string import *
 from .text_justification import *
 from .min_distance import *
+from .longest_common_prefix import *
