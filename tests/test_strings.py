@@ -9,7 +9,7 @@ from algorithms.strings import (
     int_to_roman,
     is_palindrome, is_palindrome_reverse,
     is_palindrome_two_pointer, is_palindrome_stack,
-    is_rotated,
+    is_rotated, is_rotated_v1,
     license_number,
     make_sentence,
     is_merge_recursive, is_merge_iterative,
@@ -33,7 +33,8 @@ from algorithms.strings import (
     repeat_string,
     text_justification,
     min_distance,
-    longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3
+    longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
+    rotate
 )
 
 import unittest
@@ -201,6 +202,21 @@ class TestIsRotated(unittest.TestCase):
         self.assertFalse(is_rotated("hello", "helol"))
         self.assertFalse(is_rotated("hello", "lloh"))
         self.assertTrue(is_rotated("", ""))
+
+    def test_is_rotated_v1(self):
+        self.assertTrue(is_rotated_v1("hello", "hello"))
+        self.assertTrue(is_rotated_v1("hello", "llohe"))
+        self.assertFalse(is_rotated_v1("hello", "helol"))
+        self.assertFalse(is_rotated_v1("hello", "lloh"))
+        self.assertTrue(is_rotated_v1("", ""))
+
+
+class TestRotated(unittest.TestCase):
+    def test_rotate(self):
+        self.assertEqual("llohe", rotate("hello", 2))
+        self.assertEqual("hello", rotate("hello", 5))
+        self.assertEqual("elloh", rotate("hello", 6))
+        self.assertEqual("llohe", rotate("hello", 7))
 
 
 class TestLicenseNumber(unittest.TestCase):

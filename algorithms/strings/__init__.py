@@ -31,3 +31,4 @@ from .repeat_string import *
 from .text_justification import *
 from .min_distance import *
 from .longest_common_prefix import *
+from .rotate import *
