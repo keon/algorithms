@@ -25,5 +25,7 @@ class TestML(unittest.TestCase):
         self.assertEqual(nearest_neighbor((230, 52, 239), self.trainSetLight), 'L')
     def test_distance(self):
         self.assertAlmostEqual(distance((1,2,3), (1,0,-1)), 4.47, 2)
+
+        
 if __name__ == "__main__":
     unittest.main()
