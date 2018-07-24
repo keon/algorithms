@@ -38,15 +38,15 @@ def nearest_neighbor(x, tSet):
         [type] -- [result of the AND-function]
     """
     assert isinstance(x, tuple) and isinstance(tSet, dict)
-    currentKey = ()
+    current_key = ()
     MAX = 32768 # max value 
-    minD = MAX
+    min_d = MAX
     for key in tSet:
         d = distance(x, key)
-        if d < minD:
-            minD = d
-            currentKey = key
-    return tSet[currentKey]
+        if d < min_d:
+            min_d = d
+            current_key = key
+    return tSet[current_key]
 
 # Some test cases
 
