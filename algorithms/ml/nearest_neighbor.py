@@ -12,7 +12,6 @@ def distance(x,y):
         y {[tuple]} -- [vector]
     """
     assert len(x) == len(y), "The vector must have same length"
-    import math
     result = ()
     for i in range(len(x)):
         result += (x[i] -y[i],)
@@ -31,8 +30,7 @@ def nearest_neighbor(x, tSet):
     """
     assert isinstance(x, tuple) and isinstance(tSet, dict)
     current_key = ()
-    MAX = 32768 # max value 
-    min_d = MAX
+    min_d = numpy.inf
     for key in tSet:
         d = distance(x, key)
         if d < min_d:
