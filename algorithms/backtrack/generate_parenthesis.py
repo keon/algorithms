@@ -14,7 +14,7 @@ For example, given n = 3, a solution set is:
 """
 
 
-def generate_parenthesis(n):
+def  generate_parenthesis_v1(n):
     def add_pair(res, s, left, right):
         if left == 0 and right == 0:
             res.append(s)
@@ -29,13 +29,13 @@ def generate_parenthesis(n):
     return res
 
 
-def generate_parenthesis_(n):
+def generate_parenthesis_v2(n):
     def add_pair(res, s, left, right):
         if left == 0 and right == 0:
             res.append(s)
         if left > 0:
             add_pair(res, s+"(", left-1, right)
-        if right > 0 && left<right:
+        if right > 0 and left<right:
             add_pair(res, s+")", left, right-1)
 
     res = []
