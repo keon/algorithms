@@ -27,3 +27,17 @@ def generate_parenthesis(n):
     res = []
     add_pair(res, "", n, 0)
     return res
+
+
+def generate_parenthesis_(n):
+    def add_pair(res, s, left, right):
+        if left == 0 and right == 0:
+            res.append(s)
+        if left > 0:
+            add_pair(res, s+"(", left-1, right)
+        if right > 0 && left<right:
+            add_pair(res, s+")", left, right-1)
+
+    res = []
+    add_pair(res, "", n, n)
+    return res
