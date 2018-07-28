@@ -37,7 +37,7 @@ python3 -m unittest tests.test_sort
 如下代码运行所有测试代码：  
 ```
 
-pyhton3 -m pytest tests
+python3 -m pytest tests
 
 ```
 
