@@ -1,11 +1,9 @@
-import numpy
+import math
 
 def distance(x,y):
     """[summary]
     HELPER-FUNCTION
     calculates the (eulidean) distance between vector x and y.
-    
-    We use the numpy libriary
 
     Arguments:
         x {[tuple]} -- [vector]
@@ -13,9 +11,13 @@ def distance(x,y):
     """
     assert len(x) == len(y), "The vector must have same length"
     result = ()
+    sum = 0
     for i in range(len(x)):
         result += (x[i] -y[i],)
-    return numpy.linalg.norm(result)
+    for component in result:
+        sum += component**2
+    return math.sqrt(sum)
+    
 
 def nearest_neighbor(x, tSet):
     """[summary]
@@ -30,7 +32,7 @@ def nearest_neighbor(x, tSet):
     """
     assert isinstance(x, tuple) and isinstance(tSet, dict)
     current_key = ()
-    min_d = numpy.inf
+    min_d = math.inf
     for key in tSet:
         d = distance(x, key)
         if d < min_d:
