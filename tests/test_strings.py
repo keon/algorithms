@@ -35,7 +35,8 @@ from algorithms.strings import (
     min_distance,
     longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
     rotate,
-    first_unique_char
+    first_unique_char,
+    repeat_substring
 )
 
 import unittest
@@ -509,6 +510,12 @@ class TestFirstUniqueChar(unittest.TestCase):
     def test_first_unique_char(self):
         self.assertEqual(0, first_unique_char("leetcode"))
         self.assertEqual(2, first_unique_char("loveleetcode"))
+
+class TestRepeatSubstring(unittest.TestCase):
+    def test_repeat_substring(self):
+        self.assertTrue(repeat_substring("abab"))
+        self.assertFalse(repeat_substring("aba"))
+        self.assertTrue(repeat_substring("abcabcabcabc"))
 
 
 if __name__ == "__main__":
