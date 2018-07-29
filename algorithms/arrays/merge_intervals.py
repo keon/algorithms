@@ -5,7 +5,7 @@ Given a collection of intervals, merge all overlapping intervals.
 
 class Interval:
     """
-    In mathematics, a (real) interval is a set of real
+    In mathematics, a (real) interval [start, end] is a set of real
     numbers with the property that any number that lies
     between two numbers in the set is also included in the set.
     """
@@ -18,7 +18,7 @@ class Interval:
         return "Interval ({}, {})".format(self.start, self.end)
 
     def __iter__(self):
-        return iter(range(self.start, self.end))
+        return iter(range(self.start, self.end + 1))
 
     def __getitem__(self, index):
         if index < 0:
@@ -26,17 +26,13 @@ class Interval:
         return self.start + index
 
     def __len__(self):
-        return self.end - self.start
+        return self.end - self.start + 1
 
     def __contains__(self, item):
-        if self.start >= item >= self.end:
-            return True
-        return False
+        return self.start <= item <= self.end
 
     def __eq__(self, other):
-        if self.start == other.start and self.end == other.end:
-            return True
-        return False
+        return self.start == other.start and self.end == other.end
 
     def as_list(self):
         """ Return interval as list. """

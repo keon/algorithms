@@ -147,6 +147,9 @@ class TestLongestNonRepeat(unittest.TestCase):
         string = "pwwkew"
         self.assertEqual(longest_non_repeat_v1(string), 3)
 
+        string = "abacdef"
+        self.assertEqual(longest_non_repeat_v1(string), 6)
+
     def test_longest_non_repeat_v2(self):
 
         string = "abcabcbb"
@@ -158,6 +161,8 @@ class TestLongestNonRepeat(unittest.TestCase):
         string = "pwwkew"
         self.assertEqual(longest_non_repeat_v2(string), 3)
 
+        string = "abacdef"
+        self.assertEqual(longest_non_repeat_v2(string), 6)
 
 class TestMaxOnesIndex(unittest.TestCase):
 
@@ -169,6 +174,13 @@ class TestMaxOnesIndex(unittest.TestCase):
 
 
 class TestMergeInterval(unittest.TestCase):
+    def test_Interval(self):
+        interval = Interval(1, 3)
+        self.assertTrue(1 in interval)
+        self.assertTrue(3 in interval)
+        self.assertFalse(4 in interval)
+        self.assertEqual(list(interval), [1, 2, 3])
+        self.assertEqual(len(interval), 3)
 
     def test_merge(self):
         interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
