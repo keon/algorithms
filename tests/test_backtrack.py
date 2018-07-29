@@ -8,6 +8,7 @@ from algorithms.backtrack import (
     combination_sum,
     find_words,
     pattern_match,
+    generate_parenthesis,
 )
 
 import unittest
@@ -170,3 +171,16 @@ class TestPatternMatch(unittest.TestCase):
         self.assertTrue(pattern_match(pattern1, string1))
         self.assertTrue(pattern_match(pattern2, string2))
         self.assertFalse(pattern_match(pattern3, string3))
+
+
+class TestGenerateParenthesis(unittest.TestCase):
+
+    def test_generate_parenthesis(self):
+        self.assertEqual(generate_parenthesis_v1(2), ['()()', '(())'])
+        self.assertEqual(generate_parenthesis_v1(3), ['()()()', '()(())', '(())()', '(()())', '((()))'])
+        self.assertEqual(generate_parenthesis_v2(2), ['(())', '()()'])
+        self.assertEqual(generate_parenthesis_v2(3), ['((()))', '(()())', '(())()', '()(())', '()()()'])
+
+if __name__ == '__main__':
+
+    unittest.main()
