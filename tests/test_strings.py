@@ -34,7 +34,8 @@ from algorithms.strings import (
     text_justification,
     min_distance,
     longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
-    rotate
+    rotate,
+    first_unique_char
 )
 
 import unittest
@@ -503,6 +504,11 @@ class TestLongestCommonPrefix(unittest.TestCase):
         # Test third solution
         self.assertEqual("fl", longest_common_prefix_v3(["flower","flow","flight"]))
         self.assertEqual("", longest_common_prefix_v3(["dog","racecar","car"]))
+
+class TestFirstUniqueChar(unittest.TestCase):
+    def test_first_unique_char(self):
+        self.assertEqual(0, first_unique_char("leetcode"))
+        self.assertEqual(2, first_unique_char("loveleetcode"))
 
 
 if __name__ == "__main__":

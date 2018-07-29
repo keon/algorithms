@@ -297,6 +297,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [min_distance](algorithms/strings/min_distance.py)
     - [longest_common_prefix](algorithms/strings/longest_common_prefix.py)
     - [rotate](algorithms/strings/rotate.py)
+    - [first_unique_char](algorithms/strings/first_unique_char.py)    
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
