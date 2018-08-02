@@ -17,22 +17,22 @@ def distance(x,y):
     for component in result:
         sum += component**2
     return math.sqrt(sum)
-    
+
 
 def nearest_neighbor(x, tSet):
     """[summary]
-    Implements the nearest neighbor algorithm 
+    Implements the nearest neighbor algorithm
 
     Arguments:
         x {[tupel]} -- [vector]
         tSet {[dict]} -- [training set]
-    
+
     Returns:
         [type] -- [result of the AND-function]
     """
     assert isinstance(x, tuple) and isinstance(tSet, dict)
     current_key = ()
-    min_d = math.inf
+    min_d = float('inf')
     for key in tSet:
         d = distance(x, key)
         if d < min_d:
