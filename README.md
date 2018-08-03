@@ -179,6 +179,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [longest_common_subsequence](algorithms/map/longest_common_subsequence.py)
     - [randomized_set](algorithms/map/randomized_set.py)
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
+    - [word_pattern](algorithms/map/word_pattern.py)
 - [maths](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
