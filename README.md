@@ -234,6 +234,7 @@ If you want to uninstall algorithms, it is as simple as:
 - [set](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
+    - [find_keyboard_row](algorithms/set/find_keyboard_row.py)
 - [sort](algorithms/sort)
     - [bitonic_sort](algorithms/sort/bitonic_sort.py)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
