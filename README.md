@@ -180,6 +180,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [randomized_set](algorithms/map/randomized_set.py)
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
     - [word_pattern](algorithms/map/word_pattern.py)
+    - [is_isomorphic](algorithms/map/is_isomorphic.py)    
 - [maths](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)

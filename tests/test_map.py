@@ -1,7 +1,8 @@
 from algorithms.map import (
     HashTable, ResizableHashTable,
     Node, SeparateChainingHashTable,
-    word_pattern
+    word_pattern,
+    is_isomorphic
 )
 
 import unittest
@@ -154,6 +155,13 @@ class TestWordPattern(unittest.TestCase):
         self.assertFalse(word_pattern("abba", "dog cat cat fish"))
         self.assertFalse(word_pattern("abba", "dog dog dog dog"))
         self.assertFalse(word_pattern("aaaa", "dog cat cat dog"))
+
+
+class TestIsSomorphic(unittest.TestCase):
+    def test_is_isomorphic(self):
+        self.assertTrue(is_isomorphic("egg", "add"))
+        self.assertFalse(is_isomorphic("foo", "bar"))
+        self.assertTrue(is_isomorphic("paper", "title"))
 
 
 
