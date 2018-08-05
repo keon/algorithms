@@ -2,7 +2,8 @@ from algorithms.map import (
     HashTable, ResizableHashTable,
     Node, SeparateChainingHashTable,
     word_pattern,
-    is_isomorphic
+    is_isomorphic,
+    is_anagram
 )
 
 import unittest
@@ -162,6 +163,12 @@ class TestIsSomorphic(unittest.TestCase):
         self.assertTrue(is_isomorphic("egg", "add"))
         self.assertFalse(is_isomorphic("foo", "bar"))
         self.assertTrue(is_isomorphic("paper", "title"))
+
+
+class TestIsAnagram(unittest.TestCase):
+    def test_is_anagram(self):
+        self.assertTrue(is_anagram("anagram", "nagaram"))
+        self.assertFalse(is_anagram("rat", "car"))
 
 
 
