@@ -14,9 +14,9 @@ def find_keyboard_row(words):
     :rtype: List[str]
     """
     keyboard = [
-        set(list('qwertyuiop')),
-        set(list('asdfghjkl')),
-        set(list('zxcvbnm')),
+        set('qwertyuiop'),
+        set('asdfghjkl'),
+        set('zxcvbnm'),
     ]
     result = []
     for word in words:

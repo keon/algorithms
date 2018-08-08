@@ -26,13 +26,15 @@ def is_isomorphic(s, t):
     """
     if len(s) != len(t):
         return False
-    map = {}
+    dict = {}
+    set_value = set()
     for i in range(len(s)):
-        if s[i] not in map:
-            if t[i] in map.values():
+        if s[i] not in dict:
+            if t[i] in set_value:
                 return False
-            map[s[i]] = t[i]
+            dict[s[i]] = t[i]
+            set_value.add(t[i])
         else:
-            if map[s[i]] != t[i]:
+            if dict[s[i]] != t[i]:
                 return False
     return True

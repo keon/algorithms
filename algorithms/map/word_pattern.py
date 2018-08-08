@@ -23,16 +23,18 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 Reference: https://leetcode.com/problems/word-pattern/description/
 """
 def word_pattern(pattern, str):
-    map = {}
+    dict = {}
+    set_value = set()
     list_str = str.split()
     if len(list_str) != len(pattern):
         return False
     for i in range(len(pattern)):
-        if pattern[i] not in map:
-            if list_str[i] in map.values():
+        if pattern[i] not in dict:
+            if list_str[i] in set_value:
                 return False
-            map[pattern[i]] = list_str[i]
+            dict[pattern[i]] = list_str[i]
+            set_value.add(list_str[i])
         else:
-            if map[pattern[i]] != list_str[i]:
+            if dict[pattern[i]] != list_str[i]:
                 return False
     return True
