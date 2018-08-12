@@ -12,19 +12,17 @@ Note that the answer must be a substring,
 
 def longest_non_repeat_v1(string):
     """
-    Finds the length of the longest substring
-    without repeating characters.
+    Apply slide windown.
     """
-    if string is None:
-        return 0
-    temp = []
-    max_len = 0
-    for i in string:
-        if i in temp:
-            temp = []
-        temp.append(i)
-        max_len = max(max_len, len(temp))
-    return max_len
+    dict = {}
+    max_length = 0
+    j = 0
+    for i in range(len(string)):
+        if string[i] in dict:
+            j = max(dict[string[i]], j)
+        dict[string[i]] = i + 1
+        max_length = max(max_length, i - j + 1)
+    return max_length
 
 
 def longest_non_repeat_v2(string):
