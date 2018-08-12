@@ -147,6 +147,12 @@ class TestLongestNonRepeat(unittest.TestCase):
         string = "pwwkew"
         self.assertEqual(longest_non_repeat_v1(string), 3)
 
+        string = "dvdf"
+        self.assertEqual(longest_non_repeat_v1(string), 3)
+
+        string = "asjrgapa"
+        self.assertEqual(longest_non_repeat_v1(string), 6)
+
     def test_longest_non_repeat_v2(self):
 
         string = "abcabcbb"
@@ -157,6 +163,12 @@ class TestLongestNonRepeat(unittest.TestCase):
 
         string = "pwwkew"
         self.assertEqual(longest_non_repeat_v2(string), 3)
+
+        string = "dvdf"
+        self.assertEqual(longest_non_repeat_v1(string), 3)
+
+        string = "asjrgapa"
+        self.assertEqual(longest_non_repeat_v1(string), 6)
 
 
 class TestMaxOnesIndex(unittest.TestCase):
