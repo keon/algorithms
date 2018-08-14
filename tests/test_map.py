@@ -1,6 +1,9 @@
 from algorithms.map import (
     HashTable, ResizableHashTable,
-    Node, SeparateChainingHashTable
+    Node, SeparateChainingHashTable,
+    word_pattern,
+    is_isomorphic,
+    is_anagram
 )
 
 import unittest
@@ -145,6 +148,28 @@ class TestSeparateChainingHashTable(unittest.TestCase):
         m = SeparateChainingHashTable(10)
         m.put(1, '1')
         self.assertEqual(None, m.get(11))
+
+
+class TestWordPattern(unittest.TestCase):
+    def test_word_pattern(self):
+        self.assertTrue(word_pattern("abba", "dog cat cat dog"))
+        self.assertFalse(word_pattern("abba", "dog cat cat fish"))
+        self.assertFalse(word_pattern("abba", "dog dog dog dog"))
+        self.assertFalse(word_pattern("aaaa", "dog cat cat dog"))
+
+
+class TestIsSomorphic(unittest.TestCase):
+    def test_is_isomorphic(self):
+        self.assertTrue(is_isomorphic("egg", "add"))
+        self.assertFalse(is_isomorphic("foo", "bar"))
+        self.assertTrue(is_isomorphic("paper", "title"))
+
+
+class TestIsAnagram(unittest.TestCase):
+    def test_is_anagram(self):
+        self.assertTrue(is_anagram("anagram", "nagaram"))
+        self.assertFalse(is_anagram("rat", "car"))
+
 
 
 
