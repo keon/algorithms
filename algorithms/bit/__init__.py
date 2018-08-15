@@ -15,3 +15,4 @@ from .insert_bit import *
 from .remove_bit import *
 from .count_flips_to_convert import *
 from .flip_bit_longest_sequence import *
+from .binary_gap import *

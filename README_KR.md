@@ -1,4 +1,11 @@
-English(README_EN.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
+<p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
+
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | 한국어 | [Português](README_PTBR.md)
+
+[![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
+[![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
+[![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
+[![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
 Python 버전 자료구조 및 알고리즘
 =========================================
@@ -8,10 +15,9 @@ Python 3로 구현한 간단하고 명확한 자료구조와 알고리즘들의 
 ## 기여 활동
 프로젝트 활동 참여에 관심을 가져주셔서 감사합니다! 여러가지 방법으로 이 프로젝트에 기여해주세요. [기여 방법 소개](CONTRIBUTING.md)
 
-
 ## 테스트 종류들
 
-### 단위별 테스트 사용
+### unittest 사용
 아래 명시된 모든 테스트 실행하기:
 
     $ python3 -m unittest discover tests
@@ -52,16 +58,20 @@ if __name__ == "__main__":
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
     - [garage](algorithms/arrays/garage.py)
-    - [josephus_problem](algorithms/arrays/josephus_problem.py)
+    - [josephus_problem](algorithms/arrays/josephus.py)
+    - [limit](algorithms/arrays/limit.py)
     - [longest_non_repeat](algorithms/arrays/longest_non_repeat.py/)
+    - [max_ones_index](algorithms/arrays/max_ones_index.py)
     - [merge_intervals](algorithms/arrays/merge_intervals.py)
     - [missing_ranges](algorithms/arrays/missing_ranges.py)
     - [plus_one](algorithms/arrays/plus_one.py)
-    - [rotate_array](algorithms/arrays/rotate_array.py)
-    - [summary_ranges](algorithms/arrays/summary_ranges.py)
+    - [rotate](algorithms/arrays/rotate.py)
+    - [summarize_ranges](algorithms/arrays/summarize_ranges.py)
     - [three_sum](algorithms/arrays/three_sum.py)
+    - [trimmean](algorithms/arrays/trimmean.py)
+    - [top_1](algorithms/arrays/top_1.py)
     - [two_sum](algorithms/arrays/two_sum.py)
-    - [move_zeros_to_end](algorithms/arrays/move_zeros_to_end.py)
+    - [move_zeros](algorithms/arrays/move_zeros.py)
 - [backtrack : 백트래킹](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
     - [anagram](algorithms/backtrack/anagram.py)
@@ -79,6 +89,7 @@ if __name__ == "__main__":
     - [subsets](algorithms/backtrack/subsets.py)
     - [subsets_unique](algorithms/backtrack/subsets_unique.py)
 - [bfs : 너비 우선 탐색](algorithms/bfs)
+    - [maze_search](algorithms/bfs/maze_search.py)
     - [shortest_distance_from_all_buildings](algorithms/bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](algorithms/bfs/word_ladder.py)
 - [bit : 비트](algorithms/bit)
@@ -126,6 +137,7 @@ if __name__ == "__main__":
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
 - [graph : 그래프](algorithms/graph)
+    - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
     - [clone_graph](algorithms/graph/clone_graph.py)
     - [cycle_detection](algorithms/graph/cycle_detection.py)
@@ -167,9 +179,11 @@ if __name__ == "__main__":
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
+    - [factorial](algorithms/maths/factorial.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
+    - [modular_exponential](algorithms/maths/modular_exponential.py)
     - [next_bigger](algorithms/maths/next_bigger.py)
     - [next_perfect_square](algorithms/maths/next_perfect_square.py)
     - [nth_digit](algorithms/maths/nth_digit.py)
@@ -201,27 +215,35 @@ if __name__ == "__main__":
     - [binary_search](algorithms/search/binary_search.py)
     - [first_occurance](algorithms/search/first_occurance.py)
     - [last_occurance](algorithms/search/last_occurance.py)
+    - [linear_search](algorithms/search/linear_search.py)
     - [search_insert](algorithms/search/search_insert.py)
     - [two_sum](algorithms/search/two_sum.py)
     - [search_range](algorithms/search/search_range.py)
     - [find_min_rotate](algorithms/search/find_min_rotate.py)
     - [search_rotate](algorithms/search/search_rotate.py)
+    - [jump_search](algorithms/search/jump_search.py)
 - [set : 집합](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
 - [sort : 정렬 알고리즘](algorithms/sort)
+    - [bitonic_sort](algorithms/sort/bitonic_sort.py)
+    - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
+    - [cocktail_shaker_sort](algorithms/sort/cocktail_shaker_sort.py)
     - [comb_sort](algorithms/sort/comb_sort.py)
     - [counting_sort](algorithms/sort/counting_sort.py)
+    - [cycle_sort](algorithms/sort/cycle_sort.py)
+    - [gnome_sort](algorithms/sort/gnome_sort.py)
     - [heap_sort](algorithms/sort/heap_sort.py)
     - [insertion_sort](algorithms/sort/insertion_sort.py)
     - [meeting_rooms](algorithms/sort/meeting_rooms.py)
     - [merge_sort](algorithms/sort/merge_sort.py)
+    - [pancake_sort](algorithms/sort/pancake_sort.py)
     - [quick_sort](algorithms/sort/quick_sort.py)
     - [radix_sort](algorithms/sort/radix_sort.py)
     - [selection_sort](algorithms/sort/selection_sort.py)
     - [sort_colors](algorithms/sort/sort_colors.py)
-    - [topsort](algorithms/sort/topsort.py)
+    - [top_sort](algorithms/sort/top_sort.py)
     - [wiggle_sort](algorithms/sort/wiggle_sort.py)
 - [stack : 스택](algorithms/stack)
     - [longest_abs_path](algorithms/stack/longest_abs_path.py)
@@ -281,6 +303,8 @@ if __name__ == "__main__":
     - [traversal : 트리 순회](algorithms/tree/traversal)
         - [inorder](algorithms/tree/traversal/inorder.py)
         - [level_order](algorithms/tree/traversal/level_order.py)
+        - [postorder](algorithms/tree/traversal/postorder.py)
+        - [preorder](algorithms/tree/traversal/preorder.py)
         - [zigzag](algorithms/tree/traversal/zigzag.py)
     - [trie : 트라이](algorithms/tree/trie)
         - [add_and_search](algorithms/tree/trie/add_and_search.py)
@@ -304,7 +328,7 @@ if __name__ == "__main__":
     - [tree](algorithms/tree/tree.py)
 - [union-find : 합집합 찾기](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
-    
+
 ## 기여자들
 이 저장소는 아래 사람들에 의해 유지되고 있습니다.
 

@@ -1,4 +1,5 @@
 from algorithms.graph import Tarjan
+from algorithms.graph import check_bipartite
 
 import unittest
 
@@ -42,3 +43,17 @@ class TestTarjan(unittest.TestCase):
 
         g = Tarjan(example)
         self.assertEqual(g.sccs, [['A', 'B', 'E'], ['C', 'D'], ['F', 'G'], ['H']])
+
+        
+class TestCheckBipartite(unittest.TestCase):
+    
+    def test_check_bipartite(self):
+        
+        adj_list_1 = [[0, 0, 1], [0, 0, 1], [1, 1, 0]]
+        self.assertEqual(True, check_bipartite(adj_list_1))
+        
+        adj_list_2 = [[0, 1, 0, 1], [1, 0, 1, 0], [0, 1, 0, 1], [1, 0, 1, 0]]
+        self.assertEqual(True, check_bipartite(adj_list_2))
+        
+        adj_list_3 = [[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]
+        self.assertEqual(False, check_bipartite(adj_list_3))
