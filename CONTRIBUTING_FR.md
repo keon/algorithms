@@ -42,7 +42,7 @@ Pour faciliter l'acceptation, vous pouvez vérifier que :
 
 
 ## Problèmes
-Soumettez une [nouveau issue][newissue] s'il y a un algorithme à ajouter, ou si un bogue a été trouvé dans un algorithme existant. Avant d'en soumettre une nouvelle, veuillez passer en revue les[issues existantes][issues] afin d'éviter de créer des doublons. Envisagez également de résoudre des issues actuellement ouvertes ou de contribuer à la discussion sur une issue.
+Soumettez une [nouveau issue][newissue] s'il y a un algorithme à ajouter, ou si un bogue a été trouvé dans un algorithme existant. Avant d'en soumettre une nouvelle, veuillez passer en revue les [issues existantes][issues] afin d'éviter de créer des doublons. Envisagez également de résoudre des issues actuellement ouvertes ou de contribuer à la discussion sur une issue.
 
 ## Collaborateurs
 Vous pouvez demander de l'aide ou des éclaircissements aux collaborateurs.  
