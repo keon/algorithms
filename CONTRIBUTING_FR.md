@@ -1,7 +1,7 @@
 # Contribuer
 
 Nous aimons les contributions (sous la forme de pull requests). En contribuant à ce repertoire, vous acceptez de suivre les 
-règles du [Code de conduite](CODE_OF_CONDUCT.md).
+règles du [Code de conduite](CODE_OF_CONDUCT_FR.md).
 
 ## Mise en route
 
