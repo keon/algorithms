@@ -46,7 +46,7 @@ def is_symmetric_iterative(root):
             return False
         if left.val == right.val:
             stack.append([left.left, right.right])
-            stack.append([left.right, right.right])
+            stack.append([left.right, right.left])
         else:
             return False
     return True
