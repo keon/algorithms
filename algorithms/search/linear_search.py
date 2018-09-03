@@ -5,8 +5,7 @@
 #
 
 def linear_search(array, query):
-    length = len(array)
-    for i in range(length):
+    for i in range(len(array)):
         if array[i] == query:
             return i
 
