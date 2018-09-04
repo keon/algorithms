@@ -13,7 +13,7 @@ def get_depth(root):
         return 0
     left  = get_depth(root.left)
     right = get_depth(root.right)
-    if abs(left-right) > 1:
+    if abs(left-right) > 1 or left == -1 or right == -1:
         return -1
     return 1 + max(left, right)
 
