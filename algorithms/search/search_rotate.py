@@ -37,9 +37,6 @@ There are 2 possible solution: iterative and recursion.
 Recursion helps you understand better the above algorithm explanation
 """
 def search_rotate(array, val):
-    if not array:
-        return -1
-
     low, high = 0, len(array) - 1
     while low <= high:
         mid = (low + high) // 2
