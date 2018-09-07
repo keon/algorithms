@@ -25,6 +25,7 @@ class TestSuite(unittest.TestCase):
         # Test case: bottom [6, 3, 5, 1, 2, 4] top
         self.assertFalse(is_sorted([6, 3, 5, 1, 2, 4]))
         self.assertTrue(is_sorted([1, 2, 3, 4, 5, 6]))
+        self.assertFalse(is_sorted([3, 4, 7, 8, 5, 6]))
 
     def test_remove_min(self):
         # Test case: bottom [2, 8, 3, -6, 7, 3] top
