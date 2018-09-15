@@ -30,3 +30,19 @@ def top_1(arr):
             continue
     
     return result
+
+
+def top_1_dp(arr):
+    # DP Solution
+    # Once Iteration
+    ans = []
+    mostcount = 0
+    count = {}
+    for x in arr:
+        count[x] = count.get(x, 0) + 1
+        if count[x] > mostcount:
+            ans = [x]
+            mostcount = count[x]
+        elif count[x] == mostcount:
+            ans.append(x)
+    return ans
