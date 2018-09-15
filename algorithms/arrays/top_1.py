@@ -32,8 +32,7 @@ def top_1(arr):
     return result
 
 
-def top_1_dp(arr):
-    # DP Solution
+def top_1_v2(arr):
     # Once Iteration
     ans = []
     mostcount = 0
