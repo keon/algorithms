@@ -1,0 +1,17 @@
+The ALGORITHMS Project
+
+--------- Algorithms that i will test---------
+● Arrays: Object that holds items of same type
+● Backtrack: Step by step process to find all possible solution to a problem
+● Tree: Data Structure which is hierarchical in structure
+● Graph: Abstract data type which implements undirected and directed graphs
+● Linkedlist: Basically a list of node which point to next node
+● Map: Basically a key-value pair
+● Maths: Collection of math operation and algorithms involving it to solve problems
+● Matrix: 2D array of items which can perform math operation on them
+● Search: Ability to search using different search algorithms
+● Sort: Ability to sort data using different sorting algorithms
+● String: Fundamental data type in computer science
+
+--------------------------------------------------------------------------
+The documentation will get updated with each week as i again better understanding with the Project
