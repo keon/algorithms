@@ -259,6 +259,7 @@ pip3 uninstall -y algorithms
     - [reverse_words：反转单词](algorithms/strings/reverse_words.py)
     - [roman_to_int：罗马数转换整数](algorithms/strings/roman_to_int.py)
     - [word_squares：单词平方](algorithms/strings/word_squares.py)
+    - [levenshtein distance](algorithms/strings/levenshtein.py)
 - [tree：树](algorithms/tree)
     - [segment-tree：线段树](algorithms/tree/segment_tree)
         - [segment_tree：线段树](algorithms/tree/segment_tree/segment_tree.py)

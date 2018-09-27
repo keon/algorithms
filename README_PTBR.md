@@ -289,6 +289,7 @@ Se você deseja desinstalar os algoritmos, é tão simples quanto:
     - [caesar_cipher](algorithms/strings/caesar_cipher.py)
     - [contain_string](algorithms/strings/contain_string.py)
     - [count_binary_substring](algorithms/strings/count_binary_substring.py)
+    - [levenshtein distance](algorithms/strings/levenshtein.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
