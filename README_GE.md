@@ -291,6 +291,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [reverse_words](algorithms/strings/reverse_words.py)
     - [roman_to_int](algorithms/strings/roman_to_int.py)
     - [word_squares](algorithms/strings/word_squares.py)
+    - [levenshtein distance](algorithms/strings/levenshtein.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
