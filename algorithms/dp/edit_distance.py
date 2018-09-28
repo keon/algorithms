@@ -16,7 +16,7 @@ Then, the function satifies the following recurrence:
 
 edit(i, j) = i if j = 0
              j if i = 0
-             min(edit(i-1, j) + 1,
+             min(edit(i-1, j) + 1, 
                  edit(i, j-1), + 1,
                  edit(i-1, j-1) + cost) otherwise
 
@@ -30,7 +30,6 @@ or 0 if both chars in words A and B are the same at indexes i and j, respectivel
 To find the edit distance between two words A and B,
 we need to find edit(m, n), where m is the length of A and n is the length of B.
 """
-import unittest
 
 
 def edit_distance(A, B):
@@ -53,13 +52,3 @@ def edit_distance(A, B):
             edit[i][j] = min(edit[i - 1][j] + 1, edit[i][j - 1] + 1, edit[i - 1][j - 1] + cost)
 
     return edit[-1][-1]  # this is the same as edit[m][n]
-
-
-class MyTest(unittest.TestCase):
-    def test(self):
-        self.assertEqual(edit_distance('food', 'money'), 4)
-        self.assertEqual(edit_distance('horse', 'ros'), 3)
-
-
-if __name__ == '__main__':
-    unittest.main()
