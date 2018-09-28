@@ -13,7 +13,7 @@ Estruturas de Dados e Algoritmos Pythonicos
 Exemplos de implementações mínimas e limpas de estruturas de dados e algoritmos em Python 3.
 
 ## Contribuir
-Obrigado pelo seu interesse em contribuir! Há muitas maneiras de contribuir para este projeto. [Comece aqui](CONTRIBUTING.md)
+Obrigado pelo seu interesse em contribuir! Há muitas maneiras de contribuir para este projeto. [Comece aqui](CONTRIBUTING_PT-BR.md)
 
 ## Testes
 
