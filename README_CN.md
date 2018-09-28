@@ -151,6 +151,7 @@ pip3 uninstall -y algorithms
     - [graph：图](algorithms/graph/graph.py)
     - [traversal：遍历](algorithms/graph/traversal.py)
     - [markov_chain：马尔可夫链](algorithms/graph/markov_chain.py)
+    - [prim](algorithms/graph/prim.py)
 - [heap：堆](algorithms/heap)
     - [merge_sorted_k_lists：合并k个有序链](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline：天际线](algorithms/heap/skyline.py)

@@ -152,6 +152,7 @@ Si vous voulez désinstaller le paquet algorithms, il suffit de procéder comme 
     - [satisfiability](algorithms/graph/satisfiability.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
+    - [prim](algorithms/graph/prim.py)
 - [heap](algorithms/heap)
     - [merge_sorted_k_lists](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline](algorithms/heap/skyline.py)

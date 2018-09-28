@@ -153,6 +153,7 @@ if __name__ == "__main__":
     - [satisfiability](algorithms/graph/satisfiability.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
+    - [prim](algorithms/graph/prim.py)
 - [heap : ヒープ](algorithms/heap)
     - [merge_sorted_k_lists](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline](algorithms/heap/skyline.py)
