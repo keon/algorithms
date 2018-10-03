@@ -183,6 +183,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
     - [decimal_to_binary_ip](algorithms/maths/decimal_to_binary_ip.py)
+    - [euler_totient](algorithms/maths/euler_totient.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [factorial](algorithms/maths/factorial.py)    
     - [gcd/lcm](algorithms/maths/gcd.py)
