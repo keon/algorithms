@@ -20,10 +20,10 @@ def bubble_sort(arr, simulation=False):
     iteration = 0
     if simulation:
         print("iteration",iteration,":",*arr)
-    x=-1
+    x = -1
     while swapped:
         swapped = False
-        x = x+1
+        x = x + 1
         for i in range(1, n-x):
             if arr[i - 1] > arr[i]:
                 swap(i - 1, i)
