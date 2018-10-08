@@ -13,15 +13,15 @@ def is_sorted(stack):
     storage_stack = []
     for i in range(len(stack)):
         if len(stack) == 0:
-            return True
+            break
         first_val = stack.pop()
         if len(stack) == 0:
-            return True
+            break
         second_val = stack.pop()
         if first_val < second_val:
             return False
         storage_stack.append(first_val)
-        storage_stack.append(second_val)
+        stack.append(second_val)
 
     # Backup stack
     for i in range(len(storage_stack)):
