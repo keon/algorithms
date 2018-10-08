@@ -312,6 +312,16 @@ class TestRabinKarp(unittest.TestCase):
         self.assertEqual(3, rabin_karp("abc", "zsnabckfkd"))
         self.assertEqual(None, rabin_karp("abc", "zsnajkskfkd"))
 
+     #test for the filr kmp_search.py   
+
+class TestKmpSearch(unittest.TestCase):
+        #Test case for kmp_search.py
+        #test string and pattern staring
+
+    def test_kmp_search(self):
+        self.assertEqual(0,20, kmp_search("ferraribmwferrferufeferrari","ferrari")) 
+        self.assertEqual(0, kmp_search("abcdabcabedbcdaabc","abcd"))       
+
 
 class TestReverseString(unittest.TestCase):
     """[summary]
