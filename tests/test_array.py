@@ -15,6 +15,7 @@ from algorithms.arrays import (
     max_ones_index,
     trimmean,
     top_1,
+    top_1_v2,
     limit,
     n_sum
 )
@@ -337,6 +338,12 @@ class TestTop1(unittest.TestCase):
     def test_top_1(self):
         self.assertListEqual(top_1([1 , 1, 2, 2, 3]), [1, 2])
         self.assertListEqual(top_1([1, 2, 3, 324, 234, 23, 23, 1, 23, 23]), [23])
+
+class TestTop1V2(unittest.TestCase):
+
+    def test_top_1_v2(self):
+        self.assertListEqual(top_1_v2([1 , 1, 2, 2, 3]), [1, 2])
+        self.assertListEqual(top_1_v2([1, 2, 3, 324, 234, 23, 23, 1, 23, 23]), [23])
 
 
 class TestLimit(unittest.TestCase):
