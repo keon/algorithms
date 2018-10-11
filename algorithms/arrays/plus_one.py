@@ -1,8 +1,8 @@
 """
 Given a non-negative number represented as an array of digits,
-plus one to the number.
+adding one to each numeral.
 
-The digits are stored such that the most significant
+The digits are stored big-endian, such that the most significant
 digit is at the head of the list.
 """
 
@@ -41,7 +41,7 @@ def plus_one_v2(digits):
 
 def plus_one_v3(num_arr):
 
-    for idx, digit in reversed(list(enumerate(num_arr))):
+    for idx in reversed(list(enumerate(num_arr))):
         num_arr[idx] = (num_arr[idx] + 1) % 10
         if num_arr[idx]:
             return num_arr

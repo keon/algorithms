@@ -1,11 +1,15 @@
 """
-this algorithms receive array and check most_frequent_value(a.k.a mode). Also, sometimes it can be have numerous most_frequent_value,
-so this funtion returns list. This result can be used as finding representative value on array.
+This algorithm receives an array and returns most_frequent_value
+Also, sometimes it is possible to have multiple 'most_frequent_value's,
+so this function returns a list. This result can be used to find a 
+representative value in an array.
 
-This algorithms get array, and make dictionary of it, find most frequent count, and make result list.
+This algorithm gets an array, makes a dictionary of it,
+ finds the most frequent count, and makes the result list.
 
-For example) top_1([1, 1, 2, 2, 3, 4]) will return [1, 2]
+For example: top_1([1, 1, 2, 2, 3, 4]) will return [1, 2]
 
+(TL:DR) Get mathematical Mode
 Complexity: O(n)
 """
 def top_1(arr):
@@ -30,7 +34,6 @@ def top_1(arr):
             continue
     
     return result
-
 
 def top_1_v2(arr):
     # Once Iteration
