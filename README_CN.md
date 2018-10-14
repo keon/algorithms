@@ -155,6 +155,8 @@ pip3 uninstall -y algorithms
     - [merge_sorted_k_lists：合并k个有序链](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline：天际线](algorithms/heap/skyline.py)
     - [sliding_window_max：滑动窗口最大值](algorithms/heap/sliding_window_max.py)
+- [iterables : 迭代](algorithms/iterables)
+    - [convolved : 卷积](algorithms/iterables/convolved.py)
 - [linkedlist：链表](algorithms/linkedlist)
     - [add_two_numbers：链表数相加](algorithms/linkedlist/add_two_numbers.py)
     - [copy_random_pointer：复制带有随机指针的链表](algorithms/linkedlist/copy_random_pointer.py)

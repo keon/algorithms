@@ -154,6 +154,8 @@ if __name__ == "__main__":
     - [skyline](algorithms/heap/skyline.py)
     - [sliding_window_max](algorithms/heap/sliding_window_max.py)
     - [binary_heap](algorithms/heap/binary_heap.py)
+- [iterable : 반복 가능한 것](algorithms/iterables)
+    - [convolved](algorithms/iterables/convolved.py)
 - [linkedlist : 연결 리스트](algorithms/linkedlist)
     - [add_two_numbers](algorithms/linkedlist/add_two_numbers.py)
     - [copy_random_pointer](algorithms/linkedlist/copy_random_pointer.py)
