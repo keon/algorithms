@@ -29,11 +29,11 @@ it doesn't fall under any section. Make sure that your implementation works.
 ## Pull Requests
 Push to your fork and [submit a pull request][pr].
 
-We will review and may suggest some changes or improvements or alternatives.
+We will review and may suggest some changes or improvements or alternative.
 Some things that will increase the chance that your pull request is accepted:
 
 * All algorithms should be written in **Python 3**.
-(There are a few algorithms still in _Python 2_ syntax. You can start by converting
+(There are a few algorithms still in _Python 2_ syntax. You can  start by converting
 [those][issue120] to _Python 3_.)
 * Write clean and understandable code.
 * Properly comment the code and briefly explain what the algorithm is doing in the [docstrings][docstr].
