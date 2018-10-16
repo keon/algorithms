@@ -2,30 +2,32 @@
 Given an array of n integers, are there elements a, b, .. , n in nums
 such that a + b + .. + n = target?
 
-Find all unique triplets in the array which gives the sum of target.
+Find all unique n-tuplets in the array which gives the sum of target.
 
 Example:
     basic:
         Given:
-            n = 4, nums = [1, 0, -1, 0, -2, 2], target = 0,
+            n = 4
+            nums = [1, 0, -1, 0, -2, 2]
+            target = 0,
         return [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
 
     advanced:
         Given:
             n = 2
             nums = [[-3, 0], [-2, 1], [2, 2], [3, 3], [8, 4], [-9, 5]]
-            taget = -5
+            target = -5
             def sum(a, b):
                 return [a[0] + b[1], a[1] + b[0]]
-            def compare(num, taget):
-                if num[0] < taget:
+            def compare(num, target):
+                if num[0] < target:
                     return -1
-                elif if num[0] > taget:
+                elif if num[0] > target:
                     return 1
                 else:
                     return 0
         return [[-9, 5], [8, 4]]
-        because -9 + 4 = -5
+(TL:DR) because -9 + 4 = -5
 """
 
 
@@ -35,24 +37,26 @@ def n_sum(n, nums, target, **kv):
     nums: list[object]
     target: object
     sum_closure: function, optional
-                 Given two elements of nums, return sum of both.
+        Given two elements of nums, return sum of both.
     compare_closure: function, optional
-                     Given one object of nums and target, return one of -1, 1, or 0.
+        Given one object of nums and target, return -1, 1, or 0.
     same_closure: function, optional
-                  Given two object of nums, return bool.
+        Given two object of nums, return bool.
     return: list[list[object]]
 
     Note:
-    1. type of sum_closure's return should be same as type of compare_closure's first param
+    1. type of sum_closure's return should be same 
+       as type of compare_closure's first param
     """
 
     def sum_closure_default(a, b):
         return a + b
 
-    def compare_closure_default(num, taget):
-        if num < taget:
+    def compare_closure_default(num, target):
+        """ above, below, or right on? """
+        if num < target:
             return -1
-        elif num > taget:
+        elif num > target:
             return 1
         else:
             return 0
@@ -61,7 +65,7 @@ def n_sum(n, nums, target, **kv):
         return a == b
 
     def n_sum(n, nums, target):
-        if n == 2:
+        if n == 2:      # want answers with only 2 terms? easy!
             results = two_sum(nums, target)
         else:
             results = []
@@ -70,12 +74,19 @@ def n_sum(n, nums, target, **kv):
                 if prev_num is not None and \
                    same_closure(prev_num, num):
                     continue
+
                 prev_num = num
-                n_minus1_results = n_sum(n - 1,
-                                         nums[index + 1:],
-                                         target - num)
-                n_minus1_results = append_elem_to_each_list(num,
-                                                            n_minus1_results)
+                n_minus1_results = (
+                    n_sum(                      # recursive call
+                        n - 1,                  # a
+                        nums[index + 1:],       # b
+                        target - num            # c
+                        )   # x = n_sum( a, b, c )
+                    )   # n_minus1_results = x
+
+                n_minus1_results = (
+                    append_elem_to_each_list(num, n_minus1_results)
+                    )
                 results += n_minus1_results
         return union(results)
 

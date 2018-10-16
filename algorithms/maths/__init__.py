@@ -1,5 +1,6 @@
 from .base_conversion import *
 from .decimal_to_binary_ip import *
+from .euler_totient import *
 from .extended_gcd import *
 from .factorial import *
 from .gcd import *
