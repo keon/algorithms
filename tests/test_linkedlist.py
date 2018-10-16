@@ -9,7 +9,7 @@ from algorithms.linkedlist import (
     is_cyclic,
     merge_two_list, merge_two_list_recur,
     is_palindrome, is_palindrome_stack, is_palindrome_dict,
-    RandomListNode, copy_random_list_v1, copy_random_list_v2
+    RandomListNode, copy_random_pointer_v1, copy_random_pointer_v2
 )
 
 
@@ -177,12 +177,12 @@ class TestSuite(unittest.TestCase):
 
     def test_solution_0(self):
         self._init_random_list_nodes()
-        result = copy_random_list_v1(self.random_list_node1)
+        result = copy_random_pointer_v1(self.random_list_node1)
         self._assert_is_a_copy(result)
 
     def test_solution_1(self):
         self._init_random_list_nodes()
-        result = copy_random_list_v2(self.random_list_node1)
+        result = copy_random_pointer_v2(self.random_list_node1)
         self._assert_is_a_copy(result)
 
     def _assert_is_a_copy(self, result):

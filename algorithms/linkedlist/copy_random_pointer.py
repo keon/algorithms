@@ -14,7 +14,7 @@ class RandomListNode(object):
         self.random = None
 
 
-def copy_random_list_v1(head):
+def copy_random_pointer_v1(head):
     """
     :type head: RandomListNode
     :rtype: RandomListNode
@@ -32,7 +32,7 @@ def copy_random_list_v1(head):
 
 
 # O(n)
-def copy_random_list_v2(head):
+def copy_random_pointer_v2(head):
     """
     :type head: RandomListNode
     :rtype: RandomListNode
