@@ -4,4 +4,3 @@ coverage
 nose
 pytest
 tox
-conv==0.1
