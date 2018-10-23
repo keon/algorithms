@@ -14,6 +14,7 @@ from algorithms.maths import (
     is_prime,
     encrypt, decrypt,
     combination, combination_memo
+    fibonacci,
 )
 
 import unittest
