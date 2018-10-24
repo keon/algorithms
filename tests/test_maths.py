@@ -14,7 +14,8 @@ from algorithms.maths import (
     pythagoras,
     is_prime,
     encrypt, decrypt,
-    combination, combination_memo
+    combination, combination_memo,
+    fibonacci
 )
 
 import unittest
@@ -287,6 +288,22 @@ class TestFactorial(unittest.TestCase):
         self.assertRaises(ValueError, factorial_recur, -42)
         self.assertRaises(ValueError, factorial_recur, 42, -1)
 
+        
+class TestFibonacciSequence(unittest.TestCase):
+  """[summary]
+  Test for the file fibonacci.py
 
+  Arguments:
+    unittest {[type]} -- [description]
+  """
+  def test_follows_sequence(self):
+    f_nums = fibonacci.fibonacci(20, False)
+    follows_sequence = True
+    for x in range (1, 20):
+        if (f_nums[-x] != (f_nums[-(x+1)] + f_nums[-(x+2)])):
+            follows_sequence = False
+    self.assertTrue(follows_sequence)
+    
+    
 if __name__ == "__main__":
     unittest.main()

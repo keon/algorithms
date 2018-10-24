@@ -189,6 +189,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [euler_totient](algorithms/maths/euler_totient.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [factorial](algorithms/maths/factorial.py)    
+    - [fibonacci](algorithms/maths/fibonacci.py)
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
