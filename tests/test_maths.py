@@ -13,8 +13,8 @@ from algorithms.maths import (
     pythagoras,
     is_prime,
     encrypt, decrypt,
-    combination, combination_memo
-    fibonacci,
+    combination, combination_memo,
+    fibonacci
 )
 
 import unittest
