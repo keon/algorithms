@@ -8,6 +8,6 @@ def hailstone(n):
     if n%2 != 0:
       n = 3*n + 1
     else: 
-      n = n/2
+      n = int(n/2)
     sequence.append(n)
   return sequence
