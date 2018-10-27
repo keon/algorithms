@@ -1,0 +1,38 @@
+using namespace std;
+#include<stdio.h>
+#include<iostream>
+#include<cstring>
+#include<cmath>
+#include<algorithm>
+#include<map>
+#include<vector>
+#include<set>
+#include<string>
+#include<stack>
+#include <bits/stdc++.h>
+#define ll long long int
+#define rep(i,a,b) for(ll i=a;i<b;i++)
+#define gc getchar_unlocked
+ll INF = 1000000000 + 7 ;
+const double pi=3.141592653589;
+ #define pb(x) push_back(x)
+#define mp(x,y) make_pair(x,y)
+ll power(int base ,int power)
+{   ll res = 1 ;
+    while(power>0){ if(power%2==1)res=(res*base)%INF;
+    power=power/2;base=(base*base)%INF;}
+    return res ;}
+ll gcd(ll A, ll B) {if(B==0) return A; else return gcd(B, A % B); }
+ll lcm(ll A,ll B) {return (A*B)/gcd(A,B) ;}
+#define sd(x) scanf("%d",&x)
+#define sd2(x,y) scanf("%d%d",&x,&y)
+#define sd3(x,y,z) scanf("%d%d%d",&x,&y,&z)
+int main()
+{
+int T ;
+sd(T);
+
+if(T%2==0 && T!=2)cout <<  "YES" ;
+else cout << "NO" ;
+return 0;
+}
