@@ -7,7 +7,7 @@ English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](R
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 [![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
-Pythonic Data Structures and Algorithms
+Pythonic Data Structures and Algorithms: 
 =========================================
 
 Minimal and clean example implementations of data structures and algorithms in Python 3.
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     my_list = [1, 8, 3, 5, 6]
     my_list = merge_sort(my_list)
     print(my_list)
-```
+    
 
 ## Uninstall
 If you want to uninstall algorithms, it is as simple as:
