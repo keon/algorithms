@@ -14,7 +14,8 @@ from algorithms.maths import (
     pythagoras,
     is_prime,
     encrypt, decrypt,
-    combination, combination_memo
+    combination, combination_memo,
+    hailstone,
 )
 
 import unittest
@@ -286,6 +287,18 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(637816310, factorial_recur(34521, 10**9 + 7))
         self.assertRaises(ValueError, factorial_recur, -42)
         self.assertRaises(ValueError, factorial_recur, 42, -1)
+
+
+class TestHailstone(unittest.TestCase):
+    """[summary]
+    Test for the file hailstone.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_hailstone(self):
+        self.assertEqual([8, 4, 2, 1], hailstone.hailstone(8))
+        self.assertEqual([10, 5, 16, 8, 4, 2, 1], hailstone.hailstone(10))
 
 
 if __name__ == "__main__":
