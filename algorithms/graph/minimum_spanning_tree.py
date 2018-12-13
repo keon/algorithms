@@ -28,8 +28,8 @@ class DisjointSet:
 
         # Get the set of nodes at position <a> and <b>
         # If <a> and <b> are the roots, this will be constant O(1)
-        a = self.findSet(a)
-        b = self.findSet(b)
+        a = self.find_set(a)
+        b = self.find_set(b)
 
         # Join the shortest node to the longest, minimizing tree size (faster find)
         if self.size[a] < self.size[b]:
@@ -73,8 +73,8 @@ def kruskal(n, edges, ds):
     mst = [] # List of edges taken, minimum spanning tree
 
     for edge in edges:
-        set_u = ds.findSet(edge.u) # Set of the node <u>
-        set_v = ds.findSet(edge.v) # Set of the node <v>
+        set_u = ds.find_set(edge.u) # Set of the node <u>
+        set_v = ds.find_set(edge.v) # Set of the node <v>
         if set_u != set_v:
             ds.merge_set(set_u, set_v)
             mst.append(edge)
