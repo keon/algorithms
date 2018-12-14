@@ -101,7 +101,6 @@ def parse(expression):
 def evaluate(expression):
     """
     Calculate result of expression
-
     expression String: The expression
     type Type (optional): Number type [int, float]
     """
@@ -132,14 +131,14 @@ def main():
     """
         simple user-interface
     """
-    print("\t\tCalculator\n\n")
+    print("\tCalculator\n")
     user_input = input("expression or exit: ")
     while user_input != "exit":
         try:
             print("The result is {0}".format(evaluate(user_input)))
         except Exception:
             print("invalid syntax!")
-            user_input = input("expression or exit: ")
+        user_input = input("expression or exit: ")
     print("program end")
         
 
