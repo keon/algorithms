@@ -7,7 +7,7 @@ After iterating through all points, our heap contains the k closest points to th
 """
 
 
-from heapq import *
+from heapq import heapify, heappushpop
 
 
 def k_closest(points, k, origin=(0, 0)):
