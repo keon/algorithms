@@ -5,7 +5,7 @@ def matr_mult(x,y): #returns product of 2x2 matrices
             [x[0][0]*y[1][0] + x[1][0]*y[1][1],     x[0][1]*y[1][0] + x[1][1]*y[1][1]]]
 
 def matr_pow(A,k): #returns A^k for integer k > 0 
-    if k==1:
+    if k == 1:
         return A
     else:
         X = matr_pow(A,k/2)
