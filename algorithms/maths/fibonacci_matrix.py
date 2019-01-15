@@ -22,7 +22,6 @@ def fib_matr(n):
     Returns:
         [int] -- [description]
     """
-    """
     Explanation:
     The Q-Matrix is   Q = | 1 1 | and it can be shown that Q^n = | Fn+1 Fn   | where Fn is the 
                           | 1 0 |                                | Fn   Fn+1 |
