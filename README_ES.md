@@ -1,42 +1,42 @@
 <p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | [Español](README_ES.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | Español
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 [![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
-Pythonic Data Structures and Algorithms
+Estructuras de datos y algoritmos en Python
 =========================================
 
-Minimal and clean example implementations of data structures and algorithms in Python 3.
+Ejemplo de implementaciones mínimas y limpias de estructuras de datos y algoritmos en Python 3.
 
-## Contributing
-Thanks for your interest in contributing! There are many ways to contribute to this project. [Get started here](CONTRIBUTING.md)
+## Contribuciones
+¡Gracias por su interés en contribuir! Hay muchas maneras de contribuir a este proyecto. [Comienza aquí](CONTRIBUTING_ES.md)
 
-## Tests
+## Pruebas
 
-### Use unittest
-For running all tests write down:
+### Usando unittest
+Escriba lo siguiente para ejecutar todas las pruebas:
 
     $ python3 -m unittest discover tests
 
-For running some specific tests you can do this as following (Ex: sort):
+Para ejecutar pruebas en específico, puede hacerlo de la siguiente manera (Ej: sort):
 
     $ python3 -m unittest tests.test_sort
 
-### Use pytest
-For running all tests write down:
+### Usando pytest
+Escriba lo siguiente para ejecutar todas las pruebas:
 
     $ python3 -m pytest tests
 
-## Install
-If you want to use the API algorithms in your code, it is as simple as:
+## Instalación
+Si desea utilizar el API algorithms en su código, es tan simple como:
 
     $ pip3 install algorithms
 
-You can test by creating a python file: (Ex: use `merge_sort` in `sort`)
+Puede probar creando un archivo python: (Ej: use `merge_sort` en `sort`)
 
 ```python3
 from algorithms.sort import merge_sort
@@ -47,12 +47,12 @@ if __name__ == "__main__":
     print(my_list)
 ```
 
-## Uninstall
-If you want to uninstall algorithms, it is as simple as:
+## Desinstalación
+Si desea desinstalar algorithms, es tan simple como:
 
     $ pip3 uninstall -y algorithms
 
-## List of Implementations
+## Lista de immplementaciones
 
 - [arrays](algorithms/arrays)
     - [delete_nth](algorithms/arrays/delete_nth.py)
@@ -203,7 +203,6 @@ If you want to uninstall algorithms, it is as simple as:
     - [rsa](algorithms/maths/rsa.py)
     - [sqrt_precision_factor](algorithms/maths/sqrt_precision_factor.py)
     - [summing_digits](algorithms/maths/summing_digits.py)
-    - [hailstone](algorithms/maths/hailstone.py)
 - [matrix](algorithms/matrix)
     - [sudoku_validator](algorithms/matrix/sudoku_validator.py)
     - [bomb_enemy](algorithms/matrix/bomb_enemy.py)
@@ -363,8 +362,8 @@ If you want to uninstall algorithms, it is as simple as:
 - [machine-learning](algorithms/machine-learning)
     - [nearest neighbor classification](algorithms/machine-learning/nearest_neighbor.py)
 
-## Contributors
-The repo is maintained by
+## Colaboradores
+El repositorio es mantenido por
 
 * [Keon Kim](https://github.com/keon)
 * [Rahul Goswami](https://github.com/goswami-rahul)
@@ -373,5 +372,5 @@ The repo is maintained by
 * [Hai Hoang Dang](https://github.com/danghai)
 * [Saad](https://github.com/SaadBenn)
 
-And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
-who helped in building the repo.
+Y gracias a [todos los colaboradores](https://github.com/keon/algorithms/graphs/contributors)
+que ayudaron en la construcción del repositorio.
