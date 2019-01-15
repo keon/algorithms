@@ -8,7 +8,7 @@ def matr_pow(A,k): #returns A^k for integer k > 0
     if k == 1:
         return A
     else:
-        X = matr_pow(A,k/2)
+        X = matr_pow(A, k // 2)
         if k % 2 == 0:
             return matr_mult(X,X)
         else:
