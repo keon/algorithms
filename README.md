@@ -158,6 +158,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [skyline](algorithms/heap/skyline.py)
     - [sliding_window_max](algorithms/heap/sliding_window_max.py)
     - [binary_heap](algorithms/heap/binary_heap.py)
+    - [k_closest_points](algorithms/heap/k_closest_points.py)
 - [linkedlist](algorithms/linkedlist)
     - [add_two_numbers](algorithms/linkedlist/add_two_numbers.py)
     - [copy_random_pointer](algorithms/linkedlist/copy_random_pointer.py)
