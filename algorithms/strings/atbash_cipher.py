@@ -25,4 +25,3 @@ def atbash(s):
         else:
             translated += s[i]
     return translated
-

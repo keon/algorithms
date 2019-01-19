@@ -138,6 +138,7 @@ Se você deseja desinstalar os algoritmos, é tão simples quanto:
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
+	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
@@ -207,6 +208,7 @@ Se você deseja desinstalar os algoritmos, é tão simples quanto:
     - [sparse_dot_vector](algorithms/matrix/sparse_dot_vector.py)
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
+	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
 - [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
@@ -289,6 +291,7 @@ Se você deseja desinstalar os algoritmos, é tão simples quanto:
     - [caesar_cipher](algorithms/strings/caesar_cipher.py)
     - [contain_string](algorithms/strings/contain_string.py)
     - [count_binary_substring](algorithms/strings/count_binary_substring.py)
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
