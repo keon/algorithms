@@ -56,11 +56,11 @@ class TestSuite(unittest.TestCase):
 
     def test_k_closest_points(self):
         points = [(1, 0), (2, 3), (5, 2), (1, 1), (2, 8), (10, 2), (-1, 0), (-2, -2)]
-        self.assertEqual([(-1, 0), (1, 0)], k_closest(points, 2))
-        self.assertEqual([(1, 1), (-1, 0), (1, 0)], k_closest(points, 3))
-        self.assertEqual([(-2, -2), (1, 1), (1, 0), (-1, 0)], k_closest(points, 4))
+        self.assertEqual([(-1, 0), (1, 0)], k_closest_points.k_closest(points, 2))
+        self.assertEqual([(1, 1), (-1, 0), (1, 0)], k_closest_points.k_closest(points, 3))
+        self.assertEqual([(-2, -2), (1, 1), (1, 0), (-1, 0)], k_closest_points.k_closest(points, 4))
         self.assertEqual([(10, 2), (2, 8), (5, 2), (-2, -2), (2, 3),
-                          (1, 0), (-1, 0), (1, 1)], k_closest(points, 8))
+                          (1, 0), (-1, 0), (1, 1)], k_closest_points.k_closest(points, 8))
 
 
 if __name__ == "__main__":
