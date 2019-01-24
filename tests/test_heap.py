@@ -2,7 +2,7 @@ from algorithms.heap import (
     BinaryHeap,
     get_skyline,
     max_sliding_window,
-    k_closest_points
+    k_closest
 )
 
 import unittest
