@@ -1,6 +1,7 @@
 def is_balanced(root):
     return __is_balanced_recursive(root)
 
+
 def __is_balanced_recursive(root):
     """
     O(N) solution
