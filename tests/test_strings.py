@@ -37,7 +37,7 @@ from algorithms.strings import (
     rotate,
     first_unique_char,
     repeat_substring,
-    atbash_cipher
+    atbash
 )
 
 import unittest
