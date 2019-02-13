@@ -6,3 +6,4 @@ from .rotate_list import *
 from .is_cyclic import *
 from .merge_two_list import *
 from .is_palindrome import *
+from .copy_random_pointer import *

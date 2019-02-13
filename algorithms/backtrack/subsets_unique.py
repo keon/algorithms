@@ -35,8 +35,3 @@ def subsets_unique(nums):
     res = set()
     backtrack(res, nums, [], 0)
     return list(res)
-
-
-test = [1, 2, 2]
-print(test)
-print(subsets_unique(test))

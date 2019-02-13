@@ -15,7 +15,8 @@ from algorithms.bit import (
     find_difference,
     has_alternative_bit, has_alternative_bit_fast,
     insert_one_bit, insert_mult_bits,
-    remove_bit
+    remove_bit,
+    binary_gap
 )
 
 import unittest
@@ -237,6 +238,16 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(9, remove_bit(21, 2))
         self.assertEqual(5, remove_bit(21, 4))
         self.assertEqual(10, remove_bit(21, 0))
+
+    def test_binary_gap(self):
+        # 22 = 10110
+        self.assertEqual(2, binary_gap(22))
+        # 6 = 110
+        self.assertEqual(1, binary_gap(6))
+        # 8 = 1000
+        self.assertEqual(0, binary_gap(8))
+        # 145 = 10010001
+        self.assertEqual(4, binary_gap(145))
 
 
 if __name__ == '__main__':

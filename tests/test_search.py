@@ -8,7 +8,8 @@ from algorithms.search import (
     search_range,
     find_min_rotate, find_min_rotate_recur,
     search_rotate, search_rotate_recur,
-    jump_search
+    jump_search,
+    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2
 )
 
 import unittest
@@ -46,7 +47,7 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(None, last_occurrence(array, 7))
         self.assertEqual(0, last_occurrence(array, 1))
         self.assertEqual(13, last_occurrence(array, 6))
-        
+
     def test_linear_search(self):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
         self.assertEqual(6, linear_search(array, 4))
@@ -103,7 +104,24 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(2, jump_search(array, 3))
         self.assertEqual(-1, jump_search(array, 7))
         self.assertEqual(-1, jump_search(array, -1))
-        
+
+    def test_next_greatest_letter(self):
+        letters = ["c", "f", "j"]
+        target = "a"
+        self.assertEqual("c", next_greatest_letter(letters, target))
+        self.assertEqual("c", next_greatest_letter_v1(letters, target))
+        self.assertEqual("c", next_greatest_letter_v2(letters, target))
+        letters = ["c", "f", "j"]
+        target = "d"
+        self.assertEqual("f", next_greatest_letter(letters, target))
+        self.assertEqual("f", next_greatest_letter_v1(letters, target))
+        self.assertEqual("f", next_greatest_letter_v2(letters, target))
+        letters = ["c", "f", "j"]
+        target = "j"
+        self.assertEqual("c", next_greatest_letter(letters, target))
+        self.assertEqual("c", next_greatest_letter_v1(letters, target))
+        self.assertEqual("c", next_greatest_letter_v2(letters, target))
+
 if __name__ == '__main__':
 
     unittest.main()

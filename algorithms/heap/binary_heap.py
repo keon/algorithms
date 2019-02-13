@@ -59,9 +59,7 @@ class BinaryHeap(AbstractHeap):
         while i // 2 > 0:
             if self.heap[i] < self.heap[i // 2]:
                 # Swap value of child with value of its parent
-                tmp = self.heap[i]
-                self.heap[i] = self.heap[i // 2]
-                self.heap[i // 2] = tmp
+                self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
             i = i // 2
 
     """
@@ -95,9 +93,7 @@ class BinaryHeap(AbstractHeap):
             min_child = self.min_child(i)
             if self.heap[min_child] < self.heap[i]:
                 # Swap min child with parent
-                tmp = self.heap[min_child]
-                self.heap[min_child] = self.heap[i]
-                self.heap[i] = tmp
+                self.heap[min_child], self.heap[i] = self.heap[i], self.heap[min_child]
             i = min_child
     """
         Remove Min method removes the minimum element and swap it with the last

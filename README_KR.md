@@ -1,6 +1,6 @@
-<p align="center"><img width="40%" src="docs/source/_static/algorithms_logo.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 한국어 | [日本語](README_JP.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | 한국어 | [Português](README_PTBR.md) | [Français](README_FR.md) | [Español](README_ES.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -14,7 +14,6 @@ Python 3로 구현한 간단하고 명확한 자료구조와 알고리즘들의 
 
 ## 기여 활동
 프로젝트 활동 참여에 관심을 가져주셔서 감사합니다! 여러가지 방법으로 이 프로젝트에 기여해주세요. [기여 방법 소개](CONTRIBUTING.md)
-
 
 ## 테스트 종류들
 
@@ -137,6 +136,7 @@ if __name__ == "__main__":
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
+	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
 - [graph : 그래프](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
@@ -206,6 +206,7 @@ if __name__ == "__main__":
     - [sparse_dot_vector](algorithms/matrix/sparse_dot_vector.py)
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
+	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
 - [queues : 큐](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
@@ -280,6 +281,7 @@ if __name__ == "__main__":
     - [reverse_words](algorithms/strings/reverse_words.py)
     - [roman_to_int](algorithms/strings/roman_to_int.py)
     - [word_squares](algorithms/strings/word_squares.py)
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
 - [tree : 트리](algorithms/tree)
     - [bst : 이진 탐색 트리](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)
@@ -329,7 +331,7 @@ if __name__ == "__main__":
     - [tree](algorithms/tree/tree.py)
 - [union-find : 합집합 찾기](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
-    
+
 ## 기여자들
 이 저장소는 아래 사람들에 의해 유지되고 있습니다.
 

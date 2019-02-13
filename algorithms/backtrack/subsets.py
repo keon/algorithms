@@ -57,8 +57,3 @@ def subsets_v2(self, nums):
     for num in sorted(nums):
         res += [item+[num] for item in res]
     return res
-
-
-test = [1, 2, 3]
-print(test)
-print(subsets(test))

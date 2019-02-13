@@ -1,15 +1,16 @@
 """
-Given a collection of intervals, merge all overlapping intervals.
+In mathematics, a (real) interval is a set of real
+ numbers with the property that any number that lies
+ between two numbers in the set is also included in the set.
 """
 
 
 class Interval:
     """
-    In mathematics, a (real) interval is a set of real
-    numbers with the property that any number that lies
-    between two numbers in the set is also included in the set.
+    A set of real numbers with methods to determine if other
+     numbers are included in the set.
+    Includes related methods to merge and print interval sets.
     """
-
     def __init__(self, start=0, end=0):
         self.start = start
         self.end = end
@@ -44,7 +45,7 @@ class Interval:
 
     @staticmethod
     def merge(intervals):
-        """ Merges two intervals into one. """
+        """ Merge two intervals into one. """
         out = []
         for i in sorted(intervals, key=lambda i: i.start):
             if out and i.start <= out[-1].end:
@@ -55,9 +56,7 @@ class Interval:
 
     @staticmethod
     def print_intervals(intervals):
-        """
-        Prints out the intervals.
-        """
+        """ Print out the intervals. """
         res = []
         for i in intervals:
             res.append(repr(i))
@@ -65,7 +64,7 @@ class Interval:
 
 
 def merge_intervals(intervals):
-    """ Merges intervals in the form of list. """
+    """ Merge intervals in the form of a list. """
     if intervals is None:
         return None
     intervals.sort(key=lambda i: i[0])

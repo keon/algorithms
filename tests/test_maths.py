@@ -1,6 +1,7 @@
 from algorithms.maths import (
     int_to_base, base_to_int,
     decimal_to_binary_ip,
+    euler_totient,
     extended_gcd,
     factorial, factorial_recur,
     gcd, lcm,
@@ -13,7 +14,8 @@ from algorithms.maths import (
     pythagoras,
     is_prime,
     encrypt, decrypt,
-    combination, combination_memo
+    combination, combination_memo,
+    hailstone,
 )
 
 import unittest
@@ -36,8 +38,8 @@ class TestBaseConversion(unittest.TestCase):
         self.assertEqual(5, base_to_int("101", 2))
         self.assertEqual(0, base_to_int("0", 2))
         self.assertEqual(255, base_to_int("FF", 16))
-        
-        
+
+
 class TestDecimalToBinaryIP(unittest.TestCase):
     """
     Test for the file decimal_to_binary_ip.py
@@ -53,6 +55,21 @@ class TestDecimalToBinaryIP(unittest.TestCase):
                          decimal_to_binary_ip("255.255.255.255"))
         self.assertEqual("11000000.10101000.00000000.00000001",
                          decimal_to_binary_ip("192.168.0.1"))
+
+
+class TestEulerTotient(unittest.TestCase):
+    """[summary]
+    Test for the file euler_totient.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_euler_totient(self):
+        self.assertEqual(4, euler_totient(8))
+        self.assertEqual(12, euler_totient(21))
+        self.assertEqual(311040, euler_totient(674614))
+        self.assertEqual(2354352, euler_totient(3435145))
 
 
 class TestExtendedGcd(unittest.TestCase):
@@ -272,6 +289,17 @@ class TestFactorial(unittest.TestCase):
         self.assertRaises(ValueError, factorial_recur, 42, -1)
 
 
+class TestHailstone(unittest.TestCase):
+    """[summary]
+    Test for the file hailstone.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_hailstone(self):
+        self.assertEqual([8, 4, 2, 1], hailstone.hailstone(8))
+        self.assertEqual([10, 5, 16, 8, 4, 2, 1], hailstone.hailstone(10))
+
+
 if __name__ == "__main__":
     unittest.main()
-
