@@ -5,21 +5,18 @@ The maximum depth is the number of nodes along the
 longest path from the root node down to the farthest leaf node.
 """
 
-
-class Node():
-    def __init__(self, val = 0):
-        self.val = val
-        self.left = None
-        self.right = None
-
 # def max_height(root):
-    # if not root:
-        # return 0
-    # return max(maxDepth(root.left), maxDepth(root.right)) + 1
+#     if not root:
+#         return 0
+#     return max(maxDepth(root.left), maxDepth(root.right)) + 1
 
 # iterative
+
+from tree.tree import TreeNode
+
+
 def max_height(root):
-    if not root:
+    if root is None:
         return 0
     height = 0
     queue = [root]
@@ -28,27 +25,30 @@ def max_height(root):
         level = []
         while queue:
             node = queue.pop(0)
-            if node.left:
+            if node.left is not None:
                 level.append(node.left)
-            if node.right:
+            if node.right is not None:
                 level.append(node.right)
         queue = level
     return height
 
+
 def print_tree(root):
-    if root:
+    if root is not None:
         print(root.val)
         print_tree(root.left)
         print_tree(root.right)
 
-tree = Node(10)
-tree.left = Node(12)
-tree.right = Node(15)
-tree.left.left  = Node(25)
-tree.left.left.right  = Node(100)
-tree.left.right = Node(30)
-tree.right.left = Node(36)
 
-height = max_height(tree)
-print_tree(tree)
-print("height:", height)
+if __name__ == '__main__':
+    tree = TreeNode(10)
+    tree.left = TreeNode(12)
+    tree.right = TreeNode(15)
+    tree.left.left = TreeNode(25)
+    tree.left.left.right = TreeNode(100)
+    tree.left.right = TreeNode(30)
+    tree.right.left = TreeNode(36)
+
+    height = max_height(tree)
+    print_tree(tree)
+    print("height:", height)
