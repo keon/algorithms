@@ -53,14 +53,17 @@ def get_longest_non_repeat_v1(string):
     """
     if string is None:
         return 0
+    sub_string = ''
     temp = []
     max_len = 0
     for i in string:
         if i in temp:
             temp = []
         temp.append(i)
-        max_len = max(max_len, len(temp))
-    return max_len, temp
+        if len(temp) > max_len:
+            max_len = len(temp)
+            sub_string = ''.join(temp)
+    return max_len, sub_string
 
 def get_longest_non_repeat_v2(string):
     """
@@ -71,12 +74,15 @@ def get_longest_non_repeat_v2(string):
     """
     if string is None:
         return 0
+    sub_string = ''
     start, max_len = 0, 0
     used_char = {}
     for index, char in enumerate(string):
         if char in used_char and start <= used_char[char]:
             start = used_char[char] + 1
         else:
-            max_len = max(max_len, index - start + 1)
+            if index - start + 1 > max_len:
+                max_len = index - start + 1
+                sub_string = string[start: index + 1]
         used_char[char] = index
-    return max_len, start
+    return max_len, sub_string
