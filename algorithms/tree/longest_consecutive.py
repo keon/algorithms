@@ -30,7 +30,7 @@ def longest_consecutive(root):
     :type root: TreeNode
     :rtype: int
     """
-    if not root:
+    if root is None:
         return 0
     max_len = 0
     dfs(root, 0, root.val, max_len)
@@ -38,7 +38,7 @@ def longest_consecutive(root):
 
 
 def dfs(root, cur, target, max_len):
-    if not root:
+    if root is None:
         return
     if root.val == target:
         cur += 1
