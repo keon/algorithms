@@ -16,6 +16,8 @@ def longest_non_repeat_v1(string):
     Find the length of the longest substring
     without repeating characters.
     """
+    if string is None:
+        return 0
     dict = {}
     max_length = 0
     j = 0
@@ -52,18 +54,19 @@ def get_longest_non_repeat_v1(string):
     Return max_len and the substring as a tuple
     """
     if string is None:
-        return 0
+        return 0, ''
     sub_string = ''
-    temp = []
-    max_len = 0
-    for i in string:
-        if i in temp:
-            temp = []
-        temp.append(i)
-        if len(temp) > max_len:
-            max_len = len(temp)
-            sub_string = ''.join(temp)
-    return max_len, sub_string
+    dict = {}
+    max_length = 0
+    j = 0
+    for i in range(len(string)):
+        if string[i] in dict:
+            j = max(dict[string[i]], j)
+        dict[string[i]] = i + 1
+        if i - j + 1 > max_length:
+            max_length = i - j + 1
+            sub_string = string[j: i + 1]
+    return max_length, sub_string
 
 def get_longest_non_repeat_v2(string):
     """
@@ -73,7 +76,7 @@ def get_longest_non_repeat_v2(string):
     Return max_len and the substring as a tuple
     """
     if string is None:
-        return 0
+        return 0, ''
     sub_string = ''
     start, max_len = 0, 0
     used_char = {}
