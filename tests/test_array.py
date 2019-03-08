@@ -3,7 +3,7 @@ from algorithms.arrays import (
     flatten_iter, flatten,
     garage,
     josephus,
-    longest_non_repeat_v1, longest_non_repeat_v2,
+    longest_non_repeat_v1, longest_non_repeat_v2, get_longest_non_repeat_v1, get_longest_non_repeat_v2,
     Interval, merge_intervals,
     missing_ranges,
     move_zeros,
@@ -169,6 +169,40 @@ class TestLongestNonRepeat(unittest.TestCase):
 
         string = "asjrgapa"
         self.assertEqual(longest_non_repeat_v2(string), 6)
+    
+    def test_get_longest_non_repeat_v1(self):
+        
+        string = "abcabcbb"
+        self.assertEqual(get_longest_non_repeat_v1(string), (3, 'abc'))
+
+        string = "bbbbb"
+        self.assertEqual(get_longest_non_repeat_v1(string), (1, 'b'))
+
+        string = "pwwkew"
+        self.assertEqual(get_longest_non_repeat_v1(string), (3, 'wke'))
+
+        string = "dvdf"
+        self.assertEqual(get_longest_non_repeat_v1(string), (3, 'vdf'))
+
+        string = "asjrgapa"
+        self.assertEqual(get_longest_non_repeat_v1(string), (6, 'sjrgap'))
+
+    def test_get_longest_non_repeat_v2(self):
+        
+        string = "abcabcbb"
+        self.assertEqual(get_longest_non_repeat_v2(string), (3, 'abc'))
+
+        string = "bbbbb"
+        self.assertEqual(get_longest_non_repeat_v2(string), (1, 'b'))
+
+        string = "pwwkew"
+        self.assertEqual(get_longest_non_repeat_v2(string), (3, 'wke'))
+
+        string = "dvdf"
+        self.assertEqual(get_longest_non_repeat_v2(string), (3, 'vdf'))
+
+        string = "asjrgapa"
+        self.assertEqual(get_longest_non_repeat_v2(string), (6, 'sjrgap'))
 
 
 class TestMaxOnesIndex(unittest.TestCase):
@@ -314,7 +348,7 @@ class TestThreeSum(unittest.TestCase):
                             {(-4, 1, 3), (-2, -1, 3), (-1, -1, 2)})
 
 
-class TestSuite(unittest.TestCase):
+class TestTwoSum(unittest.TestCase):
 
     def test_two_sum(self):
 

@@ -6,12 +6,17 @@ from algorithms.backtrack import (
     array_sum_combinations,
     unique_array_sum_combinations,
     combination_sum,
+    get_factors,
+    recursive_get_factors,
     find_words,
+    generate_abbreviations,
+    generate_parenthesis_v1,
+    generate_parenthesis_v2,
+    letter_combinations,
     pattern_match,
 )
 
 import unittest
-from algorithms.backtrack.generate_parenthesis import *
 
 
 class TestAddOperator(unittest.TestCase):
@@ -110,6 +115,53 @@ class TestCombinationSum(unittest.TestCase):
         self.assertEqual(combination_sum(candidates2, target2), answer2)
 
 
+class TestFactorCombinations(unittest.TestCase):
+
+    def test_get_factors(self):
+        target1 = 32
+        answer1 = [
+            [2, 16],
+            [2, 2, 8],
+            [2, 2, 2, 4],
+            [2, 2, 2, 2, 2],
+            [2, 4, 4],
+            [4, 8]
+        ]
+        self.assertEqual(sorted(get_factors(target1)), sorted(answer1))
+        
+        target2 = 12
+        answer2 = [
+            [2, 6],
+            [2, 2, 3],
+            [3, 4]
+        ]
+        self.assertEqual(sorted(get_factors(target2)), sorted(answer2))
+        self.assertEqual(sorted(get_factors(1)), [])
+        self.assertEqual(sorted(get_factors(37)), [])
+    
+    def test_recursive_get_factors(self):
+        target1 = 32
+        answer1 = [
+            [2, 16],
+            [2, 2, 8],
+            [2, 2, 2, 4],
+            [2, 2, 2, 2, 2],
+            [2, 4, 4],
+            [4, 8]
+        ]
+        self.assertEqual(sorted(recursive_get_factors(target1)), sorted(answer1))
+        
+        target2 = 12
+        answer2 = [
+            [2, 6],
+            [2, 2, 3],
+            [3, 4]
+        ]
+        self.assertEqual(sorted(recursive_get_factors(target2)), sorted(answer2))
+        self.assertEqual(sorted(recursive_get_factors(1)), [])
+        self.assertEqual(sorted(recursive_get_factors(37)), [])
+
+
 class TestFindWords(unittest.TestCase):
 
     def test_normal(self):
@@ -158,6 +210,21 @@ class TestFindWords(unittest.TestCase):
         self.assertTrue(len(find_words(board, words)) == 5)
 
 
+class TestGenerateAbbreviations(unittest.TestCase):
+    def test_generate_abbreviations(self):
+        word1 = "word"
+        answer1 = ['word', 'wor1', 'wo1d', 'wo2', 'w1rd', 'w1r1', 'w2d', 'w3',
+            '1ord', '1or1', '1o1d', '1o2', '2rd', '2r1', '3d', '4']
+        self.assertEqual(sorted(generate_abbreviations(word1)), sorted(answer1))
+
+        word2 = "hello"
+        answer2 = ['hello', 'hell1', 'hel1o', 'hel2', 'he1lo', 'he1l1', 'he2o',
+            'he3', 'h1llo', 'h1ll1', 'h1l1o', 'h1l2', 'h2lo', 'h2l1', 'h3o', 'h4',
+            '1ello', '1ell1', '1el1o', '1el2', '1e1lo', '1e1l1', '1e2o', '1e3',
+            '2llo', '2ll1', '2l1o', '2l2', '3lo', '3l1', '4o', '5']
+        self.assertEqual(sorted(generate_abbreviations(word2)), sorted(answer2))
+
+
 class TestPatternMatch(unittest.TestCase):
 
     def test_pattern_match(self):
@@ -172,6 +239,7 @@ class TestPatternMatch(unittest.TestCase):
         self.assertTrue(pattern_match(pattern2, string2))
         self.assertFalse(pattern_match(pattern3, string3))
 
+
 class TestGenerateParenthesis(unittest.TestCase):
 
     def test_generate_parenthesis(self):
@@ -180,7 +248,19 @@ class TestGenerateParenthesis(unittest.TestCase):
         self.assertEqual(generate_parenthesis_v2(2), ['(())', '()()'])
         self.assertEqual(generate_parenthesis_v2(3), ['((()))', '(()())', '(())()', '()(())', '()()()'])
 
+
+class TestLetterCombinations(unittest.TestCase):
+
+    def test_letter_combinations(self):
+        digit1 = "23"
+        answer1 = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+        self.assertEqual(sorted(letter_combinations(digit1)), sorted(answer1))
+
+        digit2 = "34"
+        answer2 = ['dg', 'dh', 'di', 'eg', 'eh', 'ei', 'fg', 'fh', 'fi']
+        self.assertEqual(sorted(letter_combinations(digit2)), sorted(answer2))
+
+
 if __name__ == '__main__':
 
     unittest.main()
-
