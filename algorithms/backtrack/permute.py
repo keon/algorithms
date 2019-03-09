@@ -19,7 +19,7 @@ def permute(elements):
         returns a list with the permuations.
     """
     if len(elements) <= 1:
-        return elements
+        return [elements]
     else:
         tmp = []
         for perm in permute(elements[1:]):
@@ -46,7 +46,7 @@ def permute_recursive(nums):
         if not nums:
             res.append(path)
         for i in range(len(nums)):
-            print(nums[:i]+nums[i+1:])
+            # print(nums[:i]+nums[i+1:])
             dfs(res, nums[:i]+nums[i+1:], path+[nums[i]])
 
     res = []

@@ -3,6 +3,9 @@ but rather for all the ways you can divide the input string
 up into palindromic substrings.
 (There's always at least one way,
 since one-character substrings are always palindromes.)
+
+ex)
+'abcbab' => [['abcba', 'b'], ['a', 'bcb', 'a', 'b'], ['a', 'b', 'c', 'bab'], ['a', 'b', 'c', 'b', 'a', 'b']]
 """
 
 
