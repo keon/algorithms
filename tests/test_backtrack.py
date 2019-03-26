@@ -13,7 +13,14 @@ from algorithms.backtrack import (
     generate_parenthesis_v1,
     generate_parenthesis_v2,
     letter_combinations,
+    palindromic_substrings,
     pattern_match,
+    permute_unique,
+    permute,
+    permute_recursive,
+    subsets_unique,
+    subsets,
+    subsets_v2,
 )
 
 import unittest
@@ -259,6 +266,106 @@ class TestLetterCombinations(unittest.TestCase):
         digit2 = "34"
         answer2 = ['dg', 'dh', 'di', 'eg', 'eh', 'ei', 'fg', 'fh', 'fi']
         self.assertEqual(sorted(letter_combinations(digit2)), sorted(answer2))
+
+
+class TestPalindromicSubstrings(unittest.TestCase):
+
+    def test_palindromic_substrings(self):
+        string1 = "abc"
+        answer1 = [['a', 'b', 'c']]
+        self.assertEqual(palindromic_substrings(string1), sorted(answer1))
+
+        string2 = "abcba"
+        answer2 = [['abcba'], ['a', 'bcb', 'a'], ['a', 'b', 'c', 'b', 'a']]
+        self.assertEqual(sorted(palindromic_substrings(string2)), sorted(answer2))
+
+        string3 = "abcccba"
+        answer3 = [['abcccba'], ['a', 'bcccb', 'a'], ['a', 'b', 'ccc', 'b', 'a'],
+            ['a', 'b', 'cc', 'c', 'b', 'a'], ['a', 'b', 'c', 'cc', 'b', 'a'], 
+            ['a', 'b', 'c', 'c', 'c', 'b', 'a']]
+        self.assertEqual(sorted(palindromic_substrings(string3)), sorted(answer3))
+
+
+class TestPermuteUnique(unittest.TestCase):
+
+    def test_permute_unique(self):
+        nums1 = [1, 1, 2]
+        answer1 = [[2, 1, 1], [1, 2, 1], [1, 1, 2]]
+        self.assertEqual(sorted(permute_unique(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 1, 3]
+        answer2 = [[3, 1, 2, 1], [1, 3, 2, 1], [1, 2, 3, 1], [1, 2, 1, 3], [3, 2, 1, 1], 
+            [2, 3, 1, 1], [2, 1, 3, 1], [2, 1, 1, 3], [3, 1, 1, 2], [1, 3, 1, 2], [1, 1, 3, 2], [1, 1, 2, 3]]
+        self.assertEqual(sorted(permute_unique(nums2)), sorted(answer2))
+
+        nums3 = [1, 2, 3]
+        answer3 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
+        self.assertEqual(sorted(permute_unique(nums3)), sorted(answer3))
+
+
+class TestPermute(unittest.TestCase):
+
+    def test_permute(self):
+        nums1 = [1, 2, 3, 4]
+        answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1], [1, 3, 2, 4], 
+            [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1], [1, 3, 4, 2], [3, 1, 4, 2], 
+            [3, 4, 1, 2], [3, 4, 2, 1], [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], 
+            [2, 4, 3, 1], [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1], 
+            [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
+        self.assertEqual(sorted(permute(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 3]
+        answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
+        self.assertEqual(sorted(permute(nums2)), sorted(answer2))
+
+    def test_permute_recursive(self):
+        nums1 = [1, 2, 3, 4]
+        answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1], [1, 3, 2, 4], 
+            [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1], [1, 3, 4, 2], [3, 1, 4, 2], 
+            [3, 4, 1, 2], [3, 4, 2, 1], [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], 
+            [2, 4, 3, 1], [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1], 
+            [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
+        self.assertEqual(sorted(permute_recursive(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 3]
+        answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
+        self.assertEqual(sorted(permute_recursive(nums2)), sorted(answer2))
+
+
+class TestSubsetsUnique(unittest.TestCase):
+
+    def test_subsets_unique(self):
+        nums1 = [1, 2, 2]
+        answer1 = [(1, 2), (1,), (1, 2, 2), (2,), (), (2, 2)]
+        self.assertEqual(sorted(subsets_unique(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 3, 4]
+        answer2 = [(1, 2), (1, 3), (1, 2, 3, 4), (1,), (2,), (3,), (1, 4), (1, 2, 3), 
+            (4,), (), (2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4), (3, 4), (2, 4)]
+        self.assertEqual(sorted(subsets_unique(nums2)), sorted(answer2))
+
+
+class TestSubsets(unittest.TestCase):
+
+    def test_subsets(self):
+        nums1 = [1, 2, 3]
+        answer1 = [[1, 2, 3], [1, 2], [1, 3], [1], [2, 3], [2], [3], []]
+        self.assertEqual(sorted(subsets(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 3, 4]
+        answer2 = [[1, 2, 3, 4], [1, 2, 3], [1, 2, 4], [1, 2], [1, 3, 4], 
+            [1, 3], [1, 4], [1], [2, 3, 4], [2, 3], [2, 4], [2], [3, 4], [3], [4], []]
+        self.assertEqual(sorted(subsets(nums2)), sorted(answer2))
+
+    def test_subsets_v2(self):
+        nums1 = [1, 2, 3]
+        answer1 = [[1, 2, 3], [1, 2], [1, 3], [1], [2, 3], [2], [3], []]
+        self.assertEqual(sorted(subsets_v2(nums1)), sorted(answer1))
+
+        nums2 = [1, 2, 3, 4]
+        answer2 = [[1, 2, 3, 4], [1, 2, 3], [1, 2, 4], [1, 2], [1, 3, 4], 
+            [1, 3], [1, 4], [1], [2, 3, 4], [2, 3], [2, 4], [2], [3, 4], [3], [4], []]
+        self.assertEqual(sorted(subsets_v2(nums2)), sorted(answer2))
 
 
 if __name__ == '__main__':
