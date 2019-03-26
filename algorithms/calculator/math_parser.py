@@ -93,7 +93,7 @@ def parse(expression):
                 result.append(i)
             else:
                 raise Exception("invalid syntax " + i)
-                
+
     if len(current) > 0:
         result.append(current)
     return result
@@ -133,15 +133,17 @@ def main():
         simple user-interface
     """
     print("\t\tCalculator\n\n")
-    user_input = input("expression or exit: ")
-    while user_input != "exit":
+    while True:
+        user_input = input("expression or exit: ")
+        if user_input == "exit":
+            break
         try:
             print("The result is {0}".format(evaluate(user_input)))
         except Exception:
             print("invalid syntax!")
             user_input = input("expression or exit: ")
     print("program end")
-        
+
 
 if __name__ == "__main__":
     main()

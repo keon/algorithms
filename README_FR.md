@@ -1,6 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | Français | [Español](README_ES.md)
 
 [![Version PyPI](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Contributeurs open source](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -139,6 +139,7 @@ Si vous voulez désinstaller le paquet algorithms, il suffit de procéder comme 
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
+	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
@@ -214,6 +215,7 @@ Si vous voulez désinstaller le paquet algorithms, il suffit de procéder comme 
     - [sparse_dot_vector](algorithms/matrix/sparse_dot_vector.py)
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
+	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
 - [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
@@ -303,7 +305,8 @@ Si vous voulez désinstaller le paquet algorithms, il suffit de procéder comme 
     - [longest_common_prefix](algorithms/strings/longest_common_prefix.py)
     - [rotate](algorithms/strings/rotate.py)
     - [first_unique_char](algorithms/strings/first_unique_char.py)
-    - [repeat_substring](algorithms/strings/repeat_substring.py)     
+    - [repeat_substring](algorithms/strings/repeat_substring.py)   
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)	
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)

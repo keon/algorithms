@@ -1,6 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md)
+English | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | [Español](README_ES.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -140,6 +140,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
+	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/check_digraph_strongly_connected.py)
@@ -160,6 +161,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [binary_heap](algorithms/heap/binary_heap.py)
 - [iterables](algorithms/iterables)
     - [convolved](algorithms/iterables/convolved.py)
+    - [k_closest_points](algorithms/heap/k_closest_points.py)
 - [linkedlist](algorithms/linkedlist)
     - [add_two_numbers](algorithms/linkedlist/add_two_numbers.py)
     - [copy_random_pointer](algorithms/linkedlist/copy_random_pointer.py)
@@ -205,6 +207,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [rsa](algorithms/maths/rsa.py)
     - [sqrt_precision_factor](algorithms/maths/sqrt_precision_factor.py)
     - [summing_digits](algorithms/maths/summing_digits.py)
+    - [hailstone](algorithms/maths/hailstone.py)
 - [matrix](algorithms/matrix)
     - [sudoku_validator](algorithms/matrix/sudoku_validator.py)
     - [bomb_enemy](algorithms/matrix/bomb_enemy.py)
@@ -216,6 +219,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [sparse_dot_vector](algorithms/matrix/sparse_dot_vector.py)
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
+	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
 - [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
@@ -306,6 +310,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [rotate](algorithms/strings/rotate.py)
     - [first_unique_char](algorithms/strings/first_unique_char.py)
     - [repeat_substring](algorithms/strings/repeat_substring.py)     
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/bst)
         - [array_to_bst](algorithms/tree/bst/array_to_bst.py)

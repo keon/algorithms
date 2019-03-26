@@ -1,62 +1,60 @@
 <p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | 日本語 | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | [Español](README_ES.md)
+[English](README.md) | [简体中文](README_CN.md) | [Deutsch](README_GE.md) | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | Español
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 [![Build Status](https://travis-ci.org/keon/algorithms.svg?branch=master)](https://travis-ci.org/keon/algorithms)
 [![Coverage Status](https://coveralls.io/repos/github/keon/algorithms/badge.svg?branch=master)](https://coveralls.io/github/keon/algorithms?branch=master)
 
-Pythonのデータ構造とアルゴリズム
+Estructuras de datos y algoritmos en Python
 =========================================
 
-Python 3で開発された簡単で明確なデータ構造とアルゴリズムの例を紹介します。
+Ejemplo de implementaciones mínimas y limpias de estructuras de datos y algoritmos en Python 3.
 
-## 貢献
-貢献に興味を持っていただきありがとうございます。 このプロジェクトに貢献する方法はたくさんあります。
+## Contribuciones
+¡Gracias por su interés en contribuir! Hay muchas maneras de contribuir a este proyecto. [Comienza aquí](CONTRIBUTING_ES.md)
 
-[簡単にコミュニティへ貢献するには](CONTRIBUTING_JP.md)
+## Pruebas
 
-## テスト
-
-### unittestを使用
-すべてのテストを実行するには：
+### Usando unittest
+Escriba lo siguiente para ejecutar todas las pruebas:
 
     $ python3 -m unittest discover tests
 
-特定のテストを実行するためには、（例: ソート）：
+Para ejecutar pruebas en específico, puede hacerlo de la siguiente manera (Ej: sort):
 
     $ python3 -m unittest tests.test_sort
 
-### pytestを使用
-すべてのテストを実行するには：
+### Usando pytest
+Escriba lo siguiente para ejecutar todas las pruebas:
 
     $ python3 -m pytest tests
 
-## インストール
-自分のコードでAPIアルゴリズムを活用したい場合は、以下のコードで簡単に実行することができます。
+## Instalación
+Si desea utilizar el API algorithms en su código, es tan simple como:
 
-    $ pip3 install git+https://github.com/keon/algorithms
+    $ pip3 install algorithms
 
-Pythonファイルを作成してテストを実行することができます：（例：「sort」の「merge_sort」を使用）
+Puede probar creando un archivo python: (Ej: use `merge_sort` en `sort`)
 
 ```python3
-from sort import merge_sort
+from algorithms.sort import merge_sort
 
 if __name__ == "__main__":
     my_list = [1, 8, 3, 5, 6]
-    my_list = merge_sort.merge_sort(my_list)
+    my_list = merge_sort(my_list)
     print(my_list)
 ```
 
-## 削除
-アルゴリズムを削除する場合は、次のコードで簡単に実行することができます：
+## Desinstalación
+Si desea desinstalar algorithms, es tan simple como:
 
     $ pip3 uninstall -y algorithms
 
-## アルゴリズムのリスト
+## Lista de immplementaciones
 
-- [arrays : 配列](algorithms/arrays)
+- [arrays](algorithms/arrays)
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
     - [garage](algorithms/arrays/garage.py)
@@ -74,12 +72,13 @@ if __name__ == "__main__":
     - [top_1](algorithms/arrays/top_1.py)
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros](algorithms/arrays/move_zeros.py)
-- [backtrack : バックトラッキング](algorithms/backtrack)
+    - [n_sum](algorithms/arrays/n_sum.py)
+- [backtrack](algorithms/backtrack)
     - [general_solution.md](algorithms/backtrack/)
+    - [add_operators](algorithms/backtrack/add_operators.py)
     - [anagram](algorithms/backtrack/anagram.py)
     - [array_sum_combinations](algorithms/backtrack/array_sum_combinations.py)
     - [combination_sum](algorithms/backtrack/combination_sum.py)
-    - [expression_add_operators](algorithms/backtrack/expression_add_operators.py)
     - [factor_combinations](algorithms/backtrack/factor_combinations.py)
     - [generate_abbreviations](algorithms/backtrack/generate_abbreviations.py)
     - [generate_parenthesis](algorithms/backtrack/generate_parenthesis.py)
@@ -90,14 +89,17 @@ if __name__ == "__main__":
     - [permute_unique](algorithms/backtrack/permute_unique.py)
     - [subsets](algorithms/backtrack/subsets.py)
     - [subsets_unique](algorithms/backtrack/subsets_unique.py)
-- [bfs : 幅優先探索](algorithms/bfs)
+- [bfs](algorithms/bfs)
     - [maze_search](algorithms/bfs/maze_search.py)
     - [shortest_distance_from_all_buildings](algorithms/bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](algorithms/bfs/word_ladder.py)
-- [bit : ビット](algorithms/bit)
+- [bit](algorithms/bit)
+    - [add_bitwise_operator](algorithms/bit/add_bitwise_operator.py)
+    - [bit_operation](algorithms/bit/bit_operation.py)
     - [bytes_int_conversion](algorithms/bit/bytes_int_conversion.py)
-    - [count_ones](algorithms/bit/count_ones.py)
     - [count_flips_to_convert](algorithms/bit/count_flips_to_convert.py)
+    - [count_ones](algorithms/bit/count_ones.py)
+    - [find_difference](algorithms/bit/find_difference.py)
     - [find_missing_number](algorithms/bit/find_missing_number.py)
     - [flip_bit_longest_sequence](algorithms/bit/flip_bit_longest_sequence.py)
     - [power_of_two](algorithms/bit/power_of_two.py)
@@ -106,22 +108,20 @@ if __name__ == "__main__":
     - [single_number2](algorithms/bit/single_number2.py)
     - [single_number3](algorithms/bit/single_number3.py)
     - [subsets](algorithms/bit/subsets.py)
-    - [add_bitwise_operator](algorithms/bit/add_bitwise_operator.py)
-    - [bit_operation](algorithms/bit/bit_operation.py)
     - [swap_pair](algorithms/bit/swap_pair.py)
-    - [find_difference](algorithms/bit/find_difference.py)
     - [has_alternative_bit](algorithms/bit/has_alternative_bit.py)
     - [insert_bit](algorithms/bit/insert_bit.py)
     - [remove_bit](algorithms/bit/remove_bit.py)
-- [calculator : 計算機](algorithms/calculator)
+    - [binary_gap](algorithms/bit/binary_gap.py)
+- [calculator](algorithms/calculator)
     - [math_parser](algorithms/calculator/math_parser.py)
-- [dfs : 深さ優先探索](algorithms/dfs)
+- [dfs](algorithms/dfs)
     - [all_factors](algorithms/dfs/all_factors.py)
     - [count_islands](algorithms/dfs/count_islands.py)
     - [pacific_atlantic](algorithms/dfs/pacific_atlantic.py)
     - [sudoku_solver](algorithms/dfs/sudoku_solver.py)
     - [walls_and_gates](algorithms/dfs/walls_and_gates.py)
-- [dp : 動的計画法](algorithms/dp)
+- [dp](algorithms/dp)
     - [buy_sell_stock](algorithms/dp/buy_sell_stock.py)
     - [climbing_stairs](algorithms/dp/climbing_stairs.py)
     - [coin_change](algorithms/dp/coin_change.py)
@@ -141,9 +141,9 @@ if __name__ == "__main__":
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
 	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
-- [graph : グラフ](algorithms/graph)
+- [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
-    - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
+    - [strongly_connected](algorithms/graph/check_digraph_strongly_connected.py)
     - [clone_graph](algorithms/graph/clone_graph.py)
     - [cycle_detection](algorithms/graph/cycle_detection.py)
     - [find_all_cliques](algorithms/graph/find_all_cliques.py)
@@ -154,14 +154,12 @@ if __name__ == "__main__":
     - [satisfiability](algorithms/graph/satisfiability.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
-- [heap : ヒープ](algorithms/heap)
+- [heap](algorithms/heap)
     - [merge_sorted_k_lists](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline](algorithms/heap/skyline.py)
     - [sliding_window_max](algorithms/heap/sliding_window_max.py)
     - [binary_heap](algorithms/heap/binary_heap.py)
-- [iterables : 繰り返し可能な](algorithms/iterables)
-    - [convolved](algorithms/iterables/convolved.py)
-- [linkedlist : 連結リスト](algorithms/linkedlist)
+- [linkedlist](algorithms/linkedlist)
     - [add_two_numbers](algorithms/linkedlist/add_two_numbers.py)
     - [copy_random_pointer](algorithms/linkedlist/copy_random_pointer.py)
     - [delete_node](algorithms/linkedlist/delete_node.py)
@@ -176,17 +174,22 @@ if __name__ == "__main__":
     - [swap_in_pairs](algorithms/linkedlist/swap_in_pairs.py)
     - [is_sorted](algorithms/linkedlist/is_sorted.py)
     - [remove_range](algorithms/linkedlist/remove_range.py)
-- [map : マップ](algorithms/map)
+- [map](algorithms/map)
     - [hashtable](algorithms/map/hashtable.py)
     - [separate_chaining_hashtable](algorithms/map/separate_chaining_hashtable.py)
     - [longest_common_subsequence](algorithms/map/longest_common_subsequence.py)
     - [randomized_set](algorithms/map/randomized_set.py)
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
-- [maths : 数学](algorithms/maths)
+    - [word_pattern](algorithms/map/word_pattern.py)
+    - [is_isomorphic](algorithms/map/is_isomorphic.py)
+    - [is_anagram](algorithms/map/is_anagram.py)    
+- [maths](algorithms/maths)
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
+    - [decimal_to_binary_ip](algorithms/maths/decimal_to_binary_ip.py)
+    - [euler_totient](algorithms/maths/euler_totient.py)
     - [extended_gcd](algorithms/maths/extended_gcd.py)
-    - [factorial](algorithms/maths/factorial.py)
+    - [factorial](algorithms/maths/factorial.py)    
     - [gcd/lcm](algorithms/maths/gcd.py)
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
@@ -201,7 +204,7 @@ if __name__ == "__main__":
     - [rsa](algorithms/maths/rsa.py)
     - [sqrt_precision_factor](algorithms/maths/sqrt_precision_factor.py)
     - [summing_digits](algorithms/maths/summing_digits.py)
-- [matrix : 行列](algorithms/matrix)
+- [matrix](algorithms/matrix)
     - [sudoku_validator](algorithms/matrix/sudoku_validator.py)
     - [bomb_enemy](algorithms/matrix/bomb_enemy.py)
     - [copy_transform](algorithms/matrix/copy_transform.py)
@@ -213,16 +216,16 @@ if __name__ == "__main__":
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
 	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
-- [queues : キュー](algorithms/queues)
+- [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
     - [queue](algorithms/queues/queue.py)
     - [reconstruct_queue](algorithms/queues/reconstruct_queue.py)
     - [zigzagiterator](algorithms/queues/zigzagiterator.py)
-- [search : サーチ](algorithms/search)
+- [search](algorithms/search)
     - [binary_search](algorithms/search/binary_search.py)
-    - [first_occurance](algorithms/search/first_occurance.py)
-    - [last_occurance](algorithms/search/last_occurance.py)
+    - [first_occurrence](algorithms/search/first_occurrence.py)
+    - [last_occurrence](algorithms/search/last_occurrence.py)
     - [linear_search](algorithms/search/linear_search.py)
     - [search_insert](algorithms/search/search_insert.py)
     - [two_sum](algorithms/search/two_sum.py)
@@ -230,10 +233,12 @@ if __name__ == "__main__":
     - [find_min_rotate](algorithms/search/find_min_rotate.py)
     - [search_rotate](algorithms/search/search_rotate.py)
     - [jump_search](algorithms/search/jump_search.py)
-- [set : セット](algorithms/set)
+    - [next_greatest_letter](algorithms/search/next_greatest_letter.py)
+- [set](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
-- [sort : ソート](algorithms/sort)
+    - [find_keyboard_row](algorithms/set/find_keyboard_row.py)
+- [sort](algorithms/sort)
     - [bitonic_sort](algorithms/sort/bitonic_sort.py)
     - [bogo_sort](algorithms/sort/bogo_sort.py)
     - [bubble_sort](algorithms/sort/bubble_sort.py)
@@ -255,7 +260,7 @@ if __name__ == "__main__":
     - [sort_colors](algorithms/sort/sort_colors.py)
     - [top_sort](algorithms/sort/top_sort.py)
     - [wiggle_sort](algorithms/sort/wiggle_sort.py)
-- [stack : スタック](algorithms/stack)
+- [stack](algorithms/stack)
     - [longest_abs_path](algorithms/stack/longest_abs_path.py)
     - [simplify_path](algorithms/stack/simplify_path.py)
     - [stack](algorithms/stack/stack.py)
@@ -265,9 +270,9 @@ if __name__ == "__main__":
     - [is_consecutive](algorithms/stack/is_consecutive.py)
     - [remove_min](algorithms/stack/remove_min.py)
     - [is_sorted](algorithms/stack/is_sorted.py)
-- [strings : 文字列](algorithms/strings)
+- [strings](algorithms/strings)
     - [fizzbuzz](algorithms/strings/fizzbuzz.py)
-    - [delete_reoccurring_characters](algorithms/strings/delete_reoccurring_characters.py)
+    - [delete_reoccurring](algorithms/strings/delete_reoccurring.py)
     - [strip_url_params](algorithms/strings/strip_url_params.py)
     - [validate_coordinates](algorithms/strings/validate_coordinates.py)
     - [domain_extractor](algorithms/strings/domain_extractor.py)
@@ -289,10 +294,22 @@ if __name__ == "__main__":
     - [reverse_words](algorithms/strings/reverse_words.py)
     - [roman_to_int](algorithms/strings/roman_to_int.py)
     - [word_squares](algorithms/strings/word_squares.py)
-	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
-- [tree : 木構造](algorithms/tree)
-    - [bst](algorithms/tree/tree/bst)
-        - [array2bst](algorithms/tree/bst/array2bst.py)
+    - [unique_morse](algorithms/strings/unique_morse.py)
+    - [judge_circle](algorithms/strings/judge_circle.py)
+    - [strong_password](algorithms/strings/strong_password.py)
+    - [caesar_cipher](algorithms/strings/caesar_cipher.py)
+    - [contain_string](algorithms/strings/contain_string.py)
+    - [count_binary_substring](algorithms/strings/count_binary_substring.py)
+    - [repeat_string](algorithms/strings/repeat_string.py)
+    - [min_distance](algorithms/strings/min_distance.py)
+    - [longest_common_prefix](algorithms/strings/longest_common_prefix.py)
+    - [rotate](algorithms/strings/rotate.py)
+    - [first_unique_char](algorithms/strings/first_unique_char.py)
+    - [repeat_substring](algorithms/strings/repeat_substring.py) 
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)    
+- [tree](algorithms/tree)
+    - [bst](algorithms/tree/bst)
+        - [array_to_bst](algorithms/tree/bst/array_to_bst.py)
         - [bst_closest_value](algorithms/tree/bst/bst_closest_value.py)
         - [BSTIterator](algorithms/tree/bst/BSTIterator.py)
         - [delete_node](algorithms/tree/bst/delete_node.py)
@@ -321,7 +338,7 @@ if __name__ == "__main__":
         - [add_and_search](algorithms/tree/trie/add_and_search.py)
         - [trie](algorithms/tree/trie/trie.py)
     - [binary_tree_paths](algorithms/tree/binary_tree_paths.py)
-    - [bintree2list](algorithms/tree/bintree2list.py)
+    - [bin_tree_to_list](algorithms/tree/bin_tree_to_list.py)
     - [deepest_left](algorithms/tree/deepest_left.py)
     - [invert_tree](algorithms/tree/invert_tree.py)
     - [is_balanced](algorithms/tree/is_balanced.py)
@@ -337,11 +354,19 @@ if __name__ == "__main__":
     - [pretty_print](algorithms/tree/pretty_print.py)
     - [same_tree](algorithms/tree/same_tree.py)
     - [tree](algorithms/tree/tree.py)
-- [union-find : 素集合データ構造](algorithms/union-find)
+- [unix](algorithms/unix)
+    - [path](algorithms/unix/path/)
+        - [join_with_slash](algorithms/unix/path/join_with_slash.py)
+        - [full_path](algorithms/unix/path/full_path.py)
+        - [split](algorithms/unix/path/split.py)
+        - [simplify_path](algorithms/unix/path/simplify_path.py)
+- [union-find](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
+- [machine-learning](algorithms/machine-learning)
+    - [nearest neighbor classification](algorithms/machine-learning/nearest_neighbor.py)
 
-## 貢献者
-本リポジトリは次の方によって維持されています
+## Colaboradores
+El repositorio es mantenido por
 
 * [Keon Kim](https://github.com/keon)
 * [Rahul Goswami](https://github.com/goswami-rahul)
@@ -350,4 +375,5 @@ if __name__ == "__main__":
 * [Hai Hoang Dang](https://github.com/danghai)
 * [Saad](https://github.com/SaadBenn)
 
-また、[全ての貢献者](https://github.com/keon/algorithms/graphs/contributors)に感謝を伝えます。
+Y gracias a [todos los colaboradores](https://github.com/keon/algorithms/graphs/contributors)
+que ayudaron en la construcción del repositorio.

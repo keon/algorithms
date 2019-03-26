@@ -19,7 +19,7 @@ def permute(elements):
         returns a list with the permuations.
     """
     if len(elements) <= 1:
-        return elements
+        return [elements]
     else:
         tmp = []
         for perm in permute(elements[1:]):

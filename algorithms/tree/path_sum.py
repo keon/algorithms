@@ -21,9 +21,9 @@ def has_path_sum(root, sum):
     :type sum: int
     :rtype: bool
     """
-    if not root:
+    if root is None:
         return False
-    if not root.left and not root.right and root.val == sum:
+    if root.left is None and root.right is None and root.val == sum:
         return True
     sum -= root.val
     return has_path_sum(root.left, sum) or has_path_sum(root.right, sum)
@@ -31,33 +31,33 @@ def has_path_sum(root, sum):
 
 # DFS with stack
 def has_path_sum2(root, sum):
-    if not root:
+    if root is None:
         return False
     stack = [(root, root.val)]
     while stack:
         node, val = stack.pop()
-        if not node.left and not node.right:
+        if node.left is None and node.right is None:
             if val == sum:
                 return True
-        if node.left:
+        if node.left is not None:
             stack.append((node.left, val+node.left.val))
-        if node.right:
+        if node.right is not None:
             stack.append((node.right, val+node.right.val))
     return False
 
 
 # BFS with queue
 def has_path_sum3(root, sum):
-    if not root:
+    if root is None:
         return False
     queue = [(root, sum-root.val)]
     while queue:
         node, val = queue.pop(0)  # popleft
-        if not node.left and not node.right:
+        if node.left is None and node.right is None:
             if val == 0:
                 return True
-        if node.left:
+        if node.left is not None:
             queue.append((node.left, val-node.left.val))
-        if node.right:
+        if node.right is not None:
             queue.append((node.right, val-node.right.val))
     return False

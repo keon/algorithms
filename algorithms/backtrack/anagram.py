@@ -1,3 +1,12 @@
+"""
+Given two strings, determine if they are equal after reordering.
+
+Examples:
+"apple", "pleap"  -> True
+"apple", "cherry" -> False
+"""
+
+
 def anagram(s1, s2):
     c1 = [0] * 26
     c2 = [0] * 26

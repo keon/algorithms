@@ -1,6 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/master/docs/source/_static/logo/logotype1blue.png"></p>
 
-[English](README.md) | [简体中文](README_CN.md) | Deutsch | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md)
+[English](README.md) | [简体中文](README_CN.md) | Deutsch | [日本語](README_JP.md) | [한국어](README_KR.md) | [Português](README_PTBR.md) | [Français](README_FR.md) | [Español](README_ES.md)
 
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
@@ -146,6 +146,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
+	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/checkDiGraphStronglyConnected.py)
@@ -217,6 +218,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [sparse_dot_vector](algorithms/matrix/sparse_dot_vector.py)
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
+	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py
 - [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
@@ -293,6 +295,7 @@ Um das Projekt zu deinstallieren tippen Sie folgendes:
     - [reverse_words](algorithms/strings/reverse_words.py)
     - [roman_to_int](algorithms/strings/roman_to_int.py)
     - [word_squares](algorithms/strings/word_squares.py)
+	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/tree/bst)
         - [array2bst](algorithms/tree/bst/array2bst.py)

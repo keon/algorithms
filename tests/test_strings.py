@@ -36,7 +36,8 @@ from algorithms.strings import (
     longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
     rotate,
     first_unique_char,
-    repeat_substring
+    repeat_substring,
+    atbash
 )
 
 import unittest
@@ -517,6 +518,19 @@ class TestRepeatSubstring(unittest.TestCase):
         self.assertFalse(repeat_substring("aba"))
         self.assertTrue(repeat_substring("abcabcabcabc"))
 
+class TestAtbashCipher(unittest.TestCase):
+    """[summary]
+    Test for the file atbash_cipher.py
 
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_atbash_cipher(self):
+        self.assertEqual("zyxwvutsrqponml", atbash("abcdefghijklmno"))
+        self.assertEqual("KbgslM", atbash("PythoN"))
+        self.assertEqual("AttaCK at DawN", atbash("ZggzXP zg WzdM"))
+        self.assertEqual("ZggzXP zg WzdM", atbash("AttaCK at DawN"))
+        
 if __name__ == "__main__":
     unittest.main()
