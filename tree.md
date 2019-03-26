@@ -107,6 +107,9 @@ algorithms
 │   ├── skyline.py
 │   └── sliding_window_max.py
 ├── __init__.py
+├── iterables
+│   ├── __init__.py
+│   └── convolved.py
 ├── linkedlist
 │   ├── add_two_numbers.py
 │   ├── copy_random_pointer.py
@@ -296,5 +299,5 @@ algorithms
 └── union-find
     └── count_islands.py
 
-27 directories, 267 files
+28 directories, 269 files
 ```
