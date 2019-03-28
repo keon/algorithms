@@ -11,6 +11,8 @@ from algorithms.bit import (
     single_number3,
     subsets,
     get_bit, set_bit, clear_bit, update_bit,
+    int_to_bytes_big_endian, int_to_bytes_little_endian, 
+    bytes_big_endian_to_int, bytes_little_endian_to_int,
     swap_pair,
     find_difference,
     has_alternative_bit, has_alternative_bit_fast,
@@ -182,6 +184,18 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(30, update_bit(22, 3, 1))
         # 22 = 10110 --> after update bit at 2nd position with value 0: 20 = 10010
         self.assertEqual(18, update_bit(22, 2, 0))
+
+    def test_int_to_bytes_big_endian(self):
+        self.assertEqual(b'\x11', int_to_bytes_big_endian(17))
+    
+    def test_int_to_bytes_little_endian(self):
+        self.assertEqual(b'\x11', int_to_bytes_little_endian(17))
+
+    def test_bytes_big_endian_to_int(self):
+        self.assertEqual(17, bytes_big_endian_to_int(b'\x11'))
+    
+    def test_bytes_little_endian_to_int(self):
+        self.assertEqual(17, bytes_little_endian_to_int(b'\x11'))
 
     def test_swap_pair(self):
         # 22: 10110  --> 41: 101001

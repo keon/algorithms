@@ -3,6 +3,10 @@
     in range [0..n] in O(n) time and space. The difference between
     consecutive integers cannot be more than 1. If the sequence is
     already complete, the next integer in the sequence will be returned.
+
+    For example:
+    Input: nums = [4, 1, 3, 0, 6, 5, 2]
+    Output: 7
 """
 def find_missing_number(nums):
 

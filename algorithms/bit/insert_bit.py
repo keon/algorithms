@@ -6,7 +6,7 @@ For example:
 
 Input: num = 10101 (21)
 insert_one_bit(num, 1, 2): 101101 (45)
-insert_one_bit(num, 0 ,2): 101001 (41)
+insert_one_bit(num, 0, 2): 101001 (41)
 insert_one_bit(num, 1, 5): 110101 (53)
 insert_one_bit(num, 1, 0): 101011 (43)
 
@@ -25,7 +25,7 @@ Insert exact one bit at specific position
 Algorithm:
 1. Create a mask having bit from i to the most significant bit, and append the new bit at 0 position
 2. Keep the bit from 0 position to i position ( like 000...001111)
-3) Merge mask and num
+3. Merge mask and num
 """
 def insert_one_bit(num, bit, i):
     # Create mask
