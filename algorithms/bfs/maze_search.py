@@ -7,6 +7,21 @@ do BFS from (0,0) of the grid and get the minimum number of steps needed to get 
 only step on the columns whose value is 1
 
 if there is no path, it returns -1
+
+Ex 1)
+If grid is
+[[1,0,1,1,1,1],
+ [1,0,1,0,1,0],
+ [1,0,1,0,1,1],
+ [1,1,1,0,1,1]], 
+the answer is: 14
+
+Ex 2)
+If grid is
+[[1,0,0],
+ [0,1,1],
+ [0,1,1]], 
+the answer is: -1
 '''
 
 def maze_search(grid):

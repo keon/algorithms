@@ -20,9 +20,6 @@ The PossibleVals function may be further simplified/optimized, but it works just
 fine for now. (it would look less lengthy if we are allowed to use numpy array
 for the board lol).
 """
-
-import unittest
-
 class Sudoku: 
     def __init__ (self, board, row, col):
         self.board = board
@@ -96,15 +93,3 @@ class Sudoku:
                 resp += " {0} ".format(self.board[i][j])
             resp += "\n"
         return resp
-
-
-class TestSudoku(unittest.TestCase):
-    def test_sudoku_solver(self):
-        board = [["5","3","."], ["6",".", "."],[".","9","8"]]
-        test_obj = Sudoku(board, 3, 3)
-        test_obj.solve()
-        self.assertEqual([['5', '3', '1'], ['6', '1', '2'], ['1', '9', '8']],test_obj.board)
-
-
-if __name__ == "__main__":
-    unittest.main()

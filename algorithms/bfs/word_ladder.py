@@ -13,13 +13,12 @@ end_word = "cog"
 word_list = ["hot","dot","dog","lot","log"]
 As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
 return its length 5.
-.
+
 Note:
 Return -1 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 """
-import unittest
 
 
 def ladder_length(begin_word, end_word, word_list):
@@ -71,29 +70,3 @@ def word_range(word):
         for c in [chr(x) for x in range(ord('a'), ord('z') + 1)]:
             if c != temp:
                 yield word[:ind] + c + word[ind + 1:]
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_ladder_length(self):
-
-        # hit -> hot -> dot -> dog -> cog
-        self.assertEqual(5, ladder_length('hit', 'cog', ["hot", "dot", "dog", "lot", "log"]))
-
-        # pick -> sick -> sink -> sank -> tank == 5
-        self.assertEqual(5, ladder_length('pick', 'tank',
-                                          ['tock', 'tick', 'sank', 'sink', 'sick']))
-
-        # live -> life == 1, no matter what is the word_list.
-        self.assertEqual(1, ladder_length('live', 'life', ['hoho', 'luck']))
-
-        # 0 length from ate -> ate
-        self.assertEqual(0, ladder_length('ate', 'ate', []))
-
-        # not possible to reach !
-        self.assertEqual(-1, ladder_length('rahul', 'coder', ['blahh', 'blhah']))
-
-
-if __name__ == '__main__':
-
-    unittest.main()
