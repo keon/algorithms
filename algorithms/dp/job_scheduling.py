@@ -45,7 +45,7 @@ def schedule(job):
     n = len(job) 
     table = [0 for _ in range(n)]
  
-    table[0] = job[0].profit;
+    table[0] = job[0].profit
  
     # Fill entries in table[] using recursive property
     for i in range(1, n):
@@ -54,7 +54,7 @@ def schedule(job):
         incl_prof = job[i].profit
         l = binary_search(job, i)
         if (l != -1):
-            incl_prof += table[l];
+            incl_prof += table[l]
  
         # Store maximum of including and excluding
         table[i] = max(incl_prof, table[i - 1])

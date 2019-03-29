@@ -30,9 +30,3 @@ def get_maximum_value(items, capacity):
                                            dp[current_weight] + item.value)
         dp = dp_tmp
     return max(dp)
-
-
-print(get_maximum_value([Item(60, 10), Item(100, 20), Item(120, 30)],
-                        50))
-print(get_maximum_value([Item(60, 5), Item(50, 3), Item(70, 4), Item(30, 2)],
-                        5))

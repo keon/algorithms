@@ -58,9 +58,3 @@ def combination_sum_bottom_up(nums, target):
             if i - nums[j] >= 0:
                 comb[i] += comb[i - nums[j]]
     return comb[target]
-
-
-combination_sum_topdown([1, 2, 3], 4)
-print(dp[4])
-
-print(combination_sum_bottom_up([1, 2, 3], 4))
