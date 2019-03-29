@@ -63,11 +63,10 @@ def fib_iter(n):
     sum = 0
     if n <= 1:
         return n
-    for i in range(n-1):
+    for _ in range(n-1):
         sum = fib_1 + fib_2
         fib_1 = fib_2
         fib_2 = sum
     return sum
 
-# => 354224848179261915075
-# print(fib_iter(100))
+# print(fib_iter(100)) # => 354224848179261915075

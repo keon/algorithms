@@ -1,4 +1,14 @@
+"""
+Given an unsorted array of integers, find the length of longest increasing subsequence.
 
+Example:
+
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+
+The time complexity is O(n^2).
+"""
 
 def longest_increasing_subsequence(sequence):
     """
@@ -14,10 +24,3 @@ def longest_increasing_subsequence(sequence):
                 counts[i] = max(counts[i], counts[j] + 1)
                 print(counts)
     return max(counts)
-
-
-sequence = [1, 101, 10, 2, 3, 100, 4, 6, 2]
-print("sequence: ", sequence)
-print("output: ", longest_increasing_subsequence(sequence))
-print("answer: ", 5)
-
