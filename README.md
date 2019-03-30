@@ -368,14 +368,6 @@ If you want to uninstall algorithms, it is as simple as:
     - [nearest neighbor classification](algorithms/machine-learning/nearest_neighbor.py)
 
 ## Contributors
-The repo is maintained by
 
-* [Keon Kim](https://github.com/keon)
-* [Rahul Goswami](https://github.com/goswami-rahul)
-* [Christian Bender](https://github.com/christianbender)
-* [Ankit Agarwal](https://github.com/ankit167)
-* [Hai Hoang Dang](https://github.com/danghai)
-* [Saad](https://github.com/SaadBenn)
-
-And thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
+Thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
 who helped in building the repo.
