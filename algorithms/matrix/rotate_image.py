@@ -14,13 +14,14 @@ Could you do this in-place?
 # 4 5 6  => 4 5 6  => 8 5 2
 # 7 8 9     1 2 3     9 6 3
 
-def rotate(mat): 
+def rotate(mat):
     if not mat:
         return mat
     mat.reverse()
     for i in range(len(mat)):
         for j in range(i):
             mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
+    return mat
 
 
 if __name__ == "__main__":
