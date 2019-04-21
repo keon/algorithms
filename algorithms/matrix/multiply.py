@@ -1,6 +1,9 @@
 """
 This algorithm takes two compatible two dimensional matrix
 and return their product
+Space complexity: O(n^2)
+Possible edge case: the number of columns of multiplicand not consistent with
+the number of rows of multiplier, will raise exception
 """
 
 
