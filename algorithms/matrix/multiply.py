@@ -26,14 +26,3 @@ def multiply(multiplicand: list, multiplier: list) -> list:
             for k in range(len(multiplier)):
                 result[i][j] += multiplicand[i][k] * multiplier[k][j]
     return result
-
-
-# def main():
-#     a = [[1, 2, 3], [2, 1, 1]]
-#     b = [[1], [2], [3]]
-#     c = multiply(a, b)
-#     print(c)
-
-
-# if __name__ == "__main__":
-#     main()
