@@ -6,7 +6,8 @@ from algorithms.sort import (
     counting_sort,
     cycle_sort,
     max_heap_sort, min_heap_sort,
-    insertion_sort,
+    insertion_sort_slow,
+    insertion_sort_fast,
     merge_sort,
     pancake_sort,
     quick_sort,
@@ -59,9 +60,13 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          min_heap_sort([1, 5, 65, 23, 57, 1232]))
 
-    def test_insertion_sort(self):
+    def test_insertion_sort_slow(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         insertion_sort([1, 5, 65, 23, 57, 1232]))
+                         insertion_sort_slow([1, 5, 65, 23, 57, 1232]))
+    
+    def test_insertion_sort_fast(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         insertion_sort_fast([1, 5, 65, 23, 57, 1232]))
 
     def test_merge_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
