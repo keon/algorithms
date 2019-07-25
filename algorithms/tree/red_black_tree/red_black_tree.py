@@ -93,10 +93,10 @@ class RBTree:
             return
             # case 2 the parent color is black, do nothing
         # case 3 the parent color is red
-        while node.parent and node.parent.color is 1:
+        while node.parent and node.parent.color == 1:
             if node.parent is node.parent.parent.left:
                 uncle_node = node.parent.parent.right
-                if uncle_node and uncle_node.color is 1:
+                if uncle_node and uncle_node.color == 1:
                     # case 3.1 the uncle node is red
                     # then set parent and uncle color is black and grandparent is red
                     # then node => node.parent
@@ -118,7 +118,7 @@ class RBTree:
                 self.right_rotate(node.parent.parent)
             else:
                 uncle_node = node.parent.parent.left
-                if uncle_node and uncle_node.color is 1:
+                if uncle_node and uncle_node.color == 1:
                     # case 3.1 the uncle node is red
                     # then set parent and uncle color is black and grandparent is red
                     # then node => node.parent
