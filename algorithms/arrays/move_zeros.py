@@ -13,7 +13,7 @@ def move_zeros(array):
     zeros = 0
 
     for i in array:
-        if i is 0:  # not using `not i` to avoid `False`, `[]`, etc.
+        if i == 0:  # not using `not i` to avoid `False`, `[]`, etc.
             zeros += 1
         else:
             result.append(i)
