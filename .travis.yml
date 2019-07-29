@@ -1,16 +1,17 @@
 group: travis_latest
+dist: xenial  # Travis CI's default distro
 language: python
 cache:
   directories:
     - $HOME/.cache/pip
 matrix:
     include:
-        - python: 3.4
-          env: TOX_ENV=py34
         - python: 3.5
-          env: TOX_ENV=py35,coverage
+          env: TOX_ENV=py35
         - python: 3.6
           env: TOX_ENV=py36
+        - python: 3.7
+          env: TOX_ENV=py37,coverage
 install:
     - pip install -r test_requirements.txt
 before_script:
@@ -20,10 +21,10 @@ before_script:
     - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 script:
     # Check python install package
-    - pip3 install -e .
+    - pip install -e .
     - tox -e $TOX_ENV
     # Check python uninstall package
-    - pip3 uninstall -y algorithms
+    - pip uninstall -y algorithms
 notifications:
     on_success: change
     on_failure: change  # `always` will be the setting once code changes slow down
