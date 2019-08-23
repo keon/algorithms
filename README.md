@@ -343,6 +343,7 @@ If you want to uninstall algorithms, it is as simple as:
         - [add_and_search](algorithms/tree/trie/add_and_search.py)
         - [trie](algorithms/tree/trie/trie.py)
     - [b_tree](algorithms/tree/b_tree.py)
+    - [binary_tree_from_inorder_preorder](algorithms/tree/binary_tree_from_preorder_inorder.py)
     - [binary_tree_paths](algorithms/tree/binary_tree_paths.py)
     - [bin_tree_to_list](algorithms/tree/bin_tree_to_list.py)
     - [deepest_left](algorithms/tree/deepest_left.py)
