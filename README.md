@@ -149,6 +149,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [find_all_cliques](algorithms/graph/find_all_cliques.py)
     - [find_path](algorithms/graph/find_path.py)
     - [graph](algorithms/graph/graph.py)
+    - [graph_adj_matrix](algorithms/graph/graph_adj_matrix.py)
     - [markov_chain](algorithms/graph/markov_chain.py)
     - [minimum_spanning_tree](algorithms/graph/minimum_spanning_tree.py)
     - [satisfiability](algorithms/graph/satisfiability.py)
