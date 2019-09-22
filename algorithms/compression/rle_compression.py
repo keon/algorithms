@@ -34,3 +34,25 @@ def encode_rle(input):
             count += 1
     else:
         return encoded_str + (str(count) + prev_ch)
+
+
+def decode_rle(input):
+    """
+    Gets a stream of data and decompresses it
+    under a Run-Length Decoding.
+    :param input: The data to be decoded.
+    :return: The decoded string.
+    """
+    decode_str = ''
+    
+    for ch in input:
+        count = ''
+        # If not numerical
+        if not ch.isdigit():
+            # Expand it for the decoding
+            decode += ch * int(count)
+            count = ''
+        else:
+            # Add it in the counter
+            count += ch
+    return decode_str
