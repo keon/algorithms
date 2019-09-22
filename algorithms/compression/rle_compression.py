@@ -17,9 +17,9 @@ def encode_rle(input):
 
     encoded_str = ''
     prev_ch = ''
+    count = 1
 
     for ch in input:
-        count = 1
 
         # Check If the subsequent character does not match
         if ch != prev_ch:
@@ -44,13 +44,13 @@ def decode_rle(input):
     :return: The decoded string.
     """
     decode_str = ''
-    
+    count = ''
+
     for ch in input:
-        count = ''
         # If not numerical
         if not ch.isdigit():
             # Expand it for the decoding
-            decode += ch * int(count)
+            decode_str += ch * int(count)
             count = ''
         else:
             # Add it in the counter
