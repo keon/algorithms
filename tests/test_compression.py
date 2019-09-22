@@ -1,4 +1,5 @@
 from algorithms.compression.huffman_coding import HuffmanCoding
+from algorithms.compression.rle_compression import (decode_rle, encode_rle)
 
 import unittest
 
@@ -32,6 +33,16 @@ class TestHuffmanCoding(unittest.TestCase):
         os.remove(self.file_in_name)
         os.remove(self.file_out_bin_name)
         os.remove(self.file_out_name)
+
+class TestRLECompression(unittest.TestCase):
+    
+    def test_encode_rle(self):
+        self.assertEqual('12W1B12W3B24W1B14W',
+            encode_rle('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW'))
+
+    def test_decode_rle(self):
+        self.assertEqual('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW', 
+            decode_rle('12W1B12W3B24W1B14W'))
 
 
 if __name__ == "__main__":
