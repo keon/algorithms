@@ -115,6 +115,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [math_parser](algorithms/calculator/math_parser.py)
 - [compression](algorithms/compression)
     - [huffman_coding](algorithms/compression/huffman_coding.py)
+    - [rle_compression](algorithms/compression/rle_compression.py)
 - [dfs](algorithms/dfs)
     - [all_factors](algorithms/dfs/all_factors.py)
     - [count_islands](algorithms/dfs/count_islands.py)
