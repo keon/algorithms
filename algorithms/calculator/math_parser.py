@@ -91,6 +91,8 @@ def parse(expression):
                 current = ""
             if i in __operators__ or i in __parenthesis__:
                 result.append(i)
+            elif i == ' ':
+                pass
             else:
                 raise Exception("invalid syntax " + i)
 
