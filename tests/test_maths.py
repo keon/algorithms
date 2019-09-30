@@ -16,6 +16,7 @@ from algorithms.maths import (
     encrypt, decrypt,
     combination, combination_memo,
     hailstone,
+    cosine_similarity,
 )
 
 import unittest
@@ -299,6 +300,22 @@ class TestHailstone(unittest.TestCase):
     def test_hailstone(self):
         self.assertEqual([8, 4, 2, 1], hailstone.hailstone(8))
         self.assertEqual([10, 5, 16, 8, 4, 2, 1], hailstone.hailstone(10))
+
+
+class TestCosineSimilarity(unittest.TestCase):
+    """[summary]
+    Test for the file cosine_similarity.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_cosine_similarity(self):
+        vec_a = [1, 1, 1]
+        vec_b = [-1, -1, -1]
+        vec_c = [1, 2, -1]
+        self.assertAlmostEqual(cosine_similarity(vec_a, vec_a), 1)
+        self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
+        self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
 
 
 if __name__ == "__main__":

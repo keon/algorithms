@@ -14,3 +14,4 @@ from .pythagoras import *
 from .rabin_miller import *
 from .rsa import *
 from .combination import *
+from .cosine_similarity import *
