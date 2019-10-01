@@ -1,5 +1,5 @@
 """
-Python arrays are known as 'lists'
+Python arrays - lists
 """
 
 
