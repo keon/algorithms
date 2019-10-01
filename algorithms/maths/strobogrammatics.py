@@ -33,7 +33,7 @@ def gen_strobogrammatic(n):
 
 	else:
 		if n == 2: # return a pair of invertable numbers
-			return [valid_numbers[i] + inverse[valid_numbers[i]] for i in range(0, len(valid_numbers))]
+			return [valid_numbers[i] + inverse[valid_numbers[i]] for i in range(1, len(valid_numbers))]
 		elif n == 1: # return all rotatable numbers
 			return ['1', '8', '0'] 
 		else:
