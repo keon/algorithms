@@ -50,7 +50,7 @@ def strobogrammatic_in_range(low, high):
 		total += len(gen_strobogrammatic(i))
 	return total
 
-def is_strobogrammatic(s):
+def is_strobogrammatic1(s):
 	"""
     :type num: str
     :rtype: bool

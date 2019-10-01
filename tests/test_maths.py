@@ -6,7 +6,7 @@ from algorithms.maths import (
     factorial, factorial_recur,
     gcd, lcm,
     gen_strobogrammatic, strobogrammatic_in_range, 
-    is_strobogrammatic, is_strobogrammatic2, 
+    is_strobogrammatic1, is_strobogrammatic2, 
     is_strobogrammatic3,
     modular_exponential,
     find_next_square, find_next_square2,
@@ -118,8 +118,8 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
         self.assertEqual(4, strobogrammatic_in_range("10", "100"))
 
     def test_is_strobogrammatic(self):
-        self.assertTrue(is_strobogrammatic("69"))
-        self.assertFalse(is_strobogrammatic("14"))
+        self.assertTrue(is_strobogrammatic1("69"))
+        self.assertFalse(is_strobogrammatic1("14"))
 
 
 class TestIsStrobogrammatic(unittest.TestCase):
