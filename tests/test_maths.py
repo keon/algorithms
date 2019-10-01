@@ -116,6 +116,10 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     def test_strobogrammatic_in_range(self):
         self.assertEqual(4, strobogrammatic_in_range("10", "100"))
 
+    def test_is_strobogrammatic(self):
+        self.assertTrue(is_strobogrammatic("69"))
+        self.assertFalse(is_strobogrammatic("14"))
+
 
 class TestIsStrobogrammatic(unittest.TestCase):
     """[summary]
@@ -125,13 +129,13 @@ class TestIsStrobogrammatic(unittest.TestCase):
         unittest {[type]} -- [description]
     """
 
-    def test_is_strobogrammatic(self):
-        self.assertTrue(is_strobogrammatic("69"))
-        self.assertFalse(is_strobogrammatic("14"))
-
     def test_is_strobogrammatic2(self):
         self.assertTrue(is_strobogrammatic2("69"))
         self.assertFalse(is_strobogrammatic2("14"))
+
+    def test_is_strobogrammatic3(self):
+        self.assertTrue(is_strobogrammatic3("69"))
+        self.assertFalse(is_strobogrammatic3("14"))
 
 
 class TestModularExponential(unittest.TestCase):

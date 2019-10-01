@@ -9,7 +9,7 @@ For example, the numbers "69", "88", and "818" are all strobogrammatic.
 """
 
 
-def is_strobogrammatic(num):
+def is_strobogrammatic2(num):
     """
     :type num: str
     :rtype: bool
@@ -26,6 +26,6 @@ def is_strobogrammatic(num):
     return True
 
 
-def is_strobogrammatic2(num: str):
+def is_strobogrammatic3(num: str):
     """Another implementation."""
     return num == num[::-1].replace('6', '#').replace('9', '6').replace('#', '9')

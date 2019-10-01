@@ -196,7 +196,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [extended_gcd](algorithms/maths/extended_gcd.py)
     - [factorial](algorithms/maths/factorial.py)    
     - [gcd/lcm](algorithms/maths/gcd.py)
-    - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
+    - [strobogrammtics](algorithms/maths/strobogrammtics.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
     - [modular_exponential](algorithms/maths/modular_exponential.py)
     - [next_bigger](algorithms/maths/next_bigger.py)
