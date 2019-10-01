@@ -1,3 +1,4 @@
+#!/bin/python3
 # Sparse Arrays 
 
 # There is a collection of input strings and a collections of query strings . For each query strings , determine how many times it occurs in the list of input strings.
@@ -23,7 +24,7 @@
 # Return an internal array of the results of all queries in order. 
 
 
-#!/bin/python3
+
 
 import math
 import os
