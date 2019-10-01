@@ -112,7 +112,7 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     """
 
     def test_gen_strobomatic(self):
-        self.assertEqual(['88', '11', '96', '69'], gen_strobogrammatic(2))
+        self.assertEqual(sorted(['88', '11', '96', '69']), sorted(gen_strobogrammatic(2)))
 
     def test_strobogrammatic_in_range(self):
         self.assertEqual(4, strobogrammatic_in_range("10", "100"))
