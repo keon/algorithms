@@ -4,7 +4,7 @@ from .euler_totient import *
 from .extended_gcd import *
 from .factorial import *
 from .gcd import *
-from .strobogrammtics import *
+from .strobogrammatics import *
 from .is_strobogrammatic import *
 from .modular_exponential import *
 from .next_perfect_square import *
