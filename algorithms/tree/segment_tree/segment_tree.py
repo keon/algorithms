@@ -41,9 +41,7 @@ Example -
 mytree = SegmentTree([2,4,5,3,4],max)
 mytree.query(2,4)
 mytree.query(0,3) ...
-
 mytree = SegmentTree([4,5,2,3,4,43,3],sum)
 mytree.query(1,8)
 ...
-
 '''
