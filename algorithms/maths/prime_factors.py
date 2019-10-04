@@ -32,5 +32,4 @@ def prime_factors(n):
             idx +=1
     return factordict
 
-print(prime_factors(6))
     
