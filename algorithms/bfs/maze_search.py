@@ -2,7 +2,7 @@
 BFS time complexity : O(|E|)
 BFS space complexity : O(|V|)
 
-do BFS from (0,0) of the grid and get the minimum number of steps needed to get to the lower right column
+do BFS from (sx,sy) (default: (0, 0)), of the grid and get the minimum number of steps needed to get to (ex, ey)(default: the lower right column)
 
 only step on the columns whose value is 1
 
@@ -14,29 +14,34 @@ If grid is
  [1,0,1,0,1,0],
  [1,0,1,0,1,1],
  [1,1,1,0,1,1]], 
+Start at (0, 0), and End at (the lower right column)
 the answer is: 14
 
 Ex 2)
 If grid is
 [[1,0,0],
  [0,1,1],
- [0,1,1]], 
+ [0,1,1]],
+Start at (0, 0), and End at (the lower right column)
 the answer is: -1
 '''
 
-def maze_search(grid):
+def maze_search(grid, sx=0, sy=0, ex=-1, ey=-1):
     dx = [0,0,-1,1]
     dy = [-1,1,0,0]
     n = len(grid)
     m = len(grid[0])
-    q = [(0,0,0)]
+    if ex==-1 or ey==-1:
+        ex = n-1
+        ey = m-1
+    q = [(sx, sy,0)]
     visit = [[0]*m for _ in range(n)]
     if grid[0][0] == 0:
         return -1
     visit[0][0] = 1
     while q:
         i, j, step = q.pop(0)
-        if i == n-1 and j == m-1:
+        if i == ex and j == ey:
             return step
         for k in range(4):
             x = i + dx[k]
