@@ -372,6 +372,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [count_islands](algorithms/union-find/count_islands.py)
 - [machine-learning](algorithms/machine-learning)
     - [nearest neighbor classification](algorithms/machine-learning/nearest_neighbor.py)
+    - [simple linear regression](algorithms/machine-learning/simple_linear_regression.py)
 
 ## Contributors
 
