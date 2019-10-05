@@ -15,3 +15,4 @@ from .rabin_miller import *
 from .rsa import *
 from .combination import *
 from .cosine_similarity import *
+from .jaccard_similarity import *
