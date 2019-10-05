@@ -17,6 +17,7 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
+    jaccard_similarity,
 )
 
 import unittest
@@ -316,6 +317,22 @@ class TestCosineSimilarity(unittest.TestCase):
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_a), 1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
+
+
+class TestJaccardSimilarity(unittest.TestCase):
+    """[summary]
+    Test for the file jaccard_similarity.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_jaccard_similarity(self):
+        vec_a = [1, 1, 1]
+        vec_b = [-1, -1, -1]
+        vec_c = [1, 2, -1]
+        self.assertAlmostEqual(jaccard_similarity(vec_a, vec_a), 1.0)
+        self.assertAlmostEqual(jaccard_similarity(vec_a, vec_b), 0)
+        self.assertAlmostEqual(jaccard_similarity(vec_a, vec_c), 0.3333333333333333)
 
 
 if __name__ == "__main__":
