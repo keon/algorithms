@@ -24,6 +24,14 @@ If grid is
  [0,1,1]],
 Start at (0, 0), and End at (the lower right column)
 the answer is: -1
+
+Ex 3)
+If grid is
+[[1,0,0],
+ [0,1,1],
+ [0,1,1]],
+Start at (1, 1), and End at (the lower right column)
+the answer is: 2
 '''
 
 def maze_search(grid, sx=0, sy=0, ex=-1, ey=-1):
