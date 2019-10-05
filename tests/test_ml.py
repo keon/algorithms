@@ -32,8 +32,14 @@ class TestNearestNeighbor(unittest.TestCase):
 
 class TestSimpleLinearRegression(unittest.TestCase):
     def test_zero_bias(self):
-        self.assertEqual(simple_linear_regression.train([1, 2, 3], [2, 4, 6], 0.001, 1000)[1], 0.0)
+        self.assertAlmostEqual(simple_linear_regression.train([1, 2, 3], [2, 4, 6], 0.01, 10000)[1], 0.0)
 
+    def test_zero_weight(self):
+        self.assertAlmostEqual(simple_linear_regression.train([1, 2, 3], [2, 2, 2], 0.01, 10000)[0], 0.0)
+        
+    def test_unit_weight_and_unit_bias(self):
+        self.assertAlmostEqual(simple_linear_regression.train([1, 2, 3], [2, 3, 4], 0.01, 10000)[0], 1.0)
+        self.assertAlmostEqual(simple_linear_regression.train([1, 2, 3], [2, 3, 4], 0.01, 10000)[1], 1.0)
         
 if __name__ == "__main__":
     unittest.main()
