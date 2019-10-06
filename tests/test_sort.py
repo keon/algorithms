@@ -26,7 +26,7 @@ class TestSuite(unittest.TestCase):
     def test_bogo_sort(self):
         self.assertEqual([1, 5, 23],
                          bogo_sort([1, 23, 5]))
-        
+
     def test_bitonic_sort(self):
         self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
                          bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232]))
@@ -52,7 +52,7 @@ class TestSuite(unittest.TestCase):
                          counting_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-1232, -65, -57, -23, -5, -1],
                          counting_sort([-1, -5, -65, -23, -57, -1232]))
-        
+
     def test_cycle_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          cycle_sort([1, 5, 65, 23, 57, 1232]))
@@ -120,6 +120,7 @@ class TestSuite(unittest.TestCase):
                         cocktail_shaker_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          cocktail_shaker_sort([-5, -4, -10, -1]))
+
 class TestTopSort(unittest.TestCase):
     def setUp(self):
         self.depGraph = {
