@@ -26,6 +26,7 @@ class TestSuite(unittest.TestCase):
     def test_bogo_sort(self):
         self.assertEqual([1, 5, 23],
                          bogo_sort([1, 23, 5]))
+        
     def test_bitonic_sort(self):
         self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
                          bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232]))
@@ -39,11 +40,13 @@ class TestSuite(unittest.TestCase):
                          bubble_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          bubble_sort([-5, -4, -10, -1]))
+        
     def test_comb_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          comb_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          comb_sort([-5, -4, -10, -1]))
+        
     def test_counting_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          counting_sort([1, 5, 65, 23, 57, 1232]))
@@ -67,26 +70,31 @@ class TestSuite(unittest.TestCase):
                          insertion_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          insertion_sort([-5, -4, -10, -1]))
+        
     def test_merge_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          merge_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          merge_sort([-5, -4, -10, -1]))
+        
     def test_pancake_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          pancake_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          pancake_sort([-5, -4, -10, -1]))
+        
     def test_quick_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          quick_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          quick_sort([-5, -4, -10, -1]))
+        
     def test_selection_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          selection_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          selection_sort([-5, -4, -10, -1]))
+        
     def test_bucket_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                         bucket_sort([1, 5, 65, 23, 57, 1232]))
@@ -96,6 +104,7 @@ class TestSuite(unittest.TestCase):
                         shell_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          shell_sort([-5, -4, -10, -1]))
+        
     def test_radix_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                         radix_sort([1, 5, 65, 23, 57, 1232]))
@@ -105,6 +114,7 @@ class TestSuite(unittest.TestCase):
                          gnome_sort([1, 5, 65, 23, 57, 1232]))
         self.assertEqual([-10, -5, -4, -1],
                          gnome_sort([-5, -4, -10, -1]))
+        
     def test_cocktail_shaker_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                         cocktail_shaker_sort([1, 5, 65, 23, 57, 1232]))
