@@ -9,7 +9,8 @@ from algorithms.search import (
     find_min_rotate, find_min_rotate_recur,
     search_rotate, search_rotate_recur,
     jump_search,
-    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2
+    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2,
+    fibonacci_search
 )
 
 import unittest
@@ -121,6 +122,15 @@ class TestSuite(unittest.TestCase):
         self.assertEqual("c", next_greatest_letter(letters, target))
         self.assertEqual("c", next_greatest_letter_v1(letters, target))
         self.assertEqual("c", next_greatest_letter_v2(letters, target))
+    
+    def test_fibonacci_search(self):
+        array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
+
+        self.assertEqual(10, fibonacci_search(array, 5))
+        self.assertEqual(11, fibonacci_search(array, 6))
+        self.assertEqual(None, fibonacci_search(array, 7))
+        self.assertEqual(None, fibonacci_search(array, -1))
+
 
 if __name__ == '__main__':
 
