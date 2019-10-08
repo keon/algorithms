@@ -5,10 +5,10 @@ def karatsuba(a, b):
         m1 = max(len(str(a)), len(str(b)))
         m2 = m1 // 2
 
-        a1 = x // 10**(m2)
-        a2 = x % 10**(m2)
-        b1 = y // 10**(m2)
-        b2 = y % 10**(m2)
+        a1 = a // 10**(m2)
+        a2 = a % 10**(m2)
+        b1 = b // 10**(m2)
+        b2 = b % 10**(m2)
 
         x = karatsuba(a2, b2)
         y = karatsuba((a1 + a2), (b1 + b2))
