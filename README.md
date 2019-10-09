@@ -44,6 +44,8 @@ if __name__ == "__main__":
     my_list = merge_sort(my_list)
     print(my_list)
 ```
+##swap
+a,b=b,a
 
 ## Uninstall
 If you want to uninstall algorithms, it is as simple as:
