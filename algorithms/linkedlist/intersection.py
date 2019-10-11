@@ -37,7 +37,7 @@ def intersection(h1, h2):
         if h2:
             h2 = h2.next
 
-    long_len = count    # Mark the length of the longer of the two lists
+    long_len = count  # Mark the length of the longer of the two lists
     short_len = flag[0]
 
     if flag[1] is None:
@@ -65,7 +65,6 @@ def intersection(h1, h2):
 
 
 class TestSuite(unittest.TestCase):
-
     def test_intersection(self):
 
         # create linked list as:
@@ -96,6 +95,6 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(7, intersection(a1, a2).val)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     unittest.main()

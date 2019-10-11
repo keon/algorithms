@@ -14,6 +14,7 @@ def is_same_tree(p, q):
         return is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right)
     return False
 
+
 # Time Complexity O(min(N,M))
 # where N and M are the number of nodes for the trees.
 

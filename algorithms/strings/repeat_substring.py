@@ -16,6 +16,8 @@ Explanation: It's the substring "abc" four times.
 
 Reference: https://leetcode.com/problems/repeated-substring-pattern/description/
 """
+
+
 def repeat_substring(s):
     """
     :type s: str

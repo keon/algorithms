@@ -10,13 +10,15 @@ The length of A and B will be between 1 and 10000.
 
 Reference: https://leetcode.com/problems/repeated-string-match/description/
 """
+
+
 def repeat_string(A, B):
     count = 1
     tmp = A
     max_count = (len(B) / len(A)) + 1
-    while not(B in tmp):
+    while not (B in tmp):
         tmp = tmp + A
-        if (count > max_count):
+        if count > max_count:
             count = -1
             break
         count = count + 1

@@ -67,5 +67,5 @@ def comp(p, q):
     if p is None and q is None:
         return True
     if p is not None and q is not None:
-        return p.val == q.val and comp(p.left,q.left) and comp(p.right, q.right)
+        return p.val == q.val and comp(p.left, q.left) and comp(p.right, q.right)
     return False

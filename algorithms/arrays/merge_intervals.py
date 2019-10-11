@@ -11,6 +11,7 @@ class Interval:
      numbers are included in the set.
     Includes related methods to merge and print interval sets.
     """
+
     def __init__(self, start=0, end=0):
         self.start = start
         self.end = end
@@ -51,7 +52,7 @@ class Interval:
             if out and i.start <= out[-1].end:
                 out[-1].end = max(out[-1].end, i.end)
             else:
-                out += i,
+                out += (i,)
         return out
 
     @staticmethod

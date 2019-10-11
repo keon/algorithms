@@ -19,9 +19,11 @@ import unittest
 from bst import Node
 from bst import bst
 
+
 def depth_sum(root, n):
     if root:
         return recur_depth_sum(root, 1)
+
 
 def recur_depth_sum(root, n):
     if root is None:
@@ -29,7 +31,12 @@ def recur_depth_sum(root, n):
     elif root.left is None and root.right is None:
         return root.data * n
     else:
-        return n * root.data + recur_depth_sum(root.left, n+1) + recur_depth_sum(root.right, n+1)
+        return (
+            n * root.data
+            + recur_depth_sum(root.left, n + 1)
+            + recur_depth_sum(root.right, n + 1)
+        )
+
 
 """
     The tree is created for testing:
@@ -45,6 +52,7 @@ def recur_depth_sum(root, n):
     depth_sum = 1*9 + 2*(6+12) + 3*(3+8+10+15) + 4*(7+18)
 
 """
+
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -62,5 +70,6 @@ class TestSuite(unittest.TestCase):
     def test_depth_sum(self):
         self.assertEqual(253, depth_sum(self.tree.root, 4))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

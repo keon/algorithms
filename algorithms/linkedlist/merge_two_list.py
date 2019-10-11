@@ -6,11 +6,13 @@ For example:
 Input: 1->2->4, 1->3->4
 Output: 1->1->2->3->4->4
 """
-class Node:
 
+
+class Node:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 def merge_two_list(l1, l2):
     ret = cur = Node(0)
@@ -24,6 +26,7 @@ def merge_two_list(l1, l2):
         cur = cur.next
     cur.next = l1 or l2
     return ret.next
+
 
 # recursively
 def merge_two_list_recur(l1, l2):

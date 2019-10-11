@@ -8,16 +8,14 @@ Output: ["Alaska", "Dad"]
 
 Reference: https://leetcode.com/problems/keyboard-row/description/
 """
+
+
 def find_keyboard_row(words):
     """
     :type words: List[str]
     :rtype: List[str]
     """
-    keyboard = [
-        set('qwertyuiop'),
-        set('asdfghjkl'),
-        set('zxcvbnm'),
-    ]
+    keyboard = [set("qwertyuiop"), set("asdfghjkl"), set("zxcvbnm")]
     result = []
     for word in words:
         for key in keyboard:

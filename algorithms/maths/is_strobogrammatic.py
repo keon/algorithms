@@ -18,7 +18,7 @@ def is_strobogrammatic(num):
     i = 0
     j = len(num) - 1
     while i <= j:
-        x = comb.find(num[i]+num[j])
+        x = comb.find(num[i] + num[j])
         if x == -1:
             return False
         i += 1
@@ -28,4 +28,4 @@ def is_strobogrammatic(num):
 
 def is_strobogrammatic2(num: str):
     """Another implementation."""
-    return num == num[::-1].replace('6', '#').replace('9', '6').replace('#', '9')
+    return num == num[::-1].replace("6", "#").replace("9", "6").replace("#", "9")

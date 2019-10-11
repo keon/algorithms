@@ -19,6 +19,7 @@ After running your function, the 2D grid should be:
     0   -1  3   4
 """
 
+
 def walls_and_gates(rooms):
     for i in range(len(rooms)):
         for j in range(len(rooms[0])):
@@ -32,7 +33,7 @@ def dfs(rooms, i, j, depth):
     if rooms[i][j] < depth:
         return  # crossed
     rooms[i][j] = depth
-    dfs(rooms, i+1, j, depth+1)
-    dfs(rooms, i-1, j, depth+1)
-    dfs(rooms, i, j+1, depth+1)
-    dfs(rooms, i, j-1, depth+1)
+    dfs(rooms, i + 1, j, depth + 1)
+    dfs(rooms, i - 1, j, depth + 1)
+    dfs(rooms, i, j + 1, depth + 1)
+    dfs(rooms, i, j - 1, depth + 1)

@@ -26,6 +26,7 @@ We can check that L * U = A.
 I think the complexity should be O(n^3).
 """
 
+
 def crout_matrix_decomposition(A):
     n = len(A)
     L = [[0.0] * n for i in range(n)]
@@ -35,13 +36,13 @@ def crout_matrix_decomposition(A):
         for i in range(j, n):
             alpha = float(A[i][j])
             for k in range(j):
-                alpha -= L[i][k]*U[k][j]
+                alpha -= L[i][k] * U[k][j]
             L[i][j] = float(alpha)
-        for i in range(j+1, n):
+        for i in range(j + 1, n):
             tempU = float(A[j][i])
             for k in range(j):
-                tempU -= float(L[j][k]*U[k][i])
+                tempU -= float(L[j][k] * U[k][i])
             if int(L[j][j]) == 0:
-                L[j][j] = float(0.1**40)
-            U[j][i] = float(tempU/L[j][j])
-    return (L,U)
+                L[j][j] = float(0.1 ** 40)
+            U[j][i] = float(tempU / L[j][j])
+    return (L, U)

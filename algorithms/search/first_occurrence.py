@@ -7,7 +7,7 @@ def first_occurrence(array, query):
     lo, hi = 0, len(array) - 1
     while lo <= hi:
         mid = (lo + hi) // 2
-        #print("lo: ", lo, " hi: ", hi, " mid: ", mid)
+        # print("lo: ", lo, " hi: ", hi, " mid: ", mid)
         if lo == hi:
             break
         if array[mid] < query:
@@ -15,4 +15,4 @@ def first_occurrence(array, query):
         else:
             hi = mid
     if array[lo] == query:
-      return lo
+        return lo

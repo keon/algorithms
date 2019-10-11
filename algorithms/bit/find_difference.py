@@ -19,6 +19,8 @@ A xor B xor C = A xor C xor B
 If A == C, then A xor C = 0
 and then, B xor 0 =  B
 """
+
+
 def find_difference(s, t):
     ret = 0
     for ch in s + t:

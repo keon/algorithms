@@ -8,10 +8,12 @@ For example:
 [1,3,5,6], 7 -> 4
 [1,3,5,6], 0 -> 0
 """
+
+
 def search_insert(array, val):
     low = 0
     high = len(array) - 1
-    while low <=  high:
+    while low <= high:
         mid = low + (high - low) // 2
         if val > array[mid]:
             low = mid + 1

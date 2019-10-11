@@ -65,28 +65,21 @@ def n_sum(n, nums, target, **kv):
         return a == b
 
     def n_sum(n, nums, target):
-        if n == 2:      # want answers with only 2 terms? easy!
+        if n == 2:  # want answers with only 2 terms? easy!
             results = two_sum(nums, target)
         else:
             results = []
             prev_num = None
             for index, num in enumerate(nums):
-                if prev_num is not None and \
-                   same_closure(prev_num, num):
+                if prev_num is not None and same_closure(prev_num, num):
                     continue
 
                 prev_num = num
-                n_minus1_results = (
-                    n_sum(                      # recursive call
-                        n - 1,                  # a
-                        nums[index + 1:],       # b
-                        target - num            # c
-                        )   # x = n_sum( a, b, c )
-                    )   # n_minus1_results = x
+                n_minus1_results = n_sum(  # recursive call
+                    n - 1, nums[index + 1 :], target - num  # a  # b  # c
+                )  # x = n_sum( a, b, c )  # n_minus1_results = x
 
-                n_minus1_results = (
-                    append_elem_to_each_list(num, n_minus1_results)
-                    )
+                n_minus1_results = append_elem_to_each_list(num, n_minus1_results)
                 results += n_minus1_results
         return union(results)
 
@@ -106,11 +99,9 @@ def n_sum(n, nums, target, **kv):
                 results.append(sorted([nums[lt], nums[rt]]))
                 lt += 1
                 rt -= 1
-                while (lt < len(nums) and
-                       same_closure(nums[lt - 1], nums[lt])):
+                while lt < len(nums) and same_closure(nums[lt - 1], nums[lt]):
                     lt += 1
-                while (0 <= rt and
-                       same_closure(nums[rt], nums[rt + 1])):
+                while 0 <= rt and same_closure(nums[rt], nums[rt + 1]):
                     rt -= 1
         return results
 
@@ -133,8 +124,8 @@ def n_sum(n, nums, target, **kv):
 
         return results
 
-    sum_closure = kv.get('sum_closure', sum_closure_default)
-    same_closure = kv.get('same_closure', same_closure_default)
-    compare_closure = kv.get('compare_closure', compare_closure_default)
+    sum_closure = kv.get("sum_closure", sum_closure_default)
+    same_closure = kv.get("same_closure", same_closure_default)
+    compare_closure = kv.get("compare_closure", compare_closure_default)
     nums.sort()
     return n_sum(n, nums, target)

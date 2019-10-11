@@ -1,16 +1,22 @@
 from algorithms.stack import (
-    first_is_consecutive, second_is_consecutive,
+    first_is_consecutive,
+    second_is_consecutive,
     is_sorted,
     remove_min,
-    first_stutter, second_stutter,
-    first_switch_pairs, second_switch_pairs,
+    first_stutter,
+    second_stutter,
+    first_switch_pairs,
+    second_switch_pairs,
     is_valid,
     simplify_path,
-    ArrayStack, LinkedListStack,
-    OrderedStack
+    ArrayStack,
+    LinkedListStack,
+    OrderedStack,
 )
 
 import unittest
+
+
 class TestSuite(unittest.TestCase):
     def test_is_consecutive(self):
         self.assertTrue(first_is_consecutive([3, 4, 5, 6, 7]))
@@ -35,24 +41,24 @@ class TestSuite(unittest.TestCase):
 
     def test_stutter(self):
         # Test case: bottom [3, 7, 1, 14, 9] top
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         first_stutter([3, 7, 1, 14, 9]))
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         second_stutter([3, 7, 1, 14, 9]))
+        self.assertEqual(
+            [3, 3, 7, 7, 1, 1, 14, 14, 9, 9], first_stutter([3, 7, 1, 14, 9])
+        )
+        self.assertEqual(
+            [3, 3, 7, 7, 1, 1, 14, 14, 9, 9], second_stutter([3, 7, 1, 14, 9])
+        )
 
     def test_switch_pairs(self):
         # Test case: even number of values in stack
         # bottom [3, 8, 17, 9, 1, 10] top
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1, 10]))
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1, 10]))
+        self.assertEqual([8, 3, 9, 17, 10, 1], first_switch_pairs([3, 8, 17, 9, 1, 10]))
+        self.assertEqual(
+            [8, 3, 9, 17, 10, 1], second_switch_pairs([3, 8, 17, 9, 1, 10])
+        )
         # Test case: odd number of values in stack
         # bottom [3, 8, 17, 9, 1] top
-        self.assertEqual([8, 3, 9, 17, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1]))
-        self.assertEqual([8, 3, 9, 17, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1]))
+        self.assertEqual([8, 3, 9, 17, 1], first_switch_pairs([3, 8, 17, 9, 1]))
+        self.assertEqual([8, 3, 9, 17, 1], second_switch_pairs([3, 8, 17, 9, 1]))
 
     def test_is_valid_parenthesis(self):
 
@@ -63,8 +69,8 @@ class TestSuite(unittest.TestCase):
         self.assertFalse(is_valid("(}"))
 
     def test_simplify_path(self):
-        p = '/my/name/is/..//keon'
-        self.assertEqual('/my/name/keon', simplify_path(p))
+        p = "/my/name/is/..//keon"
+        self.assertEqual("/my/name/keon", simplify_path(p))
 
 
 class TestStack(unittest.TestCase):
@@ -132,6 +138,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(1, stack.pop())
 
         self.assertTrue(stack.is_empty())
+
 
 class TestOrderedStack(unittest.TestCase):
     def test_OrderedStack(self):

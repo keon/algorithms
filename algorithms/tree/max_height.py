@@ -40,7 +40,7 @@ def print_tree(root):
         print_tree(root.right)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tree = TreeNode(10)
     tree.left = TreeNode(12)
     tree.right = TreeNode(15)

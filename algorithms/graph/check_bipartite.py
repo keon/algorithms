@@ -8,6 +8,7 @@ Space complexity is O(|V|)
 
 """
 
+
 def check_bipartite(adj_list):
 
     V = len(adj_list)
@@ -36,4 +37,3 @@ def check_bipartite(adj_list):
                     q.append(u)
 
     return True
-

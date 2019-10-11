@@ -18,6 +18,8 @@ Output: 4
 Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1's and 0's.
 Reference: https://leetcode.com/problems/count-binary-substrings/description/
 """
+
+
 def count_binary_substring(s):
     cur = 1
     pre = 0

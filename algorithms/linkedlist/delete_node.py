@@ -23,7 +23,6 @@ def delete_node(node):
 
 
 class TestSuite(unittest.TestCase):
-
     def test_delete_node(self):
 
         # make linkedlist 1 -> 2 -> 3 -> 4
@@ -58,6 +57,6 @@ class TestSuite(unittest.TestCase):
         self.assertRaises(ValueError, delete_node, tail.next)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     unittest.main()

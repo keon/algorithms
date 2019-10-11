@@ -14,11 +14,11 @@ def move_zeros(array):
     zeros = 0
 
     for i in array:
-            if i == 0 and type(i) != bool:  # not using `not i` to avoid `False`, `[]`, etc.
-                zeros += 1
-            else:
-                result.append(i)
-    
+        if i == 0 and type(i) != bool:  # not using `not i` to avoid `False`, `[]`, etc.
+            zeros += 1
+        else:
+            result.append(i)
+
     result.extend([0] * zeros)
     return result
 

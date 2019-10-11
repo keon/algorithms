@@ -9,16 +9,20 @@ returns bool
 Reference: https://leetcode.com/problems/rotate-string/description/
 """
 
+
 def is_rotated(s1, s2):
     if len(s1) == len(s2):
         return s2 in s1 + s1
     else:
         return False
 
+
 """
 Another solution: brutal force
 Complexity: O(N^2)
 """
+
+
 def is_rotated_v1(s1, s2):
     if len(s1) != len(s2):
         return False

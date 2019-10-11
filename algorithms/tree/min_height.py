@@ -9,7 +9,7 @@ def min_depth(self, root):
     if root is None:
         return 0
     if root.left is not None or root.right is not None:
-        return max(self.minDepth(root.left), self.minDepth(root.right))+1
+        return max(self.minDepth(root.left), self.minDepth(root.right)) + 1
     return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
 
 
@@ -40,12 +40,12 @@ def print_tree(root):
         print_tree(root.right)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tree = TreeNode(10)
     tree.left = TreeNode(12)
     tree.right = TreeNode(15)
-    tree.left.left  = TreeNode(25)
-    tree.left.left.right  = TreeNode(100)
+    tree.left.left = TreeNode(25)
+    tree.left.left.right = TreeNode(100)
     tree.left.right = TreeNode(30)
     tree.right.left = TreeNode(36)
 

@@ -18,6 +18,8 @@ If nums = [1,2,3], a solution is:
     (2, 3)
 }
 """
+
+
 def subsets(nums):
     """
     :param nums: List[int]
@@ -32,6 +34,8 @@ def subsets(nums):
         res.add(subset)
 
     return res
+
+
 """
 this explanation is from leet_nik @ leetcode
 This is an amazing solution. Learnt a lot.

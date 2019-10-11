@@ -1,14 +1,15 @@
 GRAY, BLACK = 0, 1
 
+
 def top_sort_recursive(graph):
     """ Time complexity is the same as DFS, which is O(V + E)
         Space complexity: O(V)
     """
     order, enter, state = [], set(graph), {}
-    
+
     def dfs(node):
         state[node] = GRAY
-        #print(node)
+        # print(node)
         for k in graph.get(node, ()):
             sk = state.get(k, None)
             if sk == GRAY:
@@ -19,28 +20,30 @@ def top_sort_recursive(graph):
             dfs(k)
         order.append(node)
         state[node] = BLACK
-        
-    while enter: dfs(enter.pop())
+
+    while enter:
+        dfs(enter.pop())
     return order
+
 
 def top_sort(graph):
     """ Time complexity is the same as DFS, which is O(V + E)
         Space complexity: O(V)
     """
     order, enter, state = [], set(graph), {}
-    
+
     def is_ready(node):
         lst = graph.get(node, ())
         if len(lst) == 0:
             return True
         for k in lst:
             sk = state.get(k, None)
-            if sk == GRAY: 
+            if sk == GRAY:
                 raise ValueError("cycle")
             if sk != BLACK:
                 return False
         return True
-        
+
     while enter:
         node = enter.pop()
         stack = []
@@ -49,9 +52,9 @@ def top_sort(graph):
             stack.append(node)
             for k in graph.get(node, ()):
                 sk = state.get(k, None)
-                if sk == GRAY: 
+                if sk == GRAY:
                     raise ValueError("cycle")
-                if sk == BLACK: 
+                if sk == BLACK:
                     continue
                 enter.discard(k)
                 stack.append(k)
@@ -62,5 +65,5 @@ def top_sort(graph):
             if len(stack) == 0:
                 break
             node = stack.pop()
-        
+
     return order

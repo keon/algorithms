@@ -30,7 +30,7 @@ def ladder_length(begin_word, end_word, word_list):
     :rtype: int
     """
     if len(begin_word) != len(end_word):
-        return -1   # not possible
+        return -1  # not possible
 
     if begin_word == end_word:
         return 0
@@ -67,6 +67,6 @@ def ladder_length(begin_word, end_word, word_list):
 def word_range(word):
     for ind in range(len(word)):
         temp = word[ind]
-        for c in [chr(x) for x in range(ord('a'), ord('z') + 1)]:
+        for c in [chr(x) for x in range(ord("a"), ord("z") + 1)]:
             if c != temp:
-                yield word[:ind] + c + word[ind + 1:]
+                yield word[:ind] + c + word[ind + 1 :]

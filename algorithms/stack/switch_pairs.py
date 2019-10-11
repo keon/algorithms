@@ -20,6 +20,7 @@ second_switch_pairs: it uses a single queue as auxiliary storage
 """
 import collections
 
+
 def first_switch_pairs(stack):
     storage_stack = []
     for i in range(len(stack)):
@@ -28,13 +29,14 @@ def first_switch_pairs(stack):
         if len(storage_stack) == 0:
             break
         first = storage_stack.pop()
-        if len(storage_stack) == 0:    # case: odd number of values in stack
+        if len(storage_stack) == 0:  # case: odd number of values in stack
             stack.append(first)
             break
         second = storage_stack.pop()
         stack.append(second)
         stack.append(first)
     return stack
+
 
 def second_switch_pairs(stack):
     q = collections.deque()
@@ -52,7 +54,7 @@ def second_switch_pairs(stack):
         if len(q) == 0:
             break
         first = q.pop()
-        if len(q) == 0:                 # case: odd number of values in stack
+        if len(q) == 0:  # case: odd number of values in stack
             stack.append(first)
             break
         second = q.pop()

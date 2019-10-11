@@ -18,16 +18,17 @@ second_is_consecutive: it uses a single queue as auxiliary storage
 """
 import collections
 
+
 def first_is_consecutive(stack):
     storage_stack = []
     for i in range(len(stack)):
         first_value = stack.pop()
-        if len(stack) == 0:                # Case odd number of values in stack
+        if len(stack) == 0:  # Case odd number of values in stack
             return True
         second_value = stack.pop()
-        if first_value - second_value != 1: # Not consecutive
+        if first_value - second_value != 1:  # Not consecutive
             return False
-        stack.append(second_value)          # Backup second value
+        stack.append(second_value)  # Backup second value
         storage_stack.append(first_value)
 
     # Back up stack from storage stack
@@ -35,16 +36,17 @@ def first_is_consecutive(stack):
         stack.append(storage_stack.pop())
     return True
 
+
 def second_is_consecutive(stack):
     q = collections.deque()
     for i in range(len(stack)):
         first_value = stack.pop()
-        if len(stack) == 0:                # Case odd number of values in stack
+        if len(stack) == 0:  # Case odd number of values in stack
             return True
         second_value = stack.pop()
-        if first_value - second_value != 1: # Not consecutive
+        if first_value - second_value != 1:  # Not consecutive
             return False
-        stack.append(second_value)          # Backup second value
+        stack.append(second_value)  # Backup second value
         q.append(first_value)
 
     # Back up stack from queue

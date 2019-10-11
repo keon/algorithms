@@ -27,6 +27,7 @@ from functools import reduce
 
 def match_symbol(words, symbols):
     import re
+
     combined = []
     for s in symbols:
         for c in words:
@@ -35,22 +36,24 @@ def match_symbol(words, symbols):
                 combined.append(re.sub(s, "[{}]".format(s), c))
     return combined
 
+
 def match_symbol_1(words, symbols):
     res = []
     # reversely sort the symbols according to their lengths.
     symbols = sorted(symbols, key=lambda _: len(_), reverse=True)
     for word in words:
         for symbol in symbols:
-            word_replaced = ''
+            word_replaced = ""
             # once match, append the `word_replaced` to res, process next word
             if word.find(symbol) != -1:
-                word_replaced = word.replace(symbol, '[' + symbol + ']')
+                word_replaced = word.replace(symbol, "[" + symbol + "]")
                 res.append(word_replaced)
                 break
         # if this word matches no symbol, append it.
-        if word_replaced == '':
+        if word_replaced == "":
             res.append(word)
     return res
+
 
 """
 Another approach is to use a Tree for the dictionary (the symbols), and then
@@ -88,8 +91,6 @@ def bracket(words, symbols):
                 j += 1
             i += 1
         if len(symlist) > 0:
-            sym = reduce(lambda x, y: x if x[1] - x[0] >= y[1] - y[0] else y,
-                         symlist)
-            result[word] = "{}[{}]{}".format(word[:sym[0]], sym[2],
-                                             word[sym[1]:])
+            sym = reduce(lambda x, y: x if x[1] - x[0] >= y[1] - y[0] else y, symlist)
+            result[word] = "{}[{}]{}".format(word[: sym[0]], sym[2], word[sym[1] :])
     return tuple(word if word not in result else result[word] for word in words)

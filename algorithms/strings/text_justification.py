@@ -32,11 +32,11 @@ Output:
 
 
 def text_justification(words, max_width):
-    '''
+    """
     :type words: list
     :type max_width: int
     :rtype: list
-    '''
+    """
     ret = []  # return value
     row_len = 0  # current length of strs in a row
     row_words = []  # current words in a row
@@ -45,12 +45,16 @@ def text_justification(words, max_width):
     while index < len(words):
         while row_len <= max_width and index < len(words):
             if len(words[index]) > max_width:
-                raise ValueError("there exists word whose length is larger than max_width")
+                raise ValueError(
+                    "there exists word whose length is larger than max_width"
+                )
             tmp = row_len
             row_words.append(words[index])
             tmp += len(words[index])
             if not is_first_word:
-                tmp += 1  # except for the first word, each word should have at least a ' ' before it.
+                tmp += (
+                    1
+                )  # except for the first word, each word should have at least a ' ' before it.
             if tmp > max_width:
                 row_words.pop()
                 break
@@ -62,25 +66,27 @@ def text_justification(words, max_width):
         # if the row is the last
         if index == len(words):
             for word in row_words:
-                row += (word + ' ')
+                row += word + " "
             row = row[:-1]
-            row += ' ' * (max_width - len(row))
+            row += " " * (max_width - len(row))
         # not the last row and more than one word
         elif len(row_words) != 1:
             space_num = max_width - row_len
             space_num_of_each_interval = space_num // (len(row_words) - 1)
-            space_num_rest = space_num - space_num_of_each_interval * (len(row_words) - 1)
+            space_num_rest = space_num - space_num_of_each_interval * (
+                len(row_words) - 1
+            )
             for j in range(len(row_words)):
                 row += row_words[j]
                 if j != len(row_words) - 1:
-                    row += ' ' * (1 + space_num_of_each_interval)
+                    row += " " * (1 + space_num_of_each_interval)
                 if space_num_rest > 0:
-                    row += ' '
+                    row += " "
                     space_num_rest -= 1
         # row with only one word
         else:
             row += row_words[0]
-            row += ' ' * (max_width - len(row))
+            row += " " * (max_width - len(row))
         ret.append(row)
         # after a row , reset those value
         row_len = 0

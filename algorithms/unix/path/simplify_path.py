@@ -16,8 +16,11 @@ Reference: https://leetcode.com/problems/simplify-path/description/
 """
 
 import os
+
+
 def simplify_path_v1(path):
     return os.path.abspath(path)
+
 
 def simplify_path_v2(path):
     stack, tokens = [], path.split("/")

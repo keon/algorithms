@@ -4,7 +4,7 @@ from algorithms.tree.traversal import (
     postorder,
     postorder_rec,
     inorder,
-    inorder_rec
+    inorder_rec,
 )
 from algorithms.tree.b_tree import BTree
 
@@ -12,7 +12,6 @@ import unittest
 
 
 class Node:
-
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
@@ -20,7 +19,6 @@ class Node:
 
 
 class TestTraversal(unittest.TestCase):
-
     def test_preorder(self):
         tree = create_tree()
         self.assertEqual([100, 50, 25, 75, 150, 125, 175], preorder(tree))
@@ -52,16 +50,18 @@ def create_tree():
 
 
 class TestBTree(unittest.TestCase):
-
     @classmethod
     def setUpClass(cls):
         import random
+
         random.seed(18719)
         cls.random = random
         cls.range = 10000
 
     def setUp(self):
-        self.keys_to_insert = [self.random.randrange(-self.range, self.range) for i in range(self.range)]
+        self.keys_to_insert = [
+            self.random.randrange(-self.range, self.range) for i in range(self.range)
+        ]
 
     def test_insertion_and_find_even_degree(self):
         btree = BTree(4)
@@ -108,5 +108,5 @@ class TestBTree(unittest.TestCase):
         self.assertEqual(btree.root.children, [])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

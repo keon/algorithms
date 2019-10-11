@@ -1,20 +1,28 @@
 from algorithms.maths import (
-    int_to_base, base_to_int,
+    int_to_base,
+    base_to_int,
     decimal_to_binary_ip,
     euler_totient,
     extended_gcd,
-    factorial, factorial_recur,
-    gcd, lcm,
-    gen_strobogrammatic, strobogrammatic_in_range,
-    is_strobogrammatic, is_strobogrammatic2,
+    factorial,
+    factorial_recur,
+    gcd,
+    lcm,
+    gen_strobogrammatic,
+    strobogrammatic_in_range,
+    is_strobogrammatic,
+    is_strobogrammatic2,
     modular_exponential,
-    find_next_square, find_next_square2,
+    find_next_square,
+    find_next_square2,
     prime_check,
     get_primes,
     pythagoras,
     is_prime,
-    encrypt, decrypt,
-    combination, combination_memo,
+    encrypt,
+    decrypt,
+    combination,
+    combination_memo,
     hailstone,
     cosine_similarity,
 )
@@ -50,12 +58,16 @@ class TestDecimalToBinaryIP(unittest.TestCase):
     """
 
     def test_decimal_to_binary_ip(self):
-        self.assertEqual("00000000.00000000.00000000.00000000",
-                         decimal_to_binary_ip("0.0.0.0"))
-        self.assertEqual("11111111.11111111.11111111.11111111",
-                         decimal_to_binary_ip("255.255.255.255"))
-        self.assertEqual("11000000.10101000.00000000.00000001",
-                         decimal_to_binary_ip("192.168.0.1"))
+        self.assertEqual(
+            "00000000.00000000.00000000.00000000", decimal_to_binary_ip("0.0.0.0")
+        )
+        self.assertEqual(
+            "11111111.11111111.11111111.11111111",
+            decimal_to_binary_ip("255.255.255.255"),
+        )
+        self.assertEqual(
+            "11000000.10101000.00000000.00000001", decimal_to_binary_ip("192.168.0.1")
+        )
 
 
 class TestEulerTotient(unittest.TestCase):
@@ -111,7 +123,7 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     """
 
     def test_gen_strobomatic(self):
-        self.assertEqual(['88', '11', '96', '69'], gen_strobogrammatic(2))
+        self.assertEqual(["88", "11", "96", "69"], gen_strobogrammatic(2))
 
     def test_strobogrammatic_in_range(self):
         self.assertEqual(4, strobogrammatic_in_range("10", "100"))
@@ -144,8 +156,9 @@ class TestModularExponential(unittest.TestCase):
 
     def test_modular_exponential(self):
         self.assertEqual(1, modular_exponential(5, 117, 19))
-        self.assertEqual(pow(1243, 65321, 10**9 + 7),
-                         modular_exponential(1243, 65321, 10**9 + 7))
+        self.assertEqual(
+            pow(1243, 65321, 10 ** 9 + 7), modular_exponential(1243, 65321, 10 ** 9 + 7)
+        )
         self.assertEqual(1, modular_exponential(12, 0, 78))
         self.assertRaises(ValueError, modular_exponential, 12, -2, 455)
 
@@ -277,7 +290,7 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(1, factorial(0))
         self.assertEqual(120, factorial(5))
         self.assertEqual(3628800, factorial(10))
-        self.assertEqual(637816310, factorial(34521, 10**9 + 7))
+        self.assertEqual(637816310, factorial(34521, 10 ** 9 + 7))
         self.assertRaises(ValueError, factorial, -42)
         self.assertRaises(ValueError, factorial, 42, -1)
 
@@ -285,7 +298,7 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(1, factorial_recur(0))
         self.assertEqual(120, factorial_recur(5))
         self.assertEqual(3628800, factorial_recur(10))
-        self.assertEqual(637816310, factorial_recur(34521, 10**9 + 7))
+        self.assertEqual(637816310, factorial_recur(34521, 10 ** 9 + 7))
         self.assertRaises(ValueError, factorial_recur, -42)
         self.assertRaises(ValueError, factorial_recur, 42, -1)
 
@@ -297,6 +310,7 @@ class TestHailstone(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_hailstone(self):
         self.assertEqual([8, 4, 2, 1], hailstone.hailstone(8))
         self.assertEqual([10, 5, 16, 8, 4, 2, 1], hailstone.hailstone(10))
@@ -309,6 +323,7 @@ class TestCosineSimilarity(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_cosine_similarity(self):
         vec_a = [1, 1, 1]
         vec_b = [-1, -1, -1]

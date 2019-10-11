@@ -13,9 +13,10 @@ Output:
 """
 import os
 
+
 def split(path):
     parts = []
-    split_part = path.rpartition('/')
+    split_part = path.rpartition("/")
     # Takt the origin path without the last part
     parts.append(split_part[0])
     # Take the last element of list

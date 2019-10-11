@@ -45,5 +45,5 @@ def dfs(root, cur, target, max_len):
     else:
         cur = 1
     max_len = max(cur, max_len)
-    dfs(root.left, cur, root.val+1, max_len)
-    dfs(root.right, cur, root.val+1, max_len)
+    dfs(root.left, cur, root.val + 1, max_len)
+    dfs(root.right, cur, root.val + 1, max_len)

@@ -36,6 +36,7 @@ into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 """
 import heapq
 
+
 def get_skyline(lrh):
     """
     Wortst Time Complexity: O(NlogN)
@@ -56,5 +57,5 @@ def get_skyline(lrh):
                 heapq.heappop(live)
         height = len(live) and -live[0][0]
         if not skyline or height != skyline[-1][1]:
-            skyline += [x, height],
+            skyline += ([x, height],)
     return skyline

@@ -6,11 +6,11 @@ determine if the input string is valid.
 The brackets must close in the correct order,
 "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 """
+
+
 def is_valid(s: str) -> bool:
     stack = []
-    dic = {")": "(",
-           "}": "{",
-           "]": "["}
+    dic = {")": "(", "}": "{", "]": "["}
     for char in s:
         if char in dic.values():
             stack.append(char)

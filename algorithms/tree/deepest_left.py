@@ -3,13 +3,13 @@
 
 # Example:
 
-     # 1
-   # /   \
-  # 2     3
- # / \     \
+# 1
+# /   \
+# 2     3
+# / \     \
 # 4   5     6
-           # \
-            # 7
+# \
+# 7
 # should return 4.
 
 from tree.tree import TreeNode
@@ -31,7 +31,7 @@ def find_deepest_left(root, is_left, depth, res):
     find_deepest_left(root.right, False, depth + 1, res)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root = TreeNode(1)
     root.left = TreeNode(2)
     root.right = TreeNode(3)

@@ -9,6 +9,8 @@ Output: [3,5]
 Input: nums = [5,7,7,8,8,8,10], target = 11
 Output: [-1,-1]
 """
+
+
 def search_range(nums, target):
     """
     :type nums: List[int]

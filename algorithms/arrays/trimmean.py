@@ -11,14 +11,16 @@ compute it.
 
 Compleity: O(n)
 """
+
+
 def trimmean(arr, per):
-    ratio = per/200
+    ratio = per / 200
     # /100 for easy calculation by *, and /2 for easy adaption to best and worst parts.
     cal_sum = 0
     # sum value to be calculated to trimmean.
     arr.sort()
-    neg_val = int(len(arr)*ratio)
-    arr = arr[neg_val:len(arr)-neg_val]
+    neg_val = int(len(arr) * ratio)
+    arr = arr[neg_val : len(arr) - neg_val]
     for i in arr:
         cal_sum += i
-    return cal_sum/len(arr)
+    return cal_sum / len(arr)

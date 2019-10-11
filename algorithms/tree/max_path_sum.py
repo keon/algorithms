@@ -9,5 +9,5 @@ def helper(root, maximum):
         return 0
     left = helper(root.left, maximum)
     right = helper(root.right, maximum)
-    maximum = max(maximum, left+right+root.val)
+    maximum = max(maximum, left + right + root.val)
     return root.val + maximum

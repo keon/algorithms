@@ -8,6 +8,8 @@
     Input: nums = [4, 1, 3, 0, 6, 5, 2]
     Output: 7
 """
+
+
 def find_missing_number(nums):
 
     missing = 0
@@ -22,6 +24,6 @@ def find_missing_number2(nums):
 
     num_sum = sum(nums)
     n = len(nums)
-    total_sum = n*(n+1) // 2
+    total_sum = n * (n + 1) // 2
     missing = total_sum - num_sum
     return missing

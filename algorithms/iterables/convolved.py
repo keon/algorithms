@@ -52,26 +52,25 @@ def convolved(iterable, kernel_size=1, stride=1, padding=0, default_value=None):
     - MIT License, Copyright (c) 2018 Guillaume Chevalier
     """
     # Input validation and error messages
-    if not hasattr(iterable, '__iter__'):
-        raise ValueError(
-            "Can't iterate on object.".format(
-                iterable))
+    if not hasattr(iterable, "__iter__"):
+        raise ValueError("Can't iterate on object.".format(iterable))
     if stride < 1:
         raise ValueError(
-            "Stride must be of at least one. Got `stride={}`.".format(
-                stride))
-    if not (padding in ['SAME', 'VALID'] or type(padding) in [int]):
+            "Stride must be of at least one. Got `stride={}`.".format(stride)
+        )
+    if not (padding in ["SAME", "VALID"] or type(padding) in [int]):
         raise ValueError(
-            "Padding must be an integer or a string with value `SAME` or `VALID`.")
+            "Padding must be an integer or a string with value `SAME` or `VALID`."
+        )
     if not isinstance(padding, str):
         if padding < 0:
             raise ValueError(
-                "Padding must be of at least zero. Got `padding={}`.".format(
-                    padding))
+                "Padding must be of at least zero. Got `padding={}`.".format(padding)
+            )
     else:
-        if padding == 'SAME':
+        if padding == "SAME":
             padding = kernel_size // 2
-        elif padding == 'VALID':
+        elif padding == "VALID":
             padding = 0
     if not type(iterable) == list:
         iterable = list(iterable)
@@ -90,8 +89,9 @@ def convolved(iterable, kernel_size=1, stride=1, padding=0, default_value=None):
     while True:
         if i > len(iterable) - kernel_size:
             break
-        yield iterable[i:i + kernel_size]
+        yield iterable[i : i + kernel_size]
         i += stride
+
 
 def convolved_1d(iterable, kernel_size=1, stride=1, padding=0, default_value=None):
     """1D Iterable to get every convolution window per loop iteration.
@@ -116,12 +116,16 @@ def convolved_2d(iterable, kernel_size=1, stride=1, padding=0, default_value=Non
     stride = dimensionize(stride, nd=2)
     padding = dimensionize(padding, nd=2)
 
-    for row_packet in convolved(iterable, kernel_size[0], stride[0], padding[0], default_value):
+    for row_packet in convolved(
+        iterable, kernel_size[0], stride[0], padding[0], default_value
+    ):
         transposed_inner = []
         for col in tuple(row_packet):
-            transposed_inner.append(list(
-                convolved(col, kernel_size[1], stride[1], padding[1], default_value)
-            ))
+            transposed_inner.append(
+                list(
+                    convolved(col, kernel_size[1], stride[1], padding[1], default_value)
+                )
+            )
 
         if len(transposed_inner) > 0:
             for col_i in range(len(transposed_inner[0])):
@@ -145,7 +149,7 @@ def dimensionize(maybe_a_list, nd=2):
     - https://github.com/guillaume-chevalier/python-conv-lib
     - MIT License, Copyright (c) 2018 Guillaume Chevalier
     """
-    if not hasattr(maybe_a_list, '__iter__'):
+    if not hasattr(maybe_a_list, "__iter__"):
         # Argument is probably an integer so we map it to a list of size `nd`.
         now_a_list = [maybe_a_list] * nd
         return now_a_list

@@ -6,6 +6,8 @@ For example, given input 43261596
 return 964176192
 (represented in binary as 00111001011110000010100101000000).
 """
+
+
 def reverse_bits(n):
     m = 0
     i = 0

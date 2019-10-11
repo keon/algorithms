@@ -13,7 +13,7 @@ random_element: Returns a random element from current set of elements.
 import random
 
 
-class RandomizedSet():
+class RandomizedSet:
     """
     idea: shoot
     """
@@ -59,10 +59,10 @@ def __test():
 
     print(len(ground_truth), len(rset.elements), len(rset.index_map))
     for i in ground_truth:
-        assert(i == rset.elements[rset.index_map[i]])
+        assert i == rset.elements[rset.index_map[i]]
 
     for i in range(n):
-        print(rset.random_element(), end=' ')
+        print(rset.random_element(), end=" ")
     print()
 
 

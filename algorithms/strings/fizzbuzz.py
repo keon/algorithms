@@ -25,31 +25,34 @@ Time: O(n)
 Space: O(n)
 """
 
+
 def fizzbuzz(n):
-    
+
     # Validate the input
     if n < 1:
-        raise ValueError('n cannot be less than one')
+        raise ValueError("n cannot be less than one")
     if n is None:
-        raise TypeError('n cannot be None')
-    
+        raise TypeError("n cannot be None")
+
     result = []
-    
-    for i in range(1, n+1):
-        if i%3 == 0 and i%5 == 0:
-            result.append('FizzBuzz')
-        elif i%3 == 0:
-            result.append('Fizz')
-        elif i%5 == 0:
-            result.append('Buzz')
+
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append("FizzBuzz")
+        elif i % 3 == 0:
+            result.append("Fizz")
+        elif i % 5 == 0:
+            result.append("Buzz")
         else:
             result.append(i)
     return result
 
+
 # Alternative solution
 def fizzbuzz_with_helper_func(n):
-    return [fb(m) for m in range(1,n+1)]
-    
+    return [fb(m) for m in range(1, n + 1)]
+
+
 def fb(m):
     r = (m % 3 == 0) * "Fizz" + (m % 5 == 0) * "Buzz"
     return r if r != "" else m

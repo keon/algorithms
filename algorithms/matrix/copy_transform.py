@@ -9,6 +9,7 @@ def rotate_clockwise(matrix):
                 new[i].append(elem)
     return new
 
+
 def rotate_counterclockwise(matrix):
     new = []
     for row in matrix:
@@ -19,6 +20,7 @@ def rotate_counterclockwise(matrix):
                 new.insert(i, [])
                 new[i].append(elem)
     return new
+
 
 def top_left_invert(matrix):
     new = []
@@ -31,6 +33,7 @@ def top_left_invert(matrix):
                 new[i].append(elem)
     return new
 
+
 def bottom_left_invert(matrix):
     new = []
     for row in reversed(matrix):
@@ -42,21 +45,19 @@ def bottom_left_invert(matrix):
                 new[i].append(elem)
     return new
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
+
     def print_matrix(matrix, name):
-        print('{}:\n['.format(name))
+        print("{}:\n[".format(name))
         for row in matrix:
-            print('  {}'.format(row))
-        print(']\n')
+            print("  {}".format(row))
+        print("]\n")
 
-    matrix = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-    ]
+    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-    print_matrix(matrix, 'initial')
-    print_matrix(rotate_clockwise(matrix), 'clockwise')
-    print_matrix(rotate_counterclockwise(matrix), 'counterclockwise')
-    print_matrix(top_left_invert(matrix), 'top left invert')
-    print_matrix(bottom_left_invert(matrix), 'bottom left invert')
+    print_matrix(matrix, "initial")
+    print_matrix(rotate_clockwise(matrix), "clockwise")
+    print_matrix(rotate_counterclockwise(matrix), "counterclockwise")
+    print_matrix(top_left_invert(matrix), "top left invert")
+    print_matrix(bottom_left_invert(matrix), "bottom left invert")

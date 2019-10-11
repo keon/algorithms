@@ -20,7 +20,7 @@ class RandomizedSet:
     def insert(self, val):
         if val not in self.idxs:
             self.nums.append(val)
-            self.idxs[val] = len(self.nums)-1
+            self.idxs[val] = len(self.nums) - 1
             return True
         return False
 
@@ -34,7 +34,7 @@ class RandomizedSet:
         return False
 
     def get_random(self):
-        idx = random.randint(0, len(self.nums)-1)
+        idx = random.randint(0, len(self.nums) - 1)
         return self.nums[idx]
 
 

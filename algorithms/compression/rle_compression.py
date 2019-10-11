@@ -6,6 +6,7 @@ When decompressed the data will be fully recovered as RLE
 is a lossless data compression.
 """
 
+
 def encode_rle(input):
     """
     Gets a stream of data and compresses it
@@ -13,10 +14,11 @@ def encode_rle(input):
     :param input: The data to be encoded.
     :return: The encoded string.
     """
-    if not input: return ''
+    if not input:
+        return ""
 
-    encoded_str = ''
-    prev_ch = ''
+    encoded_str = ""
+    prev_ch = ""
     count = 1
 
     for ch in input:
@@ -43,15 +45,15 @@ def decode_rle(input):
     :param input: The data to be decoded.
     :return: The decoded string.
     """
-    decode_str = ''
-    count = ''
+    decode_str = ""
+    count = ""
 
     for ch in input:
         # If not numerical
         if not ch.isdigit():
             # Expand it for the decoding
             decode_str += ch * int(count)
-            count = ''
+            count = ""
         else:
             # Add it in the counter
             count += ch

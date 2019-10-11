@@ -9,15 +9,18 @@ The next number after 89 with this property is 135 = 1**1 + 3**2 + 5**3 = 135.
 Write a function that returns a list of numbers with the above property. The function will receive range as parameter.
 """
 
-def sum_dig_pow(a, b):  
+
+def sum_dig_pow(a, b):
     result = []
-    
+
     for number in range(a, b + 1):
         exponent = 1  # set to 1
-        summation = 0    # set to 1
+        summation = 0  # set to 1
         number_as_string = str(number)
 
-        tokens = list(map(int, number_as_string))  # parse the string into individual digits
+        tokens = list(
+            map(int, number_as_string)
+        )  # parse the string into individual digits
 
         for k in tokens:
             summation = summation + (k ** exponent)

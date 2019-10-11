@@ -1,7 +1,8 @@
-class Node():
-    def __init__(self, val = None):
+class Node:
+    def __init__(self, val=None):
         self.val = val
         self.next = None
+
 
 def remove_dups(head):
     """
@@ -18,6 +19,7 @@ def remove_dups(head):
             prev = head
         head = head.next
 
+
 def remove_dups_wothout_set(head):
     """
     Time Complexity: O(N^2)
@@ -33,6 +35,7 @@ def remove_dups_wothout_set(head):
                 runner = runner.next
         current = current.next
 
+
 def print_linked_list(head):
     string = ""
     while head.next:
@@ -40,6 +43,7 @@ def print_linked_list(head):
         head = head.next
     string += head.val
     print(string)
+
 
 # A A B C D C F G
 

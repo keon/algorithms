@@ -20,6 +20,7 @@ def pattern_match(pattern, string):
     :type string: str
     :rtype: bool
     """
+
     def backtrack(pattern, string, dic):
 
         if len(pattern) == 0 and len(string) > 0:
@@ -28,7 +29,7 @@ def pattern_match(pattern, string):
         if len(pattern) == len(string) == 0:
             return True
 
-        for end in range(1, len(string)-len(pattern)+2):
+        for end in range(1, len(string) - len(pattern) + 2):
             if pattern[0] not in dic and string[:end] not in dic.values():
                 dic[pattern[0]] = string[:end]
                 if backtrack(pattern[1:], string[end:], dic):

@@ -14,8 +14,8 @@ class TreeNode(object):
 def array_to_bst(nums):
     if not nums:
         return None
-    mid = len(nums)//2
+    mid = len(nums) // 2
     node = TreeNode(nums[mid])
     node.left = array_to_bst(nums[:mid])
-    node.right = array_to_bst(nums[mid+1:])
+    node.right = array_to_bst(nums[mid + 1 :])
     return node

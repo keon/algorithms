@@ -13,8 +13,9 @@ Queue Abstract Data Type (ADT)
 * peek() returns the front element of the queue.
 """
 from abc import ABCMeta, abstractmethod
-class AbstractQueue(metaclass=ABCMeta):
 
+
+class AbstractQueue(metaclass=ABCMeta):
     def __init__(self):
         self._size = 0
 
@@ -42,7 +43,6 @@ class AbstractQueue(metaclass=ABCMeta):
 
 
 class ArrayQueue(AbstractQueue):
-
     def __init__(self, capacity=10):
         """
         Initialize python List with capacity of 10 or user given input.
@@ -96,8 +96,8 @@ class QueueNode:
         self.value = value
         self.next = None
 
-class LinkedListQueue(AbstractQueue):
 
+class LinkedListQueue(AbstractQueue):
     def __init__(self):
         super().__init__()
         self._front = None

@@ -14,10 +14,10 @@ from __future__ import print_function
 
 def tree_print(tree):
     for key in tree:
-        print(key, end=' ')  # end=' ' prevents a newline character
+        print(key, end=" ")  # end=' ' prevents a newline character
         tree_element = tree[key]  # multiple lookups is expensive, even amortized O(1)!
         for subElem in tree_element:
-            print(" -> ", subElem, end=' ')
+            print(" -> ", subElem, end=" ")
             if type(subElem) != str:  # OP wants indenting after digits
                 print("\n ")  # newline and a space to match indenting
         print()  # forces a newline

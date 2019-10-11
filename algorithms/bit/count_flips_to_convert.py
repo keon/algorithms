@@ -14,6 +14,6 @@ def count_flips_to_convert(a, b):
     # count number of ones in diff
     count = 0
     while diff:
-        diff &= (diff - 1)
+        diff &= diff - 1
         count += 1
     return count

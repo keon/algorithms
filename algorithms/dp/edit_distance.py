@@ -49,6 +49,8 @@ def edit_distance(A, B):
     for i in range(1, m):
         for j in range(1, n):
             cost = 0 if A[i - 1] == B[j - 1] else 1
-            edit[i][j] = min(edit[i - 1][j] + 1, edit[i][j - 1] + 1, edit[i - 1][j - 1] + cost)
+            edit[i][j] = min(
+                edit[i - 1][j] + 1, edit[i][j - 1] + 1, edit[i - 1][j - 1] + cost
+            )
 
     return edit[-1][-1]  # this is the same as edit[m][n]

@@ -29,10 +29,11 @@ def has_alternative_bit(n):
         else:
             return True
         n = n >> 1
-    return True    
+    return True
+
 
 # Time Complexity - O(1)
 def has_alternative_bit_fast(n):
-    mask1 = int('aaaaaaaa', 16)  # for bits ending with zero (...1010)
-    mask2 = int('55555555', 16)  # for bits ending with one  (...0101)
+    mask1 = int("aaaaaaaa", 16)  # for bits ending with zero (...1010)
+    mask2 = int("55555555", 16)  # for bits ending with one  (...0101)
     return mask1 == (n + (n ^ mask1)) or mask2 == (n + (n ^ mask2))

@@ -22,6 +22,7 @@ Example 2:
 Answer: 3
 """
 
+
 def num_islands(grid):
     count = 0
     for i in range(len(grid)):
@@ -38,7 +39,7 @@ def dfs(grid, i, j):
     if grid[i][j] != 1:
         return
     grid[i][j] = 0
-    dfs(grid, i+1, j)
-    dfs(grid, i-1, j)
-    dfs(grid, i, j+1)
-    dfs(grid, i, j-1)
+    dfs(grid, i + 1, j)
+    dfs(grid, i - 1, j)
+    dfs(grid, i, j + 1)
+    dfs(grid, i, j - 1)

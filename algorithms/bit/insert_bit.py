@@ -27,6 +27,8 @@ Algorithm:
 2. Keep the bit from 0 position to i position ( like 000...001111)
 3. Merge mask and num
 """
+
+
 def insert_one_bit(num, bit, i):
     # Create mask
     mask = num >> i
@@ -35,6 +37,7 @@ def insert_one_bit(num, bit, i):
     # Keep the bit from 0 position to i position
     right = ((1 << i) - 1) & num
     return right | mask
+
 
 def insert_mult_bits(num, bits, len, i):
     mask = num >> i

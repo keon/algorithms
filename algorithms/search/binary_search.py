@@ -17,8 +17,9 @@ def binary_search(array, query):
             hi = mid - 1
     return None
 
+
 def binary_search_recur(array, low, high, val):
-    if low > high:       # error case
+    if low > high:  # error case
         return -1
     mid = (low + high) // 2
     if val < array[mid]:

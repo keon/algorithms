@@ -12,6 +12,8 @@ Input: haystack = "aaaaa", needle = "bba"
 Output: -1
 Reference: https://leetcode.com/problems/implement-strstr/description/
 """
+
+
 def contain_string(haystack, needle):
     if len(needle) == 0:
         return 0
@@ -20,6 +22,6 @@ def contain_string(haystack, needle):
     for i in range(len(haystack)):
         if len(haystack) - i < len(needle):
             return -1
-        if haystack[i:i+len(needle)] == needle:
+        if haystack[i : i + len(needle)] == needle:
             return i
     return -1

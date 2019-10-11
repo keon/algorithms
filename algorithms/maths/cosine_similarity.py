@@ -12,7 +12,7 @@ def _l2_distance(vec):
     """
     Calculate l2 distance from two given vectors.
     """
-    norm = 0.
+    norm = 0.0
     for e in vec:
         norm += e * e
     norm = math.sqrt(norm)
@@ -26,17 +26,22 @@ def cosine_similarity(a, b):
     :type b: list
     """
     if len(a) != len(b):
-        raise ValueError("The two vectors must be the same length. Got shape " + str(len(a)) + " and " + str(len(b)))
+        raise ValueError(
+            "The two vectors must be the same length. Got shape "
+            + str(len(a))
+            + " and "
+            + str(len(b))
+        )
 
     norm_a = _l2_distance(a)
     norm_b = _l2_distance(b)
 
-    similarity = 0.
+    similarity = 0.0
 
     # Calculate the dot product of two vectors
     for ae, be in zip(a, b):
         similarity += ae * be
 
-    similarity /= (norm_a * norm_b)
+    similarity /= norm_a * norm_b
 
     return similarity

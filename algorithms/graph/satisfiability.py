@@ -1,23 +1,25 @@
-'''
+"""
 Given a formula in conjunctive normal form (2-CNF), finds a way to assign
 True/False values to all variables to satisfy all clauses, or reports there
 is no solution.
 
 https://en.wikipedia.org/wiki/2-satisfiability
-'''
+"""
 
 
-''' Format:
+""" Format:
         - each clause is a pair of literals
         - each literal in the form (name, is_neg)
           where name is an arbitrary identifier,
           and is_neg is true if the literal is negated
-'''
-formula = [(('x', False), ('y', False)),
-           (('y', True), ('y', True)),
-           (('a', False), ('b', False)),
-           (('a', True), ('c', True)),
-           (('c', False), ('b', True))]
+"""
+formula = [
+    (("x", False), ("y", False)),
+    (("y", True), ("y", True)),
+    (("a", False), ("b", False)),
+    (("a", True), ("c", True)),
+    (("c", False), ("b", True)),
+]
 
 
 def dfs_transposed(v, graph, order, vis):
@@ -47,7 +49,7 @@ def add_edge(graph, vertex_from, vertex_to):
 
 
 def scc(graph):
-    ''' Computes the strongly connected components of a graph '''
+    """ Computes the strongly connected components of a graph """
     order = []
     vis = {vertex: False for vertex in graph}
 
@@ -75,7 +77,7 @@ def scc(graph):
 
 
 def build_graph(formula):
-    ''' Builds the implication graph from the formula '''
+    """ Builds the implication graph from the formula """
     graph = {}
 
     for clause in formula:
@@ -119,7 +121,7 @@ def solve_sat(formula):
     return value
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     result = solve_sat(formula)
 
     for (variable, assign) in result.iteritems():

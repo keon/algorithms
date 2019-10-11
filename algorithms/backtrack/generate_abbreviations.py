@@ -6,7 +6,6 @@ word => ['word', 'wor1', 'wo1d', 'wo2', 'w1rd', 'w1r1', 'w2d', 'w3', '1ord', '1o
 
 
 def generate_abbreviations(word):
-
     def backtrack(result, word, pos, count, cur):
         if pos == len(word):
             if count > 0:
@@ -15,11 +14,11 @@ def generate_abbreviations(word):
             return
 
         if count > 0:  # add the current word
-            backtrack(result, word, pos+1, 0, cur+str(count)+word[pos])
+            backtrack(result, word, pos + 1, 0, cur + str(count) + word[pos])
         else:
-            backtrack(result, word, pos+1, 0, cur+word[pos])
+            backtrack(result, word, pos + 1, 0, cur + word[pos])
         # skip the current word
-        backtrack(result, word, pos+1, count+1, cur)
+        backtrack(result, word, pos + 1, count + 1, cur)
 
     result = []
     backtrack(result, word, 0, 0, "")

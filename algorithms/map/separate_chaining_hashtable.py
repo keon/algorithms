@@ -24,6 +24,7 @@ class SeparateChainingHashTable(object):
     >>> table.get('hello') is None # Return `None` if a key doesn't exist.
     True
     """
+
     _empty = None
 
     def __init__(self, size=11):

@@ -18,6 +18,8 @@ Input: s = "paper", t = "title"
 Output: true
 Reference: https://leetcode.com/problems/isomorphic-strings/description/
 """
+
+
 def is_isomorphic(s, t):
     """
     :type s: str

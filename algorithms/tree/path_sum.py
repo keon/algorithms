@@ -40,9 +40,9 @@ def has_path_sum2(root, sum):
             if val == sum:
                 return True
         if node.left is not None:
-            stack.append((node.left, val+node.left.val))
+            stack.append((node.left, val + node.left.val))
         if node.right is not None:
-            stack.append((node.right, val+node.right.val))
+            stack.append((node.right, val + node.right.val))
     return False
 
 
@@ -50,14 +50,14 @@ def has_path_sum2(root, sum):
 def has_path_sum3(root, sum):
     if root is None:
         return False
-    queue = [(root, sum-root.val)]
+    queue = [(root, sum - root.val)]
     while queue:
         node, val = queue.pop(0)  # popleft
         if node.left is None and node.right is None:
             if val == 0:
                 return True
         if node.left is not None:
-            queue.append((node.left, val-node.left.val))
+            queue.append((node.left, val - node.left.val))
         if node.right is not None:
-            queue.append((node.right, val-node.right.val))
+            queue.append((node.right, val - node.right.val))
     return False

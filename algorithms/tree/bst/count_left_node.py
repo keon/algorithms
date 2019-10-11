@@ -18,6 +18,7 @@ import unittest
 from bst import Node
 from bst import bst
 
+
 def count_left_node(root):
     if root is None:
         return 0
@@ -25,6 +26,7 @@ def count_left_node(root):
         return count_left_node(root.right)
     else:
         return 1 + count_left_node(root.left) + count_left_node(root.right)
+
 
 """
     The tree is created for testing:
@@ -40,6 +42,7 @@ def count_left_node(root):
     count_left_node = 4
 
 """
+
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -57,5 +60,6 @@ class TestSuite(unittest.TestCase):
     def test_count_left_node(self):
         self.assertEqual(4, count_left_node(self.tree.root))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

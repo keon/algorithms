@@ -22,7 +22,7 @@ def merge(left, right, merged):
     while left_cursor < len(left) and right_cursor < len(right):
         # Sort each one and place into the result
         if left[left_cursor] <= right[right_cursor]:
-            merged[left_cursor+right_cursor]=left[left_cursor]
+            merged[left_cursor + right_cursor] = left[left_cursor]
             left_cursor += 1
         else:
             merged[left_cursor + right_cursor] = right[right_cursor]

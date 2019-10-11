@@ -22,6 +22,8 @@ Notes:
 You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
 Reference: https://leetcode.com/problems/word-pattern/description/
 """
+
+
 def word_pattern(pattern, str):
     dict = {}
     set_value = set()

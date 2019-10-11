@@ -8,7 +8,6 @@ import random
 
 
 def is_prime(n, k):
-
     def pow2_factor(num):
         """factor n into a power of 2 times an odd number"""
         power = 0
@@ -47,5 +46,5 @@ def is_prime(n, k):
     for _ in range(k):
         if valid_witness(random.randrange(2, n - 2)):
             return False
-    
+
     return True

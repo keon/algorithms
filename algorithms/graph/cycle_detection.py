@@ -14,20 +14,24 @@ class TraversalState(Enum):
     BLACK = 2
 
 
-example_graph_with_cycle = {'A': ['B', 'C'],
-                            'B': ['D'],
-                            'C': ['F'],
-                            'D': ['E', 'F'],
-                            'E': ['B'],
-                            'F': []}
+example_graph_with_cycle = {
+    "A": ["B", "C"],
+    "B": ["D"],
+    "C": ["F"],
+    "D": ["E", "F"],
+    "E": ["B"],
+    "F": [],
+}
 
-example_graph_without_cycle = {'A': ['B', 'C'],
-                               'B': ['D', 'E'],
-                               'C': ['F'],
-                               'D': ['E'],
-                               'E': [],
-                               'F': []}
-                               
+example_graph_without_cycle = {
+    "A": ["B", "C"],
+    "B": ["D", "E"],
+    "C": ["F"],
+    "D": ["E"],
+    "E": [],
+    "F": [],
+}
+
 
 def is_in_cycle(graph, traversal_states, vertex):
     if traversal_states[vertex] == TraversalState.GRAY:
@@ -43,10 +47,12 @@ def is_in_cycle(graph, traversal_states, vertex):
 def contains_cycle(graph):
     traversal_states = {vertex: TraversalState.WHITE for vertex in graph}
     for vertex, state in traversal_states.items():
-        if (state == TraversalState.WHITE and
-           is_in_cycle(graph, traversal_states, vertex)):
+        if state == TraversalState.WHITE and is_in_cycle(
+            graph, traversal_states, vertex
+        ):
             return True
     return False
+
 
 print(contains_cycle(example_graph_with_cycle))
 print(contains_cycle(example_graph_without_cycle))

@@ -18,6 +18,8 @@ For each index i:
 """
 
 import collections
+
+
 def max_sliding_window(arr, k):
     qi = collections.deque()  # queue storing indexes of elements
     result = []

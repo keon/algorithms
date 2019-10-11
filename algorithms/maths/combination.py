@@ -3,15 +3,18 @@ def combination(n, r):
     if n == r or r == 0:
         return 1
     else:
-        return combination(n-1, r-1) + combination(n-1, r)
+        return combination(n - 1, r - 1) + combination(n - 1, r)
+
 
 def combination_memo(n, r):
     """This function calculates nCr using memoization method."""
     memo = {}
+
     def recur(n, r):
         if n == r or r == 0:
             return 1
         if (n, r) not in memo:
             memo[(n, r)] = recur(n - 1, r - 1) + recur(n - 1, r)
         return memo[(n, r)]
+
     return recur(n, r)

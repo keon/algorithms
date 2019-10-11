@@ -8,6 +8,7 @@ base2int('F', 16) return 15.
 
 import string
 
+
 def int_to_base(n, base):
     """
         :type n: int
@@ -16,17 +17,17 @@ def int_to_base(n, base):
     """
     is_negative = False
     if n == 0:
-        return '0'
+        return "0"
     elif n < 0:
         is_negative = True
         n *= -1
     digit = string.digits + string.ascii_uppercase
-    res = ''
+    res = ""
     while n > 0:
         res += digit[n % base]
         n //= base
     if is_negative:
-        return '-' + res[::-1]
+        return "-" + res[::-1]
     else:
         return res[::-1]
 
@@ -38,9 +39,9 @@ def base_to_int(s, base):
         :type base: int
         :rtype: int
     """
-    
+
     digit = {}
-    for i,c in enumerate(string.digits + string.ascii_uppercase):
+    for i, c in enumerate(string.digits + string.ascii_uppercase):
         digit[c] = i
     multiplier = 1
     res = 0

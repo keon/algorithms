@@ -22,7 +22,7 @@ def max_product(nums):
         gmax = max(gmax, lmax)
 
 
-'''
+"""
 Another approach that would print max product and the subarray
 
 Examples:
@@ -34,11 +34,11 @@ subarray_with_max_product([-4,-3,-2,-1])
     #=> max_product_so_far: 24, [-4, -3, -2, -1]
 subarray_with_max_product([-3,0,1])
     #=> max_product_so_far: 1, [1]
-'''
+"""
 
 
 def subarray_with_max_product(arr):
-    ''' arr is list of positive/negative numbers '''
+    """ arr is list of positive/negative numbers """
     l = len(arr)
     product_so_far = max_product_end = 1
     max_start_i = 0
@@ -60,8 +60,9 @@ def subarray_with_max_product(arr):
             so_far_start_i = max_start_i
 
     if all_negative_flag:
-        print("max_product_so_far: %s, %s" %
-              (reduce(lambda x, y: x * y, arr), arr))
+        print("max_product_so_far: %s, %s" % (reduce(lambda x, y: x * y, arr), arr))
     else:
-        print("max_product_so_far: %s, %s" %
-              (product_so_far, arr[so_far_start_i:so_far_end_i + 1]))
+        print(
+            "max_product_so_far: %s, %s"
+            % (product_so_far, arr[so_far_start_i : so_far_end_i + 1])
+        )

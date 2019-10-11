@@ -17,7 +17,7 @@ def group_anagrams(strs):
     ans = []
     k = 0
     for str in strs:
-        sstr = ''.join(sorted(str))
+        sstr = "".join(sorted(str))
         if sstr not in d:
             d[sstr] = k
             k += 1

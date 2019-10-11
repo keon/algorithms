@@ -6,10 +6,11 @@ accepts string
 returns string
 """
 
+
 def decimal_to_binary_util(val):
     bits = [128, 64, 32, 16, 8, 4, 2, 1]
     val = int(val)
-    binary_rep = ''
+    binary_rep = ""
     for bit in bits:
         if val >= bit:
             binary_rep += str(1)
@@ -19,9 +20,10 @@ def decimal_to_binary_util(val):
 
     return binary_rep
 
+
 def decimal_to_binary_ip(ip):
-    values = ip.split('.')
+    values = ip.split(".")
     binary_list = []
     for val in values:
         binary_list.append(decimal_to_binary_util(val))
-    return '.'.join(binary_list)
+    return ".".join(binary_list)

@@ -10,6 +10,8 @@ Note:
 Your algorithm should have a linear runtime complexity.
 Could you implement it without using extra memory?
 """
+
+
 def single_number(nums):
     """
     Returns single number, if found.

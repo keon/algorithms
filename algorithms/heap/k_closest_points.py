@@ -41,4 +41,4 @@ def k_closest(points, k, origin=(0, 0)):
 
 
 def distance(point, origin=(0, 0)):
-    return (point[0] - origin[0])**2 + (point[1] - origin[1])**2
+    return (point[0] - origin[0]) ** 2 + (point[1] - origin[1]) ** 2

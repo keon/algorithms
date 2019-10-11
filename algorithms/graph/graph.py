@@ -3,6 +3,7 @@ These are classes to represent a Graph and its elements.
 It can be shared across graph algorithms.
 """
 
+
 class Node(object):
     def __init__(self, name):
         self.name = name
@@ -13,14 +14,14 @@ class Node(object):
             return obj.name
         elif isinstance(obj, str):
             return obj
-        return''
-    
+        return ""
+
     def __eq__(self, obj):
         return self.name == self.get_name(obj)
 
     def __repr__(self):
         return self.name
-    
+
     def __hash__(self):
         return hash(self.name)
 
@@ -42,6 +43,7 @@ class Node(object):
     def __bool__(self):
         return self.name
 
+
 class DirectedEdge(object):
     def __init__(self, node_from, node_to):
         self.nf = node_from
@@ -51,9 +53,10 @@ class DirectedEdge(object):
         if isinstance(obj, DirectedEdge):
             return obj.nf == self.nf and obj.nt == self.nt
         return False
-    
+
     def __repr__(self):
-        return '({0} -> {1})'.format(self.nf, self.nt)
+        return "({0} -> {1})".format(self.nf, self.nt)
+
 
 class DirectedGraph(object):
     def __init__(self, load_dict={}):
@@ -77,7 +80,7 @@ class DirectedGraph(object):
             node = Node(node_name)
             self.nodes.append(node)
             return node
-    
+
     def add_edge(self, node_name_from, node_name_to):
         try:
             node_from = self.nodes[self.nodes.index(node_name_from)]
@@ -85,6 +88,7 @@ class DirectedGraph(object):
             self.edges.append(DirectedEdge(node_from, node_to))
         except ValueError:
             pass
+
 
 class Graph:
     def __init__(self, vertices):
@@ -103,11 +107,12 @@ class Graph:
             self.graph[u].append(v)
         else:
             self.graph[u] = [v]
-            
-#g = Graph(4)
-#g.add_edge(0, 1)
-#g.add_edge(0, 2)
-#g.add_edge(1, 2)
-#g.add_edge(2, 0)
-#g.add_edge(2, 3)
-#g.add_edge(3, 3)
+
+
+# g = Graph(4)
+# g.add_edge(0, 1)
+# g.add_edge(0, 2)
+# g.add_edge(1, 2)
+# g.add_edge(2, 0)
+# g.add_edge(2, 3)
+# g.add_edge(3, 3)

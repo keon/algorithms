@@ -59,7 +59,9 @@ class HuffmanReader:
             if current_bit == "0":
                 current_node.left = Node()
                 current_node.right = Node()
-                node_stack.append(current_node.right)  # going to left node, right push on stack
+                node_stack.append(
+                    current_node.right
+                )  # going to left node, right push on stack
                 current_node = current_node.left
             else:
                 queue_leaves.append(current_node)
@@ -162,7 +164,9 @@ class HuffmanWriter:
                 get_code_tree(T.right)
 
         get_code_tree(tree)
-        self.write_bits(tree_code + "1")  # "1" indicates that tree ended (it will be needed to load the tree)
+        self.write_bits(
+            tree_code + "1"
+        )  # "1" indicates that tree ended (it will be needed to load the tree)
         for int_sign in signs:
             self.write_int(int_sign)
 
@@ -235,12 +239,16 @@ class HuffmanCoding:
             additional_bits = reader.get_number_of_additional_bits_in_the_last_byte()
             tree = reader.load_tree()
 
-            HuffmanCoding._decode_and_write_signs_to_file(file_out, reader, tree, additional_bits)
+            HuffmanCoding._decode_and_write_signs_to_file(
+                file_out, reader, tree, additional_bits
+            )
 
         print("File decoded.")
 
     @staticmethod
-    def _decode_and_write_signs_to_file(file, reader: HuffmanReader, tree: Node, additional_bits: int):
+    def _decode_and_write_signs_to_file(
+        file, reader: HuffmanReader, tree: Node, additional_bits: int
+    ):
         tree_finder = TreeFinder(tree)
         is_end_of_file = False
 
@@ -253,21 +261,27 @@ class HuffmanCoding:
             else:  # There is last byte in buffer to parse
                 is_end_of_file = True
                 last_byte = reader.buffer
-                last_byte = last_byte[:-additional_bits]  # remove additional "0" used to fill byte
+                last_byte = last_byte[
+                    :-additional_bits
+                ]  # remove additional "0" used to fill byte
                 for bit in last_byte:
                     if tree_finder.find(bit):
                         file.write(bytes([tree_finder.found]))
 
     @staticmethod
     def encode_file(file_in_name, file_out_name):
-        with open(file_in_name, "rb") as file_in, open(file_out_name, mode="wb+") as file_out:
+        with open(file_in_name, "rb") as file_in, open(
+            file_out_name, mode="wb+"
+        ) as file_out:
             signs_frequency = HuffmanCoding._get_char_frequency(file_in)
             file_in.seek(0)
             tree = HuffmanCoding._create_tree(signs_frequency)
             codes = HuffmanCoding._generate_codes(tree)
 
             writer = HuffmanWriter(file_out)
-            writer.write_bits("000")  # leave space to save how many bits will be appended to fill the last byte
+            writer.write_bits(
+                "000"
+            )  # leave space to save how many bits will be appended to fill the last byte
             writer.save_tree(tree)
             HuffmanCoding._encode_and_write_signs_to_file(file_in, writer, codes)
             writer.close()
@@ -305,13 +319,18 @@ class HuffmanCoding:
 
     @staticmethod
     def _create_tree(signs_frequency: dict) -> Node:
-        nodes = [Node(frequency=frequency, sign=char_int) for char_int, frequency in signs_frequency.items()]
+        nodes = [
+            Node(frequency=frequency, sign=char_int)
+            for char_int, frequency in signs_frequency.items()
+        ]
         heapq.heapify(nodes)
 
         while len(nodes) > 1:
             left = heapq.heappop(nodes)
             right = heapq.heappop(nodes)
-            new_node = Node(frequency=left.frequency + right.frequency, left=left, right=right)
+            new_node = Node(
+                frequency=left.frequency + right.frequency, left=left, right=right
+            )
             heapq.heappush(nodes, new_node)
 
         return nodes[0]  # root
@@ -322,7 +341,11 @@ class HuffmanCoding:
             dict_codes[tree.sign] = code
 
         if tree.left:
-            HuffmanCoding._go_through_tree_and_create_codes(tree.left, code + "0", dict_codes)
+            HuffmanCoding._go_through_tree_and_create_codes(
+                tree.left, code + "0", dict_codes
+            )
 
         if tree.right:
-            HuffmanCoding._go_through_tree_and_create_codes(tree.right, code + "1", dict_codes)
+            HuffmanCoding._go_through_tree_and_create_codes(
+                tree.right, code + "1", dict_codes
+            )

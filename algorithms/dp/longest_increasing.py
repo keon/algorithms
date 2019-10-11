@@ -10,6 +10,7 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
 The time complexity is O(n^2).
 """
 
+
 def longest_increasing_subsequence(sequence):
     """
     Dynamic Programming Algorithm for

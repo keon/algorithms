@@ -19,7 +19,7 @@ two_sum2: using two pointers
 def two_sum(numbers, target):
     for i in range(len(numbers)):
         second_val = target - numbers[i]
-        low, high = i+1, len(numbers)-1
+        low, high = i + 1, len(numbers) - 1
         while low <= high:
             mid = low + (high - low) // 2
             if second_val == numbers[mid]:
@@ -29,6 +29,7 @@ def two_sum(numbers, target):
             else:
                 high = mid - 1
 
+
 # Using dictionary as a hash table
 def two_sum1(numbers, target):
     dic = {}
@@ -37,10 +38,11 @@ def two_sum1(numbers, target):
             return [dic[target - num] + 1, i + 1]
         dic[num] = i
 
+
 # Using two pointers
 def two_sum2(numbers, target):
-    p1 = 0                      # pointer 1 holds from left of array numbers
-    p2 = len(numbers) - 1       # pointer 2 holds from right of array numbers
+    p1 = 0  # pointer 1 holds from left of array numbers
+    p2 = len(numbers) - 1  # pointer 2 holds from right of array numbers
     while p1 < p2:
         s = numbers[p1] + numbers[p2]
         if s == target:

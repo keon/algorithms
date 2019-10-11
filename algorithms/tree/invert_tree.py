@@ -1,5 +1,6 @@
 # invert a binary tree
 
+
 def reverse(root):
     if root is None:
         return

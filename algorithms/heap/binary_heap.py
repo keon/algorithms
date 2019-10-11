@@ -31,25 +31,34 @@ For example remove_min() in a min heap:
 """
 from abc import ABCMeta, abstractmethod
 
+
 class AbstractHeap(metaclass=ABCMeta):
     """Abstract Class for Binary Heap."""
+
     def __init__(self):
         pass
+
     @abstractmethod
     def perc_up(self, i):
         pass
+
     @abstractmethod
     def insert(self, val):
         pass
+
     @abstractmethod
-    def perc_down(self,i):
+    def perc_down(self, i):
         pass
+
     @abstractmethod
-    def min_child(self,i):
+    def min_child(self, i):
         pass
+
     @abstractmethod
-    def remove_min(self,i):
+    def remove_min(self, i):
         pass
+
+
 class BinaryHeap(AbstractHeap):
     def __init__(self):
         self.currentSize = 0
@@ -59,7 +68,7 @@ class BinaryHeap(AbstractHeap):
         while i // 2 > 0:
             if self.heap[i] < self.heap[i // 2]:
                 # Swap value of child with value of its parent
-                self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
+                self.heap[i], self.heap[i // 2] = self.heap[i // 2], self.heap[i]
             i = i // 2
 
     """
@@ -70,6 +79,7 @@ class BinaryHeap(AbstractHeap):
         perc_up the minimum element
         Complexity: O(logN)
     """
+
     def insert(self, val):
         self.heap.append(val)
         self.currentSize = self.currentSize + 1
@@ -78,12 +88,13 @@ class BinaryHeap(AbstractHeap):
     """
         Method min_child returns index of smaller 2 childs of its parent
     """
+
     def min_child(self, i):
         if 2 * i + 1 > self.currentSize:  # No right child
             return 2 * i
         else:
             # left child > right child
-            if self.heap[2 * i] > self.heap[2 * i +1]:
+            if self.heap[2 * i] > self.heap[2 * i + 1]:
                 return 2 * i + 1
             else:
                 return 2 * i
@@ -95,6 +106,7 @@ class BinaryHeap(AbstractHeap):
                 # Swap min child with parent
                 self.heap[min_child], self.heap[i] = self.heap[i], self.heap[min_child]
             i = min_child
+
     """
         Remove Min method removes the minimum element and swap it with the last
         element in the heap( the bottommost, rightmost element). Then, it
@@ -102,9 +114,10 @@ class BinaryHeap(AbstractHeap):
         min heap property is restored
         Complexity: O(logN)
     """
+
     def remove_min(self):
-        ret = self.heap[1]      # the smallest value at beginning
-        self.heap[1] = self.heap[self.currentSize] # Repalce it by the last value
+        ret = self.heap[1]  # the smallest value at beginning
+        self.heap[1] = self.heap[self.currentSize]  # Repalce it by the last value
         self.currentSize = self.currentSize - 1
         self.heap.pop()
         self.perc_down(1)

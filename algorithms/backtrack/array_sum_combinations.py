@@ -18,7 +18,6 @@ from functools import partial
 
 
 def array_sum_combinations(A, B, C, target):
-
     def over(constructed_sofar):
         sum = 0
         to_stop, reached_target = False, False
@@ -66,6 +65,7 @@ def unique_array_sum_combinations(A, B, C, target):
 
     Complexity: O(n(m+p))
     """
+
     def check_sum(n, *nums):
         if sum(x for x in nums) == n:
             return (True, nums)

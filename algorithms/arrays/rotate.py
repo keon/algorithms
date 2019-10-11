@@ -21,9 +21,9 @@ def rotate_v1(array, k):
     """
     array = array[:]
     n = len(array)
-    for i in range(k):      # unused variable is not a problem
+    for i in range(k):  # unused variable is not a problem
         temp = array[n - 1]
-        for j in range(n-1, 0, -1):
+        for j in range(n - 1, 0, -1):
             array[j] = array[j - 1]
         array[0] = temp
     return array
@@ -58,4 +58,4 @@ def rotate_v3(array, k):
         return None
     length = len(array)
     k = k % length
-    return array[length - k:] + array[:length - k]
+    return array[length - k :] + array[: length - k]

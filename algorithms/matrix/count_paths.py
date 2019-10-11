@@ -31,9 +31,9 @@ def count_paths(m, n):
 
 
 def main():
-    m, n = map(int, input('Enter two positive integers: ').split())
+    m, n = map(int, input("Enter two positive integers: ").split())
     count_paths(m, n)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

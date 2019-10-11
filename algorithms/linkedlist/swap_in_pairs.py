@@ -9,10 +9,13 @@ Your algorithm should use only constant space.
 You may not modify the values in the list,
 only nodes itself can be changed.
 """
+
+
 class Node(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 def swap_pairs(head):
     if not head:

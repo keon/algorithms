@@ -15,9 +15,9 @@ def __get_depth(root):
     """
     if root is None:
         return 0
-    left  = __get_depth(root.left)
+    left = __get_depth(root.left)
     right = __get_depth(root.right)
-    if abs(left-right) > 1 or -1 in [left, right]:
+    if abs(left - right) > 1 or -1 in [left, right]:
         return -1
     return 1 + max(left, right)
 

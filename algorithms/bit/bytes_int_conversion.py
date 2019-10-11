@@ -5,7 +5,7 @@ def int_to_bytes_big_endian(num):
     bytestr = deque()
     while num > 0:
         # list.insert(0, ...) is inefficient
-        bytestr.appendleft(num & 0xff)
+        bytestr.appendleft(num & 0xFF)
         num >>= 8
     return bytes(bytestr)
 
@@ -13,7 +13,7 @@ def int_to_bytes_big_endian(num):
 def int_to_bytes_little_endian(num):
     bytestr = []
     while num > 0:
-        bytestr.append(num & 0xff)
+        bytestr.append(num & 0xFF)
         num >>= 8
     return bytes(bytestr)
 

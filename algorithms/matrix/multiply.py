@@ -13,12 +13,10 @@ def multiply(multiplicand: list, multiplier: list) -> list:
     :type B: List[List[int]]
     :rtype: List[List[int]]
     """
-    multiplicand_row, multiplicand_col = len(
-        multiplicand), len(multiplicand[0])
+    multiplicand_row, multiplicand_col = len(multiplicand), len(multiplicand[0])
     multiplier_row, multiplier_col = len(multiplier), len(multiplier[0])
-    if(multiplicand_col != multiplier_row):
-        raise Exception(
-            "Multiplicand matrix not compatible with Multiplier matrix.")
+    if multiplicand_col != multiplier_row:
+        raise Exception("Multiplicand matrix not compatible with Multiplier matrix.")
     # create a result matrix
     result = [[0] * multiplier_col for i in range(multiplicand_row)]
     for i in range(multiplicand_row):

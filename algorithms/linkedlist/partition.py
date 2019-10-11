@@ -12,7 +12,7 @@ We assume the values of all linked list nodes are int and that x in an int.
 """
 
 
-class Node():
+class Node:
     def __init__(self, val=None):
         self.val = int(val)
         self.next = None
@@ -72,5 +72,5 @@ def test():
     print_linked_list(a)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test()
