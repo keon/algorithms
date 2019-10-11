@@ -36,7 +36,7 @@ Explaination:
 """
 
 
-def divide(n):
+def int_divide(n):
     arr = [[0 for i in range(n + 1)] for j in range(n + 1)]
     arr[1][1] = 1
     for i in range(1, n + 1):
