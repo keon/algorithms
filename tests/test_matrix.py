@@ -6,28 +6,32 @@ from algorithms.matrix import (
     rotate_image,
     sparse_dot_vector,
     spiral_traversal,
-    sudoku_validator,
+    sudoku_validator
 )
 import unittest
 
 
 class TestBombEnemy(unittest.TestCase):
     def test_3x4(self):
-        grid1 = [["0", "E", "0", "0"], ["E", "0", "W", "E"], ["0", "E", "0", "0"]]
+        grid1 = [
+                 ["0","E","0","0"],
+                 ["E","0","W","E"],
+                 ["0","E","0","0"]
+                ]
         self.assertEqual(3, bomb_enemy.max_killed_enemies(grid1))
 
         grid1 = [
-            ["0", "E", "0", "E"],
-            ["E", "E", "E", "0"],
-            ["E", "0", "W", "E"],
-            ["0", "E", "0", "0"],
-        ]
+                 ["0", "E", "0", "E"],
+                 ["E", "E", "E", "0"],
+                 ["E", "0", "W", "E"],
+                 ["0", "E", "0", "0"]
+                ]
         grid2 = [
-            ["0", "0", "0", "E"],
-            ["E", "0", "0", "0"],
-            ["E", "0", "W", "E"],
-            ["0", "E", "0", "0"],
-        ]
+                 ["0", "0", "0", "E"],
+                 ["E", "0", "0", "0"],
+                 ["E", "0", "W", "E"],
+                 ["0", "E", "0", "0"]
+                ]
         self.assertEqual(5, bomb_enemy.max_killed_enemies(grid1))
         self.assertEqual(3, bomb_enemy.max_killed_enemies(grid2))
 
@@ -41,25 +45,17 @@ class TestCopyTransform(unittest.TestCase):
     """
 
     def test_copy_transform(self):
-        self.assertEqual(
-            copy_transform.rotate_clockwise([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [[7, 4, 1], [8, 5, 2], [9, 6, 3]],
-        )
+        self.assertEqual(copy_transform.rotate_clockwise(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[7, 4, 1], [8, 5, 2], [9, 6, 3]])
 
-        self.assertEqual(
-            copy_transform.rotate_counterclockwise([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [[3, 6, 9], [2, 5, 8], [1, 4, 7]],
-        )
+        self.assertEqual(copy_transform.rotate_counterclockwise(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[3, 6, 9], [2, 5, 8], [1, 4, 7]])
 
-        self.assertEqual(
-            copy_transform.top_left_invert([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [[1, 4, 7], [2, 5, 8], [3, 6, 9]],
-        )
+        self.assertEqual(copy_transform.top_left_invert(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[1, 4, 7], [2, 5, 8], [3, 6, 9]])
 
-        self.assertEqual(
-            copy_transform.bottom_left_invert([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [[9, 6, 3], [8, 5, 2], [7, 4, 1]],
-        )
+        self.assertEqual(copy_transform.bottom_left_invert(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[9, 6, 3], [8, 5, 2], [7, 4, 1]])
 
 
 class TestCroutMatrixDecomposition(unittest.TestCase):
@@ -71,40 +67,30 @@ class TestCroutMatrixDecomposition(unittest.TestCase):
     """
 
     def test_crout_matrix_decomposition(self):
-        self.assertEqual(
-            ([[9.0, 0.0], [7.0, 0.0]], [[1.0, 1.0], [0.0, 1.0]]),
-            crout_matrix_decomposition.crout_matrix_decomposition([[9, 9], [7, 7]]),
-        )
+        self.assertEqual(([[9.0, 0.0], [7.0, 0.0]],
+                          [[1.0, 1.0], [0.0, 1.0]]),
+                         crout_matrix_decomposition.crout_matrix_decomposition(
+                             [[9, 9], [7, 7]]))
 
-        self.assertEqual(
-            (
-                [[1.0, 0.0, 0.0], [3.0, -2.0, 0.0], [6.0, -5.0, 0.0]],
-                [[1.0, 2.0, 3.0], [0.0, 1.0, 2.0], [0.0, 0.0, 1.0]],
-            ),
-            crout_matrix_decomposition.crout_matrix_decomposition(
-                [[1, 2, 3], [3, 4, 5], [6, 7, 8]]
-            ),
-        )
+        self.assertEqual(([[1.0, 0.0, 0.0],
+                           [3.0, -2.0, 0.0],
+                           [6.0, -5.0, 0.0]],
+                          [[1.0, 2.0, 3.0],
+                           [0.0, 1.0, 2.0],
+                           [0.0, 0.0, 1.0]]),
+                         crout_matrix_decomposition.crout_matrix_decomposition(
+                             [[1, 2, 3], [3, 4, 5], [6, 7, 8]]))
 
-        self.assertEqual(
-            (
-                [
-                    [2.0, 0, 0, 0],
-                    [4.0, -1.0, 0, 0],
-                    [6.0, -2.0, 2.0, 0],
-                    [8.0, -3.0, 3.0, 0.0],
-                ],
-                [
-                    [1.0, 0.5, 1.5, 0.5],
-                    [0, 1.0, 2.0, 1.0],
-                    [0, 0, 1.0, 0.0],
-                    [0, 0, 0, 1.0],
-                ],
-            ),
-            crout_matrix_decomposition.crout_matrix_decomposition(
-                [[2, 1, 3, 1], [4, 1, 4, 1], [6, 1, 7, 1], [8, 1, 9, 1]]
-            ),
-        )
+        self.assertEqual(([[2.0, 0, 0, 0],
+                           [4.0, -1.0, 0, 0],
+                           [6.0, -2.0, 2.0, 0],
+                           [8.0, -3.0, 3.0, 0.0]],
+                          [[1.0, 0.5, 1.5, 0.5],
+                           [0, 1.0, 2.0, 1.0],
+                           [0, 0, 1.0, 0.0],
+                           [0, 0, 0, 1.0]]),
+                         crout_matrix_decomposition.crout_matrix_decomposition(
+                             [[2, 1, 3, 1], [4, 1, 4, 1], [6, 1, 7, 1], [8, 1, 9, 1]]))
 
 
 class TestMultiply(unittest.TestCase):
@@ -116,9 +102,8 @@ class TestMultiply(unittest.TestCase):
     """
 
     def test_multiply(self):
-        self.assertEqual(
-            multiply.multiply([[1, 2, 3], [2, 1, 1]], [[1], [2], [3]]), [[14], [7]]
-        )
+        self.assertEqual(multiply.multiply(
+            [[1, 2, 3], [2, 1, 1]], [[1], [2], [3]]), [[14], [7]])
 
 
 class TestRotateImage(unittest.TestCase):
@@ -130,10 +115,8 @@ class TestRotateImage(unittest.TestCase):
     """
 
     def test_rotate_image(self):
-        self.assertEqual(
-            rotate_image.rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [[7, 4, 1], [8, 5, 2], [9, 6, 3]],
-        )
+        self.assertEqual(rotate_image.rotate(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[7, 4, 1], [8, 5, 2], [9, 6, 3]])
 
 
 class TestSparseDotVector(unittest.TestCase):
@@ -145,13 +128,8 @@ class TestSparseDotVector(unittest.TestCase):
     """
 
     def test_sparse_dot_vector(self):
-        self.assertEqual(
-            sparse_dot_vector.dot_product(
-                sparse_dot_vector.vector_to_index_value_list([1.0, 2.0, 3.0]),
-                sparse_dot_vector.vector_to_index_value_list([0.0, 2.0, 2.0]),
-            ),
-            10,
-        )
+        self.assertEqual(sparse_dot_vector.dot_product(sparse_dot_vector.vector_to_index_value_list(
+            [1., 2., 3.]), sparse_dot_vector.vector_to_index_value_list([0., 2., 2.])), 10)
 
 
 class TestSpiralTraversal(unittest.TestCase):
@@ -163,10 +141,8 @@ class TestSpiralTraversal(unittest.TestCase):
     """
 
     def test_spiral_traversal(self):
-        self.assertEqual(
-            spiral_traversal.spiral_traversal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-            [1, 2, 3, 6, 9, 8, 7, 4, 5],
-        )
+        self.assertEqual(spiral_traversal.spiral_traversal(
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [1, 2, 3, 6, 9, 8, 7, 4, 5])
 
 
 class TestSudokuValidator(unittest.TestCase):
@@ -189,10 +165,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 6, 1, 5, 3, 7, 2, 8, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 4, 5, 2, 8, 6, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 4, 5, 2, 8, 6, 1, 7, 9]
+                ]))
 
         self.assertTrue(
             sudoku_validator.valid_solution_hashtable(
@@ -205,10 +179,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 6, 1, 5, 3, 7, 2, 8, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 4, 5, 2, 8, 6, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 4, 5, 2, 8, 6, 1, 7, 9]
+                ]))
 
         self.assertTrue(
             sudoku_validator.valid_solution_set(
@@ -221,10 +193,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 6, 1, 5, 3, 7, 2, 8, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 4, 5, 2, 8, 6, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 4, 5, 2, 8, 6, 1, 7, 9]
+                ]))
 
         self.assertFalse(
             sudoku_validator.valid_solution(
@@ -237,10 +207,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 0, 1, 5, 3, 7, 2, 1, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 0, 0, 4, 8, 1, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 0, 0, 4, 8, 1, 1, 7, 9]
+                ]))
 
         self.assertFalse(
             sudoku_validator.valid_solution_hashtable(
@@ -253,10 +221,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 0, 1, 5, 3, 7, 2, 1, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 0, 0, 4, 8, 1, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 0, 0, 4, 8, 1, 1, 7, 9]
+                ]))
 
         self.assertFalse(
             sudoku_validator.valid_solution_set(
@@ -269,10 +235,8 @@ class TestSudokuValidator(unittest.TestCase):
                     [7, 1, 3, 9, 2, 4, 8, 5, 6],
                     [9, 0, 1, 5, 3, 7, 2, 1, 4],
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
-                    [3, 0, 0, 4, 8, 1, 1, 7, 9],
-                ]
-            )
-        )
+                    [3, 0, 0, 4, 8, 1, 1, 7, 9]
+                ]))
 
 
 if __name__ == "__main__":

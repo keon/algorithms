@@ -5,7 +5,6 @@ https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
 """
 from algorithms.graph.graph import DirectedGraph
 
-
 class Tarjan(object):
     def __init__(self, dict_graph):
         self.graph = DirectedGraph(dict_graph)
@@ -42,7 +41,7 @@ class Tarjan(object):
                 # Note: The next line may look odd - but is correct.
                 # It says w.index not w.lowlink; that is deliberate and from the original paper
                 v.lowlink = min(v.lowlink, w.index)
-
+        
         # If v is a root node, pop the stack and generate an SCC
         if v.lowlink == v.index:
             # start a new strongly connected component
@@ -55,3 +54,4 @@ class Tarjan(object):
                     break
             scc.sort()
             sccs.append(scc)
+    

@@ -10,11 +10,9 @@ rotate("hello", 7) return "llohe"
 accepts two strings
 returns bool
 """
-
-
 def rotate(s, k):
     double_s = s + s
     if k <= len(s):
-        return double_s[k : k + len(s)]
+        return double_s[k:k + len(s)]
     else:
-        return double_s[k - len(s) : k]
+        return double_s[k-len(s):k]

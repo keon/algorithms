@@ -2,8 +2,6 @@
 radix sort
 complexity: O(nk + n) . n is the size of input list and k is the digit length of the number
 """
-
-
 def radix_sort(arr, simulation=False):
     position = 1
     max_number = max(arr)
@@ -31,3 +29,4 @@ def radix_sort(arr, simulation=False):
 
         position *= 10
     return arr
+    

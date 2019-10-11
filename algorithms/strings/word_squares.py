@@ -26,16 +26,16 @@
 
 # Output:
 # [
-# [ "wall",
-# "area",
-# "lead",
-# "lady"
-# ],
-# [ "ball",
-# "area",
-# "lead",
-# "lady"
-# ]
+  # [ "wall",
+    # "area",
+    # "lead",
+    # "lady"
+  # ],
+  # [ "ball",
+    # "area",
+    # "lead",
+    # "lady"
+  # ]
 # ]
 
 # Explanation:
@@ -43,7 +43,6 @@
 # (just the order of words in each word square matters).
 
 import collections
-
 
 def word_squares(words):
     n = len(words[0])
@@ -61,8 +60,8 @@ def word_squares(words):
             prefix += square[k][len(square)]
         for word in fulls[prefix]:
             build(square + [word])
-
     squares = []
     for word in words:
         build([word])
     return squares
+

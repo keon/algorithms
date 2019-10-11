@@ -8,8 +8,6 @@ Null :List is sorted
 1 2 3 4 :List is sorted
 1 2 -1 3 :List is not sorted
 """
-
-
 def is_sorted(head):
     if not head:
         return True

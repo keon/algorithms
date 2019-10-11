@@ -1,23 +1,16 @@
 from algorithms.dp import (
-    max_profit_naive,
-    max_profit_optimized,
-    climb_stairs,
-    climb_stairs_optimized,
+    max_profit_naive, max_profit_optimized,
+    climb_stairs, climb_stairs_optimized,
     count,
-    combination_sum_topdown,
-    combination_sum_bottom_up,
+    combination_sum_topdown, combination_sum_bottom_up,
     edit_distance,
     egg_drop,
-    fib_recursive,
-    fib_list,
-    fib_iter,
+    fib_recursive, fib_list, fib_iter,
     hosoya_testing,
     house_robber,
-    Job,
-    schedule,
-    Item,
-    get_maximum_value,
-    longest_increasing_subsequence,
+    Job, schedule,
+    Item, get_maximum_value,
+    longest_increasing_subsequence
 )
 
 
@@ -38,7 +31,7 @@ class TestClimbingStairs(unittest.TestCase):
     def test_climb_stairs(self):
         self.assertEqual(climb_stairs(2), 2)
         self.assertEqual(climb_stairs(10), 89)
-
+    
     def test_climb_stairs_optimized(self):
         self.assertEqual(climb_stairs_optimized(2), 2)
         self.assertEqual(climb_stairs_optimized(10), 89)
@@ -53,15 +46,15 @@ class TestCoinChange(unittest.TestCase):
 class TestCombinationSum(unittest.TestCase):
     def test_combination_sum_topdown(self):
         self.assertEqual(combination_sum_topdown([1, 2, 3], 4), 7)
-
+    
     def test_combination_sum_bottom_up(self):
         self.assertEqual(combination_sum_bottom_up([1, 2, 3], 4), 7)
 
 
 class TestEditDistance(unittest.TestCase):
     def test_edit_distance(self):
-        self.assertEqual(edit_distance("food", "money"), 4)
-        self.assertEqual(edit_distance("horse", "ros"), 3)
+        self.assertEqual(edit_distance('food', 'money'), 4)
+        self.assertEqual(edit_distance('horse', 'ros'), 3)
 
 
 class TestEggDrop(unittest.TestCase):
@@ -75,11 +68,11 @@ class TestFib(unittest.TestCase):
     def test_fib_recursive(self):
         self.assertEqual(fib_recursive(10), 55)
         self.assertEqual(fib_recursive(30), 832040)
-
+    
     def test_fib_list(self):
         self.assertEqual(fib_list(10), 55)
         self.assertEqual(fib_list(30), 832040)
-
+    
     def test_fib_iter(self):
         self.assertEqual(fib_iter(10), 55)
         self.assertEqual(fib_iter(30), 832040)
@@ -92,76 +85,30 @@ class TestHosoyaTriangle(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-
+    
     def test_hosoya(self):
         self.assertEqual([1], hosoya_testing(1))
-        self.assertEqual(
-            [1, 1, 1, 2, 1, 2, 3, 2, 2, 3, 5, 3, 4, 3, 5, 8, 5, 6, 6, 5, 8],
-            hosoya_testing(6),
-        )
-        self.assertEqual(
-            [
-                1,
-                1,
-                1,
-                2,
-                1,
-                2,
-                3,
-                2,
-                2,
-                3,
-                5,
-                3,
-                4,
-                3,
-                5,
-                8,
-                5,
-                6,
-                6,
-                5,
-                8,
-                13,
-                8,
-                10,
-                9,
-                10,
-                8,
-                13,
-                21,
-                13,
-                16,
-                15,
-                15,
-                16,
-                13,
-                21,
-                34,
-                21,
-                26,
-                24,
-                25,
-                24,
-                26,
-                21,
-                34,
-                55,
-                34,
-                42,
-                39,
-                40,
-                40,
-                39,
-                42,
-                34,
-                55,
-            ],
-            hosoya_testing(10),
-        )
+        self.assertEqual([1,
+                         1, 1,
+                         2, 1, 2,
+                         3, 2, 2, 3,
+                         5, 3, 4, 3, 5,
+                         8, 5, 6, 6, 5, 8],
+                         hosoya_testing(6))
+        self.assertEqual([1,
+                          1, 1,
+                          2, 1, 2,
+                          3, 2, 2, 3,
+                          5, 3, 4, 3, 5,
+                          8, 5, 6, 6, 5, 8,
+                          13, 8, 10, 9, 10, 8, 13,
+                          21, 13, 16, 15, 15, 16, 13, 21,
+                          34, 21, 26, 24, 25, 24, 26, 21, 34,
+                          55, 34, 42, 39, 40, 40, 39, 42, 34, 55],
+                          hosoya_testing(10))
 
 
-class TestHouseRobber(unittest.TestCase):
+class TestHouseRobber(unittest.TestCase):    
     def test_house_robber(self):
         self.assertEqual(44, house_robber([1, 2, 16, 3, 15, 3, 12, 1]))
 
@@ -187,5 +134,5 @@ class TestLongestIncreasingSubsequence(unittest.TestCase):
         self.assertEqual(5, longest_increasing_subsequence(sequence))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

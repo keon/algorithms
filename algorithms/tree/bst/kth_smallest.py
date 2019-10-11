@@ -1,4 +1,5 @@
 class Node:
+
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
@@ -28,7 +29,7 @@ class Solution(object):
         """
         count = []
         self.helper(root, count)
-        return count[k - 1]
+        return count[k-1]
 
     def helper(self, node, count):
         if not node:
@@ -38,8 +39,7 @@ class Solution(object):
         count.append(node.val)
         self.helper(node.right, count)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     n1 = Node(100)
     n2 = Node(50)
     n3 = Node(150)

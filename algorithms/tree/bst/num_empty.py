@@ -22,7 +22,6 @@ import unittest
 from bst import Node
 from bst import bst
 
-
 def num_empty(root):
     if root is None:
         return 1
@@ -32,7 +31,6 @@ def num_empty(root):
         return 1 + num_empty(root.left)
     else:
         return num_empty(root.left) + num_empty(root.right)
-
 
 """
     The tree is created for testing:
@@ -48,7 +46,6 @@ def num_empty(root):
     num_empty = 10
 
 """
-
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -66,6 +63,5 @@ class TestSuite(unittest.TestCase):
     def test_num_empty(self):
         self.assertEqual(10, num_empty(self.tree.root))
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

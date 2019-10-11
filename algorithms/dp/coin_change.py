@@ -12,27 +12,26 @@ For N = 10 and S = [2, 5, 3, 6], there are five solutions:
 So the output should be 5.
 """
 
-
 def count(s, n):
     # We need n+1 rows as the table is consturcted in bottom up
     # manner using the base case 0 value case (n = 0)
     m = len(s)
-    table = [[0 for x in range(m)] for x in range(n + 1)]
-
+    table = [[0 for x in range(m)] for x in range(n+1)]
+ 
     # Fill the enteries for 0 value case (n = 0)
     for i in range(m):
         table[0][i] = 1
-
+ 
     # Fill rest of the table enteries in bottom up manner
-    for i in range(1, n + 1):
+    for i in range(1, n+1):
         for j in range(m):
             # Count of solutions including S[j]
-            x = table[i - s[j]][j] if i - s[j] >= 0 else 0
-
+            x = table[i - s[j]][j] if i-s[j] >= 0 else 0
+ 
             # Count of solutions excluding S[j]
-            y = table[i][j - 1] if j >= 1 else 0
-
+            y = table[i][j-1] if j >= 1 else 0
+ 
             # total count
             table[i][j] = x + y
-
-    return table[n][m - 1]
+ 
+    return table[n][m-1]

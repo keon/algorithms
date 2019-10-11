@@ -1,9 +1,9 @@
-"""
+'''
 Time complexity : O(n)
-"""
-
+'''
 
 class Node:
+
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
@@ -25,7 +25,6 @@ def preorder(root):
             stack.append(root.left)
     return res
 
-
 # Recursive Implementation
 def preorder_rec(root, res=None):
     if root is None:
@@ -36,3 +35,4 @@ def preorder_rec(root, res=None):
     preorder_rec(root.left, res)
     preorder_rec(root.right, res)
     return res
+

@@ -38,3 +38,4 @@ class Trie:
             if current is None:
                 return False
         return True
+

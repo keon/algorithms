@@ -1,3 +1,4 @@
+
 def reverse(array, i, j):
     while i < j:
         array[i], array[j] = array[j], array[i]
@@ -8,7 +9,7 @@ def reverse(array, i, j):
 def reverse_words(string):
     arr = string.strip().split()  # arr is list of words
     n = len(arr)
-    reverse(arr, 0, n - 1)
+    reverse(arr, 0, n-1)
 
     return " ".join(arr)
 

@@ -7,8 +7,6 @@ The board is always 9 cells by 9 cells, and every cell only contains integers fr
 
 # Using dict/hash-table
 from collections import defaultdict
-
-
 def valid_solution_hashtable(board):
     for i in range(len(board)):
         dict_row = defaultdict(int)
@@ -33,7 +31,7 @@ def valid_solution_hashtable(board):
             grid_add = 0
             for k in range(3):
                 for l in range(3):
-                    grid_add += board[i * 3 + k][j * 3 + l]
+                    grid_add += board[i*3+k][j*3+l]
             if grid_add != 45:
                 return False
     return True
@@ -56,8 +54,8 @@ def valid_solution(board):
     for i in range(3):
         for j in range(3):
             region = []
-            for line in board[i * 3 : (i + 1) * 3]:
-                region += line[j * 3 : (j + 1) * 3]
+            for line in board[i*3:(i+1)*3]:
+                region += line[j*3:(j+1)*3]
 
             if sorted(region) != correct:
                 return False
@@ -67,7 +65,7 @@ def valid_solution(board):
 
 
 # Using set
-def valid_solution_set(board):
+def valid_solution_set (board):
     valid = set(range(1, 10))
 
     for row in board:
@@ -80,18 +78,7 @@ def valid_solution_set(board):
 
     for x in range(3):
         for y in range(3):
-            if (
-                set(
-                    sum(
-                        [
-                            row[x * 3 : (x + 1) * 3]
-                            for row in board[y * 3 : (y + 1) * 3]
-                        ],
-                        [],
-                    )
-                )
-                != valid
-            ):
+            if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
                 return False
 
     return True

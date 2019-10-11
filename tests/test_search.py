@@ -1,33 +1,25 @@
 from algorithms.search import (
-    binary_search,
-    binary_search_recur,
+    binary_search, binary_search_recur,
     first_occurrence,
     last_occurrence,
     linear_search,
     search_insert,
-    two_sum,
-    two_sum1,
-    two_sum2,
+    two_sum, two_sum1, two_sum2,
     search_range,
-    find_min_rotate,
-    find_min_rotate_recur,
-    search_rotate,
-    search_rotate_recur,
+    find_min_rotate, find_min_rotate_recur,
+    search_rotate, search_rotate_recur,
     jump_search,
-    next_greatest_letter,
-    next_greatest_letter_v1,
-    next_greatest_letter_v2,
+    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2
 )
 
 import unittest
 
-
 class TestSuite(unittest.TestCase):
+
     def test_first_occurrence(self):
         def helper(array, query):
             idx = array.index(query) if query in array else None
             return idx
-
         array = [1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
         self.assertEqual(first_occurrence(array, 1), helper(array, 1))
         self.assertEqual(first_occurrence(array, 3), helper(array, 3))
@@ -64,7 +56,7 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(-1, linear_search(array, -1))
 
     def test_search_insert(self):
-        array = [1, 3, 5, 6]
+        array = [1,3,5,6]
         self.assertEqual(2, search_insert(array, 5))
         self.assertEqual(1, search_insert(array, 2))
         self.assertEqual(4, search_insert(array, 7))
@@ -130,7 +122,6 @@ class TestSuite(unittest.TestCase):
         self.assertEqual("c", next_greatest_letter_v1(letters, target))
         self.assertEqual("c", next_greatest_letter_v2(letters, target))
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     unittest.main()

@@ -11,7 +11,6 @@ Note: Given n will be a positive integer.
 
 # O(n) space
 
-
 def climb_stairs(n):
     """
     :type n: int
@@ -25,7 +24,6 @@ def climb_stairs(n):
 
 # the above function can be optimized as:
 # O(1) space
-
 
 def climb_stairs_optimized(n):
     a = b = 1

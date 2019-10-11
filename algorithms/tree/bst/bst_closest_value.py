@@ -14,7 +14,6 @@
 #         self.left = None
 #         self.right = None
 
-
 def closest_value(root, target):
     """
     :type root: TreeNode
@@ -26,4 +25,4 @@ def closest_value(root, target):
     if not kid:
         return a
     b = closest_value(kid, target)
-    return min((a, b), key=lambda x: abs(target - x))
+    return min((a,b), key=lambda x: abs(target-x))

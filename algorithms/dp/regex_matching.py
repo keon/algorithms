@@ -20,25 +20,25 @@ isMatch("aab", "c*a*b") → true
 """
 import unittest
 
-
 class Solution(object):
     def is_match(self, s, p):
         m, n = len(s) + 1, len(p) + 1
-        matches = [[False] * n for _ in range(m)]
+        matches = [[False] * n  for _ in range(m)]
 
         # Match empty string with empty pattern
         matches[0][0] = True
 
         # Match empty string with .*
         for i, element in enumerate(p[1:], 2):
-            matches[0][i] = matches[0][i - 2] and element == "*"
+            matches[0][i] = matches[0][i - 2] and element == '*'
 
         for i, ss in enumerate(s, 1):
             for j, pp in enumerate(p, 1):
-                if pp != "*":
+                if pp != '*':
                     # The previous character has matched and the current one
                     # has to be matched. Two possible matches: the same or .
-                    matches[i][j] = matches[i - 1][j - 1] and (ss == pp or pp == ".")
+                    matches[i][j] = matches[i - 1][j - 1] and \
+                                    (ss == pp or pp == '.')
                 else:
                     # Horizontal look up [j - 2].
                     # Not use the character before *.
@@ -51,11 +51,10 @@ class Solution(object):
                     # a 0 1 0 1
                     # b 0 0 1 1
                     # b 0 0 0 ?
-                    if ss == p[j - 2] or p[j - 2] == ".":
+                    if ss == p[j - 2] or p[j - 2] == '.':
                         matches[i][j] |= matches[i - 1][j]
 
         return matches[-1][-1]
-
 
 class TestSolution(unittest.TestCase):
     def test_none_0(self):

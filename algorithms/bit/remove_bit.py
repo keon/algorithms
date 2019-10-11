@@ -8,7 +8,6 @@ remove_bit(num, 4): output = 101 (5)
 remove_bit(num, 0): output = 1010 (10)
 """
 
-
 def remove_bit(num, i):
     mask = num >> (i + 1)
     mask = mask << i

@@ -50,7 +50,6 @@ class Solution(object):
             ans += [islands.count]
         return ans
 
-
 class Union(object):
     def __init__(self):
         self.id = {}

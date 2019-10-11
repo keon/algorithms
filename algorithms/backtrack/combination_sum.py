@@ -17,6 +17,7 @@ A solution set is:
 
 
 def combination_sum(candidates, target):
+
     def dfs(nums, target, index, path, res):
         if target < 0:
             return  # backtracking
@@ -24,7 +25,7 @@ def combination_sum(candidates, target):
             res.append(path)
             return
         for i in range(index, len(nums)):
-            dfs(nums, target - nums[i], i, path + [nums[i]], res)
+            dfs(nums, target-nums[i], i, path+[nums[i]], res)
 
     res = []
     candidates.sort()

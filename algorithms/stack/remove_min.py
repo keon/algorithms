@@ -8,8 +8,6 @@ After remove_min(stack):
 bottom [2, 8, 3, 7, 3] top
 
 """
-
-
 def remove_min(stack):
     storage_stack = []
     if len(stack) == 0:  # Stack is empty
