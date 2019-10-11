@@ -10,7 +10,8 @@ from algorithms.dp import (
     house_robber,
     Job, schedule,
     Item, get_maximum_value,
-    longest_increasing_subsequence
+    longest_increasing_subsequence,
+    int_divide
 )
 
 
@@ -31,7 +32,7 @@ class TestClimbingStairs(unittest.TestCase):
     def test_climb_stairs(self):
         self.assertEqual(climb_stairs(2), 2)
         self.assertEqual(climb_stairs(10), 89)
-    
+
     def test_climb_stairs_optimized(self):
         self.assertEqual(climb_stairs_optimized(2), 2)
         self.assertEqual(climb_stairs_optimized(10), 89)
@@ -46,7 +47,7 @@ class TestCoinChange(unittest.TestCase):
 class TestCombinationSum(unittest.TestCase):
     def test_combination_sum_topdown(self):
         self.assertEqual(combination_sum_topdown([1, 2, 3], 4), 7)
-    
+
     def test_combination_sum_bottom_up(self):
         self.assertEqual(combination_sum_bottom_up([1, 2, 3], 4), 7)
 
@@ -68,11 +69,11 @@ class TestFib(unittest.TestCase):
     def test_fib_recursive(self):
         self.assertEqual(fib_recursive(10), 55)
         self.assertEqual(fib_recursive(30), 832040)
-    
+
     def test_fib_list(self):
         self.assertEqual(fib_list(10), 55)
         self.assertEqual(fib_list(30), 832040)
-    
+
     def test_fib_iter(self):
         self.assertEqual(fib_iter(10), 55)
         self.assertEqual(fib_iter(30), 832040)
@@ -85,7 +86,7 @@ class TestHosoyaTriangle(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    
+
     def test_hosoya(self):
         self.assertEqual([1], hosoya_testing(1))
         self.assertEqual([1,
@@ -108,7 +109,7 @@ class TestHosoyaTriangle(unittest.TestCase):
                           hosoya_testing(10))
 
 
-class TestHouseRobber(unittest.TestCase):    
+class TestHouseRobber(unittest.TestCase):
     def test_house_robber(self):
         self.assertEqual(44, house_robber([1, 2, 16, 3, 15, 3, 12, 1]))
 
@@ -132,6 +133,13 @@ class TestLongestIncreasingSubsequence(unittest.TestCase):
     def test_longest_increasing_subsequence(self):
         sequence = [1, 101, 10, 2, 3, 100, 4, 6, 2]
         self.assertEqual(5, longest_increasing_subsequence(sequence))
+
+
+class TestIntDivide(unittest.TestCase):
+    def test_int_divide(self):
+        self.assertEqual(5, int_divide(4))
+        self.assertEqual(42, int_divide(10))
+        self.assertEqual(204226, int_divide(50))
 
 
 if __name__ == '__main__':

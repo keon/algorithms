@@ -129,6 +129,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [combination_sum](algorithms/dp/combination_sum.py)
     - [egg_drop](algorithms/dp/egg_drop.py)
     - [house_robber](algorithms/dp/house_robber.py)
+    - [int_divide](algorithms/dp/int_divide.py)
     - [job_scheduling](algorithms/dp/job_scheduling.py)
     - [knapsack](algorithms/dp/knapsack.py)
     - [longest_increasing](algorithms/dp/longest_increasing.py)
