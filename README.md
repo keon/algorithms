@@ -223,6 +223,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [sparse_mul](algorithms/matrix/sparse_mul.py)
     - [spiral_traversal](algorithms/matrix/spiral_traversal.py)
 	- [crout_matrix_decomposition](algorithms/matrix/crout_matrix_decomposition.py)
+	- [cholesky_matrix_decomposition](algorithms/matrix/cholesky_matrix_decomposition.py)
 - [queues](algorithms/queues)
     - [max_sliding_window](algorithms/queues/max_sliding_window.py)
     - [moving_average](algorithms/queues/moving_average.py)
