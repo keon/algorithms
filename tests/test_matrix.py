@@ -2,6 +2,7 @@ from algorithms.matrix import (
     bomb_enemy,
     copy_transform,
     crout_matrix_decomposition,
+    cholesky_matrix_decomposition,
     multiply,
     rotate_image,
     sparse_dot_vector,
@@ -91,6 +92,39 @@ class TestCroutMatrixDecomposition(unittest.TestCase):
                            [0, 0, 0, 1.0]]),
                          crout_matrix_decomposition.crout_matrix_decomposition(
                              [[2, 1, 3, 1], [4, 1, 4, 1], [6, 1, 7, 1], [8, 1, 9, 1]]))
+
+
+class TestCholeskyMatrixDecomposition(unittest.TestCase):
+    """[summary]
+    Test for the file cholesky_matrix_decomposition.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_cholesky_matrix_decomposition(self):
+        self.assertEqual([[2.0, 0.0, 0.0],
+                          [6.0, 1.0, 0.0],
+                          [-8.0, 5.0, 3.0]],
+                         cholesky_matrix_decomposition.cholesky_decomposition(
+                             [[4, 12, -16], [12, 37, -43], [-16, -43, 98]]))
+
+        self.assertEqual( None,
+                         cholesky_matrix_decomposition.cholesky_decomposition(
+                             [[4, 12, -8], [12, 4, -43], [-16, -1, 32]]))
+
+        self.assertEqual(None,
+                         cholesky_matrix_decomposition.cholesky_decomposition(
+                             [[4, 12, -16], [12, 37, -43], [-16, -43, 98], [1, 2, 3]]))
+
+        # example taken from https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/04LinearAlgebra/cholesky/
+        self.assertEqual([[2.23606797749979, 0.0, 0.0, 0.0],
+                          [0.5366563145999494, 2.389979079406345, 0.0, 0.0],
+                          [0.13416407864998736, -0.19749126846635062, 2.818332343581848, 0.0],
+                          [-0.2683281572999747, 0.43682390737048743, 0.64657701271919, 3.052723872310221]],
+                         cholesky_matrix_decomposition.cholesky_decomposition(
+                             [[5, 1.2, 0.3, -0.6], [1.2, 6, -0.4, 0.9],
+                              [0.3, -0.4, 8, 1.7], [-0.6, 0.9, 1.7, 10]]))
 
 
 class TestMultiply(unittest.TestCase):
