@@ -21,7 +21,6 @@ def find_path(graph, start, end, path=[]):
 # find all path
 def find_all_path(graph, start, end, path=[]):
     path = path + [start]
-    print(path)
     if (start == end):
         return [path]
     if not start in graph:
