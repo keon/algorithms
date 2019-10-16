@@ -6,8 +6,6 @@ cache:
     - $HOME/.cache/pip
 matrix:
     include:
-        - python: 3.5
-          env: TOX_ENV=py35
         - python: 3.6
           env: TOX_ENV=py36
         - python: 3.7
@@ -15,6 +13,8 @@ matrix:
 install:
     - pip install -r test_requirements.txt
 before_script:
+    # run black to check if some files would need reformatting
+    - black --check . || true
     # stop the build if there are Python syntax errors or undefined names
     - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
