@@ -1,5 +1,6 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
+from algorithms.graph.dijkstra import Dijkstra
 
 import unittest
 
@@ -57,3 +58,20 @@ class TestCheckBipartite(unittest.TestCase):
         
         adj_list_3 = [[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]
         self.assertEqual(False, check_bipartite(adj_list_3))
+
+class TestDijkstra(unittest.TestCase):
+    
+    def test_dijkstra(self):
+        g = Dijkstra(9) 
+        g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0], 
+           [4, 0, 8, 0, 0, 0, 0, 11, 0], 
+           [0, 8, 0, 7, 0, 4, 0, 0, 2], 
+           [0, 0, 7, 0, 9, 14, 0, 0, 0], 
+           [0, 0, 0, 9, 0, 10, 0, 0, 0], 
+           [0, 0, 4, 14, 10, 0, 2, 0, 0], 
+           [0, 0, 0, 0, 0, 2, 0, 1, 6], 
+           [8, 11, 0, 0, 0, 0, 1, 0, 7], 
+           [0, 0, 2, 0, 0, 0, 6, 7, 0] 
+          ]; 
+
+        self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14]);
