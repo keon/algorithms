@@ -18,3 +18,4 @@ from .num_decodings import *
 from .regex_matching import *
 from .rod_cut import *
 from .word_break import *
+from .int_divide import *
