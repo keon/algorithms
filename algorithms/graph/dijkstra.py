@@ -1,6 +1,6 @@
 #Dijkstra's single source shortest path algorithm
 
-class Graph():
+class Dijkstra():
 
     def __init__(self, vertices):
         self.vertices = vertices
