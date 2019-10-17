@@ -1,5 +1,6 @@
 from algorithms.compression.huffman_coding import HuffmanCoding
 from algorithms.compression.rle_compression import (decode_rle, encode_rle)
+from algorithms.compression.elias import (elias_gamma, elias_delta)
 
 import unittest
 
@@ -44,6 +45,25 @@ class TestRLECompression(unittest.TestCase):
         self.assertEqual('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW', 
             decode_rle('12W1B12W3B24W1B14W'))
 
+class TestEliasCoding(unittest.TestCase):
+
+    def test_elias_gamma(self):
+        correct_result = ['0', '00', '100', '101', '11000', '11001', '11010', '11011', '1110000', '1110001', '1110010']
+        
+        result = []
+        for i in range(11):	
+            result.append(elias_gamma(i))
+
+        self.assertEqual(correct_result, result)
+
+    def test_elias_delta(self):
+        correct_result = ['0', '000', '1000', '1001', '10100', '10101', '10110', '10111', '11000000', '11000001', '11000010']
+
+        result = []
+        for i in range(11):	
+            result.append(elias_delta(i))
+
+        self.assertEqual(correct_result, result)        
 
 if __name__ == "__main__":
     unittest.main()
