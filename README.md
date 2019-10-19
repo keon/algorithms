@@ -374,8 +374,8 @@ If you want to uninstall algorithms, it is as simple as:
         - [simplify_path](algorithms/unix/path/simplify_path.py)
 - [union-find](algorithms/union-find)
     - [count_islands](algorithms/union-find/count_islands.py)
-- [machine-learning](algorithms/machine-learning)
-    - [nearest neighbor classification](algorithms/machine-learning/nearest_neighbor.py)
+- [machine-learning](algorithms/ml)
+    - [nearest neighbor classification](algorithms/ml/nearest_neighbor.py)
 
 ## Contributors
 
