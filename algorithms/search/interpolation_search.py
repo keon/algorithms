@@ -15,6 +15,17 @@ def interpolation_search(numbersList,value):
         return low
     return None
 
-#  interpolation_search([2,3,4,5,6,7],4)
-#  return 2 
+def test(x):
+    arr = [10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47]
+    index = interpolation_search(arr, x)
+    if index != -1:
+        print ("The element", x, "is at the index", index)
+    else:
+        print ("Element", x, "not found!")
+test(123)
+test(16)
+test(21)
+test(274)
+test(42)
+
  
