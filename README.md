@@ -123,6 +123,8 @@ If you want to uninstall algorithms, it is as simple as:
     - [pacific_atlantic](algorithms/dfs/pacific_atlantic.py)
     - [sudoku_solver](algorithms/dfs/sudoku_solver.py)
     - [walls_and_gates](algorithms/dfs/walls_and_gates.py)
+- [distribution](algorithms/distribution)
+    - [histogram](algorithms/distribution/histogram.py)
 - [dp](algorithms/dp)
     - [buy_sell_stock](algorithms/dp/buy_sell_stock.py)
     - [climbing_stairs](algorithms/dp/climbing_stairs.py)
