@@ -37,7 +37,8 @@ from algorithms.strings import (
     rotate,
     first_unique_char,
     repeat_substring,
-    atbash
+    atbash,
+    longestPalindrome
 )
 
 import unittest
@@ -525,12 +526,27 @@ class TestAtbashCipher(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    
+
     def test_atbash_cipher(self):
         self.assertEqual("zyxwvutsrqponml", atbash("abcdefghijklmno"))
         self.assertEqual("KbgslM", atbash("PythoN"))
         self.assertEqual("AttaCK at DawN", atbash("ZggzXP zg WzdM"))
         self.assertEqual("ZggzXP zg WzdM", atbash("AttaCK at DawN"))
-        
+
+
+class TestLongestPalindromicSubstring(unittest.TestCase):
+    """[summary]
+    Test for the file longest_palindromic_substring.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_longest_palindromic_substring(self):
+        self.assertEqual("cbbd", longestPalindrome("bb"))
+        self.assertEqual("abba", longestPalindrome("abba"))
+        self.assertEqual("aaaa", longestPalindrome("aaaa"))
+        self.assertEqual("cabba", longestPalindrome("abba"))
+
+
 if __name__ == "__main__":
     unittest.main()
