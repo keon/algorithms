@@ -1,12 +1,27 @@
 class OrientedGraph:
 	def __init__(self):
+		"""
+		Init Oriented graph object
+		"""
 		self.nodes = {}
 
 	def insertNode(self, u):
+		"""
+		Insert node u
+
+		Parameters:
+		u : str
+		"""
 		if u not in self.nodes:
 			self.nodes[u] = {}
 
 	def V(self):
+		"""
+		Return veritces
+
+		Return:
+		nodes : dict
+		"""
 		return self.nodes.keys()
 
 	def adj(self, u):
@@ -14,6 +29,17 @@ class OrientedGraph:
 			return self.nodes[u]
 
 	def insertEdge(self, u, v, w=0):
+		"""
+		Insert edge from u to v
+
+		Parameters:
+		u : str
+		   Start node
+		v: str
+		   End node
+		w: float
+		   Weight
+		"""
 		if u not in self.nodes:
 			self.insertNode(u)
 		if v not in self.nodes:
@@ -21,6 +47,12 @@ class OrientedGraph:
 		self.nodes[u][v] = w
 
 	def bfs(self, start):
+		"""
+		Perform BFS search
+
+		Parameters:
+		start: str
+		"""
 		S = [start]
 		visited = {}
 		for node in self.V():
@@ -35,6 +67,12 @@ class OrientedGraph:
 					S.append(v)
 
 	def dfs(self, start):
+		"""
+		Perform DFS search
+
+		Parameters:
+		start : str
+		"""
 		S = [start]
 		visited = {}
 		for node in self.V():
@@ -70,6 +108,16 @@ class OrientedGraph:
 			p[neighbour] = node
 
 	def bellman_ford(self, start):
+		"""
+		Execude bellman ford aglgorithm for the shortest path
+		It is slower than Dijkstra's algorithm for the same problem, but more
+		versatile, as it is capable of handling graphs in which some of the edge
+		weights are negative numbers
+		O(|V| * |E|)
+
+		Parameters:
+		start: str
+		"""
 		graph = self.nodes
 		d, p = self.init_bellman(start)
 		for i in range(len(graph) - 1):  #Run this until is converges
