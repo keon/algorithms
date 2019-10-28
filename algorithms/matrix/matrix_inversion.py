@@ -16,6 +16,9 @@ other values over it.
 
 This code combines steps 1 and 2 into one method to reduce traversals of the
 matrix.
+
+Possible edge cases: will not work for 0x0 or 1x1 matrix, though these are
+trivial to calculate without use of this file.
 """
 import fractions
 
