@@ -8,7 +8,7 @@ class SegmentTree:
         self.segment = [0 for x in range(3*len(arr)+3)]
         self.arr = arr
         self.fn = function
-        self.maketree(0,0,len(arr)-1)
+        self.make_tree(0,0,len(arr)-1)
 
     def make_tree(self,i,l,r):
         if l==r:
@@ -31,7 +31,7 @@ class SegmentTree:
                 return self.fn(val1,val2)
             return val1
         return val2
-        
+
 
     def query(self,L,R):
         return self.__query(0,0,len(self.arr)-1,L,R)
