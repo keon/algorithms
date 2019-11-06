@@ -36,13 +36,13 @@ def longest_increasing_subsequence(sequence):
 
 def longest_increasing_subsequence_optimized(sequence):
     """
-    Optimized dynamic programming algorithm using for
+    Optimized dynamic programming algorithm for
     couting the length of the longest increasing subsequence
-    using segment tree data structure
-    type sequence: list[int]
-    rtype: int
+    using segment tree data structure to achieve better complexity
     if max element is larger than 10^5 then use 
     longest_increasing_subsequence_optimied2() instead
+    type sequence: list[int]
+    rtype: int
     """
     mx = max(sequence)
     tree = [0] * (mx<<2)
@@ -74,9 +74,9 @@ def longest_increasing_subsequence_optimized(sequence):
 
 def longest_increasing_subsequence_optimized2(sequence):
     """
-    Optimized dynamic programming algorithm using for
-    couting the length of the longest increasing subsequence
-    using segment tree data structure
+    Optimized dynamic programming algorithm for
+    counting the length of the longest increasing subsequence
+    using segment tree data structure to achieve better complexity
     type sequence: list[int]
     rtype: int
     """
