@@ -341,6 +341,7 @@ If you want to uninstall algorithms, it is as simple as:
         - [red_black_tree](algorithms/tree/red_black_tree/red_black_tree.py)
     - [segment_tree](algorithms/tree/segment_tree)
         - [segment_tree](algorithms/tree/segment_tree/segment_tree.py)
+        - [iterative_segment_tree](algorithms/tree/segment_tree/iterative_segment_tree.py)
     - [traversal](algorithms/tree/traversal)
         - [inorder](algorithms/tree/traversal/inorder.py)
         - [level_order](algorithms/tree/traversal/level_order.py)
