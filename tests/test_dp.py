@@ -11,6 +11,8 @@ from algorithms.dp import (
     Job, schedule,
     Item, get_maximum_value,
     longest_increasing_subsequence,
+    longest_increasing_subsequence_optimized,
+    longest_increasing_subsequence_optimized2,
     int_divide
 )
 
@@ -131,6 +133,18 @@ class TestKnapsack(unittest.TestCase):
 
 class TestLongestIncreasingSubsequence(unittest.TestCase):
     def test_longest_increasing_subsequence(self):
+        sequence = [1, 101, 10, 2, 3, 100, 4, 6, 2]
+        self.assertEqual(5, longest_increasing_subsequence(sequence))
+
+
+class TestLongestIncreasingSubsequenceOptimized(unittest.TestCase):
+    def test_longest_increasing_subsequence_optimized(self):
+        sequence = [1, 101, 10, 2, 3, 100, 4, 6, 2]
+        self.assertEqual(5, longest_increasing_subsequence(sequence))
+
+
+class TestLongestIncreasingSubsequenceOptimized2(unittest.TestCase):
+    def test_longest_increasing_subsequence_optimized2(self):
         sequence = [1, 101, 10, 2, 3, 100, 4, 6, 2]
         self.assertEqual(5, longest_increasing_subsequence(sequence))
 
