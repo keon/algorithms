@@ -30,7 +30,7 @@ def merge(left, right, merged):
     # Add the left overs if there's any left to the result
     for left_cursor in range(left_cursor, len(left)):
         merged[left_cursor + right_cursor] = left[left_cursor]
-    # Add the left overs if there's any left to the result
+    # Add the right overs if there's any left to the result
     for right_cursor in range(right_cursor, len(right)):
         merged[left_cursor + right_cursor] = right[right_cursor]
 
