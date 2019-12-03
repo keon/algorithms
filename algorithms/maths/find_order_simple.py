@@ -4,7 +4,7 @@ import math
 For positive integer n and given integer a that satisfies gcd(a, n) = 1,
 the order of a modulo n is the smallest positive integer k that satisfies
 pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
-
+Order of certain number may or may not be exist. If so, return -1.
 """
 def findOrder(a, n):
     if (math.gcd(a, n) != 1):

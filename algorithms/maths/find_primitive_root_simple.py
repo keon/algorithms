@@ -4,7 +4,7 @@ import math
 For positive integer n and given integer a that satisfies gcd(a, n) = 1,
 the order of a modulo n is the smallest positive integer k that satisfies
 pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
-
+Order of certain number may or may not be exist. If so, return -1.
 """
 def findOrder(a, n):
     if (math.gcd(a, n) != 1):
@@ -15,7 +15,6 @@ def findOrder(a, n):
             if (pow(a, i) % n == 1):
                 return i
         return -1
-
 
 """
 Euler's totient function, also known as phi-function ϕ(n),
@@ -37,17 +36,25 @@ def euler_totient(n):
         result -= result // n;
     return result;
 
-
 """
-Primitive Root
+For positive integer n and given integer a that satisfies gcd(a, n) = 1,
+a is the primitive root of n, if a's order k for n satisfies k = ϕ(n).
+Primitive roots of certain number may or may not be exist.
+If so, return empty list.
 """
 
 def findPrimitiveRoot(n):
+    if (n == 1):
+        return [0]
+    """ 0 is the only primitive root of 1 """
     phi = euler_totient(n)
     pRootList = []
+    """ It will return every primitive roots of n. """
     for i in range (1, n):
         if (math.gcd(i, n) != 1):
             continue
+            """ To have order, a and n must be
+            relative prime with each other. """
         else:
             order = findOrder(i, n)
             if (order == phi):
