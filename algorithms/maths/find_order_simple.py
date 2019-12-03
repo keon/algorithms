@@ -7,14 +7,19 @@ pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
 Order of certain number may or may not be exist. If so, return -1.
 """
 def findOrder(a, n):
-    if (math.gcd(a, n) != 1):
-        print ("a and n should be relative prime!")
-        return -1
+    if ((a == 1) & (n == 1)):
+        return 1
+        """ Exception Handeling :
+        1 is the order of of 1 """
     else:
-        for i in range(1, n):
-            if (pow(a, i) % n == 1):
-                return i
-        return -1
+        if (math.gcd(a, n) != 1):
+            print ("a and n should be relative prime!")
+            return -1
+        else:
+            for i in range(1, n):
+                if (pow(a, i) % n == 1):
+                    return i
+            return -1
 
 """
 Time complexity only for calculating order = O(nlog(n))

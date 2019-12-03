@@ -7,14 +7,19 @@ pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
 Order of certain number may or may not be exist. If so, return -1.
 """
 def findOrder(a, n):
-    if (math.gcd(a, n) != 1):
-        print ("a and n should be relative prime!")
-        return -1
+    if ((a == 1) & (n == 1)):
+        return 1
+        """ Exception Handeling :
+        1 is the order of of 1 """
     else:
-        for i in range(1, n):
-            if (pow(a, i) % n == 1):
-                return i
-        return -1
+        if (math.gcd(a, n) != 1):
+            print ("a and n should be relative prime!")
+            return -1
+        else:
+            for i in range(1, n):
+                if (pow(a, i) % n == 1):
+                    return i
+            return -1
 
 """
 Euler's totient function, also known as phi-function ϕ(n),
@@ -46,19 +51,21 @@ If so, return empty list.
 def findPrimitiveRoot(n):
     if (n == 1):
         return [0]
-    """ 0 is the only primitive root of 1 """
-    phi = euler_totient(n)
-    pRootList = []
-    """ It will return every primitive roots of n. """
-    for i in range (1, n):
-        if (math.gcd(i, n) != 1):
-            continue
-            """ To have order, a and n must be
-            relative prime with each other. """
-        else:
-            order = findOrder(i, n)
-            if (order == phi):
-                pRootList.append(i)
-            else:
+        """ Exception Handeling :
+        0 is the only primitive root of 1 """
+    else:
+        phi = euler_totient(n)
+        pRootList = []
+        """ It will return every primitive roots of n. """
+        for i in range (1, n):
+            if (math.gcd(i, n) != 1):
                 continue
-    return pRootList
+                """ To have order, a and n must be
+                relative prime with each other. """
+            else:
+                order = findOrder(i, n)
+                if (order == phi):
+                    pRootList.append(i)
+                else:
+                    continue
+        return pRootList
