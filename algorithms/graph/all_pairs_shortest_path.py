@@ -1,9 +1,9 @@
 """
-Given a n*n array.
+Given a n*n adjacency array.
 it will give you all pairs shortest path length.
 use deepcopy to preserve the original information.
 
-Time complexity : O(n^3)
+Time complexity : O(E^3)
 
 example
 
