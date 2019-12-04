@@ -161,6 +161,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
     - [maximum_flow_bfs](algorithms/graph/maximum_flow_bfs.py)
+    - [maximum_flow_dfs](algorithms/graph/maximum_flow_dfs.py)
 - [heap](algorithms/heap)
     - [merge_sorted_k_lists](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline](algorithms/heap/skyline.py)
