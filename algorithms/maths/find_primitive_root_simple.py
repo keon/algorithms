@@ -6,7 +6,7 @@ the order of a modulo n is the smallest positive integer k that satisfies
 pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
 Order of certain number may or may not be exist. If so, return -1.
 """
-def findOrder(a, n):
+def find_order(a, n):
     if ((a == 1) & (n == 1)):
         return 1
         """ Exception Handeling :
@@ -48,7 +48,7 @@ Primitive roots of certain number may or may not be exist.
 If so, return empty list.
 """
 
-def findPrimitiveRoot(n):
+def find_primitive_root(n):
     if (n == 1):
         return [0]
         """ Exception Handeling :
@@ -63,7 +63,7 @@ def findPrimitiveRoot(n):
                 """ To have order, a and n must be
                 relative prime with each other. """
             else:
-                order = findOrder(i, n)
+                order = find_order(i, n)
                 if (order == phi):
                     pRootList.append(i)
                 else:
