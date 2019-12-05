@@ -17,7 +17,7 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
-    find_order_simple,
+    find_order,
 )
 
 import unittest
