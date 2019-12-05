@@ -329,7 +329,7 @@ class TestFindPrimitiveRoot(unittest.TestCase):
         self.assertListEqual([0], find_primitive_root(1))
         self.assertListEqual([2, 3], find_primitive_root(5))
         self.assertListEqual([], find_primitive_root(24))
-        self.assertListEqual([[2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
+        self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
         
 
 if __name__ == "__main__":
