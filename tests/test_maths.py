@@ -17,6 +17,7 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
+    find_order_simple,
 )
 
 import unittest
@@ -317,6 +318,19 @@ class TestCosineSimilarity(unittest.TestCase):
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
 
+
+class TestFindOrder(unittest.TestCase):
+    """[summary]
+    Test for the file find_order_simple.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_order_simple(self):
+        self.assertEqual(findOrder(1, 1), 1)
+        self.assertEqual(findOrder(3, 7), 6)
+        self.assertEqual(findOrder(128, 256), -1)
+        self.assertEqual(findOrder(3, 353), 352)
 
 if __name__ == "__main__":
     unittest.main()
