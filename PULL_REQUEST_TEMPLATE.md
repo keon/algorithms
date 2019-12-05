@@ -1,8 +1,8 @@
 (Put an `X` inside the `[ ]` to denote check mark `[X]`.)
 
 
-- [ ] **If creating a new file :**
-  - [ ] added links to it in the README files ?
+- [X] **If creating a new file :**
+  - [X] added links to it in the README files ?
   - [ ] included tests with it ?
   - [ ] added description (overview of algorithm, time and space complexity, and possible edge case) in docstrings ?
 
