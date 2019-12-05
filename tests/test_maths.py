@@ -327,10 +327,10 @@ class TestFindOrder(unittest.TestCase):
         unittest {[type]} -- [description]
     """
     def test_find_order_simple(self):
-        self.assertEqual(find_order_simple(1, 1), 1)
-        self.assertEqual(find_order_simple(3, 7), 6)
-        self.assertEqual(find_order_simple(128, 256), -1)
-        self.assertEqual(find_order_simple(3, 353), 352)
+        self.assertEqual(1, find_order(1, 1))
+        self.assertEqual(6, find_order(3, 7))
+        self.assertEqual(-1, find_order_simple(128, 256))
+        self.assertEqual(352, find_order_simple(3, 353))
 
 if __name__ == "__main__":
     unittest.main()
