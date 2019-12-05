@@ -6,7 +6,7 @@ the order of a modulo n is the smallest positive integer k that satisfies
 pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
 Order of certain number may or may not be exist. If so, return -1.
 """
-def findOrder(a, n):
+def find_order_simple(a, n):
     if ((a == 1) & (n == 1)):
         return 1
         """ Exception Handeling :
