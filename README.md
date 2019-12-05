@@ -215,7 +215,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [sqrt_precision_factor](algorithms/maths/sqrt_precision_factor.py)
     - [summing_digits](algorithms/maths/summing_digits.py)
     - [hailstone](algorithms/maths/hailstone.py)
-	- [find_order] (algorithms/maths/find_order_simple.py)
+	- [find_order](algorithms/maths/find_order_simple.py)
 - [matrix](algorithms/matrix)
     - [sudoku_validator](algorithms/matrix/sudoku_validator.py)
     - [bomb_enemy](algorithms/matrix/bomb_enemy.py)
