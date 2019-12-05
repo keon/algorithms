@@ -41,3 +41,24 @@ def initialize_single_source(graph, source, weight, pre_node):
         pre_node[node] = None
 
     weight[source] = 0
+    
+if __name__ == "__main__":
+    graph1 = {
+        'a': {'b': 6, 'e': 7},
+        'b': {'c': 5, 'd': -4, 'e': 8},
+        'c': {'b': -2},
+        'd': {'a': 2, 'c': 7},
+        'e': {'b': -3}
+    }
+    
+    print(bellman_ford(graph1, 'a'))
+    
+    graph2 = {
+        'a': {'d': 3, 'e': 4},
+        'b': {'a': 7, 'e':2},
+        'c': {'a': 12, 'd':9, 'e':11},
+        'd': {'c': 5, 'e': 11},
+        'e': {'a': 7, 'b': 5, 'd': 1}
+    } 
+    
+    print(bellman_ford(graph2, 'a'))
