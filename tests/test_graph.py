@@ -3,6 +3,7 @@ from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph import ford_fulkerson
 from algorithms.graph import edmonds_karp
+from algorithms.graph import dinic
 
 import unittest
 
@@ -85,18 +86,20 @@ class TestMaximumFlow(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    cap = [[0]*7 for i in range(7)]
-    cap[0][1] = 10
-    cap[0][2] = 10
-    cap[1][2] = 2
-    cap[1][4] = 4
-    cap[1][5] = 8
-    cap[2][5] = 9
-    cap[4][6] = 10
-    cap[5][4] = 6
-    cap[5][6] = 10
+    capacity = [[0]*7 for i in range(7)]
+    capacity[0][1] = 10
+    capacity[0][2] = 10
+    capacity[1][2] = 2
+    capacity[1][4] = 4
+    capacity[1][5] = 8
+    capacity[2][5] = 9
+    capacity[4][6] = 10
+    capacity[5][4] = 6
+    capacity[5][6] = 10
     def test_ford_fulkerson(self):
-        self.assertEqual(19, ford_fulkerson(cap, 0, 6))
+        self.assertEqual(19, ford_fulkerson(capacity, 0, 6))
     def test_edmonds_karp(self):
-        self.assertEqual(19, edmonds_karp(cap, 0, 6))
+        self.assertEqual(19, edmonds_karp(capacity, 0, 6))
+    def dinic(self):
+        self.assertEqual(19, dinic(capacity, 0, 6))
 
