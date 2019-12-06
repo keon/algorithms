@@ -55,7 +55,7 @@ def find_primitive_root(n):
         0 is the only primitive root of 1 """
     else:
         phi = euler_totient(n)
-        pRootList = []
+        p_root_list = []
         """ It will return every primitive roots of n. """
         for i in range (1, n):
             if (math.gcd(i, n) != 1):
@@ -65,7 +65,7 @@ def find_primitive_root(n):
             else:
                 order = find_order(i, n)
                 if (order == phi):
-                    pRootList.append(i)
+                    p_root_list.append(i)
                 else:
                     continue
-        return pRootList
+        return p_root_list
