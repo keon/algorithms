@@ -8,6 +8,8 @@ capacity[i][j] implies the capacity of the edge from i to j.
 If there is no edge from i to j, capacity[i][j] should be zero.
 """
 
+import Queue
+
 def dfs(capacity, flow, visit, v, idx, sink, f = 1<<63):
     # DFS function for ford_fulkerson algorithm.
     if idx == sink: return f
@@ -31,5 +33,40 @@ def ford_fulkerson(capacity, source, sink):
         tmp = dfs(capacity, flow, visit, v, source, sink)
         if tmp: ret += tmp
         else: break
+    return ret
+
+def edmonds_karp(capacity, source, sink):
+    # Computes maximum flow from source to sink using BFS.
+    v = len(capacity)
+    ret = 0
+    flow = [[0]*v for i in range(v)]
+    while True:
+        tmp = 0
+        q = Queue.Queue()
+        visit = [False for i in range(v)]
+        par = [-1 for i in range(v)]
+        visit[source] = True
+        q.put((source, 1<<63))
+        while q.qsize():
+            front = q.get()
+            idx = front[0]
+            f = front[1]
+            if idx == sink:
+                tmp = f
+                break
+            for i in range(v):
+                if not visit[i] and flow[idx][i] < capacity[idx][i]:
+                    visit[i] = True
+                    par[i] = idx
+                    q.put((i, min(f, capacity[idx][i]-flow[idx][i])))
+        if par[sink] == -1: break
+        ret += tmp
+        p = par[sink]
+        idx = sink
+        while p != -1:
+            flow[p][idx] += tmp
+            flow[idx][p] -= tmp
+            idx = p
+            p = par[p]
     return ret
 
