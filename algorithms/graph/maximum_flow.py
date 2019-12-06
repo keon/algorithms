@@ -25,6 +25,8 @@ def dfs(capacity, flow, visit, v, idx, sink, f = 1<<63):
 
 def ford_fulkerson(capacity, source, sink):
     # Computes maximum flow from source to sink using DFS.
+    # Time Complexity : O(Ef)
+    # E is the number of edges and f is the maximum flow in the graph.
     v = len(capacity)
     ret = 0
     flow = [[0]*v for i in range(v)]
@@ -37,6 +39,8 @@ def ford_fulkerson(capacity, source, sink):
 
 def edmonds_karp(capacity, source, sink):
     # Computes maximum flow from source to sink using BFS.
+    # Time complexity : O(V*E^2)
+    # V is the number of vertices and E is the number of edges.
     v = len(capacity)
     ret = 0
     flow = [[0]*v for i in range(v)]
