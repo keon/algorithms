@@ -1,6 +1,8 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph import ford_fulkerson
+from algorithms.graph import edmonds_karp
 
 import unittest
 
@@ -75,3 +77,26 @@ class TestDijkstra(unittest.TestCase):
           ]; 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14]);
+
+class TestMaximumFlow(unittest.TestCase):
+    """
+    Test for the file maximum_flow.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    cap = [[0]*7 for i in range(7)]
+    cap[0][1] = 10
+    cap[0][2] = 10
+    cap[1][2] = 2
+    cap[1][4] = 4
+    cap[1][5] = 8
+    cap[2][5] = 9
+    cap[4][6] = 10
+    cap[5][4] = 6
+    cap[5][6] = 10
+    def test_ford_fulkerson(self):
+        self.assertEqual(19, ford_fulkerson(cap, 0, 6))
+    def test_edmonds_karp(self):
+        self.assertEqual(19, edmonds_karp(cap, 0, 6))
+

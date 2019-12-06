@@ -8,7 +8,7 @@ capacity[i][j] implies the capacity of the edge from i to j.
 If there is no edge from i to j, capacity[i][j] should be zero.
 """
 
-import Queue
+import queue
 
 def dfs(capacity, flow, visit, v, idx, sink, f = 1<<63):
     # DFS function for ford_fulkerson algorithm.
@@ -46,7 +46,7 @@ def edmonds_karp(capacity, source, sink):
     flow = [[0]*v for i in range(v)]
     while True:
         tmp = 0
-        q = Queue.Queue()
+        q = queue.Queue()
         visit = [False for i in range(v)]
         par = [-1 for i in range(v)]
         visit[source] = True
