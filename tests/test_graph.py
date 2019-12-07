@@ -1,6 +1,8 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph import maximum_flow_bfs
+from algorithms.graph import maximum_flow_dfs
 
 import unittest
 
@@ -74,4 +76,35 @@ class TestDijkstra(unittest.TestCase):
            [0, 0, 2, 0, 0, 0, 6, 7, 0] 
           ]; 
 
-        self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14]);
+        self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+
+class TestMaximum_Flow_Bfs(unittest.TestCase):
+
+    """
+    Test for the file def maximum_flow_bfs.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_maximum_flow_bfs(self):
+        graph = [[0, 16, 13, 0, 0, 0], [0, 0, 10, 12, 0, 0], [0, 4, 0, 0, 14, 0], [0, 0, 9, 0, 0, 20], [0, 0, 0, 7, 0, 4], [0, 0, 0, 0, 0, 0]]
+        maximum_flow = maximum_flow_bfs(graph)
+
+        self.assertEqual(maximum_flow, 23)
+
+class TestMaximum_Flow_Dfs(unittest.TestCase):
+
+    """
+    Test for the file def maximum_flow_dfs.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_maximum_flow_dfs(self):
+        graph = [[0, 16, 13, 0, 0, 0], [0, 0, 10, 12, 0, 0], [0, 4, 0, 0, 14, 0], [0, 0, 9, 0, 0, 20], [0, 0, 0, 7, 0, 4], [0, 0, 0, 0, 0, 0]]
+        maximum_flow = maximum_flow_dfs(graph)
+
+        self.assertEqual(maximum_flow, 23)
+
+if __name__ == '__main__':
+    unittest.main()
