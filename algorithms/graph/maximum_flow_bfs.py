@@ -82,4 +82,3 @@ def maximum_flow_bfs(adjacency_matrix):
         total = total + min
     
     return total
-

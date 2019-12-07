@@ -81,3 +81,4 @@ def maximum_flow_dfs(adjacency_matrix):
         total = total + min
     
     return total
+    
