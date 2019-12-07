@@ -4,7 +4,7 @@ from algorithms.maths import (
     euler_totient,
     extended_gcd,
     factorial, factorial_recur,
-    gcd, lcm,
+    gcd, lcm, trailing_zero, gcd_bit,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
     modular_exponential,
@@ -102,6 +102,13 @@ class TestGcd(unittest.TestCase):
     def test_lcm(self):
         self.assertEqual(24, lcm(8, 12))
 
+    def test_trailing_zero(self):
+        self.assertEqual(1, trailing_zero(34))
+        self.assertEqual(3, trailing_zero(40))
+
+    def test_gcd_bit(self):
+        self.assertEqual(4, gcd_bit(8, 12))
+        self.assertEqual(1, gcd(13, 17))
 
 class TestGenerateStroboGrammatic(unittest.TestCase):
     """[summary]
@@ -334,3 +341,4 @@ class TestFindOrder(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
