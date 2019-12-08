@@ -8,8 +8,8 @@ class TestDFA(unittest.TestCase):
     def test_DFA(self):
     
         transitions = {
-        'a': {'1': 'a', '0': 'b'},
-        'b': {'1': 'b', '0': 'a'}
+            'a': {'1': 'a', '0': 'b'},
+            'b': {'1': 'b', '0': 'a'}
         }
 
         final=['a']
