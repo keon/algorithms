@@ -1,6 +1,4 @@
-from algorithms.automata import (
-    DFA
-)
+from algorithms.automata import DFA
 
 
 import unittest
