@@ -78,7 +78,7 @@ class TestDijkstra(unittest.TestCase):
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14]);
         
 class TestBellmanFord(unittest.TestCase):
-    def test_dijkstra(self):
+    def test_bellman_ford(self):
         graph1 = {
             'a': {'b': 6, 'e': 7},
             'b': {'c': 5, 'd': -4, 'e': 8},
