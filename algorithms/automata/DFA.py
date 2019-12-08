@@ -17,14 +17,3 @@ def DFA(transitions, start, final, string):
         else:
             return False
         
-if __name__ == "__main__":
-    transitions = {
-        'a': {'1': 'a', '0': 'b'},
-        'b': {'1': 'b', '0': 'a'}
-    }
-
-    final=['a']
-    start = 'a'
-    
-    print(DFA(transitions, start, final, "000111100"))
-    print(DFA(transitions, start, final, "111000011"))
