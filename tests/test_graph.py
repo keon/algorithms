@@ -87,7 +87,7 @@ class TestBellmanFord(unittest.TestCase):
             'e': {'b': -3}
         }
     
-        self.assertEqual(False, bellman_ford(graph1, 'a'))
+        self.assertEqual(True, bellman_ford(graph1, 'a'))
     
         graph2 = {
             'a': {'d': 3, 'e': 4},
