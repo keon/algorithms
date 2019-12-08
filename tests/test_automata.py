@@ -19,3 +19,6 @@ class TestDFA(unittest.TestCase):
     
         self.assertEqual(True, DFA(transitions, start, final, "000111100"))
         self.assertEqual(False, DFA(transitions, start, final, "111000011"))
+
+if __name__ == '__main__':
+    unittest.main()
