@@ -45,4 +45,10 @@ def dfs(maze, i, j, depth):
                 cnt = depth
         return
 
-    return 
+    maze[i][j] = 0
+
+    for i in range(len(directions)):
+        nx_i = i + directions[i][0]
+        nx_j = j + directions[i][1]
+
+    return
