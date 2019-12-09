@@ -17,6 +17,19 @@ class TestDFA(unittest.TestCase):
     
         self.assertEqual(False, DFA(transitions, start, final, "000111100"))
         self.assertEqual(True, DFA(transitions, start, final, "111000011"))
+        
+        transitions2 = {
+            '0': {'a': '0', 'b': '1'},
+            '1': {'a': '0', 'b': '2'},
+            '2': {'a': '3', 'b': '2'},
+            '3': {'a': '3', 'b': '3'}
+        }
+        
+        final2=['3']
+        start2 = '0'
 
+        self.assertEqual(False, DFA(transitions2, start2, final2, "aaabbb"))
+        self.assertEqual(True, DFA(transitions2, start2, final2, "baabba"))
+        
 if __name__ == '__main__':
     unittest.main()
