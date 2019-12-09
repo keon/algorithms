@@ -2,6 +2,7 @@ from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph import all_pairs_shortest_path
+from algorithms.graph import bellman_ford
 
 import unittest
 
@@ -80,11 +81,33 @@ class TestDijkstra(unittest.TestCase):
 class TestAll_Pairs_Shortest_Path(unittest.TestCase):
     
     def test_all_pairs_shortest_path(self):
-        graph = [[0, 0.1, 0.101, 0.142, 0.277], [0.465, 0, 0.191, 0.192, 0.587], [0.245, 0.554, 0, 0.333, 0.931], [1.032, 0.668, 0.656, 0, 0.151], [0.867, 0.119, 0.352, 0.398, 0]]
+        graph = [[0, 0.1, 0.101, 0.142, 0.277], 
+                 [0.465, 0, 0.191, 0.192, 0.587], 
+                 [0.245, 0.554, 0, 0.333, 0.931], 
+                 [1.032, 0.668, 0.656, 0, 0.151], 
+                 [0.867, 0.119, 0.352, 0.398, 0]]
         result = all_pairs_shortest_path(graph)
 
         self.assertEqual(result, [[0, 0.1, 0.101, 0.142, 0.277], [0.436, 0, 0.191, 0.192, 0.34299999999999997], [0.245, 0.345, 0, 0.333, 0.484], [0.706, 0.27, 0.46099999999999997, 0, 0.151], [0.5549999999999999, 0.119, 0.31, 0.311, 0]])
-
-if __name__ == '__main__':
-    unittest.main()
-
+        
+class TestBellmanFord(unittest.TestCase):
+    def test_bellman_ford(self):
+        graph1 = {
+            'a': {'b': 6, 'e': 7},
+            'b': {'c': 5, 'd': -4, 'e': 8},
+            'c': {'b': -2},
+            'd': {'a': 2, 'c': 7},
+            'e': {'b': -3}
+        }
+    
+        self.assertEqual(True, bellman_ford(graph1, 'a'))
+    
+        graph2 = {
+            'a': {'d': 3, 'e': 4},
+            'b': {'a': 7, 'e':2},
+            'c': {'a': 12, 'd':9, 'e':11},
+            'd': {'c': 5, 'e': 11},
+            'e': {'a': 7, 'b': 5, 'd': 1}
+        } 
+    
+        self.assertEqual(True, bellman_ford(graph2, 'a'))
