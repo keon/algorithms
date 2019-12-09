@@ -1,7 +1,8 @@
 """
 Given two strings text and pattern,
-find the index that matches with the pattern
+return the list of  start indexes in text that matches with the pattern
 using knuth_morris_pratt algorithm.
+If idx is in the list, text[idx : idx + M] matches with pattern.
 Time complexity : O(N+M)
 N and M is the length of text and pattern, respectively.
 """
