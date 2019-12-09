@@ -20,3 +20,12 @@ Example 2:
 00011
 Answer: 3
 """
+
+
+def counting_islands(grid):
+    row = len(grid)
+    col = len(grid[0])
+
+    num_islands = 0
+
+    return num_islands
