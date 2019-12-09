@@ -10,16 +10,17 @@ If there is no edge from i to j, capacity[i][j] should be zero.
 
 import queue
 
-def dfs(capacity, flow, visit, v, idx, sink, f = 1<<63):
+def dfs(capacity, flow, visit, v, idx, sink, current_flow = 1 << 63):
     # DFS function for ford_fulkerson algorithm.
-    if idx == sink: return f
+    if idx == sink: 
+        return current_flow
     visit[idx] = True
-    for i in range(v):
-        if not visit[i] and flow[idx][i] < capacity[idx][i]:
-            tmp = dfs(capacity, flow, visit, v, i, sink, min(f, capacity[idx][i]-flow[idx][i]))
+    for nxt in range(v):
+        if not visit[nxt] and flow[idx][nxt] < capacity[idx][nxt]:
+            tmp = dfs(capacity, flow, visit, v, nxt, sink, min(current_flow, capacity[idx][nxt]-flow[idx][nxt]))
             if tmp:
-                flow[idx][i] += tmp
-                flow[i][idx] -= tmp
+                flow[idx][nxt] += tmp
+                flow[nxt][idx] -= tmp
                 return tmp
     return 0
 
@@ -33,8 +34,10 @@ def ford_fulkerson(capacity, source, sink):
     while True:
         visit = [False for i in range(v)]
         tmp = dfs(capacity, flow, visit, v, source, sink)
-        if tmp: ret += tmp
-        else: break
+        if tmp: 
+            ret += tmp
+        else: 
+            break
     return ret
 
 def edmonds_karp(capacity, source, sink):
@@ -50,28 +53,30 @@ def edmonds_karp(capacity, source, sink):
         visit = [False for i in range(v)]
         par = [-1 for i in range(v)]
         visit[source] = True
-        q.put((source, 1<<63))
+        q.put((source, 1 << 63))
+        # Finds new flow using BFS.
         while q.qsize():
             front = q.get()
-            idx = front[0]
-            f = front[1]
+            idx, current_flow = front
             if idx == sink:
-                tmp = f
+                tmp = current_flow
                 break
-            for i in range(v):
-                if not visit[i] and flow[idx][i] < capacity[idx][i]:
-                    visit[i] = True
-                    par[i] = idx
-                    q.put((i, min(f, capacity[idx][i]-flow[idx][i])))
-        if par[sink] == -1: break
+            for nxt in range(v):
+                if not visit[nxt] and flow[idx][nxt] < capacity[idx][nxt]:
+                    visit[nxt] = True
+                    par[nxt] = idx
+                    q.put((nxt, min(current_flow, capacity[idx][nxt]-flow[idx][nxt])))
+        if par[sink] == -1: 
+            break
         ret += tmp
-        p = par[sink]
+        parent = par[sink]
         idx = sink
-        while p != -1:
-            flow[p][idx] += tmp
-            flow[idx][p] -= tmp
-            idx = p
-            p = par[p]
+        # Update flow array following parent starting from sink.
+        while parent != -1:
+            flow[parent][idx] += tmp
+            flow[idx][parent] -= tmp
+            idx = parent
+            parent = par[parent]
     return ret
 
 def dinic_bfs(capacity, flow, level, source, sink):
@@ -84,26 +89,29 @@ def dinic_bfs(capacity, flow, level, source, sink):
     level[source] = 0
     while q.qsize():
         front = q.get()
-        for i in range(v):
-            if level[i] == -1 and flow[front][i] < capacity[front][i]:
-                level[i] = level[front] + 1
-                q.put(i)
+        for nxt in range(v):
+            if level[nxt] == -1 and flow[front][nxt] < capacity[front][nxt]:
+                level[nxt] = level[front] + 1
+                q.put(nxt)
     return level[sink] != -1
-def dinic_dfs(capacity, flow, level, idx, sink, work, f = 1<<63):
+
+def dinic_dfs(capacity, flow, level, idx, sink, work, current_flow = 1 << 63):
     # DFS function for Dinic algorithm.
     # Finds new flow using edges that is not full.
     if idx == sink:
-        return f
+        return current_flow
     v = len(capacity)
-    for work[idx] in range(work[idx], v):
+    while work[idx] <= v:
         nxt = work[idx]
         if level[nxt] == level[idx] + 1 and flow[idx][nxt] < capacity[idx][nxt]:
-            tmp = dinic_dfs(capacity, flow, level, nxt, sink, work, min(f, capacity[idx][nxt] - flow[idx][nxt])) 
+            tmp = dinic_dfs(capacity, flow, level, nxt, sink, work, min(current_flow, capacity[idx][nxt] - flow[idx][nxt])) 
             if tmp > 0:
                 flow[idx][nxt] += tmp
                 flow[nxt][idx] -= tmp
                 return tmp
+        work[idx] += 1
     return 0
+
 def dinic(capacity, source, sink):
     # Computes maximum flow from source to sink using Dinic algorithm.
     # Time complexity : O(V^2*E)
