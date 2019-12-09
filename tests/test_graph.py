@@ -87,39 +87,36 @@ class TestMaximumFlow(unittest.TestCase):
         unittest {[type]} -- [description]
     """
     def test_ford_fulkerson(self):
-        capacity = [[0]*7 for i in range(7)]
-        capacity[0][1] = 10
-        capacity[0][2] = 10
-        capacity[1][2] = 2
-        capacity[1][4] = 4
-        capacity[1][5] = 8
-        capacity[2][5] = 9
-        capacity[4][6] = 10
-        capacity[5][4] = 6
-        capacity[5][6] = 10
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
         self.assertEqual(19, ford_fulkerson(capacity, 0, 6))
     def test_edmonds_karp(self):
-        capacity = [[0]*7 for i in range(7)]
-        capacity[0][1] = 10
-        capacity[0][2] = 10
-        capacity[1][2] = 2
-        capacity[1][4] = 4
-        capacity[1][5] = 8
-        capacity[2][5] = 9
-        capacity[4][6] = 10
-        capacity[5][4] = 6
-        capacity[5][6] = 10
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
         self.assertEqual(19, edmonds_karp(capacity, 0, 6))
     def dinic(self):
-        capacity = [[0]*7 for i in range(7)]
-        capacity[0][1] = 10
-        capacity[0][2] = 10
-        capacity[1][2] = 2
-        capacity[1][4] = 4
-        capacity[1][5] = 8
-        capacity[2][5] = 9
-        capacity[4][6] = 10
-        capacity[5][4] = 6
-        capacity[5][6] = 10
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
         self.assertEqual(19, dinic(capacity, 0, 6))
 
