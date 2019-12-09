@@ -4,7 +4,7 @@ from algorithms.maths import (
     euler_totient,
     extended_gcd,
     factorial, factorial_recur,
-    gcd, lcm,
+    gcd, lcm, trailing_zero, gcd_bit,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
     modular_exponential,
@@ -17,6 +17,8 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
+    find_order,
+    find_primitive_root,
 )
 
 import unittest
@@ -101,6 +103,13 @@ class TestGcd(unittest.TestCase):
     def test_lcm(self):
         self.assertEqual(24, lcm(8, 12))
 
+    def test_trailing_zero(self):
+        self.assertEqual(1, trailing_zero(34))
+        self.assertEqual(3, trailing_zero(40))
+
+    def test_gcd_bit(self):
+        self.assertEqual(4, gcd_bit(8, 12))
+        self.assertEqual(1, gcd(13, 17))
 
 class TestGenerateStroboGrammatic(unittest.TestCase):
     """[summary]
@@ -317,6 +326,33 @@ class TestCosineSimilarity(unittest.TestCase):
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
 
+class TestFindPrimitiveRoot(unittest.TestCase):
+    """[summary]
+    Test for the file find_primitive_root_simple.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_primitive_root_simple(self):
+        self.assertListEqual([0], find_primitive_root(1))
+        self.assertListEqual([2, 3], find_primitive_root(5))
+        self.assertListEqual([], find_primitive_root(24))
+        self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
+        
+
+class TestFindOrder(unittest.TestCase):
+    """[summary]
+    Test for the file find_order_simple.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_order_simple(self):
+        self.assertEqual(1, find_order(1, 1))
+        self.assertEqual(6, find_order(3, 7))
+        self.assertEqual(-1, find_order(128, 256))
+        self.assertEqual(352, find_order(3, 353))
 
 if __name__ == "__main__":
     unittest.main()
+

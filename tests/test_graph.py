@@ -3,6 +3,8 @@ from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph import maximum_flow_bfs
 from algorithms.graph import maximum_flow_dfs
+from algorithms.graph import bellman_ford
+
 
 import unittest
 
@@ -76,6 +78,7 @@ class TestDijkstra(unittest.TestCase):
            [0, 0, 2, 0, 0, 0, 6, 7, 0] 
           ]; 
 
+
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
 class TestMaximum_Flow_Bfs(unittest.TestCase):
@@ -87,7 +90,14 @@ class TestMaximum_Flow_Bfs(unittest.TestCase):
     """
     
     def test_maximum_flow_bfs(self):
-        graph = [[0, 16, 13, 0, 0, 0], [0, 0, 10, 12, 0, 0], [0, 4, 0, 0, 14, 0], [0, 0, 9, 0, 0, 20], [0, 0, 0, 7, 0, 4], [0, 0, 0, 0, 0, 0]]
+        graph = [
+            [0, 16, 13, 0, 0, 0],
+            [0, 0, 10, 12, 0, 0],
+            [0, 4, 0, 0, 14, 0], 
+            [0, 0, 9, 0, 0, 20], 
+            [0, 0, 0, 7, 0, 4],
+            [0, 0, 0, 0, 0, 0]
+        ]
         maximum_flow = maximum_flow_bfs(graph)
 
         self.assertEqual(maximum_flow, 23)
@@ -101,11 +111,38 @@ class TestMaximum_Flow_Dfs(unittest.TestCase):
     """
     
     def test_maximum_flow_dfs(self):
-        graph = [[0, 16, 13, 0, 0, 0], [0, 0, 10, 12, 0, 0], [0, 4, 0, 0, 14, 0], [0, 0, 9, 0, 0, 20], [0, 0, 0, 7, 0, 4], [0, 0, 0, 0, 0, 0]]
+        graph = [
+            [0, 16, 13, 0, 0, 0],
+            [0, 0, 10, 12, 0, 0],
+            [0, 4, 0, 0, 14, 0], 
+            [0, 0, 9, 0, 0, 20], 
+            [0, 0, 0, 7, 0, 4],
+            [0, 0, 0, 0, 0, 0]
+        ]
         maximum_flow = maximum_flow_dfs(graph)
 
         self.assertEqual(maximum_flow, 23)
 
-if __name__ == '__main__':
-    unittest.main()
+        
+class TestBellmanFord(unittest.TestCase):
+    def test_bellman_ford(self):
+        graph1 = {
+            'a': {'b': 6, 'e': 7},
+            'b': {'c': 5, 'd': -4, 'e': 8},
+            'c': {'b': -2},
+            'd': {'a': 2, 'c': 7},
+            'e': {'b': -3}
+        }
     
+        self.assertEqual(True, bellman_ford(graph1, 'a'))
+    
+        graph2 = {
+            'a': {'d': 3, 'e': 4},
+            'b': {'a': 7, 'e':2},
+            'c': {'a': 12, 'd':9, 'e':11},
+            'd': {'c': 5, 'e': 11},
+            'e': {'a': 7, 'b': 5, 'd': 1}
+        } 
+    
+        self.assertEqual(True, bellman_ford(graph2, 'a'))
+
