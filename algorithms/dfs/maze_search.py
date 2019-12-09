@@ -19,9 +19,14 @@ If maze is
 the answer is: -1
 '''
 
+global directions
+directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+
+
 def find_path(maze):
     return
 
 
 def dfs(maze, i, j, depth):
+    global directions
     return
