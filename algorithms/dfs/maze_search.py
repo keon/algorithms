@@ -32,4 +32,17 @@ def find_path(maze):
 
 def dfs(maze, i, j, depth):
     global directions
-    return
+    global cnt
+
+    row = len(maze)
+    col = len(maze[0])
+
+    if i == row - 1 and j == col - 1:
+        if cnt == -1:
+            cnt = depth
+        else:
+            if cnt > depth:
+                cnt = depth
+        return
+
+    return 
