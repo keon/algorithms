@@ -542,6 +542,7 @@ class TestKnuthMorrisPratt(unittest.TestCase):
     """
     def test_knuth_morris_pratt(self):
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
+        self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
 
 if __name__ == "__main__":
     unittest.main()
