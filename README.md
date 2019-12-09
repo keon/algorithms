@@ -218,6 +218,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [hailstone](algorithms/maths/hailstone.py)
 	  - [find_order](algorithms/maths/find_order_simple.py)
 	  - [find_primitive_root](algorithms/maths/find_primitive_root_simple.py)
+	  - [diffie_hellman_key_exchange](algorithms/maths/diffie_hellman_key_exchange.py)
 - [matrix](algorithms/matrix)
     - [sudoku_validator](algorithms/matrix/sudoku_validator.py)
     - [bomb_enemy](algorithms/matrix/bomb_enemy.py)
