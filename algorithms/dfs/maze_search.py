@@ -18,3 +18,10 @@ If maze is
  [0,1,1]],
 the answer is: -1
 '''
+
+def find_path(maze):
+    return
+
+
+def dfs(maze, i, j, depth):
+    return
