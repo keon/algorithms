@@ -51,4 +51,10 @@ def dfs(maze, i, j, depth):
         nx_i = i + directions[i][0]
         nx_j = j + directions[i][1]
 
+        if nx_i >=0 and nx_i < row and nx_j >=0 and nx_j < col:
+            if maze[nx_i][nx_j] ==1:
+                dfs(maze, nx_i, nx_j, depth+1)
+
+        maze[nx_i][nx_j] = 1
+        
     return
