@@ -4,6 +4,7 @@ from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph import ford_fulkerson
 from algorithms.graph import edmonds_karp
 from algorithms.graph import dinic
+from algorithms.graph import bellman_ford
 
 import unittest
 
@@ -119,4 +120,27 @@ class TestMaximumFlow(unittest.TestCase):
                 [0, 0, 0, 0, 0, 0, 0]
             ]
         self.assertEqual(19, dinic(capacity, 0, 6))
+
+        
+class TestBellmanFord(unittest.TestCase):
+    def test_bellman_ford(self):
+        graph1 = {
+            'a': {'b': 6, 'e': 7},
+            'b': {'c': 5, 'd': -4, 'e': 8},
+            'c': {'b': -2},
+            'd': {'a': 2, 'c': 7},
+            'e': {'b': -3}
+        }
+    
+        self.assertEqual(True, bellman_ford(graph1, 'a'))
+    
+        graph2 = {
+            'a': {'d': 3, 'e': 4},
+            'b': {'a': 7, 'e':2},
+            'c': {'a': 12, 'd':9, 'e':11},
+            'd': {'c': 5, 'e': 11},
+            'e': {'a': 7, 'b': 5, 'd': 1}
+        } 
+    
+        self.assertEqual(True, bellman_ford(graph2, 'a'))
 
