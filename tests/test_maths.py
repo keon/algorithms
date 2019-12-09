@@ -17,6 +17,7 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
+    find_order,
     find_primitive_root,
 )
 
@@ -338,6 +339,19 @@ class TestFindPrimitiveRoot(unittest.TestCase):
         self.assertListEqual([], find_primitive_root(24))
         self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
         
+
+class TestFindOrder(unittest.TestCase):
+    """[summary]
+    Test for the file find_order_simple.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_order_simple(self):
+        self.assertEqual(1, find_order(1, 1))
+        self.assertEqual(6, find_order(3, 7))
+        self.assertEqual(-1, find_order(128, 256))
+        self.assertEqual(352, find_order(3, 353))
 
 if __name__ == "__main__":
     unittest.main()
