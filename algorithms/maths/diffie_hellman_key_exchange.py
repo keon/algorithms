@@ -119,6 +119,7 @@ def bob_shared_key(a_pu_k, b_pr_k, p):
 """
 def diffie_hellman_key_exchange(a, p):
     if (prime_check(p) == False):
+        print("%d is not a prime number" % p)
         return -1
         """p must be large prime number"""
     else:
