@@ -17,6 +17,7 @@ from algorithms.maths import (
     combination, combination_memo,
     hailstone,
     cosine_similarity,
+    find_primitive_root,
 )
 
 import unittest
@@ -324,6 +325,19 @@ class TestCosineSimilarity(unittest.TestCase):
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
 
+class TestFindPrimitiveRoot(unittest.TestCase):
+    """[summary]
+    Test for the file find_primitive_root_simple.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_primitive_root_simple(self):
+        self.assertListEqual([0], find_primitive_root(1))
+        self.assertListEqual([2, 3], find_primitive_root(5))
+        self.assertListEqual([], find_primitive_root(24))
+        self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
+        
 
 if __name__ == "__main__":
     unittest.main()
