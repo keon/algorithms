@@ -60,9 +60,3 @@ def dfs(maze, i, j, depth):
     maze[i][j] = 1
 
     return
-
-maze = [[1,0,1,1,1,1],
- [1,0,1,0,1,0],
- [1,0,1,0,1,1],
- [1,1,1,0,1,1]]
-print(find_path(maze))
