@@ -11,13 +11,10 @@ def recursive_binomial_coefficient(n,k):
     >>> recursive_binomial_coefficient(500,300)
     5054949849935535817667719165973249533761635252733275327088189563256013971725761702359997954491403585396607971745777019273390505201262259748208640
 
-    >>> recursive_binomial_coefficient(4,5)
-    'Invalid Inputs'
-
     """
 
     if k>n:
-        return 'Invalid Inputs'
+        raise ValueError('Invalid Inputs, ensure that n >= k')
         #function is only defined for n>=k
     if k == 0 or n == k:
         #C(n,0) = C(n,n) = 1, so this is our base case.
