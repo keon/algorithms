@@ -27,5 +27,8 @@ def counting_islands(grid):
     col = len(grid[0])
 
     num_islands = 0
+    visited = [[0] * col for i in range(row)]
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+    queue = []
 
     return num_islands
