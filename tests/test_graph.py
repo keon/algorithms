@@ -120,7 +120,6 @@ class TestMaximumFlow(unittest.TestCase):
                 [0, 0, 0, 0, 0, 0, 0]
             ]
         self.assertEqual(19, dinic(capacity, 0, 6))
-
         
 class TestBellmanFord(unittest.TestCase):
     def test_bellman_ford(self):
@@ -143,4 +142,4 @@ class TestBellmanFord(unittest.TestCase):
         } 
     
         self.assertEqual(True, bellman_ford(graph2, 'a'))
-
+      
