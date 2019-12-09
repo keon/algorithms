@@ -103,6 +103,7 @@ This method use the property of one-way function (discrete logarithm)
 For example, given a, b and n, it is easy to calculate x
 that satisfies (a^b) ≡ x (mod n).
 However, it is very hard to calculate x that satisfies (a^x) ≡ b (mod n).
+For using this method, large prime number p and its primitive root a must be given.
 """
 
 def alice_private_key(p):

@@ -19,6 +19,7 @@ from algorithms.maths import (
     cosine_similarity,
     find_order,
     find_primitive_root,
+    alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key, diffie_hellman_key_exchange
 )
 
 import unittest
@@ -326,6 +327,7 @@ class TestCosineSimilarity(unittest.TestCase):
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_b), -1)
         self.assertAlmostEqual(cosine_similarity(vec_a, vec_c), 0.4714045208)
 
+
 class TestFindPrimitiveRoot(unittest.TestCase):
     """[summary]
     Test for the file find_primitive_root_simple.py
@@ -352,6 +354,20 @@ class TestFindOrder(unittest.TestCase):
         self.assertEqual(6, find_order(3, 7))
         self.assertEqual(-1, find_order(128, 256))
         self.assertEqual(352, find_order(3, 353))
+
+
+class TestDiffieHellmanKeyExchange(unittest.TestCase):
+    """[summary]
+    Test for the file diffie_hellman_key_exchange.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_find_order_simple(self):
+        self.assertEqual(-1, diffie_hellman_key_exchange(3, 6))
+        self.assertTrue(diffie_hellman_key_exchange(3, 353))
+        self.assertEqual(-1, diffie_hellman_key_exchange(5, 211))
+        self.assertTrue(diffie_hellman_key_exchange(11, 971))
 
 if __name__ == "__main__":
     unittest.main()
