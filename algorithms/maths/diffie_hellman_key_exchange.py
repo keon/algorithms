@@ -1,4 +1,28 @@
 import math
+from random import randint
+
+"""
+Code from /algorithms/maths/prime_check.py,
+written by 'goswami-rahul' and 'Hai Honag Dang'
+"""
+def prime_check(n):
+    """Return True if n is a prime number
+    Else return False.
+    """
+
+    if n <= 1:
+        return False
+    if n == 2 or n == 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    j = 5
+    while j * j <= n:
+        if n % j == 0 or n % (j + 2) == 0:
+            return False
+        j += 6
+    return True
+
 
 """
 For positive integer n and given integer a that satisfies gcd(a, n) = 1,
@@ -69,3 +93,55 @@ def find_primitive_root(n):
                 else:
                     continue
         return p_root_list
+
+
+def alice_private_key(p):
+    return randint(1, p-1)
+
+def alice_public_key(a_pr_k, a, p):
+    return pow(a, a_pr_k) % p
+
+def alice_shared_key(b_pu_k, a_pr_k, p):
+    return pow(b_pu_k, a_pr_k) % p
+
+def bob_private_key(p):
+    return randint(1, p-1)
+
+def bob_public_key(b_pr_k, a, p):
+    return pow(a, b_pr_k) % p 
+
+def bob_shared_key(a_pu_k, b_pr_k, p):
+    return pow(a_pu_k, b_pr_k) % p
+
+
+"""
+
+"""
+def diffie_hellman_key_exchange(a, p):
+    if (prime_check(p) == False):
+        return -1
+        """p must be large prime number"""
+    else:
+        try:
+            p_root_list = find_primitive_root(p)
+            p_root_list.index(a)
+        except ValueError as e:
+            print("%d is not a primitive root of %d" % (a, p))
+            return -1
+        
+        a_pr_k = alice_private_key(p)
+        a_pu_k = alice_public_key(a_pr_k, a, p)
+        print ("Private key of Alice = %d" % a_pr_k)
+        print ("Public key of Alice = %d" % a_pu_k)
+        
+        b_pr_k = bob_private_key(p)
+        b_pu_k = bob_public_key(b_pr_k, a, p)
+        print ("Private key of Bob = %d" % b_pr_k)
+        print ("Public key of Bob = %d" % b_pu_k)
+
+        a_sh_k = alice_shared_key(b_pu_k, a_pr_k, p)
+        b_sh_k = bob_shared_key(a_pu_k, b_pr_k, p)
+        print ("Shared key calculated by Alice = %d" % a_sh_k)
+        print ("Shared key calculated by Bob = %d" % b_sh_k)
+        
+        return (a_sh_k == b_sh_k)
