@@ -15,6 +15,7 @@ from .max_product_subarray import *
 from .max_subarray import *
 from .min_cost_path import *
 from .num_decodings import *
+form .palindrome import *
 from .regex_matching import *
 from .rod_cut import *
 from .word_break import *
