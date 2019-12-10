@@ -13,7 +13,7 @@ from algorithms.dp import (
     longest_increasing_subsequence,
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
-    int_divide
+    int_divide,
     palindrome
 )
 
