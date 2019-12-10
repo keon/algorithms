@@ -92,6 +92,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [shortest_distance_from_all_buildings](algorithms/bfs/shortest_distance_from_all_buildings.py)
     - [word_ladder](algorithms/bfs/word_ladder.py)
     - [path_from_unweighted_graph](algorithms/bfs/path_from_unweighted_graph.py)
+    - [blocking_virus](algorithms/bfs/blocking_virus.py)
 - [bit](algorithms/bit)
     - [add_bitwise_operator](algorithms/bit/add_bitwise_operator.py)
     - [bit_operation](algorithms/bit/bit_operation.py)
