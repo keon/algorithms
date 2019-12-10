@@ -73,6 +73,7 @@ def palindrome(list_n,list_m) :
         for i in output:
                 print(i)
         print("")
+        return ;
         
 '''
 palindrome(N1,M1)
