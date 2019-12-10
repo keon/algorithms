@@ -159,8 +159,6 @@ class TestIntDivide(unittest.TestCase):
 class TestPalindrome(unittest.TestCase):
     def test_palindrome(self):
         self.assertEqual(palindrome([2,3,3,3,2,1],[[1,2],[2,3],[2,4],[1,4],[1,5],[3,5]])
-        self.assertEqual(palindrome([1,2,3,4,3,2,1],[[1,2],[2,3],[2,4],[1,4],[1,5],[3,5]])
-        self.assertEqual(palindrome([1,1,1,1,1],[[1,2],[2,3],[2,4],[1,4],[1,5],[3,5]])
         
         
 if __name__ == '__main__':
