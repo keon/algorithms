@@ -69,11 +69,7 @@ def palindrome(list_n,list_m) :
                 s,e = map(int, list_m[i])
                 output.append(d[s-1][e-1])
                 i+=1
-
-        for i in output:
-                print(i)
-        print("")
-        return ;
+        return output
         
 '''
 palindrome(N1,M1)
