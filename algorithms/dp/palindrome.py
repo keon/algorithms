@@ -23,10 +23,7 @@ N1=[1,2,1,3,1,2,1]
 M1=[[1,3],[2,5],[3,3],[5,7]]
 
 output :
-1
-0
-1
-1
+[1,0,1,1]
 
 ex 2)
 input :
@@ -34,11 +31,7 @@ N2=[1, 2, 3, 1, 5, 1, 3, 3, 1]
 M2=[[1,3],[2,5],[4,6],[6,9],[3,7]]
 
 output :
-0
-0
-1
-1
-1
+[0,0,1,1,1]
 
 
 N1=[1,2,1,3,1,2,1]
@@ -59,7 +52,7 @@ def palindrome(list_n,list_m) :
                 if (list_n[i]==list_n[i+1]) :
                         d[i][i+1]=1
 
-        for i in range(1,n-1):
+        for i in range(1,n):
                 for j in range(n-i):
                         if (list_n[j] == list_n[i + j] and d[j + 1][i + j - 1]):
                                 d[j][i + j] = 1
