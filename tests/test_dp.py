@@ -160,7 +160,7 @@ class TestPalindrome(unittest.TestCase):
     def test_palindrome(self):
         from_to=[[1,2],[2,3],[2,4],[1,4],[1,5],[3,5]]
         self.assertEqual(palindrome([2,3,3,3,2,1],from_to),[0, 1, 1, 0, 1, 0])
-        self.assertEqual(palindrome([1,2,3,4,3,2,1],from_to),[0, 0, 0, 0, 1, 1])
+        self.assertEqual(palindrome([1,2,3,4,3,2,1],from_to),[0, 0, 0, 0, 0, 1])
         self.assertEqual(palindrome([1,1,1,1,1],from_to),[1,1,1,1,1,1])
 
         
