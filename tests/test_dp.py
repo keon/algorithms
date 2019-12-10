@@ -156,6 +156,12 @@ class TestIntDivide(unittest.TestCase):
         self.assertEqual(42, int_divide(10))
         self.assertEqual(204226, int_divide(50))
 
+Class TestPalindrome(unittest.TestCase):
+    def test_palindrome(self):
+        from_to=[[[1,2],[2,3],[2,4],[1,4],[1,5],[3,5]]
+        self.assertEqual(palindrome([2,3,3,3,2,1],from_to)
+        self.assertEqual(palindrome([1,2,3,4,3,2,1],from_to)
+        self.assertEqual(palindrome([1,1,1,1,1],from_to)
 
 if __name__ == '__main__':
     unittest.main()
