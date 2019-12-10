@@ -40,12 +40,13 @@ output :
 1
 1
 '''
+'''
 N1=[1,2,1,3,1,2,1]
 M1=[[1,3],[2,5],[3,3],[5,7]]
 
 N2=[1, 2, 3, 1, 5, 1, 3, 3, 1]
 M2=[[1,3],[2,5],[4,6],[6,9],[3,7]]
-
+'''
 
 def palindrome(list_n,list_m) :
         n=len(list_n)
@@ -72,6 +73,8 @@ def palindrome(list_n,list_m) :
         for i in output:
                 print(i)
         print("")
-
+        
+'''
 palindrome(N1,M1)
 palindrome(N2,M2)
+'''
