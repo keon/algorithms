@@ -141,6 +141,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [max_subarray](algorithms/dp/max_subarray.py)
     - [min_cost_path](algorithms/dp/min_cost_path.py)
     - [num_decodings](algorithms/dp/num_decodings.py)
+    - [palindrome](algorithms/dp/palindrome.py)
     - [regex_matching](algorithms/dp/regex_matching.py)
     - [rod_cut](algorithms/dp/rod_cut.py)
     - [word_break](algorithms/dp/word_break.py)
