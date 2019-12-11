@@ -1,6 +1,9 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph import ford_fulkerson
+from algorithms.graph import edmonds_karp
+from algorithms.graph import dinic
 from algorithms.graph import maximum_flow_bfs
 from algorithms.graph import maximum_flow_dfs
 from algorithms.graph import all_pairs_shortest_path
@@ -80,6 +83,47 @@ class TestDijkstra(unittest.TestCase):
           ]; 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+
+class TestMaximumFlow(unittest.TestCase):
+    """
+    Test for the file maximum_flow.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_ford_fulkerson(self):
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
+        self.assertEqual(19, ford_fulkerson(capacity, 0, 6))
+    def test_edmonds_karp(self):
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
+        self.assertEqual(19, edmonds_karp(capacity, 0, 6))
+    def dinic(self):
+        capacity = [
+                [0, 10, 10, 0, 0, 0, 0],
+                [0, 0, 2, 0, 4, 8, 0],
+                [0, 0, 0, 0, 0, 9, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 10],
+                [0, 0, 0, 0, 6, 0, 10],
+                [0, 0, 0, 0, 0, 0, 0]
+            ]
+        self.assertEqual(19, dinic(capacity, 0, 6))
 
 class TestMaximum_Flow_Bfs(unittest.TestCase):
 
@@ -164,4 +208,3 @@ class TestBellmanFord(unittest.TestCase):
         } 
     
         self.assertEqual(True, bellman_ford(graph2, 'a'))
-
