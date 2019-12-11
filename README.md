@@ -330,6 +330,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [first_unique_char](algorithms/strings/first_unique_char.py)
     - [repeat_substring](algorithms/strings/repeat_substring.py)     
 	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
+	- [knuth_morris_pratt](algorithms/strings/knuth_morris_pratt.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/bst)
         - [array_to_bst](algorithms/tree/bst/array_to_bst.py)
