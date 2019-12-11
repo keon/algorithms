@@ -20,8 +20,9 @@ def knuth_morris_pratt(text, pattern):
         if pattern[i] == pattern[j]:
             j += 1
             pi[i] = j
-    ret = []
     # finding pattern
+    j = 0
+    ret = []
     for i in range(n):
         while j and text[i] != pattern[j]:
             j = pi[j - 1]
@@ -31,4 +32,3 @@ def knuth_morris_pratt(text, pattern):
                 ret.append(i - m + 1)
                 j = pi[j - 1]
     return ret
-
