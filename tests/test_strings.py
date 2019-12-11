@@ -541,6 +541,7 @@ class TestKnuthMorrisPratt(unittest.TestCase):
         unittest {[type]} -- [description]
     """
     def test_knuth_morris_pratt(self):
+        self.assertEqual([0, 1, 2, 3, 4], knuth_morris_pratt("aaaaaaa", "aaa"))
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
         self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
 
