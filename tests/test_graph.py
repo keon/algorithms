@@ -1,6 +1,7 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 
 import unittest
@@ -75,7 +76,19 @@ class TestDijkstra(unittest.TestCase):
            [0, 0, 2, 0, 0, 0, 6, 7, 0] 
           ]; 
 
-        self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14]);
+        self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+
+class TestAll_Pairs_Shortest_Path(unittest.TestCase):
+    
+    def test_all_pairs_shortest_path(self):
+        graph = [[0, 0.1, 0.101, 0.142, 0.277], 
+                 [0.465, 0, 0.191, 0.192, 0.587], 
+                 [0.245, 0.554, 0, 0.333, 0.931], 
+                 [1.032, 0.668, 0.656, 0, 0.151], 
+                 [0.867, 0.119, 0.352, 0.398, 0]]
+        result = all_pairs_shortest_path(graph)
+
+        self.assertEqual(result, [[0, 0.1, 0.101, 0.142, 0.277], [0.436, 0, 0.191, 0.192, 0.34299999999999997], [0.245, 0.345, 0, 0.333, 0.484], [0.706, 0.27, 0.46099999999999997, 0, 0.151], [0.5549999999999999, 0.119, 0.31, 0.311, 0]])
         
 class TestBellmanFord(unittest.TestCase):
     def test_bellman_ford(self):
