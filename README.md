@@ -162,6 +162,8 @@ If you want to uninstall algorithms, it is as simple as:
     - [satisfiability](algorithms/graph/satisfiability.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
+    - [maximum_flow_bfs](algorithms/graph/maximum_flow_bfs.py)
+    - [maximum_flow_dfs](algorithms/graph/maximum_flow_dfs.py)
     - [all_pairs_shortest_path](algorithms/graph/all_pairs_shortest_path.py)
     - [bellman_ford](algorithms/graph/bellman_ford.py)
 - [heap](algorithms/heap)

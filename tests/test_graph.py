@@ -1,8 +1,11 @@
 from algorithms.graph import Tarjan
 from algorithms.graph import check_bipartite
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph import maximum_flow_bfs
+from algorithms.graph import maximum_flow_dfs
 from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
+
 
 import unittest
 
@@ -78,6 +81,49 @@ class TestDijkstra(unittest.TestCase):
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
+class TestMaximum_Flow_Bfs(unittest.TestCase):
+
+    """
+    Test for the file def maximum_flow_bfs.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_maximum_flow_bfs(self):
+        graph = [
+            [0, 16, 13, 0, 0, 0],
+            [0, 0, 10, 12, 0, 0],
+            [0, 4, 0, 0, 14, 0], 
+            [0, 0, 9, 0, 0, 20], 
+            [0, 0, 0, 7, 0, 4],
+            [0, 0, 0, 0, 0, 0]
+        ]
+        maximum_flow = maximum_flow_bfs(graph)
+
+        self.assertEqual(maximum_flow, 23)
+
+class TestMaximum_Flow_Dfs(unittest.TestCase):
+
+    """
+    Test for the file def maximum_flow_dfs.py
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_maximum_flow_dfs(self):
+        graph = [
+            [0, 16, 13, 0, 0, 0],
+            [0, 0, 10, 12, 0, 0],
+            [0, 4, 0, 0, 14, 0], 
+            [0, 0, 9, 0, 0, 20], 
+            [0, 0, 0, 7, 0, 4],
+            [0, 0, 0, 0, 0, 0]
+        ]
+        maximum_flow = maximum_flow_dfs(graph)
+
+        self.assertEqual(maximum_flow, 23)
+
+
 class TestAll_Pairs_Shortest_Path(unittest.TestCase):
     
     def test_all_pairs_shortest_path(self):
@@ -88,7 +134,14 @@ class TestAll_Pairs_Shortest_Path(unittest.TestCase):
                  [0.867, 0.119, 0.352, 0.398, 0]]
         result = all_pairs_shortest_path(graph)
 
-        self.assertEqual(result, [[0, 0.1, 0.101, 0.142, 0.277], [0.436, 0, 0.191, 0.192, 0.34299999999999997], [0.245, 0.345, 0, 0.333, 0.484], [0.706, 0.27, 0.46099999999999997, 0, 0.151], [0.5549999999999999, 0.119, 0.31, 0.311, 0]])
+        self.assertEqual(result, [
+          [0, 0.1, 0.101, 0.142, 0.277],
+          [0.436, 0, 0.191, 0.192, 0.34299999999999997],
+          [0.245, 0.345, 0, 0.333, 0.484],
+          [0.706, 0.27, 0.46099999999999997, 0, 0.151],
+          [0.5549999999999999, 0.119, 0.31, 0.311, 0],
+        ])
+
         
 class TestBellmanFord(unittest.TestCase):
     def test_bellman_ford(self):
@@ -111,3 +164,4 @@ class TestBellmanFord(unittest.TestCase):
         } 
     
         self.assertEqual(True, bellman_ford(graph2, 'a'))
+
