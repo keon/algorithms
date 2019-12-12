@@ -151,15 +151,15 @@ def bob_shared_key(a_pu_k, b_pr_k, p):
 def diffie_hellman_key_exchange(a, p):
     if (prime_check(p) == False):
         print("%d is not a prime number" % p)
-        return -1
+        return False
         """p must be large prime number"""
     else:
         try:
             p_root_list = find_primitive_root(p)
             p_root_list.index(a)
-        except ValueError as e:
+        except ValueError:
             print("%d is not a primitive root of %d" % (a, p))
-            return -1
+            raise ValueError
             """ a must be primitive root of p """
         
         a_pr_k = alice_private_key(p)
