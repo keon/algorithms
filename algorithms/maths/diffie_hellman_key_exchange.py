@@ -148,7 +148,11 @@ def bob_shared_key(a_pu_k, b_pr_k, p):
     return pow(a_pu_k, b_pr_k) % p
 
 
-def diffie_hellman_key_exchange(a, p):
+def diffie_hellman_key_exchange(a, p, option = None):
+    if (option != None):
+        option = 1
+        """ Print explanation of process
+        when option parameter is given """
     if (prime_check(p) == False):
         print("%d is not a prime number" % p)
         return False
@@ -164,13 +168,16 @@ def diffie_hellman_key_exchange(a, p):
         
         a_pr_k = alice_private_key(p)
         a_pu_k = alice_public_key(a_pr_k, a, p)
-        print ("Private key of Alice = %d" % a_pr_k)
-        print ("Public key of Alice = %d" % a_pu_k)
+        
         
         b_pr_k = bob_private_key(p)
         b_pu_k = bob_public_key(b_pr_k, a, p)
-        print ("Private key of Bob = %d" % b_pr_k)
-        print ("Public key of Bob = %d" % b_pu_k)
+        
+        if (option == 1):
+            print ("Private key of Alice = %d" % a_pr_k)
+            print ("Public key of Alice = %d" % a_pu_k)
+            print ("Private key of Bob = %d" % b_pr_k)
+            print ("Public key of Bob = %d" % b_pu_k)
 
         """ In here, Alice send her public key to Bob,
         and Bob also send his public key to Alice."""
