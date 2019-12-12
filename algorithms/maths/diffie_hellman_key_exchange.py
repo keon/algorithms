@@ -159,7 +159,7 @@ def diffie_hellman_key_exchange(a, p):
             p_root_list.index(a)
         except ValueError:
             print("%d is not a primitive root of %d" % (a, p))
-            raise ValueError
+            return False
             """ a must be primitive root of p """
         
         a_pr_k = alice_private_key(p)
