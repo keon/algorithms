@@ -42,27 +42,27 @@ M2=[[1,3],[2,5],[4,6],[6,9],[3,7]]
 '''
 
 def palindrome(list_n,list_m) :
-        n=len(list_n)
-        output=[]
-        d=[[0 for i in range(n)] for j in range(n)]
-        for i in range(n) :
-                d[i][i]=1
+    n=len(list_n)
+    output=[]
+    d=[[0 for i in range(n)] for j in range(n)]
+    for i in range(n) :
+        d[i][i]=1
 
-        for i in range(n-1):
-                if (list_n[i]==list_n[i+1]) :
-                        d[i][i+1]=1
+    for i in range(n-1):
+        if (list_n[i]==list_n[i+1]) :
+            d[i][i+1]=1
 
-        for i in range(1,n):
-                for j in range(n-i):
-                        if (list_n[j] == list_n[i + j] and d[j + 1][i + j - 1]):
-                                d[j][i + j] = 1
-        m=len(list_m)
-        i=0
-        while i<m :   
-                s,e = map(int, list_m[i])
-                output.append(d[s-1][e-1])
-                i+=1
-        return output
+    for i in range(1,n):
+        for j in range(n-i):
+            if (list_n[j] == list_n[i + j] and d[j + 1][i + j - 1]):
+                d[j][i + j] = 1
+    m=len(list_m)
+    i=0
+    while i<m :   
+        s,e = map(int, list_m[i])
+        output.append(d[s-1][e-1])
+        i+=1
+    return output
         
 '''
 palindrome(N1,M1)
