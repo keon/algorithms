@@ -19,20 +19,14 @@ If maze is
 the answer is: -1
 '''
 
-global cnt
-
 
 def find_path(maze):
-    global cnt
-    cnt = -1
-
-    dfs(maze, 0, 0, 0)
+    cnt = dfs(maze, 0, 0, 0, -1)
     return cnt
 
 
-def dfs(maze, i, j, depth):
+def dfs(maze, i, j, depth, cnt):
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-    global cnt
 
     row = len(maze)
     col = len(maze[0])
@@ -43,7 +37,7 @@ def dfs(maze, i, j, depth):
         else:
             if cnt > depth:
                 cnt = depth
-        return
+        return cnt
 
     maze[i][j] = 0
 
@@ -53,8 +47,8 @@ def dfs(maze, i, j, depth):
 
         if nx_i >= 0 and nx_i < row and nx_j >= 0 and nx_j < col:
             if maze[nx_i][nx_j] == 1:
-                dfs(maze, nx_i, nx_j, depth + 1)
+                cnt = dfs(maze, nx_i, nx_j, depth + 1, cnt)
 
     maze[i][j] = 1
 
-    return
+    return cnt
