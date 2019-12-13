@@ -54,7 +54,7 @@ class TestWallsAndGates(unittest.TestCase):
 class TestMazeSearch(unittest.TestCase):
     def test_maze_search(self):
         maze_1 = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1], [1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]
-        self.assertEqual(38, find_path(maze_1))
+        self.assertEqual(37, find_path(maze_1))
         maze_2 = [[1,0,1,1,1,1], [1,0,1,0,1,0], [1,0,1,0,1,1], [1,1,1,0,1,1]]
         self.assertEqual(14, find_path(maze_2))
         maze_3 = [[1,0,0], [0,1,1], [0,1,1]]
