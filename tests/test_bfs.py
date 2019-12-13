@@ -1,5 +1,4 @@
 from algorithms.bfs import (
-    count_islands,
     maze_search,
     shortest_distance_from_all_buildings,
     ladder_length
@@ -8,21 +7,8 @@ from algorithms.bfs import (
 import unittest
 
 
-class TestCountIslands(unittest.TestCase):
-
-    def test_count_islands(self):
-        grid_1 = [[1,1,1,1,0], [1,1,0,1,0], [1,1,0,0,0], [0,0,0,0,0]]
-        self.assertEqual(1, count_islands(grid_1))
-        grid_2 = [[1,1,0,0,0], [1,1,0,0,0], [0,0,1,0,0], [0,0,0,1,1]]
-        self.assertEqual(3, count_islands(grid_2))
-        grid_3 = [[1,1,1,0,0,0], [1,1,0,0,0,0], [1,0,0,0,0,1], [0,0,1,1,0,1], [0,0,1,1,0,0]]
-        self.assertEqual(3, count_islands(grid_3))
-        grid_4 = [[1,1,0,0,1,1], [0,0,1,1,0,0], [0,0,0,0,0,1], [1,1,1,1,0,0]]
-        self.assertEqual(5, count_islands(grid_4))
-
-
 class TestMazeSearch(unittest.TestCase):
-
+    
     def test_maze_search(self):
         grid_1 = [[1,0,1,1,1,1],[1,0,1,0,1,0],[1,0,1,0,1,1],[1,1,1,0,1,1]]
         self.assertEqual(14, maze_search(grid_1))
