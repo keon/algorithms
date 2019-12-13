@@ -20,8 +20,6 @@ the answer is: -1
 '''
 
 global cnt
-global directions
-directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
 
 def find_path(maze):
@@ -33,7 +31,7 @@ def find_path(maze):
 
 
 def dfs(maze, i, j, depth):
-    global directions
+    directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
     global cnt
 
     row = len(maze)
