@@ -37,7 +37,7 @@ Answer: 5
 """
 
 
-def counting_islands(grid):
+def count_islands(grid):
     row = len(grid)
     col = len(grid[0])
 
