@@ -3,7 +3,8 @@ from algorithms.dfs import (
     num_islands,
     pacific_atlantic,
     Sudoku,
-    walls_and_gates
+    walls_and_gates,
+    find_path
 )
 
 import unittest
@@ -50,6 +51,14 @@ class TestWallsAndGates(unittest.TestCase):
         walls_and_gates(rooms)
         self.assertEqual([[3, -1, 0, 1], [2, 2, 1, -1], [1, -1, 2, -1], [0, -1, 3, 4]], rooms)
 
+class TestMazeSearch(unittest.TestCase):
+    def test_maze_search(self):
+        maze_1 = [[1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1], [1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1]]
+        self.assertEqual(38, find_path(maze_1))
+        maze_2 = [[1,0,1,1,1,1], [1,0,1,0,1,0], [1,0,1,0,1,1], [1,1,1,0,1,1]]
+        self.assertEqual(14, find_path(maze_2))
+        maze_3 = [[1,0,0], [0,1,1], [0,1,1]]
+        self.assertEqual(-1, find_path(maze_3))
 
 if __name__ == "__main__":
     unittest.main()
