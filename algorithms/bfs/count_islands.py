@@ -51,10 +51,8 @@ def count_islands(grid):
             if num == 1 and visited[i][j] != 1:
                 visited[i][j] = 1
                 queue.append((i, j))
-                while len(queue) != 0:
-                    x = queue[0][0]
-                    y = queue[0][1]
-                    del queue[0]
+                while queue:
+                    x, y = queue.pop(0)
                     for k in range(len(directions)):
                         nx_x = x + directions[k][0]
                         nx_y = y + directions[k][1]
@@ -65,4 +63,3 @@ def count_islands(grid):
                 num_islands += 1
 
     return num_islands
-
