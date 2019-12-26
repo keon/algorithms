@@ -8,6 +8,7 @@ from algorithms.graph import maximum_flow_bfs
 from algorithms.graph import maximum_flow_dfs
 from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
+from algorithms.graph import bellman_ford
 
 
 import unittest

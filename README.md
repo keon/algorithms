@@ -113,8 +113,6 @@ If you want to uninstall algorithms, it is as simple as:
     - [insert_bit](algorithms/bit/insert_bit.py)
     - [remove_bit](algorithms/bit/remove_bit.py)
     - [binary_gap](algorithms/bit/binary_gap.py)
-- [calculator](algorithms/calculator)
-    - [math_parser](algorithms/calculator/math_parser.py)
 - [compression](algorithms/compression)
     - [huffman_coding](algorithms/compression/huffman_coding.py)
     - [rle_compression](algorithms/compression/rle_compression.py)
@@ -172,8 +170,6 @@ If you want to uninstall algorithms, it is as simple as:
     - [skyline](algorithms/heap/skyline.py)
     - [sliding_window_max](algorithms/heap/sliding_window_max.py)
     - [binary_heap](algorithms/heap/binary_heap.py)
-- [iterables](algorithms/iterables)
-    - [convolved](algorithms/iterables/convolved.py)
     - [k_closest_points](algorithms/heap/k_closest_points.py)
 - [linkedlist](algorithms/linkedlist)
     - [add_two_numbers](algorithms/linkedlist/add_two_numbers.py)
@@ -387,8 +383,8 @@ If you want to uninstall algorithms, it is as simple as:
         - [full_path](algorithms/unix/path/full_path.py)
         - [split](algorithms/unix/path/split.py)
         - [simplify_path](algorithms/unix/path/simplify_path.py)
-- [union-find](algorithms/union-find)
-    - [count_islands](algorithms/union-find/count_islands.py)
+- [unionfind](algorithms/unionfind)
+    - [count_islands](algorithms/unionfind/count_islands.py)
 
 
 ## Contributors
