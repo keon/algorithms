@@ -26,8 +26,6 @@ def binomial_coefficient(n, k):
     :param n: 2 times of Number of nodes
     :param k: Number of nodes
     :return:  Integer Value
-    >>> binomial_coefficient(4, 2)
-    6
     """
     result = 1  # To kept the Calculated Value
     # Since C(n, k) = C(n, n-k)
@@ -45,10 +43,6 @@ def catalan_number(node_count):
     return the Catalan number of n using 2nCn/(n+1).
     :param n: number of nodes
     :return: Catalan number of n nodes
-    >>> catalan_number(5)
-    42
-    >>> catalan_number(6)
-    132
     """
     return binomial_coefficient(2 * node_count, node_count) // (node_count + 1)
 def unique_binary_tree(n):
@@ -60,4 +54,4 @@ def unique_binary_tree(n):
     return factorial(n) * catalan_number(n)
 
 if __name__ == "__main__":
-    #print(unique_binary_tree(5))
+    print(unique_binary_tree(5))
