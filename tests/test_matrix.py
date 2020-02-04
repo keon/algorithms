@@ -7,7 +7,8 @@ from algorithms.matrix import (
     rotate_image,
     sparse_dot_vector,
     spiral_traversal,
-    sudoku_validator
+    sudoku_validator,
+    rank_matrix
 )
 import unittest
 
@@ -271,6 +272,20 @@ class TestSudokuValidator(unittest.TestCase):
                     [2, 8, 7, 4, 1, 9, 6, 3, 5],
                     [3, 0, 0, 4, 8, 1, 1, 7, 9]
                 ]))
+
+class TestRankMatrix(unittest.TestCase):
+    """[summary]
+    Test for the file rank_matrix.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def setUp(self):
+        array2d = [[10, 20, 10], [-20, -30, 10], [30, 50, 0]] 
+        self.rankMatrix = rank_matrix.RankMatrix(array2d) 
+
+    def test_calculateRankOfMatrix(self):
+        self.assertEqual(self.rankMatrix.rankOfMatrix(),2) 
 
 
 if __name__ == "__main__":
