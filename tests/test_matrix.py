@@ -7,7 +7,8 @@ from algorithms.matrix import (
     rotate_image,
     sparse_dot_vector,
     spiral_traversal,
-    sudoku_validator
+    sudoku_validator,
+    matrix_characteristics
 )
 import unittest
 
@@ -272,6 +273,28 @@ class TestSudokuValidator(unittest.TestCase):
                     [3, 0, 0, 4, 8, 1, 1, 7, 9]
                 ]))
 
+class TestMatrixFunctions(unittest.TestCase):
+    def setUp(self):
+        array2d = [[2, 3, 5, 6 ],[ 4, 5, 7, 9 ], [8, 6, 4, 9 ],[ 1, 3, 5, 6 ]] 
+        identityArray2d = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+        self.matrix = matrix_characteristics.Matrix(array2d)
+        self.identityMatrix = matrix_characteristics.Matrix(identityArray2d)
+
+    def test_swapUpperToLower(self):
+        self.assertEqual(self.matrix.swapUpperToLower(),
+        [[2, 4, 8, 1], [3, 5, 6, 3], [5, 7, 4, 5], [6, 9, 9, 6]])
+
+    def test_isIdentity(self):
+        self.assertFalse(self.matrix.isIdentity())
+        self.assertTrue(self.identityMatrix.isIdentity())
+    
+    def test_isUppertriangular(self):
+        self.assertFalse(self.matrix.isUppertriangular())
+        self.assertTrue(self.identityMatrix.isUppertriangular())
+   
+    def test_isLowertriangular(self):
+        self.assertFalse(self.matrix.isLowertriangular())
+        self.assertTrue(self.identityMatrix.isLowertriangular())
 
 if __name__ == "__main__":
     unittest.main()
