@@ -7,7 +7,8 @@ from algorithms.matrix import (
     rotate_image,
     sparse_dot_vector,
     spiral_traversal,
-    sudoku_validator
+    sudoku_validator,
+    sum_sub_squares
 )
 import unittest
 
@@ -272,6 +273,21 @@ class TestSudokuValidator(unittest.TestCase):
                     [3, 0, 0, 4, 8, 1, 1, 7, 9]
                 ]))
 
+class TestSumSubSquares(unittest.TestCase):
+    """[summary]
+    Test for the file sum_sub_squares.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_sum_sub_squares(self):
+        mat = [[1, 1, 1, 1, 1], 
+           [2, 2, 2, 2, 2], 
+           [3, 3, 3, 3, 3], 
+           [4, 4, 4, 4, 4], 
+           [5, 5, 5, 5, 5]]
+        self.assertEqual(sum_sub_squares.sum_sub_squares(mat, 3),
+                         [[18, 18, 18], [27, 27, 27], [36, 36, 36]])
 
 if __name__ == "__main__":
     unittest.main()
