@@ -7,6 +7,7 @@ The board is always 9 cells by 9 cells, and every cell only contains integers fr
 
 # Using dict/hash-table
 from collections import defaultdict
+
 def valid_solution_hashtable(board):
     for i in range(len(board)):
         dict_row = defaultdict(int)
@@ -25,7 +26,14 @@ def valid_solution_hashtable(board):
                 return False
             else:
                 dict_col[value_col] += 1
+    if not check_addition(board):
+        return False
+    #if everything is right
+    return True
 
+
+
+def check_addition(board):
     for i in range(3):
         for j in range(3):
             grid_add = 0
@@ -35,50 +43,4 @@ def valid_solution_hashtable(board):
             if grid_add != 45:
                 return False
     return True
-
-
-# Without hash-table/dict
-def valid_solution(board):
-    correct = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    # check rows
-    for row in board:
-        if sorted(row) != correct:
-            return False
-
-    # check columns
-    for column in zip(*board):
-        if sorted(column) != correct:
-            return False
-
-    # check regions
-    for i in range(3):
-        for j in range(3):
-            region = []
-            for line in board[i*3:(i+1)*3]:
-                region += line[j*3:(j+1)*3]
-
-            if sorted(region) != correct:
-                return False
-
-    # if everything correct
-    return True
-
-
-# Using set
-def valid_solution_set (board):
-    valid = set(range(1, 10))
-
-    for row in board:
-        if set(row) != valid:
-            return False
-
-    for col in [[row[i] for row in board] for i in range(9)]:
-        if set(col) != valid:
-            return False
-
-    for x in range(3):
-        for y in range(3):
-            if set(sum([row[x*3:(x+1)*3] for row in board[y*3:(y+1)*3]], [])) != valid:
-                return False
-
-    return True
+   
