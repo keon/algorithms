@@ -346,7 +346,51 @@ class TestThreeSum(unittest.TestCase):
 
         self.assertSetEqual(three_sum([-1, 3, 1, 2, -1, -4, -2]),
                             {(-4, 1, 3), (-2, -1, 3), (-1, -1, 2)})
+        
+    def test_three_sum_1(self):
+        """
+        Test that all solution sets are of length 3
+        """
+        test_set = [1, 2, 3, 4, 5, -1, -3, -2, 0, -6, 1, 12, -6]
+        results = three_sum(test_set)
 
+        for result in results:
+            self.assertEqual(len(result), 3)
+
+    def test_three_sum_2(self):
+        """
+        Test that all solution sets sum to zero
+        """
+        test_set = [1, 2, 3, 4, 5, -1, -3, -2, 0, -6, 1, 12, -6]
+        results = three_sum(test_set)
+
+        for result in results:
+            self.assertEqual(sum(result), 0)
+
+    def test_three_sum_3(self):
+        """
+        Test that all entries in the solution set are part
+        of the input set
+        """
+        test_set = [1, 2, 3, 4, 5, -1, -3, -2, 0, -6, 1, 12, -6]
+        results = three_sum(test_set)
+
+        for result in results:
+            for x in result:
+                self.assertTrue(x in test_set)
+
+    def test_three_sum_4(self):
+        """
+        Test that solutions have unique members from input
+        """
+        test_set = [1, 2, 3, 4, 5, -1, -3, -2, 0, -6, 1, 12, -6]
+        results = three_sum(test_set)
+
+        for result in results:
+            test_set_copy = list(test_set)
+            for x in result:
+                self.assertTrue(x in test_set_copy)
+                test_set_copy.remove(x)
 
 class TestTwoSum(unittest.TestCase):
 
