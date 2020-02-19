@@ -12,26 +12,28 @@ def valid_solution_hashtable(board):
     for i in range(len(board)):
         dict_row = defaultdict(int)
         dict_col = defaultdict(int)
-        for j in range(len(board[0])):
-            value_row = board[i][j]
-            value_col = board[j][i]
-            if not value_row or value_col == 0:
-                return False
-            if value_row in dict_row:
-                return False
-            else:
-                dict_row[value_row] += 1
-
-            if value_col in dict_col:
-                return False
-            else:
-                dict_col[value_col] += 1
+        check_valid_value(board)
     if not check_addition(board):
         return False
     #if everything is right
     return True
 
+def check_valid_value(board):
+    for j in range(len(board[0])):
+        value_row = board[i][j]
+        value_col = board[j][i]
+        if not value_row or value_col == 0:
+            return False
+        if value_row in dict_row:
+            return False
+        else:
+            dict_row[value_row] += 1
 
+        if value_col in dict_col:
+            return False
+        else:
+            dict_col[value_col] += 1
+    return board
 
 def check_addition(board):
     for i in range(3):
