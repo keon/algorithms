@@ -84,6 +84,11 @@ class TestDijkstra(unittest.TestCase):
           ]; 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+    def test_dijkstra_empty_graph(self):
+        g = Dijkstra(0) 
+        g.graph = []; 
+
+        self.assertEqual(g.dijkstra(0), [])
 
 class TestMaximumFlow(unittest.TestCase):
     """
