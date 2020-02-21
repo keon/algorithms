@@ -186,7 +186,7 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_palindrome_dict(self.l))
         self.assertFalse(is_palindrome_dict(self.l1))
         self.assertFalse(is_palindrome_dict(self.l2))
-        self.assertFalse(is_palindrome_dict(self.l3))
+        self.assertTrue(is_palindrome_dict(self.l3))
         self.assertTrue(is_palindrome_dict(None))
 
     def test_solution_0(self):
