@@ -108,6 +108,19 @@ class TestDijkstra(unittest.TestCase):
 
         self.assertEqual(g.dijkstra(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
 
+    def test_dijkstra_small_graph(self):
+        g = Dijkstra(8) 
+        g.graph = [[0, 0, 8, 0, 0, 0, 0, 0], 
+           [0, 0, 8, 1, 0, 4, 0, 0], 
+           [8, 8, 0, 0, 6, 0, 0, 0], 
+           [0, 1, 0, 0, 0, 1, 0, 6], 
+           [0, 0, 6, 0, 0, 0, 0, 0], 
+           [0, 4, 0, 1, 0, 0, 3, 5], 
+           [0, 0, 0, 0, 0, 3, 0, 6], 
+           [0, 0, 0, 6, 0, 5, 6, 0] 
+          ] 
+        self.assertEqual(g.dijkstra(0), [0, 16, 8, 17, 14, 18, 21, 23])
+
 class TestMaximumFlow(unittest.TestCase):
     """
     Test for the file maximum_flow.py
