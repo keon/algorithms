@@ -1,5 +1,5 @@
 #Dijkstra's single source shortest path algorithm
-
+from algorithms.heap import BinaryHeap
 class Dijkstra():
 
     def __init__(self, vertices):
@@ -34,3 +34,27 @@ class Dijkstra():
                     dist[v] = dist[u] + self.graph[u][v]
 
         return dist
+
+    def dijkstraUsingHeap(self, src):
+        heap = BinaryHeap()
+        dist = [float("inf")] * self.vertices
+
+        tuple = (0, src)
+        heap.insert(tuple)
+        dist[src] = 0
+
+        while(heap.currentSize > 0):
+            u = heap.remove_min()
+            curWeight = u[0]
+            curNode = u[1]
+
+            #go over all vertices adjacent to u
+            for v in range(self.vertices):
+                if self.graph[curNode][v] > 0 and dist[v] > dist[curNode] + self.graph[curNode][v]:
+                    dist[v] = dist[curNode] + self.graph[curNode][v]
+                    t = (dist[v], v)
+                    heap.insert(t)
+        return dist
+
+
+
