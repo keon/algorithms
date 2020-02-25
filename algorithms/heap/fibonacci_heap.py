@@ -114,11 +114,12 @@ class FibonacciHeap:
         """
         if heap2.root_list == None:
             return
-        heap2_tail = heap2.root_list.left
         if self.root_list == None:
             self.root_list = heap2.root_list
             self.min_node = heap2.min_node
             return
+
+        heap2_tail = heap2.root_list.left
         tail = self.root_list.left
         
         # the tail of heap 2 is now the end of the list
