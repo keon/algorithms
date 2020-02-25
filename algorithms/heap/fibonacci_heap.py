@@ -20,6 +20,10 @@ Time complexiity vs binomial heap:
 | Decrease key 	| Θ(logn)               	| Θ(1)                 	|
 | Delete       	| Θ(logn)               	| O(logn)              	|
 
+However, notice that thee times are amortized and that memory consumption can be high. Subsequently, 
+Fibonacci heaps have a reputation for being slow in practice due to large memory consumption per 
+node and high constant factors on all operations.
+
 Resource:
 Introduction to Algorithms, third edition.
 Chapter 19, Fibonacci heaps
