@@ -74,7 +74,7 @@ class TestFibonacciHeap(unittest.TestCase):
         2. the smallest data node if there is data in the heap
         """
         fh = fibonacci_heap.FibonacciHeap()
-        
+
         # test case 1
         self.assertEqual(None, fh.find_min()) 
 
@@ -158,9 +158,11 @@ class TestFibonacciHeap(unittest.TestCase):
 
         # Fill two heaps with data
         a_data = [4, 2, 6, 3, 5]
-        a.insert(x for x in a_data)
+        for x in a_data:
+            a.insert(x)
         b_data = [10, 12, 16, 100]
-        b.insert(x for x in b_data)
+        for x in b_data:
+            b.insert(x)
 
         # extract root_lists from heaps
         root_a = []
@@ -191,7 +193,7 @@ class TestFibonacciHeap(unittest.TestCase):
         self.assertEqual(b.total_nodes, numel_before)
 
         # test case 3
-        self.assertNone(empty_heap.find_min())
+        self.assertEqual(empty_heap.find_min(), None)
         empty_heap.merge(b)
         self.assertEqual(b.find_min().key, empty_heap.find_min().key)
 
