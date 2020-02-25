@@ -84,6 +84,21 @@ class TestDijkstra(unittest.TestCase):
           ]; 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+    def test_dijkstra_no_edges(self):
+        g = Dijkstra(9) 
+        g.graph = [[0, 0, 0, 0, 0, 0, 0, 0, 0], 
+           [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+           [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+           [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+           [0, 0, 0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0, 0, 0, 0, 0] 
+          ]; 
+
+        self.assertEqual(g.dijkstra(0), [0, float("inf"), float("inf"), float("inf"), float("inf"), float("inf"), float("inf"), float("inf"), float("inf")])
+
 
 class TestMaximumFlow(unittest.TestCase):
     """
