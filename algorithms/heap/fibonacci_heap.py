@@ -25,8 +25,8 @@ Introduction to Algorithms, third edition.
 Chapter 19, Fibonacci heaps
 """
 
-class FibonacciHeap:
 
+class FibonacciHeap:
     class Node:
         def __init__(self, key):
             self.key = key
@@ -36,9 +36,9 @@ class FibonacciHeap:
             self.right = None
             self.degree = 0
             self.mark = False
-        
+
         def __str__(self):
-                return f'key: {self.key}, child: {self.child.key if self.child != None else None}, left: {self.left.key if self.left != None else None}, right: {self.right.key if self.right != None else None}'
+            return f"key: {self.key}, child: {self.child.key if self.child != None else None}, left: {self.left.key if self.left != None else None}, right: {self.right.key if self.right != None else None}"
 
         def __repr__(self):
             return str(self.key)
@@ -71,7 +71,7 @@ class FibonacciHeap:
             head = None
             print("hereree")
             return
-        
+
         # length of root_list >= 2
         node.left.right = node.right
         node.right.left = node.left
@@ -118,7 +118,9 @@ class FibonacciHeap:
         tail.right = heap2.root_list
         heap2.root_list.left = tail
 
-        if self.min_node is None or (heap2.root_list != None and heap2.min_node.key < self.min_node.key):
+        if self.min_node is None or (
+            heap2.root_list != None and heap2.min_node.key < self.min_node.key
+        ):
             self.min_node = heap2.min_node
         self.total_nodes += heap2.total_nodes
 
@@ -156,7 +158,7 @@ class FibonacciHeap:
                 child = child.right
                 if child == z.child:
                     break
-                    
+
             self._remove_node(self.root_list, z)
             # only node and no children
             if z == z.right:
@@ -189,7 +191,7 @@ class FibonacciHeap:
                 A[d] = None
                 d += 1
             A[d] = x
-        
+
         # find new min node
         self.min_node = None
         for a in A:
@@ -197,7 +199,7 @@ class FibonacciHeap:
                 if self.min_node == None:
                     self.min_node = a
                 else:
-                    if (a.key < self.min_node.key):
+                    if a.key < self.min_node.key:
                         self.min_node = a
 
     def _append_child(self, parent, child):
@@ -246,7 +248,7 @@ class FibonacciHeap:
             self.min_node = x
         x.parent = None
         x.mark = False
-    
+
     def _cascading_cut(self, y):
         """
         Cascading cut of y to obtain good time bounds.
@@ -262,7 +264,7 @@ class FibonacciHeap:
         """
         Decrease the key of a node in the heap.
         """
-        if key > node.key: 
+        if key > node.key:
             raise Exception("Key value larger than the nodes key")
         node.key = key
         parent = node.parent
