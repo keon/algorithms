@@ -129,7 +129,7 @@ class TestCholeskyMatrixDecomposition(unittest.TestCase):
 
 class TestInversion(unittest.TestCase):
     """[summary]
-    Test for the file multiply.py
+    Test for the file matrix_inversion.py
 
     Arguments:
         unittest {[type]} -- [description]
