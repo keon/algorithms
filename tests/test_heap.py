@@ -182,5 +182,45 @@ class TestFibonacciHeap(unittest.TestCase):
         self.assertEqual(b.find_min().key, empty_heap.find_min().key)
         self.assertEqual(empty_heap.total_nodes, b.total_nodes)
 
+    def test_fibonacci_heap_delete(self):
+        """
+        Test that the delete method of the fibonacci heap deletes nodes
+        from the heap with test cases
+        1. delete a root element and keep structure of tree
+        2. delete a child in the tree and keep structure of tree
+        """
+        fh = fibonacci_heap.FibonacciHeap()
+        data = [1, 10, 25, 0, 2]
+        for x in data:
+            fh.insert(x)
+
+        # At this point, all elements of the tree are root elements
+        self.assertEqual(fh.total_nodes, 5)
+
+        # test case 1
+        del_node_key = fh.root_list.key
+        fh.delete(fh.root_list)
+        self.assertEqual(fh.total_nodes, 4)
+        nodes = self.get_all_nodes(fh, fh.root_list)
+        for node in nodes:
+            self.assertTrue(node.key != del_node_key)
+
+        # test case 2
+        del_node_key = fh.root_list.child.key
+        fh.delete(fh.root_list.child)
+        self.assertEqual(fh.total_nodes, 3)
+        nodes = self.get_all_nodes(fh, fh.root_list)
+        for node in nodes:
+            self.assertTrue(node.key != del_node_key)
+
+    def get_all_nodes(self, heap, node):
+        nodes = []
+        for node in heap._iterate(node):
+            nodes.append(node)
+            if node.child:
+                nodes += self.get_all_nodes(heap, node.child)
+        return nodes
+
+
 if __name__ == "__main__":
     unittest.main()
