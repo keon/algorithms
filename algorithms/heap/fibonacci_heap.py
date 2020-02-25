@@ -112,9 +112,15 @@ class FibonacciHeap:
         at the end of this heap's root list and connecting the heads 
         and tails.
         """
-        tail = self.root_list.left
+        if heap2.root_list == None:
+            return
         heap2_tail = heap2.root_list.left
-
+        if self.root_list == None:
+            self.root_list = heap2.root_list
+            self.min_node = heap2.min_node
+            return
+        tail = self.root_list.left
+        
         # the tail of heap 2 is now the end of the list
         self.root_list.left = heap2_tail
         heap2_tail.right = self.root_list
