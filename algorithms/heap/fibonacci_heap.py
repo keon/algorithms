@@ -62,18 +62,17 @@ class FibonacciHeap:
         last_node.right = node
         self.root_list.left = node
 
-    def _remove_node(self, head, node):
+    def _remove_root(self, node):
         """
         Remove the node from the head list.
         """
         # nothing to remove
-        if node == None or head == None:
+        if node == None or self.root_list == None:
             return
 
         # only one node
-        if node == head and node.left == head and node.right == head:
-            head = None
-            print("hereree")
+        if node == self.root_list and node.left == self.root_list and node.right == self.root_list:
+            self.root_list = None
             return
 
         # length of root_list >= 2
@@ -81,8 +80,10 @@ class FibonacciHeap:
         node.right.left = node.left
         # update root list reference if the
         # removed node was the reference
-        if node == head:
-            head = node.right
+        if node == self.root_list:
+            # replace the head contents with the node to the left
+            # eliminating the node
+            self.root_list = node.right
         return node
 
     def _iterate(self, head):
@@ -162,8 +163,8 @@ class FibonacciHeap:
                 child = child.right
                 if child == z.child:
                     break
-
-            self._remove_node(self.root_list, z)
+            
+            self._remove_root(z)
             # only node and no children
             if z == z.right:
                 self.min_node = None
@@ -229,14 +230,22 @@ class FibonacciHeap:
         """
         Remove a child from parent.
         """
-        self._remove_node(parent.child, child)
+        #self._remove_node(parent.child, child)
+        if parent.child == parent.child.right:
+            parent.child = None
+        elif parent.child == child:
+            parent.child = child.right
+            child.right.parent = parent
+        child.left.right = child.right
+        child.right.left = child.left
+
         parent.degree -= 1
 
     def _link(self, y, x):
         """
         Link child x to parent y.
         """
-        self._remove_node(self.root_list, y)
+        self._remove_root(y)
         # make y a child of x
         self._append_child(x, y)
         y.mark = False
@@ -310,14 +319,15 @@ class FibonacciHeap:
 if __name__ == "__main__":
     fheap = FibonacciHeap()
     fheap.insert(4)
-    fheap.insert(3)
+    fheap.insert(50)
     fheap.insert(7)
+    fheap.insert(55)
+    print(fheap)
     fheap.extract_min_node()
     print(fheap)
     print(fheap.root_list)
     print(fheap.root_list.child)
-    print("----")
-    fheap.delete(fheap.root_list.child)
-    print(fheap.root_list)
-    print(fheap.root_list.child)
+    fheap.insert(90)
+    fheap.insert(87)
     print(fheap)
+
