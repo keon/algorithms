@@ -2,7 +2,8 @@ from algorithms.heap import (
     BinaryHeap,
     get_skyline,
     max_sliding_window,
-    k_closest
+    k_closest,
+    fibonacci_heap
 )
 
 import unittest
@@ -62,6 +63,139 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([(10, 2), (2, 8), (5, 2), (-2, -2), (2, 3),
                           (1, 0), (-1, 0), (1, 1)], k_closest(points, 8))
 
+class TestFibonacciHeap(unittest.TestCase):
+    """
+    Test the fibonacci heap and all the interfaces of the data structure
+    """
+    def test_fibonacci_heap_find_min(self):
+        """
+        Test that the find_min method of the fibonacci heap returns:
+        1. None if the heap is empty
+        2. the smallest data node if there is data in the heap
+        """
+        fh = fibonacci_heap.FibonacciHeap()
+
+        # test case 1
+        self.assertEqual(None, fh.find_min()) 
+
+        data = [4, 5, 7, 1, 3, 6, 10, 30]
+        for x in data:
+            fh.insert(x)
+
+        # test case 2
+        self.assertEqual(1, fh.find_min().key) 
+
+    def test_fibonacci_heap_extract_min(self):
+        """
+        Test that the extract_min_node method returns the node with
+        the smallest data from the heap and removes it from the heap
+        """
+        fh = fibonacci_heap.FibonacciHeap()
+        
+        data = [4, 5, 7, 1, 3, 6, 10, 30]
+        for x in data:
+            fh.insert(x)
+
+        self.assertEqual(fh.total_nodes, len(data))
+        self.assertEqual(fh.find_min().key, 1)
+
+        n = fh.extract_min_node()
+        self.assertEqual(n.key, 1)
+
+        self.assertEqual(fh.total_nodes, len(data) - 1)
+        self.assertEqual(fh.find_min().key, 3)
+
+    def test_fibonacci_heap_insert(self):
+        """
+        Test that the insert method inserts an element and doe:
+        1. if the heap is empty
+            1.1. sets the min_node to the inserted node
+            1.2. sets the size of the heap to 1
+        2. if the heap is not empty
+            2.1. increase the size of the heap by 1
+            2.2. leave the min_node unchanged if the node is larger
+            2.3. change the min_node if the node is smaller than min_node
+        """
+        fh = fibonacci_heap.FibonacciHeap()
+        self.assertEqual(fh.total_nodes, 0)
+        self.assertEqual(fh.find_min(), None)
+
+        # test case 1:
+        fh.insert(2)
+        self.assertEqual(fh.total_nodes, 1)
+        self.assertEqual(fh.find_min().key, 2)
+
+        # test case 2.1 and 2.2:
+        fh.insert(4)
+        self.assertEqual(fh.total_nodes, 2)
+        self.assertEqual(fh.find_min().key, 2)
+
+        # test case 2.1 and 2.3:
+        fh.insert(1)
+        self.assertEqual(fh.total_nodes, 3)
+        self.assertEqual(fh.find_min().key, 1)
+
+    def test_fibonacci_heap_decrease_key(self):
+        """
+        Test the decrease_key method of the fibonacci heap
+        """
+
+    def test_fibonacci_heap_merge(self):
+        """
+        Test that the merge method of the fibonacci heap merges two
+        seperate heaps correctly
+        1. the resulting heap's root_list shoulc be a concatenation
+            of heap1's and heap2's root_lists
+        2. merging a heap with another empty heap should not change
+            the original heap
+        3. mergin an empty heap with another non-empty heap should
+            change the heap's min_node to the min_node of the merged
+            heap
+        """
+        a = fibonacci_heap.FibonacciHeap()
+        b = fibonacci_heap.FibonacciHeap()
+        empty_heap = fibonacci_heap.FibonacciHeap()
+
+        # Fill two heaps with data
+        a_data = [4, 2, 6, 3, 5]
+        for x in a_data:
+            a.insert(x)
+        b_data = [10, 12, 16, 100]
+        for x in b_data:
+            b.insert(x)
+
+        # extract root_lists from heaps
+        root_a = []
+        a_node = a.root_list
+        while a_node.key not in root_a:
+            root_a.append(a_node.key)
+            a_node = a_node.right
+        root_b = []
+        b_node = b.root_list
+        while b_node.key not in root_b:
+            root_b.append(b_node.key)
+            b_node = b_node.right
+
+        # test case 1
+        a.merge(b)
+        m_node = a.root_list
+        root_m = []
+        while m_node.key not in root_m:
+            self.assertTrue(m_node.key in root_a or m_node.key in root_b)
+            root_m.append(m_node.key)
+            m_node = m_node.right
+
+        # test case 2
+        min_key_before = int(b.find_min().key)
+        numel_before = b.total_nodes
+        b.merge(empty_heap)
+        self.assertEqual(b.find_min().key, min_key_before)
+        self.assertEqual(b.total_nodes, numel_before)
+
+        # test case 3
+        self.assertEqual(empty_heap.find_min(), None)
+        empty_heap.merge(b)
+        self.assertEqual(b.find_min().key, empty_heap.find_min().key)
 
 if __name__ == "__main__":
     unittest.main()
