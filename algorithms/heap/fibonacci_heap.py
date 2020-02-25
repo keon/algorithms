@@ -117,6 +117,7 @@ class FibonacciHeap:
         if self.root_list == None:
             self.root_list = heap2.root_list
             self.min_node = heap2.min_node
+            self.total_nodes = heap2.total_nodes
             return
 
         heap2_tail = heap2.root_list.left

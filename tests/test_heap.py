@@ -164,26 +164,10 @@ class TestFibonacciHeap(unittest.TestCase):
         for x in b_data:
             b.insert(x)
 
-        # extract root_lists from heaps
-        root_a = []
-        a_node = a.root_list
-        while a_node.key not in root_a:
-            root_a.append(a_node.key)
-            a_node = a_node.right
-        root_b = []
-        b_node = b.root_list
-        while b_node.key not in root_b:
-            root_b.append(b_node.key)
-            b_node = b_node.right
-
         # test case 1
         a.merge(b)
-        m_node = a.root_list
-        root_m = []
-        while m_node.key not in root_m:
-            self.assertTrue(m_node.key in root_a or m_node.key in root_b)
-            root_m.append(m_node.key)
-            m_node = m_node.right
+        for x in a._iterate(a.root_list):
+            self.assertTrue(x.key in a_data or x.key in b_data)
 
         # test case 2
         min_key_before = int(b.find_min().key)
@@ -196,6 +180,7 @@ class TestFibonacciHeap(unittest.TestCase):
         self.assertEqual(empty_heap.find_min(), None)
         empty_heap.merge(b)
         self.assertEqual(b.find_min().key, empty_heap.find_min().key)
+        self.assertEqual(empty_heap.total_nodes, b.total_nodes)
 
 if __name__ == "__main__":
     unittest.main()
