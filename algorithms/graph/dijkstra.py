@@ -41,6 +41,9 @@ class Dijkstra:
         return dist
 
     def dijkstra_using_heap(self, src):
+        if self.vertices == 0:
+            return []
+
         heap = BinaryHeap()
         dist = [float("inf")] * self.vertices
 
