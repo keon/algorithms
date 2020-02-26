@@ -3,6 +3,7 @@ from algorithms.matrix import (
     copy_transform,
     crout_matrix_decomposition,
     cholesky_matrix_decomposition,
+    matrix_inversion,
     multiply,
     rotate_image,
     sparse_dot_vector,
@@ -126,6 +127,37 @@ class TestCholeskyMatrixDecomposition(unittest.TestCase):
                          cholesky_matrix_decomposition.cholesky_decomposition(
                              [[5, 1.2, 0.3, -0.6], [1.2, 6, -0.4, 0.9],
                               [0.3, -0.4, 8, 1.7], [-0.6, 0.9, 1.7, 10]]))
+
+class TestInversion(unittest.TestCase):
+    """[summary]
+    Test for the file matrix_inversion.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_inversion(self):
+        from fractions import Fraction
+
+        m1 = [[1, 1], [1, 2]]
+        self.assertEqual(matrix_inversion.invert_matrix(m1), [[2, -1], [-1, 1]])
+
+        m2 = [[1, 2], [3, 4, 5]]
+        self.assertEqual(matrix_inversion.invert_matrix(m2), [[-1]])
+
+        m3 = [[1, 1, 1, 1], [2, 2, 2, 2]]
+        self.assertEqual(matrix_inversion.invert_matrix(m3), [[-2]])
+
+        m4 = [[1]]
+        self.assertEqual(matrix_inversion.invert_matrix(m4), [[-3]])
+
+        m5 = [[1, 2, 3]   , [4, 5, 6], [7, 8, 9]]
+        self.assertEqual(matrix_inversion.invert_matrix(m5), [[-4]])
+
+        m6 = [[3, 5, 1], [2, 5, 0], [1, 9, 8]]
+        self.assertEqual(matrix_inversion.invert_matrix(m6), [[Fraction(40, 53), Fraction(-31, 53), Fraction(-5, 53)],
+                                                              [Fraction(-16, 53), Fraction(23, 53), Fraction(2, 53)],
+                                                              [Fraction(13, 53), Fraction(-22, 53), Fraction(5, 53)]])
+
 
 
 class TestMultiply(unittest.TestCase):

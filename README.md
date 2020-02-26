@@ -228,6 +228,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [copy_transform](algorithms/matrix/copy_transform.py)
     - [count_paths](algorithms/matrix/count_paths.py)
     - [matrix_rotation.txt](algorithms/matrix/matrix_rotation.txt)
+    - [matrix_inversion](algorithms/matrix/matrix_inversion.py)
     - [matrix_multiplication](algorithms/matrix/multiply.py)
     - [rotate_image](algorithms/matrix/rotate_image.py)
     - [search_in_sorted_matrix](algorithms/matrix/search_in_sorted_matrix.py)
