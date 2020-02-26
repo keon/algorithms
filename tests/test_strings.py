@@ -79,7 +79,8 @@ class TestBreakingBad(unittest.TestCase):
 
     def test_bracket(self):
         self.assertEqual(('[Am]azon', 'Mi[cro]soft', 'Goog[le]'), bracket(self.words, self.symbols))
-
+        self.assertEqual(('Amazon', 'Microsoft', 'Google'), bracket(self.words, ['thisshouldnotmatch']))
+        self.assertEqual(('Amazon', 'M[i]crosoft', 'Google'), bracket(self.words, ['i', 'i']))
 
 class TestDecodeString(unittest.TestCase):
     """[summary]
