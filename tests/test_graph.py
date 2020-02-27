@@ -83,6 +83,8 @@ class TestDijkstra(unittest.TestCase):
           ] 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_using_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_fib_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
     def test_dijkstra_large_graph(self):
         g = Dijkstra(17) 
@@ -106,6 +108,8 @@ class TestDijkstra(unittest.TestCase):
           ] 
 
         self.assertEqual(g.dijkstra(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
+        self.assertEqual(g.dijkstra_using_heap(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
+        self.assertEqual(g.dijkstra_fib_heap(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
 
     def test_dijkstra_small_graph(self):
         g = Dijkstra(8) 
@@ -119,6 +123,8 @@ class TestDijkstra(unittest.TestCase):
            [0, 0, 0, 6, 0, 5, 6, 0] 
           ] 
         self.assertEqual(g.dijkstra(0), [0, 16, 8, 17, 14, 18, 21, 23])
+        self.assertEqual(g.dijkstra_using_heap(0), [0, 16, 8, 17, 14, 18, 21, 23])
+        self.assertEqual(g.dijkstra_fib_heap(0), [0, 16, 8, 17, 14, 18, 21, 23])
 
         g = Dijkstra(9)
         g.graph = [
@@ -134,12 +140,15 @@ class TestDijkstra(unittest.TestCase):
         ]
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_using_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_fib_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
     def test_dijkstra_empty_graph(self):
         g = Dijkstra(0)
         g.graph = []
 
         self.assertEqual(g.dijkstra_using_heap(0), [])
+        self.assertEqual(g.dijkstra_fib_heap(0), [])
 
     def test_dijkstra_no_edges(self):
         g = Dijkstra(9)
@@ -157,6 +166,20 @@ class TestDijkstra(unittest.TestCase):
 
         self.assertEqual(
             g.dijkstra_using_heap(0),
+            [
+                0,
+                float("inf"),
+                float("inf"),
+                float("inf"),
+                float("inf"),
+                float("inf"),
+                float("inf"),
+                float("inf"),
+                float("inf"),
+            ],
+        )
+        self.assertEqual(
+            g.dijkstra_fib_heap(0),
             [
                 0,
                 float("inf"),
