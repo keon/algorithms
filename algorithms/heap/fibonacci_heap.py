@@ -160,13 +160,10 @@ class FibonacciHeap:
         z = self.min_node
         if z != None:
             # add children to the root list
-            child = z.child
-            while child != None:
-                self._append_root(child)
-
-                child = child.right
-                if child == z.child:
-                    break
+            if z.child != None:
+                children = [x for x in self.iterate(z.child)]
+                for child in children:
+                    self._append_root(child)
             
             self._remove_root(z)
             # only node and no children
