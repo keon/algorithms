@@ -303,6 +303,24 @@ class FibonacciHeap:
         self.decrease_key(node, -sys.maxsize - 1)
         self.extract_min_node()
 
+    def get_all_nodes(self):
+        """
+        Get all nodes in the heap in a list.
+        """
+        nodes = self._get_nodes(self.root_list)
+    
+    def _get_nodes(self, node):
+        """
+        Get all neighbours  of node and recursively find children to
+        those nodes and place them into a list.
+        """
+        nodes = []
+        for n in self._iterate(node):
+            nodes.append(n)
+            if n.child:
+                nodes += self._get_nodes(n.child)
+        return nodes
+
     def __str__(self):
         # TODO: remove this at a later stage.
         node = self.root_list
