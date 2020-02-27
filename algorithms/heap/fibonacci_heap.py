@@ -303,7 +303,7 @@ class FibonacciHeap:
         """
         Get all nodes in the heap in a list.
         """
-        nodes = self._get_nodes(self.root_list)
+        return self._get_nodes(self.root_list)
     
     def _get_nodes(self, node):
         """
@@ -311,7 +311,7 @@ class FibonacciHeap:
         those nodes and place them into a list.
         """
         nodes = []
-        for n in self._iterate(node):
+        for n in self.iterate(node):
             nodes.append(n)
             if n.child:
                 nodes += self._get_nodes(n.child)

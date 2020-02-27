@@ -162,7 +162,7 @@ class TestFibonacciHeap(unittest.TestCase):
             self.assertTrue(x.key in decrease_data)
 
         # test case 3: Negative
-        nodes = self.get_all_nodes(fh, fh.root_list)
+        nodes = fh.get_all_nodes()
         for i in nodes:
             self.assertFalse(i.key == 3)
 
@@ -248,7 +248,7 @@ class TestFibonacciHeap(unittest.TestCase):
         del_node_key = fh.root_list.key
         fh.delete(fh.root_list)
         self.assertEqual(fh.total_nodes, 4)
-        nodes = self.get_all_nodes(fh, fh.root_list)
+        nodes = fh.get_all_nodes()
         for node in nodes:
             self.assertTrue(node.key != del_node_key)
 
@@ -256,18 +256,9 @@ class TestFibonacciHeap(unittest.TestCase):
         del_node_key = fh.root_list.child.key
         fh.delete(fh.root_list.child)
         self.assertEqual(fh.total_nodes, 3)
-        nodes = self.get_all_nodes(fh, fh.root_list)
+        nodes = fh.get_all_nodes()
         for node in nodes:
             self.assertTrue(node.key != del_node_key)
-
-    def get_all_nodes(self, heap, node):
-        nodes = []
-        for node in heap.iterate(node):
-            nodes.append(node)
-            if node.child:
-                nodes += self.get_all_nodes(heap, node.child)
-        return nodes
-
 
 if __name__ == "__main__":
     unittest.main()
