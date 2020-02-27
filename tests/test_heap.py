@@ -158,7 +158,7 @@ class TestFibonacciHeap(unittest.TestCase):
 
         # test case 2: Positive
         decrease_data = [4, 7, 6, 2, 5]
-        for x in fh._iterate(fh.root_list):
+        for x in fh.iterate(fh.root_list):
             self.assertTrue(x.key in decrease_data)
 
         # test case 3: Negative
@@ -176,7 +176,7 @@ class TestFibonacciHeap(unittest.TestCase):
         fh.decrease_key(fh.root_list.child, 1)
         self.assertEqual(fh.root_list.child.key, 5)
         self.assertEqual(fh.find_min().key, 1)
-        self.assertTrue(fh.find_min() in fh._iterate(fh.root_list))
+        self.assertTrue(fh.find_min() in fh.iterate(fh.root_list))
 
         # test case 6: Only one child
         fh2 = fibonacci_heap.FibonacciHeap()
@@ -213,7 +213,7 @@ class TestFibonacciHeap(unittest.TestCase):
 
         # test case 1
         a.merge(b)
-        for x in a._iterate(a.root_list):
+        for x in a.iterate(a.root_list):
             self.assertTrue(x.key in a_data or x.key in b_data)
 
         # test case 2
@@ -262,7 +262,7 @@ class TestFibonacciHeap(unittest.TestCase):
 
     def get_all_nodes(self, heap, node):
         nodes = []
-        for node in heap._iterate(node):
+        for node in heap.iterate(node):
             nodes.append(node)
             if node.child:
                 nodes += self.get_all_nodes(heap, node.child)
