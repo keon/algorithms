@@ -108,9 +108,17 @@ class FibonacciHeap:
         at the end of this heap's root list and connecting the heads 
         and tails.
         """
-        tail = self.root_list.left
-        heap2_tail = heap2.root_list.left
+        if heap2.root_list == None:
+            return
+        if self.root_list == None:
+            self.root_list = heap2.root_list
+            self.min_node = heap2.min_node
+            self.total_nodes = heap2.total_nodes
+            return
 
+        heap2_tail = heap2.root_list.left
+        tail = self.root_list.left
+        
         # the tail of heap 2 is now the end of the list
         self.root_list.left = heap2_tail
         heap2_tail.right = self.root_list
@@ -290,4 +298,22 @@ class FibonacciHeap:
         """
         self.decrease_key(node, -sys.maxsize - 1)
         self.extract_min_node()
+
+    def get_all_nodes(self):
+        """
+        Get all nodes in the heap in a list.
+        """
+        nodes = self._get_nodes(self.root_list)
+    
+    def _get_nodes(self, node):
+        """
+        Get all neighbours  of node and recursively find children to
+        those nodes and place them into a list.
+        """
+        nodes = []
+        for n in self._iterate(node):
+            nodes.append(n)
+            if n.child:
+                nodes += self._get_nodes(n.child)
+        return nodes
 
