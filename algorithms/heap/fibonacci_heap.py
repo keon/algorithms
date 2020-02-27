@@ -2,7 +2,7 @@ import math
 import sys
 
 """
-A Fibonacci heap is a collection of rooted trees that ar emin-heap ordered. That is, each tree obeys 
+A Fibonacci heap is a collection of rooted trees that are min-heap ordered. That is, each tree obeys 
 the min-heap property: the key of a node is greater than or equal to the key of its parent.
 
 Using Fibonacci heaps for priority queues improves the asymptotic running time of important algorithms, 
@@ -10,7 +10,7 @@ such as Dijkstra's algorithm for computing the shortest path between two nodes i
 the same algorithm using other slower priority queue data structures. 
 
 Time complexiity vs binomial heap:
-|              	| Bin tree (worst-case) 	| Fib tree (amortized) 	|
+|              	| Bin heap (worst-case) 	| Fib heap (amortized) 	|
 |--------------	|-----------------------	|----------------------	|
 | Make-Heap    	| Θ(1)                  	| Θ(1)                 	|
 | Insert       	| Θ(logn)               	| Θ(1)                 	|
@@ -20,7 +20,7 @@ Time complexiity vs binomial heap:
 | Decrease key 	| Θ(logn)               	| Θ(1)                 	|
 | Delete       	| Θ(logn)               	| O(logn)              	|
 
-However, notice that thee times are amortized and that memory consumption can be high. Subsequently, 
+However, notice that the times are amortized and that memory consumption can be high. Subsequently, 
 Fibonacci heaps have a reputation for being slow in practice due to large memory consumption per 
 node and high constant factors on all operations.
 
