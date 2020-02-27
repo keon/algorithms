@@ -232,7 +232,6 @@ class FibonacciHeap:
         """
         Remove a child from parent.
         """
-        #self._remove_node(parent.child, child)
         if parent.child == parent.child.right:
             parent.child = None
         elif parent.child == child:

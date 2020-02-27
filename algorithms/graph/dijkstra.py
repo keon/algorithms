@@ -1,4 +1,6 @@
-# Dijkstra's single source shortest path algorithm
+"""
+Dijkstra's single source shortest path algorithm.
+"""
 from algorithms.heap import BinaryHeap, FibonacciHeap
 
 
@@ -16,7 +18,10 @@ class Dijkstra:
         return min_index
 
     def dijkstra(self, src):
-
+        """ 
+        Dijkstra's using lists.
+        Time complexity: O(|V|^2) 
+        """
         dist = [float("inf")] * self.vertices
         dist[src] = 0
         min_dist_set = [False] * self.vertices
@@ -40,7 +45,12 @@ class Dijkstra:
 
         return dist
 
-    def dijkstra_using_heap(self, src):
+    def dijkstra_min_heap(self, src):
+        """
+        Dijkstra's using a priority queue, more specifically
+        a Binary heap.
+        Time complexity: O((|E| + |V|)logV)
+        """
         if self.vertices == 0:
             return []
 
@@ -63,16 +73,13 @@ class Dijkstra:
                     and dist[v] > dist[curNode] + self.graph[curNode][v]
                 ):
                     dist[v] = dist[curNode] + self.graph[curNode][v]
-                    t = (dist[v], v)
-                    heap.insert(t)
+                    heap.insert((dist[v], v))
         return dist
 
     def dijkstra_fib_heap(self, src):
         """
-        Dijkstra's using a Fibonacci heap. Theoretically reduces
-        the time complexity of the algorithm. In practice Fib heaps
-        have high constants and is therefore sometimes slower than
-        a normal binomial heap.
+        Dijkstra's using a Fibonacci heap. 
+        Time complexity O(|E| + |V|logV)
         """
         if self.vertices == 0:
             return []
@@ -82,6 +89,7 @@ class Dijkstra:
         dist = [float("inf")] * self.vertices
         nodes = []
 
+        # need access to heap nodes to decrease key
         source = heap.insert((0, src))
         nodes.append(source)
 

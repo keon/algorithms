@@ -25,34 +25,34 @@ class TestTarjan(unittest.TestCase):
     def test_tarjan_example_1(self):
         # Graph from https://en.wikipedia.org/wiki/File:Scc.png
         example = {
-            "A": ["B"],
-            "B": ["C", "E", "F"],
-            "C": ["D", "G"],
-            "D": ["C", "H"],
-            "E": ["A", "F"],
-            "F": ["G"],
-            "G": ["F"],
-            "H": ["D", "G"],
+            'A': ['B'],
+            'B': ['C', 'E', 'F'],
+            'C': ['D', 'G'],
+            'D': ['C', 'H'],
+            'E': ['A', 'F'],
+            'F': ['G'],
+            'G': ['F'],
+            'H': ['D', 'G'],
         }
 
         g = Tarjan(example)
-        self.assertEqual(g.sccs, [["F", "G"], ["C", "D", "H"], ["A", "B", "E"]])
+        self.assertEqual(g.sccs, [['F', 'G'], ['C', 'D', 'H'], ['A', 'B', 'E']])
 
     def test_tarjan_example_2(self):
         # Graph from https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm#/media/File:Tarjan%27s_Algorithm_Animation.gif
         example = {
-            "A": ["E"],
-            "B": ["A"],
-            "C": ["B", "D"],
-            "D": ["C"],
-            "E": ["B"],
-            "F": ["B", "E", "G"],
-            "G": ["F", "C"],
-            "H": ["G", "H", "D"],
+            'A': ['E'],
+            'B': ['A'],
+            'C': ['B', 'D'],
+            'D': ['C'],
+            'E': ['B'],
+            'F': ['B', 'E', 'G'],
+            'G': ['F', 'C'],
+            'H': ['G', 'H', 'D'],
         }
 
         g = Tarjan(example)
-        self.assertEqual(g.sccs, [["A", "B", "E"], ["C", "D"], ["F", "G"], ["H"]])
+        self.assertEqual(g.sccs, [['A', 'B', 'E'], ['C', 'D'], ['F', 'G'], ['H']])
 
 
 class TestCheckBipartite(unittest.TestCase):
@@ -83,7 +83,7 @@ class TestDijkstra(unittest.TestCase):
           ] 
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
-        self.assertEqual(g.dijkstra_using_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_min_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
         self.assertEqual(g.dijkstra_fib_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
     def test_dijkstra_large_graph(self):
@@ -108,7 +108,7 @@ class TestDijkstra(unittest.TestCase):
           ] 
 
         self.assertEqual(g.dijkstra(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
-        self.assertEqual(g.dijkstra_using_heap(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
+        self.assertEqual(g.dijkstra_min_heap(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
         self.assertEqual(g.dijkstra_fib_heap(0), [0, 3, 5, 21, 13, 4, 24, 7, 15, 11, 19, 11, 12, 17, 8, 10, 18])
 
     def test_dijkstra_small_graph(self):
@@ -123,7 +123,7 @@ class TestDijkstra(unittest.TestCase):
            [0, 0, 0, 6, 0, 5, 6, 0] 
           ] 
         self.assertEqual(g.dijkstra(0), [0, 16, 8, 17, 14, 18, 21, 23])
-        self.assertEqual(g.dijkstra_using_heap(0), [0, 16, 8, 17, 14, 18, 21, 23])
+        self.assertEqual(g.dijkstra_min_heap(0), [0, 16, 8, 17, 14, 18, 21, 23])
         self.assertEqual(g.dijkstra_fib_heap(0), [0, 16, 8, 17, 14, 18, 21, 23])
 
         g = Dijkstra(9)
@@ -140,14 +140,14 @@ class TestDijkstra(unittest.TestCase):
         ]
 
         self.assertEqual(g.dijkstra(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
-        self.assertEqual(g.dijkstra_using_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
+        self.assertEqual(g.dijkstra_min_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
         self.assertEqual(g.dijkstra_fib_heap(0), [0, 4, 12, 19, 21, 11, 9, 8, 14])
 
     def test_dijkstra_empty_graph(self):
         g = Dijkstra(0)
         g.graph = []
 
-        self.assertEqual(g.dijkstra_using_heap(0), [])
+        self.assertEqual(g.dijkstra_min_heap(0), [])
         self.assertEqual(g.dijkstra_fib_heap(0), [])
 
     def test_dijkstra_no_edges(self):
@@ -165,31 +165,31 @@ class TestDijkstra(unittest.TestCase):
         ]
 
         self.assertEqual(
-            g.dijkstra_using_heap(0),
+            g.dijkstra_min_heap(0),
             [
                 0,
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
             ],
         )
         self.assertEqual(
             g.dijkstra_fib_heap(0),
             [
                 0,
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
-                float("inf"),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
+                float('inf'),
             ],
         )
 
@@ -308,21 +308,21 @@ class TestAll_Pairs_Shortest_Path(unittest.TestCase):
 class TestBellmanFord(unittest.TestCase):
     def test_bellman_ford(self):
         graph1 = {
-            "a": {"b": 6, "e": 7},
-            "b": {"c": 5, "d": -4, "e": 8},
-            "c": {"b": -2},
-            "d": {"a": 2, "c": 7},
-            "e": {"b": -3},
+            'a': {'b': 6, 'e': 7},
+            'b': {'c': 5, 'd': -4, 'e': 8},
+            'c': {'b': -2},
+            'd': {'a': 2, 'c': 7},
+            'e': {'b': -3},
         }
 
-        self.assertEqual(True, bellman_ford(graph1, "a"))
+        self.assertEqual(True, bellman_ford(graph1, 'a'))
 
         graph2 = {
-            "a": {"d": 3, "e": 4},
-            "b": {"a": 7, "e": 2},
-            "c": {"a": 12, "d": 9, "e": 11},
-            "d": {"c": 5, "e": 11},
-            "e": {"a": 7, "b": 5, "d": 1},
+            'a': {'d': 3, 'e': 4},
+            'b': {'a': 7, 'e': 2},
+            'c': {'a': 12, 'd': 9, 'e': 11},
+            'd': {'c': 5, 'e': 11},
+            'e': {'a': 7, 'b': 5, 'd': 1},
         }
 
-        self.assertEqual(True, bellman_ford(graph2, "a"))
+        self.assertEqual(True, bellman_ford(graph2, 'a'))
