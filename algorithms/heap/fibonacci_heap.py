@@ -67,7 +67,11 @@ class FibonacciHeap:
             return
 
         # only one node
-        if node == self.root_list and node.left == self.root_list and node.right == self.root_list:
+        if (
+            node == self.root_list
+            and node.left == self.root_list
+            and node.right == self.root_list
+        ):
             self.root_list = None
             return
 
@@ -118,7 +122,7 @@ class FibonacciHeap:
 
         heap2_tail = heap2.root_list.left
         tail = self.root_list.left
-        
+
         # the tail of heap 2 is now the end of the list
         self.root_list.left = heap2_tail
         heap2_tail.right = self.root_list
@@ -164,7 +168,7 @@ class FibonacciHeap:
                 children = [x for x in self.iterate(z.child)]
                 for child in children:
                     self._append_root(child)
-            
+
             self._remove_root(z)
             # only node and no children
             if z == z.right:
@@ -231,7 +235,7 @@ class FibonacciHeap:
         """
         Remove a child from parent.
         """
-        #self._remove_node(parent.child, child)
+        # self._remove_node(parent.child, child)
         if parent.child == parent.child.right:
             parent.child = None
         elif parent.child == child:
@@ -301,7 +305,7 @@ class FibonacciHeap:
         Get all nodes in the heap in a list.
         """
         return self._get_nodes(self.root_list)
-    
+
     def _get_nodes(self, node):
         """
         Get all neighbours  of node and recursively find children to
@@ -313,4 +317,3 @@ class FibonacciHeap:
             if n.child:
                 nodes += self._get_nodes(n.child)
         return nodes
-
