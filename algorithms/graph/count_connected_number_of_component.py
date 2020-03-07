@@ -19,13 +19,13 @@ Example:
 
 # Code is Here
 
-def dfs(source,visited):
+def dfs(source,visited,l):
     ''' Function that performs DFS '''
 
     visited[source] = True
     for child in l[source]:
         if not visited[child]:
-            dfs(child,visited)
+            dfs(child,visited,l)
             
 def count_components(l,size):
     ''' 
@@ -37,11 +37,11 @@ def count_components(l,size):
     visited = [False]*(size+1)
     for i in range(1,size+1):
         if not visited[i]:
-            dfs(i,visited)
+            dfs(i,visited,l)
             count+=1
     return count   
 
-
+    
 # Driver code
 if __name__ == '__main__':
     n,m = map(int, input("Enter the Number of Nodes and Edges \n").split(' '))
