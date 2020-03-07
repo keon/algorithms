@@ -9,7 +9,7 @@ class TestConnectedComponentInGraph(unittest.TestCase):
 		"""
 		   Test Function that test the different cases of count connected components
 	        
-		        0----------2    1--------5      3    
+		    0----------2    1--------5      3    
 	            |
 	            |
 	            4
