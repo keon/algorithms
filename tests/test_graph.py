@@ -9,7 +9,7 @@ from algorithms.graph import maximum_flow_dfs
 from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 from algorithms.graph import bellman_ford
-
+from algorithms.graph import count_connected_number_of_component
 
 import unittest
 
@@ -208,4 +208,56 @@ class TestBellmanFord(unittest.TestCase):
             'e': {'a': 7, 'b': 5, 'd': 1}
         } 
     
-        self.assertEqual(True, bellman_ford(graph2, 'a'))
+class TestConnectedComponentInGraph(unittest.TestCase):    
+    """
+     Class for testing different cases for connected components in graph
+    """
+    def test_count_connected_components(self):
+        """
+           Test Function that test the different cases of count connected components
+            
+            0----------2    1--------5      3    
+            |
+            |
+            4
+                
+                output = 3
+        """
+        expected_result = 3
+        
+        # adjacency list representation of graph
+        l = [[2],
+            [5],
+            [0,4],
+            [],
+            [2],
+            [1]
+        ]
+
+        size = 5
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)
+
+    def test_connected_components_with_empty_graph(self):
+
+        """
+            input : 
+            output : 0
+        """
+        
+        l = [[]]
+        expected_result = 0
+        size = 0
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)    
+
+    def test_connected_components_without_edges_graph(self):
+        """
+          input : 0          2             3          4
+          output : 4
+        """   
+        l = [[0],[],[2],[3],[4]]
+        size = 4
+        expected_result = 4
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)
