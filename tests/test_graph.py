@@ -208,6 +208,9 @@ class TestBellmanFord(unittest.TestCase):
             'e': {'a': 7, 'b': 5, 'd': 1}
         } 
     
+        self.assertEqual(True, bellman_ford(graph2, 'a'))
+
+        
 class TestConnectedComponentInGraph(unittest.TestCase):    
     """
      Class for testing different cases for connected components in graph
