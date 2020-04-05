@@ -21,9 +21,9 @@ def rotate_v1(array, k):
     """
     array = array[:]
     n = len(array)
-    for i in range(k):      # unused variable is not a problem
+    for _ in range(k):
         temp = array[n - 1]
-        for j in range(n-1, 0, -1):
+        for j in range(n - 1, 0, -1):
             array[j] = array[j - 1]
         array[0] = temp
     return array
