@@ -158,6 +158,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [markov_chain](algorithms/graph/markov_chain.py)
     - [minimum_spanning_tree](algorithms/graph/minimum_spanning_tree.py)
     - [satisfiability](algorithms/graph/satisfiability.py)
+    - [minimum_spanning_tree_prims](algorithms/graph/prims_minimum_spanning.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
 	  - [maximum_flow](algorithms/graph/maximum_flow.py)
