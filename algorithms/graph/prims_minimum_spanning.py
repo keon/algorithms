@@ -18,7 +18,7 @@ where 'a','b','c','d','e' are nodes (these can be 1,2,3,4,5 as well)
 import heapq  # for priority queue
 
 # prim's algo. to find weight of minimum spanning tree
-def prims(graph_used):
+def prims_minimum_spanning(graph_used):
     vis=[]
     s=[[0,1]]
     prim = []
