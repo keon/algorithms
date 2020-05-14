@@ -1,7 +1,24 @@
+'''
+This Prim's Algorithm Code is for finding weight of minimum spanning tree
+of a connected graph.
+For argument graph, it should be a dictionary type
+such as
+graph = {
+    'a': [ [3, 'b'], [8,'c'] ],
+    'b': [ [3, 'a'], [5, 'd'] ],
+    'c': [ [8, 'a'], [2, 'd'], [4, 'e'] ],
+    'd': [ [5, 'b'], [2, 'c'], [6, 'e'] ],
+    'e': [ [4, 'c'], [6, 'd'] ]
+}
+
+where 'a','b','c','d','e' are nodes (these can be 1,2,3,4,5 as well)
+'''
+
+
 import heapq  # for priority queue
 
 # prim's algo. to find weight of minimum spanning tree
-def prims(graph):
+def prims(graph_used):
     vis=[]
     s=[[0,1]]
     prim = []
@@ -17,48 +34,9 @@ def prims(graph):
         prim.append(x)
         vis.append(x)
 
-        for j in g[x]:
+        for j in graph_used[x]:
             i=j[-1]
             if(i not in vis):
                 heapq.heappush(s,j)
 
     return mincost
-
-
-
-if __name__=="__main__":
-
-    # input number of nodes and edges in graph
-    n,e = map(int,input().split())
-
-    # initializing empty graph as a dictionary (of the form {int:list})
-    g=dict(zip([i for i in range(1,n+1)],[[] for i in range(n)]))
-
-    # input graph data
-    for i in range(e):
-        a,b,c=map(int,input().split())
-        g[a].append([c,b])
-        g[b].append([c,a])
-
-    # print weight of minimum spanning tree
-    print(prims(g))
-
-    ''' tests-
-    Input : 4 5
-            1 2 7
-            1 4 6
-            2 4 9
-            4 3 8
-            2 3 6
-    Output : 19
-
-
-    Input : 5 6
-            1 2 3
-            1 3 8
-            2 4 5
-            3 4 2
-            3 5 4
-            4 5 6
-    Output : 14
-    '''
