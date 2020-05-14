@@ -10,6 +10,7 @@ from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 from algorithms.graph import bellman_ford
 from algorithms.graph import count_connected_number_of_component
+from algorithms.graph import prims_minimum_spanning
 
 import unittest
 
@@ -264,3 +265,23 @@ class TestConnectedComponentInGraph(unittest.TestCase):
         expected_result = 4
         result = count_connected_number_of_component.count_components(l,size)
         self.assertEqual(result,expected_result)
+
+        
+class PrimsMinimumSpanning(unittest.TestCase):
+    def test_prim_spanning(self):
+        graph1 = {
+            1 : [ [3, 2], [8, 3] ],
+            2 : [ [3, 1], [5, 4] ],
+            3 : [ [8, 1], [2, 4], [4, 5] ],
+            4 : [ [5, 2], [2, 3], [6, 5] ],
+            5 : [ [4, 3], [6, 4] ]
+        }
+        self.assertEqual(14, prims_minimum_spanning(graph1))
+        
+        graph2 = {
+            1 : [ [7, 2], [6, 4] ],
+            2 : [ [7, 1], [9, 4], [6, 3] ],
+            3 : [ [8, 4], [6, 2] ],
+            4 : [ [6, 1], [9, 2], [8, 3] ]
+        }
+        self.assertEqual(19, prims_minimum_spanning(graph2))
