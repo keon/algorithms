@@ -15,7 +15,5 @@ can rob tonight without alerting the police.
 def house_robber(houses):
     last, now = 0, 0
     for house in houses:
-        tmp = now
-        now = max(last + house, now)
-        last = tmp
+        last, now = now, max(last + house, now)
     return now

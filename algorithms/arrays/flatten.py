@@ -3,7 +3,7 @@ Implement Flatten Arrays.
 Given an array that may contain nested arrays,
 produce a single resultant array.
 """
-from collections import Iterable
+from collections.abc import Iterable
 
 
 # return list
