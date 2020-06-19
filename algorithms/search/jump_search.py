@@ -16,7 +16,7 @@ def jump_search(arr,target):
     block_prev = 0
     block= block_size
 
-    # return -1 means that array doesn't contain taget value
+    # return -1 means that array doesn't contain target value
     # find block that contains target value
     
     if arr[n - 1] < target:

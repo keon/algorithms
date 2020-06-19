@@ -12,7 +12,7 @@ the total number of items and m is the knapsack's capacity.
 """
 
 
-class Item(object):
+class Item:
 
     def __init__(self, value, weight):
         self.value = value
@@ -22,11 +22,7 @@ class Item(object):
 def get_maximum_value(items, capacity):
     dp = [0] * (capacity + 1)
     for item in items:
-        dp_tmp = [total_value for total_value in dp]
-        for current_weight in range(capacity + 1):
-            total_weight = current_weight + item.weight
-            if total_weight <= capacity:
-                dp_tmp[total_weight] = max(dp_tmp[total_weight],
-                                           dp[current_weight] + item.value)
-        dp = dp_tmp
-    return max(dp)
+        for cur_weight in reversed(range(item.weight, capacity+1)):
+            dp[cur_weight] = max(dp[cur_weight], item.value + dp[cur_weight - item.weight])
+    return dp[capacity]
+
