@@ -15,7 +15,7 @@ Manacher's algorithm
 
 '''
 
-def longestPalindrome(s):
+def longest_palindrome(s):
     if len(s) < 2:
         return s
 
