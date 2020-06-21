@@ -3,13 +3,13 @@ Given string s, find the longest palindromic substring.
 
 Example1:
 
-* input: "babad"
-* output: "bab" or "aba"
+* input: "dasdasdasdasdasdadsa"
+* output: "asdadsa"
 
 Example2:
 
-* input: "cbbd"
-* output: "bb"
+* input: "acdbbdaa"
+* output: "dbbd"
 
 Manacher's algorithm
 
