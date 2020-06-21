@@ -548,7 +548,7 @@ class TestLongestPalindromicSubstring(unittest.TestCase):
     def test_longest_palindromic_substring(self):
         self.assertEqual("bb", longestPalindrome("cbbd"))
         self.assertEqual("abba", longestPalindrome("abba"))
-        self.assertEqual("aaaa", longestPalindrome("aaaa"))
+        self.assertEqual("asdadsa", longestPalindrome("dasdasdasdasdasdadsa"))
         self.assertEqual("abba", longestPalindrome("cabba"))
 
         
