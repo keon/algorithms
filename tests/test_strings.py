@@ -38,7 +38,7 @@ from algorithms.strings import (
     first_unique_char,
     repeat_substring,
     atbash,
-    longestPalindrome,
+    longest_palindrome,
     knuth_morris_pratt
 )
 
@@ -546,10 +546,10 @@ class TestLongestPalindromicSubstring(unittest.TestCase):
     """
     
     def test_longest_palindromic_substring(self):
-        self.assertEqual("bb", longestPalindrome("cbbd"))
-        self.assertEqual("abba", longestPalindrome("abba"))
-        self.assertEqual("asdadsa", longestPalindrome("dasdasdasdasdasdadsa"))
-        self.assertEqual("abba", longestPalindrome("cabba"))
+        self.assertEqual("bb", longest_palindrome("cbbd"))
+        self.assertEqual("abba", longest_palindrome("abba"))
+        self.assertEqual("asdadsa", longest_palindrome("dasdasdasdasdasdadsa"))
+        self.assertEqual("abba", longest_palindrome("cabba"))
 
         
 class TestKnuthMorrisPratt(unittest.TestCase):
