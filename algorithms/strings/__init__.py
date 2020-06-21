@@ -35,5 +35,5 @@ from .rotate import *
 from .first_unique_char import *
 from .repeat_substring import *
 from .atbash_cipher import *
+from .longest_palindromic_substring import *
 from .knuth_morris_pratt import *
-

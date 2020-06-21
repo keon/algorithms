@@ -38,6 +38,7 @@ from algorithms.strings import (
     first_unique_char,
     repeat_substring,
     atbash,
+    longest_palindrome,
     knuth_morris_pratt
 )
 
@@ -527,24 +528,44 @@ class TestAtbashCipher(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    
+
     def test_atbash_cipher(self):
         self.assertEqual("zyxwvutsrqponml", atbash("abcdefghijklmno"))
         self.assertEqual("KbgslM", atbash("PythoN"))
         self.assertEqual("AttaCK at DawN", atbash("ZggzXP zg WzdM"))
         self.assertEqual("ZggzXP zg WzdM", atbash("AttaCK at DawN"))
+
+
+
+class TestLongestPalindromicSubstring(unittest.TestCase):
+    """[summary]
+    Test for the file longest_palindromic_substring.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_longest_palindromic_substring(self):
+        self.assertEqual("bb", longest_palindrome("cbbd"))
+        self.assertEqual("abba", longest_palindrome("abba"))
+        self.assertEqual("asdadsa", longest_palindrome("dasdasdasdasdasdadsa"))
+        self.assertEqual("abba", longest_palindrome("cabba"))
+
         
 class TestKnuthMorrisPratt(unittest.TestCase):
     """[summary]
     Test for the file knuth_morris_pratt.py
 
+
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_knuth_morris_pratt(self):
         self.assertEqual([0, 1, 2, 3, 4], knuth_morris_pratt("aaaaaaa", "aaa"))
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
         self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
+
 
 if __name__ == "__main__":
     unittest.main()
