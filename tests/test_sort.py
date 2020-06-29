@@ -9,6 +9,7 @@ from algorithms.sort import (
     insertion_sort,
     merge_sort,
     pancake_sort,
+    pigeonhole_sort,
     quick_sort,
     selection_sort,
     bucket_sort,
@@ -70,6 +71,10 @@ class TestSuite(unittest.TestCase):
     def test_pancake_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          pancake_sort([1, 5, 65, 23, 57, 1232]))
+    
+    def test_pigeonhole_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         pigeonhole_sort([1, 5, 65, 23, 57, 1232]))
 
     def test_quick_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
