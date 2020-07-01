@@ -25,6 +25,7 @@ from .unique_morse import *
 from .judge_circle import *
 from .strong_password import *
 from .caesar_cipher import *
+from .check_pangram import *
 from .contain_string import *
 from .count_binary_substring import *
 from .repeat_string import *
