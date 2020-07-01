@@ -11,6 +11,7 @@ from algorithms.sort import (
     pancake_sort,
     quick_sort,
     selection_sort,
+    stooge_sort,
     bucket_sort,
     shell_sort,
     radix_sort,
@@ -78,6 +79,10 @@ class TestSuite(unittest.TestCase):
     def test_selection_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                          selection_sort([1, 5, 65, 23, 57, 1232]))
+    
+    def test_stooge_sort(self):
+        self.assertEqual([1, 5, 23, 57, 65, 1232],
+                         stooge_sort([1, 5, 65, 23, 57, 1232], 0, 5))
 
     def test_bucket_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],

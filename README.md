@@ -282,6 +282,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [selection_sort](algorithms/sort/selection_sort.py)
     - [shell_sort](algorithms/sort/shell_sort.py)
     - [sort_colors](algorithms/sort/sort_colors.py)
+    - [stooge_sort](algorithms/sort/stooge_sort.py
     - [top_sort](algorithms/sort/top_sort.py)
     - [wiggle_sort](algorithms/sort/wiggle_sort.py)
 - [stack](algorithms/stack)
