@@ -4,7 +4,7 @@ def interpolation_search(arr, x):
     hi = len(arr) - 1
 
     while lo <= hi and x >= arr[lo] and x <= arr[hi]:
-        m = lo + int(float(hi - lo) / (arr[hi] - arr[lo] + 1) * (x - arr[lo]))
+        m = lo + int((hi - lo) / (arr[hi] - arr[lo] + 1) * (x - arr[lo]))
 
         if arr[m] == x:
             return m
