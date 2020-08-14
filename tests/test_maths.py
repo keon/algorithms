@@ -1,4 +1,5 @@
 from algorithms.maths import (
+    power,power_recur,
     int_to_base, base_to_int,
     decimal_to_binary_ip,
     euler_totient,
@@ -23,6 +24,27 @@ from algorithms.maths import (
 )
 
 import unittest
+
+
+class TestPower(unittest.TestCase):
+    """
+    Test for the file power.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_power(self):
+        self.assertEqual(8, power(2, 3))
+        self.assertEqual(1, power(5, 0))
+        self.assertEqual(0, power(10, 3, 5))
+        self.assertEqual(280380, power(2265, 1664,465465))
+
+    def test_power_recur(self):
+        self.assertEqual(8, power(2, 3))
+        self.assertEqual(1, power_recur(5, 0))
+        self.assertEqual(0, power_recur(10, 3, 5))
+        self.assertEqual(280380, power_recur(2265, 1664,465465))
 
 
 class TestBaseConversion(unittest.TestCase):
