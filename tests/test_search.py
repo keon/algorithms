@@ -9,10 +9,12 @@ from algorithms.search import (
     find_min_rotate, find_min_rotate_recur,
     search_rotate, search_rotate_recur,
     jump_search,
-    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2
+    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2,
+    interpolation_search
 )
 
 import unittest
+
 
 class TestSuite(unittest.TestCase):
 
@@ -56,7 +58,7 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(-1, linear_search(array, -1))
 
     def test_search_insert(self):
-        array = [1,3,5,6]
+        array = [1, 3, 5, 6]
         self.assertEqual(2, search_insert(array, 5))
         self.assertEqual(1, search_insert(array, 2))
         self.assertEqual(4, search_insert(array, 7))
@@ -121,6 +123,17 @@ class TestSuite(unittest.TestCase):
         self.assertEqual("c", next_greatest_letter(letters, target))
         self.assertEqual("c", next_greatest_letter_v1(letters, target))
         self.assertEqual("c", next_greatest_letter_v2(letters, target))
+
+    def test_interpolation_search(self):
+        array = [0, 3, 5, 5, 9, 12, 12, 15, 16, 19, 20]
+        self.assertEqual(1, interpolation_search(array, 3))
+        self.assertEqual(2, interpolation_search(array, 5))
+        self.assertEqual(6, interpolation_search(array, 12))
+        self.assertEqual(-1, interpolation_search(array, 22))
+        self.assertEqual(-1, interpolation_search(array, -10)
+        self.assertEqual(10, interpolation_search(array, 20))
+
+
 
 if __name__ == '__main__':
 
