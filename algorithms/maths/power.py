@@ -32,7 +32,7 @@ def power_recur(a: int, n: int, r: int = None):
     """
     if n == 0:
         ans = 1
-    if n == 1:
+    elif n == 1:
         ans = a
     else:
         ans = power_recur(a, n // 2, r)
