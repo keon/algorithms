@@ -41,7 +41,7 @@ class TestPower(unittest.TestCase):
         self.assertEqual(280380, power(2265, 1664,465465))
 
     def test_power_recur(self):
-        self.assertEqual(8, power(2, 3))
+        self.assertEqual(8, power_recur(2, 3))
         self.assertEqual(1, power_recur(5, 0))
         self.assertEqual(0, power_recur(10, 3, 5))
         self.assertEqual(280380, power_recur(2265, 1664,465465))
