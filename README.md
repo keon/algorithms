@@ -158,6 +158,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [markov_chain](algorithms/graph/markov_chain.py)
     - [minimum_spanning_tree](algorithms/graph/minimum_spanning_tree.py)
     - [satisfiability](algorithms/graph/satisfiability.py)
+    - [minimum_spanning_tree_prims](algorithms/graph/prims_minimum_spanning.py)
     - [tarjan](algorithms/graph/tarjan.py)
     - [traversal](algorithms/graph/traversal.py)
 	  - [maximum_flow](algorithms/graph/maximum_flow.py)
@@ -165,6 +166,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [maximum_flow_dfs](algorithms/graph/maximum_flow_dfs.py)
     - [all_pairs_shortest_path](algorithms/graph/all_pairs_shortest_path.py)
     - [bellman_ford](algorithms/graph/bellman_ford.py)
+    - [Count Connected Components](algoritms/graph/count_connected_number_of_component.py)
 - [heap](algorithms/heap)
     - [merge_sorted_k_lists](algorithms/heap/merge_sorted_k_lists.py)
     - [skyline](algorithms/heap/skyline.py)
@@ -228,6 +230,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [copy_transform](algorithms/matrix/copy_transform.py)
     - [count_paths](algorithms/matrix/count_paths.py)
     - [matrix_rotation.txt](algorithms/matrix/matrix_rotation.txt)
+    - [matrix_inversion](algorithms/matrix/matrix_inversion.py)
     - [matrix_multiplication](algorithms/matrix/multiply.py)
     - [rotate_image](algorithms/matrix/rotate_image.py)
     - [search_in_sorted_matrix](algorithms/matrix/search_in_sorted_matrix.py)
@@ -255,7 +258,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [search_rotate](algorithms/search/search_rotate.py)
     - [jump_search](algorithms/search/jump_search.py)
     - [next_greatest_letter](algorithms/search/next_greatest_letter.py)
-    - [interpolation_search](algorithms/search/interpolation_search.py)
+    - [interpolation_search]/algorithms/search/interpolation_search.py)
 - [set](algorithms/set)
     - [randomized_set](algorithms/set/randomized_set.py)
     - [set_covering](algorithms/set/set_covering.py)
@@ -327,9 +330,10 @@ If you want to uninstall algorithms, it is as simple as:
     - [longest_common_prefix](algorithms/strings/longest_common_prefix.py)
     - [rotate](algorithms/strings/rotate.py)
     - [first_unique_char](algorithms/strings/first_unique_char.py)
-    - [repeat_substring](algorithms/strings/repeat_substring.py)     
-	- [atbash_cipher](algorithms/strings/atbash_cipher.py)
-	- [knuth_morris_pratt](algorithms/strings/knuth_morris_pratt.py)
+    - [repeat_substring](algorithms/strings/repeat_substring.py)
+	  - [atbash_cipher](algorithms/strings/atbash_cipher.py)
+    - [longest_palindromic_substring](algorithms/strings/longest_palindromic_substring.py)
+  	- [knuth_morris_pratt](algorithms/strings/knuth_morris_pratt.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/bst)
         - [array_to_bst](algorithms/tree/bst/array_to_bst.py)
@@ -392,5 +396,4 @@ If you want to uninstall algorithms, it is as simple as:
 ## Contributors
 
 Thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
-who helped in building the repo.
 who helped in building the repo.
