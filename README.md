@@ -198,6 +198,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [is_isomorphic](algorithms/map/is_isomorphic.py)
     - [is_anagram](algorithms/map/is_anagram.py)    
 - [maths](algorithms/maths)
+    - [power](algorithms/maths/power.py)
     - [base_conversion](algorithms/maths/base_conversion.py)
     - [combination](algorithms/maths/combination.py)
     - [cosine_similarity](algorithms/maths/cosine_similarity.py)
