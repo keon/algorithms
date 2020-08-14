@@ -130,9 +130,8 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(2, interpolation_search(array, 5))
         self.assertEqual(6, interpolation_search(array, 12))
         self.assertEqual(-1, interpolation_search(array, 22))
-        self.assertEqual(-1, interpolation_search(array, -10)
+        self.assertEqual(-1, interpolation_search(array, -10))
         self.assertEqual(10, interpolation_search(array, 20))
-
 
 
 if __name__ == '__main__':
