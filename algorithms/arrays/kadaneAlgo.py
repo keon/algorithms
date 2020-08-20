@@ -1,5 +1,5 @@
 """
-    Largest Sum of Contiguous Subarray
+    Largest Sum of Contiguous Subarray (Kadane’s Algorithm)
     Returns Largest sum of elements of a contiguous subarray.
     Time Complexity: O(n)
 
