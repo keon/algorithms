@@ -13,7 +13,6 @@ from algorithms.sort import (
     selection_sort,
     bucket_sort,
     shell_sort,
-    stooge_sort,
     radix_sort,
     gnome_sort,
     cocktail_shaker_sort,
@@ -87,10 +86,6 @@ class TestSuite(unittest.TestCase):
     def test_shell_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
                         shell_sort([1, 5, 65, 23, 57, 1232]))
-    
-    def test_stooge_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         stooge_sort([1, 5, 65, 23, 57, 1232], 0, 5))
 
     def test_radix_sort(self):
         self.assertEqual([1, 5, 23, 57, 65, 1232],
