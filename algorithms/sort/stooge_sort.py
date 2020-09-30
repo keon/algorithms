@@ -2,6 +2,7 @@
 
 Stooge Sort
 Time Complexity : O(n2.709)
+Reference: https://www.geeksforgeeks.org/stooge-sort/
 
 '''
 
