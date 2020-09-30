@@ -13,6 +13,7 @@ from .selection_sort import *
 from .top_sort import *
 from .bucket_sort import *
 from .shell_sort import *
+from .stooge_sort import *
 from .radix_sort import *
 from .gnome_sort import *
 from .cocktail_shaker_sort import *
