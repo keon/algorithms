@@ -331,7 +331,20 @@ class TestPermute(unittest.TestCase):
         answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
         self.assertEqual(sorted(permute_recursive(nums2)), sorted(answer2))
 
-
+class TestMaxsumSubarray(unittest.TestCase):
+    def test_maxsum(self):
+        nums1=[1, 3, 2, 4, 7]
+        ans1=17
+        self.assertEqual(maxSumSubArray(nums1), ans1)
+        
+        nums2=[-1,-1,-1,-1,-1]
+        ans2=-1
+        self.assertEqual(maxSumSubArray(nums2), ans2)
+        
+        nums3=[0,1,-1,0,0]
+        ans3=1
+        self.assertEqual(maxSumSubArray(nums3), ans3)
+        
 class TestSubsetsUnique(unittest.TestCase):
 
     def test_subsets_unique(self):
