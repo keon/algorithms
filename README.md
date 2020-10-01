@@ -74,6 +74,7 @@ If you want to uninstall algorithms, it is as simple as:
 - [automata](algorithms/automata)
     - [DFA](algorithms/automata/dfa.py)
 - [backtrack](algorithms/backtrack)
+    - [MaxSum subarray](algorithms/backtrack/maxsum_subarray.py)
     - [general_solution.md](algorithms/backtrack/)
     - [add_operators](algorithms/backtrack/add_operators.py)
     - [anagram](algorithms/backtrack/anagram.py)
