@@ -16,7 +16,7 @@ def maxSumSubArray(arr, low, high) :
 # Find the maximum possible sum in arr[] such that arr[m] is part of it
 def maxSumCrossing(arr, low, mid, high) :
     # Include elements on left of mid.
-    summ = 0; left_sum = -10000
+    summ = 0; left_sum = float("-inf")
     for i in range(mid, low-1, -1) :
         summ = summ + arr[i]
         if (summ > left_sum) :
