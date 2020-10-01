@@ -13,6 +13,7 @@ from algorithms.backtrack import (
     generate_parenthesis_v1,
     generate_parenthesis_v2,
     letter_combinations,
+    maxSumSubArray,
     palindromic_substrings,
     pattern_match,
     permute_unique,
