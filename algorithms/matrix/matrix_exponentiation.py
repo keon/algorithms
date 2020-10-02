@@ -39,22 +39,3 @@ def matrix_exponentiation(mat: list, n: int) -> list:
     else:
         tmp = matrix_exponentiation(mat, n // 2)
         return multiply(tmp, tmp)
-
-if __name__ == "__main__":
-    mat = [[1, 0, 2], [2, 1, 0], [0, 2, 1]]
-    
-    res0 = matrix_exponentiation(mat, 0)
-    assert res0 == [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-    print(f"{mat}^0 = {res0}")
-
-    res1 = matrix_exponentiation(mat, 1)
-    assert res1 == [[1, 0, 2], [2, 1, 0], [0, 2, 1]]
-    print(f"{mat}^1 = {res1}")
-
-    res2 = matrix_exponentiation(mat, 2)
-    assert res2 == [[1, 4, 4], [4, 1, 4], [4, 4, 1]]
-    print(f"{mat}^2 = {res2}")
-    
-    res5 = matrix_exponentiation(mat, 5)
-    assert res5 == [[81, 72, 90], [90, 81, 72], [72, 90, 81]]
-    print(f"{mat}^5 = {res5}")
