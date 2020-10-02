@@ -139,6 +139,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [matrix_chain_order](algorithms/dp/matrix_chain_order.py)
     - [max_product_subarray](algorithms/dp/max_product_subarray.py)
     - [max_subarray](algorithms/dp/max_subarray.py)
+    - [maximize_expression](algorithms/dp/maximize_expression.py)
     - [min_cost_path](algorithms/dp/min_cost_path.py)
     - [num_decodings](algorithms/dp/num_decodings.py)
     - [regex_matching](algorithms/dp/regex_matching.py)
