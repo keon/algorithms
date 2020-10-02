@@ -23,86 +23,76 @@ from algorithms.sort import (
 import unittest
 
 
+def is_sorted(array):
+    """
+    Helper function to check if the given array is sorted.
+    :param array: Array to check if sorted
+    :return: True if sorted in ascending order, else False
+    """
+    for i in range(len(array) - 1):
+        if array[i] > array[i + 1]:
+            return False
+
+    return True
+
+
 class TestSuite(unittest.TestCase):
     def test_bogo_sort(self):
-        self.assertEqual([1, 5, 23],
-                         bogo_sort([1, 23, 5]))
+        self.assertTrue(is_sorted(bogo_sort([1, 23, 5])))
 
     def test_bitonic_sort(self):
-        self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
-                         bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232]))
-        self.assertEqual([1, 2, 3, 5, 23, 57, 65, 1232],
-                         bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232],False))
-        self.assertEqual([1232, 65, 57, 23, 5, 3, 2, 1],
-                         bitonic_sort([1, 2, 3, 5, 65, 23, 57, 1232],True))
+        self.assertTrue(is_sorted(bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_bubble_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         bubble_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(bubble_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_comb_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         comb_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(comb_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_counting_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         counting_sort([1, 5, 65, 23, 57, 1232]))
-        self.assertEqual([-1232, -65, -57, -23, -5, -1],
-                         counting_sort([-1, -5, -65, -23, -57, -1232]))
+        self.assertTrue(is_sorted(counting_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_cycle_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         cycle_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(cycle_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_heap_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         max_heap_sort([1, 5, 65, 23, 57, 1232]))
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         min_heap_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(max_heap_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+
+        self.assertTrue(is_sorted(min_heap_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_insertion_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         insertion_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_merge_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         merge_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(merge_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_pancake_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         pancake_sort([1, 5, 65, 23, 57, 1232]))
-    
+        self.assertTrue(is_sorted(pancake_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+        
     def test_pigeonhole_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         pigeonhole_sort([1, 5, 65, 23, 57, 1232]))
-
+        self.assertTrue(is_sorted(pigeonhole_sort([1, 5, 65, 23, 57, 1232])))
+        
     def test_quick_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         quick_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(quick_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_selection_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         selection_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(selection_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_bucket_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                        bucket_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(bucket_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_shell_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                        shell_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(shell_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_radix_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                        radix_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(radix_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_gnome_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                         gnome_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(gnome_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_cocktail_shaker_sort(self):
-        self.assertEqual([1, 5, 23, 57, 65, 1232],
-                        cocktail_shaker_sort([1, 5, 65, 23, 57, 1232]))
+        self.assertTrue(is_sorted(cocktail_shaker_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+
 
 class TestTopSort(unittest.TestCase):
     def setUp(self):

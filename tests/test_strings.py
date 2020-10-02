@@ -28,6 +28,7 @@ from algorithms.strings import (
     judge_circle,
     strong_password,
     caesar_cipher,
+    check_pangram,
     contain_string,
     count_binary_substring,
     repeat_string,
@@ -453,6 +454,11 @@ class TestCaesarCipher(unittest.TestCase):
     def test_caesar_cipher(self):
         self.assertEqual("Lipps_Asvph!", caesar_cipher("Hello_World!", 4))
         self.assertEqual("okffng-Qwvb", caesar_cipher("middle-Outz", 2))
+
+class TestCheckPangram(unittest.TestCase):
+    def test_check_pangram(self):
+        self.assertTrue(check_pangram("The quick brown fox jumps over the lazy dog"))
+        self.assertFalse(check_pangram("The quick brown fox"))
 
 
 class TestContainString(unittest.TestCase):
