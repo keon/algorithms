@@ -325,6 +325,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [judge_circle](algorithms/strings/judge_circle.py)
     - [strong_password](algorithms/strings/strong_password.py)
     - [caesar_cipher](algorithms/strings/caesar_cipher.py)
+    - [check_pangram](algorithms/strings/check_pangram.py
     - [contain_string](algorithms/strings/contain_string.py)
     - [count_binary_substring](algorithms/strings/count_binary_substring.py)
     - [repeat_string](algorithms/strings/repeat_string.py)
