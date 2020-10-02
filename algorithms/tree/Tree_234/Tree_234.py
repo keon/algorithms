@@ -110,7 +110,7 @@ class Tree234:
                         ptr = parent.betweenBC
                     else:
                         # A value is a duplicate of key
-                        print("Tree234: add(key): Case 1a: duplicated")
+                        # print("Tree234: add(key): Case 1a: duplicated")
                         return False
 
                 # Case 1b: if parent node has 2 keys
@@ -144,7 +144,7 @@ class Tree234:
                         ptr = parent.greater
                     else:
                         # A value is a duplicate of key
-                        print("Tree234: add(key): Case 1b: duplicated")
+                        # print("Tree234: add(key): Case 1b: duplicated")
                         return False
 
                 # Case 1c: if parent node has 3 keys
@@ -161,7 +161,7 @@ class Tree234:
                         ptr = self.root.betweenAB
                     else:
                         # A value is a duplicate of key
-                        print("Tree234: add(key): Case 1c: duplicated")
+                        # print("Tree234: add(key): Case 1c: duplicated")
                         return False
 
             # Case 2
@@ -213,13 +213,14 @@ class Tree234:
                         ptr = ptr.betweenBC
 
         # Should never get to this point
-        print("Get to this point")
         return False
 
     # Insert integer to the tree function
     def insert(self, data):
         if not self.add(data):
-            print("Tree234: insert(data): Unsuccessfully insert data", data)
+            # Unsuccessfully insert data
+            # print("Tree234: insert(data): Unsuccessfully insert data", data)
+            return
 
     # Initialize the recursive call for finding the key
     def find_ptr(self, key, num_node_searched, ptr):
@@ -292,27 +293,10 @@ class Tree234:
         result = self.find(key, num_node_searched)
 
         if result[0] is None:
-            print(f"Tree234: search(key): Unsuccess in finding the key after searching {result[1]} node")
+            # Unsuccess in finding the key
+            # print(f"Tree234: search(key): Unsuccess in finding the key after searching {result[1]} node")
+            return
         elif result[0] and result[0] == key:
-            print(f"Tree234: search(key): Successfully find the key by searching {result[1]} node")
-
-
-# Read the Input File and input it into the tree. After that, search a key
-def read_file(file_name):
-    input_file = open(file_name, "rt")
-    tree_234 = Tree234()
-
-    for line in input_file:
-        tree_234.insert(int(line))
-
-    input_file.close()
-
-    # Print the root's A value
-    root_a = tree_234.root.A
-    print(root_a)
-    tree_234.search(root_a)
-
-
-if __name__ == "__main__":
-    fileName = "Tree_Input.txt"
-    read_file(fileName)
+            # Successfully find the key
+            # print(f"Tree234: search(key): Successfully find the key by searching {result[1]} node")
+            return
