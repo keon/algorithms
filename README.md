@@ -188,6 +188,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [swap_in_pairs](algorithms/linkedlist/swap_in_pairs.py)
     - [is_sorted](algorithms/linkedlist/is_sorted.py)
     - [remove_range](algorithms/linkedlist/remove_range.py)
+    - [binary_linkedlist_to_decimal](algorithms/linkedlist/binaryToDecimal.py)
 - [map](algorithms/map)
     - [hashtable](algorithms/map/hashtable.py)
     - [separate_chaining_hashtable](algorithms/map/separate_chaining_hashtable.py)
