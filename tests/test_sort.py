@@ -74,7 +74,9 @@ class TestSuite(unittest.TestCase):
         
     def test_quick_sort(self):
         self.assertTrue(is_sorted(quick_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
-
+        self.assertTrue(is_sorted(quick_sort([-1, 3, 2, 5, -65, 23, -57, 1232])))
+        self.assertTrue(is_sorted(quick_sort([])))
+      
     def test_selection_sort(self):
         self.assertTrue(is_sorted(selection_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
