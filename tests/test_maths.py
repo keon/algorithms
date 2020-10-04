@@ -8,6 +8,7 @@ from algorithms.maths import (
     gcd, lcm, trailing_zero, gcd_bit,
     gen_strobogrammatic, strobogrammatic_in_range,
     is_strobogrammatic, is_strobogrammatic2,
+    modular_inverse,
     modular_exponential,
     find_next_square, find_next_square2,
     prime_check,
@@ -165,6 +166,21 @@ class TestIsStrobogrammatic(unittest.TestCase):
         self.assertTrue(is_strobogrammatic2("69"))
         self.assertFalse(is_strobogrammatic2("14"))
 
+
+class TestModularInverse(unittest.TestCase):
+    """[summary]
+    Test for the file modular_Exponential.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """    
+
+    def test_modular_inverse(self):
+        # checks if x * x_inv == 1 (mod m)
+        self.assertEqual(1, 2 * modular_inverse.modular_inverse(2, 19) % 19)
+        self.assertEqual(1, 53 * modular_inverse.modular_inverse(53, 91) % 91)
+        self.assertEqual(1, 2 * modular_inverse.modular_inverse(2, 1000000007) % 1000000007)
+        self.assertRaises(ValueError, modular_inverse.modular_inverse, 2, 20)
 
 class TestModularExponential(unittest.TestCase):
     """[summary]
