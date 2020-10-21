@@ -21,7 +21,7 @@ class FractionalKnapSack:
 
 	"""Time Complexity O(n log n)"""
 	@staticmethod
-	def getMaxValue(wt, val, capacity):
+	def get_Max_Value(wt, val, capacity):
 		"""function to get maximum value """
 		iVal = []
 		for i in range(len(wt)):
@@ -52,7 +52,7 @@ if __name__ == "__main__":
 	capacity = 50
 
 	# Function call
-	maxValue = FractionalKnapSack.getMaxValue(wt, val, capacity)
+	maxValue = FractionalKnapSack.get_Max_Value(wt, val, capacity)
 	print("Maximum value in Knapsack =", maxValue)
 
 
