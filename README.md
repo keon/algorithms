@@ -51,8 +51,6 @@ If you want to uninstall algorithms, it is as simple as:
     $ pip3 uninstall -y algorithms
 
 ## List of Implementations
-- [Greedy](algorithms/arrays)
-    - [fractionalKnapsack](algorithms/Greedy/fractionalKnapsack.py)
 - [arrays](algorithms/arrays)
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
@@ -147,6 +145,8 @@ If you want to uninstall algorithms, it is as simple as:
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
 	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
+- [Greedy](algorithms/arrays)
+    - [fractionalKnapsack](algorithms/Greedy/fractionalKnapsack.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/check_digraph_strongly_connected.py)
