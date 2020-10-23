@@ -16,7 +16,7 @@ The following function will check if a number is a Krishnamurthy Number or not a
 """
 
 
-def factorial(n):
+def find_factorial(n):
     fact = 1
     while n != 0:
         fact *= n
@@ -33,7 +33,7 @@ def krishnamurthy_number(n):
     while temp != 0:
 
         # get the factorial of of the last digit of n and add it to sum_of_digits
-        sum_of_digits += factorial(temp % 10)
+        sum_of_digits += find_factorial(temp % 10)
 
         # replace value of temp by temp/10
         # i.e. will remove the last digit from temp
