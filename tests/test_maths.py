@@ -22,8 +22,9 @@ from algorithms.maths import (
     magic_number,
     find_order,
     find_primitive_root,
+    add_magic_number,
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key,
-    diffie_hellman_key_exchange
+    diffie_hellman_key_exchange, krishnamurthy_number
 )
 
 import unittest
@@ -399,6 +400,21 @@ class TestFindOrder(unittest.TestCase):
         self.assertEqual(6, find_order(3, 7))
         self.assertEqual(-1, find_order(128, 256))
         self.assertEqual(352, find_order(3, 353))
+
+class TestKrishnamurthyNumber(unittest.TestCase):
+    """[summary]
+    Test for the file krishnamurthy_number.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_krishnamurthy_number(self):
+        self.assertFalse(krishnamurthy_number(0))
+        self.assertTrue(krishnamurthy_number(2))
+        self.assertTrue(krishnamurthy_number(1))
+        self.assertTrue(krishnamurthy_number(145))
+        self.assertTrue(krishnamurthy_number(40585))
 
 
 class TestMagicNumber(unittest.TestCase):

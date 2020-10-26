@@ -210,6 +210,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [generate_strobogrammtic](algorithms/maths/generate_strobogrammtic.py)
     - [is_strobogrammatic](algorithms/maths/is_strobogrammatic.py)
     - [magic_number](algorithms/maths/magic_number.py)
+    - [krishnamurthy_number](algorithms/maths/krishnamurthy_number.py)
     - [modular_exponential](algorithms/maths/modular_exponential.py)
     - [modular_inverse](algorithms/maths/modular_inverse.py)
     - [next_bigger](algorithms/maths/next_bigger.py)
