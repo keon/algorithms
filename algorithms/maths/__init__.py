@@ -19,3 +19,4 @@ from .find_order_simple import *
 from .find_primitive_root_simple import *
 from .diffie_hellman_key_exchange import *
 from .power import *
+from .magic_number import *
