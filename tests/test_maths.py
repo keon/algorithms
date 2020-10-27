@@ -23,6 +23,7 @@ from algorithms.maths import (
     find_primitive_root,
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key, diffie_hellman_key_exchange,
     krishnamurthy_number,
+    dot_product, cross_product, magnitude
 )
 
 import unittest
@@ -174,7 +175,7 @@ class TestModularInverse(unittest.TestCase):
 
     Arguments:
         unittest {[type]} -- [description]
-    """    
+    """
 
     def test_modular_inverse(self):
         # checks if x * x_inv == 1 (mod m)
@@ -379,7 +380,7 @@ class TestFindPrimitiveRoot(unittest.TestCase):
         self.assertListEqual([2, 3], find_primitive_root(5))
         self.assertListEqual([], find_primitive_root(24))
         self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37))
-        
+
 
 class TestFindOrder(unittest.TestCase):
     """[summary]
@@ -401,7 +402,7 @@ class TestKrishnamurthyNumber(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    
+
     def test_krishnamurthy_number(self):
         self.assertFalse(krishnamurthy_number(0))
         self.assertTrue(krishnamurthy_number(2))
@@ -423,6 +424,25 @@ class TestDiffieHellmanKeyExchange(unittest.TestCase):
         self.assertFalse(diffie_hellman_key_exchange(5, 211))
         self.assertTrue(diffie_hellman_key_exchange(11, 971))
 
+class TestVectorProducts(unittest.TestCase):
+    """[summary]
+    Test for the file vector_products.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_dot_product(self):
+        self.assertListEqual([1, 1, 1], dot_product([1, 1, 1], [1, 1, 1]))
+        self.assertListEqual([1, 4, 9], dot_product([1, 2, 3], [1, 2, 3]))
+
+    def test_cross_product(self):
+        self.assertListEqual([-3, 6, -3], cross_product([1, 2, 3], [4, 5, 6]))
+        self.assertListEqual([0, 0, 0], cross_product([1, 2, 3], [1, 2, 3]))
+
+    def test_magnitude(self):
+        self.assertEqual(10, magnitude([6, 8, 0]))
+        self.assertEqual(1, magnitude([1, 1, 1]))
+
 if __name__ == "__main__":
     unittest.main()
-
