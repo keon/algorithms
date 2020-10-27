@@ -22,7 +22,6 @@ from algorithms.maths import (
     magic_number,
     find_order,
     find_primitive_root,
-    add_magic_number,
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key,
     diffie_hellman_key_exchange, krishnamurthy_number
 )
