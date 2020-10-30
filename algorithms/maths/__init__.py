@@ -21,3 +21,4 @@ from .diffie_hellman_key_exchange import *
 from .power import *
 from .krishnamurthy_number import *
 from .vector_products import *
+from .magic_number import *
