@@ -35,7 +35,7 @@ class TreeNode:
 
         
 
-def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int) -> TreeNode:
+def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int, preIndex: int) -> TreeNode:
     """
         Recursive function that constructs tree from preorder and postorder array.
         
@@ -44,7 +44,6 @@ def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int) -> 
 
         low and high are the indices for the postorder array.
     """
-    global preIndex
 
     #Base case
     if(preIndex >= size or low > high):
@@ -69,21 +68,19 @@ def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int) -> 
     #Use index of element present in postorder to divide postorder array
     #to two parts: left subtree and right subtree
     if(i <= high):
-        root.left = constructTreeUtil(pre, post, low, i, size)
-        root.right = constructTreeUtil(pre, post, i+1, high, size)
+        root.left = constructTreeUtil(pre, post, low, i, size, preIndex)
+        root.right = constructTreeUtil(pre, post, i+1, high, size, preIndex)
 
     return root
 
 
-def constructTree(pre: list, post: list, size: int) -> TreeNode:
+def constructTree(pre: list, post: list, size: int, preIndex: int) -> TreeNode:
     """
         Main Function that will construct the full binary tree from given preorder
         and postorder array.
     """
 
-    global preIndex
-
-    return constructTreeUtil(pre, post, 0, size-1, size)
+    return constructTreeUtil(pre, post, 0, size-1, size, 0)
 
 
 
@@ -101,17 +98,12 @@ def printInorder(node: TreeNode) -> None:
 
 
 if __name__ == "__main__":
-    #pre = [1, 2, 4, 8, 9, 5, 3, 6, 7]
-    #post = [8, 9, 4, 5, 2, 6, 7, 3, 1]
-    #size = len(pre)
+    pre = [1, 2, 4, 8, 9, 5, 3, 6, 7]
+    post = [8, 9, 4, 5, 2, 6, 7, 3, 1]
+    size = len(pre)
 
-    pre = [12,7,16,21,5,1,9]
-    post = [16,21,7,1,9,5,12]
-    size = 7
 
-    preIndex = 0
-
-    root = constructTree(pre, post, size)
+    root = constructTree(pre, post, size, 0)
 
     print("InorderTraversal : ")
     printInorder(root)
