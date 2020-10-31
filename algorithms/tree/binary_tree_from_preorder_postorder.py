@@ -33,6 +33,8 @@ class TreeNode:
         self.left = None
         self.right = None
 
+        
+
 def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int) -> TreeNode:
     """
         Recursive function that constructs tree from preorder and postorder array.
