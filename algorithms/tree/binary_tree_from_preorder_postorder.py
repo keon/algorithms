@@ -27,7 +27,11 @@
       Output: 8 4 9 2 5 1 6 3 7
 """
 
-from tree.tree import TreeNode
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
 
 def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int) -> TreeNode:
     """
