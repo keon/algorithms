@@ -28,8 +28,8 @@
 """
 
 class TreeNode:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self, data):
+        self.data = data
         self.left = None
         self.right = None
 
@@ -41,6 +41,8 @@ def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int, pre
         
         preIndex is a global variable that keeps track of the index in preorder
         array.
+
+        preorder and postorder array are represented are pre[] and post[] respectively.
 
         low and high are the indices for the postorder array.
     """
@@ -92,7 +94,7 @@ def printInorder(node: TreeNode) -> None:
         return
 
     printInorder(node.left)
-    print(node.val, end = " ")
+    print(node.data, end = " ")
 
     printInorder(node.right)
 
