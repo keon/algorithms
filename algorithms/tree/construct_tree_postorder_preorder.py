@@ -101,10 +101,13 @@ def printInorder(root: Node, res = None):
     return res
 
 if __name__ == '__main__':
-    pre = [1, 2, 4, 8, 9, 5, 3, 6, 7]
-    post = [8, 9, 4, 5, 2, 6, 7, 3, 1]
-    size = len(pre)
+##    pre = [1, 2, 4, 8, 9, 5, 3, 6, 7]
+##    post = [8, 9, 4, 5, 2, 6, 7, 3, 1]
+##    size = len(pre)
 
+    pre = [1,2,4,5,3,6,7]
+    post = [4,5,2,6,7,3,1]
+    size = len(pre)
     res = constructTree(pre, post, size)
 
     print(res)
