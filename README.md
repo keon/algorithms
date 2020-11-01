@@ -375,6 +375,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [b_tree](algorithms/tree/b_tree.py)
     - [binary_tree_paths](algorithms/tree/binary_tree_paths.py)
     - [bin_tree_to_list](algorithms/tree/bin_tree_to_list.py)
+    - [Construct_tree_from_postorder_preorder](algorithms/tree/construct_tree_postorder_preorder.py)
     - [deepest_left](algorithms/tree/deepest_left.py)
     - [invert_tree](algorithms/tree/invert_tree.py)
     - [is_balanced](algorithms/tree/is_balanced.py)
