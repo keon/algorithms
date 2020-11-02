@@ -21,7 +21,12 @@
       Output: 8 4 9 2 5 1 6 3 7
 """
 
-from tree.tree import TreeNode
+class TreeNode:
+
+    def __init__(self, val, left = None, right = None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 pre_index = 0
         
