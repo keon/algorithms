@@ -21,7 +21,7 @@
       Output: 8 4 9 2 5 1 6 3 7
 """
 
-from tree import TreeNode
+from tree.tree import TreeNode
 
 pre_index = 0
         
@@ -97,12 +97,10 @@ def print_inorder(root: TreeNode, result = None):
     return result
 
 if __name__ == '__main__':
-    pre = [1,2,4,5,3,6,7]
-    post = [4,5,2,6,7,3,1]
+    pre = [1, 2, 4, 5, 3, 6, 7]
+    post = [4, 5, 2, 6, 7, 3, 1]
     size = len(pre)
-    
+
     result = construct_tree(pre, post, size)
 
     print(result)
-
-    
