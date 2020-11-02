@@ -3,6 +3,7 @@ from algorithms.matrix import (
     copy_transform,
     crout_matrix_decomposition,
     cholesky_matrix_decomposition,
+    matrix_exponentiation,
     matrix_inversion,
     multiply,
     rotate_image,
@@ -163,6 +164,31 @@ class TestInversion(unittest.TestCase):
                                                               [Fraction(-16, 53), Fraction(
                                                                   23, 53), Fraction(2, 53)],
                                                               [Fraction(13, 53), Fraction(-22, 53), Fraction(5, 53)]])
+
+
+
+class TestMatrixExponentiation(unittest.TestCase):
+    """[summary]
+    Test for the file matrix_exponentiation.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_matrix_exponentiation(self):
+        mat = [[1, 0, 2], [2, 1, 0], [0, 2, 1]]
+
+        self.assertEqual(matrix_exponentiation.matrix_exponentiation(mat, 0),
+            [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+
+        self.assertEqual(matrix_exponentiation.matrix_exponentiation(mat, 1),
+            [[1, 0, 2], [2, 1, 0], [0, 2, 1]])
+
+        self.assertEqual(matrix_exponentiation.matrix_exponentiation(mat, 2),
+            [[1, 4, 4], [4, 1, 4], [4, 4, 1]])
+
+        self.assertEqual(matrix_exponentiation.matrix_exponentiation(mat, 5),
+            [[81, 72, 90], [90, 81, 72], [72, 90, 81]])
 
 
 class TestMultiply(unittest.TestCase):

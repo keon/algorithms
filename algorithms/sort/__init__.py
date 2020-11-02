@@ -8,11 +8,13 @@ from .heap_sort import *
 from .insertion_sort import *
 from .merge_sort import *
 from .pancake_sort import *
+from .pigeonhole_sort import *
 from .quick_sort import *
 from .selection_sort import *
 from .top_sort import *
 from .bucket_sort import *
 from .shell_sort import *
+from .stooge_sort import *
 from .radix_sort import *
 from .gnome_sort import *
 from .cocktail_shaker_sort import *
