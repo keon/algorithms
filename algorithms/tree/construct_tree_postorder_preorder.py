@@ -21,16 +21,11 @@
       Output: 8 4 9 2 5 1 6 3 7
 """
 
-class Node:
+from tree import TreeNode
 
-    def __init__(self, val, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-preIndex = 0
+pre_index = 0
         
-def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int):#, preIndex = -1):
+def construct_tree_util(pre: list, post: list, low: int, high: int, size: int):
     """
         Recursive function that constructs tree from preorder and postorder array.
         
@@ -40,27 +35,27 @@ def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int):#, 
         low and high are the indices for the postorder array.
     """
 
-    global preIndex
+    global pre_index
 
-    if preIndex == -1:
-        preIndex = 0
+    if pre_index == -1:
+        pre_index = 0
   
     
     #Base case
-    if(preIndex >= size or low > high):
+    if(pre_index >= size or low > high):
         return None
 
-    root = Node(pre[preIndex])
-    preIndex += 1
+    root = TreeNode(pre[pre_index])
+    pre_index += 1
 
     #If only one element in the subarray return root
-    if(low == high or preIndex >= size):
+    if(low == high or pre_index >= size):
         return root
 
     #Find the next element of pre[] in post[]
     i = low
     while i <= high:
-        if(pre[preIndex] == post[i]):
+        if(pre[pre_index] == post[i]):
             break
 
         i += 1
@@ -68,48 +63,46 @@ def constructTreeUtil(pre: list, post: list, low: int, high: int, size: int):#, 
     #Use index of element present in postorder to divide postorder array
     #to two parts: left subtree and right subtree
     if(i <= high):
-        root.left = constructTreeUtil(pre, post, low, i, size)
-        root.right = constructTreeUtil(pre, post, i+1, high, size)
+        root.left = construct_tree_util(pre, post, low, i, size)
+        root.right = construct_tree_util(pre, post, i+1, high, size)
 
     return root
 
 
-def constructTree(pre: list, post: list, size: int):
+def construct_tree(pre: list, post: list, size: int):
     """
         Main Function that will construct the full binary tree from given preorder
         and postorder array.
     """
 
-    global preIndex
-    root = constructTreeUtil(pre, post, 0, size-1, size)
+    global pre_index
+    root = construct_tree_util(pre, post, 0, size-1, size)
 
-    return printInorder(root)
+    return print_inorder(root)
 
 
 
-def printInorder(root: Node, res = None):
+def print_inorder(root: TreeNode, result = None):
     """
         Prints the tree constructed in inorder format
     """
     if root is None:
         return []
-    if res is None: 
-        res = []
-    printInorder(root.left, res)
-    res.append(root.val)
-    printInorder(root.right, res)
-    return res
+    if result is None: 
+        result = []
+        
+    print_inorder(root.left, result)
+    result.append(root.val)
+    print_inorder(root.right, result)
+    return result
 
 if __name__ == '__main__':
-##    pre = [1, 2, 4, 8, 9, 5, 3, 6, 7]
-##    post = [8, 9, 4, 5, 2, 6, 7, 3, 1]
-##    size = len(pre)
-
     pre = [1,2,4,5,3,6,7]
     post = [4,5,2,6,7,3,1]
     size = len(pre)
-    res = constructTree(pre, post, size)
+    
+    result = construct_tree(pre, post, size)
 
-    print(res)
+    print(result)
 
     
