@@ -33,6 +33,6 @@ class Linear_Regression():
         return losses, self.theta
 
 
-l = Linear_Regression(X_train,y_train,0.001,50)
-losses, theta = l.gradientDescent()
+#l = Linear_Regression(X_train,y_train,0.001,50)
+#losses, theta = l.gradientDescent()
 
