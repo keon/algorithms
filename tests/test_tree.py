@@ -10,7 +10,7 @@ from algorithms.tree.b_tree import BTree
 
 from algorithms.tree import construct_tree_postorder_preorder as ctpp
 
-from algorithms.tree.fenwick_tree import fenwick_tree
+import algorithms.tree.fenwick_tree
 
 import unittest
 
