@@ -359,6 +359,8 @@ If you want to uninstall algorithms, it is as simple as:
         - [count_left_node](algorithms/tree/bst/count_left_node.py)
         - [num_empty](algorithms/tree/bst/num_empty.py)
         - [height](algorithms/tree/bst/height.py)
+    - [fenwick_tree](algorithms/tree/fenwick_tree]
+	- [fenwick_tree](algorithms/tree/fenwick_tree/fenwick_tree.py)
     - [red_black_tree](algorithms/tree/red_black_tree)
         - [red_black_tree](algorithms/tree/red_black_tree/red_black_tree.py)
     - [segment_tree](algorithms/tree/segment_tree)
@@ -378,7 +380,6 @@ If you want to uninstall algorithms, it is as simple as:
     - [bin_tree_to_list](algorithms/tree/bin_tree_to_list.py)
     - [construct_tree_preorder_postorder](algorithms/tree/construct_tree_postorder_preorder.py)
     - [deepest_left](algorithms/tree/deepest_left.py)
-    - [fenwick_tree](algorithms/tree/fenwick_tree.py)
     - [invert_tree](algorithms/tree/invert_tree.py)
     - [is_balanced](algorithms/tree/is_balanced.py)
     - [is_subtree](algorithms/tree/is_subtree.py)
