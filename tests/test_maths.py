@@ -19,7 +19,8 @@ from algorithms.maths import (
     cosine_similarity,
     find_order,
     find_primitive_root,
-    alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key, diffie_hellman_key_exchange
+    alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key, diffie_hellman_key_exchange,
+    num_digits
 )
 
 import unittest
@@ -368,6 +369,18 @@ class TestDiffieHellmanKeyExchange(unittest.TestCase):
         self.assertTrue(diffie_hellman_key_exchange(3, 353))
         self.assertFalse(diffie_hellman_key_exchange(5, 211))
         self.assertTrue(diffie_hellman_key_exchange(11, 971))
+
+class TestNumberOfDigits(unittest.TestCase):
+    """[summary]
+    Test for the file num_digits.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_num_digits(self):
+        self.assertEqual(2,num_digits(12))
+        self.assertEqual(5,num_digits(99999))
+        self.assertEqual(1,num_digits(8))
 
 if __name__ == "__main__":
     unittest.main()
