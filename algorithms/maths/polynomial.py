@@ -1,4 +1,5 @@
-from __future__ import annotations
+# from __future__ import annotations
+
 from fractions import Fraction
 from typing import Dict, Union, Set, Iterable
 from numbers import Rational
@@ -63,7 +64,8 @@ class Monomial:
             return num
 
 
-    def equal_upto_scalar(self, other: Monomial) -> bool:
+    # def equal_upto_scalar(self, other: Monomial) -> bool:
+    def equal_upto_scalar(self, other) -> bool:
         """
         Return True if other is a monomial
         and is equivalent to self up to a scalar
@@ -73,7 +75,8 @@ class Monomial:
             raise ValueError('Can only compare monomials.')
         return other.variables == self.variables
 
-    def __add__(self, other: Union[int, float, Fraction, Monomial]):
+    # def __add__(self, other: Union[int, float, Fraction, Monomial]):
+    def __add__(self, other: Union[int, float, Fraction]):
         """
         Define the addition of two
         monomials or the addition of
@@ -95,14 +98,16 @@ class Monomial:
 
         raise ValueError(f'Cannot add {str(other)} to {self.__str__()} because they don\'t have same variables.')
 
-    def __eq__(self, other: Monomial) -> bool:
+    # def __eq__(self, other: Monomial) -> bool:
+    def __eq__(self, other) -> bool:
         """
         Return True if two monomials
         are equal upto a scalar multiple.
         """
         return self.equal_upto_scalar(other) and self.coeff == other.coeff
 
-    def __mul__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    # def __mul__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    def __mul__(self, other: Union[int, float, Fraction]):
         """
         Multiply two monomials and merge the variables
         in both of them.
@@ -134,7 +139,8 @@ class Monomial:
 
             return Monomial(temp, Monomial._rationalize_if_possible(self.coeff * other.coeff)).clean()
 
-    def inverse(self) -> Monomial:
+    # def inverse(self) -> Monomial:
+    def inverse(self):
         """
         Compute the inverse of a monomial.
 
@@ -151,7 +157,8 @@ class Monomial:
             raise ValueError("Coefficient must not be 0.")
         return Monomial(mono, Monomial._rationalize_if_possible(1/self.coeff)).clean()
 
-    def __truediv__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    # def __truediv__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    def __truediv__(self, other: Union[int, float, Fraction]):
         """
         Compute the division between two monomials
         or a monomial and some other datatype
@@ -166,28 +173,32 @@ class Monomial:
         o = other.inverse()
         return self.__mul__(o)
 
-    def __floordiv__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    # def __floordiv__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    def __floordiv__(self, other: Union[int, float, Fraction]):
         """
         For monomials,
         floor div is the same as true div.
         """
         return self.__truediv__(other)
 
-    def clone(self) -> Monomial:
+    # def clone(self) -> Monomial:
+    def clone(self):
         """
         Clone the monomial.
         """
         temp_variables = {i: self.variables[i] for i in self.variables}
         return Monomial(temp_variables, Monomial._rationalize_if_possible(self.coeff)).clean()
 
-    def clean(self) -> Monomial:
+    # def clean(self) -> Monomial:
+    def clean(self):
         """
         Clean the monomial by dropping any variables that have power 0.
         """
         temp_variables = {i: self.variables[i] for i in self.variables if self.variables[i] != 0}
         return Monomial(temp_variables, Monomial._rationalize_if_possible(self.coeff))
 
-    def __sub__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    # def __sub__(self, other: Union[int, float, Fraction, Monomial]) -> Monomial:
+    def __sub__(self, other: Union[int, float, Fraction]):
         """
         Compute the subtraction
         of a monomial and a datatype
@@ -319,7 +330,8 @@ class Polynomial:
             return num
 
 
-    def __add__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    # def __add__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    def __add__(self, other: Union[int, float, Fraction, Monomial]):
         """
         Add a given poylnomial to a copy of self.
 
@@ -349,7 +361,8 @@ class Polynomial:
         else:
             raise ValueError('Can only add int, float, Fraction, Monomials, or Polynomials to Polynomials.')
 
-    def __sub__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    # def __sub__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    def __sub__(self, other: Union[int, float, Fraction, Monomial]):
         """
         Subtract the given polynomial
         from a copy of self.
@@ -383,7 +396,8 @@ class Polynomial:
             raise ValueError('Can only subtract int, float, Fraction, Monomials, or Polynomials from Polynomials.')
             return
 
-    def __mul__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    # def __mul__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    def __mul__(self, other: Union[int, float, Fraction, Monomial]):
         """
         Multiply a given polynomial
         to a copy of self.
@@ -414,14 +428,16 @@ class Polynomial:
         else:
             raise ValueError('Can only multiple int, float, Fraction, Monomials, or Polynomials with Polynomials.')
 
-    def __floordiv__(self, other):
+    # def __floordiv__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    def __floordiv__(self, other: Union[int, float, Fraction, Monomial]):
         """
         For Polynomials, floordiv is the same
         as truediv.
         """
         return self.__truediv__(other)
 
-    def __truediv__(self, other):
+    # def __truediv__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
+    def __truediv__(self, other: Union[int, float, Fraction, Monomial]):
         """
         For Polynomials, only division by a monomial
         is defined.
@@ -448,7 +464,8 @@ class Polynomial:
 
         return
 
-    def clone(self) -> Polynomial:
+    # def clone(self) -> Polynomial:
+    def clone(self):
         """
         Clone the polynomial.
         """
