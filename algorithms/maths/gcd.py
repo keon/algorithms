@@ -9,7 +9,7 @@ def gcd(a, b):
 
 def lcm(a, b):
     """Computes the lowest common multiple of integers a and b."""
-    return a * b / gcd(a, b)
+    return (a * b) / gcd(a, b)
 
 
 """
