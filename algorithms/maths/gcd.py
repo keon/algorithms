@@ -9,7 +9,7 @@ def gcd(a, b):
 
 def lcm(a, b):
     """Computes the lowest common multiple of integers a and b."""
-    return (a * b) / gcd(a, b)
+    return a * b / gcd(a, b)
 
 
 """
@@ -32,7 +32,7 @@ def trailing_zero(x):
     return cnt
 
 """
-Given two non-negative integer a and b, 
+Given two non-negative integer a and b,
 computes the greatest common divisor of a and b using bitwise operator.
 """
 
@@ -42,7 +42,7 @@ def gcd_bit(a, b):
     a >>= tza
     b >>= tzb
     while b:
-        if a < b: 
+        if a < b:
             a, b = b, a
         a -= b
         a >>= trailing_zero(a)
