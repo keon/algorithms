@@ -91,7 +91,7 @@ def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
     return Monomial(result_variables, Fraction(m1.coeff * m2.coeff, 1))
 
 
-def cycle_product_for_two_polynomials(p1: Polynomial, p2: Polynomial, q: Union[float, int, Fraction]): -> Union[float, int, Fraction]
+def cycle_product_for_two_polynomials(p1: Polynomial, p2: Polynomial, q: Union[float, int, Fraction]) -> Union[float, int, Fraction]:
     """
     Compute the product of
     given cycle indices p1,
