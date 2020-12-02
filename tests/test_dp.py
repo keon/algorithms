@@ -13,7 +13,7 @@ from algorithms.dp import (
     longest_increasing_subsequence,
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
-    int_divide
+    int_divide,find_k_factor
 )
 
 
@@ -154,6 +154,33 @@ class TestIntDivide(unittest.TestCase):
         self.assertEqual(5, int_divide(4))
         self.assertEqual(42, int_divide(10))
         self.assertEqual(204226, int_divide(50))
+
+class Test_dp_K_Factor(unittest.TestCase):
+    def test_kfactor(self):
+        #Test 1
+        n1=4
+        k1=1
+        self.assertEqual(find_k_factor(n1,k1),1)
+
+        #Test 2
+        n2=7
+        k2=1
+        self.assertEqual(find_k_factor(n2,k2),70302)
+
+        #Test 3
+        n3=10
+        k3=2
+        self.assertEqual(find_k_factor(n3,k3),74357)
+
+        #Test 4
+        n4=8
+        k4=2
+        self.assertEqual(find_k_factor(n4,k4),53)
+
+        #Test 5
+        n5=9
+        k5=1
+        self.assertEqual(find_k_factor(n5,k5),71284044)
 
 
 if __name__ == '__main__':
