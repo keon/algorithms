@@ -146,6 +146,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [word_break](algorithms/dp/word_break.py)
     - [fibonacci](algorithms/dp/fib.py)
 	- [hosoya triangle](algorithms/dp/hosoya_triangle.py)
+	- [K-Factor_strings](algorithms/dp/k_factor.py)
 - [graph](algorithms/graph)
     - [check_bipartite](algorithms/graph/check_bipartite.py)
     - [strongly_connected](algorithms/graph/check_digraph_strongly_connected.py)
