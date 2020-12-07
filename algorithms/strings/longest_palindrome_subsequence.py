@@ -8,7 +8,7 @@ For example, s1 = 'ACBDACDBA',
     LPS(s1) ='ABDCDBA'.
 
 To see this clearly, we can align and capitalize the letters 
-that are chosen to be a part of the LCS (ignore the spaces):
+that are chosen to be a part of the LPS (ignore the spaces):
 
 s1 =      'A c B D a C D B A',
            |   | |   | | | |
