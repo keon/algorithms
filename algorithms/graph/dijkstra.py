@@ -1,36 +1,65 @@
-#Dijkstra's single source shortest path algorithm
+# from collections import namedtuple
 
-class Dijkstra():
+# Dijkstra's Single-Source Shortest Paths algorithm
+# NOTE: UNcomment Line 1, 14 and 40 to use a Named Tuple as Result (it will run slower though)
+
+
+class Dijkstra:
 
     def __init__(self, vertices):
         self.vertices = vertices
-        self.graph = [[0 for column in range(vertices)] for row in range(vertices)]
+        self.graph = None
+        self.v_distance = [float("inf")] * self.vertices
+        self.shortest_path = [False] * self.vertices  # FAQ: Checks if a Vertices' shortest route has been found.
+        #  self.ShortestPathTree = namedtuple('ShortestPathTree', ['V_' + str(V+1) for V in range(self.vertices)])
 
-    def min_distance(self, dist, min_dist_set):
-        min_dist = float("inf")
+    def min_distance(self):
+        check_node = float("inf")
+        min_index = 0
         for v in range(self.vertices):
-            if dist[v] < min_dist and min_dist_set[v] == False:
-                min_dist = dist[v]
+            if not self.v_distance[v]:
+                continue
+            elif self.v_distance[v] < check_node and not self.shortest_path[v]:
+                check_node = self.v_distance[v]  # FAQ: Set min_dist to Current Dist[v]
                 min_index = v
         return min_index
 
-    def dijkstra(self, src):
+    def dijkstra(self, source):
 
-        dist = [float("inf")] * self.vertices
-        dist[src] = 0
-        min_dist_set = [False] * self.vertices
+        self.v_distance[source] = 0  # FAQ: Set Starting Node by Index as 0
 
-        for count in range(self.vertices):
+        for idx, _ in enumerate(range(self.vertices)):
+            if idx != 0:  # FAQ: Algorithm will always start at index 0 because the Graph is relative to source
+                current = self.min_distance()  # -> Get the Index of Vertex with shortest route 
+            else:
+                current = idx
+                self.shortest_path[idx] = True
+            self.neighbour_path(current)
 
-            #minimum distance vertex that is not processed
-            u = self.min_distance(dist, min_dist_set)
 
-            #put minimum distance vertex in shortest tree
-            min_dist_set[u] = True
+        # shortest_path = self.ShortestPathTree(*self.v_distance)
+        return self.v_distance
 
-            #Update dist value of the adjacent vertices
-            for v in range(self.vertices):
-                if self.graph[u][v] > 0 and min_dist_set[v] == False and dist[v] > dist[u] + self.graph[u][v]:
-                    dist[v] = dist[u] + self.graph[u][v]
+    def neighbour_path(self, current):
+        
+        for v in range(self.vertices): # FAQ: Check neighbour Nodes and Update distance
+            neighbour = self.graph[current][v]
+            if neighbour <= 0:
+                continue
+            n_path = self.v_distance[current] + neighbour
+            if v == current:  # FAQ: Skip himself in the check as it's always 0
+                continue
+            elif self.v_distance[v] > n_path:
+                self.shortest_path[current] = True
+                self.v_distance[v] = n_path
+            else:
+                continue
 
-        return dist
+
+# NOTE: Dijkstra's single source shortest path algorithm complete traversal (Not A to B);
+#  Spanning Tree = T
+#  undirected graph = G
+#  Shortest-path Tree Distance from root v to vertex u = shortest path
+#  Map = Graph G
+#  Road = Edge E
+#  Intersection = Vertex V
