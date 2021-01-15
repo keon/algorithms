@@ -1,6 +1,6 @@
 from algorithms.arrays import (
     delete_nth, delete_nth_naive,
-    flatten_iter, flatten,
+    flatten_iter, flatten, flatten_used_stack,
     garage,
     josephus,
     longest_non_repeat_v1, longest_non_repeat_v2, get_longest_non_repeat_v1, get_longest_non_repeat_v2,
@@ -117,6 +117,20 @@ class TestFlatten(unittest.TestCase):
         flattened = flatten_iter(nested_list)
         self.assertEqual(next(flattened), 8)
         self.assertRaises(StopIteration, next, flattened)
+
+    def test_flatten_used_stack(self):
+
+        nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
+        flattened = flatten_used_stack(nested_list)
+        self.assertEqual(flattened, [2, 1, 3, 4, 5, 6, 7, 8])
+
+        nested_list = [[3, [4, 5], 6], 7, [8]]
+        flattened = flatten_used_stack(nested_list)
+        self.assertEqual(flattened, [3, 4, 5, 6, 7, 8])
+
+        nested_list = [[], [8]]
+        flattened = flatten_used_stack(nested_list)
+        self.assertEqual(flattened, [8])
 
 
 class TestGarage(unittest.TestCase):
