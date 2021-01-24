@@ -461,6 +461,9 @@ class TestNumberOfDigits(unittest.TestCase):
         self.assertEqual(2,num_digits(12))
         self.assertEqual(5,num_digits(99999))
         self.assertEqual(1,num_digits(8))
+        self.assertEqual(1,num_digits(0))        
+        self.assertEqual(1,num_digits(-5))
+        self.assertEqual(3,num_digits(-254))
 
 
 if __name__ == "__main__":
