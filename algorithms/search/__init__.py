@@ -1,4 +1,5 @@
 from .binary_search import *
+from .ternary_search import *
 from .first_occurrence import *
 from .last_occurrence import *
 from .linear_search import *
