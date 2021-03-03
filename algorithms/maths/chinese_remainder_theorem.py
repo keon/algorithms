@@ -4,6 +4,8 @@ def solve_chinese_remainder(num : list[int], rem : list[int]):
     """
     if not len(num) == len(rem):
         raise Exception("num and rem should have equal length")
+    if not len(num) > 0:
+        raise Exception("Lists num and rem need to contain at least one element")
     if not check_coprime(num):
         raise Exception("All pairs of numbers in num are not coprime")
     k = len(num)
