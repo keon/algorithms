@@ -20,7 +20,7 @@ def solve_chinese_remainder(num : list[int], rem : list[int]):
     for n in num:
         if not n > 1:
             raise Exception("All numbers in num needs to be > 1")
-    if not check_coprime(num):
+    if not _check_coprime(num):
         raise Exception("All pairs of numbers in num are not coprime")
     k = len(num)
     x = 1
@@ -35,7 +35,7 @@ def solve_chinese_remainder(num : list[int], rem : list[int]):
         else:
             x += 1
         
-def check_coprime(l : list[int]):
+def _check_coprime(l : list[int]):
     for i in range(len(l)):
         for j in range(len(l)):
             if i == j:
