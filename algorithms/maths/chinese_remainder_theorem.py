@@ -1,6 +1,15 @@
 def solve_chinese_remainder(num : list[int], rem : list[int]):
     """
     Computes the smallest x that satisfies the chinese remainder theorem
+    for a system of equations. 
+    The system of equations has the form:
+    x % num[0] = rem[0]
+    x % num[1] = rem[1]
+    ...
+    x % num[k - 1] = rem[k - 1]
+    Where k is the number of elements in num and rem, k > 0.
+    All numbers in num needs to be pariwise coprime otherwise an exception is raised
+    returns x: the smallest value for x that satisfies the system of equations
     """
     if not len(num) == len(rem):
         raise Exception("num and rem should have equal length")
