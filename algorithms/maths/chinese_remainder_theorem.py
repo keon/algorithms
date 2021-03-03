@@ -1,5 +1,3 @@
-from gcd import gcd
-
 def solve_chinese_remainder(num : list[int], rem : list[int]):
     """
     Computes the smallest x that satisfies the chinese remainder theorem
@@ -29,3 +27,12 @@ def check_coprime(l : list[int]):
             if gcd(l[i], l[j]) != 1:
                 return False
     return True
+
+# From the gcd module
+def gcd(a, b):
+    """Computes the greatest common divisor of integers a and b using
+    Euclid's Algorithm.
+    """
+    while b != 0:
+        a, b = b, a % b
+    return a
