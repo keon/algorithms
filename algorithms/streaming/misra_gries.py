@@ -7,8 +7,17 @@ For the majority problem, this algorithm only guarantees that if there is an ele
 is no such element, any arbitrary element is returned by the algorithm. Therefore, we need to iterate through again at the end. But since we have filtred
 out the suspects, the memory complexity is significantly lower than it would be to create counter for every element in the list.
 
+For example:
+Input misras_gries([1,4,4,4,5,4,4])
+Output {'4':5}
+Input misras_gries([0,0,0,1,1,1,1])
+Output {'1':4}
+Input misras_gries([0,0,0,0,1,1,1,2,2],3)
+Output {'0':4,'1':3}
+Input misras_gries([0,0,0,1,1,1]
+Output None
 """
-def misra_gries(array,k=2):
+def misras_gries(array,k=2):
   keys = {}
   for i in range(len(array)):
     val = str(array[i])
@@ -37,11 +46,4 @@ def misra_gries(array,k=2):
 def _count_frequency(array,element):
   return array.count(element)
 
-if __name__ == "__main__":
-  test_true = [1,4,5,4,4,5,4,4]
-  test_true2 = [1,1,3,1,3,3,4,2,6,1,3]
-  test_false = [1,1,3,3,2,3,4,5,6,7,8]
-  print(misra_gries(test_true,3))
-  print(misra_gries(test_true)))
-  print(misra_gries(test_false))
       
