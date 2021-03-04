@@ -29,6 +29,7 @@ from algorithms.maths import (
 )
 
 import unittest
+import pytest
 
 
 class TestPower(unittest.TestCase):
@@ -128,8 +129,37 @@ class TestGcd(unittest.TestCase):
         self.assertEqual(4, gcd(8, 12))
         self.assertEqual(1, gcd(13, 17))
 
+    def test_gcd_non_integer_input(self):
+        with pytest.raises(ValueError, match=r"Input arguments are not integers"):
+            gcd(1.0, 5)
+            gcd(5, 6.7)
+            gcd(33.8649, 6.12312312)
+
+    def test_gcd_zero_input(self):
+        with pytest.raises(ValueError, match=r"One or more input arguments equals zero"):
+            gcd(0, 12)
+            gcd(12, 0)
+            gcd(0, 0)
+
+    def test_gcd_negative_input(self):
+        self.assertEqual(1, gcd(-13, -17))
+        self.assertEqual(4, gcd(-8, 12))
+        self.assertEqual(8, gcd(24, -16))
+
     def test_lcm(self):
         self.assertEqual(24, lcm(8, 12))
+        self.assertEqual(5767, lcm(73, 79))
+
+    def test_lcm_negative_numbers(self):
+        self.assertEqual(24, lcm(-8, -12))
+        self.assertEqual(5767, lcm(73, -79))
+        self.assertEqual(1, lcm(-1, 1))
+
+    def test_lcm_zero_input(self):
+        with pytest.raises(ValueError, match=r"One or more input arguments equals zero"):
+            lcm(0, 12)
+            lcm(12, 0)
+            lcm(0, 0)
 
     def test_trailing_zero(self):
         self.assertEqual(1, trailing_zero(34))
@@ -138,6 +168,7 @@ class TestGcd(unittest.TestCase):
     def test_gcd_bit(self):
         self.assertEqual(4, gcd_bit(8, 12))
         self.assertEqual(1, gcd(13, 17))
+
 
 
 class TestGenerateStroboGrammatic(unittest.TestCase):
