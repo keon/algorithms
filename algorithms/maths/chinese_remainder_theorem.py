@@ -4,7 +4,7 @@ from typing import List
 def solve_chinese_remainder(num : List[int], rem : List[int]):
     """
     Computes the smallest x that satisfies the chinese remainder theorem
-    for a system of equations. 
+    for a system of equations.
     The system of equations has the form:
     x % num[0] = rem[0]
     x % num[1] = rem[1]
@@ -35,7 +35,7 @@ def solve_chinese_remainder(num : List[int], rem : List[int]):
             return x
         else:
             x += 1
-        
+
 def _check_coprime(l : List[int]):
     for i in range(len(l)):
         for j in range(len(l)):
