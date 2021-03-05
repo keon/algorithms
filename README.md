@@ -305,6 +305,8 @@ If you want to uninstall algorithms, it is as simple as:
     - [is_consecutive](algorithms/stack/is_consecutive.py)
     - [remove_min](algorithms/stack/remove_min.py)
     - [is_sorted](algorithms/stack/is_sorted.py)
+- [streaming](algorithms/streaming)
+    - [1-sparse-recovery](algorithms/streaming/one_sparse_recovery.py)
 - [strings](algorithms/strings)
     - [fizzbuzz](algorithms/strings/fizzbuzz.py)
     - [delete_reoccurring](algorithms/strings/delete_reoccurring.py)
