@@ -3,7 +3,7 @@ from algorithms.search import (
     ternary_search,
     first_occurrence,
     last_occurrence,
-    linear_search, recursive_linear_search,
+    iterative_linear_search, recursive_linear_search,
     search_insert,
     two_sum, two_sum1, two_sum2,
     search_range,
@@ -69,10 +69,10 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(-1, recursive_linear_search(array, 0, -1))
 
         # Iterative
-        self.assertEqual(6, linear_search(array, 4))
-        self.assertEqual(10, linear_search(array, 5))
-        self.assertEqual(-1, linear_search(array, 7))
-        self.assertEqual(-1, linear_search(array, -1))
+        self.assertEqual(6, iterative_linear_search(array, 4))
+        self.assertEqual(10, iterative_linear_search(array, 5))
+        self.assertEqual(-1, iterative_linear_search(array, 7))
+        self.assertEqual(-1, iterative_linear_search(array, -1))
 
     def test_search_insert(self):
         array = [1, 3, 5, 6]
