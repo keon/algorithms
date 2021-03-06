@@ -12,9 +12,9 @@ def recursive_linear_search(array, index: int, target: int) -> int:
     return -1
 
 
-def linear_search(array, query):
-    for i in range(len(array)):
-        if array[i] == query:
-            return i
-
+# Time Complexity O(n) and Space Complexity O(1)
+def iterative_linear_search(array, target: int) -> int:
+    for index, value in enumerate(array):
+        if value == target:
+            return index
     return -1
