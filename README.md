@@ -307,6 +307,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [is_sorted](algorithms/stack/is_sorted.py)
 - [streaming](algorithms/streaming)
     - [1-sparse-recovery](algorithms/streaming/one_sparse_recovery.py)
+    - [misra-gries](algorithms/streaming/misra-gries.py)
 - [strings](algorithms/strings)
     - [fizzbuzz](algorithms/strings/fizzbuzz.py)
     - [delete_reoccurring](algorithms/strings/delete_reoccurring.py)
