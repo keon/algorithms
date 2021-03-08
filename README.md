@@ -220,6 +220,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [next_bigger](algorithms/maths/next_bigger.py)
     - [next_perfect_square](algorithms/maths/next_perfect_square.py)
     - [nth_digit](algorithms/maths/nth_digit.py)
+    - [num_perfect_squares](algorithms/maths/num_perfect_squares.py)
     - [polynomial](algorithms/maths/polynomial.py)
     - [power](algorithms/maths/power.py)
     - [prime_check](algorithms/maths/prime_check.py)

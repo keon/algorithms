@@ -25,7 +25,8 @@ from algorithms.maths import (
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key, diffie_hellman_key_exchange,
     num_digits,
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key,
-    diffie_hellman_key_exchange, krishnamurthy_number
+    diffie_hellman_key_exchange, krishnamurthy_number,
+    num_perfect_squares
 )
 
 import unittest
@@ -464,6 +465,21 @@ class TestNumberOfDigits(unittest.TestCase):
         self.assertEqual(1,num_digits(0))        
         self.assertEqual(1,num_digits(-5))
         self.assertEqual(3,num_digits(-254))
+
+class TestNumberOfPerfectSquares(unittest.TestCase):
+    """[summary]
+    Test for the file num_perfect_squares.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_num_perfect_squares(self):
+        self.assertEqual(3,num_perfect_squares(12))
+        self.assertEqual(2,num_perfect_squares(13))
+        self.assertEqual(2,num_perfect_squares(10))
+        self.assertEqual(4,num_perfect_squares(1500))        
+        self.assertEqual(2,num_perfect_squares(1548524521))
+        self.assertEqual(3,num_perfect_squares(9999999993))
 
 
 if __name__ == "__main__":
