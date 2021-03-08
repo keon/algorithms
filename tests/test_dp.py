@@ -13,7 +13,8 @@ from algorithms.dp import (
     longest_increasing_subsequence,
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
-    int_divide,find_k_factor
+    int_divide,find_k_factor,
+    planting_trees
 )
 
 
@@ -182,6 +183,30 @@ class Test_dp_K_Factor(unittest.TestCase):
         k5=1
         self.assertEqual(find_k_factor(n5,k5),71284044)
 
+class TestPlantingTrees(unittest.TestCase):
+    def test_simple(self):
+        # arrange
+        trees = [0, 1, 10, 10]
+        L = 10
+        W = 1
+
+        # act
+        res = planting_trees(trees, L, W)
+
+        # assert
+        self.assertEqual(res, 2.414213562373095)
+
+    def test_simple2(self):
+        # arrange
+        trees = [0, 3, 5, 5, 6, 9]
+        L = 10
+        W = 1
+
+        # act
+        res = planting_trees(trees, L, W)
+
+        # assert
+        self.assertEqual(res, 9.28538328578604)
 
 if __name__ == '__main__':
     unittest.main()
