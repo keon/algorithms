@@ -480,6 +480,7 @@ class TestNumberOfPerfectSquares(unittest.TestCase):
         self.assertEqual(4,num_perfect_squares(1500))        
         self.assertEqual(2,num_perfect_squares(1548524521))
         self.assertEqual(3,num_perfect_squares(9999999993))
+        self.assertEqual(1,num_perfect_squares(9))
 
 
 if __name__ == "__main__":
