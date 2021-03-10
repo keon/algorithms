@@ -348,6 +348,7 @@ If you want to uninstall algorithms, it is as simple as:
 	  - [atbash_cipher](algorithms/strings/atbash_cipher.py)
     - [longest_palindromic_substring](algorithms/strings/longest_palindromic_substring.py)
   	- [knuth_morris_pratt](algorithms/strings/knuth_morris_pratt.py)
+    - [panagram](algorithms/strings/panagram.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/bst)
         - [array_to_bst](algorithms/tree/bst/array_to_bst.py)
