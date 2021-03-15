@@ -19,9 +19,10 @@ def rotate_v1(array, k):
     :type k: int
     :rtype: void Do not return anything, modify array in-place instead.
     """
+
     array = array[:]
     n = len(array)
-    for i in range(k):      # unused variable is not a problem
+    for _ in range(k):
         temp = array[n - 1]
         for j in range(n-1, 0, -1):
             array[j] = array[j - 1]
@@ -37,6 +38,7 @@ def rotate_v2(array, k):
     :type k: int
     :rtype: void Do not return anything, modify nums in-place instead.
     """
+    # pylint: disable=invalid-name
     array = array[:]
 
     def reverse(arr, a, b):

@@ -12,9 +12,11 @@ ex) limit([1,2,3,4,5], None, 3) = [1,2,3]
 Complexity = O(n)
 """
 
-# tl:dr -- array slicing by value
+
 def limit(arr, min_lim=None, max_lim=None):
+    """
+    tl:dr -- array slicing by value
+    """
     min_check = lambda val: True if min_lim is None else (min_lim <= val)
     max_check = lambda val: True if max_lim is None else (val <= max_lim)
-    
     return [val for val in arr if min_check(val) and max_check(val)]

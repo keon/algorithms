@@ -9,8 +9,11 @@ which leads to [1,2,3,1,2,3]
 import collections
 
 
-# Time complexity O(n^2)
 def delete_nth_naive(array, n):
+    """
+        Time complexity O(n^2)
+    """
+    # pylint: disable=invalid-name
     ans = []
     for num in array:
         if ans.count(num) < n:
@@ -18,8 +21,11 @@ def delete_nth_naive(array, n):
     return ans
 
 
-# Time Complexity O(n), using hash tables.
 def delete_nth(array, n):
+    """
+        Time Complexity O(n), using hash tables.
+    """
+    # pylint: disable=invalid-name
     result = []
     counts = collections.defaultdict(int)  # keep track of occurrences
 

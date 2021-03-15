@@ -12,10 +12,12 @@ For example: top_1([1, 1, 2, 2, 3, 4]) will return [1, 2]
 (TL:DR) Get mathematical Mode
 Complexity: O(n)
 """
+
+
 def top_1(arr):
     values = {}
-    #reserve each value which first appears on keys
-    #reserve how many time each value appears by index number on values
+    # reserve each value which first appears on keys
+    # reserve how many time each value appears by index number on values
     result = []
     f_val = 0
 
@@ -26,7 +28,7 @@ def top_1(arr):
             values[i] = 1
 
     f_val = max(values.values())
-        
+    # pylint: disable=consider-iterating-dictionary
     for i in values.keys():
         if values[i] == f_val:
             result.append(i)
@@ -34,4 +36,3 @@ def top_1(arr):
             continue
     
     return result
-    

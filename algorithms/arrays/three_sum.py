@@ -20,6 +20,7 @@ def three_sum(array):
     :param array: List[int]
     :return: Set[ Tuple[int, int, int] ]
     """
+    # pylint: disable=invalid-name
     res = set()
     array.sort()
     for i in range(len(array) - 2):

@@ -6,23 +6,38 @@ produce a single resultant array.
 from collections.abc import Iterable
 
 
-# return list
 def flatten(input_arr, output_arr=None):
+    """
+    Takes a multidimensional input array and
+    returns one dimensional array
+
+    Args:
+        input_arr: Multi dimensional input array
+        output_arr: optional Output array
+
+    Returns:
+        output_arr(list): One dimensional output array
+    """
     if output_arr is None:
         output_arr = []
     for ele in input_arr:
         if not isinstance(ele, str) and isinstance(ele, Iterable):
-            flatten(ele, output_arr)    #tail-recursion
+            flatten(ele, output_arr)    # tail-recursion
         else:
-            output_arr.append(ele)      #produce the result
+            output_arr.append(ele)      # produce the result
     return output_arr
 
 
-# returns iterator
 def flatten_iter(iterable):
     """
     Takes as input multi dimensional iterable and
     returns generator which produces one dimensional output.
+
+    Args:
+        iterable: Multi dimensional iterable
+
+    Returns:
+        A generator which produces one dimensional output.
     """
     for element in iterable:
         if not isinstance(element, str) and isinstance(element, Iterable):

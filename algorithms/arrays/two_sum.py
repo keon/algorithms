@@ -15,6 +15,7 @@ Example:
 
 def two_sum(array, target):
     dic = {}
+    # pylint: disable=no-else-return
     for i, num in enumerate(array):
         if num in dic:
             return dic[num], i

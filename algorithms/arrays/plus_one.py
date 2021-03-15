@@ -29,6 +29,7 @@ def plus_one_v1(digits):
 
 
 def plus_one_v2(digits):
+    # pylint: disable=invalid-name
     n = len(digits)
     for i in range(n-1, -1, -1):
         if digits[i] < 9:

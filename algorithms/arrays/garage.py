@@ -33,7 +33,10 @@ Sequence :
 
 
 def garage(initial, final):
+    """
+    Function to calculate least number of steps and sequence to achieve final list
 
+    """
     initial = initial[::]      # prevent changes in original 'initial'
     seq = []                   # list of each step in sequence
     steps = 0
@@ -44,8 +47,8 @@ def garage(initial, final):
             pos = initial.index(car_to_move)         # and where is it?
             initial[zero], initial[pos] = initial[pos], initial[zero]
         else:
-            for i in range(len(initial)):
-                if initial[i] != final[i]:
+            for i, elm in enumerate(list(zip(initial, final))):
+                if elm[0] != elm[1]:
                     initial[zero], initial[i] = initial[i], initial[zero]
                     break
         seq.append(initial[::])

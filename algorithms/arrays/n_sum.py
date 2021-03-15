@@ -32,6 +32,7 @@ Example:
 
 
 def n_sum(n, nums, target, **kv):
+    # pylint: disable=invalid-name
     """
     n: int
     nums: list[object]
@@ -54,6 +55,7 @@ def n_sum(n, nums, target, **kv):
 
     def compare_closure_default(num, target):
         """ above, below, or right on? """
+        # pylint: disable=no-else-return
         if num < target:
             return -1
         elif num > target:
@@ -109,7 +111,7 @@ def n_sum(n, nums, target, **kv):
                 while (lt < len(nums) and
                        same_closure(nums[lt - 1], nums[lt])):
                     lt += 1
-                while (0 <= rt and
+                while (rt >= 0 and
                        same_closure(nums[rt], nums[rt + 1])):
                     rt -= 1
         return results

@@ -17,7 +17,7 @@ So the function return => 3
 
 
 def max_ones_index(arr):
-
+    # pylint: disable=invalid-name
     n = len(arr)
     max_count = 0
     max_index = 0

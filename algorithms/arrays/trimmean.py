@@ -11,6 +11,8 @@ compute it.
 
 Compleity: O(n)
 """
+
+
 def trimmean(arr, per):
     ratio = per/200
     # /100 for easy calculation by *, and /2 for easy adaption to best and worst parts.
