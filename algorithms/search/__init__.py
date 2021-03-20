@@ -1,4 +1,5 @@
 from .binary_search import *
+from .ternary_search import *
 from .first_occurrence import *
 from .last_occurrence import *
 from .linear_search import *
@@ -9,3 +10,4 @@ from .find_min_rotate import *
 from .search_rotate import *
 from .jump_search import *
 from .next_greatest_letter import *
+from .interpolation_search import *

@@ -9,7 +9,8 @@ from algorithms.graph import maximum_flow_dfs
 from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 from algorithms.graph import bellman_ford
-
+from algorithms.graph import count_connected_number_of_component
+from algorithms.graph import prims_minimum_spanning
 
 import unittest
 
@@ -209,3 +210,78 @@ class TestBellmanFord(unittest.TestCase):
         } 
     
         self.assertEqual(True, bellman_ford(graph2, 'a'))
+
+        
+class TestConnectedComponentInGraph(unittest.TestCase):    
+    """
+     Class for testing different cases for connected components in graph
+    """
+    def test_count_connected_components(self):
+        """
+           Test Function that test the different cases of count connected components
+            
+            2----------0    1--------5      3
+            |
+            |
+            4
+                
+                output = 3
+        """
+        expected_result = 3
+        
+        # adjacency list representation of graph
+        l = [[2],
+            [5],
+            [0,4],
+            [],
+            [2],
+            [1]
+        ]
+
+        size = 5
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)
+
+    def test_connected_components_with_empty_graph(self):
+
+        """
+            input : 
+            output : 0
+        """
+        
+        l = [[]]
+        expected_result = 0
+        size = 0
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)    
+
+    def test_connected_components_without_edges_graph(self):
+        """
+          input : 0          2             3          4
+          output : 4
+        """   
+        l = [[0],[],[2],[3],[4]]
+        size = 4
+        expected_result = 4
+        result = count_connected_number_of_component.count_components(l,size)
+        self.assertEqual(result,expected_result)
+
+        
+class PrimsMinimumSpanning(unittest.TestCase):
+    def test_prim_spanning(self):
+        graph1 = {
+            1 : [ [3, 2], [8, 3] ],
+            2 : [ [3, 1], [5, 4] ],
+            3 : [ [8, 1], [2, 4], [4, 5] ],
+            4 : [ [5, 2], [2, 3], [6, 5] ],
+            5 : [ [4, 3], [6, 4] ]
+        }
+        self.assertEqual(14, prims_minimum_spanning(graph1))
+        
+        graph2 = {
+            1 : [ [7, 2], [6, 4] ],
+            2 : [ [7, 1], [9, 4], [6, 3] ],
+            3 : [ [8, 4], [6, 2] ],
+            4 : [ [6, 1], [9, 2], [8, 3] ]
+        }
+        self.assertEqual(19, prims_minimum_spanning(graph2))

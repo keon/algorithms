@@ -12,8 +12,7 @@ the inputs to integer directly.
 """
 
 
-def multiply(num1:"str", num2:"str")->"str":
-    carry = 1
+def multiply(num1: "str", num2: "str") -> "str":
     interm = []
     zero = ord('0')
     i_pos = 1

@@ -13,5 +13,7 @@ __pycache__/
 /*.egg
 # docs
 build/
-
+pythonenv3.8/
 .vscode/
+# Ignoring the virtual Environment when using GitHub Codespaces
+.venv/

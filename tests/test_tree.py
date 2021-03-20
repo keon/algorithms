@@ -8,6 +8,10 @@ from algorithms.tree.traversal import (
 )
 from algorithms.tree.b_tree import BTree
 
+from algorithms.tree import construct_tree_postorder_preorder as ctpp
+
+from algorithms.tree.fenwick_tree.fenwick_tree import Fenwick_Tree
+
 import unittest
 
 
@@ -107,6 +111,64 @@ class TestBTree(unittest.TestCase):
         self.assertEqual(btree.root.keys, [])
         self.assertEqual(btree.root.children, [])
 
+class TestConstructTreePreorderPostorder(unittest.TestCase):
+    def test_construct_tree(self):
+        
+        # Test 1
+        ctpp.pre_index = 0
+        pre1 = [1, 2, 4, 8, 9, 5, 3, 6, 7]
+        post1 = [8, 9, 4, 5, 2, 6, 7, 3, 1]
+        size1 = len(pre1)
+
+        self.assertEqual(ctpp.construct_tree(pre1, post1, size1), [8,4,9,2,5,1,6,3,7])
+
+        # Test 2
+        ctpp.pre_index = 0
+        pre2 = [1, 2, 4, 5, 3, 6, 7]
+        post2 = [4, 5, 2, 6, 7, 3, 1]
+        size2 = len(pre2)
+
+        self.assertEqual(ctpp.construct_tree(pre2, post2, size2), [4,2,5,1,6,3,7])
+
+        # Test 3
+        ctpp.pre_index = 0
+        pre3 = [12, 7, 16, 21, 5, 1, 9]
+        post3 = [16, 21, 7, 1, 9, 5, 12]
+        size3 = len(pre3)
+
+        self.assertEqual(ctpp.construct_tree(pre3, post3, size3), [16,7,21,12,1,5,9])
+
+
+class TestFenwickTree(unittest.TestCase):
+    def test_construct_tree_with_update_1(self):
+        freq = [2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9]
+        ft = Fenwick_Tree(freq)
+        bit_tree = ft.construct()
+        self.assertEqual(12, ft.get_sum(bit_tree, 5))
+
+        freq[3] += 6
+        ft.update_bit(bit_tree, 3, 6)
+        self.assertEqual(18, ft.get_sum(bit_tree, 5))
+
+    def test_construct_tree_with_update_2(self):
+        freq = [1, 2, 3, 4, 5]
+        ft = Fenwick_Tree(freq)
+        bit_tree = ft.construct()
+        self.assertEqual(10, ft.get_sum(bit_tree, 3))
+
+        freq[3] -= 5
+        ft.update_bit(bit_tree, 3, -5)
+        self.assertEqual(5, ft.get_sum(bit_tree, 3))
+
+    def test_construct_tree_with_update_3(self):
+        freq = [2, 1, 4, 6, -1, 5, -32, 0, 1]
+        ft = Fenwick_Tree(freq)
+        bit_tree = ft.construct()
+        self.assertEqual(12, ft.get_sum(bit_tree, 4))
+
+        freq[2] += 11
+        ft.update_bit(bit_tree, 2, 11)
+        self.assertEqual(23, ft.get_sum(bit_tree, 4))
 
 if __name__ == '__main__':
     unittest.main()

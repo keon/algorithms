@@ -28,6 +28,7 @@ from algorithms.strings import (
     judge_circle,
     strong_password,
     caesar_cipher,
+    check_pangram,
     contain_string,
     count_binary_substring,
     repeat_string,
@@ -38,7 +39,9 @@ from algorithms.strings import (
     first_unique_char,
     repeat_substring,
     atbash,
-    knuth_morris_pratt
+    longest_palindrome,
+    knuth_morris_pratt,
+    panagram
 )
 
 import unittest
@@ -79,7 +82,8 @@ class TestBreakingBad(unittest.TestCase):
 
     def test_bracket(self):
         self.assertEqual(('[Am]azon', 'Mi[cro]soft', 'Goog[le]'), bracket(self.words, self.symbols))
-
+        self.assertEqual(('Amazon', 'Microsoft', 'Google'), bracket(self.words, ['thisshouldnotmatch']))
+        self.assertEqual(('Amazon', 'M[i]crosoft', 'Google'), bracket(self.words, ['i', 'i']))
 
 class TestDecodeString(unittest.TestCase):
     """[summary]
@@ -452,6 +456,11 @@ class TestCaesarCipher(unittest.TestCase):
         self.assertEqual("Lipps_Asvph!", caesar_cipher("Hello_World!", 4))
         self.assertEqual("okffng-Qwvb", caesar_cipher("middle-Outz", 2))
 
+class TestCheckPangram(unittest.TestCase):
+    def test_check_pangram(self):
+        self.assertTrue(check_pangram("The quick brown fox jumps over the lazy dog"))
+        self.assertFalse(check_pangram("The quick brown fox"))
+
 
 class TestContainString(unittest.TestCase):
     def test_contain_string(self):
@@ -526,24 +535,122 @@ class TestAtbashCipher(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
-    
+
     def test_atbash_cipher(self):
         self.assertEqual("zyxwvutsrqponml", atbash("abcdefghijklmno"))
         self.assertEqual("KbgslM", atbash("PythoN"))
         self.assertEqual("AttaCK at DawN", atbash("ZggzXP zg WzdM"))
         self.assertEqual("ZggzXP zg WzdM", atbash("AttaCK at DawN"))
+
+
+
+class TestLongestPalindromicSubstring(unittest.TestCase):
+    """[summary]
+    Test for the file longest_palindromic_substring.py
+    
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    
+    def test_longest_palindromic_substring(self):
+        self.assertEqual("bb", longest_palindrome("cbbd"))
+        self.assertEqual("abba", longest_palindrome("abba"))
+        self.assertEqual("asdadsa", longest_palindrome("dasdasdasdasdasdadsa"))
+        self.assertEqual("abba", longest_palindrome("cabba"))
+
         
 class TestKnuthMorrisPratt(unittest.TestCase):
     """[summary]
     Test for the file knuth_morris_pratt.py
 
+
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_knuth_morris_pratt(self):
         self.assertEqual([0, 1, 2, 3, 4], knuth_morris_pratt("aaaaaaa", "aaa"))
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
         self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
+
+class TestPanagram(unittest.TestCase):
+    """[summary]
+    Test for the file panagram.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_empty_string(self):
+        # Arrange
+        string = ""
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_single_word_non_panagram(self):
+        # Arrange
+        string = "sentence"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_fox_panagram_no_spaces(self):
+        # Arrange
+        string = "thequickbrownfoxjumpsoverthelazydog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_fox_panagram_mixed_case(self):
+        # Arrange
+        string = "theqUiCkbrOwnfOxjUMPSOVErThELAzYDog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_whitespace_punctuation(self):
+        # Arrange
+        string = "\n\t\r,.-_!?"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_fox_panagram(self):
+        # Arrange
+        string = "the quick brown fox jumps over the lazy dog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_swedish_panagram(self):
+        # Arrange
+        string = "Yxmördaren Julia Blomqvist på fäktning i Schweiz"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
 
 if __name__ == "__main__":
     unittest.main()

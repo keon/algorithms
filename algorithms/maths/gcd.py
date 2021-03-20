@@ -1,7 +1,19 @@
 def gcd(a, b):
     """Computes the greatest common divisor of integers a and b using
     Euclid's Algorithm.
+    gcd{𝑎,𝑏}=gcd{−𝑎,𝑏}=gcd{𝑎,−𝑏}=gcd{−𝑎,−𝑏}
+    See proof: https://proofwiki.org/wiki/GCD_for_Negative_Integers
     """
+    a_int = isinstance(a, int)
+    b_int = isinstance(b, int)
+    a = abs(a)
+    b = abs(b)
+    if not(a_int or b_int):
+        raise ValueError("Input arguments are not integers")
+
+    if (a == 0) or (b == 0) :
+        raise ValueError("One or more input arguments equals zero")
+
     while b != 0:
         a, b = b, a % b
     return a
@@ -9,7 +21,7 @@ def gcd(a, b):
 
 def lcm(a, b):
     """Computes the lowest common multiple of integers a and b."""
-    return a * b / gcd(a, b)
+    return abs(a) * abs(b) / gcd(a, b)
 
 
 """
@@ -32,7 +44,7 @@ def trailing_zero(x):
     return cnt
 
 """
-Given two non-negative integer a and b, 
+Given two non-negative integer a and b,
 computes the greatest common divisor of a and b using bitwise operator.
 """
 
@@ -42,7 +54,7 @@ def gcd_bit(a, b):
     a >>= tza
     b >>= tzb
     while b:
-        if a < b: 
+        if a < b:
             a, b = b, a
         a -= b
         a >>= trailing_zero(a)

@@ -11,7 +11,7 @@ def long_description():
 
 
 setup(name='algorithms',
-      version='0.1.0',
+      version='0.1.4',
       description='Pythonic Data Structures and Algorithms',
       long_description=long_description(),
       long_description_content_type="text/markdown",
@@ -19,11 +19,12 @@ setup(name='algorithms',
       author='Algorithms Team & Contributors',
       author_email="kwk236@gmail.com",
       license='MIT',
-      packages=find_packages(),
+      packages=find_packages(exclude=('tests', 'tests.*')),
       classifiers=[
           'Programming Language :: Python :: 3',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
           ],
       zip_safe=False)
