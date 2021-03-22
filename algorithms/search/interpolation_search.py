@@ -21,11 +21,13 @@ def interpolation_search(array: List[int], search_key: int) -> int:
 
     :returns: Index of search_key in array if found, else -1.
 
-    Example
+    Examples:
 
-    >>> interpolation_search([1, 10, 12, 15, 20, 41, 55], 20)
-    4
+    >>> interpolation_search([-25, -12, -1, 10, 12, 15, 20, 41, 55], -1)
+    2
     >>> interpolation_search([5, 10, 12, 14, 17, 20, 21], 55)
+    -1
+    >>> interpolation_search([5, 10, 12, 14, 17, 20, 21], -5)
     -1
 
     """
@@ -34,20 +36,26 @@ def interpolation_search(array: List[int], search_key: int) -> int:
     high = len(array) - 1
     low = 0
 
-    while low <= high and search_key in range(low, array[high] + 1):
+    while (low <= high) and (array[low] <= search_key <= array[high]):
         # calculate the search position
         pos = low + int(((search_key - array[low]) *
                          (high - low) / (array[high] - array[low])))
 
-        # if array[pos] equals the search_key then return pos as the index
-        if search_key == array[pos]:
+        # search_key is found 
+        if array[pos] == search_key:
             return pos
-        # if the search_key is greater than array[pos] restart the search with the
-        # subarray greater than array[pos]
-        elif search_key > array[pos]:
+
+        # if search_key is larger, search_key is in upper part
+        if array[pos] < search_key:
             low = pos + 1
-        # in this case start the search with the subarray smaller than current array[pos]
-        elif search_key < array[pos]:
+            
+        # if search_key is smaller, search_key is in lower part
+        else:
             high = pos - 1
 
     return -1
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
