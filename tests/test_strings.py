@@ -40,7 +40,8 @@ from algorithms.strings import (
     repeat_substring,
     atbash,
     longest_palindrome,
-    knuth_morris_pratt
+    knuth_morris_pratt,
+    panagram
 )
 
 import unittest
@@ -571,6 +572,84 @@ class TestKnuthMorrisPratt(unittest.TestCase):
         self.assertEqual([0, 1, 2, 3, 4], knuth_morris_pratt("aaaaaaa", "aaa"))
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
         self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
+
+class TestPanagram(unittest.TestCase):
+    """[summary]
+    Test for the file panagram.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_empty_string(self):
+        # Arrange
+        string = ""
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_single_word_non_panagram(self):
+        # Arrange
+        string = "sentence"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_fox_panagram_no_spaces(self):
+        # Arrange
+        string = "thequickbrownfoxjumpsoverthelazydog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_fox_panagram_mixed_case(self):
+        # Arrange
+        string = "theqUiCkbrOwnfOxjUMPSOVErThELAzYDog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_whitespace_punctuation(self):
+        # Arrange
+        string = "\n\t\r,.-_!?"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(False, res)
+
+    def test_fox_panagram(self):
+        # Arrange
+        string = "the quick brown fox jumps over the lazy dog"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
+
+    def test_swedish_panagram(self):
+        # Arrange
+        string = "Yxmördaren Julia Blomqvist på fäktning i Schweiz"
+
+        # Act
+        res = panagram(string)
+
+        # Assert
+        self.assertEqual(True, res)
 
 
 if __name__ == "__main__":

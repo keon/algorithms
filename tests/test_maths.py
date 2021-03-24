@@ -26,10 +26,12 @@ from algorithms.maths import (
     num_digits,
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key,
     diffie_hellman_key_exchange, krishnamurthy_number,
-    num_perfect_squares
+    num_perfect_squares,
+    chinese_remainder_theorem,
 )
 
 import unittest
+import pytest
 
 
 class TestPower(unittest.TestCase):
@@ -129,8 +131,37 @@ class TestGcd(unittest.TestCase):
         self.assertEqual(4, gcd(8, 12))
         self.assertEqual(1, gcd(13, 17))
 
+    def test_gcd_non_integer_input(self):
+        with pytest.raises(ValueError, match=r"Input arguments are not integers"):
+            gcd(1.0, 5)
+            gcd(5, 6.7)
+            gcd(33.8649, 6.12312312)
+
+    def test_gcd_zero_input(self):
+        with pytest.raises(ValueError, match=r"One or more input arguments equals zero"):
+            gcd(0, 12)
+            gcd(12, 0)
+            gcd(0, 0)
+
+    def test_gcd_negative_input(self):
+        self.assertEqual(1, gcd(-13, -17))
+        self.assertEqual(4, gcd(-8, 12))
+        self.assertEqual(8, gcd(24, -16))
+
     def test_lcm(self):
         self.assertEqual(24, lcm(8, 12))
+        self.assertEqual(5767, lcm(73, 79))
+
+    def test_lcm_negative_numbers(self):
+        self.assertEqual(24, lcm(-8, -12))
+        self.assertEqual(5767, lcm(73, -79))
+        self.assertEqual(1, lcm(-1, 1))
+
+    def test_lcm_zero_input(self):
+        with pytest.raises(ValueError, match=r"One or more input arguments equals zero"):
+            lcm(0, 12)
+            lcm(12, 0)
+            lcm(0, 0)
 
     def test_trailing_zero(self):
         self.assertEqual(1, trailing_zero(34))
@@ -139,6 +170,7 @@ class TestGcd(unittest.TestCase):
     def test_gcd_bit(self):
         self.assertEqual(4, gcd_bit(8, 12))
         self.assertEqual(1, gcd(13, 17))
+
 
 
 class TestGenerateStroboGrammatic(unittest.TestCase):
@@ -466,6 +498,7 @@ class TestNumberOfDigits(unittest.TestCase):
         self.assertEqual(1,num_digits(-5))
         self.assertEqual(3,num_digits(-254))
 
+
 class TestNumberOfPerfectSquares(unittest.TestCase):
     """[summary]
     Test for the file num_perfect_squares.py
@@ -482,6 +515,39 @@ class TestNumberOfPerfectSquares(unittest.TestCase):
         self.assertEqual(3,num_perfect_squares(9999999993))
         self.assertEqual(1,num_perfect_squares(9))
 
+
+class TestChineseRemainderSolver(unittest.TestCase):
+    def test_k_three(self):
+        # Example which should give the answer 143
+        # which is the smallest possible x that
+        # solves the system of equations
+        num = [3, 7, 10]
+        rem = [2, 3, 3]
+        self.assertEqual(chinese_remainder_theorem.solve_chinese_remainder(num, rem), 143)
+
+    def test_k_five(self):
+        # Example which should give the answer 3383
+        # which is the smallest possible x that
+        # solves the system of equations
+        num = [3, 5, 7, 11, 26]
+        rem = [2, 3, 2, 6, 3]
+        self.assertEqual(chinese_remainder_theorem.solve_chinese_remainder(num, rem), 3383)
+
+    def test_exception_non_coprime(self):
+        # There should be an exception when all
+        # numbers in num are not pairwise coprime
+        num = [3, 7, 10, 14]
+        rem = [2, 3, 3, 1]
+        with self.assertRaises(Exception):
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+
+    def test_empty_lists(self):
+        num = []
+        rem = []
+        with self.assertRaises(Exception):
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+
+            
 
 if __name__ == "__main__":
     unittest.main()
