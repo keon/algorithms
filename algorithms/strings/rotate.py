@@ -7,12 +7,13 @@ rotate("hello", 5) return "hello"
 rotate("hello", 6) return "elloh"
 rotate("hello", 7) return "llohe"
 
-accepts two strings
-returns bool
+
 """
 def rotate(s, k):
-    double_s = s + s
+    long_string = s
+    while k >= len(long_string):
+        long_string += s
     if k <= len(s):
-        return double_s[k:k + len(s)]
+        return long_string[k:k + len(s)]
     else:
-        return double_s[k-len(s):k]
+        return long_string[k-len(s):k]
