@@ -7,12 +7,9 @@ rotate("hello", 5) return "hello"
 rotate("hello", 6) return "elloh"
 rotate("hello", 7) return "llohe"
 
-
 """
 def rotate(s, k):
-    long_string = s
-    while k >= len(long_string):
-        long_string += s
+    long_string = s * (k // len(s) + 2)
     if k <= len(s):
         return long_string[k:k + len(s)]
     else:
