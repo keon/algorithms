@@ -7,7 +7,7 @@ digit is at the head of the list.
 """
 
 
-def plus_one_v1(digits):
+def plusOneV1(digits):
     """
     :type digits: List[int]
     :rtype: List[int]
@@ -28,7 +28,7 @@ def plus_one_v1(digits):
     return res[::-1]
 
 
-def plus_one_v2(digits):
+def plusOneV2(digits):
     n = len(digits)
     for i in range(n-1, -1, -1):
         if digits[i] < 9:
@@ -39,10 +39,10 @@ def plus_one_v2(digits):
     return digits
 
 
-def plus_one_v3(num_arr):
+def plusOneV3(numAarr):
 
-    for idx in reversed(list(enumerate(num_arr))):
-        num_arr[idx[0]] = (num_arr[idx[0]] + 1) % 10
-        if num_arr[idx[0]]:
-            return num_arr
-    return [1] + num_arr
+    for idx in reversed(list(enumerate(numArr))):
+        numArr[idx[0]] = (numArr[idx[0]] + 1) % 10
+        if numArr[idx[0]]:
+            return numArr
+    return [1] + numArr
