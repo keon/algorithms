@@ -6,4 +6,3 @@ for i in range(len(number)):
 	if digit == '1':
 		value = value + pow(2, i)
 print("The decimal value of the number is", value) 
- ProTip! Use n and p to navigate between commits in a pull request.
