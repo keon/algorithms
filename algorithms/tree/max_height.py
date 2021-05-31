@@ -12,7 +12,7 @@ longest path from the root node down to the farthest leaf node.
 
 # iterative
 
-from tree.tree import TreeNode
+from tree import TreeNode
 
 
 def max_height(root):

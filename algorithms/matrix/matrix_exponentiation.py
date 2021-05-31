@@ -16,7 +16,7 @@ def multiply(matA: list, matB: list) -> list:
 def identity(n: int) -> list:
     """
     Returns the Identity matrix of size n x n
-    Time Complecity: O(n^2)
+    Time Complexity: O(n^2)
     """
     I = [[0 for i in range(n)] for j in range(n)]
     
@@ -29,7 +29,7 @@ def matrix_exponentiation(mat: list, n: int) -> list:
     """
     Calculates mat^n by repeated squaring
     Time Complexity: O(d^3 log(n))
-                     d: dimesion of the square matrix mat
+                     d: dimension of the square matrix mat
                      n: power the matrix is raised to
     """
     if n == 0:

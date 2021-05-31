@@ -1,4 +1,4 @@
-from tree.tree import TreeNode
+from tree import TreeNode
 
 
 def min_depth(self, root):
