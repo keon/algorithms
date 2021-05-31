@@ -48,7 +48,7 @@ class AbstractHeap(metaclass=ABCMeta):
     def min_child(self,i):
         pass
     @abstractmethod
-    def remove_min(self,i):
+    def remove_min(self):
         pass
 class BinaryHeap(AbstractHeap):
     def __init__(self):
@@ -64,8 +64,8 @@ class BinaryHeap(AbstractHeap):
 
     """
         Method insert always start by inserting the element at the bottom.
-        it inserts rightmost spot so as to maintain the complete tree property
-        Then, it fix the tree by swapping the new element with its parent,
+        It inserts rightmost spot so as to maintain the complete tree property.
+        Then, it fixes the tree by swapping the new element with its parent,
         until it finds an appropriate spot for the element. It essentially
         perc_up the minimum element
         Complexity: O(logN)
@@ -104,7 +104,7 @@ class BinaryHeap(AbstractHeap):
     """
     def remove_min(self):
         ret = self.heap[1]      # the smallest value at beginning
-        self.heap[1] = self.heap[self.currentSize] # Repalce it by the last value
+        self.heap[1] = self.heap[self.currentSize] # Replace it by the last value
         self.currentSize = self.currentSize - 1
         self.heap.pop()
         self.perc_down(1)
