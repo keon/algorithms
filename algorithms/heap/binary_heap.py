@@ -76,7 +76,7 @@ class BinaryHeap(AbstractHeap):
         self.perc_up(self.currentSize)
 
     """
-        Method min_child returns index of smaller 2 childs of its parent
+        Method min_child returns the index of smaller of 2 children of parent at index i
     """
     def min_child(self, i):
         if 2 * i + 1 > self.currentSize:  # No right child
