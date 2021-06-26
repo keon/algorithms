@@ -194,6 +194,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [hashtable](algorithms/map/hashtable.py)
     - [separate_chaining_hashtable](algorithms/map/separate_chaining_hashtable.py)
     - [longest_common_subsequence](algorithms/map/longest_common_subsequence.py)
+    - [longest_palindromic_subsequence](algorithms/map/longest_palindromic_subsequence.py)
     - [randomized_set](algorithms/map/randomized_set.py)
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
     - [word_pattern](algorithms/map/word_pattern.py)
