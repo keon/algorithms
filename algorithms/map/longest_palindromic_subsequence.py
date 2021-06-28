@@ -8,10 +8,10 @@ def longest_palindromic_subsequence(str):
         L[i][i] = 1
   
     
-    for cl in range(2, n + 1):
-        for i in range(n-cl + 1):
-            j = i + cl-1
-            if str[i] == str[j] and cl == 2:
+    for sub_string_length in range(2, n + 1):
+        for i in range(n-sub_string_length + 1):
+            j = i + sub_string_length-1
+            if str[i] == str[j] and sub_string_length == 2:
                 L[i][j] = 2
             elif str[i] == str[j]:
                 L[i][j] = L[i + 1][j-1] + 2
