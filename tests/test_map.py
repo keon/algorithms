@@ -3,7 +3,8 @@ from algorithms.map import (
     Node, SeparateChainingHashTable,
     word_pattern,
     is_isomorphic,
-    is_anagram
+    is_anagram,
+    longest_palindromic_subsequence,
 )
 
 import unittest
@@ -164,6 +165,18 @@ class TestIsSomorphic(unittest.TestCase):
         self.assertFalse(is_isomorphic("foo", "bar"))
         self.assertTrue(is_isomorphic("paper", "title"))
 
+class TestLongestPalindromicSubsequence(unittest.TestCase):
+    def test_longest_palindromic_subsequence_is_correct(self):
+        self.assertEqual(7,longest_palindromic_subsequence('BBABCBCAB'))
+        self.assertEqual(4,longest_palindromic_subsequence('abbaeae'))
+        self.assertEqual(8,longest_palindromic_subsequence('babbbababaa'))
+        self.assertEqual(6,longest_palindromic_subsequence('daccandeeja'))
+
+    def test_longest_palindromic_subsequence_is_incorrect(self):
+        self.assertEqual(4,longest_palindromic_subsequence('BBABCBCAB'))
+        self.assertEqual(5,longest_palindromic_subsequence('abbaeae'))
+        self.assertEqual(2,longest_palindromic_subsequence('babbbababaa'))
+        self.assertEqual(1,longest_palindromic_subsequence('daccandeeja'))
 
 class TestIsAnagram(unittest.TestCase):
     def test_is_anagram(self):
