@@ -112,6 +112,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [Riemann Summation](math/riemann_summation.py)
     - [Number of Partitions](math/Partitions_No..py)
     - [Gaussian Elimination](math/Gaussian_Elimination.py)
+    - [Cramer's Method](math/Cramer_Method.py)
 - [matrix](matrix)
     - [matrix_rotation.txt](matrix/matrix_rotation.txt)
     - [copy_transform](matrix/copy_transform.py)
