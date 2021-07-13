@@ -109,6 +109,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [rsa](math/rsa.py)
     - [sqrt_precision_factor](math/sqrt_precision_factor.py)
     - [pythagoras](math/pythagoras.py)
+    - [Riemann Summation](math/Riemann Summation.py)
 - [matrix](matrix)
     - [matrix_rotation.txt](matrix/matrix_rotation.txt)
     - [copy_transform](matrix/copy_transform.py)
