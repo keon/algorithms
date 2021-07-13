@@ -110,7 +110,7 @@ Minimal and clean example implementations of data structures and algorithms in P
     - [sqrt_precision_factor](math/sqrt_precision_factor.py)
     - [pythagoras](math/pythagoras.py)
     - [Riemann Summation](math/riemann_summation.py)
-    - [Number of Partitions](math/Partitions_No.py)
+    - [Number of Partitions](math/Partitions_No..py)
     - [Gaussian Elimination](math/Gaussian_Elimination.py)
 - [matrix](matrix)
     - [matrix_rotation.txt](matrix/matrix_rotation.txt)
