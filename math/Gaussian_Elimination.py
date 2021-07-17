@@ -30,9 +30,3 @@ for i in range(n-2,-1,-1):
         x[i]-=a[i][j]*x[j]
         
     x[i]= x[i]/a[i][i]
-
-
-
-print(f"x={round(x[0])}")
-print(f"y={round(x[1])}")
-print(f"z={round(x[2])}")
