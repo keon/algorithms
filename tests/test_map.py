@@ -172,6 +172,12 @@ class TestLongestPalindromicSubsequence(unittest.TestCase):
         self.assertEqual(7,longest_palindromic_subsequence('babbbababaa'))
         self.assertEqual(4,longest_palindromic_subsequence('daccandeeja'))
 
+    def test_longest_palindromic_subsequence_with_substr_is_correct(self):
+        self.assertEqual((3, 'BAB'), longest_palindromic_subsequence('BBABCBCAB', True))
+        self.assertEqual((4, 'abba'), longest_palindromic_subsequence('abbaeae', True))
+        self.assertEqual((7, 'babbbab'), longest_palindromic_subsequence('babbbababaa', True))
+        self.assertEqual((4, 'acca'), longest_palindromic_subsequence('daccandeeja', True))
+
     def test_longest_palindromic_subsequence_is_incorrect(self):
         self.assertNotEqual(4,longest_palindromic_subsequence('BBABCBCAB'))
         self.assertNotEqual(5,longest_palindromic_subsequence('abbaeae'))
