@@ -1,11 +1,18 @@
-def longest_palindromic_subsequence(s):
+def longest_palindromic_subsequence(s, subStr = False):
     '''
-    lps动态规划算法的优化
+    动态规划算法的优化
     时间复杂度o(n^2)，将空间复杂度降低为o(2n)
     用nlist存储j情况下所有的子串是否为回文子串的标志
     用olist存储j-1情况下所有的子串是否为回文子串的标志
+    find the longest_palindromic_subsequence(lps) and the lenth of lps in s.
     it can return the logestSubStr as well.
-    you can remove the '#' in the last line to do it.
+    you can set subStr=True to do it.
+    args:
+        s -- a str
+        subStr -- if reture longest_palindromic_subsequence as a str
+    return:
+        logestLen -- an int 
+        logestSubStr -- a str, longest_palindromic_subsequence 
     '''
 
     k = len(s)
@@ -32,4 +39,7 @@ def longest_palindromic_subsequence(s):
                         logestLen = len_t
         olist = nList                            # 覆盖旧的列表
         nList = [0] * k                          # 新的列表清空
-    return logestLen#, logestSubStr
+    
+    if subStr:
+        return logestLen, logestSubStr
+    return logestLen
