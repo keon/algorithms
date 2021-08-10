@@ -1,15 +1,19 @@
 """
+This Algorithm takes a Integer as a parameter and returns the least number of perfect square numbers that sum upto it. 
+
 Some examples:
+
 10 = 1^2 + 3^2
 Answer = 2
+
 12 = 2^2 + 2^2 + 2^2
 Answer = 3
+
 13 = 2^2 + 3^2
 Answer = 2
+
 """
 import math
-
-
 
 def num_perfect_square(number) -> int:
     if(math.sqrt(number) ** 2 == number):    # if its a perfect squre check
@@ -22,8 +26,8 @@ def num_perfect_square(number) -> int:
     
     i=1
 
-    #Now just chekc for 2 if not 2 return 3
-    # now will find a break point which square is n- i*i
+    # Now just check for 2 if not 2 return 3
+    # Now will find a break point which square is n- i*i
     while(i*i <=number):   
         b = int(math.sqrt(number - i*i))
         if(b*b == (number - i*i)):
