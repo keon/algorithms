@@ -1,5 +1,5 @@
 """
-This Algorithm takes a Integer as a parameter and returns the least number of perfect square numbers that sum upto it. 
+This Algorithm takes a Integer as a parameter and returns the least number of perfect square numbers that sum up to it. 
 
 Some examples:
 
@@ -38,4 +38,9 @@ def num_perfect_square(number) -> int:
     
 # for more info please check https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
 
+if __name__ == '__main__':
+    test_cases = [10, 12, 13]
+    
+    for case in test_cases:
+        print(num_perfect_square(case))
 
