@@ -9,7 +9,7 @@ rotate("hello", 5) return "hello"
 rotate("hello", 6) return "elloh"
 rotate("hello", 7) return "llohe"
 rotate("hello", 102) return "lohel"
-
+rotate("hello", 3) return lohel
 """
 def rotate(s, k):
     long_string = s * (k // len(s) + 2)
