@@ -3,7 +3,7 @@ Given two strings s1 and s2, determine if s2 is a rotated version of s1.
 For example,
 is_rotated("hello", "llohe") returns True
 is_rotated("hello", "helol") returns False
-
+12122
 accepts two strings
 returns bool
 Reference: https://leetcode.com/problems/rotate-string/description/
