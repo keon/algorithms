@@ -7,6 +7,7 @@ is_rotated("hello", "helol") returns False
 accepts two strings
 returns bool
 Reference: https://leetcode.com/problems/rotate-string/description/
+whatsappppppppppp
 """
 
 def is_rotated(s1, s2):
