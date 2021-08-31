@@ -17,3 +17,7 @@ def rotate(s, k):
         return long_string[k:k + len(s)]
     else:
         return long_string[k-len(s):k]
+    
+def rotate_alt(string, k):
+    k = k % len(string)
+    return string[k:] + string[:k]
