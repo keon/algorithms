@@ -8,7 +8,7 @@ from algorithms.strings import (
     group_anagrams,
     int_to_roman,
     is_palindrome, is_palindrome_reverse,
-    is_palindrome_two_pointer, is_palindrome_stack,
+    is_palindrome_two_pointer, is_palindrome_stack, is_palindrome_deque, 
     is_rotated, is_rotated_v1,
     license_number,
     make_sentence,
@@ -194,6 +194,11 @@ class TestIsPalindrome(unittest.TestCase):
         # 'Otto' is a old german name.
         self.assertTrue(is_palindrome_stack("Otto"))
         self.assertFalse(is_palindrome_stack("house"))
+
+    def test_is_palindrome_deque(self):
+        # 'Otto' is a old german name.
+        self.assertTrue(is_palindrome_deque("Otto"))
+        self.assertFalse(is_palindrome_deque("house"))
 
 
 class TestIsRotated(unittest.TestCase):
