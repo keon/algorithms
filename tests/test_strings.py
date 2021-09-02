@@ -225,6 +225,12 @@ class TestRotated(unittest.TestCase):
         self.assertEqual("hello", rotate("hello", 5))
         self.assertEqual("elloh", rotate("hello", 6))
         self.assertEqual("llohe", rotate("hello", 7))
+        
+    def test_rotate_alt(self):
+        self.assertEqual("llohe", rotate_alt("hello", 2))
+        self.assertEqual("hello", rotate_alt("hello", 5))
+        self.assertEqual("elloh", rotate_alt("hello", 6))
+        self.assertEqual("llohe", rotate_alt("hello", 7))
 
 
 class TestLicenseNumber(unittest.TestCase):
