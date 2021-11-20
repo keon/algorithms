@@ -35,7 +35,7 @@ from algorithms.strings import (
     text_justification,
     min_distance,
     longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
-    rotate,
+    rotate, rotate_alt,
     first_unique_char,
     repeat_substring,
     atbash,
