@@ -1,5 +1,5 @@
 
-name: README Updater
+name: Python package
 
 on:
  pull_request:
@@ -8,15 +8,15 @@ on:
 
 jobs:
   check-algorithms:
-    if: ${{ github.event.pull_request.merged }}
+    if: ${{ github.event.pull_request.merged }} # when doing a PR is merged
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
     - name: Update README.md
-      run: |
-        python3 scripts/update_functions_list.py
+      run: | # run scripts/update_functions_list.py
+        python3 scripts/update_functions_list.py 
     - name: Push README.md
       run: |
         git config --global user.email "kwk236@gmail.com"
