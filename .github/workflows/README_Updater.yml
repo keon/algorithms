@@ -1,0 +1,25 @@
+
+name: README Updater
+
+on:
+ pull_request:
+    branches: [master]
+    types: [closed]
+
+jobs:
+  check-algorithms:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - name: Update README.md
+      run: |
+        python3 scripts/update_functions_list.py
+    - name: Push README.md
+      run: |
+        git config --global user.email "kwk236@gmail.com"
+        git config --global user.name "Keon"
+        git commit -am "update README.md" || true
+        git push
