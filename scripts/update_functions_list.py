@@ -22,3 +22,4 @@ replace_str = '<!--fnc_list-->' + README.split('<!--fnc_list-->')[1].split('<!--
 README = README.replace(replace_str, fnc_list) 
 f.write(README) # update README.md
 f.close()
+
