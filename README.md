@@ -283,6 +283,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [comb_sort](algorithms/sort/comb_sort.py)
     - [counting_sort](algorithms/sort/counting_sort.py)
     - [cycle_sort](algorithms/sort/cycle_sort.py)
+    * [exchange_sort.py](./algorithms/sort/exchange_sort.py)
     - [gnome_sort](algorithms/sort/gnome_sort.py)
     - [heap_sort](algorithms/sort/heap_sort.py)
     - [insertion_sort](algorithms/sort/insertion_sort.py)

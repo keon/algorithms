@@ -5,6 +5,7 @@ from algorithms.sort import (
     comb_sort,
     counting_sort,
     cycle_sort,
+    exchange_sort,
     max_heap_sort, min_heap_sort,
     insertion_sort,
     merge_sort,
@@ -55,6 +56,9 @@ class TestSuite(unittest.TestCase):
     def test_cycle_sort(self):
         self.assertTrue(is_sorted(cycle_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
+    def test_exchange_sort(self):
+        self.assertTrue(is_sorted(exchange_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+    
     def test_heap_sort(self):
         self.assertTrue(is_sorted(max_heap_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
