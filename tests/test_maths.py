@@ -27,6 +27,7 @@ from algorithms.maths import (
     alice_private_key, alice_public_key, bob_private_key, bob_public_key, alice_shared_key, bob_shared_key,
     diffie_hellman_key_exchange, krishnamurthy_number,
     chinese_remainder_theorem,
+    fibonacci,
 )
 
 import unittest
@@ -527,6 +528,22 @@ class TestChineseRemainderSolver(unittest.TestCase):
         rem = []
         with self.assertRaises(Exception):
             chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+
+
+class TestFibonacci(unittest.TestCase):
+    """[summary]
+    Test for the file fibonacci.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_fibonacci(self):
+        self.assertEqual(0, fibonacci(0))
+        self.assertEqual(1, fibonacci(1))
+        self.assertEqual(1, fibonacci(2))
+        self.assertEqual(5, fibonacci(5))
+        self.assertEqual(13, fibonacci(7))
 
 if __name__ == "__main__":
     unittest.main()

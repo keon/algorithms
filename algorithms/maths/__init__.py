@@ -3,6 +3,7 @@ from .decimal_to_binary_ip import *
 from .euler_totient import *
 from .extended_gcd import *
 from .factorial import *
+from .fibonacci import *
 from .gcd import *
 from .generate_strobogrammtic import *
 from .is_strobogrammatic import *
