@@ -4,6 +4,7 @@ from .bubble_sort import *
 from .comb_sort import *
 from .counting_sort import *
 from .cycle_sort import *
+from .exchange_sort import *
 from .heap_sort import *
 from .insertion_sort import *
 from .merge_sort import *
