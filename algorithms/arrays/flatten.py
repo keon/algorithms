@@ -18,6 +18,20 @@ def flatten(input_arr, output_arr=None):
     return output_arr
 
 
+# retrun list
+# not use recursive functions for python recursion limit
+def flatten_v2(input_arr) -> list:
+    idx = 0
+    while idx < len(input_arr):
+        print(input_arr)
+        ele = input_arr[idx]
+        if not isinstance(ele, str) and isinstance(ele, Iterable):
+            input_arr = input_arr[:idx] + ele + input_arr[idx+1:]
+        else:
+            idx += 1
+    return input_arr
+
+
 # returns iterator
 def flatten_iter(iterable):
     """
