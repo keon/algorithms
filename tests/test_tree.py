@@ -7,6 +7,7 @@ from algorithms.tree.traversal import (
     inorder_rec
 )
 from algorithms.tree.b_tree import BTree
+from algorithms.tree.Tree_234.Tree_234 import Tree_234
 
 from algorithms.tree import construct_tree_postorder_preorder as ctpp
 
@@ -169,6 +170,41 @@ class TestFenwickTree(unittest.TestCase):
         freq[2] += 11
         ft.update_bit(bit_tree, 2, 11)
         self.assertEqual(23, ft.get_sum(bit_tree, 4))
+
+class TestTree234(unittest.TestCase):
+
+    def test_insertion(self):
+            tree_234 = Tree234()
+
+            tree_234.insert(5601)
+            tree_234.insert(4668)
+            tree_234.insert(9124)
+            tree_234.insert(4354)
+            tree_234.insert(8137)
+            tree_234.insert(4574)
+            tree_234.insert(601)
+            tree_234.insert(1)
+            tree_234.insert(203)
+            tree_234.insert(1400)
+
+    def test_search(self):
+            tree_234 = Tree234()
+
+            tree_234.insert(5601)
+            tree_234.insert(4668)
+            tree_234.insert(9124)
+            tree_234.insert(4354)
+            tree_234.insert(8137)
+            tree_234.insert(4574)
+            tree_234.insert(601)
+            tree_234.insert(1)
+            tree_234.insert(203)
+            tree_234.insert(1400)
+
+            self.assertTrue(tree_234.find(9124))
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
