@@ -16,7 +16,8 @@ from algorithms.arrays import (
     trimmean,
     top_1,
     limit,
-    n_sum
+    n_sum,
+    largestContSum
 )
 
 import unittest
@@ -401,6 +402,18 @@ class TestNSum(unittest.TestCase):
                                sum_closure=lambda a, b: [a[0] + b[1], a[1] + b[0]],  # noqa: E501
                                compare_closure=lambda a, b: -1 if a[0] < b else 1 if a[0] > b else 0),  # noqa: E501
                          [[[-9, 5], [8, 4]]])  # noqa: E501
+
+class TestKadaneAlgo(unittest.TestCase):
+
+    def testKadaneAlgo(self):
+        self.assertEqual(largestContSum([-2, -3, 4, -1, -2, 1, 5, -3]),7)
+        self.assertEqual(largestContSum([-1,3,-2,5,3,-5,2,2]),9)
+        self.assertEqual(largestContSum([-1,-1,-1,-1,-2]),-1)
+        self.assertEqual(largestContSum([-3,-2]),-2)
+        self.assertEqual(largestContSum([-19,61,60,33,67,19,-8,92,59,-37]),383)
+        self.assertEqual(largestContSum([1,1,1,1,1,1,1,1,1,1]),10)
+        self.assertEqual(largestContSum([-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]),-1)
+        self.assertEqual(largestContSum([24,7,-27,17,-67,65,-23,58,85,-39]),185)
 
 
 if __name__ == '__main__':
