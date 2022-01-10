@@ -10,21 +10,8 @@ bottom [1, 2, 3, 4, 5, 6] top
 The function should return true
 """
 def is_sorted(stack):
-    storage_stack = []
-    for i in range(len(stack)):
-        if len(stack) == 0:
-            break
-        first_val = stack.pop()
-        if len(stack) == 0:
-            break
-        second_val = stack.pop()
-        if first_val < second_val:
+    for _, (lower, upper) in enumerate(zip(stack, stack[1:])):
+        if lower > upper:
             return False
-        storage_stack.append(first_val)
-        stack.append(second_val)
-
-    # Backup stack
-    for i in range(len(storage_stack)):
-        stack.append(storage_stack.pop())
-
     return True
+
