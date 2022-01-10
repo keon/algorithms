@@ -10,7 +10,7 @@ bottom [1, 2, 3, 4, 5, 6] top
 The function should return true
 """
 def is_sorted(stack):
-    for _, (lower, upper) in enumerate(zip(stack, stack[1:])):
+    for lower, upper in zip(stack, stack[1:]):
         if lower > upper:
             return False
     return True
