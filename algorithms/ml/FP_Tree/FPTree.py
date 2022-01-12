@@ -1,10 +1,3 @@
-"""
-Created on Tue Sep 18 11:48:07 2018
-@author: BANERJEE, Rohini (Student ID: 20543577)
-MSBD5002: Data Mining and Knowledge Discovery (Assignment 1)
-Title: FP-Growth Implementation using Python 3.
-"""
-
 import numpy as np
 from collections import OrderedDict
 import csv
