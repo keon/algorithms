@@ -14,4 +14,6 @@ Complexity = O(n)
 
 # tl:dr -- array slicing by value
 def limit(arr, min_lim=None, max_lim=None):
+    if max_lim is None:
+        return list(arr)
     return list(filter(lambda x: (min_lim <= x <= max_lim), arr))
