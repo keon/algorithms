@@ -14,10 +14,7 @@ Example:
 
 
 def two_sum(array, target):
-    dic = {}
-    for i, num in enumerate(array):
-        if num in dic:
-            return dic[num], i
-        else:
-            dic[target - num] = i
+    for i, num in enumerate(zip(array, array[1:])):
+        if num[0] + num[1] == target:
+            return (i, i+1)
     return None
