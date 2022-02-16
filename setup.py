@@ -20,6 +20,9 @@ setup(name='algorithms',
       author_email="kwk236@gmail.com",
       license='MIT',
       packages=find_packages(exclude=('tests', 'tests.*')),
+      install_requires=[
+          'pyreunion>=0.1.3, < 0.2'
+      ],
       classifiers=[
           'Programming Language :: Python :: 3',
           'Programming Language :: Python :: 3.4',
