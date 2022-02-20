@@ -3,51 +3,13 @@
 # D. Eppstein, UC Irvine, 6 Sep 2003
 
 from __future__ import generators
+from algorithms.unionfind import UnionFind
+
 
 if 'True' not in globals():
     globals()['True'] = not None
     globals()['False'] = not True
 
-class unionFind:
-    '''Union Find data structure. Modified from Josiah Carlson's code,
-http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/215912
-to allow arbitrarily many arguments in unions, use [] syntax for finds,
-and eliminate unnecessary code.'''
-
-    def __init__(self):
-        self.weights = {}
-        self.parents = {}
-
-    def __getitem__(self, object):
-        '''Find the root of the set that an object is in.
-Object must be hashable; previously unknown objects become new singleton sets.'''
-
-        # check for previously unknown object
-        if object not in self.parents:
-            self.parents[object] = object
-            self.weights[object] = 1
-            return object
-        
-        # find path of objects leading to the root
-        path = [object]
-        root = self.parents[object]
-        while root != path[-1]:
-            path.append(root)
-            root = self.parents[root]
-        
-        # compress the path and return
-        for ancestor in path:
-            self.parents[ancestor] = root
-        return root
-
-    def union(self, *objects):
-        '''Find the sets containing the given objects and merge them all.'''
-        roots = [self[x] for x in objects]
-        heaviest = max([(self.weights[r],r) for r in roots])[1]
-        for r in roots:
-            if r != heaviest:
-                self.weights[heaviest] += self.weights[r]
-                self.parents[r] = heaviest
 
 def matching(G, initialMatching = {}):
     '''Find a maximum cardinality matching in a graph G.
@@ -99,7 +61,7 @@ Return value is true if the matching size was increased, false otherwise.'''
         # base[t] will be the pair (v,w) at the base of the blossom, where v and t
         # are on the same side of the blossom and w is on the other side.
 
-        leader = unionFind()
+        leader = UnionFind()
         S = {}
         T = {}
         unexplored = []
