@@ -1,1 +1,2 @@
 pyreunion>=0.1.3
+maturin
