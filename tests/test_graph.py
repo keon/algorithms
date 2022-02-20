@@ -11,6 +11,7 @@ from algorithms.graph import bellman_ford
 from algorithms.graph import bellman_ford
 from algorithms.graph import count_connected_number_of_component
 from algorithms.graph import prims_minimum_spanning
+from algorithms.graph.blossom import matching
 
 import unittest
 
@@ -285,3 +286,42 @@ class PrimsMinimumSpanning(unittest.TestCase):
             4 : [ [6, 1], [9, 2], [8, 3] ]
         }
         self.assertEqual(19, prims_minimum_spanning(graph2))
+
+class TestBlossom(unittest.TestCase):
+    def test_blossom_matching(self):
+        graph1 = {
+            'a': {'b',},
+            'b': {'a', 'e'},
+            'c': {'d'},
+            'd': {'c', 'g'},
+            'e': {'b', 'f', 'g'},
+            'f': {'e'},
+            'g': {'e', 'd'},
+        }
+        max_matching = matching(graph1)
+        with self.subTest(graph=graph1):
+            self.assertEqual(6, len(max_matching))
+
+        graph2 = {
+            'a': set(),
+            'b': set(),
+            'c': set(),
+        }
+        max_matching = matching(graph2)
+        with self.subTest(graph=graph2):
+            self.assertEqual(0, len(max_matching))
+
+        graph3 = {
+            'a': {'b',},
+            'b': {'a', 'f', 'g'},
+            'c': {'d'},
+            'd': {'c', 'e'},
+            'e': {'d'},
+            'f': {'b'},
+            'g': {'b'},
+        }
+        max_matching = matching(graph3)
+        with self.subTest(graph=graph3):
+            self.assertEqual(4, len(max_matching))
+        
+        
