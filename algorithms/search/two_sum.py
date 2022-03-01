@@ -15,37 +15,57 @@ two_sum: using binary search
 two_sum1: using dictionary as a hash table
 two_sum2: using two pointers
 """
-# Using binary search technique
+
 def two_sum(numbers, target):
-    for i in range(len(numbers)):
-        second_val = target - numbers[i]
+    """
+    Given a list of numbers sorted in ascending order, find the indices of two
+    numbers such that their sum is the given target.
+
+    Using binary search.
+    """
+    for i, number in enumerate(numbers):
+        second_val = target - number
         low, high = i+1, len(numbers)-1
         while low <= high:
             mid = low + (high - low) // 2
             if second_val == numbers[mid]:
                 return [i + 1, mid + 1]
-            elif second_val > numbers[mid]:
+
+            if second_val > numbers[mid]:
                 low = mid + 1
             else:
                 high = mid - 1
+    return None
 
-# Using dictionary as a hash table
 def two_sum1(numbers, target):
+    """
+    Given a list of numbers, find the indices of two numbers such that their
+    sum is the given target.
+
+    Using a hash table.
+    """
     dic = {}
     for i, num in enumerate(numbers):
         if target - num in dic:
             return [dic[target - num] + 1, i + 1]
         dic[num] = i
+    return None
 
-# Using two pointers
 def two_sum2(numbers, target):
-    p1 = 0                      # pointer 1 holds from left of array numbers
-    p2 = len(numbers) - 1       # pointer 2 holds from right of array numbers
-    while p1 < p2:
-        s = numbers[p1] + numbers[p2]
-        if s == target:
-            return [p1 + 1, p2 + 1]
-        elif s > target:
-            p2 = p2 - 1
+    """
+    Given a list of numbers sorted in ascending order, find the indices of two
+    numbers such that their sum is the given target.
+
+    Using a bidirectional linear search.
+    """
+    left = 0                      # pointer 1 holds from left of array numbers
+    right = len(numbers) - 1       # pointer 2 holds from right of array numbers
+    while left < right:
+        current_sum = numbers[left] + numbers[right]
+        if current_sum == target:
+            return [left + 1, right + 1]
+
+        if current_sum > target:
+            right = right - 1
         else:
-            p1 = p1 + 1
+            left = left + 1

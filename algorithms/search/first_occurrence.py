@@ -1,18 +1,23 @@
-#
-# Find first occurance of a number in a sorted array (increasing order)
-# Approach- Binary Search
-# T(n)- O(log n)
-#
+"""
+Find first occurance of a number in a sorted array (increasing order)
+Approach- Binary Search
+T(n)- O(log n)
+"""
 def first_occurrence(array, query):
-    lo, hi = 0, len(array) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
+    """
+    Returns the index of the first occurance of the given element in an array.
+    The array has to be sorted in increasing order.
+    """
+
+    low, high = 0, len(array) - 1
+    while low <= high:
+        mid = (low + high) // 2
         #print("lo: ", lo, " hi: ", hi, " mid: ", mid)
-        if lo == hi:
+        if low == high:
             break
         if array[mid] < query:
-            lo = mid + 1
+            low = mid + 1
         else:
-            hi = mid
-    if array[lo] == query:
-      return lo
+            high = mid
+    if array[low] == query:
+        return low
