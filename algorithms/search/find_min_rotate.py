@@ -7,6 +7,9 @@ Find the minimum element. The complexity must be O(logN)
 You may assume no duplicate exists in the array.
 """
 def find_min_rotate(array):
+    """
+    Finds the minimum element in a sorted array that has been rotated.
+    """
     low = 0
     high = len(array) - 1
     while low < high:
@@ -19,10 +22,12 @@ def find_min_rotate(array):
     return array[low]
 
 def find_min_rotate_recur(array, low, high):
+    """
+    Finds the minimum element in a sorted array that has been rotated.
+    """
     mid = (low + high) // 2
     if mid == low:
         return array[low]
-    elif array[mid] > array[high]:
+    if array[mid] > array[high]:
         return find_min_rotate_recur(array, mid + 1, high)
-    else:
-        return find_min_rotate_recur(array, low, mid)
+    return find_min_rotate_recur(array, low, mid)

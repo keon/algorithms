@@ -1,4 +1,4 @@
-""" 
+"""
 Python implementation of the Interpolation Search algorithm.
 Given a sorted array in increasing order, interpolation search calculates
 the starting point of its search according to the search key.
@@ -41,14 +41,14 @@ def interpolation_search(array: List[int], search_key: int) -> int:
         pos = low + int(((search_key - array[low]) *
                          (high - low) / (array[high] - array[low])))
 
-        # search_key is found 
+        # search_key is found
         if array[pos] == search_key:
             return pos
 
         # if search_key is larger, search_key is in upper part
         if array[pos] < search_key:
             low = pos + 1
-            
+
         # if search_key is smaller, search_key is in lower part
         else:
             high = pos - 1
