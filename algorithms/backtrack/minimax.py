@@ -2,6 +2,16 @@ from cmath import inf as inf  # This might be wrong
 
 
 def binary_minimax(node, depth, maxing, alpha, beta):
+    """
+        @function       binary_minimax(node, depth, maxing, alpha, beta)
+        @description    Performs Minimax on a TreeNode. (TreeNode class found in /tree/tree.py)
+        @arg            TreeNode    node
+        @arg            int         depth
+        @arg            bool        maxing
+        @arg            real        alpha
+        @arg            real        beta
+    """
+    # if max depth has been reached or node is a leaf, return node value
     if (depth == 0) or (node.left is None and node.right is None):
         return node.value
 
@@ -16,7 +26,7 @@ def binary_minimax(node, depth, maxing, alpha, beta):
             evaluation = binary_minimax(node.right, depth-1, False, alpha, beta)
             max_value = max(alpha, evaluation)
 
-            return max_value
+        return max_value
 
     else:
         min_value = inf
@@ -29,10 +39,21 @@ def binary_minimax(node, depth, maxing, alpha, beta):
             evaluation = binary_minimax(node.right, depth - 1, True, alpha, beta)
             min_value = min(beta, evaluation)
 
-            return min_value
+        return min_value
 
 
-def minimax(b_tree_node, heuristic_key, depth, maxing, alpha, beta):
+def minimax(b_tree_node, heuristic_key, depth, maxing, alpha=-inf, beta=inf):
+    """
+        @function       minimax(b_tree_node, heuristic_key, depth, maxing, alpha, beta)
+        @description    Performs Minimax on a BTree. (BTree class found in /tree/b_tree.py)
+        @arg            Btree       b_tree_node
+        @arg            dict_key    heuristic_key
+        @arg            int         depth
+        @arg            bool        maxing
+        @arg            real        alpha
+        @arg            real        beta
+    """
+    # if max depth has been reached or node is a leaf, return node value
     if (depth == 0) or b_tree_node.is_leaf():
         return b_tree_node.keys[heuristic_key]
 
@@ -56,4 +77,3 @@ def minimax(b_tree_node, heuristic_key, depth, maxing, alpha, beta):
                 break
 
         return min_value
-
