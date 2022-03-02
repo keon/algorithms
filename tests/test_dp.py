@@ -208,5 +208,14 @@ class TestPlantingTrees(unittest.TestCase):
         # assert
         self.assertEqual(res, 9.28538328578604)
 
+'''
+This class test the dynamic programming with bit masking algorithm
+defined in algorithms/dp/bitmasking.py
+'''
+class TestBitmasking(unittest.TestCase):
+
+    def test_example(self):
+        pass
+
 if __name__ == '__main__':
     unittest.main()
