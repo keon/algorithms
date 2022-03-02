@@ -23,6 +23,7 @@ Output {'0':4,'1':3}
 Input misras_gries([0,0,0,1,1,1]
 Output None
 """
+
 def misras_gries(array,k=2):
     """Misra-Gries algorithm
 
