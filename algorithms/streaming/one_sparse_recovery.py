@@ -22,6 +22,11 @@ Comment: Not 1-sparse
 """
 
 def one_sparse(array):
+    """1-sparse algorithm
+
+    Keyword arguments:
+    array -- stream of tuples
+    """
     sum_signs = 0
     bitsum = [0]*32
     sum_values = 0
