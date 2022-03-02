@@ -283,6 +283,12 @@ class Monomial:
             result += temp
         return result + ')'
 
+    def degree(self):
+        """
+        Get the degree of the monomial (sum of the exponents)
+        """
+        return sum(self.variables.values())
+
 
 class Polynomial:
     """
@@ -450,19 +456,56 @@ class Polynomial:
             poly_temp = reduce(lambda acc, val: acc + val, map(lambda x: x / other, [z for z in self.all_monomials()]), Polynomial([Monomial({}, 0)]))
             return poly_temp
         elif isinstance(other, Polynomial):
-            if Monomial({}, 0) in other.all_monomials():
-                if len(other.all_monomials()) == 2:
-                    temp_set = {x for x in other.all_monomials() if x != Monomial({}, 0)}
-                    only = temp_set.pop()
-                    return self.__truediv__(only)
-            elif len(other.all_monomials()) == 1:
-                temp_set = {x for x in other.all_monomials()}
-                only = temp_set.pop()
-                return self.__truediv__(only)
+            if len(other.all_monomials()) == 1:
+                monomial = other.all_monomials().pop()
+                return self.__truediv__(monomial)
+            quotient, remainder = self.polynomial_division(other)
+            return quotient
 
         raise ValueError('Can only divide a polynomial by an int, float, Fraction, or a Monomial.')
+    
+    def polynomial_division(self, other):
+        """
+        Perform polynomial division.
+        """
+        variables = self.variables() | other.variables()
+        if len(variables) > 1:
+            # Polynomial division when there's more than one variable turns out
+            # to be hard to define, as the answer depends on the order
+            # of the monomials.
+            # Reference: https://math.stackexchange.com/questions/32070/what-is-the-algorithm-for-long-division-of-polynomials-with-multiple-variables
+            raise ValueError("cannot divide polynomials containing more than one variable")
 
-        return
+        # Implementation using standard long division
+        # Reference: https://en.wikipedia.org/wiki/Polynomial_long_division
+        remainder = self
+        quotient = Polynomial([])
+        while len(remainder.all_monomials()) > 0:
+            # Find the monomials with highest degree
+            remainder_max = max(remainder.all_monomials(), key=lambda m: m.degree())
+            other_max = max(other.all_monomials(), key=lambda m: m.degree())
+
+            # Continue until the remainder's degree cannot be reduced further
+            if remainder_max.degree() < other_max.degree(): 
+                break
+
+            # Find the factor required to reduce the remainders degree by one (or more)
+            factor = remainder_max / other_max
+            remainder -= other * factor
+            quotient += factor
+
+        return quotient, remainder
+
+    @staticmethod
+    def check_only_one_variable(monomial: Monomial) -> bool:
+        count = 0
+        for variable, degree in monomial.variables.items():
+            if degree == 0:
+                continue
+            count += 1
+
+        # Can either contain zero or one variables
+        return count <= 1
 
     # def clone(self) -> Polynomial:
     def clone(self):
