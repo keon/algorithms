@@ -6,11 +6,11 @@ has to be delivered in a standard, cross-platform format.
 
 ## Project
 
-Name:
+Name: keon/algorithms
 
-URL:
+URL: The forked repo can be found in [this link](https://github.com/AmandaStromdahl/algorithms).
 
-One or two sentences describing it
+The chosen project is a Python repository that implements various algorithms and data structures.
 
 ## Onboarding experience
 
@@ -44,17 +44,26 @@ you took care of and where you spent your time, if that time exceeds
 
 ## Overview of issue(s) and work done.
 
-Title:
+Title: "Add Bitmasking in DP #480"
 
-URL:
+URL: The issue can be found in [this link](https://github.com/keon/algorithms/issues/480).
 
-Summary in one or two sentences
+The task is to implement the bitmasking-and-dp-algorithm. This algorithm solves the problem of determining how many ways there are to assign unique caps to every person in a set of people, where each person has their own set of caps.
 
-Scope (functionality and code affected).
+The issue will require a new file to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. The algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
 
 ## Requirements for the new feature or requirements affected by functionality being refactored
 
-Optional (point 3): trace tests to requirements.
+Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously.
+
+| ID  |               Title                |                                                                                                                                                     Description |
+| :-- | :--------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| R1  |        Empty set of people         |                                                                                           If the set of people is empty, there should be 0 ways to assign caps. |
+| R2  |        Person without caps         |                                                          If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R3  |     More cap sets than people      | People and cap sets should have a 1-1 mapping. If there are more cap sets than people, there should be an `IllegialArgumentException()` to signal faulty input. |
+| R4  |     Less cap sets than people      | People and cap sets should have a 1-1 mapping. If there are less cap sets than people, there should be an `IllegialArgumentException()` to signal faulty input. |
+| R5  |      No unique cap assignment      |                                   Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R6  | One or more unique cap assignments |                        Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 
 ## Code changes
 
