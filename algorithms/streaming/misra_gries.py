@@ -24,6 +24,12 @@ Input misras_gries([0,0,0,1,1,1]
 Output None
 """
 def misras_gries(array,k=2):
+    """Misra-Gries algorithm
+
+    Keyword arguments:
+    array -- list of integers
+    k -- value of k (default 2)
+    """
     keys = {}
     for i in array:
         val = str(i)
