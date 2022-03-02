@@ -14,9 +14,7 @@ One or two sentences describing it
 
 ## Onboarding experience
 
-Did you choose a new project or continue on the previous one?
-
-If you changed the project, how did your experience differ from before?
+For this task our group choose a new project to work with. The onboarding experience between the two projects are distinctly different. The last repository we worked with was quite minimalistic in terms of basic usage instructions. For example did the last repository not explain how to run the tests. This repository on the other hand clearly states how to run the tests, install dependencies and so on. Eeach implemented algorithm is also conveniently listed in the readme. Overall the onboarding experience is a lot smoother compared to the last project. 
 
 ## Effort spent
 
