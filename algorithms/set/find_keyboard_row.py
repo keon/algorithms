@@ -8,6 +8,7 @@ Output: ["Alaska", "Dad"]
 
 Reference: https://leetcode.com/problems/keyboard-row/description/
 """
+
 def find_keyboard_row(words):
     """
     :type words: List[str]

@@ -17,8 +17,10 @@ E 0 W E
 return 3. (Placing a bomb at (1,1) kills 3 enemies)
 """
 
+
 def max_killed_enemies(grid):
-    if not grid: return 0
+    if not grid:
+        return 0
     m, n = len(grid), len(grid[0])
     max_killed = 0
     row_e, col_e = 0, [0] * n
@@ -38,6 +40,7 @@ def max_killed_enemies(grid):
 
     return max_killed
 
+
 # calculate killed enemies for row i from column j
 def row_kills(grid, i, j):
     num = 0
@@ -48,6 +51,7 @@ def row_kills(grid, i, j):
         j += 1
     return num
 
+
 # calculate killed enemies for  column j from row i
 def col_kills(grid, i, j):
     num = 0
@@ -57,7 +61,6 @@ def col_kills(grid, i, j):
             num += 1
         i += 1
     return num
-                
 
 
 # ----------------- TESTS -------------------------
@@ -66,14 +69,16 @@ def col_kills(grid, i, j):
     Testsuite for the project
 """
 
-import unittest 
+import unittest
+
 
 class TestBombEnemy(unittest.TestCase):
     def test_3x4(self):
-        grid1 = [["0","E","0","0"],
-                ["E","0","W","E"],
-                ["0","E","0","0"]]
-        self.assertEqual(3,max_killed_enemies(grid1))
+        grid1 = [["0", "E", "0", "0"],
+                 ["E", "0", "W", "E"],
+                 ["0", "E", "0", "0"]]
+        self.assertEqual(3, max_killed_enemies(grid1))
+
     def test_4x4(self):
         grid1 = [
                 ["0", "E", "0", "E"],
@@ -85,9 +90,9 @@ class TestBombEnemy(unittest.TestCase):
                 ["E", "0", "0", "0"],
                 ["E", "0", "W", "E"],
                 ["0", "E", "0", "0"]]
-        self.assertEqual(5,max_killed_enemies(grid1))
-        self.assertEqual(3,max_killed_enemies(grid2))
+        self.assertEqual(5, max_killed_enemies(grid1))
+        self.assertEqual(3, max_killed_enemies(grid2))
+
 
 if __name__ == "__main__":
     unittest.main()
-

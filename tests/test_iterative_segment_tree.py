@@ -74,7 +74,7 @@ class TestSegmentTree(unittest.TestCase):
         """
         Test all possible segments in the tree
         :param arr: array to test
-        :param fnc: function of the segment tree
+        :param fnc: function of the segment tpree
         """
         segment_tree = SegmentTree(arr, fnc)
         self.__test_segments_helper(segment_tree, fnc, arr)
