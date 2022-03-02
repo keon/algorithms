@@ -34,6 +34,7 @@ from algorithms.strings import (
     repeat_string,
     text_justification,
     min_distance,
+    min_distance_dp,
     longest_common_prefix_v1, longest_common_prefix_v2, longest_common_prefix_v3,
     rotate, rotate_alt,
     first_unique_char,
@@ -516,6 +517,13 @@ class TestMinDistance(unittest.TestCase):
     def test_min_distance(self):
         self.assertEqual(2, min_distance("sea", "eat"))
         self.assertEqual(6, min_distance("abAlgocrithmf", "Algorithmmd"))
+        self.assertEqual(4, min_distance("acbbd", "aabcd"))
+
+class TestMinDistanceDP(unittest.TestCase):
+    def test_min_distance(self):
+        self.assertEqual(2, min_distance_dp("sea", "eat"))
+        self.assertEqual(6, min_distance_dp("abAlgocrithmf", "Algorithmmd"))
+        self.assertEqual(4, min_distance("acbbd", "aabcd"))
 
 class TestLongestCommonPrefix(unittest.TestCase):
     def test_longest_common_prefix(self):
