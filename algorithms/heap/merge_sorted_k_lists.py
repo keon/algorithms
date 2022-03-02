@@ -9,28 +9,32 @@ from queue import PriorityQueue
 
 # Definition for singly-linked list.
 class ListNode(object):
-    def __init__(self, x):
-        self.val = x
+    """ ListNode Class"""
+
+    def __init__(self, val):
+        self.val = val
         self.next = None
 
 
 def merge_k_lists(lists):
+    """ Merge Lists """
     dummy = node = ListNode(0)
-    h = [(n.val, n) for n in lists if n]
-    heapify(h)
-    while h:
-        v, n = h[0]
-        if n.next is None:
-            heappop(h)  # only change heap size when necessary
+    list_h = [(n.val, n) for n in lists if n]
+    heapify(list_h)
+    while list_h:
+        _, n_val = list_h[0]
+        if n_val.next is None:
+            heappop(list_h)  # only change heap size when necessary
         else:
-            heapreplace(h, (n.next.val, n.next))
-        node.next = n
+            heapreplace(list_h, (n_val.next.val, n_val.next))
+        node.next = n_val
         node = node.next
 
     return dummy.next
 
 
 def merge_k_lists(lists):
+    """ Merge List """
     dummy = ListNode(None)
     curr = dummy
     q = PriorityQueue()

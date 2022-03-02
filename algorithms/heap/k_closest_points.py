@@ -2,8 +2,10 @@
 
 Idea: Maintain a max heap of k elements.
 We can iterate through all points.
-If a point p has a smaller distance to the origin than the top element of a heap, we add point p to the heap and remove the top element.
-After iterating through all points, our heap contains the k closest points to the origin.
+If a point p has a smaller distance to the origin than the top element of a
+heap, we add point p to the heap and remove the top element.
+After iterating through all points, our heap contains the k closest points to
+the origin.
 """
 
 
@@ -14,7 +16,8 @@ def k_closest(points, k, origin=(0, 0)):
     # Time: O(k+(n-k)logk)
     # Space: O(k)
     """Initialize max heap with first k points.
-    Python does not support a max heap; thus we can use the default min heap where the keys (distance) are negated.
+    Python does not support a max heap; thus we can use the default min heap
+    where the keys (distance) are negated.
     """
     heap = [(-distance(p, origin), p) for p in points[:k]]
     heapify(heap)
@@ -24,10 +27,10 @@ def k_closest(points, k, origin=(0, 0)):
     check if p is smaller than the root of the max heap;
     if it is, add p to heap and remove root. Reheapify.
     """
-    for p in points[k:]:
-        d = distance(p, origin)
+    for point in points[k:]:
+        dist = distance(point, origin)
 
-        heappushpop(heap, (-d, p))  # heappushpop does conditional check
+        heappushpop(heap, (-dist, point))  # heappushpop does conditional check
         """Same as:
             if d < -heap[0][0]:
                 heappush(heap, (-d,p))
@@ -37,8 +40,9 @@ def k_closest(points, k, origin=(0, 0)):
         Each heappushpop call takes O(logk) time.
         """
 
-    return [p for nd, p in heap]  # return points in heap
+    return [point for nd, point in heap]  # return points in heap
 
 
 def distance(point, origin=(0, 0)):
+    """ Calculates the distance for a point from origo"""
     return (point[0] - origin[0])**2 + (point[1] - origin[1])**2
