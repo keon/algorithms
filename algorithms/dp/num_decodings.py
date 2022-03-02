@@ -17,33 +17,37 @@ The number of ways decoding "12" is 2.
 """
 
 
-def num_decodings(s):
+def num_decodings(enc_mes):
     """
     :type s: str
     :rtype: int
     """
-    if not s or s[0] == "0":
+    if not enc_mes or enc_mes[0] == "0":
         return 0
-    wo_last, wo_last_two = 1, 1
-    for i in range(1, len(s)):
-        x = wo_last if s[i] != "0" else 0
-        y = wo_last_two if int(s[i-1:i+1]) < 27 and s[i-1] != "0" else 0
-        wo_last_two = wo_last
-        wo_last = x+y
-    return wo_last
+    last_char, last_two_chars = 1, 1
+    for i in range(1, len(enc_mes)):
+        last = last_char if enc_mes[i] != "0" else 0
+        last_two = last_two_chars if int(enc_mes[i-1:i+1]) < 27 and enc_mes[i-1] != "0" else 0
+        last_two_chars = last_char
+        last_char = last+last_two
+    return last_char
 
 
-def num_decodings2(s):
-    if not s or s.startswith('0'):
+def num_decodings2(enc_mes):
+    """
+    :type s: str
+    :rtype: int
+    """
+    if not enc_mes or enc_mes.startswith('0'):
         return 0
     stack = [1, 1]
-    for i in range(1, len(s)):
-        if s[i] == '0':
-            if s[i-1] == '0' or s[i-1] > '2':
+    for i in range(1, len(enc_mes)):
+        if enc_mes[i] == '0':
+            if enc_mes[i-1] == '0' or enc_mes[i-1] > '2':
                 # only '10', '20' is valid
                 return 0
             stack.append(stack[-2])
-        elif 9 < int(s[i-1:i+1]) < 27:
+        elif 9 < int(enc_mes[i-1:i+1]) < 27:
             # '01 - 09' is not allowed
             stack.append(stack[-2]+stack[-1])
         else:

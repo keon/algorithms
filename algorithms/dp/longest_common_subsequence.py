@@ -22,27 +22,25 @@ respectively.
 """
 
 
-def longest_common_subsequence(s1, s2):
+def longest_common_subsequence(s_1, s_2):
     """
     :param s1: string
     :param s2: string
     :return: int
     """
-    m = len(s1)
-    n = len(s2)
+    m = len(s_1)
+    n = len(s_2)
 
-    dp = [[0] * (n + 1) for i in range(m + 1)]
-    """
-    dp[i][j] : contains length of LCS of s1[0..i-1] and s2[0..j-1]
-    """
+    mat = [[0] * (n + 1) for i in range(m + 1)]
+    # mat[i][j] : contains length of LCS of s_1[0..i-1] and s_2[0..j-1]
 
     for i in range(m + 1):
         for j in range(n + 1):
             if i == 0 or j == 0:
-                dp[i][j] = 0
-            elif s1[i - 1] == s2[j - 1]:
-                dp[i][j] = dp[i - 1][j - 1] + 1
+                mat[i][j] = 0
+            elif s_1[i - 1] == s_2[j - 1]:
+                mat[i][j] = mat[i - 1][j - 1] + 1
             else:
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+                mat[i][j] = max(mat[i - 1][j], mat[i][j - 1])
 
-    return dp[m][n]
+    return mat[m][n]
