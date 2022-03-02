@@ -14,7 +14,7 @@ The chosen project is a Python repository that implements various algorithms and
 
 ## Onboarding experience
 
-For this task our group chose a new project to work with. The onboarding experience between the two projects are distinctly different. The last repository we worked with was quite minimalistic in terms of basic usage instructions. For example did the last repository not explain how to run the tests. This repository on the other hand clearly states how to run the tests, install dependencies and so on. Eeach implemented algorithm is also conveniently listed in the readme. Overall the onboarding experience is a lot smoother compared to the last project. 
+For this task our group chose a new project to work with. The onboarding experience between the two projects are distinctly different. The last repository we worked with was quite minimalistic in terms of basic usage instructions. For example did the last repository not explain how to run the tests. This repository on the other hand clearly states how to run the tests, install dependencies and so on. Eeach implemented algorithm is also conveniently listed in the readme. Overall the onboarding experience is a lot smoother compared to the last project.
 
 ## Effort spent
 
@@ -54,14 +54,12 @@ The issue will require a new file to be added to the dp-folder. Since the implem
 
 Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously.
 
-| ID  |               Title                |                                                                                                                                                     Description |
-| :-- | :--------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| R1  |        Empty set of people         |                                                                                           If the set of people is empty, there should be 0 ways to assign caps. |
-| R2  |        Person without caps         |                                                          If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
-| R3  |     More cap sets than people      | People and cap sets should have a 1-1 mapping. If there are more cap sets than people, there should be an `IllegialArgumentException()` to signal faulty input. |
-| R4  |     Less cap sets than people      | People and cap sets should have a 1-1 mapping. If there are less cap sets than people, there should be an `IllegialArgumentException()` to signal faulty input. |
-| R5  |      No unique cap assignment      |                                   Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
-| R6  | One or more unique cap assignments |                        Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| ID  |               Title                |                                                                                                                              Description |
+| :-- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
+| R1  |            No cap sets             |                                                                                 If the nr of cap sets is 0, the output should also be 0. |
+| R2  |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R3  |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R4  | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 
 ## Code changes
 
