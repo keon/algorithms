@@ -1,2 +1,7 @@
 # Project Overview
-The purpose of the project is to provide clean and minimalistic implementations of basic algorithms and data structures in Python 3. The project is licensed under the MIT license which allows the use of the code for educational and commercial purposes. 
+The purpose of the project is to provide clean and minimalistic implementations of basic algorithms and data structures in Python 3. The project is licensed under the MIT license which allows the use of the code for educational and commercial purposes. The project uses Sphinx to generate documentation, github actions for continuous delivery and flake8 for unit testing. The project is licensed under the permissive MIT license.
+
+![Alt text](./overview.png "A brief project overview")
+
+## A more detailed project explanation
+The project root folder contains various documentation and settings oriented files such as the readme and the license. We also find config files such as the .gitignore and requirement files for installation of package dependencies. It also contains configuration files for continuous delivery through github actions in the form of .yml files. Apart from this there are three main folders. The first is a folder which hosts all the algorithms. This is the main folder of the repository. The second is a folder called docs which hosts a makefile and a large collection of empty .rst files. The makefile and .rst files allows a user to generate documentation in the form of browsable html-documents or linux man-pages. The third folder of importance is the tests folder. It hosts all the 394 unittests for the project. 
