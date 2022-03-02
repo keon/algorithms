@@ -1,0 +1,2 @@
+# Project Overview
+The purpose of the project is to provide clean and minimalistic implementations of basic algorithms and data structures in Python 3. The project is licensed under the MIT license which allows the use of the code for educational and commercial purposes. 
