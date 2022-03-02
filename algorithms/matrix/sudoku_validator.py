@@ -1,12 +1,19 @@
 """
-Write a function validSolution/ValidateSolution/valid_solution() that accepts a 2D array representing a Sudoku board, and returns true if it is a valid solution, or false otherwise. The cells of the sudoku board may also contain 0's, which will represent empty cells. Boards containing one or more zeroes are considered to be invalid solutions.
-The board is always 9 cells by 9 cells, and every cell only contains integers from 0 to 9.
+Write a function validSolution/ValidateSolution/valid_solution()
+that accepts a 2D array representing a Sudoku board, and returns true
+if it is a valid solution, or false otherwise. The cells of the sudoku
+board may also contain 0's, which will represent empty cells.
+Boards containing one or more zeroes are considered to be invalid solutions.
+The board is always 9 cells by 9 cells, and every cell only contains integers
+from 0 to 9.
 
 (More info at: http://en.wikipedia.org/wiki/Sudoku)
 """
 
 # Using dict/hash-table
 from collections import defaultdict
+
+
 def valid_solution_hashtable(board):
     for i in range(len(board)):
         dict_row = defaultdict(int)
@@ -31,7 +38,7 @@ def valid_solution_hashtable(board):
             grid_add = 0
             for k in range(3):
                 for l in range(3):
-                    grid_add += board[i*3+k][j*3+l]
+                    grid_add += board[i * 3 + k][j * 3 + l]
             if grid_add != 45:
                 return False
     return True
@@ -65,7 +72,7 @@ def valid_solution(board):
 
 
 # Using set
-def valid_solution_set (board):
+def valid_solution_set(board):
     valid = set(range(1, 10))
 
     for row in board:
