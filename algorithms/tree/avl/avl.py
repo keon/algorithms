@@ -1,3 +1,4 @@
+""" Imports TreeNodes"""
 from tree.tree import TreeNode
 
 
@@ -17,9 +18,9 @@ class AvlTree(object):
         Insert new key into node
         """
         # Create new node
-        n = TreeNode(key)
+        node = TreeNode(key)
         if not self.node:
-            self.node = n
+            self.node = node
             self.node.left = AvlTree()
             self.node.right = AvlTree()
         elif key < self.node.val:
@@ -65,7 +66,8 @@ class AvlTree(object):
                 if self.node.right:
                     self.node.right.update_heights()
 
-            self.height = 1 + max(self.node.left.height, self.node.right.height)
+            self.height = 1 + max(self.node.left.height,
+                                  self.node.right.height)
         else:
             self.height = -1
 

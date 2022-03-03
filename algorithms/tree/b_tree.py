@@ -3,7 +3,8 @@ B-tree is used to disk operations. Each node (except root) contains
 at least t-1 keys (t children) and at most 2*t - 1 keys (2*t children)
 where t is the degree of b-tree. It is not a kind of typical bst tree, because
 this tree grows up.
-B-tree is balanced which means that the difference between height of left subtree and right subtree is at most 1.
+B-tree is balanced which means that the difference between height of left
+subtree and right subtree is at most 1.
 
 Complexity
     n - number of elements
@@ -18,6 +19,8 @@ Complexity
 
 
 class Node:
+    """ Class of Node"""
+
     def __init__(self):
         # self.is_leaf = is_leaf
         self.keys = []
@@ -28,13 +31,16 @@ class Node:
 
     @property
     def is_leaf(self):
+        """ Return if it is a leaf"""
         return len(self.children) == 0
 
 
 class BTree:
-    def __init__(self, t=2):
-        self.min_numbers_of_keys = t - 1
-        self.max_number_of_keys = 2 * t - 1
+    """ Class of BTree """
+
+    def __init__(self, t_val=2):
+        self.min_numbers_of_keys = t_val - 1
+        self.max_number_of_keys = 2 * t_val - 1
 
         self.root = Node()
 
@@ -55,7 +61,8 @@ class BTree:
         parent.children.insert(child_index + 1, new_right_child)
 
     def insert_key(self, key):
-        if len(self.root.keys) >= self.max_number_of_keys:  # overflow, tree increases in height
+        """ overflow, tree increases in height """
+        if len(self.root.keys) >= self.max_number_of_keys:
             new_root = Node()
             new_root.children.append(self.root)
             self.root = new_root
@@ -72,26 +79,27 @@ class BTree:
         if node.is_leaf:
             node.keys.insert(i + 1, key)
         else:
-            if len(node.children[i + 1].keys) >= self.max_number_of_keys:  # overflow
+            # overflow
+            if len(node.children[i + 1].keys) >= self.max_number_of_keys:
                 self._split_child(node, i + 1)
-                if node.keys[i + 1] < key:  # decide which child is going to have a new key
+                # decide which child is going to have a new key
+                if node.keys[i + 1] < key:
                     i += 1
 
             self._insert_to_nonfull_node(node.children[i + 1], key)
 
     def find(self, key) -> bool:
+        """ Finds key """
         current_node = self.root
         while True:
             i = len(current_node.keys) - 1
             while i >= 0 and current_node.keys[i] > key:
                 i -= 1
-
             if i >= 0 and current_node.keys[i] == key:
                 return True
-            elif current_node.is_leaf:
+            if current_node.is_leaf:
                 return False
-            else:
-                current_node = current_node.children[i + 1]
+            current_node = current_node.children[i + 1]
 
     def remove_key(self, key):
         self._remove_key(self.root, key)
@@ -101,10 +109,8 @@ class BTree:
             key_index = node.keys.index(key)
             if node.is_leaf:
                 node.keys.remove(key)
-                return True
             else:
                 self._remove_from_nonleaf_node(node, key_index)
-
             return True
 
         except ValueError:  # key not found in node
@@ -114,7 +120,8 @@ class BTree:
             else:
                 i = 0
                 number_of_keys = len(node.keys)
-                while i < number_of_keys and key > node.keys[i]:  # decide in which subtree may be key
+                # decide in which subtree may be key
+                while i < number_of_keys and key > node.keys[i]:
                     i += 1
 
                 action_performed = self._repair_tree(node, i)
@@ -125,15 +132,16 @@ class BTree:
 
     def _repair_tree(self, node: Node, child_index: int) -> bool:
         child = node.children[child_index]
-        if self.min_numbers_of_keys < len(child.keys) <= self.max_number_of_keys:  # The leaf/node is correct
+        # The leaf/node is correct
+        if self.min_numbers_of_keys < len(child.keys) <= self.max_number_of_keys:
             return False
 
         if child_index > 0 and len(node.children[child_index - 1].keys) > self.min_numbers_of_keys:
             self._rotate_right(node, child_index)
             return True
 
-        if (child_index < len(node.children) - 1 and
-                len(node.children[child_index + 1].keys) > self.min_numbers_of_keys):  # 0 <-- 1
+        if (child_index < len(node.children) - 1
+                and len(node.children[child_index + 1].keys) > self.min_numbers_of_keys):  # 0 <-- 1
             self._rotate_left(node, child_index)
             return True
 
@@ -156,8 +164,10 @@ class BTree:
         parent_node.keys[child_index] = new_parent_key
 
         if not parent_node.children[child_index + 1].is_leaf:
-            ownerless_child = parent_node.children[child_index + 1].children.pop(0)
-            # make ownerless_child as a new biggest child (with highest key) -> transfer from right subtree to left subtree
+            ownerless_child = parent_node.children[child_index
+                                                   + 1].children.pop(0)
+            # make ownerless_child as a new biggest child (with highest key)
+            # -> transfer from right subtree to left subtree
             parent_node.children[child_index].children.append(ownerless_child)
 
     def _rotate_right(self, parent_node: Node, child_index: int):
@@ -170,9 +180,12 @@ class BTree:
         parent_node.keys[child_index - 1] = new_parent_key
 
         if not parent_node.children[child_index - 1].is_leaf:
-            ownerless_child = parent_node.children[child_index - 1].children.pop()
-            # make ownerless_child as a new lowest child (with lowest key) -> transfer from left subtree to right subtree
-            parent_node.children[child_index].children.insert(0, ownerless_child)
+            ownerless_child = parent_node.children[child_index
+                                                   - 1].children.pop()
+            # make ownerless_child as a new lowest child (with lowest key)
+            # -> transfer from left subtree to right subtree
+            parent_node.children[child_index].children.insert(
+                0, ownerless_child)
 
     def _merge(self, parent_node: Node, to_merge_index: int, transfered_child_index: int):
         from_merge_node = parent_node.children.pop(transfered_child_index)
@@ -191,9 +204,11 @@ class BTree:
         key = node.keys[key_index]
         left_subtree = node.children[key_index]
         if len(left_subtree.keys) > self.min_numbers_of_keys:
-            largest_key = self._find_largest_and_delete_in_left_subtree(left_subtree)
+            largest_key = self._find_largest_and_delete_in_left_subtree(
+                left_subtree)
         elif len(node.children[key_index + 1].keys) > self.min_numbers_of_keys:
-            largest_key = self._find_largest_and_delete_in_right_subtree(node.children[key_index + 1])
+            largest_key = self._find_largest_and_delete_in_right_subtree(
+                node.children[key_index + 1])
         else:
             self._merge(node, key_index, key_index + 1)
             return self._remove_key(node, key)
@@ -217,7 +232,8 @@ class BTree:
         else:
             ch_index = 0
             self._repair_tree(node, ch_index)
-            largest_key_in_subtree = self._find_largest_and_delete_in_right_subtree(node.children[0])
+            largest_key_in_subtree = self._find_largest_and_delete_in_right_subtree(
+                node.children[0])
             # self._repair_tree(node, ch_index)
             return largest_key_in_subtree
 
