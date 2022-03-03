@@ -1,3 +1,4 @@
+from .bitmasking import *
 from .buy_sell_stock import *
 from .climbing_stairs import *
 from .coin_change import *
