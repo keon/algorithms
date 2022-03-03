@@ -4,7 +4,7 @@ from fractions import Fraction
 from typing import Dict, Union, Set, Iterable
 from numbers import Rational
 from functools import reduce
-
+from math import inf
 
 class Monomial:
     """
@@ -289,6 +289,50 @@ class Monomial:
         """
         return sum(self.variables.values())
 
+    def degree_with_respect_to(self, other):
+        """
+        Same as degree(), except if this monomial shares no variables with other, then return -inf.
+        """
+        for other_variable, other_degree in other.variables.items():
+            if other_variable not in self.variables:
+                return -inf
+            self_degree = self.variables[other_variable]
+            if self_degree < other_degree:
+                return -inf
+
+        return self.degree()
+    
+    def graded_reverse_lexicographic_order(self):
+        """
+        Sorts monomials first by their degree, and then by the reverse order of their variables.
+
+        For example, monomials would be sorted as follows:
+
+            x^2 > xy > y^2 > xz > yz > z^2
+
+        Reference: https://en.wikipedia.org/wiki/Monomial_order#Graded_reverse_lexicographic_order
+        """
+        return (self.degree(), self.variables_flattened_reverse())
+
+    def variables_flattened_reverse(self):
+        """
+        Given a monomial, returns the variables names as a list (keeping the
+        exponent as the number of repetitions).
+
+        For example, the monomial:
+            x^3 y^2 z^4
+        would turn into:
+            xxxyyzzzz
+        and then reversed:
+            zzzzyyxxx
+        """
+        names = []
+        for variable, degree in self.variables.items():
+            names += [variable] * degree
+        names.sort()
+        names.reverse()
+        return names
+
 
 class Polynomial:
     """
@@ -435,20 +479,24 @@ class Polynomial:
             raise ValueError('Can only multiple int, float, Fraction, Monomials, or Polynomials with Polynomials.')
 
     # def __floordiv__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
-    def __floordiv__(self, other: Union[int, float, Fraction, Monomial]):
+    def __floordiv__(self, other: Union[int, float, Fraction, Monomial, 'Polynomial']):
         """
         For Polynomials, floordiv is the same
         as truediv.
         """
+        if isinstance(other, Polynomial):
+            if len(other.all_monomials()) == 1:
+                monomial = other.all_monomials().pop()
+                return self.__truediv__(monomial)
+            quotient, remainder = self.polynomial_division(other)
+            return quotient
         return self.__truediv__(other)
 
     # def __truediv__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
-    def __truediv__(self, other: Union[int, float, Fraction, Monomial]):
+    def __truediv__(self, other: Union[int, float, Fraction, Monomial, 'Polynomial']):
         """
         For Polynomials, only division by a monomial
         is defined.
-
-        TODO: Implement polynomial / polynomial.
         """
         if isinstance(other, int) or isinstance(other, float) or isinstance(other, Fraction):
             return self.__truediv__( Monomial({}, other) )
@@ -460,6 +508,7 @@ class Polynomial:
                 monomial = other.all_monomials().pop()
                 return self.__truediv__(monomial)
             quotient, remainder = self.polynomial_division(other)
+            assert len(remainder.all_monomials()) == 0, "polynomial division yielded non-zero remainder"
             return quotient
 
         raise ValueError('Can only divide a polynomial by an int, float, Fraction, or a Monomial.')
@@ -467,30 +516,38 @@ class Polynomial:
     def polynomial_division(self, other):
         """
         Perform polynomial division.
+        Order of division is performed following this rating:
+        1. Dividend term shares variable with divisor term of higest degree.
+        2. Degree
+        ie: if divisor is xy^2z^3 then a term of the dividend is divisible iff it is a produt of
+        xy^2z^2 and it is of the same or a (total) higher degree.
         """
-        variables = self.variables() | other.variables()
-        if len(variables) > 1:
-            # Polynomial division when there's more than one variable turns out
-            # to be hard to define, as the answer depends on the order
-            # of the monomials.
-            # Reference: https://math.stackexchange.com/questions/32070/what-is-the-algorithm-for-long-division-of-polynomials-with-multiple-variables
-            raise ValueError("cannot divide polynomials containing more than one variable")
 
-        # Implementation using standard long division
+        # Check that all monomial degrees are non-negative
+        monomials = self.all_monomials() | other.all_monomials()
+        if any((degree <= 0 for monomial in monomials for degree in monomial.variables.values())):
+            raise ValueError("cannot divide polynomials with negative or zero exponent")
+
+        # Implementation using standard long division using a Gröbner basis
         # Reference: https://en.wikipedia.org/wiki/Polynomial_long_division
+        # Reference: https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis#Reduction
+        # Reference: https://en.wikipedia.org/wiki/Monomial_order#Graded_reverse_lexicographic_order
         remainder = self
         quotient = Polynomial([])
         while len(remainder.all_monomials()) > 0:
-            # Find the monomials with highest degree
-            remainder_max = max(remainder.all_monomials(), key=lambda m: m.degree())
-            other_max = max(other.all_monomials(), key=lambda m: m.degree())
+            # Find the monomial with highest degree in the divisor
+            other_max = max(other.all_monomials(), key=lambda m: m.graded_reverse_lexicographic_order())
 
-            # Continue until the remainder's degree cannot be reduced further
-            if remainder_max.degree() < other_max.degree(): 
+            # Grab the term/monomial (with the highest degree) from the dividend that shares a
+            # variable with the highest degree term/monomial from the divisor.
+            dividend_max = max(remainder.all_monomials(), key = lambda term: term.degree_with_respect_to(other_max))
+
+            # Continue until the remainder's degree cannot be reduced further, or no common variable between the dividend and divisor remains
+            if dividend_max.degree_with_respect_to(other_max) == -inf:
                 break
 
             # Find the factor required to reduce the remainders degree by one (or more)
-            factor = remainder_max / other_max
+            factor = dividend_max / other_max
             remainder -= other * factor
             quotient += factor
 
@@ -574,4 +631,3 @@ class Polynomial:
         the polynomial.
         """
         return ' + '.join(str(m) for m in self.all_monomials() if m.coeff != Fraction(0, 1))
-
