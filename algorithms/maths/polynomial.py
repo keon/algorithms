@@ -4,7 +4,7 @@ from fractions import Fraction
 from typing import Dict, Union, Set, Iterable
 from numbers import Rational
 from functools import reduce
-
+from math import inf
 
 class Monomial:
     """
@@ -289,6 +289,14 @@ class Monomial:
         """
         return sum(self.variables.values())
 
+    def degree_with_respect_to(self, other):
+        """
+        Same as degree(), except if this monomial shares no variables with other, then return -inf.
+        """
+        if not self.all_variables().intersection(other.all_variables()):
+            return -inf
+        return self.degree()
+
 
 class Polynomial:
     """
@@ -467,30 +475,39 @@ class Polynomial:
     def polynomial_division(self, other):
         """
         Perform polynomial division.
+        Order of division is performed following this rating:
+        1. Dividend term shares variable with divisor term of higest degree.
+        2. Degree
+        ie: if divisor is xy^2z^3 then a term of the dividend is divisible iff it is a produt of
+        xy^2z^2 and it is of the same or a (total) higher degree.
         """
-        variables = self.variables() | other.variables()
-        if len(variables) > 1:
+        # variables = self.variables() | other.variables()
+        # if len(variables) > 1:
             # Polynomial division when there's more than one variable turns out
             # to be hard to define, as the answer depends on the order
             # of the monomials.
             # Reference: https://math.stackexchange.com/questions/32070/what-is-the-algorithm-for-long-division-of-polynomials-with-multiple-variables
-            raise ValueError("cannot divide polynomials containing more than one variable")
+            # raise ValueError("cannot divide polynomials containing more than one variable")
 
         # Implementation using standard long division
         # Reference: https://en.wikipedia.org/wiki/Polynomial_long_division
         remainder = self
         quotient = Polynomial([])
         while len(remainder.all_monomials()) > 0:
-            # Find the monomials with highest degree
-            remainder_max = max(remainder.all_monomials(), key=lambda m: m.degree())
+            # Find the monomial with highest degree in the divisor
             other_max = max(other.all_monomials(), key=lambda m: m.degree())
 
-            # Continue until the remainder's degree cannot be reduced further
-            if remainder_max.degree() < other_max.degree(): 
+            # Grab the term/monomial (with the highest degree) from the dividend that shares a
+            # variable with the highest degree term/monomial from the divisor.
+            dividend_max = max(remainder.all_monomials(), key = lambda term: term.degree_with_respect_to(other_max))
+
+            # Continue until the remainder's degree cannot be reduced further, or no common variable between the dividend and divisor remains
+            # TODO check if both of these conditions are needed?, maybe only second one
+            if dividend_max.degree() < other_max.degree() or dividend_max.degree_with_respect_to(other_max) == -inf:
                 break
 
             # Find the factor required to reduce the remainders degree by one (or more)
-            factor = remainder_max / other_max
+            factor = dividend_max / other_max
             remainder -= other * factor
             quotient += factor
 
@@ -575,3 +592,16 @@ class Polynomial:
         """
         return ' + '.join(str(m) for m in self.all_monomials() if m.coeff != Fraction(0, 1))
 
+def main():
+    print("Starting...")
+    # Test the polynomial class¨
+    # 3xy + y + z^2
+    dividend = Polynomial([Monomial({'x': 1, 'y': 1}, 3), Monomial({'y': 1}, 1), Monomial({'z': 3}, 1)])
+    # 3x + 1
+    divisor = Polynomial([Monomial({'x': 1}, 3), 1])
+    quotient, remainder = dividend.polynomial_division(divisor)
+    print(quotient)
+    print(remainder)
+    
+
+main()

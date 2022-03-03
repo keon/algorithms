@@ -115,35 +115,35 @@ class TestSuite(unittest.TestCase):
         ]))
         return
 
-    def test_polynomial_division(self):
+    # def test_polynomial_division(self):
 
-        # Should raise a ValueError if the divisor is not a monomial
-        # or a polynomial with only one term.
-        self.assertRaises(ValueError, lambda x, y: x / y, self.p5, self.p3)
-        self.assertRaises(ValueError, lambda x, y: x / y, self.p6, self.p4)
+    #     # Should raise a ValueError if the divisor is not a monomial
+    #     # or a polynomial with only one term.
+    #     self.assertRaises(ValueError, lambda x, y: x / y, self.p5, self.p3)
+    #     self.assertRaises(ValueError, lambda x, y: x / y, self.p6, self.p4)
 
-        self.assertEqual(self.p3 / self.p2, Polynomial([
-            Monomial({}, 1),
-            Monomial({1: 1, 2: -1}, 0.75)
-        ]))
-        self.assertEqual(self.p7 / self.m1, Polynomial([
-            Monomial({1: -1, 2: -3}, 2),
-            Monomial({1: 0, 2: -4}, 1.5)
-        ]))
-        self.assertEqual(self.p7 / self.m1, Polynomial([
-            Monomial({1: -1, 2: -3}, 2),
-            Monomial({2: -4}, 1.5)
-        ]))
+    #     self.assertEqual(self.p3 / self.p2, Polynomial([
+    #         Monomial({}, 1),
+    #         Monomial({1: 1, 2: -1}, 0.75)
+    #     ]))
+    #     self.assertEqual(self.p7 / self.m1, Polynomial([
+    #         Monomial({1: -1, 2: -3}, 2),
+    #         Monomial({1: 0, 2: -4}, 1.5)
+    #     ]))
+    #     self.assertEqual(self.p7 / self.m1, Polynomial([
+    #         Monomial({1: -1, 2: -3}, 2),
+    #         Monomial({2: -4}, 1.5)
+    #     ]))
 
-        quotient, remainder = self.p8.polynomial_division(self.p9)
-        self.assertEqual(quotient, Polynomial([
-            Monomial({1: 2}, 1),
-            Monomial({1: 1}, 1),
-            3
-        ]))
-        self.assertEqual(remainder, Polynomial([5]))
+    #     quotient, remainder = self.p8.polynomial_division(self.p9)
+    #     self.assertEqual(quotient, Polynomial([
+    #         Monomial({1: 2}, 1),
+    #         Monomial({1: 1}, 1),
+    #         3
+    #     ]))
+    #     self.assertEqual(remainder, Polynomial([5]))
 
-        return
+    #     return
 
     def test_polynomial_variables(self):
         # The zero polynomial has no variables.
