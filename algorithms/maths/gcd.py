@@ -1,3 +1,8 @@
+"""
+Functions for calculating the greatest common divisor of two integers or
+their least common multiple.
+"""
+
 def gcd(a, b):
     """Computes the greatest common divisor of integers a and b using
     Euclid's Algorithm.
@@ -18,11 +23,9 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
-
 def lcm(a, b):
     """Computes the lowest common multiple of integers a and b."""
     return abs(a) * abs(b) / gcd(a, b)
-
 
 """
 Given a positive integer x, computes the number of trailing zero of x.
@@ -35,20 +38,19 @@ Input : 40(101000)
            ~~~^^^
 Output : 3
 """
-
 def trailing_zero(x):
-    cnt = 0
+    count = 0
     while x and not x & 1:
-        cnt += 1
+        count += 1
         x >>= 1
-    return cnt
+    return count
 
 """
 Given two non-negative integer a and b,
 computes the greatest common divisor of a and b using bitwise operator.
 """
-
 def gcd_bit(a, b):
+    """ Similar to gcd but uses bitwise operators and less error handling."""
     tza = trailing_zero(a)
     tzb = trailing_zero(b)
     a >>= tza
@@ -59,5 +61,3 @@ def gcd_bit(a, b):
         a -= b
         a >>= trailing_zero(a)
     return a << min(tza, tzb)
-
-
