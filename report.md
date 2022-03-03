@@ -61,6 +61,32 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R3  |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R4  | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 
+## Algorithm description
+To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
+
+In our case, bitmasking will be used to represent what the persons are wearing. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
+
+Let's have a look on the dynamic programming formula. The table storing the intermediate results is a $M\times N$ matrix where:
+- $M$ is the total number of masks, which is equal to $2^n$ where $n$ is the number of people
+- $N$ is the total number of hats
+  
+And so the formula goes as follow:
+
+`countWaysUntil(mask, k_hat) = countWaysUntil(mask, k_hat + 1) + `$\sum_{i=0}^{n}$` countWaysUntil(mask | (1 << i), k_hat + 1)`
+
+More specifically, this formula says that the number of ways satisfying the problem for a specific mask (i.e. hat wearing status of the people) and taking into account all hats from the _k-th_ one until hat $N$ is defined by the sum of
+
+1. the number of ways satisfying the problem without taking the _k-th_ hat into account
+2. the sum of the number of ways satisfying the problem when each person, that have the _k-th_ hat in their collection and are not currently wearing a hat, wears it.
+
+Note that before the computation of the formula, we have to check three cases:
+
+1. if the mask is full, then it means that we found a way of satisfying the problem, hence we return 1
+2. if the hat index is bigger than the total number of hats, it means that there are no more hats left and we could not find a satisfying ways to the problem. Therefore we return 0
+3. if the number of ways of the mask and the _k-th_ hat has already been computed, then we just return the result from the dynamic programming table/matrix
+
+Finally the result will be stored is the matrix cell `[0][1]`.
+
 ## Code changes
 
 ### Patch
