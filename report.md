@@ -64,7 +64,7 @@ Each of the following requirements will be linked to new tests, since no tests r
 ## Algorithm description
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
-In our case, bitmasking will be used to represent what the persons are wearing. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
+In our case, bitmasking will be used to represent whether a person is wearing a hat. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
 
 Let's have a look on the dynamic programming formula. The table storing the intermediate results is a $M\times N$ matrix where:
 - $M$ is the total number of masks, which is equal to $2^n$ where $n$ is the number of people
