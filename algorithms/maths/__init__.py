@@ -1,3 +1,6 @@
+"""
+Collection of mathematical algorithms and functions.
+"""
 from .base_conversion import *
 from .decimal_to_binary_ip import *
 from .euler_totient import *
@@ -22,4 +25,3 @@ from .num_digits import *
 from .power import *
 from .magic_number import *
 from .krishnamurthy_number import *
-
