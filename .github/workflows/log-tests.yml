@@ -1,0 +1,37 @@
+name: Test Logging service  
+
+on:
+  push:
+    paths:
+      - "algorithms/**"
+      - "tests/**"
+      - ".github/workflows/**"
+
+
+jobs:
+  log_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest coverage 
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run tests with coverage
+        run: |
+          echo "======================================="
+          echo "               TEST LOGS"
+          echo "======================================="
+          echo ""
+          python -m coverage run -m pytest  tests
+          echo ""
+          echo "======================================="
+          echo "            COVEARGE REPORT"
+          echo "======================================="
+          echo ""
+          python -m coverage report 
