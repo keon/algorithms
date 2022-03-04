@@ -1,5 +1,6 @@
 from algorithms.dp import (
     assign_unique_caps,
+    tsp,
     max_profit_naive, max_profit_optimized,
     climb_stairs, climb_stairs_optimized,
     count,
@@ -25,7 +26,7 @@ import unittest
 This class test the dynamic programming with bit masking algorithm
 defined in algorithms/dp/bitmasking.py
 '''
-class TestBitmasking(unittest.TestCase):
+class TestBitmaskingCapAssignment(unittest.TestCase):
     # === Relates to requirement R1.1 "Nr of cap sets less than 1 or greater than 10" ===
     # Checks that an exception is raised when the nr of cap sets is <1 or >10.
     def test_no_cap_sets(self):
@@ -49,6 +50,23 @@ class TestBitmasking(unittest.TestCase):
     # unique assignments) when the cap sets allow for at least one unique assignment.
     def test_one_or_more_unique_cap_assignments(self):
         self.assertEquals(assign_unique_caps([[1,2,3], [4], [1,2]], 6), 4)
+        
+class TestBitmaskingTSP(unittest.TestCase):
+    # === Relates to requirement R2.1 "No nodes" ===
+    # Checks that the output is 0 when the list of nodes is empty
+    def test_no_nodes(self):
+        self.assertEquals(tsp([]), 0)
+
+    # === Relates to requirement R2.2 "One node" ===
+    # Checks that the output is 0 when there is only one node
+    def test_one_node(self):
+        self.assertEquals(tsp([(1,1)]), 0)
+
+    # === Relates to requirement R2.3 "Positive path length" ===
+    # Checks that the output is a positive number that corresponds to the length of the 
+    # shortest Euler circuit
+    def test_positive_path_length(self):
+        self.assertEquals(tsp([(0,0), (0,3), (0,4)]), 12)
         
 class TestBuySellStock(unittest.TestCase):
     def test_max_profit_naive(self):
