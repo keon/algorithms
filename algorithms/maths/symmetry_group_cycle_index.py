@@ -1,9 +1,3 @@
-from polynomial import ( Monomial, Polynomial )
-from gcd import lcm
-from fractions import Fraction
-from typing import Dict, Union
-
-
 """
 	The significance of the cycle index (polynomial) of symmetry group
 	is deeply rooted in counting the number of configurations
@@ -60,12 +54,18 @@ from typing import Dict, Union
 
 		s1 = get_cycle_index_sym(w)
 	    s2 = get_cycle_index_sym(h)
-	    
+
 	    result = cycle_product_for_two_polynomials(s1, s2, s)
-	    
+
 	    return str(result)
 
 """
+
+from fractions import Fraction
+from typing import Dict, Union
+from polynomial import ( Monomial, Polynomial )
+from gcd import lcm
+
 
 def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
     """
@@ -132,7 +132,7 @@ def get_cycle_index_sym(n: int) -> Polynomial:
 
     """
     if n < 0:
-    	raise ValueError('n should be a non-negative integer.')
+        raise ValueError('n should be a non-negative integer.')
 
     memo = {
         0: Polynomial([

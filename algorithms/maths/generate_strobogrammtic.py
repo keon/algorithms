@@ -8,14 +8,13 @@ For example,
 Given n = 2, return ["11","69","88","96"].
 """
 
-
 def gen_strobogrammatic(n):
     """
+    Given n, generate all strobogrammatic numbers of length n.
     :type n: int
     :rtype: List[str]
     """
     return helper(n, n)
-
 
 def helper(n, length):
     if n == 0:
@@ -33,7 +32,6 @@ def helper(n, length):
         result.append("6" + middle + "9")
     return result
 
-
 def strobogrammatic_in_range(low, high):
     """
     :type low: str
@@ -49,12 +47,10 @@ def strobogrammatic_in_range(low, high):
     for perm in res:
         if len(perm) == low_len and int(perm) < int(low):
             continue
-        elif len(perm) == high_len and int(perm) > int(high):
+        if len(perm) == high_len and int(perm) > int(high):
             continue
-        else:
-            count += 1
+        count += 1
     return count
-
 
 def helper2(n, length):
     if n == 0:

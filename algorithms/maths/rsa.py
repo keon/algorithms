@@ -21,6 +21,13 @@ a number very quickly:
 (a ** b) % c == pow(a,b,c)
 """
 
+# sample usage:
+# n,e,d = generate_key(16)
+# data = 20
+# encrypted = pow(data,e,n)
+# decrypted = pow(encrypted,d,n)
+# assert decrypted == data
+
 import random
 
 
@@ -58,23 +65,23 @@ def generate_key(k, seed=None):
     # size in bits of p and q need to add up to the size of n
     p_size = k / 2
     q_size = k - p_size
-    
+
     e = gen_prime(k, seed)  # in many cases, e is also chosen to be a small constant
-    
+
     while True:
         p = gen_prime(p_size, seed)
         if p % e != 1:
             break
-    
+
     while True:
         q = gen_prime(q_size, seed)
         if q % e != 1:
             break
-    
+
     n = p * q
     l = (p - 1) * (q - 1)  # calculate totient function
     d = modinv(e, l)
-    
+
     return int(n), int(e), int(d)
 
 
@@ -84,13 +91,3 @@ def encrypt(data, e, n):
 
 def decrypt(data, d, n):
     return pow(int(data), int(d), int(n))
-
-
-
-# sample usage:
-# n,e,d = generate_key(16)
-# data = 20
-# encrypted = pow(data,e,n)
-# decrypted = pow(encrypted,d,n)
-# assert decrypted == data
-

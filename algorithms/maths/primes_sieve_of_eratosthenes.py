@@ -24,7 +24,6 @@ With this, we have reduced the array size to a half,
 and complexity it's also a half now.
 """
 
-
 def get_primes(n):
     """Return list of all primes less than n,
     Using sieve of Eratosthenes.
