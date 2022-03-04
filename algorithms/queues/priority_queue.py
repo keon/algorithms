@@ -53,4 +53,3 @@ class PriorityQueue:
         """
         # remove and return the first node from the queue
         return self.priority_queue_list.pop().data
-

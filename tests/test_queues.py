@@ -80,13 +80,16 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(max_sliding_window(array, k=7), [6, 7])
 
         array = [8, 5, 10, 7, 9, 4, 15, 12, 90, 13]
-        self.assertEqual(max_sliding_window(array, k=4), [10, 10, 10, 15, 15, 90, 90])
+        self.assertEqual(max_sliding_window(array, k=4),
+                         [10, 10, 10, 15, 15, 90, 90])
         self.assertEqual(max_sliding_window(array, k=7), [15, 15, 90, 90])
-        self.assertEqual(max_sliding_window(array, k=2), [8, 10, 10, 9, 9, 15, 15, 90, 90])
+        self.assertEqual(max_sliding_window(array, k=2),
+                         [8, 10, 10, 9, 9, 15, 15, 90, 90])
 
     def test_reconstruct_queue(self):
         self.assertEqual([[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]],
-                         reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]))
+                         reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0],
+                                           [6, 1], [5, 2]]))
 
 
 class TestPriorityQueue(unittest.TestCase):
