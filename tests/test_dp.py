@@ -26,24 +26,24 @@ This class test the dynamic programming with bit masking algorithm
 defined in algorithms/dp/bitmasking.py
 '''
 class TestBitmasking(unittest.TestCase):
-    # === Relates to requirement R1 "No cap sets" ===
-    # Checks that the output is 0 when there are no people in the set, (and thus no cap sets).
+    # === Relates to requirement R1.1 "Nr of cap sets less than 1 or greater than 10" ===
+    # Checks that an exception is raised when the nr of cap sets is <1 or >10.
     def test_no_cap_sets(self):
         self.assertEquals(assign_unique_caps([]), 0)
 
-    # === Relates to requirement R2 "Person without caps" ===
+    # === Relates to requirement R1.2 "Person without caps" ===
     # Checks that the output is 0 when there is one or more empty cap sets. This means there is 
     # at least one person that cannot be assigned a cap.
     def test_person_without_caps(self):
         self.assertEquals(assign_unique_caps([[1,2,3], [], [2,5,6]]), 0)
 
-    # === Relates to requirement R3 "No unique cap assignment" ===
+    # === Relates to requirement R1.3 "No unique cap assignment" ===
     # Checks that the output is 0 when there are no unique cap assignments, even though all of the 
     # cap sets contain at least one cap.
     def test_no_unique_cap_assignment(self):
         self.assertEquals(assign_unique_caps([[1,2,3], [4], [4]]), 0)
         
-    # === Relates to requirement R4 "One or more unique cap assignments" ===
+    # === Relates to requirement R1.4 "One or more unique cap assignments" ===
     # Checks that the output is greater than 0 (and corresponds to the correct number of 
     # unique assignments) when the cap sets allow for at least one unique assignment.
     def test_one_or_more_unique_cap_assignments(self):
