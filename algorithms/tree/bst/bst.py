@@ -6,8 +6,6 @@ Implement Binary Search Tree. It has method:
     4. Traversal (Preorder, Inorder, Postorder)
 """
 
-import unittest
-
 class Node(object):
     def __init__(self, data):
         self.data = data
@@ -98,42 +96,3 @@ class BST(object):
             self.postorder(root.left)
             self.postorder(root.right)
             print(str(root.data), end = ' ')
-
-"""
-    The tree is created for testing:
-
-                    10
-                 /      \
-               6         15
-              / \       /   \
-            4     9   12      24
-                 /          /    \
-                7         20      30
-                         /
-                       18
-"""
-
-class TestSuite(unittest.TestCase):
-    def setUp(self):
-        self.tree = BST()
-        self.tree.insert(10)
-        self.tree.insert(15)
-        self.tree.insert(6)
-        self.tree.insert(4)
-        self.tree.insert(9)
-        self.tree.insert(12)
-        self.tree.insert(24)
-        self.tree.insert(7)
-        self.tree.insert(20)
-        self.tree.insert(30)
-        self.tree.insert(18)
-
-    def test_search(self):
-        self.assertTrue(self.tree.search(24))
-        self.assertFalse(self.tree.search(50))
-
-    def test_size(self):
-        self.assertEqual(11, self.tree.size())
-
-if __name__ == '__main__':
-    unittest.main()
