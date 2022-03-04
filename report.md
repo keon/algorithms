@@ -52,24 +52,29 @@ The issue will require a new file to be added to the dp-folder. Since the implem
 
 ## Requirements for the new feature or requirements affected by functionality being refactored
 
-Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously.
+Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
 
-| ID  |               Title                |                                                                                                                              Description |
-| :-- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
-| R1  |            No cap sets             |                                                                                 If the nr of cap sets is 0, the output should also be 0. |
-| R2  |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
-| R3  |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
-| R4  | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| ID   |                     Title                     |                                                                                                                                                    Description |
+| :--- | :-------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| R1.1 | Nr of cap sets less than 1 or greater than 10 |                                                                                             If the nr of cap sets is <1 or >10, an exception should be raised. |
+| R1.2 |              Person without caps              |                                                         If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R1.3 |           No unique cap assignment            |                                  Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R1.4 |      One or more unique cap assignments       |                       Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| R2.1 |                   No nodes                    |                                                                                                               If the nr of nodes is 0, the output should be 0. |
+| R2.2 |                   One node                    |                                                                                                               If the nr of nodes is 1, the output should be 0. |
+| R2.3 |             Positive path length              | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
 
 ## Algorithm description
+
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
 In our case, bitmasking will be used to represent whether a person is wearing a hat. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
 
 Let's have a look on the dynamic programming formula. The table storing the intermediate results is a $M\times N$ matrix where:
+
 - $M$ is the total number of masks, which is equal to $2^n$ where $n$ is the number of people
 - $N$ is the total number of hats
-  
+
 And so the formula goes as follow:
 
 `countWaysUntil(mask, k_hat) = countWaysUntil(mask, k_hat + 1) + `$\sum_{i=0}^{n}$` countWaysUntil(mask | (1 << i), k_hat + 1)`

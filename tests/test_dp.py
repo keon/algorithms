@@ -28,7 +28,7 @@ defined in algorithms/dp/bitmasking.py
 '''
 class TestBitmaskingCapAssignment(unittest.TestCase):
     # === Relates to requirement R1.1 "Nr of cap sets less than 1 or greater than 10" ===
-    # Checks that the output is 0 when there are no people in the set, (and thus no cap sets).
+    # Checks that an exception is raised when the nr of cap sets is <1 or >10.
     def test_no_cap_sets(self):
         with self.assertRaises(ValueError):
             assign_unique_caps([],0)
