@@ -12,7 +12,7 @@ class Monomial:
     record the details of all variables
     that a typical monomial is composed of.
     """
-    def __init__(self, variables: Dict[int, int], coeff: Union[int, float, Fraction, None]=None) -> None:
+    def __init__(self, variables: Dict[int, int], coeff: Union[int, float, Fraction, None]= None) -> None:
         '''
         Create a monomial in the given variables:
         Examples:
@@ -62,7 +62,6 @@ class Monomial:
             return Fraction(res.numerator, res.denominator)
         else:
             return num
-
 
     # def equal_upto_scalar(self, other: Monomial) -> bool:
     def equal_upto_scalar(self, other) -> bool:
@@ -353,7 +352,7 @@ class Polynomial:
             return Polynomial([z for z in monos])
         elif isinstance(other, Polynomial):
             temp = list(z for z in {m.clone() for m in self.all_monomials()})
-        
+
             p = Polynomial(temp)
             for o in other.all_monomials():
                 p = p.__add__(o.clone())
@@ -391,7 +390,7 @@ class Polynomial:
             for o in other.all_monomials():
                 p = p.__sub__(o.clone())
             return p
-        
+
         else:
             raise ValueError('Can only subtract int, float, Fraction, Monomials, or Polynomials from Polynomials.')
             return
@@ -531,4 +530,3 @@ class Polynomial:
         the polynomial.
         """
         return ' + '.join(str(m) for m in self.all_monomials() if m.coeff != Fraction(0, 1))
-

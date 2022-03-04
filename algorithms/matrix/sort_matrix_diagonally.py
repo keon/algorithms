@@ -32,7 +32,7 @@ def sort_diagonally(mat: List[List[int]]) -> List[List[int]]:
     for i in range(len(mat)+len(mat[0])-1):
         # Process the rows
         if i+1 < len(mat):
-            # Initialize heap, set row and column
+            # Initialize heap, set row and column
             h = []
             row = len(mat)-(i+1)
             col = 0

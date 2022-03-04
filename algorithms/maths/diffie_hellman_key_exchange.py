@@ -1,6 +1,7 @@
 import math
 from random import randint
 
+
 """
 Code from /algorithms/maths/prime_check.py,
 written by 'goswami-rahul' and 'Hai Honag Dang'
@@ -37,13 +38,14 @@ def find_order(a, n):
         1 is the order of of 1 """
     else:
         if (math.gcd(a, n) != 1):
-            print ("a and n should be relative prime!")
+            print("a and n should be relative prime!")
             return -1
         else:
             for i in range(1, n):
                 if (pow(a, i) % n == 1):
                     return i
             return -1
+
 
 """
 Euler's totient function, also known as phi-function ϕ(n),
@@ -55,15 +57,16 @@ Code from /algorithms/maths/euler_totient.py, written by 'goswami-rahul'
 def euler_totient(n):
     """Euler's totient function or Phi function.
     Time Complexity: O(sqrt(n))."""
-    result = n;
+    result = n
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
             while n % i == 0:
                 n //= i
             result -= result // i
     if n > 1:
-        result -= result // n;
-    return result;
+        result -= result // n
+    return result
+
 
 """
 For positive integer n and given integer a that satisfies gcd(a, n) = 1,
@@ -81,7 +84,7 @@ def find_primitive_root(n):
         phi = euler_totient(n)
         p_root_list = []
         """ It will return every primitive roots of n. """
-        for i in range (1, n):
+        for i in range(1, n):
             if (math.gcd(i, n) != 1):
                 continue
                 """ To have order, a and n must be
@@ -103,7 +106,8 @@ This method use the property of one-way function (discrete logarithm)
 For example, given a, b and n, it is easy to calculate x
 that satisfies (a^b) ≡ x (mod n).
 However, it is very hard to calculate x that satisfies (a^x) ≡ b (mod n).
-For using this method, large prime number p and its primitive root a must be given.
+For using this method, large prime number p and its primitive root a
+must be given.
 """
 
 def alice_private_key(p):
@@ -132,7 +136,7 @@ def bob_public_key(b_pr_k, a, p):
     with his private key.
     This is open to public"""
     return pow(a, b_pr_k) % p
-    
+
 
 def alice_shared_key(b_pu_k, a_pr_k, p):
     """ Alice calculate secret key shared with Bob,
@@ -148,12 +152,12 @@ def bob_shared_key(a_pu_k, b_pr_k, p):
     return pow(a_pu_k, b_pr_k) % p
 
 
-def diffie_hellman_key_exchange(a, p, option = None):
-    if (option != None):
+def diffie_hellman_key_exchange(a, p, option=None):
+    if (option is not None):
         option = 1
         """ Print explanation of process
         when option parameter is given """
-    if (prime_check(p) == False):
+    if (prime_check(p) is False):
         print("%d is not a prime number" % p)
         return False
         """p must be large prime number"""
@@ -165,26 +169,25 @@ def diffie_hellman_key_exchange(a, p, option = None):
             print("%d is not a primitive root of %d" % (a, p))
             return False
             """ a must be primitive root of p """
-        
+
         a_pr_k = alice_private_key(p)
         a_pu_k = alice_public_key(a_pr_k, a, p)
-        
-        
+
         b_pr_k = bob_private_key(p)
         b_pu_k = bob_public_key(b_pr_k, a, p)
-        
+
         if (option == 1):
-            print ("Private key of Alice = %d" % a_pr_k)
-            print ("Public key of Alice = %d" % a_pu_k)
-            print ("Private key of Bob = %d" % b_pr_k)
-            print ("Public key of Bob = %d" % b_pu_k)
+            print("Private key of Alice = %d" % a_pr_k)
+            print("Public key of Alice = %d" % a_pu_k)
+            print("Private key of Bob = %d" % b_pr_k)
+            print("Public key of Bob = %d" % b_pu_k)
 
         """ In here, Alice send her public key to Bob,
         and Bob also send his public key to Alice."""
 
         a_sh_k = alice_shared_key(b_pu_k, a_pr_k, p)
         b_sh_k = bob_shared_key(a_pu_k, b_pr_k, p)
-        print ("Shared key calculated by Alice = %d" % a_sh_k)
-        print ("Shared key calculated by Bob = %d" % b_sh_k)
-        
+        print("Shared key calculated by Alice = %d" % a_sh_k)
+        print("Shared key calculated by Bob = %d" % b_sh_k)
+
         return (a_sh_k == b_sh_k)

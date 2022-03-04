@@ -13,17 +13,19 @@ def multiply(matA: list, matB: list) -> list:
 
     return matC
 
+
 def identity(n: int) -> list:
     """
     Returns the Identity matrix of size n x n
     Time Complexity: O(n^2)
     """
     I = [[0 for i in range(n)] for j in range(n)]
-    
+
     for i in range(n):
         I[i][i] = 1
-    
+
     return I
+
 
 def matrix_exponentiation(mat: list, n: int) -> list:
     """
