@@ -10,6 +10,7 @@ from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 from algorithms.graph import count_connected_number_of_component
 from algorithms.graph import prims_minimum_spanning
+from algorithms.graph import astar_pathfinding
 
 import unittest
 
@@ -278,3 +279,104 @@ class PrimsMinimumSpanning(unittest.TestCase):
             4: [[6, 1], [9, 2], [8, 3]]
         }
         self.assertEqual(19, prims_minimum_spanning(graph2))
+
+class TestAstarPathfinding(unittest.TestCase):
+    class GridGraph:
+        """
+        A graph representing a 2D grid.
+        """
+
+        def __init__(self, grid: str):
+            self.grid = list(grid.split())
+            self.height = len(self.grid)
+            self.width = len(self.grid[0]) if self.height != 0 else 0
+
+        def adjacent(self, node):
+            """ Get all nodes adjacent to the given node """
+            x, y = node
+
+            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                nx = x+dx
+                ny = y+dy
+
+                if nx < 0 or nx >= self.width or ny < 0 or ny >= self.height:
+                    # stay on grid
+                    continue
+
+                if self.grid[ny][nx] == '#':
+                    # avoid walls
+                    continue
+
+                distance = (dx**2 + dy**2) ** 0.5
+                yield ((x + dx, y + dy), distance)
+
+        def distance_heuristic(self, source, target):
+            """ estimate distance using euclidean distance """
+            sx, sy = source
+            tx, ty = target
+            
+            dx = sx - tx
+            dy = sy - ty
+
+            return ((dx**2 + dy**2) ** 0.5)
+
+        def find(self, cell):
+            """ Get the position of a character in the grid """
+            for y, row in enumerate(self.grid):
+                x = row.find(str(cell))
+                if x != -1:
+                    return (x, y)
+            return None
+
+    def test_grid_graph(self):
+        graph = self.GridGraph("""
+            ....
+            .##.
+            ..#.
+        """)
+        self.assertEqual(graph.width, 4)
+        self.assertEqual(graph.height, 3)
+        self.assertEqual(graph.grid, [
+            "....",
+            ".##.",
+            "..#.",
+        ])
+
+        self.assertEqual(list(graph.adjacent((0, 0))), [
+            ((1, 0), 1),
+            ((0, 1), 1),
+        ])
+
+        self.assertEqual(list(graph.adjacent((0, 1))), [
+            ((0, 0), 1),
+            ((0, 2), 1),
+        ])
+
+    def test_astar_pathfinding(self):
+        graph = self.GridGraph("""
+            #######
+            #456..#
+            #3###.#
+            #2#...#
+            #10...#
+            #######
+        """)
+
+        path = astar_pathfinding.find_path(graph, graph.find('0'), graph.find('6'))
+        self.assertEqual(path, [graph.find(x) for x in range(7)])
+
+    def test_astar_pathfinding_2(self):
+        graph = self.GridGraph("""
+            #############
+            #....#qpon..#
+            #.#######m#.#
+            #.#.abcd#lk.#
+            #.#.###e##j##
+            #......fghi.#
+            #############
+        """)
+
+        path = astar_pathfinding.find_path(graph, graph.find('a'), graph.find('q'))
+        self.assertEqual(path, [graph.find(chr(x)) for x in range(ord('a'), ord('q')+1)])
+
+
