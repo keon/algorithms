@@ -1,6 +1,4 @@
 from algorithms.tree.bst.bst import BST
-from algorithms.tree.bst.delete_node import Solution
-from algorithms.tree.bst.validate_bst import validate_bst
 from algorithms.tree.traversal import (
     preorder,
     preorder_rec,
@@ -176,17 +174,29 @@ class TestFenwickTree(unittest.TestCase):
         self.assertEqual(23, ft.get_sum(bit_tree, 4))
 
 class TestBST(unittest.TestCase):
+    """
+    Testing binary search tree functionality
+    """
 
     def test_insert(self):
+        """
+        Testing that bst structure is valid after insert
+        """
         bst = create_bst()
-        self.assertTrue(validate_bst(bst.root))
+        self.assertTrue(bst.validate_bst())
     
     def test_search(self):
+        """
+        Testing search functionality
+        """
         bst = create_bst()
         self.assertTrue(bst.search(24))
         self.assertFalse(bst.search(50))
 
     def test_size(self):
+        """
+        Testing size function
+        """
         bst = create_bst()
         self.assertEqual(11, bst.size())
     
