@@ -7,8 +7,9 @@ path = "/a/./b/../../c/", => "/c"
 
 * Did you consider the case where path = "/../"?
     In this case, you should return "/".
-* Another corner case is the path might contain multiple slashes '/' together, such as "/home//foo/".
-    In this case, you should ignore redundant slashes and return "/home/foo".
+* Another corner case is the path might contain multiple slashes '/' together,
+    such as "/home//foo/". In this case, you should ignore redundant
+    slashes and return "/home/foo".
 """
 def simplify_path(path):
     """

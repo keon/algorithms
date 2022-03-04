@@ -1,71 +1,71 @@
-from polynomial import ( Monomial, Polynomial )
+from polynomial import (Monomial, Polynomial)
 from gcd import lcm
 from fractions import Fraction
 from typing import Dict, Union
 
 
 """
-	The significance of the cycle index (polynomial) of symmetry group
-	is deeply rooted in counting the number of configurations
-	of an object excluding those that are symmetric (in terms of permutations).
+The significance of the cycle index (polynomial) of symmetry group
+is deeply rooted in counting the number of configurations
+of an object excluding those that are symmetric (in terms of permutations).
 
-	For example, the following problem can be solved as a direct
-	application of the cycle index polynomial of the symmetry
-	group.
+For example, the following problem can be solved as a direct
+application of the cycle index polynomial of the symmetry
+group.
 
-	Note: I came across this problem as a Google's foo.bar challenge at Level 5
-	and solved it using a purely Group Theoretic approach. :)
+Note: I came across this problem as a Google's foo.bar challenge at Level 5
+and solved it using a purely Group Theoretic approach. :)
+-----
 
-	-----
+Problem:
 
-	Problem:
+Given positive integers
+w, h, and s,
+compute the number of distinct 2D
+grids of dimensions w x h that contain
+entries from {0, 1, ..., s-1}.
+Note that two grids are defined
+to be equivalent if one can be
+obtained from the other by
+switching rows and columns
+some number of times.
 
-	Given positive integers
-	w, h, and s,
-	compute the number of distinct 2D
-	grids of dimensions w x h that contain
-	entries from {0, 1, ..., s-1}.
-	Note that two grids are defined
-	to be equivalent if one can be
-	obtained from the other by
-	switching rows and columns
-	some number of times.
+-----
 
-	-----
+Approach:
 
-	Approach:
+Compute the cycle index (polynomials)
+of S_w, and S_h, i.e. the Symmetry
+group on w and h symbols respectively.
 
-	Compute the cycle index (polynomials)
-	of S_w, and S_h, i.e. the Symmetry
-	group on w and h symbols respectively.
+Compute the product of the two
+cycle indices while combining two
+monomials in such a way that
+for any pair of cycles c1, and c2
+in the elements of S_w X S_h,
+the resultant monomial contains
+terms of the form:
+$$ x_{lcm(|c1|, |c2|)}^{gcd(|c1|, |c2|)} $$
 
-	Compute the product of the two
-	cycle indices while combining two
-	monomials in such a way that
-	for any pair of cycles c1, and c2
-	in the elements of S_w X S_h,
-	the resultant monomial contains
-	terms of the form:
-	$$ x_{lcm(|c1|, |c2|)}^{gcd(|c1|, |c2|)} $$
+Return the specialization of
+the product of cycle indices
+at x_i = s (for all the valid i).
 
-	Return the specialization of
-	the product of cycle indices
-	at x_i = s (for all the valid i).
+-----
 
-	-----
+Code:
 
-	Code:
+def solve(w, h, s):
 
-	def solve(w, h, s):
+s1 = get_cycle_index_sym(w)
+s2 = get_cycle_index_sym(h)
 
-		s1 = get_cycle_index_sym(w)
-	    s2 = get_cycle_index_sym(h)
-	    
-	    result = cycle_product_for_two_polynomials(s1, s2, s)
-	    
-	    return str(result)
+result = cycle_product_for_two_polynomials(s1, s2, s)
+
+return str(result)
 
 """
+
 
 def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
     """
@@ -132,14 +132,14 @@ def get_cycle_index_sym(n: int) -> Polynomial:
 
     """
     if n < 0:
-    	raise ValueError('n should be a non-negative integer.')
+        raise ValueError('n should be a non-negative integer.')
 
     memo = {
         0: Polynomial([
             Monomial({}, Fraction(1, 1))
         ]),
         1: Polynomial([
-            Monomial({1:1}, Fraction(1, 1))
+            Monomial({1: 1}, Fraction(1, 1))
         ]),
         2: Polynomial([
             Monomial({1: 2}, Fraction(1, 2)),
@@ -148,14 +148,14 @@ def get_cycle_index_sym(n: int) -> Polynomial:
         3: Polynomial([
             Monomial({1: 3}, Fraction(1, 6)),
             Monomial({1: 1, 2: 1}, Fraction(1, 2)),
-            Monomial({3:1}, Fraction(1, 3))
+            Monomial({3: 1}, Fraction(1, 3))
         ]),
         4: Polynomial([
-            Monomial({1:4}, Fraction(1, 24)),
-            Monomial({2:1, 1:2},Fraction(1, 4)),
-            Monomial({3:1, 1:1}, Fraction(1, 3)),
-            Monomial({2:2}, Fraction(1, 8)),
-            Monomial({4:1}, Fraction(1, 4)),
+            Monomial({1: 4}, Fraction(1, 24)),
+            Monomial({2: 1, 1: 2}, Fraction(1, 4)),
+            Monomial({3: 1, 1: 1}, Fraction(1, 3)),
+            Monomial({2: 2}, Fraction(1, 8)),
+            Monomial({4: 1}, Fraction(1, 4)),
         ])
     }
     result = cycle_index_sym_helper(n, memo)

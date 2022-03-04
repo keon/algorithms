@@ -4,13 +4,15 @@ switches successive pairs of numbers starting at the bottom of the stack.
 
 For example, if the stack initially stores these values:
 bottom [3, 8, 17, 9, 1, 10] top
-Your function should switch the first pair (3, 8), the second pair (17, 9), ...:
+Your function should switch the first pair (3, 8),
+the second pair (17, 9), ...:
 bottom [8, 3, 9, 17, 10, 1] top
 
 if there are an odd number of values in the stack, the value at the top of the
 stack is not moved: For example:
 bottom [3, 8, 17, 9, 1] top
-It would again switch pairs of values, but the value at the top of the stack (1)
+It would again switch pairs of values, but the value at the
+top of the stack (1)
 would not be moved
 bottom [8, 3, 9, 17, 1] top
 
@@ -19,6 +21,7 @@ first_switch_pairs: it uses a single stack as auxiliary storage
 second_switch_pairs: it uses a single queue as auxiliary storage
 """
 import collections
+
 
 def first_switch_pairs(stack):
     storage_stack = []
@@ -35,6 +38,7 @@ def first_switch_pairs(stack):
         stack.append(second)
         stack.append(first)
     return stack
+
 
 def second_switch_pairs(stack):
     q = collections.deque()

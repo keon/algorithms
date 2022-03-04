@@ -21,10 +21,14 @@ class TestSegmentTree(unittest.TestCase):
         min_segment_tree = SegmentTree(arr, min)
         sum_segment_tree = SegmentTree(arr, lambda a, b: a + b)
         gcd_segment_tree = SegmentTree(arr, gcd)
-        self.assertEqual(max_segment_tree.tree, [None, 9, 8, 9, 4, 8, 9, 2, 4, 3, 6, 8, 9, 3])
-        self.assertEqual(min_segment_tree.tree, [None, 2, 3, 2, 3, 6, 3, 2, 4, 3, 6, 8, 9, 3])
-        self.assertEqual(sum_segment_tree.tree, [None, 35, 21, 14, 7, 14, 12, 2, 4, 3, 6, 8, 9, 3])
-        self.assertEqual(gcd_segment_tree.tree, [None, 1, 1, 1, 1, 2, 3, 2, 4, 3, 6, 8, 9, 3])
+        self.assertEqual(max_segment_tree.tree,
+                         [None, 9, 8, 9, 4, 8, 9, 2, 4, 3, 6, 8, 9, 3])
+        self.assertEqual(min_segment_tree.tree,
+                         [None, 2, 3, 2, 3, 6, 3, 2, 4, 3, 6, 8, 9, 3])
+        self.assertEqual(sum_segment_tree.tree,
+                         [None, 35, 21, 14, 7, 14, 12, 2, 4, 3, 6, 8, 9, 3])
+        self.assertEqual(gcd_segment_tree.tree,
+                         [None, 1, 1, 1, 1, 2, 3, 2, 4, 3, 6, 8, 9, 3])
 
     def test_max_segment_tree(self):
         arr = [-1, 1, 10, 2, 9, -3, 8, 4, 7, 5, 6, 0]
@@ -44,29 +48,33 @@ class TestSegmentTree(unittest.TestCase):
 
     def test_max_segment_tree_with_updates(self):
         arr = [-1, 1, 10, 2, 9, -3, 8, 4, 7, 5, 6, 0]
-        updates = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9, 9: 10, 10: 11, 11: 12}
+        updates = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9,
+                   9: 10, 10: 11, 11: 12}
         self.__test_all_segments_with_updates(arr, max, updates)
 
     def test_min_segment_tree_with_updates(self):
         arr = [1, 10, -2, 9, -3, 8, 4, -7, 5, 6, 11, -12]
-        updates = {0: 7, 1: 2, 2: 6, 3: -14, 4: 5, 5: 4, 6: 7, 7: -10, 8: 9, 9: 10, 10: 12, 11: 1}
+        updates = {0: 7, 1: 2, 2: 6, 3: -14, 4: 5, 5: 4, 6: 7, 7: -10, 8: 9,
+                   9: 10, 10: 12, 11: 1}
         self.__test_all_segments_with_updates(arr, min, updates)
 
     def test_sum_segment_tree_with_updates(self):
         arr = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6, -11, -12]
-        updates = {0: 12, 1: 11, 2: 10, 3: 9, 4: 8, 5: 7, 6: 6, 7: 5, 8: 4, 9: 3, 10: 2, 11: 1}
+        updates = {0: 12, 1: 11, 2: 10, 3: 9, 4: 8, 5: 7, 6: 6, 7: 5, 8: 4,
+                   9: 3, 10: 2, 11: 1}
         self.__test_all_segments_with_updates(arr, lambda a, b: a + b, updates)
 
     def test_gcd_segment_tree_with_updates(self):
         arr = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6, 11, 12, 14]
-        updates = {0: 4, 1: 2, 2: 3, 3: 9, 4: 21, 5: 7, 6: 4, 7: 4, 8: 2, 9: 5, 10: 17, 11: 12, 12: 3}
+        updates = {0: 4, 1: 2, 2: 3, 3: 9, 4: 21, 5: 7, 6: 4, 7: 4, 8: 2,
+                   9: 5, 10: 17, 11: 12, 12: 3}
         self.__test_all_segments_with_updates(arr, gcd, updates)
 
     def __test_all_segments(self, arr, fnc):
         """
         Test all possible segments in the tree
         :param arr: array to test
-        :param fnc: function of the segment tree
+        :param fnc: function of the segment tpree
         """
         segment_tree = SegmentTree(arr, fnc)
         self.__test_segments_helper(segment_tree, fnc, arr)

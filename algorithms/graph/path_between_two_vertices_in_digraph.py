@@ -1,30 +1,31 @@
 from collections import defaultdict
 
+
 class Graph:
-	def __init__(self,v):
+	def __init__(self, v):
 		self.v = v
 		self.graph = defaultdict(list)
 		self.has_path = False
 
-	def add_edge(self,u,v):
+	def add_edge(self, u, v):
 		self.graph[u].append(v)
 
-	def dfs(self,x,y):
+	def dfs(self, x, y):
 		visited = [False] * self.v
-		self.dfsutil(visited,x,y,)
+		self.dfsutil(visited, x, y,)
 
-	def dfsutil(self,visited,x,y):
+	def dfsutil(self, visited, x, y):
 		visited[x] = True
 		for i in self.graph[x]:
 			if y in self.graph[x]:
 				self.has_path = True
 				return
 			if(not(visited[i])):
-				self.dfsutil(visited,x,i)
+				self.dfsutil(visited, x, i)
 
-	def is_reachable(self,x,y):
+	def is_reachable(self, x, y):
 		self.has_path = False
-		self.dfs(x,y)
+		self.dfs(x, y)
 		return self.has_path
 
 
@@ -36,16 +37,16 @@ g.add_edge(1, 2)
 g.add_edge(2, 0)
 g.add_edge(2, 3)
 g.add_edge(3, 3)
- 
-u =1; v = 3
- 
+
+u, v = 1, 3
+
 if g.is_reachable(u, v):
-    print("There is a path from %d to %d" % (u,v))
-else :
-    print("There is no path from %d to %d" % (u,v))
- 
-u = 3; v = 1
-if g.is_reachable(u, v) :
-    print("There is a path from %d to %d" % (u,v))
-else :
-    print("There is no path from %d to %d" % (u,v))
+    print("There is a path from %d to %d" % (u, v))
+else:
+    print("There is no path from %d to %d" % (u, v))
+
+u, v = 1, 3
+if g.is_reachable(u, v):
+    print("There is a path from %d to %d" % (u, v))
+else:
+    print("There is no path from %d to %d" % (u, v))

@@ -1,6 +1,8 @@
 '''
-In mathematics, the Fibonacci numbers, commonly denoted Fn, form a sequence, called the Fibonacci sequence, 
-such that each number is the sum of the two preceding ones, starting from 0 and 1. 
+In mathematics, the Fibonacci numbers, commonly denoted Fn,
+form a sequence, called the Fibonacci sequence,
+such that each number is the sum of the two preceding ones,
+starting from 0 and 1.
 That is,
     F0=0 , F1=1
 and
@@ -8,10 +10,13 @@ and
 The Fibonacci numbers are the numbers in the following integer sequence.
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …….
 
-In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation
+In mathematical terms, the sequence Fn of Fibonacci numbers is
+defined by the recurrence relation
 
 Here, given a number n, print n-th Fibonacci Number.
 '''
+
+
 def fib_recursive(n):
     """[summary]
     Computes the n-th fibonacci number recursive.
@@ -20,7 +25,7 @@ def fib_recursive(n):
 
     Arguments:
         n {[int]} -- [description]
-    
+
     Returns:
         [int] -- [description]
     """
@@ -35,15 +40,16 @@ def fib_recursive(n):
 
 # print(fib_recursive(35)) # => 9227465 (slow)
 
+
 def fib_list(n):
     """[summary]
     This algorithm computes the n-th fibbonacci number
     very quick. approximate O(n)
     The algorithm use dynamic programming.
-    
+
     Arguments:
         n {[int]} -- [description]
-    
+
     Returns:
         [int] -- [description]
     """
@@ -58,13 +64,14 @@ def fib_list(n):
 
 # print(fib_list(100)) # => 354224848179261915075
 
+
 def fib_iter(n):
     """[summary]
     Works iterative approximate O(n)
 
     Arguments:
         n {[int]} -- [description]
-    
+
     Returns:
         [int] -- [description]
     """
