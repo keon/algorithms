@@ -1,4 +1,5 @@
-from .bitmasking import *
+from .bitmasking_cap_assignment import *
+from .bitmasking_tsp import *
 from .buy_sell_stock import *
 from .climbing_stairs import *
 from .coin_change import *
