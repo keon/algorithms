@@ -1,14 +1,14 @@
-myGraph = {'A': ['B', 'C'],
-         'B': ['C', 'D'],
-         'C': ['D', 'F'],
-         'D': ['C'],
-         'E': ['F'],
-         'F': ['C']}
+"""
+Functions for finding paths in graphs.
+"""
 
-# find path from start to end using recursion with backtracking
+# pylint: disable=dangerous-default-value
 def find_path(graph, start, end, path=[]):
+    """
+    Find a path between two nodes using recursion and backtracking.
+    """
     path = path + [start]
-    if (start == end):
+    if start == end:
         return path
     if not start in graph:
         return None
@@ -18,13 +18,16 @@ def find_path(graph, start, end, path=[]):
             return newpath
     return None
 
-# find all path
+# pylint: disable=dangerous-default-value
 def find_all_path(graph, start, end, path=[]):
+    """
+    Find all paths between two nodes using recursion and backtracking
+    """
     path = path + [start]
-    if (start == end):
+    if start == end:
         return [path]
     if not start in graph:
-        return None
+        return []
     paths = []
     for node in graph[start]:
         if node not in path:
@@ -34,6 +37,9 @@ def find_all_path(graph, start, end, path=[]):
     return paths
 
 def find_shortest_path(graph, start, end, path=[]):
+    """
+    find the shortest path between two nodes
+    """
     path = path + [start]
     if start == end:
         return path
@@ -47,6 +53,3 @@ def find_shortest_path(graph, start, end, path=[]):
                 if not shortest or len(newpath) < len(shortest):
                     shortest = newpath
     return shortest
-
-print(find_all_path(myGraph, 'A', 'F'))
-# print(find_shortest_path(myGraph, 'A', 'D'))

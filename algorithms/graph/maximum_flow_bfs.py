@@ -9,12 +9,12 @@ Time complexity - O(Ef)
 
 example
 
-graph = [[0, 16, 13, 0, 0, 0], 
-        [0, 0, 10, 12, 0, 0], 
-        [0, 4, 0, 0, 14, 0], 
-        [0, 0, 9, 0, 0, 20], 
-        [0, 0, 0, 7, 0, 4], 
-        [0, 0, 0, 0, 0, 0]] 
+graph = [[0, 16, 13, 0, 0, 0],
+        [0, 0, 10, 12, 0, 0],
+        [0, 4, 0, 0, 14, 0],
+        [0, 0, 9, 0, 0, 20],
+        [0, 0, 0, 7, 0, 4],
+        [0, 0, 0, 0, 0, 0]]
 
 answer should be
 
@@ -26,27 +26,30 @@ import queue
 import math
 
 def maximum_flow_bfs(adjacency_matrix):
+    """
+    Get the maximum flow through a graph using a breadth first search
+    """
     #initial setting
     new_array = copy.deepcopy(adjacency_matrix)
     total = 0
 
-    while(1):
+    while True:
         #setting min to max_value
-        min = math.inf
+        min_flow = math.inf
         #save visited nodes
         visited = [0]*len(new_array)
         #save parent nodes
         path = [0]*len(new_array)
-        
+
         #initialize queue for BFS
         bfs = queue.Queue()
 
-        #initial setting 
+        #initial setting
         visited[0] = 1
         bfs.put(0)
 
         #BFS to find path
-        while(bfs.qsize() > 0):
+        while bfs.qsize() > 0:
             #pop from queue
             src = bfs.get()
             for k in range(len(new_array)):
@@ -56,29 +59,29 @@ def maximum_flow_bfs(adjacency_matrix):
                     visited[k] = 1
                     bfs.put(k)
                     path[k] = src
-            
+
         #if there is no path from src to sink
-        if(visited[len(new_array) - 1] == 0):
+        if visited[len(new_array) - 1] == 0:
             break
-        
+
         #initial setting
         tmp = len(new_array) - 1
 
         #Get minimum flow
-        while(tmp != 0):
+        while tmp != 0:
             #find minimum flow
-            if(min > new_array[path[tmp]][tmp]):
-                min = new_array[path[tmp]][tmp]
+            if min_flow > new_array[path[tmp]][tmp]:
+                min_flow = new_array[path[tmp]][tmp]
             tmp = path[tmp]
 
         #initial setting
         tmp = len(new_array) - 1
 
         #reduce capacity
-        while(tmp != 0):
-            new_array[path[tmp]][tmp] = new_array[path[tmp]][tmp] - min
+        while tmp != 0:
+            new_array[path[tmp]][tmp] = new_array[path[tmp]][tmp] - min_flow
             tmp = path[tmp]
 
-        total = total + min
-    
+        total = total + min_flow
+
     return total

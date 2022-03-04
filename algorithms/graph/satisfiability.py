@@ -1,45 +1,49 @@
-'''
+"""
 Given a formula in conjunctive normal form (2-CNF), finds a way to assign
 True/False values to all variables to satisfy all clauses, or reports there
 is no solution.
 
 https://en.wikipedia.org/wiki/2-satisfiability
-'''
 
 
-''' Format:
+Format:
         - each clause is a pair of literals
         - each literal in the form (name, is_neg)
           where name is an arbitrary identifier,
           and is_neg is true if the literal is negated
-'''
-formula = [(('x', False), ('y', False)),
-           (('y', True), ('y', True)),
-           (('a', False), ('b', False)),
-           (('a', True), ('c', True)),
-           (('c', False), ('b', True))]
+"""
+
+def dfs_transposed(vertex, graph, order, visited):
+    """
+    Perform a depth first search traversal of the graph starting at the given vertex.
+    Stores the order in which nodes were visited to the list, in transposed order.
+    """
+    visited[vertex] = True
+
+    for adjacent in graph[vertex]:
+        if not visited[adjacent]:
+            dfs_transposed(adjacent, graph, order, visited)
+
+    order.append(vertex)
 
 
-def dfs_transposed(v, graph, order, vis):
-    vis[v] = True
+def dfs(vertex, current_comp, vertex_scc, graph, visited):
+    """
+    Perform a depth first search traversal of the graph starting at the given vertex.
+    Records all visited nodes as being of a certain strongly connected component.
+    """
+    visited[vertex] = True
+    vertex_scc[vertex] = current_comp
 
-    for u in graph[v]:
-        if not vis[u]:
-            dfs_transposed(u, graph, order, vis)
-
-    order.append(v)
-
-
-def dfs(v, current_comp, vertex_scc, graph, vis):
-    vis[v] = True
-    vertex_scc[v] = current_comp
-
-    for u in graph[v]:
-        if not vis[u]:
-            dfs(u, current_comp, vertex_scc, graph, vis)
+    for adjacent in graph[vertex]:
+        if not visited[adjacent]:
+            dfs(adjacent, current_comp, vertex_scc, graph, visited)
 
 
 def add_edge(graph, vertex_from, vertex_to):
+    """
+    Add a directed edge to the graph.
+    """
     if vertex_from not in graph:
         graph[vertex_from] = []
 
@@ -49,26 +53,26 @@ def add_edge(graph, vertex_from, vertex_to):
 def scc(graph):
     ''' Computes the strongly connected components of a graph '''
     order = []
-    vis = {vertex: False for vertex in graph}
+    visited = {vertex: False for vertex in graph}
 
     graph_transposed = {vertex: [] for vertex in graph}
 
-    for (v, neighbours) in graph.iteritems():
-        for u in neighbours:
-            add_edge(graph_transposed, u, v)
+    for (source, neighbours) in graph.iteritems():
+        for target in neighbours:
+            add_edge(graph_transposed, target, source)
 
-    for v in graph:
-        if not vis[v]:
-            dfs_transposed(v, graph_transposed, order, vis)
+    for vertex in graph:
+        if not visited[vertex]:
+            dfs_transposed(vertex, graph_transposed, order, visited)
 
-    vis = {vertex: False for vertex in graph}
+    visited = {vertex: False for vertex in graph}
     vertex_scc = {}
 
     current_comp = 0
-    for v in reversed(order):
-        if not vis[v]:
+    for vertex in reversed(order):
+        if not visited[vertex]:
             # Each dfs will visit exactly one component
-            dfs(v, current_comp, vertex_scc, graph, vis)
+            dfs(vertex, current_comp, vertex_scc, graph, visited)
             current_comp += 1
 
     return vertex_scc
@@ -91,6 +95,9 @@ def build_graph(formula):
 
 
 def solve_sat(formula):
+    """
+    Solves the 2-SAT problem
+    """
     graph = build_graph(formula)
     vertex_scc = scc(graph)
 
@@ -119,8 +126,20 @@ def solve_sat(formula):
     return value
 
 
-if __name__ == '__main__':
+def main():
+    """
+    Entry point for testing
+    """
+    formula = [(('x', False), ('y', False)),
+               (('y', True), ('y', True)),
+               (('a', False), ('b', False)),
+               (('a', True), ('c', True)),
+               (('c', False), ('b', True))]
+
     result = solve_sat(formula)
 
-    for (variable, assign) in result.iteritems():
-        print("{}:{}".format(variable, assign))
+    for (variable, assign) in result.items():
+        print(f"{variable}:{assign}")
+
+if __name__ == '__main__':
+    main()
