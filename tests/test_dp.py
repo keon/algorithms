@@ -118,6 +118,12 @@ class TestBitmaskingTSP(unittest.TestCase):
         with self.assertRaises(ValueError):
             tsp(nodes, nbRow, nbColumn)
         
+    # === Relates to requirement R2.4 "No solution" ===
+    # Checks that the output is inf when there is at least one unreachable node 
+    def test_no_solution(self):
+        # TODO
+        pass
+        
 class TestBuySellStock(unittest.TestCase):
     def test_max_profit_naive(self):
         self.assertEqual(max_profit_naive([7, 1, 5, 3, 6, 4]), 5)

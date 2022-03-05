@@ -9,41 +9,23 @@ D_X = [-1, 0, 0, 1]
 D_Y = [0, 1, -1, 0]
 
 """
-Check that the given nodes is valid
-
-:param nodes: The nodes to check
-:param nbRow: The number of rows
-:param nbColumn: The number of columns
-:returns: Nothing but raises error if invalid nodes
-"""
-def check_argument(nodes: list, nbRow: int, nbColumn: int):
-    if len(nodes) != nbRow:
-        raise ValueError(f'The number of rows in nodes ({len(nodes)}) does not match the given number of row: {nbRow} !')
-    for row in nodes:
-        if not isinstance(row, list):
-            raise ValueError(f'The given row {row} is not valid !')
-        if len(row) != nbColumn:
-            raise ValueError(f'The number of columns in row {row} does not match the given number of column: {nbColumn} !')
-        for node in row:
-            if node != '.' and node != '*' and node != '#':
-                raise ValueError(f'The given node "{node}" in row {row} is not valid !')
-
-"""
 Check if the given position is valid
 
-:param nodes: The nodes
+:param nodes: The nodes coordinates
 :param nbRow: The number of rows
 :param nbColumn: The number of columns
+:param row: The row value to check
+:param column: The column value to check
 :returns: True if the position is valid, False otherwise
 """
-def is_safe_pos(nodes: list, nbRow: int, nbColumn: int, r: int, c: int):
-    return r >= 0 and r < nbRow and c >= 0 and c < nbColumn and nodes[r][c] != '#'
+def is_safe_pos(nodes: list, nbRow: int, nbColumn: int, row: int, column: int):
+    return row >= 0 and row < nbRow and column >= 0 and column < nbColumn and nodes[row][column] != '#'
 
 
 """
 Compute all the distances from the given house to all nodes using BFS
 
-:param nodes: The nodes
+:param nodes: The nodes coordinates
 :param houses: The houses location
 :param nbRow: The number of rows
 :param nbColumn: The number of columns
@@ -78,7 +60,7 @@ def getDist(nodes: list, houses: list, nbRow: int, nbColumn: int, dist: list, in
 """
 Compute all the distances from all houses to all nodes
 
-:param nodes: The nodes
+:param nodes: The nodes coordinates
 :param houses: The houses location
 :param nbRow: The number of rows
 :param nbColumn: The number of columns
@@ -94,11 +76,34 @@ def getAllDist(nodes: list, houses: list, nbRow: int, nbColumn: int):
     return dist
 
 """
-Initialize the variables
+Check that the given nodes coordinates are valid
 
-:param nodes: The nodes given
+:param nodes: The given nodes coordinates to check
 :param nbRow: The number of rows
 :param nbColumn: The number of columns
+:returns: Nothing but raises error if invalid nodes
+"""
+def check_argument(nodes: list, nbRow: int, nbColumn: int):
+    if nodes == []:
+        raise ValueError("There should be at least one node, but you gave an empty array !")
+    if len(nodes) != nbRow:
+        raise ValueError(f'The number of rows in nodes ({len(nodes)}) does not match the given number of row: {nbRow} !')
+    for row in nodes:
+        if not isinstance(row, list):
+            raise ValueError(f'The given row {row} is not valid !')
+        if len(row) != nbColumn:
+            raise ValueError(f'The number of columns in row {row} does not match the given number of column: {nbColumn} !')
+        for node in row:
+            if node != '.' and node != '*' and node != '#':
+                raise ValueError(f'The given node "{node}" in row {row} is not valid !')
+
+"""
+Initialize the variables
+
+:param nodes: The given nodes coordinates
+:param nbRow: The number of rows
+:param nbColumn: The number of columns
+:returns: The houses location, the DP matrix and all the distances
 """
 def initialization(nodes: list, nbRow: int, nbColumn: int):
 
@@ -162,7 +167,9 @@ def find_shortest_path(houses: list, DP: list, dist: list, index: int, mask: int
 
 """
 Finds the length of the shortest Euler circuit using bitmasking and dynamic programming (DP).
-:param nodes: Contains integer tuples of the node coordinates.
+:param nodes: The given nodes coordinates
+:param nbRow: The number of rows
+:param nbColumn: The number of columns
 :returns: the length of the shortest Euler circuit.
 """
 def tsp(nodes: list, nbRow: int, nbColumn: int) -> int:
