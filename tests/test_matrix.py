@@ -17,7 +17,7 @@ from algorithms.matrix import (
 )
 import unittest
 
-'''class TestSparseMul(unittest.TestCase):
+class TestSparseMul(unittest.TestCase):
     def test_multiply(self):
         # Tests a 2x3 matrix and 3x3 matrix gives correct result
         self.assertEqual(sparse_mul.multiply(self, [[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]]),
@@ -62,7 +62,7 @@ import unittest
 
         # Test 5: tests that in case both matrices are None the answer is None
         self.assertEqual(sparse_mul.multiply_3(self, None, None), None)
-'''
+
 
 class TestBombEnemy(unittest.TestCase):
     def test_3x4(self):
