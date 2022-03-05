@@ -1,4 +1,4 @@
-from algorithms.matrix import (
+from algorithms.algorithms.matrix import (
     bomb_enemy,
     copy_transform,
     crout_matrix_decomposition,
@@ -310,6 +310,11 @@ class TestSpiralTraversal(unittest.TestCase):
         self.assertEqual(spiral_traversal.spiral_traversal(
             [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [1, 2, 3, 6, 9, 8, 7, 4, 5])
 
+    def test_spiral_traversal_empty_matrix(self):
+        """
+        Test the case when the matrix is empty
+        """
+        self.assertEqual(spiral_traversal.spiral_traversal([]), [])
 
 class TestSudokuValidator(unittest.TestCase):
     """[summary]
