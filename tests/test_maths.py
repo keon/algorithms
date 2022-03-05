@@ -507,6 +507,7 @@ class TestNumberOfPerfectSquares(unittest.TestCase):
         unittest {[type]} -- [description]
     """
     def test_num_perfect_squares(self):
+        self.assertEqual(4,num_perfect_squares(31))
         self.assertEqual(3,num_perfect_squares(12))
         self.assertEqual(2,num_perfect_squares(13))
         self.assertEqual(2,num_perfect_squares(10))
