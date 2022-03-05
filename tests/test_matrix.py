@@ -422,6 +422,10 @@ class TestSumSubSquares(unittest.TestCase):
         self.assertEqual(sum_sub_squares.sum_sub_squares(mat, 3),
                          [[18, 18, 18], [27, 27, 27], [36, 36, 36]])
 
+        mat2 = [[1, 1, 1],
+                [2, 2, 2],
+                [3, 3, 3]]
+        self.assertFalse(0, (sum_sub_squares.sum_sub_squares(mat2, 4)))
 
 class TestSortMatrixDiagonally(unittest.TestCase):
     def test_sort_diagonally(self):
