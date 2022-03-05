@@ -1,4 +1,4 @@
-from algorithms.matrix import (
+from algorithms.algorithms.matrix import (
     bomb_enemy,
     copy_transform,
     crout_matrix_decomposition,
@@ -293,6 +293,14 @@ class TestSparseDotVector(unittest.TestCase):
                                      sparse_dot_vector.
                                      vector_to_index_value_list([0., 2., 2.])),
                          10)
+
+    def test_sparse_dot_vector_v1_smaller_than_v2(self):
+        self.assertEqual(sparse_dot_vector.dot_product(sparse_dot_vector.vector_to_index_value_list([2., 3.]),
+                                                       sparse_dot_vector.vector_to_index_value_list([1., 2., 2.])), 0)
+
+    def test_sparse_dot_vector_v2_smaller_than_v1(self):
+        self.assertEqual(sparse_dot_vector.dot_product(sparse_dot_vector.vector_to_index_value_list([1., 2., 3.]),
+                                                       sparse_dot_vector.vector_to_index_value_list([2., 2.])), 0)
 
 
 class TestSpiralTraversal(unittest.TestCase):
