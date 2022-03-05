@@ -74,21 +74,21 @@ class BinaryHeap(AbstractHeap):
             i = i // 2
 
     def insert(self, val):
-         """
+        """
         Method insert always start by inserting the element at the bottom.
         It inserts rightmost spot so as to maintain the complete tree property.
         Then, it fixes the tree by swapping the new element with its parent,
         until it finds an appropriate spot for the element. It essentially
         perc_up the minimum element
         Complexity: O(logN)
-    """
+        """
         self.heap.append(val)
         self.current_size = self.current_size + 1
         self.perc_up(self.current_size)
 
-    """
+        """
         Method min_child returns the index of smaller of 2 children of parent at index i
-    """
+        """
 
     def min_child(self, i):
         if 2 * i + 1 > self.current_size:  # No right child
