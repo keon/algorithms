@@ -9,6 +9,8 @@ The function should return false
 bottom [1, 2, 3, 4, 5, 6] top
 The function should return true
 """
+
+
 def is_sorted(stack):
     storage_stack = []
     for i in range(len(stack)):

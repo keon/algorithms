@@ -33,7 +33,7 @@ def int_to_base(n, base):
 
 def base_to_int(s, base):
     """
-        Note : You can use int() built-in function instread of this.
+        Note : You can use int() built-in function instead of this.
         :type s: str
         :type base: int
         :rtype: int

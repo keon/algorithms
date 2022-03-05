@@ -194,6 +194,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [hashtable](algorithms/map/hashtable.py)
     - [separate_chaining_hashtable](algorithms/map/separate_chaining_hashtable.py)
     - [longest_common_subsequence](algorithms/map/longest_common_subsequence.py)
+    - [longest_palindromic_subsequence](algorithms/map/longest_palindromic_subsequence.py)
     - [randomized_set](algorithms/map/randomized_set.py)
     - [valid_sudoku](algorithms/map/valid_sudoku.py)
     - [word_pattern](algorithms/map/word_pattern.py)
@@ -283,6 +284,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [comb_sort](algorithms/sort/comb_sort.py)
     - [counting_sort](algorithms/sort/counting_sort.py)
     - [cycle_sort](algorithms/sort/cycle_sort.py)
+    - [exchange_sort](algorithms/sort/exchange_sort.py)
     - [gnome_sort](algorithms/sort/gnome_sort.py)
     - [heap_sort](algorithms/sort/heap_sort.py)
     - [insertion_sort](algorithms/sort/insertion_sort.py)
@@ -369,7 +371,6 @@ If you want to uninstall algorithms, it is as simple as:
         - [count_left_node](algorithms/tree/bst/count_left_node.py)
         - [num_empty](algorithms/tree/bst/num_empty.py)
         - [height](algorithms/tree/bst/height.py)
-    - [fenwick_tree](algorithms/tree/fenwick_tree]
 	- [fenwick_tree](algorithms/tree/fenwick_tree/fenwick_tree.py)
     - [red_black_tree](algorithms/tree/red_black_tree)
         - [red_black_tree](algorithms/tree/red_black_tree/red_black_tree.py)

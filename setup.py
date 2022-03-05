@@ -1,6 +1,4 @@
-import os
 import io
-import re
 from setuptools import find_packages, setup
 
 

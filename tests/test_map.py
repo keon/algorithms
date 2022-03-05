@@ -1,12 +1,14 @@
 from algorithms.map import (
     HashTable, ResizableHashTable,
-    Node, SeparateChainingHashTable,
+    SeparateChainingHashTable,
     word_pattern,
     is_isomorphic,
-    is_anagram
+    is_anagram,
+    longest_palindromic_subsequence,
 )
 
 import unittest
+
 
 class TestHashTable(unittest.TestCase):
     def test_one_entry(self):
@@ -44,7 +46,7 @@ class TestHashTable(unittest.TestCase):
             m.put(i, i**2)
         m.del_(1)
         self.assertEqual(None, m.get(1))
-        self.assertEqual(4,m.get(2))
+        self.assertEqual(4, m.get(2))
 
     def test_delete_key_and_reassign(self):
         m = HashTable(10)
@@ -90,9 +92,9 @@ class TestHashTable(unittest.TestCase):
     def test_fill_up_the_limit(self):
         m = HashTable(10)
         for i in range(10):
-            m.put(i,i**2)
+            m.put(i, i**2)
         for i in range(10):
-            self.assertEqual(i**2,m.get(i))
+            self.assertEqual(i**2, m.get(i))
 
 
 class TestSeparateChainingHashTable(unittest.TestCase):
@@ -165,12 +167,24 @@ class TestIsSomorphic(unittest.TestCase):
         self.assertTrue(is_isomorphic("paper", "title"))
 
 
+class TestLongestPalindromicSubsequence(unittest.TestCase):
+    def test_longest_palindromic_subsequence_is_correct(self):
+        self.assertEqual(3, longest_palindromic_subsequence('BBABCBCAB'))
+        self.assertEqual(4, longest_palindromic_subsequence('abbaeae'))
+        self.assertEqual(7, longest_palindromic_subsequence('babbbababaa'))
+        self.assertEqual(4, longest_palindromic_subsequence('daccandeeja'))
+
+    def test_longest_palindromic_subsequence_is_incorrect(self):
+        self.assertNotEqual(4, longest_palindromic_subsequence('BBABCBCAB'))
+        self.assertNotEqual(5, longest_palindromic_subsequence('abbaeae'))
+        self.assertNotEqual(2, longest_palindromic_subsequence('babbbababaa'))
+        self.assertNotEqual(1, longest_palindromic_subsequence('daccandeeja'))
+
+
 class TestIsAnagram(unittest.TestCase):
     def test_is_anagram(self):
         self.assertTrue(is_anagram("anagram", "nagaram"))
         self.assertFalse(is_anagram("rat", "car"))
-
-
 
 
 if __name__ == "__main__":

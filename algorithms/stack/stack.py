@@ -8,12 +8,12 @@ pop() removes the top item from the stack.
    It needs no parameters and returns the item. The stack is modified.
 peek() returns the top item from the stack but does not remove it.
    It needs no parameters. The stack is not modified.
-isEmpty() tests to see whether the stack is empty.
+is_empty() tests to see whether the stack is empty.
    It needs no parameters and returns a boolean value.
-size() returns the number of items on the stack.
-   It needs no parameters and returns an integer.
 """
 from abc import ABCMeta, abstractmethod
+
+
 class AbstractStack(metaclass=ABCMeta):
     """Abstract Class for Stacks."""
     def __init__(self):
@@ -72,7 +72,7 @@ class ArrayStack(AbstractStack):
 
     def pop(self):
         if self.is_empty():
-            raise IndexError("stack is empty")
+            raise IndexError("Stack is empty")
         value = self._array[self._top]
         self._top -= 1
         return value
@@ -80,7 +80,7 @@ class ArrayStack(AbstractStack):
     def peek(self):
         """returns the current top element of the stack."""
         if self.is_empty():
-            raise IndexError("stack is empty")
+            raise IndexError("Stack is empty")
         return self._array[self._top]
 
     def _expand(self):

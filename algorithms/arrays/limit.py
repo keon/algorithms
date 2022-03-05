@@ -14,7 +14,12 @@ Complexity = O(n)
 
 # tl:dr -- array slicing by value
 def limit(arr, min_lim=None, max_lim=None):
-    min_check = lambda val: True if min_lim is None else (min_lim <= val)
-    max_check = lambda val: True if max_lim is None else (val <= max_lim)
-    
-    return [val for val in arr if min_check(val) and max_check(val)]
+    if len(arr) == 0:
+        return arr
+
+    if min_lim is None:
+        min_lim = min(arr)
+    if max_lim is None:
+        max_lim = max(arr)
+
+    return list(filter(lambda x: (min_lim <= x <= max_lim), arr))

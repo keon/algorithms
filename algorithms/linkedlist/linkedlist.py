@@ -3,7 +3,7 @@
 # in comparison, arrays require O(n) time to do the same thing.
 # Linked lists can continue to expand without having to specify
 # their size ahead of time (remember our lectures on Array sizing
-# form the Array Sequence section of the course!)
+# from the Array Sequence section of the course!)
 
 # Cons
 # To access an element in a linked list, you need to take O(k) time

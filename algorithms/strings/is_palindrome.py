@@ -11,6 +11,7 @@ For the purpose of this problem,
 we define empty string as valid palindrome.
 """
 from string import ascii_letters
+from collections import deque
 
 
 def is_palindrome(s):
@@ -85,3 +86,20 @@ def is_palindrome_stack(s):
         if s[i] != stack.pop():
             return False
     return True	
+
+# Variation 4 (using deque)
+def is_palindrome_deque(s):
+    s = remove_punctuation(s)
+    deq = deque()
+    for char in s:
+        deq.appendleft(char)
+
+    equal = True
+
+    while len(deq) > 1 and equal:
+        first = deq.pop()
+        last = deq.popleft()
+        if first != last :
+            equal = False
+
+    return equal

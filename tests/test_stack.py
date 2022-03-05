@@ -11,6 +11,8 @@ from algorithms.stack import (
 )
 
 import unittest
+
+
 class TestSuite(unittest.TestCase):
     def test_is_consecutive(self):
         self.assertTrue(first_is_consecutive([3, 4, 5, 6, 7]))
@@ -132,6 +134,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(1, stack.pop())
 
         self.assertTrue(stack.is_empty())
+
 
 class TestOrderedStack(unittest.TestCase):
     def test_OrderedStack(self):
