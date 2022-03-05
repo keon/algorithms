@@ -21,6 +21,7 @@ from algorithms.dp import (
 
 
 import unittest
+import math
 
 '''
 This class test the dynamic programming with bit masking algorithm
@@ -53,20 +54,69 @@ class TestBitmaskingCapAssignment(unittest.TestCase):
         
 class TestBitmaskingTSP(unittest.TestCase):
     # === Relates to requirement R2.1 "No nodes" ===
-    # Checks that the output is 0 when the list of nodes is empty
+    # Checks that a ValueError is raised when the list of nodes is empty
     def test_no_nodes(self):
-        self.assertEquals(tsp([]), 0)
+        nodes = []
+        nbRow = 0
+        nbColumn = 0
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
 
     # === Relates to requirement R2.2 "One node" ===
     # Checks that the output is 0 when there is only one node
     def test_one_node(self):
-        self.assertEquals(tsp([(1,1)]), 0)
+        nodes = [['*']]
+        nbRow = 1
+        nbColumn = 1
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), 0)
 
     # === Relates to requirement R2.3 "Positive path length" ===
     # Checks that the output is a positive number that corresponds to the length of the 
     # shortest Euler circuit
     def test_positive_path_length(self):
-        self.assertEquals(tsp([(0,0), (0,3), (0,4)]), 12)
+        nodes = [
+            ['.', '.', '.', '.', '.', '*', '.'],
+            ['.', '.', '.', '#', '.', '.', '.'],
+            ['.', '*', '.', '#', '.', '*', '.'],
+            ['.', '.', '.', '.', '.', '*', '.']
+        ]
+        nbRow = 4
+        nbColumn = 7
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), 16)
+        
+    # === Relates to requirement R2.4 "No solution" ===
+    # Checks that the output is inf when there is at least one unreachable node 
+    def test_no_solution(self):
+        nodes = [
+            ['.', '.', '.', '#', '.', '.', '.'], 
+            ['.', '.', '.', '#', '.', '*', '.'], 
+            ['.', '.', '.', '#', '.', '.', '.'], 
+            ['.', '*', '.', '#', '.', '*', '.'], 
+            ['.', '.', '.', '#', '.', '.', '.']
+        ]
+        nbRow = 5
+        nbColumn = 7
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), math.inf)
+        
+        
+    # === Relates to requirement R2.5 "Faulty dimensions" ===
+    # Checks a ValueError is raised when the dimensions of the graph don't correspond to 
+    # the dimension parameters
+    def test_faulty_dimensions(self):
+        nodes = [
+            ['.', '.', '.', '.', '.', '*', '.'],
+            ['.', '.', '.', '#', '.', '.', '.'],
+            ['.', '*', '.', '#', '.', '*', '.'],
+            ['.', '.', '.', '.', '.', '*', '.']
+        ]
+        nbRow = 3
+        nbColumn = 7
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+        nbRow = 4
+        nbColumn = 8
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
         
     # === Relates to requirement R2.4 "No solution" ===
     # Checks that the output is inf when there is at least one unreachable node 
