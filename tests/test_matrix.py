@@ -437,6 +437,11 @@ class TestSortMatrixDiagonally(unittest.TestCase):
             [1, 2, 3, 3]
         ])
 
+        mat2 = [
+            [1, 1, 1]
+        ]
+        self.assertEqual(mat2, sort_matrix_diagonally.sort_diagonally(mat2))
+
 
 if __name__ == "__main__":
     unittest.main()
