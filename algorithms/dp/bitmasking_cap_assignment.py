@@ -49,7 +49,7 @@ def initialization(capsSets: list, nbCaps: int):
     return nbPeople, caps, DP
 
 """
-Determines the nr of ways to assign unique caps to current people wearing status
+Determines the number of ways to assign unique caps to current people wearing status
 (i.e. current mask) having caps from cap_id to last cap to assign (or not)
 
 :param nbPeople: The number of people
@@ -60,7 +60,7 @@ Determines the nr of ways to assign unique caps to current people wearing status
 :param cap_id: The current cap
 :returns: The number of unique ways to assign unique caps
 """
-def assign_unique_caps_from(nbPeople, nbCaps, caps, DP, mask, cap_id):
+def assign_unique_caps_from(nbPeople: int, nbCaps: int, caps: list, DP: list, mask: int, cap_id: int):
     
     # if the mask is full, then we found a satisfying arrangement
     if mask == (1 << nbPeople) - 1:
@@ -70,7 +70,7 @@ def assign_unique_caps_from(nbPeople, nbCaps, caps, DP, mask, cap_id):
     if cap_id > nbCaps:
         return 0
 
-    # if this subproblem is already computed, just return the solution
+    # if this subproblem has already been computed, just return the solution
     if DP[mask][cap_id] != -1:
         return DP[mask][cap_id]
 
@@ -90,10 +90,10 @@ def assign_unique_caps_from(nbPeople, nbCaps, caps, DP, mask, cap_id):
     return DP[mask][cap_id]
 
 """
-Determines the nr of ways to assign unique caps to every person using bitmasking and dynamic programming (dp).
+Determines the number of ways to assign unique caps to every person using bitmasking and dynamic programming (dp).
 
 :param capSets: A nested list containing the caps of every person. 
-:returns: The nr of ways to select unique caps for every person.
+:returns: The number of ways to select unique caps for every person.
 """
 def assign_unique_caps(capsSets: list, nbCaps: int) -> int:
 
