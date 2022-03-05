@@ -11,7 +11,7 @@ from algorithms.bit import (
     single_number3,
     subsets,
     get_bit, set_bit, clear_bit, update_bit,
-    int_to_bytes_big_endian, int_to_bytes_little_endian, 
+    int_to_bytes_big_endian, int_to_bytes_little_endian,
     bytes_big_endian_to_int, bytes_little_endian_to_int,
     swap_pair,
     find_difference,
@@ -151,20 +151,24 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(single, single_number2(nums))
 
     def test_single_number3(self):
-        self.assertEqual(sorted([2,5]),
+        self.assertEqual(sorted([2, 5]),
                          sorted(single_number3([2, 1, 5, 6, 6, 1])))
-        self.assertEqual(sorted([4,3]),
+        self.assertEqual(sorted([4, 3]),
                          sorted(single_number3([9, 9, 4, 3])))
 
     def test_subsets(self):
 
         self.assertSetEqual(subsets([1, 2, 3]),
-                            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)})
+                            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3),
+                            (1, 2, 3)})
 
         self.assertSetEqual(subsets([10, 20, 30, 40]),
-                            {(10, 40), (10, 20, 40), (10, 30), (10, 20, 30, 40), (40,),
-                             (10, 30, 40), (30,), (20, 30), (30, 40), (10,), (),
-                             (10, 20), (20, 40), (20, 30, 40), (10, 20, 30), (20,)})
+                            {(10, 40), (10, 20, 40), (10, 30),
+                            (10, 20, 30, 40), (40,),
+                             (10, 30, 40), (30,), (20, 30), (30, 40), (10,),
+                             (),
+                             (10, 20), (20, 40), (20, 30, 40), (10, 20, 30),
+                             (20,)})
 
     def test_get_bit(self):
         # 22 = 10110
@@ -180,20 +184,22 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(18, clear_bit(22, 2))
 
     def test_update_bit(self):
-        # 22 = 10110 --> after update bit at 3th position with value 1: 30 = 11110
+        # 22 = 10110 --> after update bit at 3th position with
+        # value 1: 30 = 11110
         self.assertEqual(30, update_bit(22, 3, 1))
-        # 22 = 10110 --> after update bit at 2nd position with value 0: 20 = 10010
+        # 22 = 10110 --> after update bit at 2nd position with
+        # value 0: 20 = 10010
         self.assertEqual(18, update_bit(22, 2, 0))
 
     def test_int_to_bytes_big_endian(self):
         self.assertEqual(b'\x11', int_to_bytes_big_endian(17))
-    
+
     def test_int_to_bytes_little_endian(self):
         self.assertEqual(b'\x11', int_to_bytes_little_endian(17))
 
     def test_bytes_big_endian_to_int(self):
         self.assertEqual(17, bytes_big_endian_to_int(b'\x11'))
-    
+
     def test_bytes_little_endian_to_int(self):
         self.assertEqual(17, bytes_little_endian_to_int(b'\x11'))
 

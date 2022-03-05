@@ -1,13 +1,23 @@
-"""
-Given two strings text and pattern,
-return the list of  start indexes in text that matches with the pattern
-using knuth_morris_pratt algorithm.
-If idx is in the list, text[idx : idx + M] matches with pattern.
-Time complexity : O(N+M)
-N and M is the length of text and pattern, respectively.
-"""
+from typing import Sequence, List
 
-def knuth_morris_pratt(text, pattern):
+def knuth_morris_pratt(text : Sequence, pattern : Sequence) -> List[int]:
+    """
+    Given two strings text and pattern, return the list of start indexes in text that matches with the pattern
+    using knuth_morris_pratt algorithm.
+
+    Args:
+        text: Text to search
+        pattern: Pattern to search in the text
+    Returns:
+        List of indices of patterns found
+
+    Example:
+        >>> knuth_morris_pratt('hello there hero!', 'he')
+        [0, 7, 12]
+
+    If idx is in the list, text[idx : idx + M] matches with pattern.
+    Time complexity of the algorithm is O(N+M), with N and M the length of text and pattern, respectively.
+    """
     n = len(text)
     m = len(pattern)
     pi = [0 for i in range(m)]
