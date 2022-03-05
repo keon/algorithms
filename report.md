@@ -123,10 +123,12 @@ Optional (point 2): relation to design pattern(s).
 
 ## Overall experience
 
-What are your main take-aways from this project? What did you learn?
+In the final assignment of this course we got the opportunity to apply many tools and practices from earlier assignments. To begin with, we maintained several Github practices from assignment 1, such as using the issue tracker diligently and making sure to reference an issue in (almost) every commit. Furthermore, we used Github actions for continuous integration, which relates to assignment 2. Finally, we reflected over the team work in relation to the Essence standard, as we have done in every assignment in this course.
 
-How did you grow as a team, using the Essence standard to evaluate yourself?
+The main take-away from this assignment, and from the course in general, is that there is more to solving an issue than simply completing the task itself. If the issue is complex enough, it might be suitable to plan the work ahead of time (e.g. using the issue tracker) and documenting the process along the way. Additionally, it's important to apply the right practices, such as branching correctly, in order to make sure the work is efficient and risk-free.
 
-Optional (point 6): How would you put your work in context with best software engineering practice?
+Overall, the assignment seemed like a positive step towards bridging the gap between education and real-world programming.
 
-Optional (point 7): Is there something special you want to mention here?
+---
+
+Our team evaluation is available in [this file](Essence.pdf).
