@@ -18,27 +18,44 @@ For this task our group chose a new project to work with. The onboarding experie
 
 ## Effort spent
 
-For each team member, how much time was spent in
+The complete accounts of how much time each member spent on different tasks can be found in the following files:
 
-1. plenary discussions/meetings;
+- [Arvid Gotthard](time_schedule_arvid.txt)
+- [Bastien Faivre](time_schedule_bastien.txt)
+- [Max Persson](time_schedule_max.txt)
+- [Amanda Strömdahl](time_schedule_amanda.txt)
 
-2. discussions within parts of the group;
+### Plenary meetings
 
-3. reading documentation;
+There were 4 one-hour meetings in total, where all group members were present. Each meeting was conducted over Discord using the voice channel.
 
-4. configuration and setup;
+### Discussions within parts of the group
 
-5. analyzing code/output;
+There were continuous discussions in the Discord chat and in the Github comments alongside the work. It is therefore difficult to estimate the total time spent on this.
 
-6. writing documentation;
+### Reading documentation
 
-7. writing code;
+Amanda spent less than half an hour reading documentation whilst searching for a suitable issue/project.
 
-8. running code?
+### Configuration and setup
 
-For setting up tools and libraries (step 4), enumerate all dependencies
-you took care of and where you spent your time, if that time exceeds
-30 minutes.
+Since the project consists of many single-file Python programs, there were almost no dependencies. Some group members needed to install missing modules using `pip`, but this did not take long.
+
+### Analyzing code/output
+
+Amanda spent time analyzing code when she was reviewing pull requests. Additionally, she analyzed the output when writing tests.
+
+### Writing documentation
+
+Amanda spent most of her time writing documentation. This included writing requirements and the essence account, among other things.
+
+### Writing code
+
+Amanda spent a few hours writing unittests for both parts of the chosen issue.
+
+### Running code
+
+Amanda ran the code for the purpose of checking the tests, as she was writing them.
 
 ## Overview of issue(s) and work done.
 
