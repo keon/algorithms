@@ -71,6 +71,8 @@ If you want to uninstall algorithms, it is as simple as:
     - [two_sum](algorithms/arrays/two_sum.py)
     - [move_zeros](algorithms/arrays/move_zeros.py)
     - [n_sum](algorithms/arrays/n_sum.py)
+- [greedy](algorithms/greedy/)
+    - [max_subsequence_sum](algorithms/greedy/max_subsequence_sum.py)
 - [automata](algorithms/automata)
     - [DFA](algorithms/automata/dfa.py)
 - [backtrack](algorithms/backtrack)
