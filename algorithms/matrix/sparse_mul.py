@@ -46,7 +46,7 @@ def multiply(self, a, b):
 
 
 # Python solution with only one table for B (~196ms):
-def multiply(self, a, b):
+def multiply_2(self, a, b):
     """
     :type A: List[List[int]]
     :type B: List[List[int]]
@@ -67,13 +67,13 @@ def multiply(self, a, b):
     for i, row in enumerate(a):
         for k, eleA in enumerate(row):
             if eleA:
-                for j, eleB in table_b[k].iteritems():
+                for j, eleB in table_b[k].items():
                     c[i][j] += eleA * eleB
     return c
 
 
 # Python solution with two tables (~196ms):
-def multiply(self, a, b):
+def multiply_3(self, a, b):
     """
     :type A: List[List[int]]
     :type B: List[List[int]]
