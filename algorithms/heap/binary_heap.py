@@ -73,7 +73,8 @@ class BinaryHeap(AbstractHeap):
                 self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
             i = i // 2
 
-    """
+    def insert(self, val):
+         """
         Method insert always start by inserting the element at the bottom.
         It inserts rightmost spot so as to maintain the complete tree property.
         Then, it fixes the tree by swapping the new element with its parent,
@@ -81,9 +82,6 @@ class BinaryHeap(AbstractHeap):
         perc_up the minimum element
         Complexity: O(logN)
     """
-
-    def insert(self, val):
-        """Inserts the given value to the heap"""
         self.heap.append(val)
         self.current_size = self.current_size + 1
         self.perc_up(self.current_size)
