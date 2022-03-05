@@ -56,13 +56,15 @@ Each of the following requirements will be linked to new tests, since no tests r
 
 | ID   |                     Title                     |                                                                                                                                                    Description |
 | :--- | :-------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| R1.1 | Nr of cap sets less than 1 or greater than 10 |                                                                                             If the nr of cap sets is <1 or >10, an exception should be raised. |
+| R1.1 | Nr of cap sets less than 1 or greater than 10 |                                                                                             If the nr of cap sets is <1 or >10, a ValueError should be raised. |
 | R1.2 |              Person without caps              |                                                         If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
 | R1.3 |           No unique cap assignment            |                                  Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R1.4 |      One or more unique cap assignments       |                       Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
-| R2.1 |                   No nodes                    |                                                                                                               If the nr of nodes is 0, the output should be 0. |
+| R2.1 |                   No nodes                    |                                                                                                        If the nr of nodes is 0, a ValueError should be raised. |
 | R2.2 |                   One node                    |                                                                                                               If the nr of nodes is 1, the output should be 0. |
 | R2.3 |             Positive path length              | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
+| R2.4 |                  No solution                  |                                  If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
+| R2.5 |               Faulty dimensions               |                                              If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
 
 ## Algorithm description
 
