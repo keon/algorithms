@@ -68,6 +68,12 @@ class TestBitmaskingTSP(unittest.TestCase):
     def test_positive_path_length(self):
         self.assertEquals(tsp([(0,0), (0,3), (0,4)]), 12)
         
+    # === Relates to requirement R2.4 "No solution" ===
+    # Checks that the output is inf when there is at least one unreachable node 
+    def test_no_solution(self):
+        # TODO
+        pass
+        
 class TestBuySellStock(unittest.TestCase):
     def test_max_profit_naive(self):
         self.assertEqual(max_profit_naive([7, 1, 5, 3, 6, 4]), 5)
