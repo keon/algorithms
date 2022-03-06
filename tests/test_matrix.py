@@ -18,6 +18,7 @@ from algorithms.matrix import (
 )
 import unittest
 
+
 class TestSearchInSortedMatrix(unittest.TestCase):
 
     def test_search_in_sorted_matrix(self):
@@ -42,7 +43,17 @@ class TestSearchInSortedMatrix(unittest.TestCase):
             search_in_sorted_matrix.search_in_a_sorted_matrix(mat, len(mat), len(mat[0]), 1)
         self.assertTrue('Key not found' in str(context.exception))
 
+class TestCountPaths(unittest.TestCase):
+    """[summary]
+    Test for the file count_paths.py
 
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_count_paths(self):
+        self.assertEqual(count_paths.count_paths(2, 3), 3)
+        self.assertEqual(count_paths.count_paths(0, 0), -1)
+        
 
 class TestSparseMul(unittest.TestCase):
     def test_multiply(self):
@@ -293,6 +304,10 @@ class TestMultiply(unittest.TestCase):
         self.assertEqual(multiply.multiply(
             [[1, 2, 3], [2, 1, 1]], [[1], [2], [3]]), [[14], [7]])
 
+        with self.assertRaises(Exception) as context:
+            multiply.multiply([[1, 2, 3], [2, 1, 1]], [[1], [2]])
+        self.assertTrue("Multiplicand matrix not compatible with Multiplier matrix." in str(context.exception))
+
 
 class TestRotateImage(unittest.TestCase):
     """[summary]
@@ -324,6 +339,14 @@ class TestSparseDotVector(unittest.TestCase):
                                      vector_to_index_value_list([0., 2., 2.])),
                          10)
 
+    def test_sparse_dot_vector_v1_smaller_than_v2(self):
+        self.assertEqual(sparse_dot_vector.dot_product(sparse_dot_vector.vector_to_index_value_list([2., 3.]),
+                                                       sparse_dot_vector.vector_to_index_value_list([1., 2., 2.])), 0)
+
+    def test_sparse_dot_vector_v2_smaller_than_v1(self):
+        self.assertEqual(sparse_dot_vector.dot_product(sparse_dot_vector.vector_to_index_value_list([1., 2., 3.]),
+                                                       sparse_dot_vector.vector_to_index_value_list([2., 2.])), 0)
+
 
 class TestSpiralTraversal(unittest.TestCase):
     """[summary]
@@ -337,6 +360,11 @@ class TestSpiralTraversal(unittest.TestCase):
         self.assertEqual(spiral_traversal.spiral_traversal(
             [[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [1, 2, 3, 6, 9, 8, 7, 4, 5])
 
+    def test_spiral_traversal_empty_matrix(self):
+        """
+        Test the case when the matrix is empty
+        """
+        self.assertEqual(spiral_traversal.spiral_traversal([]), [])
 
 class TestSudokuValidator(unittest.TestCase):
     """[summary]
