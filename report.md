@@ -115,10 +115,14 @@ Concerning our issue, since it is related to a new algorithm, there are obviousl
 
 Hence we create the class that will allow us to test the new algorithm of our issue: 'class `TestBitmasking` in the file [test_dp.py](tests/test_dp.py). Each [requirement](TODO) will have its own method that test it inside this class.
 
-## UML for the Bitmasking algorithm
+## UML for the Bitmasking algorithms
 Our solution consists of an algorithm that utilizes several functions. In order to gain a better understanding of the control flow of the algorithm the following control-flow diagram can be consulted. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithm.
 
+### UML for the cap counting problem.
 ![Alt Text](ControlFlow.png)
+
+### UML for TSP
+![Alt Text](TSP_UML.png)
 
 ### Key changes/classes affected
 The project is overall highly modular where each algorithm is contextually independent from the others. This holds true for our implementation of the bitmasking algorithm. Given that we did not introduce any new dependencies to the project the impact of our addition on the existing code base is minimal. The tests for the bitmasking algorithm are implemented using the same test framework as the existing tests and conforms to the overall design of the project.
