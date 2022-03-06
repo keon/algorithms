@@ -4,7 +4,7 @@ from algorithms.ml.nearest_neighbor import (
 )
 
 from algorithms.ml.linear_regression import (
-simple_linear_regression
+    simple_linear_regression
 )
 
 import unittest
