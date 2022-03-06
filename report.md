@@ -54,32 +54,32 @@ The issue will require a new file to be added to the dp-folder. Since the implem
 
 Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
 
-| ID   |                     Title                     |                                                                                                                                                    Description |
-| :--- | :-------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| R1.1 | Nr of cap sets less than 1 or greater than 10 |                                                                                             If the nr of cap sets is <1 or >10, a ValueError should be raised. |
-| R1.2 |              Person without caps              |                                                         If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
-| R1.3 |           No unique cap assignment            |                                  Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
-| R1.4 |      One or more unique cap assignments       |                       Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
-| R1.5 |               Too many people                 |                                                                       If there are too many people (i.e. capSets) then a ValueError should be raised.
-|
-| R1.6 |               Faulty CapIds                   |                                                                       If any of the cap Ids are not given as an integer a ValueError should be raised.
-| 
-| R1.7 |            Faulty collection input            |                                                                   If the cap ids are given as another collection type than a list and error should be raised.
-|
-| R1.8 |            CapId too low                      |                                                         If the provided maximum capId is lower than the highest given cap id this should raise a value error.
-|
-| R2.1 |                   No nodes                    |                                                                                                        If the nr of nodes is 0, a ValueError should be raised. |
-| R2.2 |                   One node                    |                                                                                                               If the nr of nodes is 1, the output should be 0. |
-| R2.3 |             Positive path length              | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
-| R2.4 |                  No solution                  |                                  If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
-| R2.5 |               Faulty dimensions               |                                              If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
-| R2.6 |                Wrong collection type          |                                                    If the collection of nodes is not a list a ValueError should be raised.
-| 
-| R2.7 |                Wrong node type                |                                                   If a node in the collection is of the wrong type a ValueError should be raised.
-| 
-| R2.8 |               Too many houses                 |                                                   Checks that a value error is raised if too many houses are allocated in the input matrix. 
-| 
+| ID   |               Title                |                                                                                                                              Description |
+| :--- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
+| R1.1 |            No cap sets             |                                                                               If the nr of cap sets is 0, a ValueError should be raised. |
+| R1.2 |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
 
+|
+| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
+|
+| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
+|
+| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.
+|
+| R2.1 | No nodes | If the nr of nodes is 0, a ValueError should be raised. |
+| R2.2 | One node | If the nr of nodes is 1, the output should be 0. |
+| R2.3 | Positive path length | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
+| R2.4 | No solution | If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
+| R2.5 | Faulty dimensions | If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
+| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.
+|
+| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.
+|
+| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
+|
 
 ## Algorithm description
 
@@ -129,39 +129,39 @@ Concerning our issue, since it is related to a new algorithm, there are obviousl
 
 Hence we create the class that will allow us to test the new algorithm of our issue: 'class `TestBitmasking` in the file [test_dp.py](tests/test_dp.py). Each [requirement](TODO) will have its own method that test it inside this class.
 
-
 The first class [TestBitmaskingCapAssignment](tests/test_dp.py) tests the implementation of the bitmasking algorithm to solve the Cap Assignment problem. The test class has 8 associated requirements which covers aspects such as correct input types, edge cases and runtime correctness. The test class achieves 92% test coverage. After analyzing the functions for the Cap Assignment code with the code complexity tool Lizard we get the following results:
 
-| Function   |     Lizard CCN      |   Manual CCN     |
-| :--- | :------------: | -------: |
-| check_argument | 8 | 5 |
-| initialization | 5 | 4 |
-| assign_unique_caps_from | 7 | 4 |
-| assign_unique_caps | 1 | 1 |
+| Function                | Lizard CCN | Manual CCN |
+| :---------------------- | :--------: | ---------: |
+| check_argument          |     8      |          5 |
+| initialization          |     5      |          4 |
+| assign_unique_caps_from |     7      |          4 |
+| assign_unique_caps      |     1      |          1 |
 
 The slight discrepancy is due to the fact that lizard does not take exceptions raised into account. The generally low degree of complexity shows that our implementation is not overly complex.
 
 The second class [TestBitmaskingTSP](tests/test_dp.py) tests the implementation of the bitmasking algorithm to solve TSP. The test class has 8 associated requirements. The requirements focus on things such as correctness of the input, correction of structure and correct output for valid input. Our tests achieve a 94% code coverage. After analyzing the functions for TSP with the code complexity tool Lizard we get the following results:
 
-| Function   |     Lizard CCN      |   Manual CCN     |
-| :--- | :------------: | -------: |
-| is_safe_pos | 5 | 5 |
-| getDist | 7 | 7 |
-| getAllDist | 5 | 5 |
-| check_argument | 10 | 5 |
-| initialization | 7 | 6 |
-| find_shortest_path | 5 | 3 |
-| tsp | 1 | 1 |
+| Function           | Lizard CCN | Manual CCN |
+| :----------------- | :--------: | ---------: |
+| is_safe_pos        |     5      |          5 |
+| getDist            |     7      |          7 |
+| getAllDist         |     5      |          5 |
+| check_argument     |     10     |          5 |
+| initialization     |     7      |          6 |
+| find_shortest_path |     5      |          3 |
+| tsp                |     1      |          1 |
 
 The general complexity of most of these functions are also low. The main difference between the manually counted CCN and the CCN computed by Lizard is the fact that Lizard does not take exceptions into account. Thus we have a much higher complexity for the check_argument function when tested with Lizard than when it's analyzed manually.
 
 ## UML for the Bitmasking algorithm
-Our solution consists of an algorithm that utilizes several functions. In order to gain a better understanding of the control flow of the algorithm the following control-flow diagram can be consulted. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithm.
 
+Our solution consists of an algorithm that utilizes several functions. In order to gain a better understanding of the control flow of the algorithm the following control-flow diagram can be consulted. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithm.
 
 ![Alt Text](ControlFlow.png)
 
 ### Key changes/classes affected
+
 The project is overall highly modular where each algorithm is contextually independent from the others. This holds true for our implementation of the bitmasking algorithm. Given that we did not introduce any new dependencies to the project the impact of our addition on the existing code base is minimal. The tests for the bitmasking algorithm are implemented using the same test framework as the existing tests and conforms to the overall design of the project.
 
 ## Overall experience
