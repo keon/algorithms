@@ -1,4 +1,6 @@
-import numpy as np
+import math
+import statistics
+import random
 
 
 def simple_linear_regression(data):
@@ -8,14 +10,17 @@ def simple_linear_regression(data):
     """
 
     # Initializing parameters using random normal distribution
-    param_0 = np.random.normal
-    param_1 = np.random.normal
+    param_0 = random.random
+    param_1 = random.random
 
-    mean_x = np.mean(data[0])
-    mean_y = np.mean(data[1])
+    mean_x = statistics.mean(data[0])
+    mean_y = statistics.mean(data[1])
 
-    numerator = np.sum((data[0]-mean_x)*(data[1]-mean_y))
-    denominator = np.sum((data[0]-mean_x)**2)
+    numerator = 0  # ((data[0]-mean_x)*(data[1]-mean_y))
+    denominator = 0
+    for index in range(len(data[0])):
+        numerator += (data[0][index]-mean_x)*(data[1][index]-mean_y)
+        denominator += (data[0][index]-mean_x)**2
 
     param_1 = numerator / denominator
     param_0 = mean_y - param_1*mean_x
@@ -34,10 +39,12 @@ def RSS_calculator(params, data):
 
 
 def RSE_calculator(rss, n):
-    return np.sqrt(rss / (n - 2))
+    return math.sqrt(rss / (n - 2))
 
 
 def R_2(rss, mean_y, data):
-    tss = np.sum((data[1]-mean_y) ** 2)
+    tss = 0
+    for val in data[1]:
+        tss += (val-mean_y) ** 2
     r_2 = 1 - (rss/tss)
     return r_2

@@ -1,6 +1,10 @@
 from algorithms.ml.nearest_neighbor import (
     distance,
-    nearest_neighbor
+    nearest_neighbor,
+)
+
+from algorithms.ml.linear_regression import (
+simple_linear_regression
 )
 
 import unittest
@@ -38,10 +42,10 @@ class TestML(unittest.TestCase):
         param_0, param_1, rse, r_2 = simple_linear_regression(
             self.data_set_linear_reg)
 
-        self.assertEqual(param_0, 1.2363636363636363)
-        self.assertEqual(param_1, 1.1696969696969697)
-        self.assertEqual(rse, 0.8384690232980003)
-        self.assertEqual(r_2, 0.0.952538038613988)
+        self.assertAlmostEqual(param_0, 1.2363636363636363)
+        self.assertAlmostEqual(param_1, 1.1696969696969697)
+        self.assertAlmostEqual(rse, 0.8384690232980003)
+        self.assertAlmostEqual(r_2, 0.952538038613988)
 
 
 if __name__ == "__main__":
