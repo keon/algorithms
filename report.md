@@ -73,7 +73,7 @@ To solve this problem, we will use bitmasking and dynamic programming. Bitmaskin
 
 In our case, bitmasking will be used to represent whether a person is wearing a hat. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
 
-Let's have a look on the dynamic programming formula. The table storing the intermediate results is a $M\times N$ matrix where:
+Let's have a look on the dynamic programming formula. The table storing the intermediate results is a ![M\times N](http://latex.codecogs.com/svg.latex?M%5ctimes%20N) matrix where:
 
 - M is the total number of masks, which is equal to ![\2^{n}](http://latex.codecogs.com/svg.latex?2%5e%7bn%7d) where n is the number of people
 - N is the total number of hats
