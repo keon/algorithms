@@ -81,7 +81,8 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
 |
 
-## Algorithm description
+
+## Algorithm description 
 
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
@@ -108,6 +109,43 @@ Note that before the computation of the formula, we have to check three cases:
 3. if the number of ways of the mask and the _k-th_ hat has already been computed, then we just return the result from the dynamic programming table/matrix
 
 Finally the result will be stored is the matrix cell `[0][1]`.
+
+
+
+## TSP Algorithm description
+
+The same technique of bitmasking and dynamic programming can be utilized to solve the famous *Travelling Salesperson* problem. Given a 2D grid containing a set of towns, we want to find the shortest route through all the towns that ends up in the same spot we started from. In our case we model the 2D grid using ascii characters in this way,
+
+```
+.  .  .  .  .  *  .
+.  .  .  #  .  .  .
+.  *  .  #  .  *  .
+.  .  .  .  .  *  . 
+```
+
+where `.` signifies an open road, `*` signifies a town and `#` signifies a blockage. Our starting point is (0,0) (top right corner).
+
+To solve this problem we first calculate the minimum distance between two cells in the grid, which we can do with a BFS. We pre-compute the distance from our starting point to all of the houses. This is done in O((#houses + 1) * grid_size) as each BFS is O(grid_size) in the worst case.
+
+We now construct the dynamic programming state `dp[index][mask]`.
+
+- `index` is the location of the current house.
+- `mask` tells us which of the houses that we have visited by set bits in the mask.
+
+Together `dp[index][mask]` tells us the minimum distance to visit X (X = number of set bits in mask) houses in a order such that the last visited house is at `index`
+
+
+Then we have our state transition. Initially `dp[0][0]` means that we are at tile 0 and the mask states that we have visited 0 houses. The final state will be `dp[some index][LIMIT_MASK]` where `LIMIT_MASK = (1 << N) - 1` (N = number of houses). The relation is then,
+
+```
+dp(curr_idx)(curr_mask) = min(
+    for idx : off_bits_in_curr_mask
+       dp(idx)(cur_mask.set_bit(idx)) + dist[curr_idx][idx]
+)
+```
+
+When the mask is `LIMIT_MASK` we know that all the houses have been visited, and we can add the distance from the last house to the initial position to our solution.
+
 
 ## Code changes
 
@@ -174,4 +212,4 @@ Overall, the assignment seemed like a positive step towards bridging the gap bet
 
 ---
 
-Our team evaluation is available in [this file](Essence.pdf).
+Our team evaluation is available in [this file](Essence.pdf)
