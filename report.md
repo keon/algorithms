@@ -60,11 +60,25 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R1.2 |              Person without caps              |                                                         If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
 | R1.3 |           No unique cap assignment            |                                  Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R1.4 |      One or more unique cap assignments       |                       Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| R1.5 |               Too many people                 |                                                                       If there are too many people (i.e. capSets) then a ValueError should be raised.
+|
+| R1.6 |               Faulty CapIds                   |                                                                       If any of the cap Ids are not given as an integer a ValueError should be raised.
+| 
+| R1.7 |            Faulty collection input            |                                                                   If the cap ids are given as another collection type than a list and error should be raised.
+|
+| R1.8 |            CapId too low                      |                                                         If the provided maximum capId is lower than the highest given cap id this should raise a value error.
+|
 | R2.1 |                   No nodes                    |                                                                                                        If the nr of nodes is 0, a ValueError should be raised. |
 | R2.2 |                   One node                    |                                                                                                               If the nr of nodes is 1, the output should be 0. |
 | R2.3 |             Positive path length              | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
 | R2.4 |                  No solution                  |                                  If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
 | R2.5 |               Faulty dimensions               |                                              If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
+| R2.6 |                Wrong collection type          |                                                    If the collection of nodes is not a list a ValueError should be raised.
+| 
+| R2.7 |                Wrong node type                |                                                   If a node in the collection is of the wrong type a ValueError should be raised.
+| 
+| R2.8 |               Too many houses                 |                                                   Checks that a value error is raised if too many houses are allocated in the input matrix. 
+| 
 
 
 ## Algorithm description
