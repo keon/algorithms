@@ -56,49 +56,48 @@ class TestCountPaths(unittest.TestCase):
         
 
 class TestSparseMul(unittest.TestCase):
+    """[summary]
+    Test for the file sparse_mul.py
+    Test edge cases and whether exceptions are raised for the three functions.
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
     def test_multiply(self):
-        # Tests a 2x3 matrix and 3x3 matrix gives correct result
+
         self.assertEqual(sparse_mul.multiply(self, [[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]]),
                          [[7, 0, 0], [-7, 0, 3]])
 
-        # Tests that exceptions is raised in case A's nr of columns not equals B's row number
         with self.assertRaises(Exception) as context:
             sparse_mul.multiply(self, [[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0]])
         self.assertTrue("A's column number must be equal to B's row number." in str(context.exception))
 
-        # Tests that in case only one matrix is None the answer is None
         self.assertEqual(sparse_mul.multiply(self, None, [[7, 0, 0], [0, 0, 0], [0, 0, 1]]), None)
 
+
     def test_multiply_2(self):
-        # Tests a 2x3 matrix and 3x3 matrix gives correct result
         self.assertEqual(sparse_mul.multiply_2(self, [[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]]),
                          [[7, 0, 0], [-7, 0, 3]])
-        # Tests that exceptions is raised in case A's nr of columns not equals B's row number
+
         with self.assertRaises(Exception) as context:
             sparse_mul.multiply_2(self, [[1, 4], [4, 1]], [[1, 3], [3, 1], [1, 2]])
         self.assertTrue("A's column number must be equal to B's row number." in str(context.exception))
 
-        # Tests that in case only one matrix is None the answer is None
         self.assertEqual(sparse_mul.multiply_2(self, [[1, 3], [3, 1]], None), None)
 
-    def test_multiply_3(self):
 
-        # Tests a 2x3 matrix and 3x3 matrix gives correct result
+    def test_multiply_3(self):
         self.assertEqual(sparse_mul.multiply_3(self, [[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]]),
                          [[7, 0, 0], [-7, 0, 3]])
 
-        # Tests a 2x2 matrix and 2x2 matrix gives correct result
         self.assertEqual(sparse_mul.multiply_3(self, [[1, 4], [4, 1]], [[1, 3], [3, 1]]), [[13, 7], [7, 13]])
 
-        # Tests that exceptions is raised in case A's nr of columns not equals B's row number
         with self.assertRaises(Exception) as context:
             sparse_mul.multiply_3(self, [[1, 4], [4, 1]], [[1, 3], [3, 1], [1, 2]])
         self.assertTrue("A's column number must be equal to B's row number." in str(context.exception))
 
-        # Tests that in case only one matrix is None the answer is None
         self.assertEqual(sparse_mul.multiply_3(self, [[1, 3], [3, 1]], None), None)
 
-        # Test 5: tests that in case both matrices are None the answer is None
         self.assertEqual(sparse_mul.multiply_3(self, None, None), None)
 
 
