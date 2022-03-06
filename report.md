@@ -75,8 +75,8 @@ In our case, bitmasking will be used to represent whether a person is wearing a 
 
 Let's have a look on the dynamic programming formula. The table storing the intermediate results is a $M\times N$ matrix where:
 
-- $M$ is the total number of masks, which is equal to $2^n$ where $n$ is the number of people
-- $N$ is the total number of hats
+- M is the total number of masks, which is equal to ![\2^{n}](http://latex.codecogs.com/svg.latex?2%5e%7bn%7d) where n is the number of people
+- N is the total number of hats
 
 And so the formula goes as follow:
 
