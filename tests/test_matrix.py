@@ -13,9 +13,35 @@ from algorithms.matrix import (
     sum_sub_squares,
     sort_matrix_diagonally,
     sparse_mul,
-
+    count_paths,
+    search_in_sorted_matrix
 )
 import unittest
+
+
+class TestSearchInSortedMatrix(unittest.TestCase):
+
+    def test_search_in_sorted_matrix(self):
+        """[summary]
+        Test for the file search_in_sorted_matrix.py
+        Test if a specified key can be found in specified matrix.
+        Tests if exception is raised if key not found.
+
+        Arguments:
+            unittest {[type]} -- [description]
+        """
+        mat = [
+            [2, 5, 7],
+            [4, 8, 13],
+            [9, 11, 15],
+            [12, 17, 20]
+        ]
+
+        self.assertEqual(search_in_sorted_matrix.search_in_a_sorted_matrix(mat, len(mat), len(mat[0]), 13), [2,3])
+
+        with self.assertRaises(Exception) as context:
+            search_in_sorted_matrix.search_in_a_sorted_matrix(mat, len(mat), len(mat[0]), 1)
+        self.assertTrue('Key not found' in str(context.exception))
 
 class TestCountPaths(unittest.TestCase):
     """[summary]
@@ -27,8 +53,7 @@ class TestCountPaths(unittest.TestCase):
     def test_count_paths(self):
         self.assertEqual(count_paths.count_paths(2, 3), 3)
         self.assertEqual(count_paths.count_paths(0, 0), -1)
-
-
+        
 
 class TestSparseMul(unittest.TestCase):
     def test_multiply(self):
