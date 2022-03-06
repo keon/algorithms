@@ -80,7 +80,7 @@ Let's have a look on the dynamic programming formula. The table storing the inte
 
 And so the formula goes as follow:
 
-`countWaysUntil(mask, k_hat) = countWaysUntil(mask, k_hat + 1) + `[http://latex.codecogs.com/svg.latex?\sum_{i=0}^{n}](http://latex.codecogs.com/svg.latex?\sum_{i=0}^{n})` countWaysUntil(mask | (1 << i), k_hat + 1)`
+`countWaysUntil(mask, k_hat) = countWaysUntil(mask, k_hat + 1) + `![\sum_{i=0}^{n}](http://latex.codecogs.com/svg.latex?%5csum_%7bi%3d0%7d%5e%7bn%7d)` countWaysUntil(mask | (1 << i), k_hat + 1)`
 
 More specifically, this formula says that the number of ways satisfying the problem for a specific mask (i.e. hat wearing status of the people) and taking into account all hats from the _k-th_ one until hat $N$ is defined by the sum of
 
