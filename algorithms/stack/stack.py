@@ -12,6 +12,8 @@ is_empty() tests to see whether the stack is empty.
    It needs no parameters and returns a boolean value.
 """
 from abc import ABCMeta, abstractmethod
+
+
 class AbstractStack(metaclass=ABCMeta):
     """Abstract Class for Stacks."""
     def __init__(self):
