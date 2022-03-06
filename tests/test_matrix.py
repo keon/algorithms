@@ -17,6 +17,19 @@ from algorithms.matrix import (
 )
 import unittest
 
+class TestCountPaths(unittest.TestCase):
+    """[summary]
+    Test for the file count_paths.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_count_paths(self):
+        self.assertEqual(count_paths.count_paths(2, 3), 3)
+        self.assertEqual(count_paths.count_paths(0, 0), -1)
+
+
+
 class TestSparseMul(unittest.TestCase):
     def test_multiply(self):
         # Tests a 2x3 matrix and 3x3 matrix gives correct result
