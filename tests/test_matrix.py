@@ -13,7 +13,7 @@ from algorithms.matrix import (
     sum_sub_squares,
     sort_matrix_diagonally,
     sparse_mul,
-    count_paths
+
 )
 import unittest
 
@@ -265,6 +265,14 @@ class TestMultiply(unittest.TestCase):
     def test_multiply(self):
         self.assertEqual(multiply.multiply(
             [[1, 2, 3], [2, 1, 1]], [[1], [2], [3]]), [[14], [7]])
+
+    def test_exception_raised_multiply(self):
+
+        with self.assertRaises(Exception) as context:
+            multiply.multiply([[1, 2, 3], [2, 1, 1]], [[1], [2]])
+        self.assertTrue("Multiplicand matrix not compatible with Multiplier matrix." in str(context.exception))
+
+
 
 
 class TestRotateImage(unittest.TestCase):
