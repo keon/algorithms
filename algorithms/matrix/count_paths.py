@@ -27,12 +27,13 @@ def count_paths(m, n):
             #                                   a[i-1][j] + a[i][j-1]
             count[i][j] = count[i - 1][j] + count[i][j - 1]
 
-    print(count[m - 1][n - 1])
+    res = count[m - 1][n - 1]
+    return res
 
 
 def main():
     m, n = map(int, input('Enter two positive integers: ').split())
-    count_paths(m, n)
+    print(count_paths(m, n))
 
 
 if __name__ == '__main__':
