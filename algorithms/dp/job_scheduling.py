@@ -8,7 +8,7 @@ class Job:
     Class to represent a job
     """
     def __init__(self, start, finish, profit):
-        self.start  = start
+        self.start = start
         self.finish = finish
         self.profit  = profit
 

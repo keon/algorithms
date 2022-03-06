@@ -1,19 +1,23 @@
 """
-An even number of trees are left along one side of a country road. You've been assigned the job to
-plant these trees at an even interval on both sides of the road. The length and width of the road
-are variable, and a pair of trees must be planted at the beginning (at 0) and at the end (at length)
-of the road. Only one tree can be moved at a time. The goal is to calculate the lowest
-amount of distance that the trees have to be moved before they are all in a valid position.
+An even number of trees are left along one side of a country road. You've been
+assigned the job to plant these trees at an even interval on both sides of the
+road. The length and width of the road are variable, and a pair of trees must
+be planted at the beginning (at 0) and at the end (at length) of the road. Only
+one tree can be moved at a time. The goal is to calculate the lowest amount of
+distance that the trees have to be moved before they are all in a valid
+position.
 """
 
 from math import sqrt
 
 def planting_trees(trees, length, width):
     """
-    Returns the minimum distance that trees have to be moved before they are all in a valid state.
+    Returns the minimum distance that trees have to be moved before they
+    are all in a valid state.
 
         Parameters:
-            tree (list<int>): A sorted list of integers with all trees' position along the road.
+            tree (list<int>): A sorted list of integers with all trees'
+                              position along the road.
             length (int): An integer with the length of the road.
             width (int): An integer with the width of the road.
 

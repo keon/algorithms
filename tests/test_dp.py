@@ -85,7 +85,7 @@ class TestFib(unittest.TestCase):
 class TestHosoyaTriangle(unittest.TestCase):
     """[summary]
     Test for the file hosoya_triangle
-    
+
     Arguments:
         unittest {[type]} -- [description]
     """
@@ -109,7 +109,7 @@ class TestHosoyaTriangle(unittest.TestCase):
                           21, 13, 16, 15, 15, 16, 13, 21,
                           34, 21, 26, 24, 25, 24, 26, 21, 34,
                           55, 34, 42, 39, 40, 40, 39, 42, 34, 55],
-                          hosoya_testing(10))
+                         hosoya_testing(10))
 
 
 class TestHouseRobber(unittest.TestCase):
@@ -129,7 +129,8 @@ class TestKnapsack(unittest.TestCase):
         self.assertEqual(220, get_maximum_value([item1, item2, item3], 50))
 
         item1, item2, item3, item4 = Item(60, 5), Item(50, 3), Item(70, 4), Item(30, 2)
-        self.assertEqual(80, get_maximum_value([item1, item2, item3, item4], 5))
+        self.assertEqual(80, get_maximum_value([item1, item2, item3, item4],
+                                               5))
 
 
 class TestLongestIncreasingSubsequence(unittest.TestCase):
@@ -156,32 +157,34 @@ class TestIntDivide(unittest.TestCase):
         self.assertEqual(42, int_divide(10))
         self.assertEqual(204226, int_divide(50))
 
+
 class Test_dp_K_Factor(unittest.TestCase):
     def test_kfactor(self):
-        #Test 1
-        n1=4
-        k1=1
-        self.assertEqual(find_k_factor(n1,k1),1)
+        # Test 1
+        n1 = 4
+        k1 = 1
+        self.assertEqual(find_k_factor(n1, k1), 1)
 
-        #Test 2
-        n2=7
-        k2=1
-        self.assertEqual(find_k_factor(n2,k2),70302)
+        # Test 2
+        n2 = 7
+        k2 = 1
+        self.assertEqual(find_k_factor(n2, k2), 70302)
 
-        #Test 3
-        n3=10
-        k3=2
-        self.assertEqual(find_k_factor(n3,k3),74357)
+        # Test 3
+        n3 = 10
+        k3 = 2
+        self.assertEqual(find_k_factor(n3, k3), 74357)
 
-        #Test 4
-        n4=8
-        k4=2
-        self.assertEqual(find_k_factor(n4,k4),53)
+        # Test 4
+        n4 = 8
+        k4 = 2
+        self.assertEqual(find_k_factor(n4, k4), 53)
 
-        #Test 5
-        n5=9
-        k5=1
-        self.assertEqual(find_k_factor(n5,k5),71284044)
+        # Test 5
+        n5 = 9
+        k5 = 1
+        self.assertEqual(find_k_factor(n5, k5), 71284044)
+
 
 class TestPlantingTrees(unittest.TestCase):
     def test_simple(self):
@@ -254,6 +257,7 @@ class TestRegexMatching(unittest.TestCase):
         s = "abb"
         p = "ab*"
         self.assertTrue(regex_matching.is_match(s, p))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,11 +1,13 @@
 """
-Given an unsorted array of integers, find the length of longest increasing subsequence.
+Given an unsorted array of integers, find the length of
+longest increasing subsequence.
 
 Example:
 
 Input: [10,9,2,5,3,7,101,18]
 Output: 4
-Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the
+length is 4.
 
 Time complexity:
 First algorithm is O(n^2).
@@ -17,6 +19,7 @@ First algorithm is O(n)
 Second algorithm is O(x) where x is the max element in the list
 Third algorithm is O(n)
 """
+
 
 def longest_increasing_subsequence(sequence):
     """
@@ -33,6 +36,7 @@ def longest_increasing_subsequence(sequence):
                 counts[i] = max(counts[i], counts[j] + 1)
                 print(counts)
     return max(counts)
+
 
 def longest_increasing_subsequence_optimized(sequence):
     """
@@ -72,6 +76,7 @@ def longest_increasing_subsequence_optimized(sequence):
         ans = max_seq(ans, cur)
         update(1, 0, max_seq, element, cur)
     return ans
+
 
 def longest_increasing_subsequence_optimized2(sequence):
     """

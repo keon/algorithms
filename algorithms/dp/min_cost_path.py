@@ -25,6 +25,7 @@ Space Complexity: O(n)
 
 INF = float("inf")
 
+
 def min_cost(cost):
     """Find minimum cost.
 
@@ -43,8 +44,8 @@ def min_cost(cost):
 
     return dist[length-1]
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     costs = [ [ 0, 15, 80, 90],         # cost[i][j] is the cost of
              [-1,  0, 40, 50],         # going from i --> j
              [-1, -1,  0, 70],

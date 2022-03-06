@@ -4,6 +4,7 @@ Algorithms for performing diffie-hellman key exchange.
 import math
 from random import randint
 
+
 """
 Code from /algorithms/maths/prime_check.py,
 written by 'goswami-rahul' and 'Hai Honag Dang'
@@ -44,6 +45,7 @@ def find_order(a, n):
         if pow(a, i) % n == 1:
             return i
     return -1
+
 
 """
 Euler's totient function, also known as phi-function ϕ(n),
@@ -97,7 +99,8 @@ This method use the property of one-way function (discrete logarithm)
 For example, given a, b and n, it is easy to calculate x
 that satisfies (a^b) ≡ x (mod n).
 However, it is very hard to calculate x that satisfies (a^x) ≡ b (mod n).
-For using this method, large prime number p and its primitive root a must be given.
+For using this method, large prime number p and its primitive root a
+must be given.
 """
 
 def alice_private_key(p):
@@ -161,7 +164,6 @@ def diffie_hellman_key_exchange(a, p, option = None):
 
     a_pr_k = alice_private_key(p)
     a_pu_k = alice_public_key(a_pr_k, a, p)
-
 
     b_pr_k = bob_private_key(p)
     b_pu_k = bob_public_key(b_pr_k, a, p)

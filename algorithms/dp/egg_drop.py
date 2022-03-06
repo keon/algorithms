@@ -24,6 +24,7 @@ Hence, we needed 2 moves in the worst case to know what F is with certainty.
 # A Dynamic Programming based Python Program for the Egg Dropping Puzzle
 INT_MAX = 32767
 
+
 def egg_drop(n, k):
     """
     Keyword arguments:
@@ -32,7 +33,7 @@ def egg_drop(n, k):
     """
     # A 2D table where entery eggFloor[i][j] will represent minimum
     # number of trials needed for i eggs and j floors.
-    egg_floor = [[0 for x in range(k+1)] for x in range(n+1)]
+    egg_floor = [[0 for _ in range(k + 1)] for _ in range(n + 1)]
 
     # We need one trial for one floor and 0 trials for 0 floors
     for i in range(1, n+1):

@@ -8,6 +8,7 @@ For example, for `value` = 4 and `coins` = [1, 2, 3], there are four solutions:
 So output should be 4.
 
 For `value` = 10 and `coins` = [2, 5, 3, 6], there are five solutions:
+
 [2, 2, 2, 2, 2], [2, 2, 3, 3], [2, 2, 6], [2, 3, 5] and [5, 5].
 So the output should be 5.
 

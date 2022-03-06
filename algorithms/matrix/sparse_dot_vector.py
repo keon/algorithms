@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 
 """
-Suppose we have very large sparse vectors, which contains a lot of zeros and double .
+Suppose we have very large sparse vectors, which contains a lot of
+zeros and double .
 
 find a data structure to store them
 get the dot product of them

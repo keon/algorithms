@@ -1,23 +1,26 @@
-'''The K factor of a string is defined as the number of times 'abba' appears as a substring.
-Given two numbers `length` and `k_factor`,​ find the number of
+'''
+The K factor of a string is defined as the number of times 'abba' appears as a
+substring. Given two numbers `length` and `k_factor`, find the number of
 strings of length `length` with 'K factor' = `k_factor`.
 
 The algorithms is as follows:
 
-dp[length][k_factor] will be a 4 element array, wherein each element can be the number of strings of
-length `length` and 'K factor' = `k_factor` which belong to the criteria represented by that index:
+dp[length][k_factor] will be a 4 element array, wherein each element can be the
+number of strings of length `length` and 'K factor' = `k_factor` which belong
+to the criteria represented by that index:
 
-    - dp[length][k_factor][0] can be the number of strings of length
-    `length` and K-factor = `k_factor` which end with substring 'a'
+    - dp[length][k_factor][0] can be the number of strings of length `length`
+      and K-factor = `k_factor` which end with substring 'a'
 
-    - dp[length][k_factor][1] can be the number of strings of length
-    `length` and K-factor = `k_factor` which end with substring 'ab'
+    - dp[length][k_factor][1] can be the number of strings of length `length`
+      and K-factor = `k_factor` which end with substring 'ab'
 
-    - dp[length][k_factor][2] can be the number of strings of length
-    `length` and K-factor = `k_factor` which end with substring 'abb'
+    - dp[length][k_factor][2] can be the number of strings of length `length`
+      and K-factor = `k_factor` which end with substring 'abb'
 
-    - dp[length][k_factor][3] can be the number of strings of `length` and K-factor = `k_factor`
-    which end with anything other than the above substrings (anything other than 'a' 'ab' 'abb')
+    - dp[length][k_factor][3] can be the number of strings of `length` and
+      K-factor = `k_factor` which end with anything other than the above
+      substrings (anything other than 'a' 'ab' 'abb')
 
 Example inputs
 
