@@ -1,13 +1,14 @@
 from cmath import inf as inf
 
-class Node:
+class Node:                         #node class used for binary tree
+    def __init__(self):
 
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-class Node2:
+class Node2:             #node class used for genral tree structure with possibility for several key
     def __init__(self):
         # self.is_leaf = is_leaf
         self.keys = []
