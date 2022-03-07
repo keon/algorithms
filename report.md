@@ -46,28 +46,17 @@ Title: "Add Bitmasking in DP #480"
 
 URL: The issue can be found in [this link](https://github.com/keon/algorithms/issues/480).
 
-The task is to implement the bitmasking-and-dp-algorithm. This algorithm solves the problem of determining how many ways there are to assign unique caps to every person in a set of people, where each person has their own set of caps.
+The task is to implement algorithms that employ bitmasking and dynamic programming. There are a couple of good problems where the solutions can utilize this technique. We choose to implement solutions for the *cap-set* problem and the *Traveling Salesperson* problem.
 
-The issue will require a new file to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. The algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
+The issue will require a new files to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. Each algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
 
-## Requirements for the new feature or requirements affected by functionality being refactored
+### Cap-set
 
-Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
-
-| ID   |                     Title                     |                                                                                                                                                    Description |
-| :--- | :-------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| R1.1 | Nr of cap sets less than 1 or greater than 10 |                                                                                             If the nr of cap sets is <1 or >10, a ValueError should be raised. |
-| R1.2 |              Person without caps              |                                                         If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
-| R1.3 |           No unique cap assignment            |                                  Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
-| R1.4 |      One or more unique cap assignments       |                       Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
-| R2.1 |                   No nodes                    |                                                                                                        If the nr of nodes is 0, a ValueError should be raised. |
-| R2.2 |                   One node                    |                                                                                                               If the nr of nodes is 1, the output should be 0. |
-| R2.3 |             Positive path length              | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
-| R2.4 |                  No solution                  |                                  If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
-| R2.5 |               Faulty dimensions               |                                              If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
+In this problem we want to assign unique caps to a set of people, where each person has their own set of available caps.
 
 
-## Algorithm description
+
+#### Algorithm description 
 
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
@@ -95,6 +84,73 @@ Note that before the computation of the formula, we have to check three cases:
 
 Finally the result will be stored is the matrix cell `[0][1]`.
 
+### TSP
+
+The same technique of bitmasking and dynamic programming can be utilized to solve the famous *Travelling Salesperson* problem. Given a 2D grid containing a set of towns, we want to find the shortest route through all the towns that ends up in the same spot we started from. In our case we model the 2D grid using ascii characters in this way,
+
+```
+.  .  .  .  .  *  .
+.  .  .  #  .  .  .
+.  *  .  #  .  *  .
+.  .  .  .  .  *  . 
+```
+
+where `.` signifies an open road, `*` signifies a town and `#` signifies a blockage. Our starting point is (0,0) (top right corner).
+
+#### Algorithm Description
+
+
+To solve this problem we first calculate the minimum distance between two cells in the grid, which we can do with a BFS. We pre-compute the distance from our starting point to all of the houses. This is done in O((#houses + 1) * grid_size) as each BFS is O(grid_size) in the worst case.
+
+We now construct the dynamic programming state `dp[index][mask]`.
+
+- `index` is the location of the current house.
+- `mask` tells us which of the houses that we have visited by set bits in the mask.
+
+Together `dp[index][mask]` tells us the minimum distance to visit X (X = number of set bits in mask) houses in a order such that the last visited house is at `index`
+
+
+Then we have our state transition. Initially `dp[0][0]` means that we are at tile 0 and the mask states that we have visited 0 houses. The final state will be `dp[some index][LIMIT_MASK]` where `LIMIT_MASK = (1 << N) - 1` (N = number of houses). The relation is then,
+
+```
+dp(curr_idx)(curr_mask) = min(
+    for idx : off_bits_in_curr_mask
+       dp(idx)(cur_mask.set_bit(idx)) + dist[curr_idx][idx]
+)
+```
+
+When the mask is `LIMIT_MASK` we know that all the houses have been visited, and we can add the distance from the last house to the initial position to our solution.
+
+### Requirements for the new feature or requirements affected by functionality being refactored
+
+Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
+
+| ID   |               Title                |                                                                                                                              Description |
+| :--- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
+| R1.1 |            No cap sets             |                                                                               If the nr of cap sets is 0, a ValueError should be raised. |
+| R1.2 |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
+|
+| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
+|
+| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
+|
+| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.
+|
+| R2.1 | No nodes | If the nr of nodes is 0, a ValueError should be raised. |
+| R2.2 | One node | If the nr of nodes is 1, the output should be 0. |
+| R2.3 | Positive path length | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
+| R2.4 | No solution | If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
+| R2.5 | Faulty dimensions | If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
+| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.
+|
+| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.
+|
+| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
+|
+
 ## Code changes
 
 ### Patch
@@ -111,12 +167,37 @@ Optional (point 5): considered for acceptance (passes all automated checks).
 
 The repository has initially a [complete folder](tests/) dedicated to the tests, after running the command `python3 -m pytest tests` given in the [README](README.md), we can see that there are already 394 tests implemented. Note that all the tests succeed. To have a bit more information about the initial coverage of the tests, we ran the `coverage.py` tool that we already used for the last assignment. It turns out that the initial coverage is quite good: 89% (961 misses for 8762 statements). These two results have been logged in [this file](initial_tests_log.txt).
 
-Concerning our issue, since it is related to a new algorithm, there are obviously not tests about it. However, we can still have a look on the [tests folder](tests/). We notice that the tests are divided into files, each of which represents a specific algorithms field where the algorithms are separated in the [algorithms folder](algorithms/). For instance, all algorithms related to [graph](algorithms/graph/) are tested in the file [test_graph.py](tests/test_graph.py). Inside one of these test files, the tests are divided into classes, each representing the test class for a specific algorithm. For example, in the test file [test_graph.py](tests/test_graph.py), one of the class is `class TestTarjan` that contains multiple tests for the [_Tarjan's algorithm_](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm).
+Concerning our issue, since it is related to a new algorithm, there are obviously no tests about it. However, we can still have a look on the [tests folder](tests/). We notice that the tests are divided into files, each of which represents a specific algorithms field where the algorithms are separated in the [algorithms folder](algorithms/). For instance, all algorithms related to [graph](algorithms/graph/) are tested in the file [test_graph.py](tests/test_graph.py). Inside one of these test files, the tests are divided into classes, each representing the test class for a specific algorithm. For example, in the test file [test_graph.py](tests/test_graph.py), one of the class is `class TestTarjan` that contains multiple tests for the [_Tarjan's algorithm_](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm).
 
 Hence we create the class that will allow us to test the new algorithm of our issue: 'class `TestBitmasking` in the file [test_dp.py](tests/test_dp.py). Each [requirement](TODO) will have its own method that test it inside this class.
 
 ## UML for the Bitmasking algorithms
 Our solution consists of modular algorithms that utilizes several functions. In order to gain a better understanding of the control flow of the algorithms the following control-flow diagrams can be consulted. We have chosen control-flow diagrams instead of class diagrams as the solutions we provide do not utilize several classes. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithms.
+=======
+The first class [TestBitmaskingCapAssignment](tests/test_dp.py) tests the implementation of the bitmasking algorithm to solve the Cap Assignment problem. The test class has 8 associated requirements which covers aspects such as correct input types, edge cases and runtime correctness. The test class achieves 92% test coverage. After analyzing the functions for the Cap Assignment code with the code complexity tool Lizard we get the following results:
+
+| Function                | Lizard CCN | Manual CCN |
+| :---------------------- | :--------: | ---------: |
+| check_argument          |     8      |          5 |
+| initialization          |     5      |          4 |
+| assign_unique_caps_from |     7      |          4 |
+| assign_unique_caps      |     1      |          1 |
+
+The slight discrepancy is due to the fact that lizard does not take exceptions raised into account. The generally low degree of complexity shows that our implementation is not overly complex.
+
+The second class [TestBitmaskingTSP](tests/test_dp.py) tests the implementation of the bitmasking algorithm to solve TSP. The test class has 8 associated requirements. The requirements focus on things such as correctness of the input, correction of structure and correct output for valid input. Our tests achieve a 94% code coverage. After analyzing the functions for TSP with the code complexity tool Lizard we get the following results:
+
+| Function           | Lizard CCN | Manual CCN |
+| :----------------- | :--------: | ---------: |
+| is_safe_pos        |     5      |          5 |
+| getDist            |     7      |          7 |
+| getAllDist         |     5      |          5 |
+| check_argument     |     10     |          5 |
+| initialization     |     7      |          6 |
+| find_shortest_path |     5      |          3 |
+| tsp                |     1      |          1 |
+
+The general complexity of most of these functions are also low. The main difference between the manually counted CCN and the CCN computed by Lizard is the fact that Lizard does not take exceptions into account. Thus we have a much higher complexity for the check_argument function when tested with Lizard than when it's analyzed manually.
 
 ### UML for the cap counting problem.
 ![Alt Text](ControlFlow.png)
@@ -125,6 +206,7 @@ Our solution consists of modular algorithms that utilizes several functions. In 
 ![Alt Text](TSP_UML.png)
 
 ### Key changes/classes affected
+
 The project is overall highly modular where each algorithm is contextually independent from the others. This holds true for our implementation of the bitmasking algorithm. Given that we did not introduce any new dependencies to the project the impact of our addition on the existing code base is minimal. The tests for the bitmasking algorithm are implemented using the same test framework as the existing tests and conforms to the overall design of the project.
 
 ## Overall experience
@@ -137,4 +219,4 @@ Overall, the assignment seemed like a positive step towards bridging the gap bet
 
 ---
 
-Our team evaluation is available in [this file](Essence.pdf).
+Our team evaluation is available in [this file](Essence.pdf)

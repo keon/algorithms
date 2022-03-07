@@ -7,7 +7,7 @@ MAX_NB_PEOPLE = 10
 Check that the given caps sets is valid 
 
 :param capsSets: The caps sets to check
-:param nbCaps: The number of caps
+:param nbcaps: The number of distinct caps
 :returns: Nothing but raises errors if invalid caps sets
 """
 def check_argument(capsSets: list, nbCaps: int):
@@ -26,7 +26,7 @@ def check_argument(capsSets: list, nbCaps: int):
 Initialize the variables
 
 :param capsSets: The caps sets given
-:param nbCaps: The number of caps
+:param nbcaps: The number of distinct caps
 :returns: The number of people, the caps dict and the DP matrix
 """
 def initialization(capsSets: list, nbCaps: int):
@@ -53,7 +53,7 @@ Determines the number of ways to assign unique caps to current people wearing st
 (i.e. current mask) having caps from cap_id to last cap to assign (or not)
 
 :param nbPeople: The number of people
-:param nbCaps: The number of caps
+:param nbcaps: The number of distinct caps
 :param caps: The caps dict mapping each cap to its list of person that have it
 :param DP: The DP matrix
 :param mask: The current mask
@@ -93,6 +93,7 @@ def assign_unique_caps_from(nbPeople: int, nbCaps: int, caps: list, DP: list, ma
 Determines the number of ways to assign unique caps to every person using bitmasking and dynamic programming (dp).
 
 :param capSets: A nested list containing the caps of every person. 
+:param nbcaps: The number of distinct caps
 :returns: The number of ways to select unique caps for every person.
 """
 def assign_unique_caps(capsSets: list, nbCaps: int) -> int:

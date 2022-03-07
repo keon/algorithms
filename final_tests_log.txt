@@ -1,0 +1,364 @@
+============================= test session starts ==============================
+platform linux -- Python 3.8.10, pytest-7.0.0, pluggy-1.0.0
+rootdir: /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms
+plugins: json-report-1.4.1, httpserver-1.0.4, metadata-1.11.0
+collected 410 items
+
+tests/test_array.py ............................                         [  6%]
+tests/test_automata.py .                                                 [  7%]
+tests/test_backtrack.py .........................                        [ 13%]
+tests/test_bfs.py ...                                                    [ 13%]
+tests/test_bit.py .............................                          [ 20%]
+tests/test_compression.py .....                                          [ 22%]
+tests/test_dfs.py ........                                               [ 24%]
+tests/test_dp.py .......................................                 [ 33%]
+tests/test_graph.py ..............                                       [ 37%]
+tests/test_heap.py .....                                                 [ 38%]
+tests/test_histogram.py .                                                [ 38%]
+tests/test_iterative_segment_tree.py .........                           [ 40%]
+tests/test_linkedlist.py ............                                    [ 43%]
+tests/test_map.py .........................                              [ 49%]
+tests/test_maths.py .............................................        [ 60%]
+tests/test_matrix.py .............                                       [ 63%]
+tests/test_ml.py ..                                                      [ 64%]
+tests/test_monomial.py ........                                          [ 66%]
+tests/test_polynomial.py .......                                         [ 68%]
+tests/test_queues.py .....                                               [ 69%]
+tests/test_search.py .............                                       [ 72%]
+tests/test_set.py .                                                      [ 72%]
+tests/test_sort.py ....................                                  [ 77%]
+tests/test_stack.py ..........                                           [ 80%]
+tests/test_streaming.py ....                                             [ 80%]
+tests/test_strings.py .................................................. [ 93%]
+.............                                                            [ 96%]
+tests/test_tree.py ...........                                           [ 99%]
+tests/test_unix.py ....                                                  [100%]
+
+=============================== warnings summary ===============================
+tests/test_dp.py::TestBitmaskingCapAssignment::test_no_unique_cap_assignment
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:48: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(assign_unique_caps([[1,2,3], [4], [4]], 5), 0)
+
+tests/test_dp.py::TestBitmaskingCapAssignment::test_one_or_more_unique_cap_assignments
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:54: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(assign_unique_caps([[1,2,3], [4], [1,2]], 6), 4)
+
+tests/test_dp.py::TestBitmaskingCapAssignment::test_person_without_caps
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:42: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(assign_unique_caps([[1,2,3], [], [2,5,6]],6), 0)
+
+tests/test_dp.py::TestBitmaskingTSP::test_no_solution
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:124: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(tsp(nodes, nbRow, nbColumn), math.inf)
+
+tests/test_dp.py::TestBitmaskingTSP::test_one_node
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:96: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(tsp(nodes, nbRow, nbColumn), 0)
+
+tests/test_dp.py::TestBitmaskingTSP::test_positive_path_length
+  /home/bastienfaivre/Documents/KTH/Software Engineering/algorithms/tests/test_dp.py:110: DeprecationWarning: Please use assertEqual instead.
+    self.assertEquals(tsp(nodes, nbRow, nbColumn), 16)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 410 passed, 6 warnings in 5.08s ========================
+
+Name                                                      Stmts   Miss  Cover
+-----------------------------------------------------------------------------
+algorithms/arrays/delete_nth.py                              15      0   100%
+algorithms/arrays/flatten.py                                 14      0   100%
+algorithms/arrays/garage.py                                  18      0   100%
+algorithms/arrays/josephus.py                                 8      0   100%
+algorithms/arrays/limit.py                                    8      1    88%
+algorithms/arrays/longest_non_repeat.py                      52      4    92%
+algorithms/arrays/max_ones_index.py                          16      0   100%
+algorithms/arrays/merge_intervals.py                         48     16    67%
+algorithms/arrays/missing_ranges.py                          12      0   100%
+algorithms/arrays/move_zeros.py                              10      0   100%
+algorithms/arrays/n_sum.py                                   64      0   100%
+algorithms/arrays/plus_one.py                                30      0   100%
+algorithms/arrays/rotate.py                                  28      1    96%
+algorithms/arrays/summarize_ranges.py                        14      1    93%
+algorithms/arrays/three_sum.py                               21      1    95%
+algorithms/arrays/top_1.py                                   14      1    93%
+algorithms/arrays/trimmean.py                                 9      0   100%
+algorithms/arrays/two_sum.py                                  7      0   100%
+algorithms/automata/dfa.py                                   12      1    92%
+algorithms/backtrack/add_operators.py                        20      1    95%
+algorithms/backtrack/anagram.py                              10      0   100%
+algorithms/backtrack/array_sum_combinations.py               47      0   100%
+algorithms/backtrack/combination_sum.py                      13      0   100%
+algorithms/backtrack/factor_combinations.py                  19      0   100%
+algorithms/backtrack/find_words.py                           27      0   100%
+algorithms/backtrack/generate_abbreviations.py               14      0   100%
+algorithms/backtrack/generate_parenthesis.py                 23      0   100%
+algorithms/backtrack/letter_combination.py                   12      1    92%
+algorithms/backtrack/palindrome_partitioning.py              19      8    58%
+algorithms/backtrack/pattern_match.py                        17      1    94%
+algorithms/backtrack/permute.py                              24      0   100%
+algorithms/backtrack/permute_unique.py                       11      0   100%
+algorithms/backtrack/subsets.py                              16      0   100%
+algorithms/backtrack/subsets_unique.py                       11      0   100%
+algorithms/bfs/count_islands.py                              23      0   100%
+algorithms/bfs/maze_search.py                                26      1    96%
+algorithms/bfs/shortest_distance_from_all_buildings.py       26     23    12%
+algorithms/bfs/word_ladder.py                                32      1    97%
+algorithms/bit/add_bitwise_operator.py                        6      0   100%
+algorithms/bit/binary_gap.py                                 28      0   100%
+algorithms/bit/bit_operation.py                              10      0   100%
+algorithms/bit/bytes_int_conversion.py                       26      0   100%
+algorithms/bit/count_flips_to_convert.py                      7      0   100%
+algorithms/bit/count_ones.py                                 10      0   100%
+algorithms/bit/find_difference.py                             5      0   100%
+algorithms/bit/find_missing_number.py                        12      0   100%
+algorithms/bit/flip_bit_longest_sequence.py                  15      0   100%
+algorithms/bit/has_alternative_bit.py                        16      1    94%
+algorithms/bit/insert_bit.py                                 12      0   100%
+algorithms/bit/power_of_two.py                                2      0   100%
+algorithms/bit/remove_bit.py                                  5      0   100%
+algorithms/bit/reverse_bits.py                                8      0   100%
+algorithms/bit/single_number2.py                              6      0   100%
+algorithms/bit/single_number3.py                             11      0   100%
+algorithms/bit/single_number.py                               5      0   100%
+algorithms/bit/subsets.py                                     9      0   100%
+algorithms/bit/swap_pair.py                                   4      0   100%
+algorithms/compression/elias.py                              17      0   100%
+algorithms/compression/huffman_coding.py                    217     20    91%
+algorithms/compression/rle_compression.py                    22      0   100%
+algorithms/dfs/all_factors.py                                32      0   100%
+algorithms/dfs/count_islands.py                              18      0   100%
+algorithms/dfs/maze_search.py                                22      1    95%
+algorithms/dfs/pacific_atlantic.py                           29      0   100%
+algorithms/dfs/sudoku_solver.py                              59     15    75%
+algorithms/dfs/walls_and_gates.py                            15      0   100%
+algorithms/distribution/histogram.py                          5      0   100%
+algorithms/dp/bitmasking_cap_assignment.py                   47      4    91%
+algorithms/dp/bitmasking_tsp.py                              76      5    93%
+algorithms/dp/buy_sell_stock.py                              12      0   100%
+algorithms/dp/climbing_stairs.py                             10      0   100%
+algorithms/dp/coin_change.py                                  6      0   100%
+algorithms/dp/combination_sum.py                             22      0   100%
+algorithms/dp/edit_distance.py                               12      0   100%
+algorithms/dp/egg_drop.py                                    16      0   100%
+algorithms/dp/fib.py                                         23      1    96%
+algorithms/dp/hosoya_triangle.py                             19      4    79%
+algorithms/dp/house_robber.py                                 5      0   100%
+algorithms/dp/int_divide.py                                  11      0   100%
+algorithms/dp/job_scheduling.py                              28      4    86%
+algorithms/dp/k_factor.py                                    30      1    97%
+algorithms/dp/knapsack.py                                    10      0   100%
+algorithms/dp/longest_increasing.py                          61     50    18%
+algorithms/dp/matrix_chain_order.py                          30     25    17%
+algorithms/dp/max_product_subarray.py                        29     26    10%
+algorithms/dp/max_subarray.py                                 9      0   100%
+algorithms/dp/min_cost_path.py                               15     12    20%
+algorithms/dp/num_decodings.py                               23     21     9%
+algorithms/dp/planting_trees.py                              16      0   100%
+algorithms/dp/regex_matching.py                              51     38    25%
+algorithms/dp/rod_cut.py                                     12      0   100%
+algorithms/dp/word_break.py                                  13     11    15%
+algorithms/graph/all_pairs_shortest_path.py                   9      0   100%
+algorithms/graph/bellman_ford.py                             20      1    95%
+algorithms/graph/check_bipartite.py                          17      1    94%
+algorithms/graph/count_connected_number_of_component.py      23      8    65%
+algorithms/graph/dijkstra.py                                 22      0   100%
+algorithms/graph/graph.py                                    74     19    74%
+algorithms/graph/maximum_flow.py                             94     37    61%
+algorithms/graph/maximum_flow_bfs.py                         32      0   100%
+algorithms/graph/maximum_flow_dfs.py                         31      0   100%
+algorithms/graph/prims_minimum_spanning.py                   19      0   100%
+algorithms/graph/tarjan.py                                   33      0   100%
+algorithms/heap/binary_heap.py                               51      8    84%
+algorithms/heap/k_closest_points.py                          11      0   100%
+algorithms/heap/merge_sorted_k_lists.py                      32     25    22%
+algorithms/heap/skyline.py                                   18      0   100%
+algorithms/heap/sliding_window_max.py                        14      1    93%
+algorithms/linkedlist/copy_random_pointer.py                 27      0   100%
+algorithms/linkedlist/is_cyclic.py                           15      3    80%
+algorithms/linkedlist/is_palindrome.py                       60      4    93%
+algorithms/linkedlist/is_sorted.py                            9      1    89%
+algorithms/linkedlist/merge_two_list.py                      23      0   100%
+algorithms/linkedlist/remove_range.py                        13      1    92%
+algorithms/linkedlist/reverse.py                             18      1    94%
+algorithms/linkedlist/rotate_list.py                         15      1    93%
+algorithms/linkedlist/swap_in_pairs.py                       18      1    94%
+algorithms/map/hashtable.py                                  72      9    88%
+algorithms/map/is_anagram.py                                  8      0   100%
+algorithms/map/is_isomorphic.py                              14      2    86%
+algorithms/map/longest_palindromic_subsequence.py            24      0   100%
+algorithms/map/separate_chaining_hashtable.py                54      7    87%
+algorithms/map/word_pattern.py                               15      1    93%
+algorithms/maths/base_conversion.py                          26      3    88%
+algorithms/maths/chinese_remainder_theorem.py                30      2    93%
+algorithms/maths/combination.py                              13      0   100%
+algorithms/maths/cosine_similarity.py                        17      1    94%
+algorithms/maths/decimal_to_binary_ip.py                     16      0   100%
+algorithms/maths/diffie_hellman_key_exchange.py              88     10    89%
+algorithms/maths/euler_totient.py                            10      9    10%
+algorithms/maths/extended_gcd.py                             10      0   100%
+algorithms/maths/factorial.py                                24      0   100%
+algorithms/maths/find_order_simple.py                        12      9    25%
+algorithms/maths/find_primitive_root_simple.py               35     31    11%
+algorithms/maths/gcd.py                                      31      0   100%
+algorithms/maths/generate_strobogrammtic.py                  46      5    89%
+algorithms/maths/hailstone.py                                 8      0   100%
+algorithms/maths/is_strobogrammatic.py                       13      0   100%
+algorithms/maths/krishnamurthy_number.py                     15      0   100%
+algorithms/maths/magic_number.py                              9      0   100%
+algorithms/maths/modular_exponential.py                      11      0   100%
+algorithms/maths/modular_inverse.py                          15      0   100%
+algorithms/maths/next_perfect_square.py                       8      1    88%
+algorithms/maths/num_digits.py                                6      0   100%
+algorithms/maths/polynomial.py                              262     37    86%
+algorithms/maths/power.py                                    23      0   100%
+algorithms/maths/prime_check.py                              13     12     8%
+algorithms/maths/primes_sieve_of_eratosthenes.py             15      0   100%
+algorithms/maths/pythagoras.py                               11      5    55%
+algorithms/maths/rabin_miller.py                             26      2    92%
+algorithms/maths/rsa.py                                      36     30    17%
+algorithms/matrix/bomb_enemy.py                              42      7    83%
+algorithms/matrix/cholesky_matrix_decomposition.py           21      0   100%
+algorithms/matrix/copy_transform.py                          52     11    79%
+algorithms/matrix/crout_matrix_decomposition.py              19      1    95%
+algorithms/matrix/matrix_exponentiation.py                   20      0   100%
+algorithms/matrix/matrix_inversion.py                        67      1    99%
+algorithms/matrix/multiply.py                                11      1    91%
+algorithms/matrix/rotate_image.py                            13      5    62%
+algorithms/matrix/sort_matrix_diagonally.py                  36      1    97%
+algorithms/matrix/sparse_dot_vector.py                       42     23    45%
+algorithms/matrix/spiral_traversal.py                        27      3    89%
+algorithms/matrix/sudoku_validator.py                        54      7    87%
+algorithms/matrix/sum_sub_squares.py                         15      1    93%
+algorithms/ml/nearest_neighbor.py                            20      0   100%
+algorithms/queues/max_sliding_window.py                      13      0   100%
+algorithms/queues/priority_queue.py                          30      3    90%
+algorithms/queues/queue.py                                   89     10    89%
+algorithms/queues/reconstruct_queue.py                        6      0   100%
+algorithms/search/binary_search.py                           20      0   100%
+algorithms/search/find_min_rotate.py                         16      0   100%
+algorithms/search/first_occurrence.py                        11      0   100%
+algorithms/search/interpolation_search.py                    15      5    67%
+algorithms/search/jump_search.py                             18      1    94%
+algorithms/search/last_occurrence.py                          9      0   100%
+algorithms/search/linear_search.py                            5      0   100%
+algorithms/search/next_greatest_letter.py                    21      0   100%
+algorithms/search/search_insert.py                            9      0   100%
+algorithms/search/search_range.py                            14      1    93%
+algorithms/search/search_rotate.py                           27      2    93%
+algorithms/search/ternary_search.py                          15      1    93%
+algorithms/search/two_sum.py                                 27      0   100%
+algorithms/set/find_keyboard_row.py                           8      0   100%
+algorithms/sort/bitonic_sort.py                              24      1    96%
+algorithms/sort/bogo_sort.py                                 19      3    84%
+algorithms/sort/bubble_sort.py                               20      3    85%
+algorithms/sort/bucket_sort.py                               19      0   100%
+algorithms/sort/cocktail_shaker_sort.py                      19      3    84%
+algorithms/sort/comb_sort.py                                 20      0   100%
+algorithms/sort/counting_sort.py                             18      3    83%
+algorithms/sort/cycle_sort.py                                22      2    91%
+algorithms/sort/exchange_sort.py                              7      0   100%
+algorithms/sort/gnome_sort.py                                 9      0   100%
+algorithms/sort/heap_sort.py                                 51     10    80%
+algorithms/sort/insertion_sort.py                            15     14     7%
+algorithms/sort/merge_sort.py                                19      0   100%
+algorithms/sort/pancake_sort.py                              11      1    91%
+algorithms/sort/pigeonhole_sort.py                           14      0   100%
+algorithms/sort/quick_sort.py                                23      3    87%
+algorithms/sort/radix_sort.py                                21      3    86%
+algorithms/sort/selection_sort.py                            14      3    79%
+algorithms/sort/shell_sort.py                                15      0   100%
+algorithms/sort/stooge_sort.py                               18     16    11%
+algorithms/sort/top_sort.py                                  51      5    90%
+algorithms/stack/is_consecutive.py                           33     10    70%
+algorithms/stack/is_sorted.py                                16      1    94%
+algorithms/stack/ordered_stack.py                            24      1    96%
+algorithms/stack/remove_min.py                               16      1    94%
+algorithms/stack/simplify_path.py                            11      0   100%
+algorithms/stack/stack.py                                    80     10    88%
+algorithms/stack/stutter.py                                  23      0   100%
+algorithms/stack/switch_pairs.py                             35      0   100%
+algorithms/stack/valid_parenthesis.py                        10      0   100%
+algorithms/streaming/misra_gries.py                          22      0   100%
+algorithms/streaming/one_sparse_recovery.py                  30      0   100%
+algorithms/strings/add_binary.py                             14      0   100%
+algorithms/strings/atbash_cipher.py                          13      0   100%
+algorithms/strings/breaking_bad.py                           52      1    98%
+algorithms/strings/caesar_cipher.py                          11      0   100%
+algorithms/strings/check_pangram.py                           6      0   100%
+algorithms/strings/contain_string.py                         11      2    82%
+algorithms/strings/count_binary_substring.py                 12     11     8%
+algorithms/strings/decode_string.py                          14      0   100%
+algorithms/strings/delete_reoccurring.py                      8      0   100%
+algorithms/strings/domain_extractor.py                        8      1    88%
+algorithms/strings/encode_decode.py                          14      0   100%
+algorithms/strings/first_unique_char.py                       9      2    78%
+algorithms/strings/fizzbuzz.py                               20      4    80%
+algorithms/strings/group_anagrams.py                         13      0   100%
+algorithms/strings/int_to_roman.py                            6      0   100%
+algorithms/strings/is_palindrome.py                          50      2    96%
+algorithms/strings/is_rotated.py                             13      0   100%
+algorithms/strings/judge_circle.py                            5      0   100%
+algorithms/strings/knuth_morris_pratt.py                     23      1    96%
+algorithms/strings/license_number.py                         10      0   100%
+algorithms/strings/longest_common_prefix.py                  35      4    89%
+algorithms/strings/longest_palindromic_substring.py          21      1    95%
+algorithms/strings/make_sentence.py                          10      1    90%
+algorithms/strings/merge_string_checker.py                   24      4    83%
+algorithms/strings/min_distance.py                            8      0   100%
+algorithms/strings/multiply_strings.py                       19      4    79%
+algorithms/strings/one_edit_distance.py                      22      4    82%
+algorithms/strings/panagram.py                                9      0   100%
+algorithms/strings/rabin_karp.py                             31      2    94%
+algorithms/strings/repeat_string.py                          11      2    82%
+algorithms/strings/repeat_substring.py                        3      0   100%
+algorithms/strings/reverse_string.py                         18      0   100%
+algorithms/strings/reverse_vowel.py                          12      1    92%
+algorithms/strings/reverse_words.py                          14      3    79%
+algorithms/strings/roman_to_int.py                           11      2    82%
+algorithms/strings/rotate.py                                  8      0   100%
+algorithms/strings/strip_url_params.py                       65     59     9%
+algorithms/strings/strong_password.py                        11      2    82%
+algorithms/strings/text_justification.py                     45      1    98%
+algorithms/strings/unique_morse.py                           14      0   100%
+algorithms/strings/validate_coordinates.py                   22      7    68%
+algorithms/strings/word_squares.py                           20      0   100%
+algorithms/tree/b_tree.py                                   151     18    88%
+algorithms/tree/construct_tree_postorder_preorder.py         42      7    83%
+algorithms/tree/fenwick_tree/fenwick_tree.py                 21      0   100%
+algorithms/tree/segment_tree/iterative_segment_tree.py       25      0   100%
+algorithms/tree/traversal/inorder.py                         40     16    60%
+algorithms/tree/traversal/postorder.py                       31      4    87%
+algorithms/tree/traversal/preorder.py                        28      4    86%
+algorithms/unix/path/full_path.py                             3      0   100%
+algorithms/unix/path/join_with_slash.py                       6      0   100%
+algorithms/unix/path/simplify_path.py                        11      1    91%
+algorithms/unix/path/split.py                                 7      0   100%
+tests/test_array.py                                         215      1    99%
+tests/test_automata.py                                       21      1    95%
+tests/test_backtrack.py                                     192      4    98%
+tests/test_bfs.py                                            27      1    96%
+tests/test_bit.py                                           134      1    99%
+tests/test_compression.py                                    48      1    98%
+tests/test_dfs.py                                            37      1    97%
+tests/test_dp.py                                            185      1    99%
+tests/test_graph.py                                          92      2    98%
+tests/test_heap.py                                           36      1    97%
+tests/test_histogram.py                                      10      1    90%
+tests/test_iterative_segment_tree.py                         60      0   100%
+tests/test_linkedlist.py                                    156      1    99%
+tests/test_map.py                                           149      1    99%
+tests/test_maths.py                                         223      5    98%
+tests/test_matrix.py                                         79      1    99%
+tests/test_ml.py                                             16      1    94%
+tests/test_monomial.py                                       99      1    99%
+tests/test_polynomial.py                                     64      0   100%
+tests/test_queues.py                                         60      1    98%
+tests/test_search.py                                        110      1    99%
+tests/test_set.py                                             5      0   100%
+tests/test_sort.py                                           57      2    96%
+tests/test_stack.py                                          84      1    99%
+tests/test_streaming.py                                      20      0   100%
+tests/test_strings.py                                       275      4    99%
+tests/test_tree.py                                          122      1    99%
+tests/test_unix.py                                           29      0   100%
+-----------------------------------------------------------------------------
+TOTAL                                                      8959    972    89%
