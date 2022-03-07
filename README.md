@@ -126,6 +126,8 @@ If you want to uninstall algorithms, it is as simple as:
 - [distribution](algorithms/distribution)
     - [histogram](algorithms/distribution/histogram.py)
 - [dp](algorithms/dp)
+    - [bitmasking_cap_assignment](algorithms/dp/bitmasking_cap_assignment.py)
+    - [bitmasking_tsp](algorithms/dp/bitmasking_tsp.py)
     - [buy_sell_stock](algorithms/dp/buy_sell_stock.py)
     - [climbing_stairs](algorithms/dp/climbing_stairs.py)
     - [coin_change](algorithms/dp/coin_change.py)
