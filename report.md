@@ -35,7 +35,7 @@ There were continuous discussions in the Discord chat and in the Github comments
 
 ### Reading documentation
 
-Amanda spent less than half an hour reading documentation whilst searching for a suitable issue/project.
+Amanda spent less than half an hour reading documentation whilst searching for a suitable issue/project. Bastien spent about 3 hours to read about the algorithms and about 1 hour reading Python documentation when writing code.
 
 ### Configuration and setup
 
@@ -43,19 +43,19 @@ Since the project consists of many single-file Python programs, there were almos
 
 ### Analyzing code/output
 
-Amanda spent time analyzing code when she was reviewing pull requests. Additionally, she analyzed the output when writing tests.
+Amanda spent time analyzing code when she was reviewing pull requests. Additionally, she analyzed the output when writing tests. Bastien analyzed code and outputs while coding the algorithms and debugging the [problem](TODO) we had in the second algorithm.
 
 ### Writing documentation
 
-Amanda spent most of her time writing documentation. This included writing requirements and the essence account, among other things.
+Amanda spent most of her time writing documentation. This included writing requirements and the essence account, among other things. Bastien wrote the documentation for the initial tests and the description of the first algorithm.
 
 ### Writing code
 
-Amanda spent a few hours writing unittests for both parts of the chosen issue.
+Amanda spent a few hours writing unittests for both parts of the chosen issue. Bastien spent about 7 hours coding the algorithms.
 
 ### Running code
 
-Amanda ran the code for the purpose of checking the tests, as she was writing them.
+Amanda ran the code for the purpose of checking the tests, as she was writing them. Bastien ran the initial tests of the repo when writing the documentation of the initial tests.
 
 ## Overview of issue(s) and work done.
 
