@@ -12,6 +12,8 @@ from algorithms.tree import construct_tree_postorder_preorder as ctpp
 
 from algorithms.tree.fenwick_tree.fenwick_tree import Fenwick_Tree
 
+from algorithms.tree.trie import add_and_search
+
 import unittest
 
 
@@ -174,6 +176,61 @@ class TestFenwickTree(unittest.TestCase):
         freq[2] += 11
         ft.update_bit(bit_tree, 2, 11)
         self.assertEqual(23, ft.get_sum(bit_tree, 4))
+
+class TestAddAndSearch(unittest.TestCase):
+    def setUp(self):
+        self.wd = add_and_search.WordDictionary()
+
+    def test_single_letter_pattern(self):
+        """
+        Asserts single-letter words are found correctly
+        """
+        self.wd.add_word("a")
+        self.wd.add_word("c")
+
+        self.assertTrue(self.wd.search("a"))
+        self.assertFalse(self.wd.search("b"))
+        self.assertFalse(self.wd.search("ab"))
+        self.assertTrue(self.wd.search("c"))
+        self.assertTrue(self.wd.search("."))
+
+    def test_empty_dictionary(self):
+        """
+        Asserts that a dictionary without any words does not return true,
+        even for small/simple patterns
+        """
+        self.assertFalse(self.wd.search("")) # Empty string is not in our dictionary
+        self.assertFalse(self.wd.search("."))
+        self.assertFalse(self.wd.search(".."))
+        self.assertFalse(self.wd.search("a"))
+
+    def test_match_longer_word(self):
+        """
+        Asserts that multiple character words are found
+        Asserts that substrings of the word that aren't terminal points do not return true
+        """
+        self.wd.add_word("test")
+        self.wd.add_word("best")
+
+        self.assertTrue(self.wd.search("test"))
+        self.assertTrue(self.wd.search("best"))
+        self.assertTrue(self.wd.search(".est")) # Matches either "test" or "best"
+        self.assertTrue(self.wd.search(".e..")) # As above, starts and ends with wildcard
+        self.assertTrue(self.wd.search("....")) # Only wildcards
+        self.assertTrue(self.wd.search("t.s.")) # Matches only "test"
+
+        self.assertFalse(self.wd.search("t")) # Not a terminal point
+        self.assertFalse(self.wd.search("."))
+
+        self.assertFalse(self.wd.search("teste")) # Extra character after terminal point
+        self.assertFalse(self.wd.search("test."))
+
+class TestAddAndSearch2(TestAddAndSearch):
+    """
+    Performs all the tests from TestAddAndSearch on the second implementation of WordDictionary
+    """
+    def setUp(self):
+        self.wd = add_and_search.WordDictionary2()
 
 
 if __name__ == '__main__':
