@@ -18,16 +18,12 @@ For this task our group chose a new project to work with. The onboarding experie
 
 ## Effort spent
 
-The complete accounts of how much time each member spent on different tasks can be found in the following files:
-
-- [Arvid Gotthard](time_schedule_arvid.txt)
-- [Bastien Faivre](time_schedule_bastien.txt)
-- [Max Persson](time_schedule_max.txt)
-- [Amanda Strömdahl](time_schedule_amanda.txt)
+The complete accounts of how much time each member spent on different tasks can be found in the following document:
+[Group 27 Time Accouting](https://docs.google.com/spreadsheets/d/1qa9vp-TvY8ufDr0W_Nt4uutCPlMN0TSA8ToCOFEN1nQ/edit?usp=sharing)
 
 ### Plenary meetings
 
-There were 4 one-hour meetings in total, where all group members were present. Each meeting was conducted over Discord using the voice channel.
+There were 4 one-hour online meetings in total, where all group members were present. Each meeting was conducted over Discord using the voice channel. Additionally there was a final push on the last day where we met up in the morning to wrap up the project.
 
 ### Discussions within parts of the group
 
@@ -35,27 +31,27 @@ There were continuous discussions in the Discord chat and in the Github comments
 
 ### Reading documentation
 
-Amanda spent less than half an hour reading documentation whilst searching for a suitable issue/project. Bastien spent about 3 hours to read about the algorithms and about 1 hour reading Python documentation when writing code.
+Each group member initially spent some time reading the documentation for the repository, familiarizing themselves with how to run the tests and individual algorithms. The majority of the time spent on this step was spent trying to map out the project structure, how continuous integration was set up etc.
 
 ### Configuration and setup
 
-Since the project consists of many single-file Python programs, there were almost no dependencies. Some group members needed to install missing modules using `pip`, but this did not take long.
+Since the project consists of many single-file Python programs, there were almost no dependencies. Some group members needed to install missing modules using `pip`, but this did not take long. We also tried building the documentation files with Sphinx.
 
 ### Analyzing code/output
 
-Amanda spent time analyzing code when she was reviewing pull requests. Additionally, she analyzed the output when writing tests. Bastien analyzed code and outputs while coding the algorithms and debugging the [problem](TODO) we had in the second algorithm.
+Considerable effort was spent analyzing the structure of the code before the new code was written. This was an effort to make sure that the new code integrates consistently with the old code and the structure of the tests. Some effort was also put into analyzing the code after it was written to make sure that the cyclomatic complexity was low and that code coverage was as high as possible.
 
 ### Writing documentation
 
-Amanda spent most of her time writing documentation. This included writing requirements and the essence account, among other things. Bastien wrote the documentation for the initial tests and the description of the first algorithm.
+Large sections of documentation was written. This includes essence evaluations of the teams effort, an architectural overview of the entire project, control flow diagrams of the new code etc. The considerable amount of documentation required for this report took a substantial amount of time. For example each written test for the new code had to be mapped to a requirement.
 
 ### Writing code
 
-Amanda spent a few hours writing unittests for both parts of the chosen issue. Bastien spent about 7 hours coding the algorithms.
+Group members wrote two algorithms together as well as the required tests for these cases. 
 
 ### Running code
 
-Amanda ran the code for the purpose of checking the tests, as she was writing them. Bastien ran the initial tests of the repo when writing the documentation of the initial tests.
+The tests for the entire repository was initially run to produce a log of the initial state. This was to be compared to the final test run. We also ran our new code with the Lizard tool to analyze cyclomatic complexity. 
 
 ## Overview of issue(s) and work done.
 
