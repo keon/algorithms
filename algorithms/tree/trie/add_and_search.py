@@ -41,11 +41,11 @@ class WordDictionary(object):
             # if dot
             if letter == ".":
                 if i == len(word) - 1: # if last character
-                    for child in cur.children.itervalues():
+                    for child in cur.children.values():
                         if child.is_terminal:
                             return True
                     return False
-                for child in cur.children.itervalues():
+                for child in cur.children.values():
                     if self.search(word[i+1:], child) == True:
                         return True
                 return False

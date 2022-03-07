@@ -53,7 +53,7 @@ def scc(graph):
 
     graph_transposed = {vertex: [] for vertex in graph}
 
-    for (v, neighbours) in graph.iteritems():
+    for (v, neighbours) in graph.items():
         for u in neighbours:
             add_edge(graph_transposed, u, v)
 
@@ -122,5 +122,5 @@ def solve_sat(formula):
 if __name__ == '__main__':
     result = solve_sat(formula)
 
-    for (variable, assign) in result.iteritems():
+    for (variable, assign) in result.items():
         print("{}:{}".format(variable, assign))
