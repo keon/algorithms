@@ -109,9 +109,9 @@ Together `dp[index][mask]` tells us the minimum distance to visit X (X = number 
 Then we have our state transition. Initially `dp[0][0]` means that we are at tile 0 and the mask states that we have visited 0 houses. The final state will be `dp[some index][LIMIT_MASK]` where `LIMIT_MASK = (1 << N) - 1` (N = number of houses). The relation is then,
 
 ```
-dp(curr_idx)(curr_mask) = min(
-    for idx : off_bits_in_curr_mask
-       dp(idx)(cur_mask.set_bit(idx)) + dist[curr_idx][idx]
+dp(curr_house)(curr_mask) = min(
+    for house: houses that hasn't been visited yet:
+       dp(house)(cur_mask.set_bit(house)) + dist[curr_house][house]
 )
 ```
 
