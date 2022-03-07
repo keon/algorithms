@@ -1,4 +1,24 @@
-from cmath import inf as inf  # This might be wrong
+from cmath import inf as inf
+
+class Node:
+
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Node2:
+    def __init__(self):
+        # self.is_leaf = is_leaf
+        self.keys = []
+        self.children = []
+
+    def __repr__(self):
+        return "<id_node: {0}>".format(self.keys)
+
+    @property
+    def is_leaf(self):
+        return len(self.children) == 0
 
 
 def binary_minimax(node, depth, maxing, alpha, beta):
@@ -54,13 +74,13 @@ def minimax(b_tree_node, heuristic_key, depth, maxing, alpha=-inf, beta=inf):
         @arg            real        beta
     """
     # if max depth has been reached or node is a leaf, return node value
-    if (depth == 0) or b_tree_node.is_leaf():
+    if (depth == 0) or b_tree_node.is_leaf:
         return b_tree_node.keys[heuristic_key]
 
     if maxing:  # Maximize Values
         max_value = -inf
         for child in b_tree_node.children:  # Loop through all children of node
-            evaluation = binary_minimax(child, depth-1, False, alpha, beta)
+            evaluation = minimax(child, heuristic_key, depth-1, False, alpha, beta)
             max_value = max(max_value, evaluation)
             alpha = max(alpha, evaluation)
             if beta <= alpha:  # Prune Remaining Branches
@@ -70,10 +90,9 @@ def minimax(b_tree_node, heuristic_key, depth, maxing, alpha=-inf, beta=inf):
     else:  # Minimize Values
         min_value = inf
         for child in b_tree_node.children:  # Loop through all children of node
-            evaluation = binary_minimax(child, depth - 1, True, alpha, beta)
+            evaluation = minimax(child, heuristic_key, depth - 1, True, alpha, beta)
             min_value = min(min_value, evaluation)
             beta = min(beta, evaluation)
             if beta <= alpha:  # Prune Remaining Branches
                 break
-
         return min_value
