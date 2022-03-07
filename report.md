@@ -46,7 +46,7 @@ Title: "Add Bitmasking in DP #480"
 
 URL: The issue can be found in [this link](https://github.com/keon/algorithms/issues/480).
 
-The task is to implement algorithms that employ bitmasking and dynamic programming. There are a couple of good problems where the solutions can utilize this technique. We choose to implement solutions for the *cap-set* problem and the *Traveling Salesperson* problem.
+The task is to implement algorithms that employ bitmasking and dynamic programming. There are a couple of good problems where the solutions can utilize this technique. We choose to implement solutions for the _cap-set_ problem and the _Traveling Salesperson_ problem.
 
 The issue will require a new files to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. Each algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
 
@@ -54,9 +54,7 @@ The issue will require a new files to be added to the dp-folder. Since the imple
 
 In this problem we want to assign unique caps to a set of people, where each person has their own set of available caps.
 
-
-
-#### Algorithm description 
+#### Algorithm description
 
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
@@ -86,21 +84,20 @@ Finally the result will be stored is the matrix cell `[0][1]`.
 
 ### TSP
 
-The same technique of bitmasking and dynamic programming can be utilized to solve the famous *Travelling Salesperson* problem. Given a 2D grid containing a set of towns, we want to find the shortest route through all the towns that ends up in the same spot we started from. In our case we model the 2D grid using ascii characters in this way,
+The same technique of bitmasking and dynamic programming can be utilized to solve the famous _Travelling Salesperson_ problem. Given a 2D grid containing a set of towns, we want to find the shortest route through all the towns that ends up in the same spot we started from. In our case we model the 2D grid using ascii characters in this way,
 
 ```
 .  .  .  .  .  *  .
 .  .  .  #  .  .  .
 .  *  .  #  .  *  .
-.  .  .  .  .  *  . 
+.  .  .  .  .  *  .
 ```
 
 where `.` signifies an open road, `*` signifies a town and `#` signifies a blockage. Our starting point is (0,0) (top right corner).
 
 #### Algorithm Description
 
-
-To solve this problem we first calculate the minimum distance between two cells in the grid, which we can do with a BFS. We pre-compute the distance from our starting point to all of the houses. This is done in O((#houses + 1) * grid_size) as each BFS is O(grid_size) in the worst case.
+To solve this problem we first calculate the minimum distance between two cells in the grid, which we can do with a BFS. We pre-compute the distance from our starting point to all of the houses. This is done in O((#houses + 1) \* grid_size) as each BFS is O(grid_size) in the worst case.
 
 We now construct the dynamic programming state `dp[index][mask]`.
 
@@ -108,7 +105,6 @@ We now construct the dynamic programming state `dp[index][mask]`.
 - `mask` tells us which of the houses that we have visited by set bits in the mask.
 
 Together `dp[index][mask]` tells us the minimum distance to visit X (X = number of set bits in mask) houses in a order such that the last visited house is at `index`
-
 
 Then we have our state transition. Initially `dp[0][0]` means that we are at tile 0 and the mask states that we have visited 0 houses. The final state will be `dp[some index][LIMIT_MASK]` where `LIMIT_MASK = (1 << N) - 1` (N = number of houses). The relation is then,
 
@@ -132,6 +128,7 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 | R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
+
 |
 | R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
 |
@@ -172,8 +169,9 @@ Concerning our issue, since it is related to a new algorithm, there are obviousl
 Hence we create the class that will allow us to test the new algorithm of our issue: 'class `TestBitmasking` in the file [test_dp.py](tests/test_dp.py). Each [requirement](TODO) will have its own method that test it inside this class.
 
 ## UML for the Bitmasking algorithms
+
 Our solution consists of modular algorithms that utilizes several functions. In order to gain a better understanding of the control flow of the algorithms the following control-flow diagrams can be consulted. We have chosen control-flow diagrams instead of class diagrams as the solutions we provide do not utilize several classes. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithms.
-=======
+
 The first class [TestBitmaskingCapAssignment](tests/test_dp.py) tests the implementation of the bitmasking algorithm to solve the Cap Assignment problem. The test class has 8 associated requirements which covers aspects such as correct input types, edge cases and runtime correctness. The test class achieves 92% test coverage. After analyzing the functions for the Cap Assignment code with the code complexity tool Lizard we get the following results:
 
 | Function                | Lizard CCN | Manual CCN |
