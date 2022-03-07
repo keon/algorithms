@@ -14,27 +14,40 @@ For this task our group chose a new project to work with. The onboarding experie
 
 ## Effort spent
 
-For each team member, how much time was spent in
+The complete accounts of how much time each member spent on different tasks can be found in the following document:
+[Group 27 Time Accouting](https://docs.google.com/spreadsheets/d/1qa9vp-TvY8ufDr0W_Nt4uutCPlMN0TSA8ToCOFEN1nQ/edit?usp=sharing)
 
-1. plenary discussions/meetings;
+### Plenary meetings
 
-2. discussions within parts of the group;
+There were 4 one-hour online meetings in total, where all group members were present. Each meeting was conducted over Discord using the voice channel. Additionally there was a final push on the last day where we met up in the morning to wrap up the project.
 
-3. reading documentation;
+### Discussions within parts of the group
 
-4. configuration and setup;
+There were continuous discussions in the Discord chat and in the Github comments alongside the work. It is therefore difficult to estimate the total time spent on this.
 
-5. analyzing code/output;
+### Reading documentation
 
-6. writing documentation;
+Each group member initially spent some time reading the documentation for the repository, familiarizing themselves with how to run the tests and individual algorithms. The majority of the time spent on this step was spent trying to map out the project structure, how continuous integration was set up etc.
 
-7. writing code;
+### Configuration and setup
 
-8. running code?
+Since the project consists of many single-file Python programs, there were almost no dependencies. Some group members needed to install missing modules using `pip`, but this did not take long. We also tried building the documentation files with Sphinx.
 
-For setting up tools and libraries (step 4), enumerate all dependencies
-you took care of and where you spent your time, if that time exceeds
-30 minutes.
+### Analyzing code/output
+
+Considerable effort was spent analyzing the structure of the code before the new code was written. This was an effort to make sure that the new code integrates consistently with the old code and the structure of the tests. Some effort was also put into analyzing the code after it was written to make sure that the cyclomatic complexity was low and that code coverage was as high as possible.
+
+### Writing documentation
+
+Large sections of documentation was written. This includes essence evaluations of the teams effort, an architectural overview of the entire project, control flow diagrams of the new code etc. The considerable amount of documentation required for this report took a substantial amount of time. For example each written test for the new code had to be mapped to a requirement.
+
+### Writing code
+
+Group members wrote two algorithms together as well as the required tests for these cases. 
+
+### Running code
+
+The tests for the entire repository was initially run to produce a log of the initial state. This was to be compared to the final test run. We also ran our new code with the Lizard tool to analyze cyclomatic complexity. 
 
 ## Overview of issue(s) and work done.
 
