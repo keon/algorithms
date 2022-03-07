@@ -42,6 +42,39 @@ class TestQueue(unittest.TestCase):
 
         self.assertTrue(queue.is_empty())
 
+    def test_arrayqueue_can_grow(self):
+        """
+        Inserts enough elements for the queue to expand (>10)
+        Then extracts them all and ensures they are equal to input values
+        """
+        q = ArrayQueue()
+        for i in range(15):
+            q.enqueue(i)
+
+        self.assertSequenceEqual(list(q), range(15))
+
+    def test_arrayqueue_throws_when_empty(self):
+        """
+        Asserts that an IndexError is thrown when the queue is empty
+        Both if it was always empty, as well as if it was dequeued until empty.
+        """
+        q = ArrayQueue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+        # Assert that it still throws if it once was not empty
+        q.enqueue(1)
+        q.dequeue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+
     def test_LinkedListQueue(self):
         queue = LinkedListQueue()
         queue.enqueue(1)
@@ -70,6 +103,27 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(3, queue.dequeue())
 
         self.assertTrue(queue.is_empty())
+
+    def test_linkedqueue_throws_when_empty(self):
+        """
+        Asserts that an IndexError is thrown when the queue is empty
+        Both if it was always empty, as well as if it was dequeued until empty.
+        """
+        q = LinkedListQueue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+        # Assert that it still throws if it once was not empty
+        q.enqueue(1)
+        q.dequeue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
 
 
 class TestSuite(unittest.TestCase):
