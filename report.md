@@ -128,8 +128,6 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 | R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
-
-|
 | R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
 |
 | R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
