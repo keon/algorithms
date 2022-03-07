@@ -13,6 +13,7 @@ from algorithms.backtrack import (
     generate_parenthesis_v1,
     generate_parenthesis_v2,
     letter_combinations,
+    minimax,
     palindromic_substrings,
     pattern_match,
     permute_unique,
@@ -23,9 +24,17 @@ from algorithms.backtrack import (
     subsets_v2,
 )
 
+
 import unittest
 
+class Node:
 
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+        
 class TestAddOperator(unittest.TestCase):
     def test_add_operators(self):
         # "123", 6 -> ["1+2+3", "1*2*3"]
@@ -231,7 +240,37 @@ class TestGenerateAbbreviations(unittest.TestCase):
             '2llo', '2ll1', '2l1o', '2l2', '3lo', '3l1', '4o', '5']
         self.assertEqual(sorted(generate_abbreviations(word2)), sorted(answer2))
 
-
+class TestMiniMax(unittest.TestCase):
+    
+    def test_minmaxBinary1(self):
+        n1 = Node(0)
+        n2 = Node(0)
+        n3 = Node(0)
+        n4 = Node(14)
+        n5 = Node(8)
+        n6 = Node(7)
+        n7 = Node(6)
+        n1.left, n1.right = n2, n3
+        n2.left, n2.right = n4, n5
+        n3.left, n3.right = n6, n7
+        a=binary_minimax(n1,2,True,-10,10)
+        self.assertEqual(binary_minimax(n1,2,True,-10,10),8)
+        
+    def test_minmaxBinary2(self):
+        n1 = Node(0)
+        n2 = Node(4)
+        n3 = Node(5)
+        n4 = Node(14)
+        n5 = Node(8)
+        n6 = Node(7)
+        n7 = Node(6)
+        n1.left, n1.right = n2, n3
+        n2.left, n2.right = n4, n5
+        n3.left, n3.right = n6, n7
+        a=binary_minimax(n1,2,True,-10,10)
+        self.assertEqual(binary_minimax(n1,1,True,-10,10),8)
+    
+    
 class TestPatternMatch(unittest.TestCase):
 
     def test_pattern_match(self):
@@ -366,6 +405,8 @@ class TestSubsets(unittest.TestCase):
         answer2 = [[1, 2, 3, 4], [1, 2, 3], [1, 2, 4], [1, 2], [1, 3, 4], 
             [1, 3], [1, 4], [1], [2, 3, 4], [2, 3], [2, 4], [2], [3, 4], [3], [4], []]
         self.assertEqual(sorted(subsets_v2(nums2)), sorted(answer2))
+
+
 
 
 if __name__ == '__main__':

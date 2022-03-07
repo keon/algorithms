@@ -13,7 +13,7 @@ def binary_minimax(node, depth, maxing, alpha, beta):
     """
     # if max depth has been reached or node is a leaf, return node value
     if (depth == 0) or (node.left is None and node.right is None):
-        return node.value
+        return node.val
 
     if maxing:  # Maximize Values
         max_value = -inf
