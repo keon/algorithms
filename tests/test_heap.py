@@ -28,7 +28,7 @@ class TestBinaryHeap(unittest.TestCase):
         self.min_heap.insert(2)
         self.assertEqual([0, 2, 50, 4, 55, 90, 87, 7],
                          self.min_heap.heap)
-        self.assertEqual(7, self.min_heap.currentSize)
+        self.assertEqual(7, self.min_heap.current_size)
 
     def test_remove_min(self):
         ret = self.min_heap.remove_min()
@@ -38,7 +38,7 @@ class TestBinaryHeap(unittest.TestCase):
         self.assertEqual(4, ret)
         self.assertEqual([0, 7, 50, 87, 55, 90],
                          self.min_heap.heap)
-        self.assertEqual(5, self.min_heap.currentSize)
+        self.assertEqual(5, self.min_heap.current_size)
 
 
 class TestSuite(unittest.TestCase):

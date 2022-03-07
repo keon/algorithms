@@ -27,34 +27,48 @@ What limitation we need to add to the question to allow negative numbers?
 
 """
 
-dp = None
-
+DP = None
 
 def helper_topdown(nums, target):
-    global dp
-    if dp[target] != -1:
-        return dp[target]
+    """Generates DP and finds result.
+
+    Keyword arguments:
+    nums -- positive integer array without duplicates
+    target -- integer describing what a valid combination should add to
+    """
+    if DP[target] != -1:
+        return DP[target]
     res = 0
-    for i in range(0, len(nums)):
-        if target >= nums[i]:
-            res += helper_topdown(nums, target - nums[i])
-    dp[target] = res
+    for num in nums:
+        if target >= num:
+            res += helper_topdown(nums, target - num)
+    DP[target] = res
     return res
 
 
 def combination_sum_topdown(nums, target):
-    global dp
-    dp = [-1] * (target + 1)
-    dp[0] = 1
+    """Find number of possible combinations in nums that add up to target, in top-down manner.
+
+    Keyword arguments:
+    nums -- positive integer array without duplicates
+    target -- integer describing what a valid combination should add to
+    """
+    global DP
+    DP = [-1] * (target + 1)
+    DP[0] = 1
     return helper_topdown(nums, target)
 
-
-# EDIT: The above solution is top-down. How about a bottom-up one?
 def combination_sum_bottom_up(nums, target):
-    comb = [0] * (target + 1)
-    comb[0] = 1
-    for i in range(0, len(comb)):
-        for j in range(len(nums)):
-            if i - nums[j] >= 0:
-                comb[i] += comb[i - nums[j]]
-    return comb[target]
+    """Find number of possible combinations in nums that add up to target, in bottom-up manner.
+
+    Keyword arguments:
+    nums -- positive integer array without duplicates
+    target -- integer describing what a valid combination should add to
+    """
+    combs = [0] * (target + 1)
+    combs[0] = 1
+    for i in range(0, len(combs)):
+        for num in nums:
+            if i - num >= 0:
+                combs[i] += combs[i - num]
+    return combs[target]

@@ -35,8 +35,7 @@ def fib_recursive(n):
 
     if n <= 1:
         return n
-    else:
-        return fib_recursive(n-1) + fib_recursive(n-2)
+    return fib_recursive(n-1) + fib_recursive(n-2)
 
 # print(fib_recursive(35)) # => 9227465 (slow)
 
@@ -81,13 +80,13 @@ def fib_iter(n):
 
     fib_1 = 0
     fib_2 = 1
-    sum = 0
+    res = 0
     if n <= 1:
         return n
     for _ in range(n-1):
-        sum = fib_1 + fib_2
+        res = fib_1 + fib_2
         fib_1 = fib_2
-        fib_2 = sum
-    return sum
+        fib_2 = res
+    return res
 
 # print(fib_iter(100)) # => 354224848179261915075

@@ -47,5 +47,5 @@ def is_prime(n, k):
     for _ in range(k):
         if valid_witness(random.randrange(2, n - 2)):
             return False
-    
+
     return True

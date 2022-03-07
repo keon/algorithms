@@ -27,29 +27,32 @@ INF = float("inf")
 
 
 def min_cost(cost):
+    """Find minimum cost.
 
-    n = len(cost)
+    Keyword arguments:
+    cost -- matrix containing costs
+    """
+    length = len(cost)
     # dist[i] stores minimum cost from 0 --> i.
-    dist = [INF] * n
+    dist = [INF] * length
 
     dist[0] = 0   # cost from 0 --> 0 is zero.
 
-    for i in range(n):
-        for j in range(i+1, n):
+    for i in range(length):
+        for j in range(i+1,length):
             dist[j] = min(dist[j], dist[i] + cost[i][j])
 
-    return dist[n-1]
+    return dist[length-1]
 
 
 if __name__ == '__main__':
+    costs = [ [ 0, 15, 80, 90],         # cost[i][j] is the cost of
+             [-1,  0, 40, 50],         # going from i --> j
+             [-1, -1,  0, 70],
+             [-1, -1, -1,  0] ]        # cost[i][j] = -1 for i > j
+    TOTAL_LEN = len(costs)
 
-    cost = [[0, 15, 80, 90],         # cost[i][j] is the cost of
-            [-1, 0, 40, 50],         # going from i --> j
-            [-1, -1, 0, 70],
-            [-1, -1, -1, 0]]        # cost[i][j] = -1 for i > j
-    total_len = len(cost)
-
-    mcost = min_cost(cost)
+    mcost = min_cost(costs)
     assert mcost == 65
 
-    print("The Minimum cost to reach station %d is %d" % (total_len, mcost))
+    print(f"The minimum cost to reach station {TOTAL_LEN} is {mcost}")

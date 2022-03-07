@@ -1,3 +1,7 @@
+"""
+Collection of search algorithms: finding the needle in a haystack.
+"""
+
 from .binary_search import *
 from .ternary_search import *
 from .first_occurrence import *

@@ -1,12 +1,19 @@
-# takes dict of sets
-# each key is a vertex
-# value is set of all edges connected to vertex
-# returns list of lists (each sub list is a maximal clique)
-# implementation of the basic algorithm described in:
-# Bron, Coen; Kerbosch, Joep (1973), "Algorithm 457: finding all cliques of an undirected graph",
-
+"""
+Finds all cliques in an undirected graph. A clique is a set of vertices in the
+graph such that the subgraph is fully connected (ie. for any pair of nodes in
+the subgraph there is an edge between them).
+"""
 
 def find_all_cliques(edges):
+    """
+    takes dict of sets
+    each key is a vertex
+    value is set of all edges connected to vertex
+    returns list of lists (each sub list is a maximal clique)
+    implementation of the basic algorithm described in:
+    Bron, Coen; Kerbosch, Joep (1973), "Algorithm 457: finding all cliques of an undirected graph",
+    """
+
     def expand_clique(candidates, nays):
         nonlocal compsub
         if not candidates and not nays:

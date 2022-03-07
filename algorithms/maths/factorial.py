@@ -1,3 +1,6 @@
+"""
+Calculates the factorial with the added functionality of calculating it modulo mod.
+"""
 def factorial(n, mod=None):
     """Calculates factorial iteratively.
     If mod is not None, then return (n! % mod)

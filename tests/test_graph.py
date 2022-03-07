@@ -10,6 +10,10 @@ from algorithms.graph import all_pairs_shortest_path
 from algorithms.graph import bellman_ford
 from algorithms.graph import count_connected_number_of_component
 from algorithms.graph import prims_minimum_spanning
+from algorithms.graph import check_digraph_strongly_connected
+from algorithms.graph import cycle_detection
+from algorithms.graph import find_path
+from algorithms.graph import path_between_two_vertices_in_digraph
 
 import unittest
 
@@ -278,3 +282,70 @@ class PrimsMinimumSpanning(unittest.TestCase):
             4: [[6, 1], [9, 2], [8, 3]]
         }
         self.assertEqual(19, prims_minimum_spanning(graph2))
+
+class TestDigraphStronglyConnected(unittest.TestCase):
+    def test_digraph_strongly_connected(self):
+        g1 = check_digraph_strongly_connected.Graph(5)
+        g1.add_edge(0, 1)
+        g1.add_edge(1, 2)
+        g1.add_edge(2, 3)
+        g1.add_edge(3, 0)
+        g1.add_edge(2, 4)
+        g1.add_edge(4, 2)
+        self.assertTrue(g1.is_strongly_connected())
+
+        g2 = check_digraph_strongly_connected.Graph(4)
+        g2.add_edge(0, 1)
+        g2.add_edge(1, 2)
+        g2.add_edge(2, 3)
+        self.assertFalse(g2.is_strongly_connected())
+
+class TestCycleDetection(unittest.TestCase):
+    def test_cycle_detection_with_cycle(self):
+        graph = {'A': ['B', 'C'],
+                 'B': ['D'],
+                 'C': ['F'],
+                 'D': ['E', 'F'],
+                 'E': ['B'],
+                 'F': []}
+        self.assertTrue(cycle_detection.contains_cycle(graph))
+
+    def test_cycle_detection_with_no_cycle(self):
+        graph = {'A': ['B', 'C'],
+                 'B': ['D', 'E'],
+                 'C': ['F'],
+                 'D': ['E'],
+                 'E': [],
+                 'F': []}
+        self.assertFalse(cycle_detection.contains_cycle(graph))
+
+class TestFindPath(unittest.TestCase):
+    def test_find_all_paths(self):
+        graph = {'A': ['B', 'C'],
+                 'B': ['C', 'D'],
+                 'C': ['D', 'F'],
+                 'D': ['C'],
+                 'E': ['F'],
+                 'F': ['C']}
+
+        paths = find_path.find_all_path(graph, 'A', 'F')
+        print(paths)
+        self.assertEqual(sorted(paths), sorted([
+            ['A', 'C', 'F'],
+            ['A', 'B', 'C', 'F'],
+            ['A', 'B', 'D', 'C', 'F'],
+        ]))
+
+class TestPathBetweenTwoVertices(unittest.TestCase):
+    def test_node_is_reachable(self):
+        g = path_between_two_vertices_in_digraph.Graph(4)
+        g.add_edge(0, 1)
+        g.add_edge(0, 2)
+        g.add_edge(1, 2)
+        g.add_edge(2, 0)
+        g.add_edge(2, 3)
+        g.add_edge(3, 3)
+
+        self.assertTrue(g.is_reachable(1, 3))
+        self.assertFalse(g.is_reachable(3, 1))
+

@@ -26,17 +26,17 @@ Reference: https://leetcode.com/problems/find-smallest-letter-greater-than-targe
 
 import bisect
 
-"""
-Using bisect libarary
-"""
 def next_greatest_letter(letters, target):
+    """
+    Using bisect libarary
+    """
     index = bisect.bisect(letters, target)
     return letters[index % len(letters)]
 
-"""
-Using binary search: complexity O(logN)
-"""
 def next_greatest_letter_v1(letters, target):
+    """
+    Using binary search: complexity O(logN)
+    """
     if letters[0] > target:
         return letters[0]
     if letters[len(letters) - 1] <= target:
@@ -48,12 +48,12 @@ def next_greatest_letter_v1(letters, target):
             right = mid - 1
         else:
             left = mid + 1
-    return letters[left]    
+    return letters[left]
 
-"""
-Brute force: complexity O(N)
-"""
 def next_greatest_letter_v2(letters, target):
+    """
+    Brute force: complexity O(N)
+    """
     for index in letters:
         if index > target:
             return index

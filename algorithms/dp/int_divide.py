@@ -1,5 +1,6 @@
 """
-Given positive integer n, find an algorithm to find the number of non-negative number division, or descomposition.
+Given positive integer decompose, find an algorithm to find the number of
+non-negative number division, or decomposition.
 
 The complexity is O(n^2).
 
@@ -36,15 +37,19 @@ Explaination:
 """
 
 
-def int_divide(n):
-    arr = [[0 for i in range(n + 1)] for j in range(n + 1)]
+def int_divide(decompose):
+    """Find number of decompositions from `decompose`
+
+    decompose -- integer
+    """
+    arr = [[0 for i in range(decompose + 1)] for j in range(decompose + 1)]
     arr[1][1] = 1
-    for i in range(1, n + 1):
-        for j in range(1, n + 1):
+    for i in range(1, decompose + 1):
+        for j in range(1, decompose + 1):
             if i < j:
                 arr[i][j] = arr[i][i]
             elif i == j:
                 arr[i][j] = 1 + arr[i][j - 1]
             else:
                 arr[i][j] = arr[i][j - 1] + arr[i - j][j]
-    return arr[n][n]
+    return arr[decompose][decompose]

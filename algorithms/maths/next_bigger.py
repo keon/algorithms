@@ -1,9 +1,9 @@
 """
-I just bombed an interview and made pretty much zero 
-progress on my interview question. 
+I just bombed an interview and made pretty much zero
+progress on my interview question.
 
-Given a number, find the next higher number which has the 
-exact same set of digits as the original number. 
+Given a number, find the next higher number which has the
+exact same set of digits as the original number.
 For example: given 38276 return 38627.
              given 99999 return -1. (no such number exists)
 

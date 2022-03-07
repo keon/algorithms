@@ -1,9 +1,11 @@
+"""
+Functions to calculate nCr (ie how many ways to choose r items from n items)
+"""
 def combination(n, r):
     """This function calculates nCr."""
     if n == r or r == 0:
         return 1
-    else:
-        return combination(n-1, r-1) + combination(n-1, r)
+    return combination(n-1, r-1) + combination(n-1, r)
 
 def combination_memo(n, r):
     """This function calculates nCr using memoization method."""

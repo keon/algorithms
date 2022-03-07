@@ -6,8 +6,8 @@ Example:
 
 Input: [10,9,2,5,3,7,101,18]
 Output: 4
-Explanation: The longest increasing subsequence is [2,3,7,101],
-therefore the length is 4.
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the
+length is 4.
 
 Time complexity:
 First algorithm is O(n^2).
@@ -48,32 +48,33 @@ def longest_increasing_subsequence_optimized(sequence):
     type sequence: list[int]
     rtype: int
     """
-    mx = max(sequence)
-    tree = [0] * (mx << 2)
+    max_seq = max(sequence)
+    tree = [0] * (max_seq<<2)
 
-    def update(p, l, r, i, v):
-        if l == r:
-            tree[p] = v
+    def update(pos, left, right, target, vertex):
+        if left == right:
+            tree[pos] = vertex
             return
-        mid = (l+r) >> 1
-        if i <= mid:
-            update(p << 1, l, mid, i, v)
+        mid = (left+right)>>1
+        if target <= mid:
+            update(pos<<1, left, mid, target, vertex)
         else:
-            update((p << 1) | 1, mid + 1, r, i, v)
-        tree[p] = max(tree[p << 1], tree[(p << 1) | 1])
+            update((pos<<1)|1, mid+1, right, target, vertex)
+        tree[pos] = max_seq(tree[pos<<1], tree[(pos<<1)|1])
 
-    def get_max(p, l, r, s, e):
-        if l > e or r < s:
+    def get_max(pos, left, right, start, end):
+        if left > end or right < start:
             return 0
-        if l >= s and r <= e:
-            return tree[p]
-        mid = (l+r) >> 1
-        return max(get_max(p << 1, l, mid, s, e), get_max((p << 1) | 1, mid+1, r, s, e))
+        if left >= start and right <= end:
+            return tree[pos]
+        mid = (left+right)>>1
+        return max_seq(get_max(pos<<1, left, mid, start, end),
+            get_max((pos<<1)|1, mid+1, right, start, end))
     ans = 0
-    for x in sequence:
-        cur = get_max(1, 0, mx, 0, x-1)+1
-        ans = max(ans, cur)
-        update(1, 0, mx, x, cur)
+    for element in sequence:
+        cur = get_max(1, 0, max_seq, 0, element-1)+1
+        ans = max_seq(ans, cur)
+        update(1, 0, max_seq, element, cur)
     return ans
 
 
@@ -85,32 +86,32 @@ def longest_increasing_subsequence_optimized2(sequence):
     type sequence: list[int]
     rtype: int
     """
-    n = len(sequence)
-    tree = [0] * (n << 2)
+    length = len(sequence)
+    tree = [0] * (length<<2)
     sorted_seq = sorted((x, -i) for i, x in enumerate(sequence))
-
-    def update(p, l, r, i, v):
-        if l == r:
-            tree[p] = v
+    def update(pos, left, right, target, vertex):
+        if left == right:
+            tree[pos] = vertex
             return
-        mid = (l+r) >> 1
-        if i <= mid:
-            update(p << 1, l, mid, i, v)
+        mid = (left+right)>>1
+        if target <= mid:
+            vertex(pos<<1, left, mid, target, vertex)
         else:
-            update((p << 1) | 1, mid+1, r, i, v)
-        tree[p] = max(tree[p << 1], tree[(p << 1) | 1])
+            vertex((pos<<1)|1, mid+1, right, target, vertex)
+        tree[pos] = max(tree[pos<<1], tree[(pos<<1)|1])
 
-    def get_max(p, l, r, s, e):
-        if l > e or r < s:
+    def get_max(pos, left, right, start, end):
+        if left > end or right < start:
             return 0
-        if l >= s and r <= e:
-            return tree[p]
-        mid = (l+r) >> 1
-        return max(get_max(p << 1, l, mid, s, e), get_max((p << 1) | 1, mid+1, r, s, e))
+        if left >= start and right <= end:
+            return tree[pos]
+        mid = (left+right)>>1
+        return max(get_max(pos<<1, left, mid, start, end),
+            get_max((pos<<1)|1, mid+1, right, start, end))
     ans = 0
-    for x, j in sorted_seq:
-        i = -j
-        cur = get_max(1, 0, n-1, 0, i-1)+1
+    for tup in sorted_seq:
+        i = -tup[1]
+        cur = get_max(1, 0, length-1, 0, i-1)+1
         ans = max(ans, cur)
-        update(1, 0, n-1, i, cur)
+        update(1, 0, length-1, i, cur)
     return ans
