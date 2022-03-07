@@ -22,7 +22,5 @@ def recursive_binomial_coefficient(n,k):
     if k > n/2:
         #C(n,k) = C(n,n-k), so if n/2 is sufficiently small, we can reduce the problem size.
         return recursive_binomial_coefficient(n,n-k)
-    else:
-        #else, we know C(n,k) = (n/k)C(n-1,k-1), so we can use this to reduce our problem size.
-        return int((n/k)*recursive_binomial_coefficient(n-1,k-1))
-
+    #else, we know C(n,k) = (n/k)C(n-1,k-1), so we can use this to reduce our problem size.
+    return int((n/k)*recursive_binomial_coefficient(n-1,k-1))

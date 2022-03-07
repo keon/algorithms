@@ -11,8 +11,10 @@ from algorithms.dp import (
     Job, schedule,
     Item, get_maximum_value,
     longest_increasing_subsequence,
-    int_divide, find_k_factor,
-    planting_trees
+    longest_increasing_subsequence_optimized,
+    longest_increasing_subsequence_optimized2,
+    int_divide,find_k_factor,
+    planting_trees, regex_matching
 )
 
 
@@ -208,6 +210,53 @@ class TestPlantingTrees(unittest.TestCase):
 
         # assert
         self.assertEqual(res, 9.28538328578604)
+    
+class TestRegexMatching(unittest.TestCase):
+    def test_none_0(self):
+        s = ""
+        p = ""
+        self.assertTrue(regex_matching.is_match(s, p))
+
+    def test_none_1(self):
+        s = ""
+        p = "a"
+        self.assertFalse(regex_matching.is_match(s, p))
+
+    def test_no_symbol_equal(self):
+        s = "abcd"
+        p = "abcd"
+        self.assertTrue(regex_matching.is_match(s, p))
+
+    def test_no_symbol_not_equal_0(self):
+        s = "abcd"
+        p = "efgh"
+        self.assertFalse(regex_matching.is_match(s, p))
+
+    def test_no_symbol_not_equal_1(self):
+        s = "ab"
+        p = "abb"
+        self.assertFalse(regex_matching.is_match(s, p))
+
+    def test_symbol_0(self):
+        s = ""
+        p = "a*"
+        self.assertTrue(regex_matching.is_match(s, p))
+
+    def test_symbol_1(self):
+        s = "a"
+        p = "ab*"
+        self.assertTrue(regex_matching.is_match(s, p))
+
+    def test_symbol_2(self):
+        # E.g.
+        #   s a b b
+        # p 1 0 0 0
+        # a 0 1 0 0
+        # b 0 0 1 0
+        # * 0 1 1 1
+        s = "abb"
+        p = "ab*"
+        self.assertTrue(regex_matching.is_match(s, p))
 
 
 if __name__ == '__main__':

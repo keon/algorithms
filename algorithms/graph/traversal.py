@@ -1,9 +1,6 @@
-graph = {'A': set(['B', 'C', 'F']),
-         'B': set(['A', 'D', 'E']),
-         'C': set(['A', 'F']),
-         'D': set(['B']),
-         'E': set(['B', 'F']),
-         'F': set(['A', 'C', 'E'])}
+"""
+Different ways to traverse a graph
+"""
 
 # dfs and bfs are the ultimately same except that they are visiting nodes in
 # different order. To simulate this ordering we would use stack for dfs and
@@ -11,56 +8,41 @@ graph = {'A': set(['B', 'C', 'F']),
 #
 
 def dfs_traverse(graph, start):
+    """
+    Traversal by depth first search.
+    """
     visited, stack = set(), [start]
     while stack:
         node = stack.pop()
         if node not in visited:
             visited.add(node)
-            for nextNode in graph[node]:
-                if nextNode not in visited:
-                    stack.append(nextNode)
+            for next_node in graph[node]:
+                if next_node not in visited:
+                    stack.append(next_node)
     return visited
 
-# print(dfs_traverse(graph, 'A'))
-
-
 def bfs_traverse(graph, start):
+    """
+    Traversal by breadth first search.
+    """
     visited, queue = set(), [start]
     while queue:
         node = queue.pop(0)
         if node not in visited:
             visited.add(node)
-            for nextNode in graph[node]:
-                if nextNode not in visited:
-                    queue.append(nextNode)
+            for next_node in graph[node]:
+                if next_node not in visited:
+                    queue.append(next_node)
     return visited
 
-# print(bfs_traverse(graph, 'A'))
-
 def dfs_traverse_recursive(graph, start, visited=None):
+    """
+    Traversal by recursive depth first search.
+    """
     if visited is None:
         visited = set()
     visited.add(start)
-    for nextNode in graph[start]:
-        if nextNode not in visited:
-            dfs_traverse_recursive(graph, nextNode, visited)
+    for next_node in graph[start]:
+        if next_node not in visited:
+            dfs_traverse_recursive(graph, next_node, visited)
     return visited
-
-# print(dfs_traverse_recursive(graph, 'A'))
-
-# def find_path(graph, start, end, visited=[]):
-    # # basecase
-    # visitied = visited + [start]
-    # if start == end:
-        # return visited
-    # if start not in graph:
-        # return None
-    # for node in graph[start]:
-        # if node not in visited:
-            # new_visited = find_path(graph, node, end, visited)
-            # return new_visited
-    # return None
-
-# print(find_path(graph, 'A', 'F'))
-
-

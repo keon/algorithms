@@ -7,6 +7,11 @@ returns string
 """
 
 def decimal_to_binary_util(val):
+    """
+    Convert 8-bit decimal number to binary representation
+    :type val: str
+    :rtype: str
+    """
     bits = [128, 64, 32, 16, 8, 4, 2, 1]
     val = int(val)
     binary_rep = ''
@@ -20,6 +25,9 @@ def decimal_to_binary_util(val):
     return binary_rep
 
 def decimal_to_binary_ip(ip):
+    """
+    Convert dotted-decimal ip address to binary representation with help of decimal_to_binary_util
+    """
     values = ip.split('.')
     binary_list = []
     for val in values:

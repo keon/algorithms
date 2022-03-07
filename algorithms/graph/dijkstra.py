@@ -1,36 +1,49 @@
-#Dijkstra's single source shortest path algorithm
+"""
+Dijkstra's single-source shortest-path algorithm
+"""
 
 class Dijkstra():
+    """
+    A fully connected directed graph with edge weights
+    """
 
-    def __init__(self, vertices):
-        self.vertices = vertices
-        self.graph = [[0 for column in range(vertices)] for row in range(vertices)]
+    def __init__(self, vertex_count):
+        self.vertex_count = vertex_count
+        self.graph = [[0 for _ in range(vertex_count)] for _ in range(vertex_count)]
 
     def min_distance(self, dist, min_dist_set):
+        """
+        Find the vertex that is closest to the visited set
+        """
         min_dist = float("inf")
-        for v in range(self.vertices):
-            if dist[v] < min_dist and min_dist_set[v] == False:
-                min_dist = dist[v]
-                min_index = v
+        for target in range(self.vertex_count):
+            if min_dist_set[target]:
+                continue
+            if dist[target] < min_dist:
+                min_dist = dist[target]
+                min_index = target
         return min_index
 
     def dijkstra(self, src):
-
-        dist = [float("inf")] * self.vertices
+        """
+        Given a node, returns the shortest distance to every other node
+        """
+        dist = [float("inf")] * self.vertex_count
         dist[src] = 0
-        min_dist_set = [False] * self.vertices
+        min_dist_set = [False] * self.vertex_count
 
-        for count in range(self.vertices):
-
+        for _ in range(self.vertex_count):
             #minimum distance vertex that is not processed
-            u = self.min_distance(dist, min_dist_set)
+            source = self.min_distance(dist, min_dist_set)
 
             #put minimum distance vertex in shortest tree
-            min_dist_set[u] = True
+            min_dist_set[source] = True
 
             #Update dist value of the adjacent vertices
-            for v in range(self.vertices):
-                if self.graph[u][v] > 0 and min_dist_set[v] == False and dist[v] > dist[u] + self.graph[u][v]:
-                    dist[v] = dist[u] + self.graph[u][v]
+            for target in range(self.vertex_count):
+                if self.graph[source][target] <= 0 or min_dist_set[target]:
+                    continue
+                if dist[target] > dist[source] + self.graph[source][target]:
+                    dist[target] = dist[source] + self.graph[source][target]
 
         return dist

@@ -37,6 +37,10 @@ There are 2 possible solution: iterative and recursion.
 Recursion helps you understand better the above algorithm explanation
 """
 def search_rotate(array, val):
+    """
+    Finds the index of the given value in an array that has been sorted in
+    ascending order and then rotated at some unknown pivot.
+    """
     low, high = 0, len(array) - 1
     while low <= high:
         mid = (low + high) // 2
@@ -58,6 +62,10 @@ def search_rotate(array, val):
 
 # Recursion technique
 def search_rotate_recur(array, low, high, val):
+    """
+    Finds the index of the given value in an array that has been sorted in
+    ascending order and then rotated at some unknown pivot.
+    """
     if low >= high:
         return -1
     mid = (low + high) // 2
@@ -66,10 +74,7 @@ def search_rotate_recur(array, low, high, val):
     if array[low] <= array[mid]:
         if array[low] <= val <= array[mid]:
             return search_rotate_recur(array, low, mid - 1, val)    # Search left
-        else:
-            return search_rotate_recur(array, mid + 1, high, val)   # Search right
-    else:
-        if array[mid] <= val <= array[high]:
-            return search_rotate_recur(array, mid + 1, high, val)   # Search right
-        else:
-            return search_rotate_recur(array, low, mid - 1, val)    # Search left
+        return search_rotate_recur(array, mid + 1, high, val)   # Search right
+    if array[mid] <= val <= array[high]:
+        return search_rotate_recur(array, mid + 1, high, val)   # Search right
+    return search_rotate_recur(array, low, mid - 1, val)    # Search left

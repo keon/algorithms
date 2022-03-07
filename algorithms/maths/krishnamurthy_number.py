@@ -1,7 +1,8 @@
 """
-A Krishnamurthy number is a number whose sum total of the factorials of each digit is equal to the number itself.
+A Krishnamurthy number is a number whose sum total of the factorials of each digit is equal to the
+number itself.
 
-Here's what I mean by that:
+The following are some examples of Krishnamurthy numbers:
 
 "145" is a Krishnamurthy Number because,
 1! + 4! + 5! = 1 + 24 + 120 = 145
@@ -12,11 +13,13 @@ Here's what I mean by that:
 "357" or "25965" is NOT a Krishnamurthy Number
 3! + 5! + 7! = 6 + 120 + 5040 != 357
 
-The following function will check if a number is a Krishnamurthy Number or not and return a boolean value.
+The following function will check if a number is a Krishnamurthy Number or not and return a
+boolean value.
 """
 
 
 def find_factorial(n):
+    """ Calculates the factorial of a given number n """
     fact = 1
     while n != 0:
         fact *= n
@@ -40,4 +43,4 @@ def krishnamurthy_number(n):
         temp //= 10
 
     # returns True if number is krishnamurthy
-    return (sum_of_digits == n)
+    return sum_of_digits == n

@@ -1,53 +1,69 @@
+"""
+In a directed graph, a strongly connected component is a set of vertices such
+that for any pairs of vertices u and v there exists a path (u-...-v) that
+connects them. A graph is strongly connected if it is a single strongly
+connected component.
+"""
+
 from collections import defaultdict
 
 class Graph:
-	def __init__(self,v):
-		self.v = v
-		self.graph = defaultdict(list)
+    """
+    A directed graph where edges are one-way (a two-way edge can be represented by using two edges).
+    """
 
-	def add_edge(self,u,v):
-		self.graph[u].append(v)
+    def __init__(self,vertex_count):
+        """
+        Create a new graph with vertex_count vertices.
+        """
 
-	def dfs(self):
-		visited = [False] * self.v
-		self.dfs_util(0,visited)
-		if visited == [True]*self.v:
-			return True
-		return False
+        self.vertex_count = vertex_count
+        self.graph = defaultdict(list)
 
-	def dfs_util(self,i,visited):
-		visited[i] = True
-		for u in self.graph[i]:
-			if not(visited[u]):
-				self.dfs_util(u,visited)
+    def add_edge(self,source,target):
+        """
+        Add an edge going from source to target
+        """
+        self.graph[source].append(target)
 
-	def reverse_graph(self):
-		g = Graph(self.v)
-		for i in range(len(self.graph)):
-			for j in self.graph[i]:
-				g.add_edge(j,i)
-		return g
+    def dfs(self):
+        """
+        Determine if all nodes are reachable from node 0
+        """
+        visited = [False] * self.vertex_count
+        self.dfs_util(0,visited)
+        if visited == [True]*self.vertex_count:
+            return True
+        return False
+
+    def dfs_util(self,source,visited):
+        """
+        Determine if all nodes are reachable from the given node
+        """
+        visited[source] = True
+        for adjacent in self.graph[source]:
+            if not visited[adjacent]:
+                self.dfs_util(adjacent,visited)
+
+    def reverse_graph(self):
+        """
+        Create a new graph where every edge a->b is replaced with an edge b->a
+        """
+        reverse_graph = Graph(self.vertex_count)
+        for source, adjacent in self.graph.items():
+            for target in adjacent:
+                # Note: we reverse the order of arguments
+                # pylint: disable=arguments-out-of-order
+                reverse_graph.add_edge(target,source)
+        return reverse_graph
 
 
-	def is_sc(self):
-		if self.dfs():
-			gr = self.reverse_graph()
-			if gr.dfs():
-				return True
-		return False
-
-
-g1 = Graph(5)
-g1.add_edge(0, 1)
-g1.add_edge(1, 2)
-g1.add_edge(2, 3)
-g1.add_edge(3, 0)
-g1.add_edge(2, 4)
-g1.add_edge(4, 2)
-print ("Yes") if g1.is_sc() else print("No")
- 
-g2 = Graph(4)
-g2.add_edge(0, 1)
-g2.add_edge(1, 2)
-g2.add_edge(2, 3)
-print ("Yes") if g2.is_sc() else print("No")
+    def is_strongly_connected(self):
+        """
+        Determine if the graph is strongly connected.
+        """
+        if self.dfs():
+            reversed_graph = self.reverse_graph()
+            if reversed_graph.dfs():
+                return True
+        return False
