@@ -243,7 +243,7 @@ class TestGenerateAbbreviations(unittest.TestCase):
 
 class TestMiniMax(unittest.TestCase):
     
-    def test_minmaxBinary1(self):
+    def test_minmaxBinary1(self):   ###will go throught full tree
         n1 = Node(0)
         n2 = Node(0)
         n3 = Node(0)
@@ -257,7 +257,7 @@ class TestMiniMax(unittest.TestCase):
         a = binary_minimax(n1, 2, True, -10, 10)
         self.assertEqual(binary_minimax(n1, 2, True, -10, 10), 8)
         
-    def test_minmaxBinary2(self):
+    def test_minmaxBinary2(self): ###will stop at depth 1
         n1 = Node(0)
         n2 = Node(4)
         n3 = Node(5)
@@ -269,7 +269,7 @@ class TestMiniMax(unittest.TestCase):
         n2.left, n2.right = n4, n5
         n3.left, n3.right = n6, n7
         a=binary_minimax(n1,2,True,-10,10)
-        self.assertEqual(binary_minimax(n1,1,True,-10,10),8)
+        self.assertEqual(binary_minimax(n1 ,1 ,True ,-10,10),5)
     
     
 class TestPatternMatch(unittest.TestCase):
