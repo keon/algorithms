@@ -116,7 +116,7 @@ Concerning our issue, since it is related to a new algorithm, there are obviousl
 Hence we create the class that will allow us to test the new algorithm of our issue: 'class `TestBitmasking` in the file [test_dp.py](tests/test_dp.py). Each [requirement](TODO) will have its own method that test it inside this class.
 
 ## UML for the Bitmasking algorithms
-Our solution consists of an algorithm that utilizes several functions. In order to gain a better understanding of the control flow of the algorithm the following control-flow diagram can be consulted. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithm.
+Our solution consists of modular algorithms that utilizes several functions. In order to gain a better understanding of the control flow of the algorithms the following control-flow diagrams can be consulted. We have chosen control-flow diagrams instead of class diagrams as the solutions we provide do not utilize several classes. In this figure the boxes represent functions called and the diamonds represents major decision points. The filled dot represents the start and the circled dots represent the termination of the algorithms.
 
 ### UML for the cap counting problem.
 ![Alt Text](ControlFlow.png)
