@@ -226,13 +226,9 @@ The second class [TestBitmaskingTSP](tests/test_dp.py) tests the implementation 
 
 The general complexity of most of these functions are also low. The main difference between the manually counted CCN and the CCN computed by Lizard is the fact that Lizard does not take exceptions into account. Thus we have a much higher complexity for the check_argument function when tested with Lizard than when it's analyzed manually.
 
-### UML for the cap counting problem.
-
-![Alt Text](ControlFlow.png)
-
-### UML for TSP
-
-![Alt Text](TSP_UML.png)
+| UML for the cap counting problem. | UML for TSP |
+| :-------------------------------- | :---------- |
+![Alt Text](ControlFlow.png) | ![Alt Text](TSP_UML.png) |
 
 ### Key changes/classes affected
 
