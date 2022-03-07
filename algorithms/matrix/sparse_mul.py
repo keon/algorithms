@@ -67,7 +67,7 @@ def multiply(self, a, b):
     for i, row in enumerate(a):
         for k, eleA in enumerate(row):
             if eleA:
-                for j, eleB in table_b[k].iteritems():
+                for j, eleB in table_b[k].items():
                     c[i][j] += eleA * eleB
     return c
 
