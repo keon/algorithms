@@ -105,9 +105,9 @@ Together `dp[index][mask]` tells us the minimum distance to visit X (X = number 
 Then we have our state transition. Initially `dp[0][0]` means that we are at tile 0 and the mask states that we have visited 0 houses. The final state will be `dp[some index][LIMIT_MASK]` where `LIMIT_MASK = (1 << N) - 1` (N = number of houses). The relation is then,
 
 ```
-dp(curr_idx)(curr_mask) = min(
-    for idx : off_bits_in_curr_mask
-       dp(idx)(cur_mask.set_bit(idx)) + dist[curr_idx][idx]
+dp(curr_house)(curr_mask) = min(
+    for house: houses that hasn't been visited yet:
+       dp(house)(cur_mask.set_bit(house)) + dist[curr_house][house]
 )
 ```
 
@@ -124,27 +124,48 @@ Each of the following requirements will be linked to new tests, since no tests r
 | R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
 | R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
 | R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
-
-|
-| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
-|
-| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
-|
-| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.
-|
+| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.|
+| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.|
+| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.|
 | R2.1 | No nodes | If the nr of nodes is 0, a ValueError should be raised. |
 | R2.2 | One node | If the nr of nodes is 1, the output should be 0. |
 | R2.3 | Positive path length | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
 | R2.4 | No solution | If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
 | R2.5 | Faulty dimensions | If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
-| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.
-|
-| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.
-|
-| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
-|
+| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.|
+| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.|
+| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.|
 
 ## Code changes
+
+### Implementation of Cap Assigning Problem
+
+To implement this algorithm, we simply started with the main method and implementing all other methods as we needed:
+- `assign_unique_caps()` This is the main method that someone will call to solve the problem given the caps sets and the number. This method will firstly initialize the necessary data calling the `initialization()` function and then actually start the algorithm calling the method `assign_unique_caps_from()` with the appropriate arguments. The implementation was pretty straightforward since we're just calling two methods and doing nothing else.
+- `initialization()` This method computes the necessary data such as the number of people, the cap dictionary and the DP matrix. But it first starts by checking that the given caps sets are valid calling the `check_argument()` method. Computing the number of people was trivial, then filling in the cap dictionary consisted of just reading the caps sets and finally the DP matrix was initializes with a size of the number of distinct caps + 1 times the number of masks and filled in with the value -1.
+- `check_argument()` This method check that the given caps sets are valid based on the [requirements](#requirements) so it was straightforward.
+- `assign_unique_caps_from()` This method the main method of the DP algorithm. It implements the algorithm defined [here](#description).
+
+The overall implementation of this algorithm was clear. We did not encountered some huge bugs or problems when coding it.
+
+### Implementation of Travelling Salesman Problem
+
+To implement this second algoritm, we used the same structure as the first one, that means that we started with the main method and implemented the auxiliary functions as needed.
+- `tsp()` This is the main method that we will call to solve the problem given the nodes, the number of rows and the number of columns. The implementation of this method was trivial, as for the first algorithm, we firstly initialize the necessary data using the method `initialization()` and start the the algorithm itself by calling the method `find_shortest_path()`.
+
+- `initialization()` As for the first algorithm, this method computes the necessary data such as the houses location, the DP matrix and all the distances in the grid. But we firstly need to start by checking the arguments using the method `check_argument()`. Then finding the houses in straightforward, we just need to find the "*" in the grid. The DP matrix is defined with a size of the number of masks times the number of houses and filled in with the value -1. We then computed all the distances by calling the method `getAllDist()`. We finally return the computed values.
+
+- `check_argument()` This method as exactly the same purpose as for the first algorithm, that means that it checks the nodes based on the [requirements](#requirements) so it was also trivial.
+
+- `getAllDist()` This method initialize the 3D matrix that will contains all the distances. It has a size of the number of houses times the number of columns times the number of rows. It is filled in with the value infinity. Then we will call the method `getDist()` for all the houses. The code of this method only contains a 3D matrix initialization and a for loop for the houses and finally returns the distances, so the implementation does not caused any problems.
+
+- `getDist()` This method computes all the distances from the given house to all nodes in the grid using the BFS algorithm. When looking for the neighbor nodes of a specific nodes, we use the method `is_safe_pos()` to make sure that the neighbor node is valid. The implementation of this method wasn't straightforward a required some reflexion.
+
+- `is_safe_pos()` This method is trivial, it just checks that the given coordinate is inside the grid and therefore valid.
+
+- `find_shortest_path()` This is the main method of the algorithm. Please refer to the description defined [here](#description).
+
+This last method was the hardest to implement in this assignment, in a sense that the algorithm was not working when trying to run it after we finished the first version. Indeed, the algorithm was outputing infinity for the example defined in the `main()` method. After spending time on this bug, we finally found the problem: we forgot to do a -1 when checking is the mask was full, hence this condition could never be true and so returning a different value than infinity, which means that the problem is unsolvable.
 
 ### Patch
 
@@ -193,13 +214,9 @@ The second class [TestBitmaskingTSP](tests/test_dp.py) tests the implementation 
 
 The general complexity of most of these functions are also low. The main difference between the manually counted CCN and the CCN computed by Lizard is the fact that Lizard does not take exceptions into account. Thus we have a much higher complexity for the check_argument function when tested with Lizard than when it's analyzed manually.
 
-### UML for the cap counting problem.
-
-![Alt Text](ControlFlow.png)
-
-### UML for TSP
-
-![Alt Text](TSP_UML.png)
+| UML for the cap counting problem. | UML for TSP |
+| :-------------------------------- | :---------- |
+![Alt Text](ControlFlow.png) | ![Alt Text](TSP_UML.png) |
 
 ### Key changes/classes affected
 
