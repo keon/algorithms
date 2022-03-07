@@ -46,43 +46,17 @@ Title: "Add Bitmasking in DP #480"
 
 URL: The issue can be found in [this link](https://github.com/keon/algorithms/issues/480).
 
-The task is to implement the bitmasking-and-dp-algorithm. This algorithm solves the problem of determining how many ways there are to assign unique caps to every person in a set of people, where each person has their own set of caps.
+The task is to implement algorithms that employ bitmasking and dynamic programming. There are a couple of good problems where the solutions can utilize this technique. We choose to implement solutions for the *cap-set* problem and the *Traveling Salesperson* problem.
 
-The issue will require a new file to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. The algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
+The issue will require a new files to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. Each algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
 
-## Requirements for the new feature or requirements affected by functionality being refactored
+### Cap-set
 
-Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
-
-| ID   |               Title                |                                                                                                                              Description |
-| :--- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
-| R1.1 |            No cap sets             |                                                                               If the nr of cap sets is 0, a ValueError should be raised. |
-| R1.2 |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
-| R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
-| R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
-| R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
-
-|
-| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
-|
-| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
-|
-| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.
-|
-| R2.1 | No nodes | If the nr of nodes is 0, a ValueError should be raised. |
-| R2.2 | One node | If the nr of nodes is 1, the output should be 0. |
-| R2.3 | Positive path length | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
-| R2.4 | No solution | If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
-| R2.5 | Faulty dimensions | If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
-| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.
-|
-| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.
-|
-| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
-|
+In this problem we want to assign unique caps to a set of people, where each person has their own set of available caps.
 
 
-## Algorithm description 
+
+#### Algorithm description 
 
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
@@ -110,9 +84,7 @@ Note that before the computation of the formula, we have to check three cases:
 
 Finally the result will be stored is the matrix cell `[0][1]`.
 
-
-
-## TSP Algorithm description
+### TSP
 
 The same technique of bitmasking and dynamic programming can be utilized to solve the famous *Travelling Salesperson* problem. Given a 2D grid containing a set of towns, we want to find the shortest route through all the towns that ends up in the same spot we started from. In our case we model the 2D grid using ascii characters in this way,
 
@@ -124,6 +96,9 @@ The same technique of bitmasking and dynamic programming can be utilized to solv
 ```
 
 where `.` signifies an open road, `*` signifies a town and `#` signifies a blockage. Our starting point is (0,0) (top right corner).
+
+#### Algorithm Description
+
 
 To solve this problem we first calculate the minimum distance between two cells in the grid, which we can do with a BFS. We pre-compute the distance from our starting point to all of the houses. This is done in O((#houses + 1) * grid_size) as each BFS is O(grid_size) in the worst case.
 
@@ -146,6 +121,35 @@ dp(curr_idx)(curr_mask) = min(
 
 When the mask is `LIMIT_MASK` we know that all the houses have been visited, and we can add the distance from the last house to the initial position to our solution.
 
+### Requirements for the new feature or requirements affected by functionality being refactored
+
+Each of the following requirements will be linked to new tests, since no tests related to the issue exist previously. The requirements named R1.x are related to the cap assignment problem, whereas the remaining requirments named R2.x concern the TSP implementation.
+
+| ID   |               Title                |                                                                                                                              Description |
+| :--- | :--------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------: |
+| R1.1 |            No cap sets             |                                                                               If the nr of cap sets is 0, a ValueError should be raised. |
+| R1.2 |        Person without caps         |                                   If there is at least one person that doesn't have any caps, there should be 0 ways to assign the caps. |
+| R1.3 |      No unique cap assignment      |            Assume there are >0 people and at least one cap per person. If there is no unique assignment of caps, the output should be 0. |
+| R1.4 | One or more unique cap assignments | Assume there are >0 people and at least one cap per person. If there is at least one unique assignment of caps, the output should be >0. |
+| R1.5 |          Too many people           |                                                          If there are too many people (i.e. capSets) then a ValueError should be raised. |
+|
+| R1.6 | Faulty CapIds | If any of the cap Ids are not given as an integer a ValueError should be raised.
+|
+| R1.7 | Faulty collection input | If the cap ids are given as another collection type than a list and error should be raised.
+|
+| R1.8 | CapId too low | If the provided maximum capId is lower than the highest given cap id this should raise a value error.
+|
+| R2.1 | No nodes | If the nr of nodes is 0, a ValueError should be raised. |
+| R2.2 | One node | If the nr of nodes is 1, the output should be 0. |
+| R2.3 | Positive path length | If there are at least two nodes that are >0 length units apart, the output should be a number >0 that corresponds to the length of the shortest Euler circuit. |
+| R2.4 | No solution | If the nr of nodes is >1 and there is at least one node that cannot be reached from any other node, the output should be inf. |
+| R2.5 | Faulty dimensions | If the dimensions of the given graph don't correspond to the dimension parameters, a ValueError should be raised. |
+| R2.6 | Wrong collection type | If the collection of nodes is not a list a ValueError should be raised.
+|
+| R2.7 | Wrong node type | If a node in the collection is of the wrong type a ValueError should be raised.
+|
+| R2.8 | Too many houses | Checks that a value error is raised if too many houses are allocated in the input matrix.
+|
 
 ## Code changes
 
