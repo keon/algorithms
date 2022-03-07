@@ -1,7 +1,6 @@
 from cmath import inf as inf
 
 class Node:                         #node class used for binary tree
-    def __init__(self):
 
     def __init__(self, val, left=None, right=None):
         self.val = val
