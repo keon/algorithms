@@ -1,9 +1,5 @@
 # Report for assignment 4
 
-This is a template for your report. You are free to modify it as needed.
-It is not required to use markdown for your report either, but the report
-has to be delivered in a standard, cross-platform format.
-
 ## Project
 
 Name: keon/algorithms
@@ -48,7 +44,7 @@ URL: The issue can be found in [this link](https://github.com/keon/algorithms/is
 
 The task is to implement algorithms that employ bitmasking and dynamic programming. There are a couple of good problems where the solutions can utilize this technique. We choose to implement solutions for the _cap-set_ problem and the _Traveling Salesperson_ problem.
 
-The issue will require a new files to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. Each algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
+The issue will require new files to be added to the dp-folder. Since the implementation doesn't already exist in the repo, no existing code will be affected. Each algorithm will most likely require one or more helper functions. The scope of the issue is small enough to be able to finish the issue within a few days.
 
 ### Cap-set
 
@@ -58,9 +54,9 @@ In this problem we want to assign unique caps to a set of people, where each per
 
 To solve this problem, we will use bitmasking and dynamic programming. Bitmasking is used to represent subsets of a collection of elements as bits sequences called _masks_. In these sequences, a bit set to 1 means that the associated element is part of the subset. More specifically, if the _i-th_ bit is set to 1, then the _i-th_ element is part of the subset defined by this sequence. For example, if we have a collection of 10 elements, the bits sequence 0111010000 means that the associated subset contains element 2, 3, 4 and 6.
 
-In our case, bitmasking will be used to represent whether a person is wearing a hat. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore the final cases we're interested into are the ones when the mask is completely full, i.e. all bits are set to 1.
+In our case, bitmasking will be used to represent whether a person is wearing a hat. In other words, a _i-th_ bit set to 1 means that the _i-th_ person is wearing a hat. Therefore, the final cases we're interested in are the ones where the mask is completely full, i.e. all bits are set to 1.
 
-Let's have a look on the dynamic programming formula. The table storing the intermediate results is a ![M\times N](http://latex.codecogs.com/svg.latex?M%5ctimes%20N) matrix where:
+Let's have a look at the dynamic programming formula. The table storing the intermediate results is a ![M\times N](http://latex.codecogs.com/svg.latex?M%5ctimes%20N) matrix where:
 
 - M is the total number of masks, which is equal to ![\2^{n}](http://latex.codecogs.com/svg.latex?2%5e%7bn%7d) where n is the number of people
 - N is the total number of hats
