@@ -20,15 +20,15 @@ Note
 '''
 
 def kadane(arr) -> int:
-    N = len(arr)
+    arr_size = len(arr)
 
-    if N == 0:
+    if arr_size == 0:
         return 0
 
     max_till_now = arr[0]
     curr_sub_sum = 0
 
-    for i in range(0, N):
+    for i in range(0, arr_size):
         if curr_sub_sum + arr[i] < arr[i]:
             curr_sub_sum = arr[i]
         else:
