@@ -13,13 +13,14 @@ result => -1
 Example1 => [-2, 3, 8, -12, 8, 4]
 result =>  {8, 4} => 12
 Basic Algorithm Idea
-    If the sum of the current contiguous subsequence after adding the value at the current position is less than the value 
+    If the sum of the current contiguous subsequence after adding the value at the current position is less than the value
     at the current position then we know that it will be better if we start the current contiguous subsequence from this position.
     Else we add the value at the current position to the current contiguous subsequence.
 Note
-    In the implementation, the contiguous subsequence has at least one element,
+    In the implementation, the contiguous subsequence has at least one element.
     If it can have 0 elements then the result will be max(max_till_now, 0)
 '''
+
 
 def max_contiguous_subsequence_sum(arr) -> int:
     arr_size = len(arr)
