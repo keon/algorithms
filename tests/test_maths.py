@@ -24,6 +24,7 @@ from algorithms.maths import (
     find_primitive_root,
     num_digits,
     diffie_hellman_key_exchange, krishnamurthy_number,
+    num_perfect_squares,
     chinese_remainder_theorem,
 )
 
@@ -500,6 +501,25 @@ class TestNumberOfDigits(unittest.TestCase):
         self.assertEqual(1, num_digits(0))
         self.assertEqual(1, num_digits(-5))
         self.assertEqual(3, num_digits(-254))
+
+
+
+class TestNumberOfPerfectSquares(unittest.TestCase):
+    """[summary]
+    Test for the file num_perfect_squares.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_num_perfect_squares(self):
+        self.assertEqual(4,num_perfect_squares(31))
+        self.assertEqual(3,num_perfect_squares(12))
+        self.assertEqual(2,num_perfect_squares(13))
+        self.assertEqual(2,num_perfect_squares(10))
+        self.assertEqual(4,num_perfect_squares(1500))        
+        self.assertEqual(2,num_perfect_squares(1548524521))
+        self.assertEqual(3,num_perfect_squares(9999999993))
+        self.assertEqual(1,num_perfect_squares(9))
 
 
 class TestChineseRemainderSolver(unittest.TestCase):
