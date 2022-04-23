@@ -179,6 +179,6 @@ def diffie_hellman_key_exchange(a, p, option = None):
     a_sh_k = alice_shared_key(b_pu_k, a_pr_k, p)
     b_sh_k = bob_shared_key(a_pu_k, b_pr_k, p)
     print (f"Shared key calculated by Alice = {a_sh_k}")
-    print ("Shared key calculated by Bob = {b_sh_k}")
+    print (f"Shared key calculated by Bob = {b_sh_k}")
 
     return a_sh_k == b_sh_k
