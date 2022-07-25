@@ -194,7 +194,7 @@ class RBTree:
             node_color = node_min.color
             temp_node = node_min.right
             ## 
-            if node_min.parent != node:
+            if node_min.parent is not node:
                 self.transplant(node_min, node_min.right)
                 node_min.right = node.right
                 node_min.right.parent = node_min
