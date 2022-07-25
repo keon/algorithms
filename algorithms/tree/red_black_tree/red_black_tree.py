@@ -208,9 +208,9 @@ class RBTree:
 
     def delete_fixup(self, node):
         # 4 cases
-        while node != self.root and node.color == 0:
+        while node is not self.root and node.color == 0:
             # node is not root and color is black
-            if node == node.parent.left:
+            if node is node.parent.left:
                 # node is left node
                 node_brother = node.parent.right
 
