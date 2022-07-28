@@ -4,7 +4,7 @@ Implementation of Red-Black tree.
 
 
 class RBNode:
-    def __init__(self, val, is_red, parent=None, left=None, right=None):
+    def __init__(self, val, is_red=1, parent=None, left=None, right=None):
         self.val = val
         self.parent = parent
         self.left = left
@@ -203,7 +203,7 @@ class RBTree:
             node_min.left.parent = node_min
             node_min.color = node.color
         # when node is black, then need to fix it with 4 cases
-        if node_color == 0:
+        if self.root is not None and node_color == 0:
             self.delete_fixup(temp_node)
 
     def delete_fixup(self, node):
@@ -286,7 +286,7 @@ if __name__ == "__main__":
     rb = RBTree()
     children = [11, 2, 14, 1, 7, 15, 5, 8, 4]
     for child in children:
-        node = RBNode(child, 1)
+        node = RBNode(child)
         print(child)
         rb.insert(node)
     print(rb.inorder())

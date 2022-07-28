@@ -12,6 +12,8 @@ from algorithms.tree import construct_tree_postorder_preorder as ctpp
 
 from algorithms.tree.fenwick_tree.fenwick_tree import Fenwick_Tree
 
+from algorithms.tree.red_black_tree.red_black_tree import RBNode, RBTree
+
 import unittest
 
 
@@ -174,6 +176,111 @@ class TestFenwickTree(unittest.TestCase):
         freq[2] += 11
         ft.update_bit(bit_tree, 2, 11)
         self.assertEqual(23, ft.get_sum(bit_tree, 4))
+
+
+class TestRBTree(unittest.TestCase):
+    def _initialize_tree(self):
+        tree = RBTree()
+        tree.insert(RBNode(val=9))
+        tree.insert(RBNode(val=18))
+        tree.insert(RBNode(val=7))
+        return tree
+
+    def test_insertion(self):
+        node_1 = RBNode(val=9)
+        node_2 = RBNode(val=18)
+        node_3 = RBNode(val=7)
+
+        # First insertion
+        tree = RBTree()
+        tree.insert(node_1)
+        self.assertIs(tree.root, node_1)
+
+        self.assertIsNone(node_1.parent)
+        self.assertIsNone(node_1.left)
+        self.assertIsNone(node_1.right)
+        self.assertEqual(node_1.color, 0)
+
+        # Second insertion
+        tree.insert(node_2)
+
+        self.assertIsNone(node_1.parent)
+        self.assertIsNone(node_1.left)
+        self.assertIs(node_1.right, node_2)
+        self.assertEqual(node_1.color, 0)
+
+        self.assertIs(node_2.parent, node_1)
+        self.assertIsNone(node_2.left)
+        self.assertIsNone(node_2.right)
+        self.assertEqual(node_2.color, 1)
+
+        # Third insertion
+        tree.insert(node_3)
+
+        self.assertIsNone(node_1.parent)
+        self.assertIs(node_1.left, node_3)
+        self.assertIs(node_1.right, node_2)
+        self.assertEqual(node_1.color, 0)
+
+        self.assertIs(node_2.parent, node_1)
+        self.assertIsNone(node_2.left)
+        self.assertIsNone(node_2.right)
+        self.assertEqual(node_2.color, 1)
+
+        self.assertIs(node_3.parent, node_1)
+        self.assertIsNone(node_3.left)
+        self.assertIsNone(node_3.right)
+        self.assertEqual(node_3.color, 1)
+
+    def test_deletion(self):
+        tree = self._initialize_tree()
+
+        # First deletion
+        tree.delete(tree.root)
+
+        self.assertIsNone(tree.root.parent)
+        self.assertIsNotNone(tree.root.left)
+        self.assertIsNone(tree.root.right)
+        self.assertEqual(tree.root.color, 0)
+        self.assertEqual(tree.root.val, 18)
+
+        self.assertIs(tree.root.left.parent, tree.root)
+        self.assertIsNone(tree.root.left.left)
+        self.assertIsNone(tree.root.left.right)
+        self.assertEqual(tree.root.left.color, 1)
+        self.assertEqual(tree.root.left.val, 7)
+
+        # Second deletion
+        tree.delete(tree.root)
+
+        self.assertIsNone(tree.root.parent)
+        self.assertIsNone(tree.root.left)
+        self.assertIsNone(tree.root.right)
+        self.assertEqual(tree.root.color, 0)
+        self.assertEqual(tree.root.val, 7)
+
+        # Third deletion
+        tree.delete(tree.root)
+
+        self.assertIsNone(tree.root)
+
+    def test_find_maximum(self):
+        tree = self._initialize_tree()
+        node = tree.maximum(tree.root)
+        self.assertEqual(node.val, 18)
+
+    def test_find_minimum(self):
+        tree = self._initialize_tree()
+        node = tree.minimum(tree.root)
+        self.assertEqual(node.val, 7)
+
+    def test_inorder(self):
+        tree = self._initialize_tree()
+        self.assertEqual(tree.inorder(), [
+            {"color": 1, "val": 7},
+            {"color": 0, "val": 9},
+            {"color": 1, "val": 18},
+        ])
 
 
 if __name__ == '__main__':
