@@ -38,7 +38,7 @@ def max_heapify(arr, end, simulation, iteration):
                 if simulation:
                     iteration = iteration + 1
                     print("iteration",iteration,":",*arr)
-            # If no swap occured, no need to keep iterating
+            # If no swap occurred, no need to keep iterating
             else:
                 break
     arr[0], arr[end] = arr[end], arr[0]
@@ -86,7 +86,7 @@ def min_heapify(arr, start, simulation, iteration):
                 if simulation:
                     iteration = iteration + 1
                     print("iteration",iteration,":",*arr)
-            # If no swap occured, no need to keep iterating
+            # If no swap occurred, no need to keep iterating
             else:
                 break
     return iteration
