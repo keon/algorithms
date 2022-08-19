@@ -34,18 +34,25 @@ def binary_search(array, query):
             high = mid - 1
     return None
 
-def binary_search_recur(array, low, high, val):
+def binary_search_recur(array, target):
     """
     Worst-case Complexity: O(log(n))
 
     reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
     """
+    start = 0
+    end = len(nums)
+    mid_indx = (start + end )//2
+    mid_val = nums[mid_indx]
 
-    if low > high:       # error case
+    if target == mid_val:
+        return mid_indx
+    elif end == 1:
         return -1
-    mid = (low + high) // 2
-    if val < array[mid]:
-        return binary_search_recur(array, low, mid - 1, val)
-    if val > array[mid]:
-        return binary_search_recur(array, mid + 1, high, val)
-    return mid
+    elif target > mid_val:
+        temp = binary_search_recur(nums[mid_indx:],target)
+        if temp == -1 :return -1
+        else: return temp + mid_indx
+    
+    else:
+        return binary_search_recur(nums[:mid_indx],target)
