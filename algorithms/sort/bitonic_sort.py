@@ -40,4 +40,4 @@ def bitonic_sort(arr, reverse=False):
 
     arr = bitonic_merge(left + right, reverse)
         
-    return arr
+    arr
