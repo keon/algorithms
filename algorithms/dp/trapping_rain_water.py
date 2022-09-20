@@ -12,7 +12,7 @@ represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case,
 #  xn > xi > 0
 # xi = max(height[:i])
 # xn >= xi always and  xn-1 < xn > xn+1
-def trap1(self, height: List[int]) -> int:
+def trap1(height: list[int]) -> int:
     n = len(height)
     if n == 0:
         return 0
@@ -38,7 +38,7 @@ another way to solve the problem
 #  xn > xi > 0
 # xi = max(height[:i])
 # xn >= xi always and  xn-1 < xn > xn+1
-def trap2(self, height: List[int]) -> int:
+def trap2(height: list[int]) -> int:
     n = len(height)
     if n == 0:
         return 0
@@ -61,3 +61,6 @@ def trap2(self, height: List[int]) -> int:
             right -= 1
 
     return res
+
+height = [0,1,0,2,1,0,1,3,2,1,2,1]
+print(f"The maximum amount water it can trap is: {trap2(height)}")
