@@ -38,7 +38,6 @@ def rabin_karp(word, text):
 
     rolling_hash = RollingHash(text, len(word))
     word_hash = RollingHash(word, len(word))
-    #word_hash.move_window()
 
     for i in range(len(text) - len(word) + 1):
         if rolling_hash.hash == word_hash.hash:
