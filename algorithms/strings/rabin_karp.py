@@ -19,13 +19,13 @@ class RollingHash:
         self.window_end = size_word
 
     def move_window(self):
-        if self.window_end + 1 <= len(self.text) - 1:
+        if self.window_end <= len(self.text) - 1:
             #remove left letter from hash value
             self.hash -= self.mapping[self.text[self.window_start]]*26**(self.size_word-1)
             self.hash *= 26
+            self.hash += self.mapping[self.text[self.window_end]]
             self.window_start += 1
             self.window_end += 1
-            self.hash += self.mapping[self.text[self.window_end]]
 
     def window_text(self):
         return self.text[self.window_start:self.window_end]
@@ -38,6 +38,7 @@ def rabin_karp(word, text):
 
     rolling_hash = RollingHash(text, len(word))
     word_hash = RollingHash(word, len(word))
+    #word_hash.move_window()
 
     for i in range(len(text) - len(word) + 1):
         if rolling_hash.hash == word_hash.hash:
