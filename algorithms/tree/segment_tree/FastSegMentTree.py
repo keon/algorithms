@@ -1,4 +1,4 @@
-class SEG:
+class SegmentTree:
     def __init__(self, arr, function):
         self.tree = [None for _ in range(len(arr))] + arr
         self.size = len(arr)
