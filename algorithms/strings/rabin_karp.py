@@ -1,16 +1,17 @@
 # Following program is the python implementation of
 # Rabin Karp Algorithm
-
+from string import ascii_lowercase
 class RollingHash:
     def __init__(self, text, size_word):
         self.text = text
         self.hash = 0
         self.size_word = size_word
+        self.mapping = dict(zip(ascii_lowercase, list(range(1, 27))))
 
         for i in range(0, size_word):
             #ord maps the character to a number
             #subtract out the ASCII value of "a" to start the indexing at zero
-            self.hash += (ord(self.text[i]) - ord("a")+1)*(26**(size_word - i -1))
+            self.hash += self.mapping[text[i]]*(26**(size_word - i -1))
 
         #start index of current window
         self.window_start = 0
@@ -18,13 +19,13 @@ class RollingHash:
         self.window_end = size_word
 
     def move_window(self):
-        if self.window_end <= len(self.text) - 1:
+        if self.window_end + 1 <= len(self.text) - 1:
             #remove left letter from hash value
-            self.hash -= (ord(self.text[self.window_start]) - ord("a")+1)*26**(self.size_word-1)
+            self.hash -= self.mapping[self.text[self.window_start]]*26**(self.size_word-1)
             self.hash *= 26
-            self.hash += ord(self.text[self.window_end])- ord("a")+1
             self.window_start += 1
             self.window_end += 1
+            self.hash += self.mapping[self.text[self.window_end]]
 
     def window_text(self):
         return self.text[self.window_start:self.window_end]
