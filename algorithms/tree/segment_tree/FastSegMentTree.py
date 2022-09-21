@@ -1,12 +1,12 @@
 class SegmentTree:
     def __init__(self, arr, function):
         self.tree = [None for _ in range(len(arr))] + arr
-        self.size = len(arr)
+        self.n = len(arr)
         self.fn = function
         self.build_tree()
 
     def build_tree(self):
-        for i in range(self.size - 1, 0, -1):
+        for i in range(self.n - 1, 0, -1):
             self.tree[i] = self.fn(self.tree[i * 2], self.tree[i * 2 + 1])
        
     def query(self, l, r):
