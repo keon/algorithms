@@ -1,6 +1,6 @@
 import math
 N = 1000001
-def primeFactors(n):
+def primeFactors():
     spf = [-1] * N
     for i in range(4, N, 1):
         spf[i] = 2
