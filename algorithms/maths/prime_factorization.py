@@ -35,3 +35,4 @@ def getPrimeFactorization(x):
         ret.append(spf[x])
         x = x // spf[x]
     return ret
+sieve()
