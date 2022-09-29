@@ -1,5 +1,5 @@
 from math import *
-N = 100001
+N = 10000001
 # stores smallest prime factor for
 # every number
 spf = [0 for i in range(N)]
