@@ -38,7 +38,7 @@ def sieve():
 # A O(log n) function returning prime
 # factorization by dividing by smallest
 # prime factor at every step
-def getFactorization(x):
+def getPrimeFactorization(x):
     ret = list()
     while (x != 1):
         ret.append(spf[x])
