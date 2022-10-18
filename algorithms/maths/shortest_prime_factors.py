@@ -1,3 +1,4 @@
+# Gives the shortest prime factor for a number
 import math
 def primeFactors(N = 1000001):
     spf = [-1] * N
