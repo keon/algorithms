@@ -1,4 +1,5 @@
 # Gives the shortest prime factor for a number
+# Assign N the biggest num and then call getPrimeFactorization for each num
 import math
 N = 1000001
 spf = [-1] * N
