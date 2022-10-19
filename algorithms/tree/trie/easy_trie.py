@@ -6,12 +6,14 @@ def add_word(trie, word):
         if c not in root: root[c] = {}
         root = root[c]
     root['#'] = {}
+
 def has_word(trie, word):
     for c in word:
         if c in trie:
             trie = trie[c]
         else: return False
     return '#' in trie
+
 def has_prefix(trie, pre):
     for c in pre:
         if c in trie:
