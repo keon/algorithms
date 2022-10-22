@@ -31,7 +31,7 @@ def get_primes(n):
     if n <= 0:
         raise ValueError("'n' must be a positive integer.")
     # If x is even, exclude x from list (-1):
-    sieve_size = (n // 2 - 1) if n % 2 == 0 else (n // 2)
+    sieve_size = (n // 2 - 1) if n &1^1 else (n // 2)
     sieve = [True for _ in range(sieve_size)]   # Sieve
     primes = []      # List of Primes
     if n >= 2:
