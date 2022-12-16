@@ -10,7 +10,9 @@ def merge_sort(arr):
     left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
 
     # Merge each side together
-    return merge(left, right, arr.copy())
+    # return merge(left, right, arr.copy()) # changed, no need to copy, mutate inplace.
+    merge(left,right,arr)
+    return arr
 
 
 def merge(left, right, merged):
@@ -35,4 +37,4 @@ def merge(left, right, merged):
         merged[left_cursor + right_cursor] = right[right_cursor]
 
     # Return result
-    return merged
+    # return merged # do not return anything, as it is replacing inplace.
