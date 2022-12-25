@@ -23,7 +23,8 @@ def knuth_morris_pratt(text : Sequence, pattern : Sequence) -> List[int]:
     pi = [0 for i in range(m)]
     i = 0
     j = 0
-    # making pi table
+    # making pi table -> finding the longest prefix that is also a suffix
+    # Examples - P = ABCDABD π = (0, 0, 0, 0, 1, 2, 0)
     for i in range(1, m):
         while j and pattern[i] != pattern[j]:
             j = pi[j - 1]
