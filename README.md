@@ -356,6 +356,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [longest_palindromic_substring](algorithms/strings/longest_palindromic_substring.py)
   	- [knuth_morris_pratt](algorithms/strings/knuth_morris_pratt.py)
     - [panagram](algorithms/strings/panagram.py)
+    - [swapcharacters](algorithms/strings/swap_str.py)
 - [tree](algorithms/tree)
     - [bst](algorithms/tree/bst)
         - [array_to_bst](algorithms/tree/bst/array_to_bst.py)
