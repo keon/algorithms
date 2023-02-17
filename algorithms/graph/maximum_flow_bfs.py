@@ -25,15 +25,21 @@ import copy
 import queue
 import math
 
+
+
 def maximum_flow_bfs(adjacency_matrix):
     """
     Get the maximum flow through a graph using a breadth first search
     """
+
+    flags =[False for i in range(7)]
+
     #initial setting
     new_array = copy.deepcopy(adjacency_matrix)
     total = 0
 
     while True:
+        flags[0] = True
         #setting min to max_value
         min_flow = math.inf
         #save visited nodes
@@ -47,14 +53,17 @@ def maximum_flow_bfs(adjacency_matrix):
         #initial setting
         visited[0] = 1
         bfs.put(0)
-
+        
         #BFS to find path
         while bfs.qsize() > 0:
+            flags[1] = True
             #pop from queue
             src = bfs.get()
             for k in range(len(new_array)):
+                flags[2] = True
                 #checking capacity and visit
                 if(new_array[src][k] > 0 and visited[k] == 0 ):
+                    flags[3] = True
                     #if not, put into queue and chage to visit and save path
                     visited[k] = 1
                     bfs.put(k)
@@ -62,6 +71,7 @@ def maximum_flow_bfs(adjacency_matrix):
 
         #if there is no path from src to sink
         if visited[len(new_array) - 1] == 0:
+            flags[4] = True
             break
 
         #initial setting
@@ -69,8 +79,10 @@ def maximum_flow_bfs(adjacency_matrix):
 
         #Get minimum flow
         while tmp != 0:
+            flags[5] = True
             #find minimum flow
             if min_flow > new_array[path[tmp]][tmp]:
+                flags[6] = True
                 min_flow = new_array[path[tmp]][tmp]
             tmp = path[tmp]
 
@@ -79,9 +91,20 @@ def maximum_flow_bfs(adjacency_matrix):
 
         #reduce capacity
         while tmp != 0:
+            flags[6] = True
             new_array[path[tmp]][tmp] = new_array[path[tmp]][tmp] - min_flow
             tmp = path[tmp]
 
         total = total + min_flow
+        
+    print(flags)
+    i = 0
+    for flag in flags:
+        if flag:
+            i += 1
+
+    ratio =  i / len(flags)
+    print(ratio)
+
 
     return total
