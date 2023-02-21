@@ -64,6 +64,7 @@ def maze_search(maze):
             return steps
         else:
             flags[4] = True
+
         for dx, dy in directions:
             flags[5] = True
             new_x = x + dx
@@ -72,7 +73,7 @@ def maze_search(maze):
                 flags[6] = True
                 continue
             else:
-                flags[7]
+                flags[7] = True
 
             if maze[new_x][new_y] == ALLOWED and is_visited[new_x][new_y] == UNVISITED:
                 flags[8] = True
@@ -83,6 +84,8 @@ def maze_search(maze):
     print(len(list(filter(lambda x:(x == True) ,  flags))) / len(flags))                       
     print(flags)
     return -1 
+
+
 
 if __name__ ==  "__main__":
     print("Coverages for ex1")
@@ -99,6 +102,11 @@ if __name__ ==  "__main__":
     print("Coverages for ex3")
     ex3 = [[0,0,0,0], [0,0,0,0],[0,0,0,0],[0,0,0,0]]
     maze_search(ex3)
+    print("Coverages for ex4")
+    ex4 = [[0],[0],[0]]
+    maze_search(ex4)
 
 
+
+ 
  
