@@ -96,6 +96,9 @@ if __name__ ==  "__main__":
         [1,0,1,0,1,1],
         [1,1,1,0,1,1]]
     maze_search(ex2)
+    print("Coverages for ex3")
+    ex3 = [[0,0,0,0], [0,0,0,0],[0,0,0,0],[0,0,0,0]]
+    maze_search(ex3)
 
 
  
