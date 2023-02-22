@@ -11,7 +11,7 @@ agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 * After that create a branch for your changes. For example:  
   * add_XXX if you will add new algorithms or data structures.  
-  * fix_XXX if you will fixe a bug on a certain algorithm or data structure.  
+  * fix_XXX if you will fix a bug on a certain algorithm or data structure.  
   * test_XXX if you wrote a test/s.  
   * doc_XXX if you added to or edited documentation.
 
