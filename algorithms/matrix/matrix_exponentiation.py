@@ -1,6 +1,6 @@
 def multiply(matA: list, matB: list) -> list:
     """
-    Multiplies two square matrices matA and matB od size n x n
+    Multiplies two square matrices matA and matB of size n x n
     Time Complexity: O(n^3)
     """
     n = len(matA)
