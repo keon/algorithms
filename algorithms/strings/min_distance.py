@@ -12,17 +12,51 @@ Reference: https://leetcode.com/problems/delete-operation-for-two-strings/descri
 """
 
 def min_distance(word1, word2):
+    """
+    Finds minimum distance by getting longest common subsequence
+
+    :type word1: str
+    :type word2: str
+    :rtype: int
+    """
     return len(word1) + len(word2) - 2 * lcs(word1, word2, len(word1), len(word2))
 
-def lcs(s1, s2, i, j):
+def lcs(word1, word2, i, j):
     """
-    The length of longest common subsequence among the two given strings s1 and s2
+    The length of longest common subsequence among the two given strings word1 and word2
     """
     if i == 0 or j == 0:
         return 0
-    elif s1[i - 1] == s2[j - 1]:
-        return 1 + lcs(s1, s2, i - 1, j - 1)
-    else:
-        return max(lcs(s1, s2, i - 1, j), lcs(s1, s2, i, j - 1))
+    if word1[i - 1] == word2[j - 1]:
+        return 1 + lcs(word1, word2, i - 1, j - 1)
+    return max(lcs(word1, word2, i - 1, j), lcs(word1, word2, i, j - 1))
 
-# TODO: Using dynamic programming
+def min_distance_dp(word1, word2):
+    """
+    Finds minimum distance in a dynamic programming manner
+    TC: O(length1*length2), SC: O(length1*length2)
+
+    :type word1: str
+    :type word2: str
+    :rtype: int
+    """
+    length1, length2 = len(word1)+1, len(word2)+1
+    res = [[0 for _ in range(length2)] for _ in range(length1)]
+
+    if length1 == length2:
+        for i in range(1, length1):
+            res[i][0], res[0][i] = i, i
+    else:
+        for i in range(length1):
+            res[i][0] = i
+        for i in range(length2):
+            res[0][i] = i
+
+    for i in range(1, length1):
+        for j in range(1, length2):
+            if word1[i-1] == word2[j-1]:
+                res[i][j] = res[i-1][j-1]
+            else:
+                res[i][j] = min(res[i-1][j], res[i][j-1]) + 1
+
+    return res[len(word1)][len(word2)]
