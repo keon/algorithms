@@ -91,6 +91,11 @@ class TestSuite(unittest.TestCase):
         self.assertEqual([1, 2], search_range(array, 7))
         self.assertEqual([-1, -1], search_range(array, 11))
 
+        array = [5, 7, 7, 7, 7, 8, 8, 8, 8, 10]
+        self.assertEqual([5, 8], search_range(array, 8))
+        self.assertEqual([1, 4], search_range(array, 7))
+        self.assertEqual([-1, -1], search_range(array, 11))
+
     def test_find_min_rotate(self):
         array = [4, 5, 6, 7, 0, 1, 2]
         self.assertEqual(0, find_min_rotate(array))

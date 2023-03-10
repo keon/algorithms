@@ -26,6 +26,7 @@ from algorithms.maths import (
     diffie_hellman_key_exchange, krishnamurthy_number,
     num_perfect_squares,
     chinese_remainder_theorem,
+    fft
 )
 
 import unittest
@@ -555,6 +556,42 @@ class TestChineseRemainderSolver(unittest.TestCase):
         with self.assertRaises(Exception):
             chinese_remainder_theorem.solve_chinese_remainder(num, rem)
 
+
+class TestFFT(unittest.TestCase):
+    """[summary]
+    Test for the file fft.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+    def test_real_numbers(self):
+        x = [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+        y = [4.000, 2.613, 0.000, 1.082, 0.000, 1.082, 0.000, 2.613]
+        # abs(complex) returns the magnitude
+        result = [float("%.3f" % abs(f)) for f in fft.fft(x)]
+        self.assertEqual(result, y)
+    
+    def test_all_zero(self):
+        x = [0.0, 0.0, 0.0, 0.0]
+        y = [0.0, 0.0, 0.0, 0.0]
+        result = [float("%.1f" % abs(f)) for f in fft.fft(x)]
+        self.assertEqual(result, y)
+    
+    def test_all_ones(self):
+        x = [1.0, 1.0, 1.0, 1.0]
+        y = [4.0, 0.0, 0.0, 0.0]
+        result = [float("%.1f" % abs(f)) for f in fft.fft(x)]
+        self.assertEqual(result, y)
+
+    def test_complex_numbers(self):
+        x = [2.0+2j, 1.0+3j, 3.0+1j, 2.0+2j]
+        real = [8.0, 0.0, 2.0, -2.0]
+        imag = [8.0, 2.0, -2.0, 0.0]
+        realResult = [float("%.1f" % f.real) for f in fft.fft(x)]
+        imagResult = [float("%.1f" % f.imag) for f in fft.fft(x)]
+        self.assertEqual(real, realResult)
+        self.assertEqual(imag, imagResult)
+        
 
 if __name__ == "__main__":
     unittest.main()
