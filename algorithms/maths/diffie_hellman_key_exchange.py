@@ -94,52 +94,52 @@ def find_primitive_root(n):
 """
 Diffie-Hellman key exchange is the method that enables
 two entities (in here, Alice and Bob), not knowing each other,
-to share common secret key through not-encrypted communication network.
-This method use the property of one-way function (discrete logarithm)
+to share common secret key through a non-encrypted communication network.
+This method uses the property of one-way function (discrete logarithm).
 For example, given a, b and n, it is easy to calculate x
 that satisfies (a^b) ≡ x (mod n).
 However, it is very hard to calculate x that satisfies (a^x) ≡ b (mod n).
-For using this method, large prime number p and its primitive root a
+For using this method, a large prime number p and its primitive root a
 must be given.
 """
 
 def alice_private_key(p):
-    """Alice determine her private key
+    """Alice determines her private key
     in the range of 1 ~ p-1.
     This must be kept in secret"""
     return randint(1, p-1)
 
 
 def alice_public_key(a_pr_k, a, p):
-    """Alice calculate her public key
+    """Alice calculates her public key
     with her private key.
     This is open to public"""
     return pow(a, a_pr_k) % p
 
 
 def bob_private_key(p):
-    """Bob determine his private key
+    """Bob determines his private key
     in the range of 1 ~ p-1.
     This must be kept in secret"""
     return randint(1, p-1)
 
 
 def bob_public_key(b_pr_k, a, p):
-    """Bob calculate his public key
+    """Bob calculates his public key
     with his private key.
     This is open to public"""
     return pow(a, b_pr_k) % p
 
 
 def alice_shared_key(b_pu_k, a_pr_k, p):
-    """ Alice calculate secret key shared with Bob,
+    """ Alice calculates secret key shared with Bob,
     with her private key and Bob's public key.
     This must be kept in secret"""
     return pow(b_pu_k, a_pr_k) % p
 
 
 def bob_shared_key(a_pu_k, b_pr_k, p):
-    """ Bob calculate secret key shared with Alice,
+    """ Bob calculates secret key shared with Alice,
     with his private key and Alice's public key.
     This must be kept in secret"""
     return pow(a_pu_k, b_pr_k) % p
