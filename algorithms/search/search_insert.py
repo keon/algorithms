@@ -13,12 +13,9 @@ def search_insert(array, val):
     [1,3,5,6], 7 -> 4
     [1,3,5,6], 0 -> 0
     """
-    low = 0
-    high = len(array) - 1
-    while low <=  high:
-        mid = low + (high - low) // 2
-        if val > array[mid]:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return low
+    for i in range(len(array)):
+        if array[i] == val:
+            return i
+        elif array[i] > val:
+            return i
+    return len(array)
