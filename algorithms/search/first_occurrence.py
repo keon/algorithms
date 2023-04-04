@@ -11,7 +11,7 @@ def first_occurrence(array, query):
 
     low, high = 0, len(array) - 1
     while low <= high:
-        mid = (low + high) // 2
+        mid = low + (high-low)//2 #Now mid will be ininteger range
         #print("lo: ", lo, " hi: ", hi, " mid: ", mid)
         if low == high:
             break
