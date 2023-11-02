@@ -60,8 +60,6 @@ class AbstractHeap(metaclass=ABCMeta):
 
 
 class BinaryHeap(AbstractHeap):
-    """Binary Heap Class"""
-
     def __init__(self):
         self.current_size = 0
         self.heap = [(0)]
@@ -73,23 +71,22 @@ class BinaryHeap(AbstractHeap):
                 self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
             i = i // 2
 
-    def insert(self, val):
-        """
+    """
         Method insert always start by inserting the element at the bottom.
         It inserts rightmost spot so as to maintain the complete tree property.
         Then, it fixes the tree by swapping the new element with its parent,
         until it finds an appropriate spot for the element. It essentially
         perc_up the minimum element
         Complexity: O(logN)
-        """
+    """
+    def insert(self, val):
         self.heap.append(val)
         self.current_size = self.current_size + 1
         self.perc_up(self.current_size)
 
-        """
-        Method min_child returns the index of smaller of 2 children of parent at index i
-        """
-
+    """
+    Method min_child returns the index of smaller of 2 children of parent at index i
+    """
     def min_child(self, i):
         if 2 * i + 1 > self.current_size:  # No right child
             return 2 * i
@@ -104,6 +101,7 @@ class BinaryHeap(AbstractHeap):
                 # Swap min child with parent
                 self.heap[min_child], self.heap[i] = self.heap[i], self.heap[min_child]
             i = min_child
+
     """
         Remove Min method removes the minimum element and swap it with the last
         element in the heap( the bottommost, rightmost element). Then, it
@@ -111,12 +109,11 @@ class BinaryHeap(AbstractHeap):
         min heap property is restored
         Complexity: O(logN)
     """
-
     def remove_min(self):
-        ret = self.heap[1]      # the smallest value at beginning
+        popped = self.heap[1]      # the smallest value at beginning
         # Replace it by the last value
         self.heap[1] = self.heap[self.current_size]
         self.current_size = self.current_size - 1
         self.heap.pop()
         self.perc_down(1)
-        return ret
+        return popped
