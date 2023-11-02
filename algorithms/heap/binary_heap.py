@@ -1,4 +1,4 @@
-r"""
+"""
 Binary Heap. A min heap is a complete binary tree where each node is smaller than
 its children. The root, therefore, is the minimum element in the tree. The min
 heap uses an array to represent the data and operation. For example a min heap:
@@ -29,37 +29,7 @@ For example remove_min() in a min heap:
 55 90 87             55  90                 55  90
 
 """
-from abc import ABCMeta, abstractmethod
-
-
-class AbstractHeap(metaclass=ABCMeta):
-    """Abstract Class for Binary Heap."""
-
-    def __init__(self):
-        """Pass."""
-
-    @abstractmethod
-    def perc_up(self, i):
-        """Pass."""
-
-    @abstractmethod
-    def insert(self, val):
-        """Pass."""
-
-    @abstractmethod
-    def perc_down(self, i):
-        """Pass."""
-
-    @abstractmethod
-    def min_child(self, i):
-        """Pass."""
-
-    @abstractmethod
-    def remove_min(self):
-        """Pass."""
-
-
-class BinaryHeap(AbstractHeap):
+class BinaryHeap():
     def __init__(self):
         self.current_size = 0
         self.heap = [(0)]
