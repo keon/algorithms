@@ -24,7 +24,7 @@ class BinaryHeap():
         return 2 * i
 
     def down(self, i):
-        while 2 * i < self.current_size:
+        while 2 * i <= self.current_size:
             min_child = self.min_child(i)
             if self.heap[min_child] < self.heap[i]:
                 # Swap min child with parent
