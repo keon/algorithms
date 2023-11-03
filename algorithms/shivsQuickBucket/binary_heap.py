@@ -1,7 +1,7 @@
 class Heap():
     def __init__(self):
         self.size = 0
-        self.heap = [(0)]
+        self.heap = [0]
 
     def up(self, i):
         while i >> 1 > 0:
