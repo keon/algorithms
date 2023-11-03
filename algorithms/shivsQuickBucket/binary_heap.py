@@ -1,4 +1,4 @@
-class BinaryHeap():
+class Heap():
     def __init__(self):
         self.current_size = 0
         self.heap = [(0)]
