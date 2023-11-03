@@ -4,8 +4,7 @@ class Disset:
         self.rank = [0] * (n + 1)
         
     def find(self, x):
-        if self.root[x] == x:
-            return x
+        if self.root[x] == x: return x
         self.root[x] = self.find(self.root[x])
         return self.root[x]
     
