@@ -8,7 +8,7 @@ class Heap():
             if self.heap[i] < self.heap[i >> 1]:
                 # Swap value of child with value of its parent
                 self.heap[i], self.heap[i >> 1] = self.heap[i >> 1], self.heap[i]
-            i = i >> 1
+            i >>= 1
 
     def insert(self, val):
         self.heap.append(val)
