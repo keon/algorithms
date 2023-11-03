@@ -34,7 +34,7 @@ class BinaryHeap():
         self.current_size = 0
         self.heap = [(0)]
 
-    def perc_up(self, i):
+    def up(self, i):
         while i // 2 > 0:
             if self.heap[i] < self.heap[i // 2]:
                 # Swap value of child with value of its parent
@@ -46,13 +46,13 @@ class BinaryHeap():
         It inserts rightmost spot so as to maintain the complete tree property.
         Then, it fixes the tree by swapping the new element with its parent,
         until it finds an appropriate spot for the element. It essentially
-        perc_up the minimum element
+        ups the minimum element
         Complexity: O(logN)
     """
     def insert(self, val):
         self.heap.append(val)
         self.current_size = self.current_size + 1
-        self.perc_up(self.current_size)
+        self.up(self.current_size)
 
     """
     Method min_child returns the index of smaller of 2 children of parent at index i
@@ -64,7 +64,7 @@ class BinaryHeap():
             return 2 * i + 1
         return 2 * i
 
-    def perc_down(self, i):
+    def down(self, i):
         while 2 * i < self.current_size:
             min_child = self.min_child(i)
             if self.heap[min_child] < self.heap[i]:
@@ -75,7 +75,7 @@ class BinaryHeap():
     """
         Remove Min method removes the minimum element and swap it with the last
         element in the heap( the bottommost, rightmost element). Then, it
-        perc_down this element, swapping it with one of its children until the
+        downs this element, swapping it with one of its children until the
         min heap property is restored
         Complexity: O(logN)
     """
@@ -85,5 +85,5 @@ class BinaryHeap():
         self.heap[1] = self.heap[self.current_size]
         self.current_size = self.current_size - 1
         self.heap.pop()
-        self.perc_down(1)
+        self.down(1)
         return popped
