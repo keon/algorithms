@@ -31,17 +31,23 @@ class Disset: #Disjoint Set Data Structure
             self.cost += cost
             return True
         return False
+
 class Solution:
-    def minimumCost(self, n, cc) -> int:
-        if len(cc) < n - 1: return -1
-        for pp in range(len(cc)):
-            cc[pp] = cc[pp][::-1]
-        
-        heapq.heapify(cc)
+    def minimumCost(self, n, connections) -> int:
+        if len(connections) < n - 1: return -1
+
+        # Make Disjoint sets DS
         disset = Disset(n + 1)
-        count = 0
-        while cc and count < n - 1:
-            cost, p1, p2 = heapq.heappop(cc)
-            if disset.union(cost, p1, p2): count += 1
+
+        # Sort the edges based on cost
+        for node in range(len(connections)):
+            connections[node] = connections[node][::-1]
+        connections.sort(reverse = True)
+
+        # Keep choosing edges till we get to N - 1 edges
+        edges = 0
+        while connections and edges < n - 1:
+            cost, p1, p2 = connections.pop()
+            if disset.union(cost, p1, p2): edges += 1
         
-        return disset.cost if count == n - 1 else -1
+        return disset.cost if edges == n - 1 else -1
