@@ -4,11 +4,11 @@ class Heap():
         self.heap = [(0)]
 
     def up(self, i):
-        while i // 2 > 0:
-            if self.heap[i] < self.heap[i // 2]:
+        while i >> 1 > 0:
+            if self.heap[i] < self.heap[i >> 1]:
                 # Swap value of child with value of its parent
-                self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
-            i = i // 2
+                self.heap[i], self.heap[i >> 1] = self.heap[i >> 1], self.heap[i]
+            i = i >> 1
 
     def insert(self, val):
         self.heap.append(val)
