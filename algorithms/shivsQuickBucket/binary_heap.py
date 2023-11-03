@@ -31,7 +31,7 @@ class Heap():
                 self.heap[min_child], self.heap[i] = self.heap[i], self.heap[min_child]
             i = min_child
 
-    def remove_min(self):
+    def pop(self):
         popped = self.heap[1]
         # the smallest value at beginning
         # Replace it by the last value
