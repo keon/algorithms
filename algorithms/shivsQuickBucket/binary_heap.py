@@ -1,6 +1,6 @@
 class Heap():
     def __init__(self):
-        self.current_size = 0
+        self.size = 0
         self.heap = [(0)]
 
     def up(self, i):
@@ -12,11 +12,11 @@ class Heap():
 
     def insert(self, val):
         self.heap.append(val)
-        self.current_size = self.current_size + 1
-        self.up(self.current_size)
+        self.size = self.size + 1
+        self.up(self.size)
 
     def min_child(self, i):
-        if 2 * i + 1 > self.current_size:
+        if 2 * i + 1 > self.size:
             # No right child
             return 2 * i
         if self.heap[2 * i] > self.heap[2 * i + 1]:
@@ -24,7 +24,7 @@ class Heap():
         return 2 * i
 
     def down(self, i):
-        while 2 * i <= self.current_size:
+        while 2 * i <= self.size:
             min_child = self.min_child(i)
             if self.heap[min_child] < self.heap[i]:
                 # Swap min child with parent
@@ -35,8 +35,8 @@ class Heap():
         popped = self.heap[1]
         # the smallest value at beginning
         # Replace it by the last value
-        self.heap[1] = self.heap[self.current_size]
-        self.current_size = self.current_size - 1
+        self.heap[1] = self.heap[self.size]
+        self.size = self.size - 1
         self.heap.pop()
         self.down(1)
         return popped
