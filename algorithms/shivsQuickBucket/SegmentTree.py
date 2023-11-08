@@ -38,7 +38,7 @@ class SegmentTree:
         i += self.size
         self.tree[i] = value
         while i > 1:
-            i = i // 2
+            i >>= 1
             self.tree[i] = self.fn(self.tree[i * 2], self.tree[i * 2 + 1])
 
     def query(self, l, r):
