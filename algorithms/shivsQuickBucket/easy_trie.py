@@ -1,4 +1,12 @@
 from collections import deque
+'''
+You may also try to make a treenode in cases where you need to store metadata
+for a particular children of the node like this - 
+class TreeNode:
+def __init__(self):
+    self.children = {}
+    self.metadata = String | Number | Boolean
+'''
 # Trie Template for adding words checking if a prefix is valid in trie and returning list of words with that prefix
 def add_word(trie, word):
     root = trie
