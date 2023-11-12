@@ -16,7 +16,6 @@ class Solution:
         visited = set([0])
         tin = [0] * n
         low = [0] * n
-        timer = 1
         res = []
 
         def recursion(node, parent, timer):
