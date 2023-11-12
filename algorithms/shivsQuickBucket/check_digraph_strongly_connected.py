@@ -1,39 +1,35 @@
+# 1192. Critical Connections in a Network
+# Tarjan's Algorithm
+
 from collections import defaultdict as dd
 
-# n: No. of nodes
 
+class Solution:
+    def criticalConnections(self, n: int, connections):
+        graph = dd(list)
+        for u, v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
+        visited = set([0])
+        tin = [0] * n
+        low = [0] * n
+        timer = 1
+        res = []
 
-class Graph:
-    def __init__(self, n):
-        self.n = n
-        self.graph = dd(list)
+        def recursion(node, parent, timer):
+            tin[node] = low[node] = timer
+            timer += 1
+            for nei in graph[node]:
+                if nei == parent:
+                    continue
+                if nei not in visited:
+                    visited.add(node)
+                    recursion(nei, node, timer + 1)
+                    low[node] = min(low[node], low[nei])
+                    if low[nei] > tin[node]:
+                        res.append([node, nei])
+                else:
+                    low[node] = min(low[node], low[nei])
 
-    def add_edge(self, source, target):
-        self.graph[source].append(target)
-
-    def dfs(self):
-        visited = [False] * self.n
-        orderStack = []
-        self.dfs_util(0, visited, orderStack)
-        return visited == [True] * self.n
-
-    def dfs_util(self, source, visited, stack):
-        visited[source] = True
-        for adjacent in self.graph[source]:
-            if not visited[adjacent]:
-                self.dfs_util(adjacent, visited, stack)
-        stack.append(source)
-
-    def reverse_graph(self):
-        reversedGraph = Graph(self.n)
-        for source, adjacent in self.graph.items():
-            for target in adjacent:
-                reversedGraph.add_edge(target, source)
-        return reversedGraph
-
-    def is_strongly_connected(self):
-        if self.dfs():
-            reversedGraph = self.reverse_graph()
-            if reversedGraph.dfs():
-                return True
-        return False
+        recursion(0, 0, 1)
+        return res
