@@ -1,6 +1,6 @@
 from collections import defaultdict as dd
 
-
+# n: No. of nodes
 class Graph:
     def __init__(self, n):
         self.n = n
