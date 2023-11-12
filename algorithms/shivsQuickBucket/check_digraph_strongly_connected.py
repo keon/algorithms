@@ -1,6 +1,8 @@
 from collections import defaultdict as dd
 
 # n: No. of nodes
+
+
 class Graph:
     def __init__(self, n):
         self.n = n
@@ -25,11 +27,13 @@ class Graph:
     def reverse_graph(self):
         reversedGraph = Graph(self.n)
         for source, adjacent in self.graph.items():
-            for target in adjacent: reversedGraph.add_edge(target, source)
+            for target in adjacent:
+                reversedGraph.add_edge(target, source)
         return reversedGraph
 
     def is_strongly_connected(self):
         if self.dfs():
             reversedGraph = self.reverse_graph()
-            if reversedGraph.dfs(): return True
+            if reversedGraph.dfs():
+                return True
         return False
