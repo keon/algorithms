@@ -1,6 +1,9 @@
 # 1192. Critical Connections in a Network
 # Tarjan's Algorithm
 
+# tin -> Time of insertion
+# low -> lowest time of insertion that can be reached
+
 from collections import defaultdict as dd
 
 
