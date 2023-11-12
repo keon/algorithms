@@ -18,6 +18,7 @@ class Solution:
         low = [0] * n
         res = []
 
+        # DFS
         def recursion(node, parent, timer):
             tin[node] = low[node] = timer
             timer += 1
