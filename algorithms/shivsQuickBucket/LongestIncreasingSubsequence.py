@@ -18,7 +18,7 @@ import bisect
 def lengthOfLIS(nums) -> int:
     sub = [nums[0]]
     for num in nums[1:]:
-        id = bisect.bisect_left(sub, num)
+        id = bisect.bisect_left(sub, num) # bisect_left or bisect_right always give the first greater element if the num is not present in sub
         if id == len(sub): sub.append(num)
         else: sub[id] = num # increase our chances of adding a newer element in future
     return len(sub)
