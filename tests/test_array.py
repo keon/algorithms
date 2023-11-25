@@ -1,3 +1,4 @@
+from typing import List
 from algorithms.arrays import (
     delete_nth, delete_nth_naive,
     flatten_iter, flatten,
@@ -27,17 +28,17 @@ class TestJosephus(unittest.TestCase):
 
     def test_josephus(self):
 
-        a = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-        josephus_generator = josephus(a, 3)
-        self.assertEqual(next(josephus_generator), '3')
-        self.assertEqual(next(josephus_generator), '6')
-        self.assertEqual(next(josephus_generator), '9')
-        self.assertEqual(next(josephus_generator), '4')
-        self.assertEqual(next(josephus_generator), '8')
-        self.assertEqual(next(josephus_generator), '5')
-        self.assertEqual(next(josephus_generator), '2')
-        self.assertEqual(next(josephus_generator), '7')
-        self.assertEqual(next(josephus_generator), '1')
+        int_list: List[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        josephus_generator = josephus(int_list, 3)
+        self.assertEqual(next(josephus_generator), 3)
+        self.assertEqual(next(josephus_generator), 6)
+        self.assertEqual(next(josephus_generator), 9)
+        self.assertEqual(next(josephus_generator), 4)
+        self.assertEqual(next(josephus_generator), 8)
+        self.assertEqual(next(josephus_generator), 5)
+        self.assertEqual(next(josephus_generator), 2)
+        self.assertEqual(next(josephus_generator), 7)
+        self.assertEqual(next(josephus_generator), 1)
         self.assertRaises(StopIteration, next, josephus_generator)
 
 
