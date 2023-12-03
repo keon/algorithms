@@ -14,6 +14,7 @@ from algorithms.graph import check_digraph_strongly_connected
 from algorithms.graph import cycle_detection
 from algorithms.graph import find_path
 from algorithms.graph import path_between_two_vertices_in_digraph
+from algorithms.graph import strongly_connected_components_kosaraju
 
 import unittest
 
@@ -349,3 +350,19 @@ class TestPathBetweenTwoVertices(unittest.TestCase):
         self.assertTrue(g.is_reachable(1, 3))
         self.assertFalse(g.is_reachable(3, 1))
 
+class TestStronglyConnectedComponentsKosaraju(unittest.TestCase):
+    def test_kosaraju_algorithm(self):
+        V = 6
+        adj = [
+            [2],
+            [0],
+            [3],
+            [1, 4],
+            [5],
+            [4]
+        ]
+
+        result = strongly_connected_components_kosaraju.Kosaraju().kosaraju(V, adj)
+
+        # Expected result: 2 strongly connected components
+        self.assertEqual(result, 2)
