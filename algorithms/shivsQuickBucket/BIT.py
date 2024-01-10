@@ -1,16 +1,18 @@
 class BIT:
     def __init__(self, n):
-        self.n = n
-        self.tree = [0 for _ in range(n + 1)]
+        self.n = n + 1
+        self.tree = [0 for _ in range(self.n)]
     
     def update(self, idx, val):
-        while idx <= self.n:
+        idx += 1
+        while idx < self.n:
             self.tree[idx] += val
-            idx += idx&(-idx)
+            idx += idx&-idx
     
     def query(self, idx):
+        idx += 1
         total = 0
-        while idx > 0:
+        while idx:
             total += self.tree[idx]
-            idx -= idx&(-idx)
+            idx -= idx&-idx
         return total
