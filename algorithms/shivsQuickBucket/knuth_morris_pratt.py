@@ -1,6 +1,4 @@
-from typing import Sequence, List
-
-def kmp(text, pattern) -> List[int]:
+def kmp(text, pattern):
         m, n = len(text), len(pattern)
         pi = [0 for i in range(m)]
 

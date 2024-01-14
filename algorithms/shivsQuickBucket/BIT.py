@@ -3,7 +3,7 @@ class BIT:
         self.n = n + 1
         self.tree = [0 for _ in range(self.n)]
     
-    def update(self, idx, val):
+    def update(self, idx, val=1):
         idx += 1
         while idx < self.n:
             self.tree[idx] += val
