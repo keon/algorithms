@@ -1,3 +1,4 @@
+from collections import deque
 def kmp(text, pattern):
         m, n = len(text), len(pattern)
         pi = [0 for i in range(m)]
@@ -14,14 +15,14 @@ def kmp(text, pattern):
 
         # finding pattern in text
         j = 0
-        ret = []
+        res = deque()
         for i in range(m):
             while j and text[i] != pattern[j]:
                 j = pi[j - 1]
             if text[i] == pattern[j]:
                 j += 1
                 if j == n:
-                    ret.append(i - n + 1)
+                    res.append(i - n + 1)
                     j = pi[j - 1]
                     
-        return ret
+        return res
