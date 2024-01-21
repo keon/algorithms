@@ -19,13 +19,13 @@ def rolling_hash(s, W):
     
     res = [0] * (n - W + 1)
 
-    curr_hash = get_hash(s, W)
+    curr = get_hash(s, W)
     
     # roll for haystack
-    res[0] = curr_hash
+    res[0] = curr
     for i in range(1, n - W + 1):
-        curr_hash = (curr_hash - power[W - 1] * ord(s[i - 1])) % mod
-        curr_hash = (curr_hash * base + ord(s[i + W - 1])) % mod
-        res[i] = curr_hash
+        curr = (curr - power[W - 1] * ord(s[i - 1])) % mod
+        curr = (curr * base + ord(s[i + W - 1])) % mod
+        res[i] = curr
 
     return res
