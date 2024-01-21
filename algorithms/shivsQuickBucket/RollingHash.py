@@ -1,3 +1,7 @@
+"""
+    Calculates the rolling hash values of all substrings of length window_size in string s.
+    Uses the polynomial rolling hash algorithm with base and mod as constants.
+"""
 base = 26
 mod = 10 ** 9 + 69
 
@@ -25,18 +29,3 @@ def rolling_hash(s, W):
         res[i] = curr_hash
 
     return res
-
-
-
-
-
-"""
-    Calculates the rolling hash values of all substrings of length window_size in string s.
-    Uses the polynomial rolling hash algorithm with base and mod as constants.
- 
-    :param s: the input string
-    :param window_size: the size of the rolling window
-    :param base: the base for the polynomial hash function
-    :param mod: the modulus for the polynomial hash function
-    :return: a list of hash values of all substrings of length window_size in s
-    """
