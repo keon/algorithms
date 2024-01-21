@@ -1,5 +1,5 @@
 base = 26
-mod = 100000000069
+mod = 10 ** 9 + 69
 
 def get_hash(s, W):
     hash = 0
