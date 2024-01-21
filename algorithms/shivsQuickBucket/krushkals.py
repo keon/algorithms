@@ -1,4 +1,5 @@
 # 1135. Connecting Cities With Minimum Cost
+# MST
 
 from collections import defaultdict as dd
 import heapq
