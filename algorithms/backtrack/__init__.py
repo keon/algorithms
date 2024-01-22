@@ -1,5 +1,5 @@
 from .add_operators import *
-from .anagram import *
+from ..strings.anagram import *
 from .array_sum_combinations import *
 from .combination_sum import *
 from .factor_combinations import *
