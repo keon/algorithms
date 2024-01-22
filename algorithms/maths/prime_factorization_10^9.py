@@ -1,3 +1,6 @@
+''' Uses the Idea that all prime numbers are odd and for numbers like 9 we can just 
+start from 3 and continously divide to eliminate 9 '''
+
 import math
 def primeFactors(n):
     res = []
