@@ -26,7 +26,7 @@ class Solution:
                 if nei == parent:
                     continue
                 if nei not in visited:
-                    visited.add(node)
+                    visited.add(nei)
                     recursion(nei, node, timer + 1)
                     low[node] = min(low[node], low[nei])
                     if low[nei] > tin[node]:
