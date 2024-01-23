@@ -15,11 +15,10 @@ def manacher(s):
         if i + P[i] > r: # if we have come after r update r for future Is
             c, r = i, i + P[i]
     
-    res = resid = 0
+    resL = resid = 0
     for id, val in enumerate(P):
-        if val > res:
-            res = val
+        if val > resL:
+            resL = val
             resid = id
     
-    # since our res is calculate on news we have to half it for the answer
-    return res, s[(resid - res) >> 1: (resid + res) >> 1]
+    return resL, s[(resid - resL) >> 1: (resid + resL) >> 1]
