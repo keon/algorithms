@@ -16,7 +16,7 @@ class BL:
     # Function to return the Kth ancestor of V
     def getKthAncestor(self, node: int, k: int) -> int:
         while k > 0 and node != -1: 
-            i = int(math.log2(k))
+            i = int(math.log2(k)) # lower power of 2
             node = self.up[node][i]
             k -= (1 << i)
         return node 
