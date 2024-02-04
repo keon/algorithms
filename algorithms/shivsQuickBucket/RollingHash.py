@@ -1,9 +1,11 @@
 """
+    s: string
+    W: window size
     Calculates the rolling hash values of all substrings of length window_size in string s.
     Uses the polynomial rolling hash algorithm with base and mod as constants.
 """
-base = 26
-mod = 10 ** 9 + 69
+base = 1000000007
+mod = 344555666677777
 
 def get_hash(s, W):
     hash = 0
