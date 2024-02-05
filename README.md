@@ -63,6 +63,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [merge_intervals](algorithms/arrays/merge_intervals.py)
     - [missing_ranges](algorithms/arrays/missing_ranges.py)
     - [plus_one](algorithms/arrays/plus_one.py)
+    - [remove_duplicates](algorithms/arrays/remove_duplicates.py)
     - [rotate](algorithms/arrays/rotate.py)
     - [summarize_ranges](algorithms/arrays/summarize_ranges.py)
     - [three_sum](algorithms/arrays/three_sum.py)
