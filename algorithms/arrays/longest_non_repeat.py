@@ -89,3 +89,21 @@ def get_longest_non_repeat_v2(string):
                 sub_string = string[start: index + 1]
         used_char[char] = index
     return max_len, sub_string
+
+def get_longest_non_repeat_v3(string):
+    """
+    Find the length of the longest substring
+    without repeating characters.
+    Uses window sliding approach.
+    Return max_len and the substring as a tuple
+    """
+    longest_substring = ''
+    seen = set()
+    start_idx = 0
+    for i in range(len(string)):
+        while string[i] in seen:
+            seen.remove(string[start_idx])
+            start_idx += 1
+        seen.add(string[i])
+        longest_substring = max(longest_substring, string[start_idx: i+1], key=len)
+    return len(longest_substring), longest_substring
