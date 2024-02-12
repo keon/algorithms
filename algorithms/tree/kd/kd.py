@@ -5,7 +5,6 @@ import sys
 from typing import List
 
 # Datum class.
-# DO NOT MODIFY.
 class Datum():
     def __init__(self,
                  coords : tuple[int],
@@ -17,7 +16,6 @@ class Datum():
         return(dict_repr)
 
 # Internal node class.
-# DO NOT MODIFY.
 class NodeInternal():
     def  __init__(self,
                   splitindex : int,
@@ -30,7 +28,6 @@ class NodeInternal():
         self.rightchild = rightchild
 
 # Leaf node class.
-# DO NOT MODIFY.
 class NodeLeaf():
     def  __init__(self,
                   data : List[Datum]):
@@ -47,7 +44,6 @@ class KDtree():
         self.root = root
 
     # For the tree rooted at root, dump the tree to stringified JSON object and return.
-    # DO NOT MODIFY.
     def dump(self) -> str:
         def _to_dict(node) -> dict:
             if isinstance(node,NodeLeaf):
@@ -228,16 +224,11 @@ class KDtree():
                 return self.findSplitNode(point, curr.rightchild)
             
     def knn(self,k:int,point:tuple[int]) -> str:
-        # Use the strategy discussed in class and in the notes.
-        # The list should be a list of elements of type Datum.
-        # While recursing, count the number of leaf nodes visited while you construct the list.
-        # The following lines should be replaced by code that does the job.
         leaveschecked = 0
         knnlist = []
         lc = []
         self.knnAux(k, point, lc, knnlist, self.root)
         leaveschecked = len(lc)
-        # The following return line can probably be left alone unless you make changes in variable names.
         return(json.dumps({"leaveschecked":leaveschecked,"points":[datum.to_json() for datum in knnlist]},indent=2))
     
     def knnAux(self,k,point,lc,knn,curr):
