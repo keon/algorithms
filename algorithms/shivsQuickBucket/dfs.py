@@ -11,7 +11,7 @@ def dfs(q):
         if (ri, cj) in seen: continue
         res.append((ri, cj))
         seen.add((ri, cj))
-        for i, j in directions:
+        for i, j in directions: # we can travel neighbours here same thing
             nr, nc = ri + i, cj + j
             if isValid(nr, nc): q.append((nr, nc))
     return res
