@@ -8,45 +8,44 @@ def __init__(self):
     self.metadata = String | Number | Boolean
 '''
 # Trie Template for adding words checking if a prefix is valid in trie and returning list of words with that prefix
-def add_word(trie, word):
-    root = trie
-    for c in word:
-        if c not in root: root[c] = {}
-        root = root[c]
-    root['#'] = {}
 
-def has_word(trie, word):
+trie = {}
+def add_word(curr, word):
     for c in word:
-        if c in trie:
-            trie = trie[c]
+        if c not in curr: curr[c] = {}
+        curr = curr[c]
+    curr['#'] = {}
+
+def has_word(curr, word):
+    for c in word:
+        if c in curr: curr = curr[c]
         else: return False
-    return '#' in trie
+    return '#' in curr
 
-def has_prefix(trie, pre):
+def has_prefix(curr, pre):
     for c in pre:
-        if c in trie:
-            trie = trie[c]
+        if c in curr: curr = curr[c]
         else: return False
-    return trie
+    return curr
 
-def get_words_using_prefix(trie, pre):
-    trie = has_prefix(trie, pre)
-    if not trie: return []
+def get_words_using_prefix(head, pre):
+    curr = has_prefix(head, pre)
+    if not curr: return []
+
     words = []
-    if '#' in trie: words.append(pre)
-    queue = deque([(trie, pre)])
-    while queue:
-        curr, pre = queue.popleft()
-        for key in curr:
-            temp = curr[key]
-            if '#' in temp: words.append(pre + key)
-            queue.append((temp, pre + key))
+    q = deque([(curr, pre)])
+    while q:
+        size = len(q)
+        for _ in range(size):
+            curr, pre = q.popleft()
+            if '#' in curr: words.append(pre)
+            for nei in curr:
+                q.append((curr[nei], pre + nei))
     return words
 
 words = ['abcd', 'defg']
 prefixes = ['a', 'def']
-head = {}
 for word in words:
-    add_word(head, word)
+    add_word(trie, word)
 for pre in prefixes:
-    print(get_words_using_prefix(head, pre))
+    print(get_words_using_prefix(trie, pre))
