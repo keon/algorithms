@@ -17,7 +17,7 @@ class Solution:
             return profit
         return recursion(0, 0)
 
-# Converted to 1D DP
+# Converted to 2D DP space optimized
 class Solution:
     def maxProfit(self, prices, fee: int) -> int:
         @cache
