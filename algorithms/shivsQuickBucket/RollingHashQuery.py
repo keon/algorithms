@@ -2,7 +2,7 @@ class prefixHash:
     def __init__(self ,s):
         self.mod = mod = 344555666677777
         self.base = base = 10 ** 7 + 7
-        #fermat's little theorem since base  and mod are co-prime
+        #fermat's little theorem since base and mod are co-prime
         self.invbase = invbase = pow(base, mod - 2, mod)
         self.pref = pref = [0]
         self.invpref = invpref = [1]
