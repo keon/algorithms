@@ -31,9 +31,9 @@ def get_primes(n):
     if n <= 0:
         raise ValueError("'n' must be a positive integer.")
     # If x is even, exclude x from list (-1):
-    sieve_size = (n >>1 - 1) if n &1^1 else (n >>1)
+    sieve_size = (n >> 1) if n & 1 else ((n >> 1) - 1)
     sieve = [True for _ in range(sieve_size)]   # Sieve
-    primes = []      # List of Primes
+    primes = []
     if n >= 2: primes.append(2)      # 2 is prime by default
     for i in range(sieve_size):
         if sieve[i]:
