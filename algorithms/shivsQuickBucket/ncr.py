@@ -19,4 +19,9 @@ def ncr(n, r):
          
     return ans
 
+def ncr(n, r):
+    sum = 1
+    for i in range(1, r + 1):
+        sum *= ((n - r + i) / i)
+    return int(sum)
 '''Refer geeks for geeks binomial coefficient'''
