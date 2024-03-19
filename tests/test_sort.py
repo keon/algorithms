@@ -105,6 +105,9 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_sorted(cocktail_shaker_sort([1, 3, 2, 5, 65,
                                                         23, 57, 1232])))
 
+    def test_insertion_sort(self):
+        self.assertTrue(is_sorted(insertion_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+
 
 class TestTopSort(unittest.TestCase):
     def setUp(self):
