@@ -29,3 +29,16 @@ def flatten_iter(iterable):
             yield from flatten_iter(element)    
         else:
             yield element
+
+    
+############## use a Recursion function ###########
+def flattenArray(A):
+    tmp = []
+    res = []
+    for i in A:
+        if isinstance(i,(list,dict)):
+            tmp = flattenArray(i)
+            res.extend(tmp)
+        else:
+            res.append(i)
+    return res
