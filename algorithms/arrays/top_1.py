@@ -12,26 +12,17 @@ For example: top_1([1, 1, 2, 2, 3, 4]) will return [1, 2]
 (TL:DR) Get mathematical Mode
 Complexity: O(n)
 """
-def top_1(arr):
-    values = {}
+def top_one(array: list) -> list:
     #reserve each value which first appears on keys
     #reserve how many time each value appears by index number on values
-    result = []
-    f_val = 0
+    counting_element = dict()
 
-    for i in arr:
-        if i in values:
-            values[i] += 1
+    for element in array:
+        if element not in counting_element.keys():
+            counting_element.setdefault(element, 1)
         else:
-            values[i] = 1
+            counting_element[element] += 1
 
-    f_val = max(values.values())
-        
-    for i in values.keys():
-        if values[i] == f_val:
-            result.append(i)
-        else:
-            continue
-    
-    return result
-    
+    most_repetition_value: int = max(counting_element.values())
+
+    return [key for key, value in counting_element.items() if value == most_repetition_value]
