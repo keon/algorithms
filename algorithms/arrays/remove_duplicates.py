@@ -4,15 +4,18 @@ removed.
 
 For example:
 
-Input: [1, 1 ,1 ,2 ,2 ,3 ,4 ,4 ,"hey", "hey", "hello", True, True]
-Output: [1, 2, 3, 4, 'hey', 'hello']
+Input: [1, 1 ,1 ,2 ,2 ,3 ,4 ,4 ,"hey", "hey", "hello", True, True, False]
+Output: [1, 2, 3, 4, 'hey', 'hello', True, False]
 """
 
+
 def remove_duplicates(array):
-    new_array = []
+    new_array = []  # Preserve order of first distinct item
+    seen = set()  # Track the unique items
 
     for item in array:
-        if item not in new_array:
+        if all([item is not elem for elem in seen]):
             new_array.append(item)
+            seen.add(item)
 
     return new_array
