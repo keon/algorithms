@@ -19,7 +19,7 @@ class TreeNode:
         root.height = 1 + max(self.getHeight(root.left),
                               self.getHeight(root.right))
 
-        return self.balance(root, key)
+        return self.rebalance(root, key)
 
     # Recursive function to delete a node with
     # given key from subtree with given root.
@@ -46,9 +46,8 @@ class TreeNode:
                 root = None
                 return temp
 
-            temp = self.getMinValueNode(root.right)
-            root.val = temp.val
-            root.right = self.delete(root.right, temp.val)
+            root.val = self.successor(root) # root.right none is handled above -> this cannot return None
+            root.right = self.delete(root.right, root.val)
 
         # If the tree has only one node, simply return it
         if root is None:
@@ -58,7 +57,7 @@ class TreeNode:
         root.height = 1 + max(self.getHeight(root.left),
                               self.getHeight(root.right))
 
-        return self.balance(root, key)
+        return self.rebalance(root, key)
 
     def leftRotate(self, z):
 
@@ -106,11 +105,10 @@ class TreeNode:
             return 0
         return self.getHeight(root.left) - self.getHeight(root.right)
 
-    def getMinValueNode(self, root):
-        if root is None or root.left is None:
-            return root
- 
-        return self.getMinValueNode(root.left)
+    def successor(self, root):
+        root = root.right
+        while root.left: root = root.left
+        return root
     
     def rebalance(self, root, key):
         # Step 3 - Get the balance factor
