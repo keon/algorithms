@@ -1,3 +1,6 @@
+from math import log2
+
+
 class BIT:
     def __init__(self, n):
         self.n = n + 1
