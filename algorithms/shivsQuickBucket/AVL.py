@@ -7,7 +7,7 @@ class TreeNode:
         self.height = 1
 
     def insert(self, root, key):
-        # Step 1 - Perform normal BST
+        # Step 1 - Perform normal BST insertion
         if not root:
             return TreeNode(key)
         elif key < root.val:
@@ -25,7 +25,7 @@ class TreeNode:
     # given key from subtree with given root.
     # It returns root of the modified subtree.
     def delete(self, root, key):
-        # Step 1 - Perform standard BST delete
+        # Step 1 - Perform standard BST deletion
         if not root:
             return root
 
@@ -46,7 +46,8 @@ class TreeNode:
                 root = None
                 return temp
 
-            root.val = self.successor(root) # root.right none is handled above -> this cannot return None
+            # root.right none is handled above -> self.successor cannot return None
+            root.val = self.successor(root)
             root.right = self.delete(root.right, root.val)
 
         # If the tree has only one node, simply return it
@@ -107,9 +108,10 @@ class TreeNode:
 
     def successor(self, root):
         root = root.right
-        while root.left: root = root.left
+        while root.left:
+            root = root.left
         return root
-    
+
     def rebalance(self, root, key):
         # Step 3 - Get the balance factor
         balance = self.getBalance(root)
