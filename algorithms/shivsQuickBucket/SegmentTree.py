@@ -23,26 +23,26 @@ print(mytree.query(0, 2)) ...
 """
 
 
-class SegmentTree:
+class SEG:
     def __init__(self, arr, function):
-        self.tree = [0 for _ in range(len(arr))] + arr
-        self.size = len(arr)
+        self.n = len(arr)
+        self.tree = [0 for _ in range(self.n)] + arr
         self.fn = function
-        self.build_tree()
+        self.build_tree(self.n)
 
-    def build_tree(self):
-        for i in range(self.size - 1, 0, -1):
+    def build_tree(self, n):
+        for i in range(n - 1, 0, -1):
             self.tree[i] = self.fn(self.tree[2 * i], self.tree[2 * i + 1])
 
-    def update(self, i, value):
-        i += self.size
-        self.tree[i] = value
-        while i > 1:
-            i >>= 1
-            self.tree[i] = self.fn(self.tree[2 * i], self.tree[2 * i + 1])
+    def update(self, idx, value):
+        idx += self.n
+        self.tree[idx] = value
+        while idx > 1:
+            idx >>= 1
+            self.tree[idx] = self.fn(self.tree[2 * idx], self.tree[2 * idx + 1])
 
     def query(self, l, r):
-        l, r = l + self.size, r + self.size
+        l, r = l + self.n, r + self.n
         res = None
         while l <= r:
             if l & 1:
