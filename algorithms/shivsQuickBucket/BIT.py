@@ -38,7 +38,7 @@ class BIT:
         nn = int(log2(self.n))
 
         for i in reversed(range(nn + 1)):
-            if pos + (1 << i) < self.n and rs + self.tree[pos + (1 << i)] <= k:
+            if pos + (1 << i) < self.n and rs + self.tree[pos + (1 << i)] < k:
                 pos += (1 << i)
                 rs += self.tree[pos]
         return pos + 1
