@@ -41,7 +41,7 @@ class BIT:
             if pos + (1 << i) < self.n and rs + self.tree[pos + (1 << i)] < k:
                 pos += (1 << i)
                 rs += self.tree[pos]
-        return pos + 1
+        return pos + 1 # because pos will have val less than k -> lower bound
     
 
 # Note - 
