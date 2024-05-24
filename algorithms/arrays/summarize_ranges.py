@@ -22,4 +22,6 @@ def summarize_ranges(array: List[int]) -> List[str]:
             start = end = num
     res.append((start, end) if start != end else (start,))
     return [f"{r[0]}-{r[1]}" if len(r) > 1 else str(r[0]) for r in res]
+    #update check
+
 
