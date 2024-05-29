@@ -1,3 +1,6 @@
+# if we find out where to jump to for matching a pattern in a big text we can reduce computations
+# as pattern can have repeated values -> only works if this is true
+# that is why we create pi table to store the jump values
 def kmp(text, pattern):
     m, n = len(text), len(pattern)
     pi = [0] * n
