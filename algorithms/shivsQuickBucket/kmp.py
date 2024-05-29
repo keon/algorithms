@@ -8,6 +8,8 @@ def kmp(text, pattern):
     j = 0
     # making pi table -> finding the longest prefix that is also a suffix
     # Examples - P = ABCDABD π = (0, 0, 0, 0, 1, 2, 0)
+    # pi table means -> agar yahan khtm hui matching to starting se start karo if 0 is there otherwise start
+    # start with the position givne in pi table kyunki wahan tk ka matching already hogya tha
     for i in range(1, n):
         while j and pattern[i] != pattern[j]:
             j = pi[j - 1]
