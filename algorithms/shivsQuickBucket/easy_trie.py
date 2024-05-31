@@ -32,6 +32,7 @@ def get_words_using_prefix(head, pre):
     curr = has_prefix(head, pre)
     if not curr: return []
 
+    #BFS
     words = []
     q = deque([(curr, pre)])
     while q:
