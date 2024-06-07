@@ -14,7 +14,7 @@ def add_word(curr, word):
     for c in word:
         if c not in curr: curr[c] = {}
         curr = curr[c]
-    curr['#'] = {}
+    curr['#'] = word
 
 def has_word(curr, word):
     for c in word:
