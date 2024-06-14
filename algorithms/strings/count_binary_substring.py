@@ -18,16 +18,39 @@ Output: 4
 Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1's and 0's.
 Reference: https://leetcode.com/problems/count-binary-substrings/description/
 """
+branch_coverage = {
+    "check_5": False,
+    "check_6": False,
+    "check_7": False,
+}
+
 def count_binary_substring(s):
+    global branch_coverage
     cur = 1
     pre = 0
     count = 0
     for i in range(1, len(s)):
+        branch_coverage["check_5"] = True
         if s[i] != s[i - 1]:
+            branch_coverage["check_6"] = True
             count = count + min(pre, cur)
             pre = cur
             cur = 1
         else:
+            branch_coverage["check_7"] = True
             cur = cur + 1
     count = count + min(pre, cur)
     return count
+
+
+def print_coverage():
+    total = len(branch_coverage)
+    reached_branches = sum(branch_coverage.values())
+    percentage = (reached_branches / total) * 100
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+    print(f"total Coverage: {percentage}%")
+
+count = count_binary_substring("01100110")
+
+print_coverage()
