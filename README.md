@@ -2,13 +2,13 @@
 
 ## Project chosen
 
-Name: <TODO>
+Name: algorithms    
 
-URL: <TODO>
+URL: (https://github.com/keon/algorithms)
 
-Number of lines of code and the tool used to count it: <TODO>
+Number of lines of code and the tool used to count it: (TODO), counted using lizard
 
-Programming language: <TODO>
+Programming language: Python
 
 ## Coverage measurement
 
