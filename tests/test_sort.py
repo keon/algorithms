@@ -17,7 +17,9 @@ from algorithms.sort import (
     radix_sort,
     gnome_sort,
     cocktail_shaker_sort,
-    top_sort, top_sort_recursive
+    top_sort, top_sort_recursive,
+
+    insertion_sort
 )
 
 import unittest
@@ -68,9 +70,19 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_sorted(min_heap_sort([1, 3, 2, 5, 65,
                                                  23, 57, 1232])))
 
+    # HUH? `test_insertion_sort` tests `bitonic_sort` ????
     def test_insertion_sort(self):
         self.assertTrue(is_sorted(bitonic_sort([1, 3, 2, 5, 65,
                                                 23, 57, 1232])))
+    
+    def test_actual_insertion_sort(self):
+        self.assertTrue(is_sorted(insertion_sort([])))
+        self.assertTrue(is_sorted(insertion_sort([1])))
+        self.assertTrue(is_sorted(insertion_sort([69, 420])))
+        self.assertTrue(is_sorted(insertion_sort([420, 69])))
+        self.assertTrue(is_sorted(insertion_sort([0, 1, 2, 3, 4, 3, 2, 1, 0])))
+        self.assertTrue(is_sorted(insertion_sort([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], True)))
+        self.assertTrue(is_sorted(insertion_sort([0, 1, 2, 3, 4, 3, 2, 1, 0], True)))
 
     def test_merge_sort(self):
         self.assertTrue(is_sorted(merge_sort([1, 3, 2, 5, 65, 23, 57, 1232])))

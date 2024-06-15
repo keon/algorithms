@@ -58,7 +58,9 @@ Programming language: Python
 
 <Ayman Errahmouni>
 
-<Test "test_simplify_path">
+#### <Test "test_simplify_path">
+
+An enhanced existing test
 
 Old coverage:<br>
 ![old coverage result (24%)](image-2.png)
@@ -73,6 +75,20 @@ The coverage was improved because certain cases that could happen in file paths 
 By added additional tests that use such cases, the coverage improved.
 
 The test was also faulty on windows (i guess linux was assumed), so i added support for that in the test. (It now passes on Windows 10 too)
+
+#### <Test "test_actual_insertion_sort">
+
+An new test. (before, `insertion_sort` was not present in any test)
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+
+Old coverage:<br>
+![Old coverage result (4%)](image-3.png)
+
+New coverage:<br>
+![alt text](image-4.png)
+
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
 
 ### Overall
 
