@@ -66,7 +66,7 @@ Old coverage:<br>
 ![old coverage result (24%)](image-2.png)
 
 Diff (LHS = new code, RHS = old code):<br>
-![LHS: new code, RHS: old code (i had pushed the code before screenshotting it, oops)](image.png)
+![LHS: new code, RHS: old code](image.png)
 
 New coverage:<br>
 ![new coverage result (100%)](image-1.png)
@@ -80,7 +80,11 @@ The test was also faulty on windows (i guess linux was assumed), so i added supp
 
 An new test. (before, `insertion_sort` was not present in any test)
 
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+Diff (LHS: new code, RHS: old code):<br>
+(New test)<br>
+![LHS: new code, RHS: old code](image-5.png)<br>
+(Changes in imports)<br>
+![LHS: new code, RHS: old code](image-6.png)
 
 Old coverage:<br>
 ![Old coverage result (4%)](image-3.png)
