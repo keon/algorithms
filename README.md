@@ -2,13 +2,13 @@
 
 ## Project chosen
 
-Name: <TODO>
+Name: algorithms    
 
-URL: <TODO>
+URL: (https://github.com/keon/algorithms)
 
-Number of lines of code and the tool used to count it: <TODO>
+Number of lines of code and the tool used to count it: (TODO), counted using lizard
 
-Programming language: <TODO>
+Programming language: Python
 
 ## Coverage measurement
 
@@ -55,6 +55,44 @@ Programming language: <TODO>
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
+
+<Ayman Errahmouni>
+
+#### <Test "test_simplify_path">
+
+An enhanced existing test
+
+Old coverage:<br>
+![old coverage result (24%)](image-2.png)
+
+Diff (LHS = new code, RHS = old code):<br>
+![LHS: new code, RHS: old code](image.png)
+
+New coverage:<br>
+![new coverage result (100%)](image-1.png)
+
+The coverage was improved because certain cases that could happen in file paths (e.g. the "." directory, empty path) were not tested for.
+By added additional tests that use such cases, the coverage improved.
+
+The test was also faulty on windows (i guess linux was assumed), so i added support for that in the test. (It now passes on Windows 10 too)
+
+#### <Test "test_actual_insertion_sort">
+
+An new test. (before, `insertion_sort` was not present in any test)
+
+Diff (LHS: new code, RHS: old code):<br>
+(New test)<br>
+![LHS: new code, RHS: old code](image-5.png)<br>
+(Changes in imports)<br>
+![LHS: new code, RHS: old code](image-6.png)
+
+Old coverage:<br>
+![Old coverage result (4%)](image-3.png)
+
+New coverage:<br>
+![alt text](image-4.png)
+
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
 
 ### Overall
 
