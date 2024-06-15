@@ -7,6 +7,9 @@ from algorithms.unix import (
 import os
 import unittest
 
+from algorithms.unix import (
+    print_coverage
+)
 
 class TestUnixPath(unittest.TestCase):
     def test_join_with_slash(self):
@@ -62,3 +65,6 @@ class TestUnixPath(unittest.TestCase):
         self.assertEqual("/home/foo", simplify_path_v2("/home//foo/"))
         self.assertEqual("/", simplify_path_v2(""))
         self.assertEqual("/", simplify_path_v2("/home/../"))
+
+        print_coverage()
+

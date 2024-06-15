@@ -56,6 +56,24 @@ Programming language: Python
 
 <Provide the same kind of information provided for Test 1>
 
+<Ayman Errahmouni>
+
+<Test "test_simplify_path">
+
+Old coverage:<br>
+![old coverage result (24%)](image-2.png)
+
+Diff (LHS = new code, RHS = old code):<br>
+![LHS: new code, RHS: old code (i had pushed the code before screenshotting it, oops)](image.png)
+
+New coverage:<br>
+![new coverage result (100%)](image-1.png)
+
+The coverage was improved because certain cases that could happen in file paths (e.g. the "." directory, empty path) were not tested for.
+By added additional tests that use such cases, the coverage improved.
+
+The test was also faulty on windows (i guess linux was assumed), so i added support for that in the test. (It now passes on Windows 10 too)
+
 ### Overall
 
 <Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>

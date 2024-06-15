@@ -15,6 +15,12 @@ In this case, you should ignore redundant slashes and return "/home/foo".
 Reference: https://leetcode.com/problems/simplify-path/description/
 """
 
+branch_coverage = {
+    "for": False,
+    "if": False,
+    "elif": False,
+}
+
 import os
 def simplify_path_v1(path):
     return os.path.abspath(path)
@@ -22,8 +28,17 @@ def simplify_path_v1(path):
 def simplify_path_v2(path):
     stack, tokens = [], path.split("/")
     for token in tokens:
+        branch_coverage["for"] = True
         if token == ".." and stack:
+            branch_coverage["if"] = True
             stack.pop()
         elif token != ".." and token != "." and token:
+            branch_coverage["elif"] = True
             stack.append(token)
+
     return "/" + "/".join(stack)
+
+def print_coverage():
+    print("branch coverage for `simplify_path_v2`:")
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
