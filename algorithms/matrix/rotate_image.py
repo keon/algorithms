@@ -15,6 +15,7 @@ branch_coverage = {
 
 }
 
+
 # clockwise rotate
 # first reverse up to down, then swap the symmetry
 # 1 2 3     7 8 9     7 4 1
@@ -38,6 +39,7 @@ def rotate(mat):
             mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
     return mat
 
+
 def print_coverage():
     for branch, hit in branch_coverage.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
@@ -46,6 +48,7 @@ def print_coverage():
         result = hit / total * 100
 
     print("The total branch coverage is:", result, "%")
+
 
 rotate([])
 print_coverage()
@@ -56,6 +59,3 @@ print("\n")
 print_coverage()
 rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print("\n")
-
-
-

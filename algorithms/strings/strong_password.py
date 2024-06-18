@@ -68,9 +68,6 @@ def print_coverage():
     print("The total branch coverage is:", result, "%" )
 
 
-strong_password(3, "Ab1")
-print_coverage()
-print("\n")
 strong_password(11, "#Algorithms")
 print_coverage()
 print("\n")
@@ -79,5 +76,6 @@ print_coverage()
 print("\n")
 strong_password(5, "abcde")
 print_coverage()
-
-print()
+print("\n")
+strong_password(3, "Ab1")
+print_coverage()
