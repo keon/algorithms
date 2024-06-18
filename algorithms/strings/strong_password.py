@@ -29,15 +29,55 @@ Sample Output 2: strong_password(11,"#Algorithms")
 Output: 1 (Because the password isn't strong, but she can make it strong by adding a single digit.)
 
 """
+branch_coverage = {
+    "strong_password_1": False,  # if branch for any(i.isdigit() for i in password) == False
+    "strong_password_2": False,  # if branch for any(i.islower() for i in password) == False
+    "strong_password_3": False,  # if branch for any(i.isupper() for i in password) == False
+    "strong_password_4": False,  # if branch for any(i in '!@#$%^&*()-+' for i in password) == False
+    "strong_password_5": False  # invisible else branch
+
+}
+counter = 0
+
 def strong_password(n, password):
     count_error = 0
     # Return the minimum number of characters to make the password strong
     if any(i.isdigit() for i in password) == False:
+        branch_coverage["strong_password_1"] = True
         count_error = count_error + 1
     if any(i.islower() for i in password) == False:
+        branch_coverage["strong_password_2"] = True
         count_error = count_error + 1
     if any(i.isupper() for i in password) == False:
+        branch_coverage["strong_password_3"] = True
         count_error = count_error + 1
     if any(i in '!@#$%^&*()-+' for i in password) == False:
+        branch_coverage["strong_password_4"] = True
         count_error = count_error + 1
+
+    branch_coverage["strong_password_5"] = True
     return max(count_error, 6 - n)
+
+
+def print_coverage():
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+    total = len(branch_coverage)
+    hit = sum(branch_coverage.values())
+    result = hit / total * 100
+    print("The total branch coverage is:", result, "%" )
+
+
+strong_password(3, "Ab1")
+print_coverage()
+print("\n")
+strong_password(11, "#Algorithms")
+print_coverage()
+print("\n")
+strong_password(5, "12345")
+print_coverage()
+print("\n")
+strong_password(5, "abcde")
+print_coverage()
+
+print()
