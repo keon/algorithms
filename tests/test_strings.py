@@ -479,6 +479,8 @@ class TestStrongPassword(unittest.TestCase):
     def test_strong_password(self):
         self.assertEqual(3, strong_password(3, "Ab1"))
         self.assertEqual(1, strong_password(11, "#Algorithms"))
+        self.assertEqual(3,strong_password(5, "12345"))
+        self.assertEqual(3,strong_password(5, "abcde"))
 
 
 class TestCaesarCipher(unittest.TestCase):
