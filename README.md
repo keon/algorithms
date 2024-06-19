@@ -6,7 +6,7 @@ Name: algorithms
 
 URL: (https://github.com/keon/algorithms)
 
-Number of lines of code and the tool used to count it: (TODO), counted using lizard
+Number of lines of code and the tool used to count it: 18023(18 KLOC), counted using lizard
 
 Programming language: Python
 
@@ -14,9 +14,12 @@ Programming language: Python
 
 ### Existing tool
 
-<Inform the name of the existing tool that was executed and how it was executed>
+We have used coverage.py to measure the cover of our chosen project. After installing all tools and dependencies, we have 
+run the tool by typing coverage run --branch -m pytest tests. Afterwards, we use coverage report to generate the report. Later, Ayman has written a scrip to run the commands in a single script, and to also skip the test files, which don't need to be tested.
 
-<Show the coverage results provided by the existing tool with a screenshot>
+In order to not put in 8 large images, I will insert the final screenshot, with the total branch coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/f1cd3fab-b00c-4cd0-89d0-6452e7ed1a63)
+
 
 ### Your own coverage tool
 
@@ -56,7 +59,7 @@ Programming language: Python
 
 <Provide the same kind of information provided for Test 1>
 
-<Ayman Errahmouni>
+## Ayman Errahmouni
 
 #### <Test "test_simplify_path">
 
@@ -93,6 +96,51 @@ New coverage:<br>
 ![alt text](image-4.png)
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
+
+
+## Catalin Antonescu
+
+#### Function 1: strong_password
+
+Link to final commit:
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
+
+#### Function 2: rotate_image
+
+Link to final commit:(same as for the first one)
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
+
+<Provide the same kind of information provided for Function 1>
+
+## Coverage improvement
+
+### Individual tests
+
+<The following is supposed to be repeated for each group member>
+
+<Group member name>
+
+<Test 1>
+
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+
+<Provide a screenshot of the old coverage results (the same as you already showed above)>
+
+<Provide a screenshot of the new coverage results>
+
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
+
+<Test 2>
+
+<Provide the same kind of information provided for Test 1>
+
+
 
 ### Overall
 
