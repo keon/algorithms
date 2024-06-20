@@ -139,13 +139,28 @@ class TestSuite(unittest.TestCase):
         self.assertEqual("c", next_greatest_letter_v2(letters, target))
 
     def test_interpolation_search(self):
-        array = [0, 3, 5, 5, 9, 12, 12, 15, 16, 19, 20]
+        array = [0, 3, 5, 5, 9, 12, 12, 15, 16, 19, 20, 25]
+                 #, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+        
+        # array = [0, 3, 5, 5, 9, 12, 12, 15, 16, 19, 20, 25]
         self.assertEqual(1, interpolation_search(array, 3))
         self.assertEqual(2, interpolation_search(array, 5))
         self.assertEqual(6, interpolation_search(array, 12))
         self.assertEqual(-1, interpolation_search(array, 22))
         self.assertEqual(-1, interpolation_search(array, -10))
         self.assertEqual(10, interpolation_search(array, 20))
+        
+        # self.assertEqual(-1, interpolation_search(array, 1))
+        # self.assertEqual(0, interpolation_search(array, 0))  # Found at the start
+        # self.assertEqual(interpolation_search(array, 12), 5)  # Found in the middle, first occurrence
+        # self.assertEqual(-1, interpolation_search(array, 110))  # Not found, above maximum
+        # self.assertEqual(interpolation_search(array, 55), 17)  # Found in the middle
+        # self.assertEqual(interpolation_search(array, 70), 20)  # Found, single value in range
+        # self.assertEqual(interpolation_search(array, 22), -1)  # Not found, above the range
+        # self.assertEqual(interpolation_search(array, 50), 16)  # Found, single value in range
+        # self.assertEqual(interpolation_search(array, 45), 15)  # Found, single value in range
+
+
 
 
 if __name__ == '__main__':

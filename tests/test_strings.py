@@ -568,6 +568,7 @@ class TestFirstUniqueChar(unittest.TestCase):
     def test_first_unique_char(self):
         self.assertEqual(0, first_unique_char("leetcode"))
         self.assertEqual(2, first_unique_char("loveleetcode"))
+        self.assertEqual(-1, first_unique_char("aabb"))
 
 
 class TestRepeatSubstring(unittest.TestCase):
