@@ -13,15 +13,6 @@ The algorithm performs best with uniformly distributed arrays.
 
 from typing import List
 
-branch_coverage = {
-    "branch_60": False,
-    "branch_61": False,
-    "branch_62": False,
-    "branch_63": False,
-    "branch_64": False,
-
-}
-
 
 def interpolation_search(array: List[int], search_key: int) -> int:
     """
@@ -47,36 +38,25 @@ def interpolation_search(array: List[int], search_key: int) -> int:
 
     while (low <= high) and (array[low] <= search_key <= array[high]):
         # calculate the search position
-        branch_coverage["branch_60"] = True
         pos = low + int(((search_key - array[low]) *
                          (high - low) / (array[high] - array[low])))
 
         # search_key is found
         if array[pos] == search_key:
-            branch_coverage["branch_61"] = True
             return pos
 
         # if search_key is larger, search_key is in upper part
         if array[pos] < search_key:
-            branch_coverage["branch_62"] = True
             low = pos + 1
 
         # if search_key is smaller, search_key is in lower part
         else:
-            branch_coverage["branch_63"] = True
             high = pos - 1
             
-    branch_coverage["branch_64"] = True
     return -1
-
-def print_coverage():
-    for branch, hit in branch_coverage.items():
-        print(f"{branch} was {'hit' if hit else 'not hit'}")
         
 
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-print_coverage()
-
