@@ -1,4 +1,4 @@
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/8e69587c-68d9-4d76-8165-f60e913c20ae)# Report for Assignment 1
+# Report for Assignment 1
 
 ## Project chosen
 
