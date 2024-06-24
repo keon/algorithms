@@ -116,17 +116,27 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d
 Screenshot of branch measurement:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
 
-<Provide the same kind of information provided for Function 1>
+
+### Abdullah Abdelkhalik
+
+
+pythagoras
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
+
+![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/0df1fa2b-2185-4b9f-ae65-5d969edb009b)
+
+
+first_unique_char
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
+
+![first_unique_char_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10d7c45c-398e-4408-8f11-6771f51fa95c)
+
 
 ## Coverage improvement
 
 ### Individual tests
-
-<The following is supposed to be repeated for each group member>
-
-<Group member name>
-
-<Test 1>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
 
@@ -140,6 +150,27 @@ Screenshot of branch measurement:
 
 <Provide the same kind of information provided for Test 1>
 
+Abdullah Abdelkhalik
+
+test_maths
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/60832d9c672efd586848077cc41a52630d34371b
+
+![pythagoras_before](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/cf57112b-1aef-4a10-a41f-bd4b797e2012)
+
+![pythagoras_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/1aa45c17-46fc-49d3-944a-03c2276d1be6)
+
+the coverage is improved by 28%, the code only hit one of the five branches and cover only one of the three cases of the pythagoras theory. I added the other two cases, i could have a fourth case where none of the cases is present.
+
+test_strings
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
+
+![first_unique_char_before](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/9910ec69-73b0-4c87-afc8-abc01f65a423)
+
+![first_unique_char_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10859fac-776c-4a48-8a1c-9531afcbfa9b)
+
+the coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
 
 
 ### Overall
@@ -151,3 +182,5 @@ Screenshot of branch measurement:
 ## Statement of individual contributions
 
 <Write what each group member did>
+
+Abdullah -> increased the coverage for two functions.
