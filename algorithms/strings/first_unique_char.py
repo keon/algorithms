@@ -27,20 +27,23 @@ def first_unique_char(s):
     """
     if (len(s) == 1):
         branch_coverage["branch_26"] = True
-        print("branch_26")
         return 0
     ban = []
     for i in range(len(s)):
         branch_coverage["branch_27"] = True
-        print("branch_27")
         if all(s[i] != s[k] for k in range(i + 1, len(s))) == True and s[i] not in ban:
             branch_coverage["branch_28"] = True
-            print("branch_28")
             return i
         else:
             branch_coverage["branch_29"] = True
-            print("branch_29")
             ban.append(s[i])
     branch_coverage["branch_30"] = True
-    print("branch_30")
     return -1   
+
+def print_coverage():
+    for branch, hit in branch_coverage.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+        
+first_unique_char("leetcode")
+first_unique_char("loveleetcode")
+print_coverage()
