@@ -118,7 +118,11 @@ New coverage:<br>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
-### Catalin Antonescu
+## Coverage improvement
+
+### Individual tests
+
+#### Catalin Antonescu
 
 Test 1:
 
@@ -129,9 +133,7 @@ Link to commit:
 [https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
 
 
-## Coverage improvement
 
-### Individual tests
 
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/5ea3487d-f024-45e6-a1e7-e6d9d1d953b7)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
