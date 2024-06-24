@@ -7,7 +7,7 @@ branch_coverage = {
     "branch_2": False,
     "branch_3": False,
     "branch_4": False,
-    #"branch_5": False 
+    "branch_5": False 
 }
 
 def pythagoras(opposite, adjacent, hypotenuse):
@@ -32,8 +32,8 @@ def pythagoras(opposite, adjacent, hypotenuse):
         print("branch_4")
         return "You already know the answer!"
     except:
-        # branch_coverage["branch_5"] = True
-        # print("branch_5")
+        branch_coverage["branch_5"] = True
+        print("branch_5")
         raise ValueError("invalid argument(s) were given.")
     
 def print_coverage():
