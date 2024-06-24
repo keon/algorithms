@@ -138,6 +138,8 @@ New coverage:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/1d179cc4-1179-40e2-b344-5e904e899647)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/c8173a47-bcc9-4b6a-9a91-c70b5a8b002f)
 
+For strong_password there was a 26% coverage improvement with the existing tool and 40% with manual measurement tool.
+
 
 Test 2:
 In test_matrix:
@@ -151,6 +153,8 @@ Old coverage:
 New coverage:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
+
+For rotate_image there was a 33% coverage improvement with the existing tool and 25% with the manual tool.
 
 ### Abdullah Abdelkhalik
 
@@ -191,7 +195,7 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 
 ![first_unique_char_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10859fac-776c-4a48-8a1c-9531afcbfa9b)
 
-the coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
+The coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
 
 
 ### Overall
