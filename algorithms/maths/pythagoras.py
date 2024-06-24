@@ -3,11 +3,11 @@ Given the lengths of two of the three sides of a right angled triangle, this fun
 length of the third side.
 """
 branch_coverage = {
-    "branch_1": False,
-    "branch_2": False,
-    "branch_3": False,
-    "branch_4": False,
-    "branch_5": False 
+    "branch_31": False,
+    "branch_32": False,
+    "branch_33": False,
+    "branch_34": False,
+    "branch_35": False 
 }
 
 def pythagoras(opposite, adjacent, hypotenuse):
@@ -17,23 +17,23 @@ def pythagoras(opposite, adjacent, hypotenuse):
     """
     try:
         if opposite == str("?"):
-            branch_coverage["branch_1"] = True
-            print("branch_1")
+            branch_coverage["branch_31"] = True
+            print("branch_31")
             return ("Opposite = " + str(((hypotenuse**2) - (adjacent**2))**0.5))
         if adjacent == str("?"):
-            branch_coverage["branch_2"] = True
-            print("branch_2")
+            branch_coverage["branch_32"] = True
+            print("branch_32")
             return ("Adjacent = " + str(((hypotenuse**2) - (opposite**2))**0.5))
         if hypotenuse == str("?"):
-            branch_coverage["branch_3"] = True
-            print("branch_3")
+            branch_coverage["branch_33"] = True
+            print("branch_33")
             return ("Hypotenuse = " + str(((opposite**2) + (adjacent**2))**0.5))
-        branch_coverage["branch_4"] = True
-        print("branch_4")
+        branch_coverage["branch_34"] = True
+        print("branch_34")
         return "You already know the answer!"
     except:
-        branch_coverage["branch_5"] = True
-        print("branch_5")
+        branch_coverage["branch_35"] = True
+        print("branch_35")
         raise ValueError("invalid argument(s) were given.")
     
 def print_coverage():
