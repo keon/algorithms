@@ -128,9 +128,33 @@ Link to commit:
 [https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
 
 
-Old coverage:
 
-<<<<<<< bodda93-patch-1
+
+## Coverage improvement
+
+### Individual tests
+=======
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/5ea3487d-f024-45e6-a1e7-e6d9d1d953b7)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
+
+New coverage:
+
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/1d179cc4-1179-40e2-b344-5e904e899647)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/c8173a47-bcc9-4b6a-9a91-c70b5a8b002f)
+
+
+Test 2:
+In test_matrix:
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Old coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a97a2bd6-c69e-4435-a8e2-bbdefc429bd1)
+
+
+New coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
 
 ### Abdullah Abdelkhalik
 
@@ -152,40 +176,6 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4
 ## Coverage improvement
 
 ### Individual tests
-=======
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/5ea3487d-f024-45e6-a1e7-e6d9d1d953b7)
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
-
-New coverage:
-
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/1d179cc4-1179-40e2-b344-5e904e899647)
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/c8173a47-bcc9-4b6a-9a91-c70b5a8b002f)
-
-
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
-
->>>>>>> master
-
-Test 2:
-In test_matrix:
-[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
-
-Old coverage:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a97a2bd6-c69e-4435-a8e2-bbdefc429bd1)
-
-
-New coverage:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
-
-<<<<<<< bodda93-patch-1
-<Test 2>
-
-<Provide the same kind of information provided for Test 1>
-
-Abdullah Abdelkhalik
 
 test_maths
 
@@ -206,8 +196,6 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 ![first_unique_char_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10859fac-776c-4a48-8a1c-9531afcbfa9b)
 
 the coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
-=======
->>>>>>> master
 
 
 ### Overall
