@@ -118,24 +118,23 @@ New coverage:<br>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
-
-
-## Coverage improvement
-
-### Individual tests
-
-Catalin Antonescu
+## Catalin Antonescu
 
 Test 1:
 
 In test_string:
+Link to commit:
+
 [https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
+
+
 Old coverage:
+
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/5ea3487d-f024-45e6-a1e7-e6d9d1d953b7)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
-<Provide a screenshot of the new coverage results>
+
 New coverage:
+
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/1d179cc4-1179-40e2-b344-5e904e899647)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/c8173a47-bcc9-4b6a-9a91-c70b5a8b002f)
 
@@ -155,7 +154,7 @@ Old coverage:
 New coverage:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
-
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
 
 
 
