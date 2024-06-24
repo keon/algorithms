@@ -37,6 +37,27 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 <Provide the same kind of information provided for Function 1>
 
+### Catalin Antonescu
+
+#### Function 1: strong_password
+
+Link to commit:
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
+
+#### Function 2: rotate_image
+
+Link to commit:(same as for the first one)
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
+
+<Provide the same kind of information provided for Function 1>
+
+
 ## Coverage improvement
 
 ### Individual tests
@@ -97,25 +118,19 @@ New coverage:<br>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
-
 ## Catalin Antonescu
 
-#### Function 1: strong_password
+Test 1:
 
-Link to final commit:
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8
+In test_string:
+Link to commit:
 
-Screenshot of branch measurement:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
 
-#### Function 2: rotate_image
 
-Link to final commit:(same as for the first one)
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8
+Old coverage:
 
-Screenshot of branch measurement:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
-
+<<<<<<< bodda93-patch-1
 
 ### Abdullah Abdelkhalik
 
@@ -137,15 +152,35 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4
 ## Coverage improvement
 
 ### Individual tests
+=======
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/5ea3487d-f024-45e6-a1e7-e6d9d1d953b7)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
 
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
+New coverage:
 
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/1d179cc4-1179-40e2-b344-5e904e899647)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/c8173a47-bcc9-4b6a-9a91-c70b5a8b002f)
 
-<Provide a screenshot of the new coverage results>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
+>>>>>>> master
+
+Test 2:
+In test_matrix:
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Old coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a97a2bd6-c69e-4435-a8e2-bbdefc429bd1)
+
+
+New coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
+
+<<<<<<< bodda93-patch-1
 <Test 2>
 
 <Provide the same kind of information provided for Test 1>
@@ -171,13 +206,21 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 ![first_unique_char_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10859fac-776c-4a48-8a1c-9531afcbfa9b)
 
 the coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
+=======
+>>>>>>> master
 
 
 ### Overall
 
 <Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>
+Old overall coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/f1cd3fab-b00c-4cd0-89d0-6452e7ed1a63)
 
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
+New overall coverage:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a150a1e5-3393-4aef-9f27-13a256d7480c)
+
+Due to the large size of the project, the percentage did not go up.
 
 ## Statement of individual contributions
 
