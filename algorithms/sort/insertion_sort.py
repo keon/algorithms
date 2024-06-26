@@ -36,7 +36,18 @@ def insertion_sort(arr, simulation=False):
     return arr
 
 def print_coverage():
+    covered = 0
     print("branch coverage for `insertion_sort`:")
     for branch, hit in branch_coverage.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
+        if hit: covered += 1;
+    print(f"Branch coverage: {covered / len(branch_coverage) * 100}")
 
+insertion_sort([])
+insertion_sort([1])
+insertion_sort([69, 420])
+insertion_sort([420, 69])
+insertion_sort([0, 1, 2, 3, 4, 3, 2, 1, 0])
+insertion_sort([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], True)
+insertion_sort([0, 1, 2, 3, 4, 3, 2, 1, 0], True)
+print_coverage()

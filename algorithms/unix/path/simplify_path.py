@@ -39,6 +39,17 @@ def simplify_path_v2(path):
     return "/" + "/".join(stack)
 
 def print_coverage():
+    covered = 0
     print("branch coverage for `simplify_path_v2`:")
     for branch, hit in branch_coverage.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
+        if hit: covered += 1;
+    print(f"Branch coverage: {covered / len(branch_coverage) * 100}")
+    
+
+# simplify_path_v2(".")
+# simplify_path_v2("/../")
+# simplify_path_v2("/home//foo/")
+# simplify_path_v2("")
+# simplify_path_v2("/home/../")
+print_coverage()
