@@ -14,7 +14,8 @@ from algorithms.dp import (
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
     int_divide,find_k_factor,
-    planting_trees, regex_matching
+    planting_trees, regex_matching,
+    word_break,
 )
 
 
@@ -258,6 +259,16 @@ class TestRegexMatching(unittest.TestCase):
         p = "ab*"
         self.assertTrue(regex_matching.is_match(s, p))
 
+class TestWordBreak(unittest.TestCase):
+    """Test for interpolation_search and word_break"""
+
+    def test_word_break(self):
+        self.assertTrue(word_break("keonkim", {"keon", "kim"}))
+        self.assertTrue(word_break("leetcode", {"leet", "code"}))
+        self.assertFalse(word_break("catsandog", {"cats", "dog", "sand", "and", "cat"}))
+        self.assertTrue(word_break("applepenapple", {"apple", "pen"}))
+        self.assertFalse(word_break("pineapplepenapple", {"apple", "pen"}))
+        self.assertTrue(word_break("aaaaaaa", {"aaaa", "aaa"}))
 
 if __name__ == '__main__':
     unittest.main()
