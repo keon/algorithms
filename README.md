@@ -37,6 +37,22 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 <Provide the same kind of information provided for Function 1>
 
+#### Ayman Errahmouni
+
+##### Function 1: simplify_path_v2
+
+[Link the commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/22ee6fa1df4785596c603af61a725c558973eb0b)
+
+Screenshot of branch measurement (66%):<br>
+![image](image-7.png)
+
+##### Function 2: insertion_sort
+
+[Link to commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/5dae7f28036f89b7f6ff673639a922dd714aff3e)
+
+Screenshot of branch measurement (0%, was untested):<br>
+![alt text](image-8.png)
+
 #### Catalin Antonescu
 
 ##### Function 1: strong_password
