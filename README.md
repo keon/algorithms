@@ -293,7 +293,8 @@ pythagoras
 
 https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
 
-![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/4c90fc73-980b-4617-b1ec-01041bbb1a06)
+![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/c61bff67-be7e-4bd2-b892-0a0f2dada1f3)
+
 
 
 
