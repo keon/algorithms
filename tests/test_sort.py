@@ -18,7 +18,7 @@ from algorithms.sort import (
     gnome_sort,
     cocktail_shaker_sort,
     top_sort, top_sort_recursive,
-    
+    stoogesort
 )
 
 import unittest
