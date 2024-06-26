@@ -23,19 +23,74 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 ### Your own coverage tool
 
-<The following is supposed to be repeated for each group member>
+#### Ayman Errahmouni
 
-<Group member name>
+##### Function 1: simplify_path_v2
 
-<Function 1 name>
+[Link the commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/22ee6fa1df4785596c603af61a725c558973eb0b)
 
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
+Screenshot of branch measurement (66%):<br>
+![image](image-7.png)
 
-<Provide a screenshot of the coverage results output by the instrumentation>
+##### Function 2: insertion_sort
 
-<Function 2 name>
+[Link to commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/5dae7f28036f89b7f6ff673639a922dd714aff3e)
 
-<Provide the same kind of information provided for Function 1>
+Screenshot of branch measurement (0%, was untested):<br>
+![alt text](image-8.png)
+
+#### Catalin Antonescu
+
+##### Function 1: strong_password
+
+Link to commit:
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
+
+##### Function 2: rotate_image
+
+Link to commit:(same as for the first one)
+[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
+
+Screenshot of branch measurement:
+![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
+
+#### Abdullah Abdelkhalik
+
+
+pythagoras
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
+
+![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/0df1fa2b-2185-4b9f-ae65-5d969edb009b)
+
+
+first_unique_char
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
+
+![first_unique_char_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10d7c45c-398e-4408-8f11-6771f51fa95c)
+
+
+#### Abdullah Abdelkhalik
+
+
+pythagoras
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
+
+![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/0df1fa2b-2185-4b9f-ae65-5d969edb009b)
+
+
+first_unique_char
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
+
+![first_unique_char_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10d7c45c-398e-4408-8f11-6771f51fa95c)
+
+
 
 #### Ayman Errahmouni
 
@@ -188,7 +243,6 @@ New coverage:
 
 For strong_password there was a 26% coverage improvement with the existing tool and 40% with manual measurement tool.
 
-
 Test 2:
 
 In test_matrix:
@@ -230,6 +284,59 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 
 The coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
 
+## Almuthana Almustafa
+
+stoogsort in stoog_sort.py
+
+[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3)
+
+result: 
+
+![alt text](ts.png)
+
+word_break in word_break.py
+
+link to commit in founction:
+[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 )
+
+result:
+
+![alt text](ts.png)
+
+Almuthana Almustafa
+
+Test 1:
+
+stoogsort function
+
+link to commit in test files:
+[Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
+
+existing tool result before:
+
+![alt text](ss2.png)
+
+existing tool result after:
+
+![alt text](ss.png)
+
+The coverage increased by 89%, largely attributable to the implementation of new tests.
+
+Test 2:
+
+word_break function
+
+[Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
+
+existing tool result before:
+
+![alt text](wk1.png)
+
+existing tool result after:
+
+![alt text](wk2.png)
+
+The coverage improved by 86% due to the creation of new tests.
 
 ### Overall
 
@@ -249,3 +356,5 @@ Due to the large size of the project, the percentage only went up by one percent
 <Write what each group member did>
 
 Abdullah -> increased the coverage for two functions.
+Almuthana Almustafa -> Instrumentation was added to two functions, and test cases were created for them to improve coverage.
+
