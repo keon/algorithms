@@ -108,7 +108,7 @@ link to commit in founction:
 
 result:
 
-![alt text](result_image-2.png)
+![alt text](result_image_2.png)
 
 ## Coverage improvement
 
