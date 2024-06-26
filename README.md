@@ -23,76 +23,6 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 ### Your own coverage tool
 
-<The following is supposed to be repeated for each group member>
-
-<Group member name>
-
-Almuthana Almustafa
-
-<Function 1 name>
-
-stoogsort in stoog_sort.py
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
-
-link to commit in test files:
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97
-
-link to commit in founction:
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3
-
-<Provide a screenshot of the coverage results output by the instrumentation>
-
-result: 
-
-![alt text](ts.png)
-
-existing tool result before:
-
-![alt text](ss2.png)
-
-existing tool result after:
-
-![alt text](ss.png)
-
-
-<Function 2 name>
-
-word_break in word_break.py
-
-<Provide the same kind of information provided for Function 1>
-
-link to commit in test files:
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97
-
-link to commit in founction:
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 
-
-
-result: 
-
-![alt text](ts.png)
-
-existing tool result before:
-
-![alt text](wk1.png)
-
-existing tool result after:
-
-![alt text](wk2.png)
-
-<Group member name>
-
-<Function 1 name>
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
-
-<Provide a screenshot of the coverage results output by the instrumentation>
-
-<Function 2 name>
-
-<Provide the same kind of information provided for Function 1>
-
 #### Ayman Errahmouni
 
 ##### Function 1: simplify_path_v2
@@ -287,7 +217,7 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 The coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
 
 
-Almuthana Almustafa
+## Almuthana Almustafa
 
 stoogsort in stoog_sort.py
 
@@ -308,6 +238,8 @@ result:
 
 Almuthana Almustafa
 
+Test 1:
+
 stoogsort function
 
 link to commit in test files:
@@ -322,6 +254,8 @@ existing tool result after:
 ![alt text](ss.png)
 
 The coverage increased by 89%, largely attributable to the implementation of new tests.
+
+Test 2:
 
 word_break function
 
