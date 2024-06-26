@@ -223,6 +223,7 @@ Old overall coverage:
 
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
 New overall coverage:
+ 
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a53729ff-a4f1-42ce-9fe9-ff0813952658)
 
 Due to the large size of the project, the percentage only went up by one percent.
