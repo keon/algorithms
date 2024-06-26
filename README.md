@@ -124,4 +124,3 @@ existing tool result after:
 
 Abdullah -> increased the coverage for two functions.
 
-Almuthana Almustafa -> increased the coverage for two functions.
