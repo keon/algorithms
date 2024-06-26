@@ -6,7 +6,7 @@ Name: <TODO>
 
 URL: <TODO>
 
-
+Number of lines of code and the tool used to count it: <TODO>
 
 Programming language: <TODO>
 
@@ -14,7 +14,7 @@ Programming language: <TODO>
 
 ### Existing tool
 
-
+<Inform the name of the existing tool that was executed and how it was executed>
 
 <Show the coverage results provided by the existing tool with a screenshot>
 
