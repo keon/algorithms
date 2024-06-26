@@ -17,7 +17,8 @@ from algorithms.sort import (
     radix_sort,
     gnome_sort,
     cocktail_shaker_sort,
-    top_sort, top_sort_recursive
+    top_sort, top_sort_recursive,
+    stoogesort
 )
 
 import unittest
@@ -124,7 +125,27 @@ class TestTopSort(unittest.TestCase):
         self.assertTrue(res.index('g') < res.index('e'))
         res = top_sort(self.depGraph)
         self.assertTrue(res.index('g') < res.index('e'))
+class TestStoog(unittest.TestCase):
+    def test_stoogesort(self):
+        arr1 = [1, 3, 64, 5, 7, 8]
+        stoogesort(arr1, 0, len(arr1) - 1)
+        self.assertEqual(arr1, [1, 3, 5, 7, 8, 64])
 
+        arr2 = [5, 4, 3, 2, 1]
+        stoogesort(arr2, 0, len(arr2) - 1)
+        self.assertEqual(arr2, [1, 2, 3, 4, 5])
+
+        arr3 = [1, 2, 3, 4, 5]
+        stoogesort(arr3, 0, len(arr3) - 1)
+        self.assertEqual(arr3, [1, 2, 3, 4, 5])
+
+        arr4 = [10, -1, 2, 3, 0]
+        stoogesort(arr4, 0, len(arr4) - 1)
+        self.assertEqual(arr4, [-1, 0, 2, 3, 10])
+
+        arr5 = []
+        stoogesort(arr5, 0, len(arr5) - 1)
+        self.assertEqual(arr5, [])
 
 if __name__ == "__main__":
     unittest.main()
