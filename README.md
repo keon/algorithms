@@ -42,7 +42,7 @@ Screenshot of branch measurement (0%, was untested):<br>
 #### Catalin Antonescu
 
 ##### Function 1: strong_password
-
+ 
 Link to commit:
 [https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
 
@@ -91,6 +91,24 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4
 ![first_unique_char_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10d7c45c-398e-4408-8f11-6771f51fa95c)
 
 
+#### Almuthana Almustafa
+
+##### Function 1: stoogsort in stoog_sort.py
+
+[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3)
+
+result: 
+
+![alt text](result_image-2.png)
+
+##### Function 2: word_break in word_break.py
+
+link to commit in founction:
+[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 )
+
+result:
+
+![alt text](result_image-2.png)
 
 ## Coverage improvement
 
@@ -216,58 +234,36 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 
 The coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
 
-
 ## Almuthana Almustafa
 
-stoogsort in stoog_sort.py
+### Test 1: stoogsort
 
-[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3)
 
-result: 
-
-![alt text](ts.png)
-
-word_break in word_break.py
-
-link to commit in founction:
-[Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 )
-
-result:
-
-![alt text](ts.png)
-
-Almuthana Almustafa
-
-Test 1:
-
-stoogsort function
 
 link to commit in test files:
 [Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
 
 existing tool result before:
 
-![alt text](ss2.png)
+![alt text](stoog_sort_image1.png)
 
 existing tool result after:
 
-![alt text](ss.png)
+![alt text](stoog_sort_image2.png)
 
 The coverage increased by 89%, largely attributable to the implementation of new tests.
 
-Test 2:
-
-word_break function
+### Test 2: word_break
 
 [Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
 
 existing tool result before:
 
-![alt text](wk1.png)
+![alt text](word_break_image1.png)
 
 existing tool result after:
 
-![alt text](wk2.png)
+![alt text](word_break_image2.png)
 
 The coverage improved by 86% due to the creation of new tests.
 
