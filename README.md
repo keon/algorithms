@@ -6,7 +6,7 @@ Name: <TODO>
 
 URL: <TODO>
 
-Number of lines of code and the tool used to count it: <TODO>
+Number of lines of code and the tool used to count it: <TODO> 
 
 Programming language: <TODO>
 
