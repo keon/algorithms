@@ -302,7 +302,7 @@ first_unique_char
 
 https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
 
-![first_unique_char_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10d7c45c-398e-4408-8f11-6771f51fa95c)
+![first_unique_char_hits (2)](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/8c1b704e-cadb-4f54-aea7-795005348538)
 
 
 
