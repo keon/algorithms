@@ -69,7 +69,6 @@ result:
 
 ##### Function 2: word_break in word_break.py
 
-link to commit in founction:
 [Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 )
 
 result:
