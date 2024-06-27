@@ -285,8 +285,10 @@ Due to the large size of the project, the percentage only went up by one percent
 <Write what each group member did>
 
 Abdullah -> increased the coverage for two functions.
+
 Almuthana Almustafa -> Instrumentation was added to two functions, and test cases were created for them to improve coverage.
 
+Cataline -> Instrumentation was added to two functions, and the tests for these functions were enhanced.
 
 
 
