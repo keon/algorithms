@@ -57,19 +57,6 @@ Link to commit:(same as for the first one)
 Screenshot of branch measurement:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #### Almuthana Almustafa
 
 ##### Function 1: stoogsort in stoog_sort.py
@@ -89,62 +76,9 @@ result:
 
 ![alt text](result_image_2.png)
 
-#### Ayman Errahmouni
-
-##### Function 1: simplify_path_v2
-
-[Link the commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/22ee6fa1df4785596c603af61a725c558973eb0b)
-
-Screenshot of branch measurement:<br>
-![alt text](image-7.png)
-
-##### Function 2: insertion_sort
-
-[Link to commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/5dae7f28036f89b7f6ff673639a922dd714aff3e)
-
-Screenshot of branch measurement:<br>
-![alt text](image-11.png)
-
-#### Catalin Antonescu
-
-##### Function 1: strong_password
-
-Link to commit:
-[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
-
-Screenshot of branch measurement:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/e718a47f-5ea0-412c-b250-25a193412164)
-
-##### Function 2: rotate_image
-
-Link to commit:(same as for the first one)
-[https://github.com/CatalinAnt/algorithms-SEP-95/commit/eaad6d32ecd73bb8fde876a4d4852cb522aea6f8](https://github.com/CatalinAnt/algorithms-SEP-95/commit/2b0b9187c1c040e4476b1ca14f2c2249273566b7)
-
-Screenshot of branch measurement:
-![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
-
-
 ## Coverage improvement
 
 ### Individual tests
-
-<The following is supposed to be repeated for each group member>
-
-<Group member name>
-
-<Test 1>
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
-
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
-
-<Provide a screenshot of the new coverage results>
-
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
-
-<Test 2>
-
-<Provide the same kind of information provided for Test 1>
 
 ## Ayman Errahmouni
 
@@ -226,9 +160,6 @@ New coverage:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
  For rotate_image, thre was a 33% coverage improvement with the existing tool and 25% with manual tool.
-
-  
-
 
 ## Almuthana Almustafa
 
