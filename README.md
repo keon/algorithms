@@ -29,14 +29,14 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 [Link the commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/22ee6fa1df4785596c603af61a725c558973eb0b)
 
-Screenshot of branch measurement (66%):<br>
+Screenshot of branch measurement:<br>
 ![image](image-7.png)
 
 ##### Function 2: insertion_sort
 
 [Link to commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/5dae7f28036f89b7f6ff673639a922dd714aff3e)
 
-Screenshot of branch measurement (0%, was untested):<br>
+Screenshot of branch measurement:<br>
 ![alt text](image-12.png)
 
 #### Catalin Antonescu
