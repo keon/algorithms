@@ -57,7 +57,7 @@ Link to commit:(same as for the first one)
 Screenshot of branch measurement:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
 
-#### Almuthana Almustafa
+#### Almuthana Almustafa 
 
 ##### Function 1: stoogsort in stoog_sort.py
 
