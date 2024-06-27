@@ -25,6 +25,7 @@ In order to not put in 8 large images, I will insert the final screenshot, with 
 
 #### Ayman Errahmouni
 
+
 ##### Function 1: simplify_path_v2
 
 [Link the commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/22ee6fa1df4785596c603af61a725c558973eb0b)
@@ -75,7 +76,8 @@ result:
 
 ![alt text](WB_befor1.png)
 
-#### Abdullah Abdelkhalik
+
+#### Abdullah Abdelkhalik 
 
 ##### Function 2: pythagoras
 
