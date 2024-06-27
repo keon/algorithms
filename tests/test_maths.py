@@ -1,3 +1,6 @@
+from algorithms.maths.prime_check import prime_check, print_coverage
+import unittest
+
 from algorithms.maths import (
     power, power_recur,
     int_to_base, base_to_int,
@@ -276,17 +279,45 @@ class TestPrimeTest(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+    
 
-    def test_prime_test(self):
+    def test_prime_numbers(self):
         """
-            checks all prime numbers between 2 up to 100.
-            Between 2 up to 100 exists 25 prime numbers!
+        Checks specific prime numbers between 2 up to 100.
         """
-        counter = 0
-        for i in range(2, 101):
-            if prime_check(i):
-                counter += 1
-        self.assertEqual(25, counter)
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+        for prime in primes:
+            with self.subTest(n=prime):
+                self.assertTrue(prime_check(prime), f"{prime} should be prime")
+
+    def test_non_prime_numbers(self):
+        """
+        Checks specific non-prime numbers between 2 up to 100.
+        """
+        non_primes = [4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57, 58, 60, 62, 63, 64, 65, 66, 68, 69, 70, 72, 74, 75, 76, 77, 78, 80, 81, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 96, 98, 99, 100]
+        for non_prime in non_primes:
+            with self.subTest(n=non_prime):
+                self.assertFalse(prime_check(non_prime), f"{non_prime} should not be prime")
+
+    def test_prime_check_coverage(self):
+        """
+        Additional checks to cover all branches in prime_check function.
+        """
+        self.assertFalse(prime_check(-1), "-1 should not be prime")  # Branch 1
+        self.assertFalse(prime_check(0), "0 should not be prime")  # Branch 1
+        self.assertFalse(prime_check(1), "1 should not be prime")  # Branch 1
+        self.assertTrue(prime_check(2), "2 should be prime")  # Branch 2
+        self.assertTrue(prime_check(3), "3 should be prime")  # Branch 2
+        self.assertFalse(prime_check(4), "4 should not be prime")  # Branch 3
+        self.assertFalse(prime_check(9), "9 should not be prime")  # Branch 3
+        self.assertFalse(prime_check(15), "15 should not be prime")  # Branch 3, 4, 5
+        self.assertTrue(prime_check(5), "5 should be prime")  # Branch 4
+        self.assertTrue(prime_check(7), "7 should be prime")  # Branch 4
+        self.assertFalse(prime_check(25), "25 should not be prime")  # Branch 5
+        self.assertFalse(prime_check(49), "49 should not be prime")  # Branch 5
+        self.assertFalse(prime_check(50), "50 should not be prime")  # Branch 3
+        self.assertTrue(prime_check(97), "97 should be prime")  # Branch 4
+
 
 
 class TestPythagoras(unittest.TestCase):
@@ -300,6 +331,16 @@ class TestPythagoras(unittest.TestCase):
     def test_pythagoras(self):
         self.assertEqual("Hypotenuse = 3.605551275463989",
                          pythagoras(3, 2, "?"))
+
+    def test_opposite_calculation(self):
+        result = pythagoras("?", 4, 5)
+        expected = "Opposite = 3.0"
+        self.assertEqual(result, expected)
+
+    def test_adjacent_calculation(self):
+        result = pythagoras(3, "?", 5)
+        expected = "Adjacent = 4.0"
+        self.assertEqual(result, expected)
 
 
 class TestRabinMiller(unittest.TestCase):
@@ -434,10 +475,12 @@ class TestFindOrder(unittest.TestCase):
     """
 
     def test_find_order_simple(self):
-        self.assertEqual(1, find_order(1, 1))
+        self.assertEqual(1, find_order(1, 1))       # Should hit branch_1
         self.assertEqual(6, find_order(3, 7))
         self.assertEqual(-1, find_order(128, 256))
         self.assertEqual(352, find_order(3, 353))
+        self.assertEqual(-1, find_order(10, 20))    # Should hit branches 2, 3, 5
+
 
 
 class TestKrishnamurthyNumber(unittest.TestCase):

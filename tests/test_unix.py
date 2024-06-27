@@ -7,6 +7,9 @@ from algorithms.unix import (
 import os
 import unittest
 
+from algorithms.unix import (
+    print_coverage
+)
 
 class TestUnixPath(unittest.TestCase):
     def test_join_with_slash(self):
@@ -42,7 +45,26 @@ class TestUnixPath(unittest.TestCase):
         self.assertEqual("test.py", expect_result[1])
 
     def test_simplify_path(self):
-        self.assertEqual("/", simplify_path_v1("/../"))
-        self.assertEqual("/home/foo", simplify_path_v1("/home//foo/"))
+        root = None
+        pathsep = None
+        drive = None
+        if os.name == 'nt':
+            root = "" # Assumed to be ran on the C drive
+            pathsep = "\\"
+            drive = "C:\\"
+        elif os.name == 'posix':
+            root = "/"
+            pathsep = "/"
+            drive = ""
+
+        self.assertEqual(drive + root, simplify_path_v1("/../"))
+        self.assertEqual(drive + root + pathsep.join(["home", "foo"]), simplify_path_v1("/home//foo/"))
+
+        self.assertEqual("/", simplify_path_v2("."))
         self.assertEqual("/", simplify_path_v2("/../"))
         self.assertEqual("/home/foo", simplify_path_v2("/home//foo/"))
+        self.assertEqual("/", simplify_path_v2(""))
+        self.assertEqual("/", simplify_path_v2("/home/../"))
+
+        print_coverage()
+
