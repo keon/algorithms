@@ -37,7 +37,7 @@ Screenshot of branch measurement (66%):<br>
 [Link to commit](https://github.com/CatalinAnt/algorithms-SEP-95/pull/2/commits/5dae7f28036f89b7f6ff673639a922dd714aff3e)
 
 Screenshot of branch measurement (0%, was untested):<br>
-![alt text](image-8.png)
+![alt text](image-12.png)
 
 #### Catalin Antonescu
 
