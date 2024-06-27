@@ -18,13 +18,12 @@ We have used coverage.py to measure the cover of our chosen project. After insta
 run the tool by typing coverage run --branch -m pytest tests. Afterwards, we use coverage report to generate the report. Later, Ayman has written a scrip to run the commands in a single script, and to also skip the test files, which don't need to be tested.
 
 In order to not put in 8 large images, I will insert the final screenshot, with the total branch coverage:
-
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/f1cd3fab-b00c-4cd0-89d0-6452e7ed1a63)
+
 
 ### Your own coverage tool
 
 #### Ayman Errahmouni
-
 
 ##### Function 1: simplify_path_v2
 
@@ -58,7 +57,7 @@ Link to commit:(same as for the first one)
 Screenshot of branch measurement:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
 
-#### Almuthana Almustafa 
+#### Almuthana Almustafa
 
 ##### Function 1: stoogsort in stoog_sort.py
 
@@ -66,56 +65,24 @@ Screenshot of branch measurement:
 
 result: 
 
-![alt text](SS_befor1.png)
+![alt text](result_image-2.png)
 
 ##### Function 2: word_break in word_break.py
 
+link to commit in founction:
 [Link to the commit in the founction files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/57b66879c6ae0f82712c55528f540dfdb3c3ddd3 )
 
 result:
 
-![alt text](WB_befor1.png)
-
-
-#### Abdullah Abdelkhalik 
-
-##### Function 2: pythagoras
-
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
-
-![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/c61bff67-be7e-4bd2-b892-0a0f2dada1f3)
-
-##### Function 2: first_unique_char
-
-https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
-
-![first_unique_char_hits (2)](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/8c1b704e-cadb-4f54-aea7-795005348538)
+![alt text](result_image_2.png)
 
 ## Coverage improvement
 
 ### Individual tests
 
-<The following is supposed to be repeated for each group member>
+## Ayman Errahmouni
 
-<Group member name>
-
-<Test 1>
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
-
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
-
-<Provide a screenshot of the new coverage results>
-
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
-
-<Test 2>
-
-<Provide the same kind of information provided for Test 1>
-
-#### Ayman Errahmouni
-
-##### <Test "test_simplify_path">
+#### <Test "test_simplify_path">
 
 An enhanced existing test
 
@@ -134,7 +101,7 @@ By added additional tests that use such cases, the coverage improved.
 
 The test was also faulty on windows (i guess linux was assumed), so i added support for that in the test. (It now passes on Windows 10 too)
 
-##### <Test "test_actual_insertion_sort">
+#### <Test "test_actual_insertion_sort">
 
 An new test. (before, `insertion_sort` was not present in any test)
 
@@ -154,7 +121,7 @@ New coverage:<br>
 
 <State the coverage improvement with a number and elaborate on why the coverage is improved>
 
-#### Catalin Antonescu
+## Catalin Antonescu
 
 Test 1:
 
@@ -187,15 +154,18 @@ Old coverage:
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/94eec9b6-3dd6-46e3-b087-40892eccc10e)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/a97a2bd6-c69e-4435-a8e2-bbdefc429bd1)
 
+
 New coverage:
 
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/7cc337eb-5684-40b3-aedd-dc2b7180b7f3)
 ![image](https://github.com/CatalinAnt/algorithms-SEP-95/assets/113595149/2143adff-e0aa-4113-858a-0c92ec288d20)
  For rotate_image, thre was a 33% coverage improvement with the existing tool and 25% with manual tool.
 
-#### Almuthana Almustafa
+## Almuthana Almustafa
 
-##### Test 1: stoogsort
+### Test 1: stoogsort
+
+
 
 link to commit in test files:
 [Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
@@ -208,11 +178,9 @@ existing tool result after:
 
 ![alt text](stoog_sort_image2.png)
 
-![alt text](result_image-2.png)
-
 The coverage increased by 89%, largely attributable to the implementation of new tests.
 
-##### Test 2: word_break
+### Test 2: word_break
 
 [Link to the commit in the test files](https://github.com/CatalinAnt/algorithms-SEP-95/commit/157de36fd4c373b67cd03e3b3713be9ba5cf0d97)
 
@@ -224,13 +192,54 @@ existing tool result after:
 
 ![alt text](word_break_image2.png)
 
-![alt text](result_image_2.png)
-
 The coverage improved by 86% due to the creation of new tests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Abdullah Abdelkhalik
 
-####  Improvements
+
+pythagoras
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e74883bb991acf19303
+
+![pythagoras_hits](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/c61bff67-be7e-4bd2-b892-0a0f2dada1f3)
+
+
+
+
+first_unique_char
+
+https://github.com/CatalinAnt/algorithms-SEP-95/commit/c16f26e952322b2c1729778a4141a57103ba7658
+
+![first_unique_char_hits (2)](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/8c1b704e-cadb-4f54-aea7-795005348538)
+
+
+
+
+
+##  Improvements
 
 test_maths
 
@@ -251,6 +260,18 @@ https://github.com/CatalinAnt/algorithms-SEP-95/commit/5651abafebe8ae3a5ea63e748
 ![first_unique_char_after](https://github.com/CatalinAnt/algorithms-SEP-95/assets/114078193/10859fac-776c-4a48-8a1c-9531afcbfa9b)
 
 The coverage is improved by 13%, the code only hit three out of five branches and only set up two examples. I added a case where there is no unique letter.
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Overall
 
@@ -274,8 +295,6 @@ Abdullah -> increased the coverage for two functions.
 Almuthana Almustafa -> Instrumentation was added to two functions, and test cases were created for them to improve coverage.
 
 Cataline -> Instrumentation was added to two functions, and the tests for these functions were enhanced.
-
-
 
 
 
