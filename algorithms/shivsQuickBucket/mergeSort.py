@@ -32,6 +32,7 @@ def mergeSort(nums, l, r, inv):
 
 
 nums = [5, 4, 3, 2, 1]
+# Count the total number of inversions
 inv = 0
 mergeSort(nums, 0, len(nums) - 1, inv)
 # Worst case - (NlogN)
