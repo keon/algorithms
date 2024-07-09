@@ -1,4 +1,4 @@
-def merge(nums, l, m, r):
+def merge(nums, l, m, r, inv):
     L, R = nums[l: m + 1], nums[m + 1: r + 1]
 
     i = j = 0
@@ -10,6 +10,7 @@ def merge(nums, l, m, r):
         else:
             nums[k] = R[j]
             j += 1
+            inv += (len(L) - i)
         k += 1
     while i < len(L):
         nums[k] = L[i]
@@ -21,14 +22,16 @@ def merge(nums, l, m, r):
         k += 1
 
 
-def mergeSort(nums, l, r):
+def mergeSort(nums, l, r, inv):
     if l < r:
         m = (l + r) >> 1
-        mergeSort(nums, l, m)
-        mergeSort(nums, m + 1, r)
-        merge(nums, l, m, r)
+        inv = mergeSort(nums, l, m, inv)
+        inv = mergeSort(nums, m + 1, r, inv)
+        inv = merge(nums, l, m, r, inv)
+    return inv
 
 
 nums = [5, 4, 3, 2, 1]
-mergeSort(nums, 0, len(nums) - 1)
+inv = 0
+mergeSort(nums, 0, len(nums) - 1, inv)
 # Worst case - (NlogN)
