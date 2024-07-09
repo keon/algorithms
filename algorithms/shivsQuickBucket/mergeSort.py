@@ -20,7 +20,7 @@ def merge(nums, l, m, r, inv):
         nums[k] = R[j]
         j += 1
         k += 1
-
+    return inv
 
 def mergeSort(nums, l, r, inv):
     if l < r:
