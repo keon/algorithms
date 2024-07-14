@@ -3,7 +3,7 @@
 # that is why we create pi table to store the jump values
 def kmp(text, pattern):
     n, m = len(text), len(pattern)
-    pi = [0] * n
+    pi = [0] * m
 
     j = 0
     # making pi table -> finding the longest prefix that is also a suffix
