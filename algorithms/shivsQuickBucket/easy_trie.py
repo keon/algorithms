@@ -41,6 +41,7 @@ def get_words_using_prefix(head, pre):
             curr, pre = q.popleft()
             if '#' in curr: words.append(pre)
             for nei in curr:
+                if nei == '#': continue
                 q.append((curr[nei], pre + nei))
     return words
 

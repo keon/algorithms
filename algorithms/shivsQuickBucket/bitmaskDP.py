@@ -27,3 +27,15 @@ class Solution:
             
             return False
         return helper(0, side, 0)
+
+    def _set_bit(self, num: int, position: int) -> int:
+        num |= 1 << (position - 1)
+        return num
+
+    def _clear_bit(self, num: int, position: int) -> int:
+        num ^= 1 << (position - 1)
+        return num
+
+    def _is_set(self, num: int, position: int) -> bool:
+        bit_at_position = (num >> (position - 1)) & 1
+        return bit_at_position == 1

@@ -15,7 +15,7 @@ class TreeNode:
         else:
             root.right = self.insert(root.right, key)
 
-        # Step 2 - Update the height of the ancestor node
+        # Step 2 - Update the height of the ancestor node and rebalance
         root.height = 1 + max(self.getHeight(root.left),
                               self.getHeight(root.right))
 
@@ -54,7 +54,7 @@ class TreeNode:
         if root is None:
             return root
 
-        # Step 2 - Update the height of the ancestor node
+        # Step 2 - Update the height of the ancestor node and rebalance
         root.height = 1 + max(self.getHeight(root.left),
                               self.getHeight(root.right))
 

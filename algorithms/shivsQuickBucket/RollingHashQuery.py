@@ -17,3 +17,6 @@ class prefixHash:
     
     def query(self, l, r):
         return ((self.prefix[r] - self.prefix[l]) * self.invprefix[l]) % self.mod
+
+# use query(0, len(a)) to search for a string a
+# note r is len(a) and not len(a) - 1 this applies to all
