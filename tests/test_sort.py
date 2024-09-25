@@ -57,6 +57,30 @@ class TestSuite(unittest.TestCase):
     def test_cycle_sort(self):
         self.assertTrue(is_sorted(cycle_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
+    def test_cycle_sort_already_sorted(self):
+        self.assertTrue(is_sorted(cycle_sort([1, 2, 3, 4, 5, 6, 7, 8, 9])))
+
+    def test_cycle_sort_reverse_sorted(self):
+        self.assertTrue(is_sorted(cycle_sort([9, 8, 7, 6, 5, 4, 3, 2, 1])))
+
+    def test_cycle_sort_single_element(self):
+        self.assertEqual(cycle_sort([42]), [42])
+
+    def test_cycle_sort_empty_array(self):
+        self.assertEqual(cycle_sort([]), [])
+
+    def test_cycle_sort_with_duplicates(self):
+        self.assertTrue(is_sorted(cycle_sort([4, 1, 3, 2, 2, 5, 5, 1])))
+
+    def test_cycle_sort_large_random_array(self):
+        import random
+        random_array = random.sample(range(1, 1001), 100)
+        sorted_array = sorted(random_array)
+        self.assertEqual(cycle_sort(random_array), sorted_array)
+
+    def test_cycle_sort_negative_numbers(self):
+        self.assertTrue(is_sorted(cycle_sort([-5, -1, -3, 2, 0, 1])))
+
     def test_exchange_sort(self):
         self.assertTrue(is_sorted(exchange_sort([1, 3, 2, 5, 65,
                                                  23, 57, 1232])))
