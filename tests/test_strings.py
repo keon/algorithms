@@ -735,6 +735,7 @@ class TestComputeZArray(unittest.TestCase):
     def test_compute_z_array_basic(self):
         self.assertEqual(compute_z_array("aaaaa"), [0, 4, 3, 2, 1])
         self.assertEqual(compute_z_array("ababa"), [0, 0, 3, 0, 1])
+        self.assertEqual(compute_z_array("abcababc"), [0, 0, 0, 2, 0, 3, 0, 0])
 
     def test_compute_z_array_no_prefix_match(self):
         self.assertEqual(compute_z_array("abcde"), [0, 0, 0, 0, 0])
