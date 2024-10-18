@@ -42,7 +42,8 @@ from algorithms.strings import (
     longest_palindrome,
     knuth_morris_pratt,
     panagram,
-    fizzbuzz
+    fizzbuzz,
+    compute_z_array
 )
 
 import unittest
@@ -727,6 +728,25 @@ class TestFizzbuzz(unittest.TestCase):
                     "Fizz", 13, 14, "FizzBuzz"]
         self.assertEqual(result, expected)
 
+
+class TestComputeZArray(unittest.TestCase):
+    """Test cases for compute_z_array function"""
+
+    def test_compute_z_array_basic(self):
+        self.assertEqual(compute_z_array("aaaaa"), [0, 4, 3, 2, 1])
+        self.assertEqual(compute_z_array("ababa"), [0, 0, 3, 0, 1])
+
+    def test_compute_z_array_no_prefix_match(self):
+        self.assertEqual(compute_z_array("abcde"), [0, 0, 0, 0, 0])
+
+    def test_compute_z_array_full_match(self):
+        self.assertEqual(compute_z_array("aaaa"), [0, 3, 2, 1])
+
+    def test_compute_z_array_single_character(self):
+        self.assertEqual(compute_z_array("a"), [0])
+
+    def test_compute_z_array_empty_string(self):
+        self.assertEqual(compute_z_array(""), [])
 
 if __name__ == "__main__":
     unittest.main()
