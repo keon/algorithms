@@ -42,7 +42,8 @@ from algorithms.strings import (
     longest_palindrome,
     knuth_morris_pratt,
     panagram,
-    fizzbuzz
+    fizzbuzz,
+    manacher
 )
 
 import unittest
@@ -726,6 +727,34 @@ class TestFizzbuzz(unittest.TestCase):
         expected = [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11,
                     "Fizz", 13, 14, "FizzBuzz"]
         self.assertEqual(result, expected)
+
+
+class TestManacherAlgorithm(unittest.TestCase):
+    """Unit tests for the Manacher's Algorithm"""
+
+    def test_single_character(self):
+        self.assertEqual(manacher("a"), "a")
+
+    def test_even_length_palindrome(self):
+        self.assertEqual(manacher("abba"), "abba")
+
+    def test_odd_length_palindrome(self):
+        self.assertEqual(manacher("racecar"), "racecar")
+
+    def test_mixed_palindrome(self):
+        self.assertIn(manacher("babad"), ["aba", "bab"]) # There can be "bab" or "aba"
+
+    def test_no_palindrome(self):
+        self.assertEqual(manacher("abcde"), "a")  # The longest palindrome is just one character
+
+    def test_empty_string(self):
+        self.assertEqual(manacher(""), "")
+
+    def test_full_string_palindrome(self):
+        self.assertEqual(manacher("aaaa"), "aaaa")
+
+    def test_palindrome_with_special_characters(self):
+        self.assertEqual(manacher("a!b!a"), "a!b!a")
 
 
 if __name__ == "__main__":
