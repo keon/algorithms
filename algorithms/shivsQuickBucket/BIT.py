@@ -5,7 +5,7 @@ class BIT:
     def __init__(self, n):
         self.n = n + 1
         self.tree = [0 for _ in range(self.n)]
-    
+
     def update(self, idx, val=1):
         idx += 1
         while idx < self.n:
@@ -19,7 +19,7 @@ class BIT:
             total += self.tree[idx]
             idx -= idx&-idx
         return total
-    
+
     # finding kth smallest element Upper Bound with Time - O(logN ^ 2)
     def find(self, k):
         l, r = 1, self.n
@@ -32,7 +32,7 @@ class BIT:
                 l = m + 1
         return res
     
-    # Upper bound Kth smallest -- O(logN) using binary lifting
+    # Kth smallest (Upper bound) -- O(logN) using binary lifting
     def find_BL(self, k):
         pos = rs = 0
         nn = int(log2(self.n))
@@ -41,7 +41,7 @@ class BIT:
             if pos + (1 << i) < self.n and rs + self.tree[pos + (1 << i)] < k:
                 pos += (1 << i)
                 rs += self.tree[pos]
-        return pos + 1 # because pos will have val less than k -> lower bound
+        return pos + 1
     
 
 # Note - 
