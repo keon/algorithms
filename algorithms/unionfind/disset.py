@@ -22,3 +22,4 @@ class Disset:
                 self.root[rootx] = rooty
                 self.rank[rooty] += 1
             return True
+        return False
