@@ -105,27 +105,6 @@ class TestSuite(unittest.TestCase):
 		]))
 		return
 
-	def test_polynomial_division(self):
-
-		# Should raise a ValueError if the divisor is not a monomial
-		# or a polynomial with only one term.
-		self.assertRaises(ValueError, lambda x, y: x / y, self.p5, self.p3)
-		self.assertRaises(ValueError, lambda x, y: x / y, self.p6, self.p4)
-
-		self.assertEqual(self.p3 / self.p2, Polynomial([
-			Monomial({}, 1),
-			Monomial({1: 1, 2: -1}, 0.75)
-		]))
-		self.assertEqual(self.p7 / self.m1, Polynomial([
-			Monomial({1: -1, 2: -3}, 2),
-			Monomial({1: 0, 2: -4}, 1.5)
-		]))
-		self.assertEqual(self.p7 / self.m1, Polynomial([
-			Monomial({1: -1, 2: -3}, 2),
-			Monomial({2: -4}, 1.5)
-		]))
-		return
-
 	def test_polynomial_variables(self):
 		# The zero polynomial has no variables.
 
@@ -173,3 +152,50 @@ class TestSuite(unittest.TestCase):
 			Monomial({1: -1, 3: 2}, 1)
 		]))
 		return
+
+	def test_polynomial_long_division(self):
+		"""
+        Test polynomial long division
+        """
+
+		# Dividend: 4a_1^3 + 3a_1^2 - 2a_1 + 5
+		dividend = Polynomial([
+			Monomial({1: 3}, 4),  # 4(a_1)^3
+			Monomial({1: 2}, 3),  # 3(a_1)^2
+			Monomial({1: 1}, -2),  # -2(a_1)
+			Monomial({}, 5)  # +5
+		])
+
+		# Divisor: 2a_1 - 1
+		divisor = Polynomial([
+			Monomial({1: 1}, 2),  # 2(a_1)
+			Monomial({}, -1)  # -1
+		])
+
+		# Expected Quotient: 2a_1^2 + (5/2)a_1 + 1/4
+		expected_quotient = Polynomial([
+			Monomial({1: 2}, 2),  # 2(a_1)^2
+			Monomial({1: 1}, Fraction(5, 2)),  # (5/2)(a_1)
+			Monomial({}, Fraction(1, 4))  # +1/4
+		])
+
+		# Expected Remainder: 21/4
+		expected_remainder = Polynomial([
+			Monomial({}, Fraction(21, 4))  # 21/4
+		])
+
+		quotient_long_div, remainder_long_div = dividend.poly_long_division(divisor)
+
+		quotient_truediv = dividend / divisor  # Calls __truediv__, which returns only the quotient
+
+		# Check if quotient from poly_long_division matches expected
+		self.assertEqual(quotient_long_div, expected_quotient)
+
+		# Check if remainder from poly_long_division matches expected
+		self.assertEqual(remainder_long_div, expected_remainder)
+
+		# Check if quotient from __truediv__ matches quotient from poly_long_division
+		self.assertEqual(quotient_truediv, quotient_long_div)
+
+		return
+
