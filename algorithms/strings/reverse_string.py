@@ -14,8 +14,7 @@ def iterative(s):
     return "".join(r)
 
 def pythonic(s):
-    r = list(reversed(s))
-    return "".join(r)
+    return "".join(reversed(s))
 
 def ultra_pythonic(s):
     return s[::-1]
