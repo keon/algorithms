@@ -9,7 +9,7 @@ from algorithms.arrays import (
     missing_ranges,
     move_zeros,
     plus_one_v1, plus_one_v2, plus_one_v3,
-    remove_duplicates
+    remove_duplicates,
     rotate_v1, rotate_v2, rotate_v3,
     summarize_ranges,
     three_sum,
