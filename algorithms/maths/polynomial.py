@@ -438,10 +438,7 @@ class Polynomial:
     # def __truediv__(self, other: Union[int, float, Fraction, Monomial, Polynomial]) -> Polynomial:
     def __truediv__(self, other: Union[int, float, Fraction, Monomial]):
         """
-        For Polynomials, only division by a monomial
-        is defined.
-
-        TODO: Implement polynomial / polynomial.
+        For Polynomial division, no remainder is provided. Must use poly_long_division() to capture remainder
         """
         if isinstance(other, int) or isinstance(other, float) or isinstance(other, Fraction):
             return self.__truediv__( Monomial({}, other) )
@@ -449,17 +446,11 @@ class Polynomial:
             poly_temp = reduce(lambda acc, val: acc + val, map(lambda x: x / other, [z for z in self.all_monomials()]), Polynomial([Monomial({}, 0)]))
             return poly_temp
         elif isinstance(other, Polynomial):
-            if Monomial({}, 0) in other.all_monomials():
-                if len(other.all_monomials()) == 2:
-                    temp_set = {x for x in other.all_monomials() if x != Monomial({}, 0)}
-                    only = temp_set.pop()
-                    return self.__truediv__(only)
-            elif len(other.all_monomials()) == 1:
-                temp_set = {x for x in other.all_monomials()}
-                only = temp_set.pop()
-                return self.__truediv__(only)
+            # Call long division
+            quotient, remainder = self.poly_long_division(other)
+            return quotient  # Return just the quotient, remainder is ignored here
 
-        raise ValueError('Can only divide a polynomial by an int, float, Fraction, or a Monomial.')
+        raise ValueError('Can only divide a polynomial by an int, float, Fraction, Monomial, or Polynomial.')
 
         return
 
@@ -526,7 +517,59 @@ class Polynomial:
 
     def __str__(self) -> str:
         """
-        Get a string representation of
-        the polynomial.
+        Get a properly formatted string representation of the polynomial.
         """
-        return ' + '.join(str(m) for m in self.all_monomials() if m.coeff != Fraction(0, 1))
+        sorted_monos = sorted(self.all_monomials(), key=lambda m: sorted(m.variables.items(), reverse=True),
+                              reverse=True)
+        return ' + '.join(str(m) for m in sorted_monos if m.coeff != Fraction(0, 1))
+
+    def poly_long_division(self, other: 'Polynomial') -> tuple['Polynomial', 'Polynomial']:
+        """
+        Perform polynomial long division
+        Returns (quotient, remainder)
+        """
+        if not isinstance(other, Polynomial):
+            raise ValueError("Can only divide by another Polynomial.")
+
+        if len(other.all_monomials()) == 0:
+            raise ValueError("Cannot divide by zero polynomial.")
+
+        quotient = Polynomial([])
+        remainder = self.clone()
+
+        divisor_monos = sorted(other.all_monomials(), key=lambda m: sorted(m.variables.items(), reverse=True),
+                               reverse=True)
+        divisor_lead = divisor_monos[0]
+
+        while remainder.all_monomials() and max(remainder.variables(), default=-1) >= max(other.variables(),
+                                                                                          default=-1):
+            remainder_monos = sorted(remainder.all_monomials(), key=lambda m: sorted(m.variables.items(), reverse=True),
+                                     reverse=True)
+            remainder_lead = remainder_monos[0]
+
+            if not all(remainder_lead.variables.get(var, 0) >= divisor_lead.variables.get(var, 0) for var in
+                       divisor_lead.variables):
+                break
+
+            lead_quotient = remainder_lead / divisor_lead
+            quotient = quotient + Polynomial([lead_quotient])  # Convert Monomial to Polynomial
+
+            remainder = remainder - (
+                        Polynomial([lead_quotient]) * other)  # Convert Monomial to Polynomial before multiplication
+
+        return quotient, remainder
+
+dividend = Polynomial([
+    Monomial({1: 3}, 4),   # 4(a_1)^3
+    Monomial({1: 2}, 3),   # 3(a_1)^2
+    Monomial({1: 1}, -2),  # -2(a_1)
+    Monomial({}, 5)        # +5
+])
+
+divisor = Polynomial([
+    Monomial({1: 1}, 2),   # 2(a_1)
+    Monomial({}, -1)       # -1
+])
+
+quotient = dividend / divisor
+print("Quotient:", quotient)
