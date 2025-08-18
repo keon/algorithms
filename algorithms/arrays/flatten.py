@@ -29,3 +29,24 @@ def flatten_iter(iterable):
             yield from flatten_iter(element)    
         else:
             yield element
+
+
+# without recursion
+def flatten_used_stack(iterable):
+    stack = [iterable]
+    output_arr = []
+
+    while stack:
+        itr = stack.pop()
+        if not isinstance(itr, list):
+            output_arr.append(itr)
+            continue
+
+        for idx in range(len(itr)):
+            if isinstance(itr[idx], list):
+                stack.append(itr[idx + 1:])
+                stack.append(itr[idx])
+                break
+            output_arr.append(itr[idx])
+
+    return output_arr
