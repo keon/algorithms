@@ -46,7 +46,7 @@ def validate_bst(node):
         )
 
     # Check the current node's value against the max of the left subtree
-    if maxx_left and maxx_left > node.val:
+    if maxx_left is not None and maxx_left > node.val:
         return (
             False, 
             minn_left if minn_left else node.val, 
@@ -54,7 +54,7 @@ def validate_bst(node):
         )
 
     # Check the current node's value against the min of the right subtree
-    if minn_right and minn_right < node.val:
+    if minn_right is not None and minn_right < node.val:
         return (
             False, 
             minn_left if minn_left else node.val, 
