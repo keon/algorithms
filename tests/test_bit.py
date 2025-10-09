@@ -18,7 +18,8 @@ from algorithms.bit import (
     has_alternative_bit, has_alternative_bit_fast,
     insert_one_bit, insert_mult_bits,
     remove_bit,
-    binary_gap
+    binary_gap,
+    gray_code
 )
 
 import unittest
@@ -268,6 +269,27 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(0, binary_gap(8))
         # 145 = 10010001
         self.assertEqual(4, binary_gap(145))
+
+
+class TestGrayCode(unittest.TestCase):
+    """Unit tests for the Gray Code generator."""
+
+    def test_0_bit_gray_code(self):
+        self.assertEqual(gray_code(0), [0])
+
+    def test_1_bit_gray_code(self):
+        self.assertEqual(gray_code(1), [0, 1])
+
+    def test_2_bit_gray_code(self):
+        self.assertEqual(gray_code(2), [0, 1, 3, 2])
+
+    def test_3_bit_gray_code(self):
+        self.assertEqual(gray_code(3), [0, 1, 3, 2, 6, 7, 5, 4])
+
+    def test_4_bit_gray_code(self):
+        self.assertEqual(gray_code(4), [
+            0, 1, 3, 2, 6, 7, 5, 4, 12, 13, 15, 14, 10, 11, 9, 8
+        ])
 
 
 if __name__ == '__main__':
