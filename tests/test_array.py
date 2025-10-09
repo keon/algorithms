@@ -299,14 +299,21 @@ class TestPlusOne(unittest.TestCase):
         self.assertListEqual(plus_one_v3([9, 9, 9, 9]),
                              [1, 0, 0, 0, 0])
 
-class TestRemoveDuplicate(unittest.TestCase):
 
+class TestRemoveDuplicate(unittest.TestCase):
     def test_remove_duplicates(self):
-        self.assertListEqual(remove_duplicates([1,1,1,2,2,2,3,3,4,4,5,6,7,7,7,8,8,9,10,10]))
-        self.assertListEqual(remove_duplicates(["hey", "hello", "hello", "car", "house", "house"]))
-        self.assertListEqual(remove_duplicates([True, True, False, True, False, None, None]))
-        self.assertListEqual(remove_duplicates([1,1,"hello", "hello", True, False, False]))
-        self.assertListEqual(remove_duplicates([1, "hello", True, False]))
+        self.assertListEqual(remove_duplicates([1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, 7, 7, 7, 8, 8, 9, 10, 10]),
+                             [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        self.assertListEqual(remove_duplicates(["hey", "hello", "hello", "car", "house", "house"]),
+                             ["hey", "hello", "car", "house"])
+        self.assertListEqual(remove_duplicates([True, True, False, True, False, None, None]),
+                             [True, False, None])
+        self.assertListEqual(remove_duplicates([1, 1, "hello", "hello", True, False, False]),
+                             [1, "hello", True, False])
+        self.assertListEqual(remove_duplicates([1, "hello", True, False]),
+                             [1, "hello", True, False])
+        self.assertListEqual(remove_duplicates([False, True, False, True]),
+                             [False, True])
 
 
 class TestRotateArray(unittest.TestCase):
@@ -347,11 +354,11 @@ class TestSummaryRanges(unittest.TestCase):
     def test_summarize_ranges(self):
 
         self.assertListEqual(summarize_ranges([0, 1, 2, 4, 5, 7]),
-                             [(0, 2), (4, 5), (7, 7)])
+                             ['0-2', '4-5', '7'])
         self.assertListEqual(summarize_ranges([-5, -4, -3, 1, 2, 4, 5, 6]),
-                             [(-5, -3), (1, 2), (4, 6)])
+                             ['-5--3', '1-2', '4-6'])
         self.assertListEqual(summarize_ranges([-2, -1, 0, 1, 2]),
-                             [(-2, 2)])
+                             ['-2-2'])
 
 
 class TestThreeSum(unittest.TestCase):
