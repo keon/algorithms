@@ -1,5 +1,6 @@
 [report]
 omit =
+    */tests/*
     */python?.?/*
     */site-packages/nose/*
     *__init__*
