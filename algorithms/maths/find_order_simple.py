@@ -15,6 +15,7 @@ def find_order(a, n):
     """
     Find order for positive integer n and given integer a that satisfies gcd(a, n) = 1.
     """
+    
     if (a == 1) & (n == 1):
         # Exception Handeling : 1 is the order of of 1
         return 1

@@ -52,8 +52,9 @@ def interpolation_search(array: List[int], search_key: int) -> int:
         # if search_key is smaller, search_key is in lower part
         else:
             high = pos - 1
-
+            
     return -1
+        
 
 
 if __name__ == "__main__":

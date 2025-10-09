@@ -140,12 +140,14 @@ class TestSuite(unittest.TestCase):
 
     def test_interpolation_search(self):
         array = [0, 3, 5, 5, 9, 12, 12, 15, 16, 19, 20]
+        
         self.assertEqual(1, interpolation_search(array, 3))
         self.assertEqual(2, interpolation_search(array, 5))
         self.assertEqual(6, interpolation_search(array, 12))
         self.assertEqual(-1, interpolation_search(array, 22))
         self.assertEqual(-1, interpolation_search(array, -10))
         self.assertEqual(10, interpolation_search(array, 20))
+        
 
 
 if __name__ == '__main__':

@@ -2,7 +2,6 @@ def prime_check(n):
     """Return True if n is a prime number
     Else return False.
     """
-
     if n <= 1:
         return False
     if n == 2 or n == 3:
