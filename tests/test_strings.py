@@ -479,6 +479,8 @@ class TestStrongPassword(unittest.TestCase):
     def test_strong_password(self):
         self.assertEqual(3, strong_password(3, "Ab1"))
         self.assertEqual(1, strong_password(11, "#Algorithms"))
+        self.assertEqual(3,strong_password(5, "12345"))
+        self.assertEqual(3,strong_password(5, "abcde"))
 
 
 class TestCaesarCipher(unittest.TestCase):
@@ -568,6 +570,7 @@ class TestFirstUniqueChar(unittest.TestCase):
     def test_first_unique_char(self):
         self.assertEqual(0, first_unique_char("leetcode"))
         self.assertEqual(2, first_unique_char("loveleetcode"))
+        self.assertEqual(-1, first_unique_char("aabb"))
 
 
 class TestRepeatSubstring(unittest.TestCase):
