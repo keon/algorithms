@@ -13,8 +13,8 @@ from algorithms.dp import (
     longest_increasing_subsequence,
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
-    int_divide,find_k_factor,
-    planting_trees, regex_matching
+    int_divide, find_k_factor,
+    planting_trees, regex_matching, unique_paths
 )
 
 
@@ -257,6 +257,18 @@ class TestRegexMatching(unittest.TestCase):
         s = "abb"
         p = "ab*"
         self.assertTrue(regex_matching.is_match(s, p))
+
+
+class TestUniquePaths(unittest.TestCase):
+    def test2d(self):
+        m = 3
+        n = 7
+        self.assertEqual(unique_paths.unique_paths(m, n), 28)
+
+    def test1d(self):
+        m = 5
+        self.assertEqual(unique_paths.unique_paths(m, 1), 1)
+        self.assertEqual(unique_paths.unique_paths(1, m), 1)
 
 
 if __name__ == '__main__':
