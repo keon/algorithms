@@ -4,8 +4,9 @@ from algorithms.queues import (
     ArrayQueue, LinkedListQueue,
     max_sliding_window,
     reconstruct_queue,
-    PriorityQueue
+    PriorityQueue,
 )
+from queues.moving_average import MovingAverage
 
 
 class TestQueue(unittest.TestCase):
@@ -42,6 +43,39 @@ class TestQueue(unittest.TestCase):
 
         self.assertTrue(queue.is_empty())
 
+    def test_arrayqueue_can_grow(self):
+        """
+        Inserts enough elements for the queue to expand (>10)
+        Then extracts them all and ensures they are equal to input values
+        """
+        q = ArrayQueue()
+        for i in range(15):
+            q.enqueue(i)
+
+        self.assertSequenceEqual(list(q), range(15))
+
+    def test_arrayqueue_throws_when_empty(self):
+        """
+        Asserts that an IndexError is thrown when the queue is empty
+        Both if it was always empty, as well as if it was dequeued until empty.
+        """
+        q = ArrayQueue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+        # Assert that it still throws if it once was not empty
+        q.enqueue(1)
+        q.dequeue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+
     def test_LinkedListQueue(self):
         queue = LinkedListQueue()
         queue.enqueue(1)
@@ -70,6 +104,27 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(3, queue.dequeue())
 
         self.assertTrue(queue.is_empty())
+
+    def test_linkedqueue_throws_when_empty(self):
+        """
+        Asserts that an IndexError is thrown when the queue is empty
+        Both if it was always empty, as well as if it was dequeued until empty.
+        """
+        q = LinkedListQueue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
+
+        # Assert that it still throws if it once was not empty
+        q.enqueue(1)
+        q.dequeue()
+
+        with self.assertRaises(IndexError):
+            q.peek()
+        with self.assertRaises(IndexError):
+            q.dequeue()
 
 
 class TestSuite(unittest.TestCase):
@@ -104,6 +159,14 @@ class TestPriorityQueue(unittest.TestCase):
         queue.push(2)
         self.assertEqual(4, queue.size())
         self.assertEqual(2, queue.pop())
+
+class TestMovingAverage(unittest.TestCase):
+    def test_MovingAverage(self):
+        m = MovingAverage(3)
+        self.assertEqual(m.next(1), 1)
+        self.assertEqual(m.next(10), (1 + 10) / 2)
+        self.assertEqual(m.next(3), (1 + 10 + 3) / 3)
+        self.assertEqual(m.next(5), (10 + 3 + 5) / 3)
 
 
 if __name__ == "__main__":
