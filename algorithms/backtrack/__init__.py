@@ -7,6 +7,7 @@ from .find_words import *
 from .generate_abbreviations import *
 from .generate_parenthesis import *
 from .letter_combination import *
+from .minimax import *
 from .palindrome_partitioning import *
 from .pattern_match import *
 from .permute_unique import *
