@@ -54,3 +54,42 @@ def num_decodings2(enc_mes):
             # other case '01, 09, 27'
             stack.append(stack[-1])
     return stack[-1]
+    
+    
+    
+# ----------------- TESTS -------------------------
+
+"""
+    Testsuite for the project
+"""
+
+import unittest
+
+
+class TestNum_decodings2(unittest.TestCase):
+    def testMCC(self):
+        self.assertEqual(0, num_decodings2(""))
+        self.assertEqual(0, num_decodings2("011"))
+        self.assertEqual(2, num_decodings2("12"))
+        self.assertEqual(0, num_decodings2("00"))
+        self.assertEqual(0, num_decodings2("30"))
+        self.assertEqual(2, num_decodings2("1110"))
+        self.assertEqual(2, num_decodings2("23"))
+        self.assertEqual(1, num_decodings2("31"))
+        self.assertEqual(1, num_decodings2("8"))
+        self.assertEqual(1, num_decodings2("9"))
+        self.assertEqual(1, num_decodings2("27"))
+
+
+    def testAllDUpath(self):
+        self.assertEqual(0, num_decodings2(""))
+        self.assertEqual(0, num_decodings2("00"))
+        self.assertEqual(2, num_decodings2("1110"))
+        self.assertEqual(0, num_decodings2("30"))
+        self.assertEqual(2, num_decodings2("21"))
+        self.assertEqual(3, num_decodings2("123"))
+        
+
+
+if __name__ == "__main__":
+    unittest.main()
