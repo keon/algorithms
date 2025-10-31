@@ -10,7 +10,9 @@ Output: [1, 2, 3, 4, 'hey', 'hello']
 Time Complexity: O(n) for hashable items, O(n²) worst case for unhashable items
 Space Complexity: O(n) for the seen set and result array
 """
+
 from collections.abc import Hashable
+
 
 def remove_duplicates(array):
     seen = set()
