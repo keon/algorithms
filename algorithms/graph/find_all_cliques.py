@@ -4,6 +4,7 @@ graph such that the subgraph is fully connected (ie. for any pair of nodes in
 the subgraph there is an edge between them).
 """
 
+
 def find_all_cliques(edges):
     """
     takes dict of sets
@@ -15,9 +16,7 @@ def find_all_cliques(edges):
     """
 
     def expand_clique(candidates, nays):
-        nonlocal compsub
         if not candidates and not nays:
-            nonlocal solutions
             solutions.append(compsub.copy())
         else:
             for selected in candidates.copy():
