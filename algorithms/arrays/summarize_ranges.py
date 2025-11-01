@@ -5,21 +5,22 @@ return the summary of its ranges.
 For example, given [0, 1, 2, 4, 5, 7], return [(0, 2), (4, 5), (7, 7)].
 """
 
+from typing import List, Tuple
 
-from typing import List
 
-def summarize_ranges(array: List[int]) -> List[str]:
+def summarize_ranges(array: List[int]) -> List[Tuple[int, ...]]:
     res = []
+    if len(array) == 0:
+        return []
     if len(array) == 1:
-        return [str(array[0])]
+        return [(array[0], array[0])]
     it = iter(array)
     start = end = next(it)
     for num in it:
         if num - end == 1:
             end = num
         else:
-            res.append((start, end) if start != end else (start,))
+            res.append((start, end))
             start = end = num
-    res.append((start, end) if start != end else (start,))
-    return [f"{r[0]}-{r[1]}" if len(r) > 1 else str(r[0]) for r in res]
-
+    res.append((start, end))
+    return res
