@@ -7,20 +7,20 @@ preserving the order of the other elements.
 The time complexity of the below algorithm is O(n).
 """
 
-
-# False == 0 is True
 def move_zeros(array):
     result = []
     zeros = 0
 
     for i in array:
-            if i == 0 and type(i) != bool:  # not using `not i` to avoid `False`, `[]`, etc.
+            # Check for numeric zeros but exclude boolean False
+            # False and other falsy values (like [], '') are NOT treated as zeros.
+            if i == 0 and not isinstance(i, bool):  
                 zeros += 1
             else:
                 result.append(i)
+
+    # Append zeros to the end without allocating another temporary list
+    for _ in range(zeros):
+         result.append(0)
     
-    result.extend([0] * zeros)
     return result
-
-
-print(move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"]))
