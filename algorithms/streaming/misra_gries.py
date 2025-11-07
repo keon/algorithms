@@ -7,7 +7,7 @@ that appears at least n/k times, where n is the length of the array
 By default, k is set to 2, solving the majority problem.
 
 For the majority problem, this algorithm only guarantees that if there is
-an element that appears more than n/2 times, it will be outputed. If there
+an element that appears more than n/2 times, it will be outputted. If there
 is no such element, any arbitrary element is returned by the algorithm.
 Therefore, we need to iterate through again at the end. But since we have filtred
 out the suspects, the memory complexity is significantly lower than

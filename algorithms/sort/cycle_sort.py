@@ -15,7 +15,7 @@ def cycle_sort(arr):
     for cur in range(len_arr - 1):
         item = arr[cur]
 
-        # Finding an indx to put items in.
+        # Finding an index to put items in.
         index = cur
         for i in range(cur + 1, len_arr):
             if arr[i] < item:

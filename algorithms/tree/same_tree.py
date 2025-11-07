@@ -18,4 +18,4 @@ def is_same_tree(tree_p, tree_q):
 # where N and M are the number of nodes for the trees.
 
 # Space Complexity O(min(height1, height2))
-# levels of recursion is the mininum height between the two trees.
+# levels of recursion is the minimum height between the two trees.
