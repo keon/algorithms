@@ -1,3 +1,4 @@
+from algorithms.tree.bst.bst import BST
 from algorithms.tree.traversal import (
     preorder,
     preorder_rec,
@@ -7,11 +8,8 @@ from algorithms.tree.traversal import (
     inorder_rec
 )
 from algorithms.tree.b_tree import BTree
-
 from algorithms.tree import construct_tree_postorder_preorder as ctpp
-
 from algorithms.tree.fenwick_tree.fenwick_tree import Fenwick_Tree
-
 import unittest
 
 
@@ -175,6 +173,61 @@ class TestFenwickTree(unittest.TestCase):
         ft.update_bit(bit_tree, 2, 11)
         self.assertEqual(23, ft.get_sum(bit_tree, 4))
 
+class TestBST(unittest.TestCase):
+    """
+    Testing binary search tree functionality
+    """
+
+    def test_insert(self):
+        """
+        Testing that bst structure is valid after insert
+        """
+        bst = create_bst()
+        self.assertTrue(bst.validate_bst())
+    
+    def test_search(self):
+        """
+        Testing search functionality
+        """
+        bst = create_bst()
+        self.assertTrue(bst.search(24))
+        self.assertFalse(bst.search(50))
+
+    def test_size(self):
+        """
+        Testing size function
+        """
+        bst = create_bst()
+        self.assertEqual(11, bst.size())
+    
+
+def create_bst():
+    """
+    The following tree is created for testing:
+
+                    10
+                 /      \
+               6         15
+              / \       /   \
+            4     9   12      24
+                 /          /    \
+                7         20      30
+                         /
+                       18
+    """
+    tree = BST()
+    tree.insert(10)
+    tree.insert(15)
+    tree.insert(6)
+    tree.insert(4)
+    tree.insert(9)
+    tree.insert(12)
+    tree.insert(24)
+    tree.insert(7)
+    tree.insert(20)
+    tree.insert(30)
+    tree.insert(18)
+    return tree
 
 if __name__ == '__main__':
     unittest.main()
