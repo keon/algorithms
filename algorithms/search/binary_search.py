@@ -23,7 +23,7 @@ def binary_search(array, query):
 
     low, high = 0, len(array) - 1
     while low <= high:
-        mid = (high + low) // 2
+        mid = low + (high - low) // 2
         val = array[mid]
         if val == query:
             return mid
