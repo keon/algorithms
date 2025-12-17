@@ -23,4 +23,5 @@ def move_zeros(array):
     return result
 
 
-print(move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"]))
+if __name__ == "__main__":
+    print(move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"]))
