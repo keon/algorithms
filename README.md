@@ -264,6 +264,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [zigzagiterator](algorithms/queues/zigzagiterator.py)
 - [search](algorithms/search)
     - [binary_search](algorithms/search/binary_search.py)
+    - [generalized_binary_search](algorithms/search/generalized_binary_search.py)
     - [first_occurrence](algorithms/search/first_occurrence.py)
     - [last_occurrence](algorithms/search/last_occurrence.py)
     - [linear_search](algorithms/search/linear_search.py)
