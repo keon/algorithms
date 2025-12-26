@@ -11,6 +11,14 @@
 
 
 def count_paths(m, n):
+    if m == 1 or n == 1:
+        return 1
+
+    # Recursively call until done
+    return count_paths(m - 1, n) + count_paths(m, n - 1)
+
+
+def count_paths_dp_bottomup(m, n):
     if m < 1 or n < 1:
         return -1
     count = [[None for j in range(n)] for i in range(m)]
@@ -27,7 +35,24 @@ def count_paths(m, n):
             #                                   a[i-1][j] + a[i][j-1]
             count[i][j] = count[i - 1][j] + count[i][j - 1]
 
-    print(count[m - 1][n - 1])
+    res = count[m - 1][n - 1]
+    return res
+
+
+def count_paths_dp_topdown(m, n, count):
+    if m < 1 or n < 1:
+        return -1
+
+    # Base case
+    if n == 1 or m == 1:
+        count[n][m] = 1
+        return 1
+
+    # If the element is not found, compute and store.
+    if count[n][m] == 0 or None:
+        count[n][m] = count_paths_dp_topdown(n - 1, m, count) + count_paths_dp_topdown(n, m - 1, count)
+
+    return count[n][m]
 
 
 def main():
