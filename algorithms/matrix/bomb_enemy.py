@@ -61,38 +61,3 @@ def col_kills(grid, i, j):
             num += 1
         i += 1
     return num
-
-
-# ----------------- TESTS -------------------------
-
-"""
-    Testsuite for the project
-"""
-
-import unittest
-
-
-class TestBombEnemy(unittest.TestCase):
-    def test_3x4(self):
-        grid1 = [["0", "E", "0", "0"],
-                 ["E", "0", "W", "E"],
-                 ["0", "E", "0", "0"]]
-        self.assertEqual(3, max_killed_enemies(grid1))
-
-    def test_4x4(self):
-        grid1 = [
-                ["0", "E", "0", "E"],
-                ["E", "E", "E", "0"],
-                ["E", "0", "W", "E"],
-                ["0", "E", "0", "0"]]
-        grid2 = [
-                ["0", "0", "0", "E"],
-                ["E", "0", "0", "0"],
-                ["E", "0", "W", "E"],
-                ["0", "E", "0", "0"]]
-        self.assertEqual(5, max_killed_enemies(grid1))
-        self.assertEqual(3, max_killed_enemies(grid2))
-
-
-if __name__ == "__main__":
-    unittest.main()

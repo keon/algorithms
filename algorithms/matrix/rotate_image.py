@@ -23,11 +23,3 @@ def rotate(mat):
             mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
     return mat
 
-
-if __name__ == "__main__":
-    mat = [[1, 2, 3],
-           [4, 5, 6],
-           [7, 8, 9]]
-    print(mat)
-    rotate(mat)
-    print(mat)
