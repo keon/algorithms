@@ -26,3 +26,4 @@ from .power import *
 from .magic_number import *
 from .krishnamurthy_number import *
 from .num_perfect_squares import *
+from .manhattan_distance import *
