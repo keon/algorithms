@@ -13,36 +13,29 @@ A solution set is:
   (-1, -1, 2)
 }
 """
+''' used two pointer apporach'''
 
-
-def three_sum(array):
-    """
-    :param array: List[int]
-    :return: Set[ Tuple[int, int, int] ]
-    """
-    res = set()
-    array.sort()
-    for i in range(len(array) - 2):
-        if i > 0 and array[i] == array[i - 1]:
-            continue
-        l, r = i + 1, len(array) - 1
-        while l < r:
-            s = array[i] + array[l] + array[r]
-            if s > 0:
-                r -= 1
-            elif s < 0:
-                l += 1
-            else:
-                # found three sum
-                res.add((array[i], array[l], array[r]))
-
-                # remove duplicates
-                while l < r and array[l] == array[l + 1]:
-                    l += 1
-
-                while l < r and array[r] == array[r - 1]:
-                    r -= 1
-
-                l += 1
-                r -= 1
-    return res
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        sol = []
+        nums.sort()
+        
+        for i in range(len(nums)-2):
+            first= i
+            left = i+1
+            right = len(nums)-1
+            
+            while left < right:
+                
+                if nums[first] + nums[left] + nums[right] == 0:
+                    if ([nums[first] , nums[left] , nums[right]]) not in sol:
+                        sol.append([nums[first] , nums[left] , nums[right]])
+                    right -=1
+                    left +=1
+                    
+                elif nums[first] + nums[left] + nums[right] > 0:
+                    right -=1
+                
+                elif nums[first] + nums[left] + nums[right] < 0:
+                    left +=1
+        return sol
