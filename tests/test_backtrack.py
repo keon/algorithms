@@ -12,6 +12,10 @@ from algorithms.backtrack import (
     generate_parenthesis_v1,
     generate_parenthesis_v2,
     letter_combinations,
+    binary_minimax,
+    minimax,
+    Node,
+    Node2,
     palindromic_substrings,
     pattern_match,
     permute_unique,
@@ -21,6 +25,7 @@ from algorithms.backtrack import (
     subsets,
     subsets_v2,
 )
+
 
 import unittest
 
@@ -239,7 +244,70 @@ class TestGenerateAbbreviations(unittest.TestCase):
         self.assertEqual(sorted(generate_abbreviations(word2)),
                          sorted(answer2))
 
-
+class TestMiniMax(unittest.TestCase):
+    
+    def test_MinimaxBinary1(self):   ###will go throught full tree
+        n1 = Node(0)
+        n2 = Node(0)
+        n3 = Node(0)
+        n4 = Node(14)
+        n5 = Node(8)
+        n6 = Node(7)
+        n7 = Node(6)
+        n1.left, n1.right = n2, n3
+        n2.left, n2.right = n4, n5
+        n3.left, n3.right = n6, n7
+        a = binary_minimax(n1, 2, True, -10, 10)
+        self.assertEqual(binary_minimax(n1, 2, True, -10, 10), 8)
+        
+    def test_MinimaxBinary2(self): ###will stop at depth 1
+        n1 = Node(0)
+        n2 = Node(4)
+        n3 = Node(5)
+        n4 = Node(14)
+        n5 = Node(8)
+        n6 = Node(7)
+        n7 = Node(6)
+        n1.left, n1.right = n2, n3
+        n2.left, n2.right = n4, n5
+        n3.left, n3.right = n6, n7
+        a=binary_minimax(n1,2,True,-10,10)
+        self.assertEqual(binary_minimax(n1 ,1 ,True ,-10,10),5)
+        
+    def test_Minimax(self):
+        n1 = Node2()
+        n2 = Node2()
+        n3 = Node2()
+        n4 = Node2()
+        n5 = Node2()
+        n6 = Node2()
+        n7 = Node2()
+        n8 = Node2()
+        n9 = Node2()
+        n10 = Node2()
+        n1.children=[n2,n3,n4]
+        n1.keys=[0,0]
+        n2.children=[n5,n6]
+        n2.keys=[0,0]
+        n3.children=[n7]
+        n3.keys=[0,0]
+        n4.children=[n8,n9,n10]
+        n4.keys=[0,0]
+        n5.children=[]
+        n5.keys=[5,5]
+        n6.children=[]
+        n6.keys=[4,6]
+        n7.children=[]
+        n7.keys=[8,3]
+        n8.children=[]
+        n8.keys=[4,7]
+        n9.children=[]
+        n9.keys=[1,11]
+        n10.children=[]
+        n10.keys=[3,3]
+        self.assertEqual(minimax(n1,0,3,True,-100,100),8)   #test tree related to key 0
+        self.assertEqual(minimax(n1,1,3,True,-100,100),5)   #test tree related to key 1
+    
 class TestPatternMatch(unittest.TestCase):
 
     def test_pattern_match(self):
@@ -389,6 +457,8 @@ class TestSubsets(unittest.TestCase):
                    [1, 3], [1, 4], [1], [2, 3, 4], [2, 3], [2, 4], [2],
                    [3, 4], [3], [4], []]
         self.assertEqual(sorted(subsets_v2(nums2)), sorted(answer2))
+
+
 
 
 if __name__ == '__main__':
