@@ -14,10 +14,12 @@ In this case, you should ignore redundant slashes and return "/home/foo".
 
 Reference: https://leetcode.com/problems/simplify-path/description/
 """
+import posixpath
 
-import os
+
 def simplify_path_v1(path):
-    return os.path.abspath(path)
+    return posixpath.normpath(path)
+
 
 def simplify_path_v2(path):
     stack, tokens = [], path.split("/")
