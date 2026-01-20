@@ -39,3 +39,4 @@ from .atbash_cipher import *
 from .longest_palindromic_substring import *
 from .knuth_morris_pratt import *
 from .panagram import *
+from .manacher import *
