@@ -53,6 +53,8 @@ If you want to uninstall algorithms, it is as simple as:
 ## List of Implementations
 
 - [arrays](algorithms/arrays)
+    - [implementation of lists](algorithms/algorithm/list/list.py)
+    - [sparce_Tree](algorithms/algorithm/arrays/sparce_array.py)
     - [delete_nth](algorithms/arrays/delete_nth.py)
     - [flatten](algorithms/arrays/flatten.py)
     - [garage](algorithms/arrays/garage.py)
