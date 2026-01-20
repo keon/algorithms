@@ -1,4 +1,7 @@
+from multiprocessing.sharedctypes import Value
 from algorithms.dp import (
+    assign_unique_caps,
+    tsp,
     max_profit_naive, max_profit_optimized,
     climb_stairs, climb_stairs_optimized,
     count,
@@ -19,8 +22,162 @@ from algorithms.dp import (
 
 
 import unittest
+import math
 
+'''
+This class test the dynamic programming with bit masking algorithm
+defined in algorithms/dp/bitmasking.py
+'''
+class TestBitmaskingCapAssignment(unittest.TestCase):
+    # === Relates to requirement R1.1 "No cap sets" ===
+    # Checks that a value error is raised when the nr of cap sets is 0.
+    def test_no_cap_sets(self):
+        with self.assertRaises(ValueError):
+            assign_unique_caps([],0)
 
+    # === Relates to requirement R1.2 "Person without caps" ===
+    # Checks that the output is 0 when there is one or more empty cap sets. This means there is 
+    # at least one person that cannot be assigned a cap.
+    def test_person_without_caps(self):
+        self.assertEquals(assign_unique_caps([[1,2,3], [], [2,5,6]],6), 0)
+
+    # === Relates to requirement R1.3 "No unique cap assignment" ===
+    # Checks that the output is 0 when there are no unique cap assignments, even though all of the 
+    # cap sets contain at least one cap.
+    def test_no_unique_cap_assignment(self):
+        self.assertEquals(assign_unique_caps([[1,2,3], [4], [4]], 5), 0)
+        
+    # === Relates to requirement R1.4 "One or more unique cap assignments" ===
+    # Checks that the output is greater than 0 (and corresponds to the correct number of 
+    # unique assignments) when the cap sets allow for at least one unique assignment.
+    def test_one_or_more_unique_cap_assignments(self):
+        self.assertEquals(assign_unique_caps([[1,2,3], [4], [1,2]], 6), 4)
+    
+    # === Relates to requirement R1.5 "Too Many People" ===
+    # Checks that if the amount of people (i.e. cap sets) are too large we raise a value error.
+    def test_too_many_people(self):
+        with self.assertRaises(ValueError):
+            assign_unique_caps([[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11]],11)    
+
+    # === Relates to requirement R1.6 "Faulty CapIds" ===
+    # Checks that if one of the cap ids are supplied in the wrong format a value error is raised.
+    def test_faulty_string(self):
+        with self.assertRaises(ValueError):
+            assign_unique_caps([[1],['2']],2)
+    
+    # === Relates to requirement R1.7 "Faulty collection input" ===
+    # Checks that a value error is raised when the list of caps is provided as the wrong type of collection.
+    def test_faulty_collection(self):
+        with self.assertRaises(ValueError):
+            assign_unique_caps([[1],{2}],2)
+
+     # === Relates to requirement R1.8 "CapId too low" ===
+    # Checks that the highest supplied capId matches the cap with the highest id.
+    def test_too_many_sets(self):
+        with self.assertRaises(ValueError):
+            assign_unique_caps([[1],[2]],1)
+        
+class TestBitmaskingTSP(unittest.TestCase):
+    # === Relates to requirement R2.1 "No nodes" ===
+    # Checks that a ValueError is raised when the list of nodes is empty
+    def test_no_nodes(self):
+        nodes = []
+        nbRow = 0
+        nbColumn = 0
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+
+    # === Relates to requirement R2.2 "One node" ===
+    # Checks that the output is 0 when there is only one node
+    def test_one_node(self):
+        nodes = [['*']]
+        nbRow = 1
+        nbColumn = 1
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), 0)
+
+    # === Relates to requirement R2.3 "Positive path length" ===
+    # Checks that the output is a positive number that corresponds to the length of the 
+    # shortest Euler circuit
+    def test_positive_path_length(self):
+        nodes = [
+            ['.', '.', '.', '.', '.', '*', '.'],
+            ['.', '.', '.', '#', '.', '.', '.'],
+            ['.', '*', '.', '#', '.', '*', '.'],
+            ['.', '.', '.', '.', '.', '*', '.']
+        ]
+        nbRow = 4
+        nbColumn = 7
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), 16)
+        
+    # === Relates to requirement R2.4 "No solution" ===
+    # Checks that the output is inf when there is at least one unreachable node 
+    def test_no_solution(self):
+        nodes = [
+            ['.', '.', '.', '#', '.', '.', '.'], 
+            ['.', '.', '.', '#', '.', '*', '.'], 
+            ['.', '.', '.', '#', '.', '.', '.'], 
+            ['.', '*', '.', '#', '.', '*', '.'], 
+            ['.', '.', '.', '#', '.', '.', '.']
+        ]
+        nbRow = 5
+        nbColumn = 7
+        self.assertEquals(tsp(nodes, nbRow, nbColumn), math.inf)
+        
+        
+    # === Relates to requirement R2.5 "Faulty dimensions" ===
+    # Checks a ValueError is raised when the dimensions of the graph don't correspond to 
+    # the dimension parameters
+    def test_faulty_dimensions(self):
+        nodes = [
+            ['.', '.', '.', '.', '.', '*', '.'],
+            ['.', '.', '.', '#', '.', '.', '.'],
+            ['.', '*', '.', '#', '.', '*', '.'],
+            ['.', '.', '.', '.', '.', '*', '.']
+        ]
+        nbRow = 3
+        nbColumn = 7
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+        nbRow = 4
+        nbColumn = 8
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+        
+    # === Relates to requirement R2.6 "Wrong collection type" ===
+    # Checks that a value error is raised when the collection of nodes is of the wrong type.
+    def test_wrong_collection_type(self):
+        nodes = [
+            {'.', '.', '.', '.', '.', '.', '*'}
+        ]
+        nbRow = 1
+        nbColumn = 7
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+    
+    # === Relates to requirement R2.7 "Wrong node type" ===
+    # Checks that a value error is raised when a node is of the wrong type.
+    def test_wrong_node_type(self):
+        nodes = [
+            ['.', '.', '.', '.', '.', 'X', '*']
+        ]
+        nbRow = 1
+        nbColumn = 7
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+
+    # === Relates to requirement R2.8 "Too many houses" ===
+    # Checks that a value error is raised when too many houses are provided.
+    def test_too_many_houses(self):
+        nodes = [
+            ['*', '*', '*', '*', '*', '*', '*'],
+            ['*', '*', '*', '*', '*', '*', '*']
+        ]
+        nbRow = 2
+        nbColumn = 7
+        with self.assertRaises(ValueError):
+            tsp(nodes, nbRow, nbColumn)
+    
+        
 class TestBuySellStock(unittest.TestCase):
     def test_max_profit_naive(self):
         self.assertEqual(max_profit_naive([7, 1, 5, 3, 6, 4]), 5)
