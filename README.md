@@ -86,6 +86,7 @@ If you want to uninstall algorithms, it is as simple as:
     - [generate_abbreviations](algorithms/backtrack/generate_abbreviations.py)
     - [generate_parenthesis](algorithms/backtrack/generate_parenthesis.py)
     - [letter_combination](algorithms/backtrack/letter_combination.py)
+    - [MaxSum subarray](algorithms/backtrack/maxsum_subarray.py)
     - [palindrome_partitioning](algorithms/backtrack/palindrome_partitioning.py)
     - [pattern_match](algorithms/backtrack/pattern_match.py)
     - [permute](algorithms/backtrack/permute.py)
