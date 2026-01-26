@@ -420,6 +420,11 @@ If you want to uninstall algorithms, it is as simple as:
     - [count_islands](algorithms/unionfind/count_islands.py)
 
 
+## Core Contributors & Maintainers
+
+- [Keon Kim](https://linkedin.com/in/keon)
+- [Krish Chelikavada](https://linkedin.com/in/cskc1)
+
 ## Contributors
 
 Thanks to [all the contributors](https://github.com/keon/algorithms/graphs/contributors)
