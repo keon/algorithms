@@ -1,0 +1,83 @@
+name: Review Pull Request with Gemini
+
+on:
+  pull_request:
+    types: [labeled] # Only trigger when labels are added
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'ai-review'
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: files
+        run: |
+          # Fetch the base branch (usually main or master)
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+
+          # Get changed files between base branch and current PR
+          echo "CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD | grep '\.js\|\.ts\|\.tsx\|\.md\|\.css\|\.json\|\.yml\|\.yaml\|\.sh\|\.md' | tr '\n' ',' | sed 's/,$//')" >> $GITHUB_OUTPUT
+
+      - name: Read file contents
+        id: read
+        run: |
+          mkdir -p output
+          CHANGED_FILES="${{ steps.files.outputs.CHANGED_FILES }}"
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found" > output/combined.txt
+          else
+            for file in $(echo "$CHANGED_FILES" | tr ',' '\n'); do
+              if [ -f "$file" ]; then
+                echo ">>>>> $file" >> output/combined.txt
+                cat "$file" >> output/combined.txt
+                echo -e "\n\n" >> output/combined.txt
+              fi
+            done
+          fi
+
+      - name: Send to Gemini API
+        id: gemini
+        if: steps.files.outputs.CHANGED_FILES != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          # Create the request JSON file to avoid argument list too long error
+          jq -n \
+            --arg prompt "Você é um assistente que faz revisão de código. Dado o código abaixo, comente melhorias, problemas ou boas práticas que se aplicam. Código:" \
+            --rawfile code output/combined.txt \
+            '{
+              "contents": [{
+                "parts": [{
+                  "text": ($prompt + "\n\n" + $code)
+                }]
+              }]
+            }' > request.json
+
+          # Make the API request using the JSON file
+          RESPONSE=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d @request.json)
+
+          # Extract the review text from response
+          REVIEW_TEXT=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "Error processing API response"')
+
+          echo "REVIEW<<EOF" >> $GITHUB_OUTPUT
+          echo "$REVIEW_TEXT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR
+        if: steps.files.outputs.CHANGED_FILES != ''
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            **Revisão de Código do Gemini**
+            ---
+            ${{ steps.gemini.outputs.REVIEW }}
