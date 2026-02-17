@@ -25,7 +25,7 @@ from algorithms.linkedlist.kth_to_last import (
     kth_to_last_dict,
     kth_to_last_eval,
 )
-from algorithms.linkedlist.linkedlist import (
+from algorithms.data_structures.linked_list import (
     DoublyLinkedListNode,
     SinglyLinkedListNode,
 )

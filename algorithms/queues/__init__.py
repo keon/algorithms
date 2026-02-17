@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from .max_sliding_window import max_sliding_window
 from .moving_average import MovingAverage
-from .priority_queue import PriorityQueue, PriorityQueueNode
-from .queue import AbstractQueue, ArrayQueue, LinkedListQueue, QueueNode
+from algorithms.data_structures.priority_queue import PriorityQueue, PriorityQueueNode
+from algorithms.data_structures.queue import AbstractQueue, ArrayQueue, LinkedListQueue, QueueNode
 from .reconstruct_queue import reconstruct_queue
 from .zigzagiterator import ZigZagIterator
 

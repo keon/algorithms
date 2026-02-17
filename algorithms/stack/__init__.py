@@ -8,7 +8,7 @@ from .longest_abs_path import length_longest_path
 from .ordered_stack import OrderedStack
 from .remove_min import remove_min
 from .simplify_path import simplify_path
-from .stack import AbstractStack, ArrayStack, LinkedListStack, StackNode
+from algorithms.data_structures.stack import AbstractStack, ArrayStack, LinkedListStack, StackNode
 from .stutter import first_stutter, second_stutter
 from .switch_pairs import first_switch_pairs, second_switch_pairs
 from .valid_parenthesis import is_valid

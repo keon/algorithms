@@ -18,7 +18,7 @@ from algorithms.graph.clone_graph import (
 )
 from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph.find_all_cliques import find_all_cliques
-from algorithms.graph.graph import DirectedEdge, DirectedGraph, Node
+from algorithms.data_structures.graph import DirectedEdge, DirectedGraph, Node
 from algorithms.graph.kahns_algorithm import Solution as KahnsSolution
 from algorithms.graph.markov_chain import iterating_markov_chain, next_state
 from algorithms.graph.maximum_flow import dinic, edmonds_karp, ford_fulkerson
