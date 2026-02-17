@@ -33,6 +33,17 @@ from algorithms.graph.traversal import (
     dfs_traverse,
     dfs_traverse_recursive,
 )
+from algorithms.graph.count_islands_bfs import count_islands
+from algorithms.graph.count_islands_dfs import num_islands as num_islands_dfs
+from algorithms.graph.maze_search_bfs import maze_search
+from algorithms.graph.maze_search_dfs import find_path as find_path_dfs
+from algorithms.graph.word_ladder import ladder_length
+from algorithms.graph.shortest_distance_from_all_buildings import shortest_distance
+from algorithms.graph.topological_sort_bfs import topological_sort
+from algorithms.graph.all_factors import get_factors, get_factors_iterative1, get_factors_iterative2
+from algorithms.graph.pacific_atlantic import pacific_atlantic
+from algorithms.graph.sudoku_solver import Sudoku
+from algorithms.graph.walls_and_gates import walls_and_gates
 
 __all__ = [
     # a_star
@@ -83,4 +94,28 @@ __all__ = [
     "bfs_traverse",
     "dfs_traverse",
     "dfs_traverse_recursive",
+    # count_islands (bfs)
+    "count_islands",
+    # count_islands (dfs)
+    "num_islands_dfs",
+    # maze_search (bfs)
+    "maze_search",
+    # maze_search (dfs)
+    "find_path_dfs",
+    # word_ladder
+    "ladder_length",
+    # shortest_distance_from_all_buildings
+    "shortest_distance",
+    # topological_sort (bfs)
+    "topological_sort",
+    # all_factors
+    "get_factors",
+    "get_factors_iterative1",
+    "get_factors_iterative2",
+    # pacific_atlantic
+    "pacific_atlantic",
+    # sudoku_solver
+    "Sudoku",
+    # walls_and_gates
+    "walls_and_gates",
 ]

@@ -366,3 +366,220 @@ class TestStronglyConnectedComponentsKosaraju(unittest.TestCase):
 
         # Expected result: 2 strongly connected components
         self.assertEqual(result, 2)
+
+
+# --- Tests merged from test_bfs.py ---
+
+from algorithms.graph import (
+    count_islands,
+    maze_search,
+    ladder_length,
+)
+
+
+class TestCountIslandsBfs(unittest.TestCase):
+
+    def test_count_islands(self):
+        grid_1 = [[1, 1, 1, 1, 0], [1, 1, 0, 1, 0], [1, 1, 0, 0, 0],
+                  [0, 0, 0, 0, 0]]
+        self.assertEqual(1, count_islands(grid_1))
+        grid_2 = [[1, 1, 0, 0, 0], [1, 1, 0, 0, 0], [0, 0, 1, 0, 0],
+                  [0, 0, 0, 1, 1]]
+        self.assertEqual(3, count_islands(grid_2))
+        grid_3 = [[1, 1, 1, 0, 0, 0], [1, 1, 0, 0, 0, 0], [1, 0, 0, 0, 0, 1],
+                  [0, 0, 1, 1, 0, 1], [0, 0, 1, 1, 0, 0]]
+        self.assertEqual(3, count_islands(grid_3))
+        grid_4 = [[1, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 1],
+                  [1, 1, 1, 1, 0, 0]]
+        self.assertEqual(5, count_islands(grid_4))
+
+
+class TestMazeSearchBfs(unittest.TestCase):
+
+    def test_maze_search(self):
+        grid_1 = [[1, 0, 1, 1, 1, 1], [1, 0, 1, 0, 1, 0], [1, 0, 1, 0, 1, 1],
+                  [1, 1, 1, 0, 1, 1]]
+        self.assertEqual(14, maze_search(grid_1))
+        grid_2 = [[1, 0, 0], [0, 1, 1], [0, 1, 1]]
+        self.assertEqual(-1, maze_search(grid_2))
+
+
+class TestWordLadder(unittest.TestCase):
+
+    def test_ladder_length(self):
+
+        # hit -> hot -> dot -> dog -> cog
+        self.assertEqual(5, ladder_length('hit', 'cog', ["hot", "dot", "dog",
+                                          "lot", "log"]))
+
+        # pick -> sick -> sink -> sank -> tank == 5
+        self.assertEqual(5, ladder_length('pick', 'tank',
+                                          ['tock', 'tick', 'sank', 'sink',
+                                           'sick']))
+
+        # live -> life == 1, no matter what is the word_list.
+        self.assertEqual(1, ladder_length('live', 'life', ['hoho', 'luck']))
+
+        # 0 length from ate -> ate
+        self.assertEqual(0, ladder_length('ate', 'ate', []))
+
+        # not possible to reach !
+        self.assertEqual(-1, ladder_length('rahul', 'coder', ['blahh',
+                                           'blhah']))
+
+
+# --- Tests merged from test_dfs.py ---
+
+from algorithms.graph import (
+    get_factors, get_factors_iterative1, get_factors_iterative2,
+    num_islands_dfs,
+    pacific_atlantic,
+    Sudoku,
+    walls_and_gates,
+    find_path_dfs,
+)
+
+
+class TestAllFactors(unittest.TestCase):
+    def test_get_factors(self):
+        self.assertEqual([[2, 16], [2, 2, 8], [2, 2, 2, 4], [2, 2, 2, 2, 2],
+                         [2, 4, 4], [4, 8]], get_factors(32))
+
+    def test_get_factors_iterative1(self):
+        self.assertEqual([[2, 16], [4, 8], [2, 2, 8], [2, 4, 4], [2, 2, 2, 4],
+                          [2, 2, 2, 2, 2]], get_factors_iterative1(32))
+
+    def test_get_factors_iterative2(self):
+        self.assertEqual([[2, 2, 2, 2, 2], [2, 2, 2, 4], [2, 2, 8], [2, 4, 4],
+                          [2, 16], [4, 8]], get_factors_iterative2(32))
+
+
+class TestCountIslandsDfs(unittest.TestCase):
+    def test_num_islands(self):
+        self.assertEqual(1, num_islands_dfs([[1, 1, 1, 1, 0], [1, 1, 0, 1, 0],
+                                         [1, 1, 0, 0, 0], [0, 0, 0, 0, 0]]))
+        self.assertEqual(3, num_islands_dfs([[1, 1, 0, 0, 0], [1, 1, 0, 0, 0],
+                                         [0, 0, 1, 0, 0], [0, 0, 0, 1, 1]]))
+
+
+class TestPacificAtlantic(unittest.TestCase):
+    def test_pacific_atlantic(self):
+        self.assertEqual([[0, 4], [1, 3], [1, 4], [2, 2], [3, 0],
+                          [3, 1], [4, 0]], pacific_atlantic([[1, 2, 2, 3, 5],
+                                                            [3, 2, 3, 4, 4],
+                                                            [2, 4, 5, 3, 1],
+                                                            [6, 7, 1, 4, 5],
+                                                            [5, 1, 1, 2, 4]]))
+
+
+class TestSudoku(unittest.TestCase):
+    def test_sudoku_solver(self):
+        board = [["5", "3", "."], ["6", ".", "."], [".", "9", "8"]]
+        test_obj = Sudoku(board, 3, 3)
+        test_obj.solve()
+        self.assertEqual([['5', '3', '1'], ['6', '1', '2'],
+                         ['1', '9', '8']], test_obj.board)
+
+
+class TestWallsAndGates(unittest.TestCase):
+    def test_walls_and_gates(self):
+        rooms = [[float("inf"), -1, 0, float("inf")],
+                 [float("inf"), float("inf"), float("inf"), -1],
+                 [float("inf"), -1, float("inf"), -1],
+                 [0, -1, float("inf"), float("inf")]]
+        walls_and_gates(rooms)
+        self.assertEqual([[3, -1, 0, 1], [2, 2, 1, -1], [1, -1, 2, -1],
+                          [0, -1, 3, 4]], rooms)
+
+
+class TestMazeSearchDfs(unittest.TestCase):
+    def test_maze_search(self):
+        maze_1 = [[1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1,
+                   1, 0, 1, 1, 1],
+                  [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1,
+                   0, 1, 1, 1, 0, 1]]
+        self.assertEqual(37, find_path_dfs(maze_1))
+        maze_2 = [[1, 0, 1, 1, 1, 1], [1, 0, 1, 0, 1, 0],
+                  [1, 0, 1, 0, 1, 1], [1, 1, 1, 0, 1, 1]]
+        self.assertEqual(14, find_path_dfs(maze_2))
+        maze_3 = [[1, 0, 0], [0, 1, 1], [0, 1, 1]]
+        self.assertEqual(-1, find_path_dfs(maze_3))
+
+
+# --- Tests merged from test_topological.py ---
+
+from algorithms.graph import topological_sort
+
+
+class TestTopologicalSort(unittest.TestCase):
+    def test_simple_dag(self):
+        vertices = 6
+        edges = [
+            (5, 2),
+            (5, 0),
+            (4, 0),
+            (4, 1),
+            (2, 3),
+            (3, 1)
+        ]
+
+        order = topological_sort(vertices, edges)
+
+        # Verify correct length
+        self.assertEqual(len(order), vertices)
+
+        # Verify constraints
+        position = {node: i for i, node in enumerate(order)}
+        for u, v in edges:
+            self.assertLess(position[u], position[v])
+
+    def test_single_vertex(self):
+        vertices = 1
+        edges = []
+
+        order = topological_sort(vertices, edges)
+        self.assertEqual(order, [0])
+
+    def test_disconnected_graph(self):
+        vertices = 4
+        edges = [
+            (0, 1),
+            (2, 3)
+        ]
+
+        order = topological_sort(vertices, edges)
+
+        self.assertEqual(len(order), vertices)
+
+        position = {node: i for i, node in enumerate(order)}
+        for u, v in edges:
+            self.assertLess(position[u], position[v])
+
+    def test_no_edges(self):
+        vertices = 5
+        edges = []
+
+        order = topological_sort(vertices, edges)
+
+        self.assertEqual(len(order), vertices)
+        self.assertCountEqual(order, [0, 1, 2, 3, 4])
+
+    def test_cycle_detection(self):
+        vertices = 3
+        edges = [
+            (0, 1),
+            (1, 2),
+            (2, 0)
+        ]
+
+        with self.assertRaises(ValueError):
+            topological_sort(vertices, edges)
+
+    def test_self_loop_cycle(self):
+        vertices = 2
+        edges = [
+            (0, 0)
+        ]
+
+        with self.assertRaises(ValueError):
+            topological_sort(vertices, edges)
