@@ -1,68 +1,82 @@
 """
-Non-negative 1-sparse recovery problem.
-This algorithm assumes we have a non negative dynamic stream.
+Non-negative 1-Sparse Recovery
 
-Given a stream of tuples, where each tuple contains a number and a sign (+/-), it check if the
-stream is 1-sparse, meaning if the elements in the stream cancel eacheother out in such
-a way that ther is only a unique number at the end.
+Determines whether a dynamic stream of (value, sign) tuples is 1-sparse,
+meaning all values cancel out except for a single unique number. If so,
+returns that number; otherwise returns None.
 
-Examples:
-#1
-Input:  [(4,'+'), (2,'+'),(2,'-'),(4,'+'),(3,'+'),(3,'-')],
-Output: 4
-Comment: Since 2 and 3 gets removed.
-#2
-Input:  [(2,'+'),(2,'+'),(2,'+'),(2,'+'),(2,'+'),(2,'+'),(2,'+')]
-Output: 2
-Comment: No other numbers present
-#3
-Input:  [(2,'+'),(2,'+'),(2,'+'),(2,'+'),(2,'+'),(2,'+'),(1,'+')]
-Output: None
-Comment: Not 1-sparse
+Reference: https://en.wikipedia.org/wiki/Sparse_recovery
+
+Complexity:
+    Time:  O(n * b) where n is stream length and b is bit width (32)
+    Space: O(b)
 """
 
-def one_sparse(array):
-    """1-sparse algorithm
+from __future__ import annotations
 
-    Keyword arguments:
-    array -- stream of tuples
+
+def one_sparse(array: list[tuple[int, str]]) -> int | None:
+    """Recover the unique element from a 1-sparse stream.
+
+    Args:
+        array: A list of (value, sign) tuples where sign is '+' or '-'.
+
+    Returns:
+        The unique element if the stream is 1-sparse, otherwise None.
+
+    Examples:
+        >>> one_sparse([(4, '+'), (2, '+'), (2, '-'), (4, '+'), (3, '+'), (3, '-')])
+        4
+        >>> one_sparse([(2, '+'), (2, '+'), (2, '+'),
+        ...            (2, '+'), (2, '+'), (2, '+'), (1, '+')])
     """
     sum_signs = 0
-    bitsum = [0]*32
+    bitsum: list[int] = [0] * 32
     sum_values = 0
-    for val,sign in array:
+
+    for val, sign in array:
         if sign == "+":
             sum_signs += 1
             sum_values += val
         else:
             sum_signs -= 1
             sum_values -= val
+        _update_bit_sum(bitsum, val, sign)
 
-        _get_bit_sum(bitsum,val,sign)
+    if sum_signs > 0 and _check_bit_sum_consistency(bitsum, sum_signs):
+        return int(sum_values / sum_signs)
+    return None
 
-    if sum_signs > 0 and _check_every_number_in_bitsum(bitsum,sum_signs):
-        return int(sum_values/sum_signs)
-    else:
-        return None
 
-#Helper function to check that every entry in the list is either 0 or  the same as the
-#sum of signs
-def _check_every_number_in_bitsum(bitsum,sum_signs):
-    for val in bitsum:
-        if val != 0 and val != sum_signs :
-            return False
-    return True
+def _check_bit_sum_consistency(bitsum: list[int], sum_signs: int) -> bool:
+    """Check that every entry is either 0 or equal to sum_signs.
 
-# Adds bit representation value to bitsum array
-def _get_bit_sum(bitsum,val,sign):
-    i = 0
+    Args:
+        bitsum: The accumulated bit sums.
+        sum_signs: The expected non-zero value.
+
+    Returns:
+        True if the bitsum is consistent with a 1-sparse stream.
+    """
+    return all(val == 0 or val == sum_signs for val in bitsum)
+
+
+def _update_bit_sum(bitsum: list[int], val: int, sign: str) -> None:
+    """Add or subtract the bit representation of val to the bitsum array.
+
+    Args:
+        bitsum: The accumulated bit sums to update in place.
+        val: The integer value whose bits to process.
+        sign: '+' to add or '-' to subtract.
+    """
+    idx = 0
     if sign == "+":
         while val:
-            bitsum[i] += val & 1
-            i +=1
-            val >>=1
-    else :
+            bitsum[idx] += val & 1
+            idx += 1
+            val >>= 1
+    else:
         while val:
-            bitsum[i] -= val & 1
-            i +=1
-            val >>=1
+            bitsum[idx] -= val & 1
+            idx += 1
+            val >>= 1

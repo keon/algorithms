@@ -1,51 +1,48 @@
 """
-Cholesky matrix decomposition is used to find the decomposition of a
-Hermitian positive-definite matrix A
-into matrix V, so that V * V* = A, where V* denotes the conjugate
-transpose of L.
-The dimensions of the matrix A must match.
+Cholesky Matrix Decomposition
 
-This method is mainly used for numeric solution of linear equations Ax = b.
+Decompose a Hermitian positive-definite matrix A into a lower-triangular
+matrix V such that V * V^T = A. Mainly used for numerical solution of
+linear equations Ax = b.
 
-example:
-Input matrix A:
-[[  4,  12, -16],
- [ 12,  37, -43],
- [-16, -43,  98]]
+Reference: https://en.wikipedia.org/wiki/Cholesky_decomposition
 
-Result:
-[[2.0, 0.0, 0.0],
-[6.0, 1.0, 0.0],
-[-8.0, 5.0, 3.0]]
-
-Time complexity of this algorithm is O(n^3), specifically about (n^3)/3
-
+Complexity:
+    Time:  O(n^3)
+    Space: O(n^2)
 """
+
+from __future__ import annotations
+
 import math
 
 
-def cholesky_decomposition(A):
+def cholesky_decomposition(matrix: list[list[float]]) -> list[list[float]] | None:
+    """Compute the Cholesky decomposition of a positive-definite matrix.
+
+    Args:
+        matrix: Hermitian positive-definite matrix (n x n).
+
+    Returns:
+        Lower-triangular matrix V such that V * V^T = matrix,
+        or None if the matrix cannot be decomposed.
+
+    Examples:
+        >>> cholesky_decomposition([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
+        [[2.0, 0.0, 0.0], [6.0, 1.0, 0.0], [-8.0, 5.0, 3.0]]
     """
-    :param A: Hermitian positive-definite matrix of type List[List[float]]
-    :return: matrix of type List[List[float]] if A can be decomposed,
-    otherwise None
-    """
-    n = len(A)
-    for ai in A:
-        if len(ai) != n:
+    size = len(matrix)
+    for row in matrix:
+        if len(row) != size:
             return None
-    V = [[0.0] * n for _ in range(n)]
-    for j in range(n):
-        sum_diagonal_element = 0
-        for k in range(j):
-            sum_diagonal_element = sum_diagonal_element + math.pow(V[j][k], 2)
-        sum_diagonal_element = A[j][j] - sum_diagonal_element
-        if sum_diagonal_element <= 0:
+    result = [[0.0] * size for _ in range(size)]
+    for j in range(size):
+        diagonal_sum = sum(result[j][k] ** 2 for k in range(j))
+        diagonal_sum = matrix[j][j] - diagonal_sum
+        if diagonal_sum <= 0:
             return None
-        V[j][j] = math.pow(sum_diagonal_element, 0.5)
-        for i in range(j+1, n):
-            sum_other_element = 0
-            for k in range(j):
-                sum_other_element += V[i][k]*V[j][k]
-            V[i][j] = (A[i][j] - sum_other_element)/V[j][j]
-    return V
+        result[j][j] = math.sqrt(diagonal_sum)
+        for i in range(j + 1, size):
+            off_diagonal_sum = sum(result[i][k] * result[j][k] for k in range(j))
+            result[i][j] = (matrix[i][j] - off_diagonal_sum) / result[j][j]
+    return result

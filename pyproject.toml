@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "algorithms"
+version = "0.2.0"
+description = "Pythonic Data Structures and Algorithms"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Algorithms Team & Contributors", email = "kwk236@gmail.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Education",
+]
+
+[project.urls]
+Homepage = "https://github.com/keon/algorithms"
+Repository = "https://github.com/keon/algorithms"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "black",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*", "tools", "tools.*", "docs", "docs.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-v", "--tb=short"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["algorithms"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+check_untyped_defs = true
+disallow_untyped_defs = false
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]

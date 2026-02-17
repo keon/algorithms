@@ -1,32 +1,37 @@
 """
-Given a binary tree, find the lowest common ancestor
-(LCA) of two given nodes in the tree.
+Lowest Common Ancestor
 
-According to the definition of LCA on Wikipedia:
-    “The lowest common ancestor is defined between two nodes
-    v and w as the lowest node in T that has both v and w as
-    descendants
-    (where we allow a node to be a descendant of itself).”
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes.
+The LCA is the lowest node that has both nodes as descendants (a node can be a
+descendant of itself).
 
-        _______3______
-       /              \
-    ___5__          ___1__
-   /      \        /      \
-   6      _2       0       8
-         /  \
-         7   4
-For example, the lowest common ancestor (LCA) of nodes 5 and 1 is 3.
-Another example is LCA of nodes 5 and 4 is 5,
-since a node can be a descendant of itself according to the LCA definition.
+Reference: https://en.wikipedia.org/wiki/Lowest_common_ancestor
+
+Complexity:
+    Time:  O(n)
+    Space: O(n) due to recursion stack
 """
 
+from __future__ import annotations
 
-def lca(root, p, q):
-    """
-    :type root: TreeNode
-    :type p: TreeNode
-    :type q: TreeNode
-    :rtype: TreeNode
+from algorithms.tree.tree import TreeNode
+
+
+def lca(root: TreeNode | None, p: TreeNode, q: TreeNode) -> TreeNode | None:
+    """Find the lowest common ancestor of two nodes in a binary tree.
+
+    Args:
+        root: The root of the binary tree.
+        p: The first target node.
+        q: The second target node.
+
+    Returns:
+        The lowest common ancestor node, or None if not found.
+
+    Examples:
+        >>> node = TreeNode(1)
+        >>> lca(node, node, node).val
+        1
     """
     if root is None or root is p or root is q:
         return root

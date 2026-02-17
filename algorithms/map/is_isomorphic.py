@@ -1,40 +1,47 @@
 """
-Given two strings s and t, determine if they are isomorphic.
-Two strings are isomorphic if the characters in s can be replaced to get t.
-All occurrences of a character must be replaced with another character while
-preserving the order of characters. No two characters may map to the same
-character but a character may map to itself.
+Isomorphic Strings
 
-Example 1:
-Input: s = "egg", t = "add"
-Output: true
+Determine if two strings are isomorphic. Two strings are isomorphic if
+characters in s can be mapped to characters in t while preserving order,
+with a one-to-one mapping.
 
-Example 2:
-Input: s = "foo", t = "bar"
-Output: false
-
-Example 3:
-Input: s = "paper", t = "title"
-Output: true
 Reference: https://leetcode.com/problems/isomorphic-strings/description/
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
-def is_isomorphic(s, t):
-    """
-    :type s: str
-    :type t: str
-    :rtype: bool
+
+from __future__ import annotations
+
+
+def is_isomorphic(s: str, t: str) -> bool:
+    """Check if two strings are isomorphic.
+
+    Args:
+        s: Source string.
+        t: Target string.
+
+    Returns:
+        True if s and t are isomorphic, False otherwise.
+
+    Examples:
+        >>> is_isomorphic("egg", "add")
+        True
+        >>> is_isomorphic("foo", "bar")
+        False
     """
     if len(s) != len(t):
         return False
-    dict = {}
-    set_value = set()
+    mapping: dict[str, str] = {}
+    mapped_values: set[str] = set()
     for i in range(len(s)):
-        if s[i] not in dict:
-            if t[i] in set_value:
+        if s[i] not in mapping:
+            if t[i] in mapped_values:
                 return False
-            dict[s[i]] = t[i]
-            set_value.add(t[i])
+            mapping[s[i]] = t[i]
+            mapped_values.add(t[i])
         else:
-            if dict[s[i]] != t[i]:
+            if mapping[s[i]] != t[i]:
                 return False
     return True

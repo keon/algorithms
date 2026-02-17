@@ -1,45 +1,74 @@
 """
-Given a binary tree, check whether it is a mirror of
-itself (ie, symmetric around its center).
+Symmetric Tree
 
-For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+Given a binary tree, check whether it is a mirror of itself (i.e., symmetric
+around its center). Provides both recursive and iterative solutions.
 
-    1
-   / \
-  2   2
- / \ / \
-3  4 4  3
-But the following [1,2,2,null,3,null,3] is not:
-    1
-   / \
-  2   2
-   \   \
-   3    3
-Note:
-Bonus points if you could solve it both recursively and iteratively.
+Reference: https://en.wikipedia.org/wiki/Binary_tree
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
 
-# TC: O(b) SC: O(log n)
-def is_symmetric(root):
+from __future__ import annotations
+
+from algorithms.tree.tree import TreeNode
+
+
+def is_symmetric(root: TreeNode | None) -> bool:
+    """Check whether a binary tree is symmetric using recursion.
+
+    Args:
+        root: The root of the binary tree.
+
+    Returns:
+        True if the tree is symmetric, False otherwise.
+
+    Examples:
+        >>> is_symmetric(None)
+        True
+    """
     if root is None:
         return True
-    return helper(root.left, root.right)
+    return _helper(root.left, root.right)
 
 
-def helper(p, q):
+def _helper(p: TreeNode | None, q: TreeNode | None) -> bool:
+    """Recursively check whether two subtrees are mirrors of each other.
+
+    Args:
+        p: The root of the left subtree.
+        q: The root of the right subtree.
+
+    Returns:
+        True if the subtrees are mirror images, False otherwise.
+    """
     if p is None and q is None:
         return True
     if p is not None or q is not None or q.val != p.val:
         return False
-    return helper(p.left, q.right) and helper(p.right, q.left)
+    return _helper(p.left, q.right) and _helper(p.right, q.left)
 
 
-def is_symmetric_iterative(root):
+def is_symmetric_iterative(root: TreeNode | None) -> bool:
+    """Check whether a binary tree is symmetric using iteration.
+
+    Args:
+        root: The root of the binary tree.
+
+    Returns:
+        True if the tree is symmetric, False otherwise.
+
+    Examples:
+        >>> is_symmetric_iterative(None)
+        True
+    """
     if root is None:
         return True
-    stack = [[root.left, root.right]]
+    stack: list[list[TreeNode | None]] = [[root.left, root.right]]
     while stack:
-        left, right = stack.pop()  # popleft
+        left, right = stack.pop()
         if left is None and right is None:
             continue
         if left is None or right is None:

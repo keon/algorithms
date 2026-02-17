@@ -1,59 +1,55 @@
-#count connected no of component using DFS
-'''
-In graph theory, a component, sometimes called a connected component,
-of an undirected graph is a subgraph in which any
-two vertices are connected to each other by paths.
+"""
+Count Connected Components in an Undirected Graph
 
-Example:
+Uses DFS to count the number of connected components.
+
+Reference: https://en.wikipedia.org/wiki/Component_(graph_theory)
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V)
+"""
+
+from __future__ import annotations
 
 
-    1                3------------7
-    |
-    |
-    2--------4
-    |        |
-    |        |              output = 2
-    6--------5
+def count_components(adjacency_list: list[list[int]], size: int) -> int:
+    """Return the number of connected components.
 
-'''
+    Args:
+        adjacency_list: Adjacency list where adjacency_list[i] contains
+            the neighbours of vertex *i* (1-indexed vertices).
+        size: Number of vertices.
 
-# Code is Here
+    Returns:
+        The count of connected components.
 
-def dfs(source,visited,adjacency_list):
-    ''' Function that performs DFS '''
+    Examples:
+        >>> count_components([[], [2], [1]], 2)
+        1
+    """
+    count = 0
+    visited = [False] * (size + 1)
+    for i in range(1, size + 1):
+        if not visited[i]:
+            _dfs(i, visited, adjacency_list)
+            count += 1
+    return count
 
+
+def _dfs(
+    source: int,
+    visited: list[bool],
+    adjacency_list: list[list[int]],
+) -> None:
+    """Mark all vertices reachable from *source* as visited.
+
+    Args:
+        source: Starting vertex.
+        visited: Visited flags (modified in place).
+        adjacency_list: Graph adjacency list.
+    """
     visited[source] = True
     for child in adjacency_list[source]:
         if not visited[child]:
-            dfs(child,visited,adjacency_list)
-
-def count_components(adjacency_list,size):
-    '''
-    Function that counts the Connected components on bases of DFS.
-    return type : int
-    '''
-
-    count = 0
-    visited = [False]*(size+1)
-    for i in range(1,size+1):
-        if not visited[i]:
-            dfs(i,visited,adjacency_list)
-            count+=1
-    return count
-
-def main():
-    """
-    Example application
-    """
-    node_count,edge_count = map(int, input("Enter the Number of Nodes and Edges \n").split(' '))
-    adjacency = [[] for _ in range(node_count+1)]
-    for _ in range(edge_count):
-        print("Enter the edge's Nodes in form of `source target`\n")
-        source,target = map(int,input().split(' '))
-        adjacency[source].append(target)
-        adjacency[target].append(source)
-    print("Total number of Connected Components are : ", count_components(adjacency,node_count))
-
-# Driver code
-if __name__ == '__main__':
-    main()
+            _dfs(child, visited, adjacency_list)

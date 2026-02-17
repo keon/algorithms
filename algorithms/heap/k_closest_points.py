@@ -1,48 +1,59 @@
-"""Given a list of points, find the k closest to the origin.
+"""
+K Closest Points to Origin
 
-Idea: Maintain a max heap of k elements.
-We can iterate through all points.
-If a point p has a smaller distance to the origin than the top element of a
-heap, we add point p to the heap and remove the top element.
-After iterating through all points, our heap contains the k closest points to
-the origin.
+Given a list of points, find the k closest to the origin using a max
+heap of size k. For each subsequent point, replace the heap root if
+the new point is closer.
+
+Reference: https://leetcode.com/problems/k-closest-points-to-origin/
+
+Complexity:
+    Time:  O(k + (n - k) log k)
+    Space: O(k)
 """
 
+from __future__ import annotations
 
 from heapq import heapify, heappushpop
 
 
-def k_closest(points, k, origin=(0, 0)):
-    # Time: O(k+(n-k)logk)
-    # Space: O(k)
-    """Initialize max heap with first k points.
-    Python does not support a max heap; thus we can use the default min heap
-    where the keys (distance) are negated.
+def k_closest(
+    points: list[tuple[int, int]],
+    k: int,
+    origin: tuple[int, int] = (0, 0),
+) -> list[tuple[int, int]]:
+    """Find the k closest points to the origin.
+
+    Args:
+        points: List of (x, y) coordinate tuples.
+        k: Number of closest points to return.
+        origin: The reference point, defaults to (0, 0).
+
+    Returns:
+        List of the k closest points.
+
+    Examples:
+        >>> k_closest([(1, 0), (-1, 0), (2, 3)], 2)
+        [(-1, 0), (1, 0)]
     """
-    heap = [(-distance(p, origin), p) for p in points[:k]]
+    heap = [(-_distance(p, origin), p) for p in points[:k]]
     heapify(heap)
 
-    """
-    For every point p in points[k:],
-    check if p is smaller than the root of the max heap;
-    if it is, add p to heap and remove root. Reheapify.
-    """
     for point in points[k:]:
-        dist = distance(point, origin)
+        dist = _distance(point, origin)
+        heappushpop(heap, (-dist, point))
 
-        heappushpop(heap, (-dist, point))  # heappushpop does conditional check
-        """Same as:
-            if d < -heap[0][0]:
-                heappush(heap, (-d,p))
-                heappop(heap)
-
-        Note: heappushpop is more efficient than separate push and pop calls.
-        Each heappushpop call takes O(logk) time.
-        """
-
-    return [point for nd, point in heap]  # return points in heap
+    return [point for _, point in heap]
 
 
-def distance(point, origin=(0, 0)):
-    """ Calculates the distance for a point from origo"""
-    return (point[0] - origin[0])**2 + (point[1] - origin[1])**2
+def _distance(point: tuple[int, int], origin: tuple[int, int] = (0, 0)) -> int:
+    """Compute squared Euclidean distance from point to origin.
+
+    Args:
+        point: The (x, y) coordinate.
+        origin: The reference point.
+
+    Returns:
+        Squared Euclidean distance.
+    """
+    return (point[0] - origin[0]) ** 2 + (point[1] - origin[1]) ** 2

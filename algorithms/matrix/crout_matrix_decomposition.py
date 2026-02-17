@@ -1,48 +1,51 @@
 """
-Crout matrix decomposition is used to find two matrices that, when multiplied
-give our input matrix, so L * U = A.
-L stands for lower and L has non-zero elements only on diagonal and below.
-U stands for upper and U has non-zero elements only on diagonal and above.
+Crout Matrix Decomposition
 
-This can for example be used to solve systems of linear equations.
-The last if is used  if  to avoid dividing by zero.
+Decompose a matrix A into lower-triangular matrix L and upper-triangular
+matrix U such that L * U = A. L has non-zero elements only on and below
+the diagonal; U has non-zero elements only on and above the diagonal
+with ones on the diagonal.
 
-Example:
-We input the A matrix:
-[[1,2,3],
-[3,4,5],
-[6,7,8]]
+Reference: https://en.wikipedia.org/wiki/Crout_matrix_decomposition
 
-We get:
-L = [1.0,  0.0, 0.0]
-    [3.0, -2.0, 0.0]
-    [6.0, -5.0, 0.0]
-U = [1.0,  2.0, 3.0]
-    [0.0,  1.0, 2.0]
-    [0.0,  0.0, 1.0]
-
-We can check that L * U = A.
-
-I think the complexity should be O(n^3).
+Complexity:
+    Time:  O(n^3)
+    Space: O(n^2)
 """
 
+from __future__ import annotations
 
-def crout_matrix_decomposition(A):
-    n = len(A)
-    L = [[0.0] * n for i in range(n)]
-    U = [[0.0] * n for i in range(n)]
-    for j in range(n):
-        U[j][j] = 1.0
-        for i in range(j, n):
-            alpha = float(A[i][j])
+
+def crout_matrix_decomposition(
+    matrix: list[list[float]],
+) -> tuple[list[list[float]], list[list[float]]]:
+    """Perform Crout decomposition of a square matrix.
+
+    Args:
+        matrix: Square matrix of size n x n.
+
+    Returns:
+        Tuple (L, U) of lower and upper triangular matrices.
+
+    Examples:
+        >>> crout_matrix_decomposition([[9, 9], [7, 7]])
+        ([[9.0, 0.0], [7.0, 0.0]], [[1.0, 1.0], [0.0, 1.0]])
+    """
+    size = len(matrix)
+    lower = [[0.0] * size for _ in range(size)]
+    upper = [[0.0] * size for _ in range(size)]
+    for j in range(size):
+        upper[j][j] = 1.0
+        for i in range(j, size):
+            alpha = float(matrix[i][j])
             for k in range(j):
-                alpha -= L[i][k]*U[k][j]
-            L[i][j] = float(alpha)
-        for i in range(j+1, n):
-            tempU = float(A[j][i])
+                alpha -= lower[i][k] * upper[k][j]
+            lower[i][j] = float(alpha)
+        for i in range(j + 1, size):
+            temp = float(matrix[j][i])
             for k in range(j):
-                tempU -= float(L[j][k]*U[k][i])
-            if int(L[j][j]) == 0:
-                L[j][j] = float(0.1**40)
-            U[j][i] = float(tempU/L[j][j])
-    return (L, U)
+                temp -= float(lower[j][k] * upper[k][i])
+            if int(lower[j][j]) == 0:
+                lower[j][j] = float(0.1**40)
+            upper[j][i] = float(temp / lower[j][j])
+    return (lower, upper)

@@ -1,108 +1,50 @@
 """
-Given two sparse matrices A and B, return the result of AB.
+Sparse Matrix Multiplication
 
-You may assume that A's column number is equal to B's row number.
+Given two sparse matrices A and B, return their product A * B.
+Skips zero elements for efficiency. A's column count must equal
+B's row count.
 
-Example:
+Reference: https://leetcode.com/problems/sparse-matrix-multiplication/
 
-A = [
-  [ 1, 0, 0],
-  [-1, 0, 3]
-]
-
-B = [
-  [ 7, 0, 0 ],
-  [ 0, 0, 0 ],
-  [ 0, 0, 1 ]
-]
-
-
-     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
-AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
-                  | 0 0 1 |
+Complexity:
+    Time:  O(m * n * p) worst case, better with sparsity
+    Space: O(m * p)
 """
 
+from __future__ import annotations
 
-# Python solution without table (~156ms):
-def multiply(self, a, b):
+
+def sparse_multiply(
+    mat_a: list[list[int]], mat_b: list[list[int]]
+) -> list[list[int]] | None:
+    """Multiply two sparse matrices, skipping zero elements.
+
+    Args:
+        mat_a: First matrix of size m x n.
+        mat_b: Second matrix of size n x p.
+
+    Returns:
+        Product matrix of size m x p, or None if either input is None.
+
+    Raises:
+        Exception: If the matrices have incompatible dimensions.
+
+    Examples:
+        >>> sparse_multiply([[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]])
+        [[7, 0, 0], [-7, 0, 3]]
     """
-    :type A: List[List[int]]
-    :type B: List[List[int]]
-    :rtype: List[List[int]]
-    """
-    if a is None or b is None:
+    if mat_a is None or mat_b is None:
         return None
-    m, n, l = len(a), len(b[0]), len(b[0])
-    if len(b) != n:
+    rows_a, cols_a = len(mat_a), len(mat_a[0])
+    cols_b = len(mat_b[0])
+    if len(mat_b) != cols_a:
         raise Exception("A's column number must be equal to B's row number.")
-    c = [[0 for _ in range(l)] for _ in range(m)]
-    for i, row in enumerate(a):
-        for k, eleA in enumerate(row):
-            if eleA:
-                for j, eleB in enumerate(b[k]):
-                    if eleB:
-                        c[i][j] += eleA * eleB
-    return c
-
-
-# Python solution with only one table for B (~196ms):
-def multiply(self, a, b):
-    """
-    :type A: List[List[int]]
-    :type B: List[List[int]]
-    :rtype: List[List[int]]
-    """
-    if a is None or b is None:
-        return None
-    m, n, l = len(a), len(a[0]), len(b[0])
-    if len(b) != n:
-        raise Exception("A's column number must be equal to B's row number.")
-    c = [[0 for _ in range(l)] for _ in range(m)]
-    table_b = {}
-    for k, row in enumerate(b):
-        table_b[k] = {}
-        for j, eleB in enumerate(row):
-            if eleB:
-                table_b[k][j] = eleB
-    for i, row in enumerate(a):
-        for k, eleA in enumerate(row):
-            if eleA:
-                for j, eleB in table_b[k].iteritems():
-                    c[i][j] += eleA * eleB
-    return c
-
-
-# Python solution with two tables (~196ms):
-def multiply(self, a, b):
-    """
-    :type A: List[List[int]]
-    :type B: List[List[int]]
-    :rtype: List[List[int]]
-    """
-    if a is None or b is None:
-        return None
-    m, n = len(a), len(b[0])
-    if len(b) != n:
-        raise Exception("A's column number must be equal to B's row number.")
-    l = len(b[0])
-    table_a, table_b = {}, {}
-    for i, row in enumerate(a):
-        for j, ele in enumerate(row):
-            if ele:
-                if i not in table_a:
-                    table_a[i] = {}
-                table_a[i][j] = ele
-    for i, row in enumerate(b):
-        for j, ele in enumerate(row):
-            if ele:
-                if i not in table_b:
-                    table_b[i] = {}
-                table_b[i][j] = ele
-    c = [[0 for j in range(l)] for i in range(m)]
-    for i in table_a:
-        for k in table_a[i]:
-            if k not in table_b:
-                continue
-            for j in table_b[k]:
-                c[i][j] += table_a[i][k] * table_b[k][j]
-    return c
+    result = [[0] * cols_b for _ in range(rows_a)]
+    for i, row in enumerate(mat_a):
+        for k, elem_a in enumerate(row):
+            if elem_a:
+                for j, elem_b in enumerate(mat_b[k]):
+                    if elem_b:
+                        result[i][j] += elem_a * elem_b
+    return result

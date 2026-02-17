@@ -1,98 +1,86 @@
 """
-Given a 2D grid, each cell is either a wall 'W',
-an enemy 'E' or empty '0' (the number zero),
-return the maximum enemies you can kill using one bomb.
-The bomb kills all the enemies in the same row and column from
-the planted point until it hits the wall since the wall is too strong
-to be destroyed.
-Note that you can only put the bomb at an empty cell.
+Bomb Enemy
 
-Example:
-For the given grid
+Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0'
+(the number zero). Return the maximum enemies you can kill using one bomb.
+The bomb kills all the enemies in the same row and column from the planted
+point until it hits the wall since it is too strong to be destroyed.
+You can only place the bomb at an empty cell.
 
-0 E 0 0
-E 0 W E
-0 E 0 0
+Reference: https://leetcode.com/problems/bomb-enemy/
 
-return 3. (Placing a bomb at (1,1) kills 3 enemies)
+Complexity:
+    Time:  O(m * n)
+    Space: O(n)
 """
 
+from __future__ import annotations
 
-def max_killed_enemies(grid):
+
+def max_killed_enemies(grid: list[list[str]]) -> int:
+    """Return the maximum enemies killed by placing one bomb.
+
+    Args:
+        grid: 2D grid of 'W', 'E', and '0' characters.
+
+    Returns:
+        Maximum number of enemies killed.
+
+    Examples:
+        >>> max_killed_enemies([["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]])
+        3
+    """
     if not grid:
         return 0
-    m, n = len(grid), len(grid[0])
+    rows, cols = len(grid), len(grid[0])
     max_killed = 0
-    row_e, col_e = 0, [0] * n
-    # iterates over all cells in the grid
-    for i in range(m):
-        for j in range(n):
-            # makes sure we are next to a wall.
-            if j == 0 or grid[i][j-1] == 'W':
-                row_e = row_kills(grid, i, j)
-            # makes sure we are next to a wall.
-            if i == 0 or grid[i-1][j] == 'W':
-                col_e[j] = col_kills(grid, i, j)
-            # makes sure the cell contains a 0
-            if grid[i][j] == '0':
-                # updates the variable
-                max_killed = max(max_killed, row_e + col_e[j])
-
+    row_enemies, col_enemies = 0, [0] * cols
+    for i in range(rows):
+        for j in range(cols):
+            if j == 0 or grid[i][j - 1] == "W":
+                row_enemies = _row_kills(grid, i, j)
+            if i == 0 or grid[i - 1][j] == "W":
+                col_enemies[j] = _col_kills(grid, i, j)
+            if grid[i][j] == "0":
+                max_killed = max(max_killed, row_enemies + col_enemies[j])
     return max_killed
 
 
-# calculate killed enemies for row i from column j
-def row_kills(grid, i, j):
-    num = 0
-    len_row = len(grid[0])
-    while j < len_row and grid[i][j] != 'W':
-        if grid[i][j] == 'E':
-            num += 1
-        j += 1
-    return num
+def _row_kills(grid: list[list[str]], row: int, col: int) -> int:
+    """Count enemies killed in a row starting from the given column.
+
+    Args:
+        grid: 2D grid of characters.
+        row: Row index.
+        col: Starting column index.
+
+    Returns:
+        Number of enemies in the row segment.
+    """
+    count = 0
+    num_cols = len(grid[0])
+    while col < num_cols and grid[row][col] != "W":
+        if grid[row][col] == "E":
+            count += 1
+        col += 1
+    return count
 
 
-# calculate killed enemies for  column j from row i
-def col_kills(grid, i, j):
-    num = 0
-    len_col = len(grid)
-    while i < len_col and grid[i][j] != 'W':
-        if grid[i][j] == 'E':
-            num += 1
-        i += 1
-    return num
+def _col_kills(grid: list[list[str]], row: int, col: int) -> int:
+    """Count enemies killed in a column starting from the given row.
 
+    Args:
+        grid: 2D grid of characters.
+        row: Starting row index.
+        col: Column index.
 
-# ----------------- TESTS -------------------------
-
-"""
-    Testsuite for the project
-"""
-
-import unittest
-
-
-class TestBombEnemy(unittest.TestCase):
-    def test_3x4(self):
-        grid1 = [["0", "E", "0", "0"],
-                 ["E", "0", "W", "E"],
-                 ["0", "E", "0", "0"]]
-        self.assertEqual(3, max_killed_enemies(grid1))
-
-    def test_4x4(self):
-        grid1 = [
-                ["0", "E", "0", "E"],
-                ["E", "E", "E", "0"],
-                ["E", "0", "W", "E"],
-                ["0", "E", "0", "0"]]
-        grid2 = [
-                ["0", "0", "0", "E"],
-                ["E", "0", "0", "0"],
-                ["E", "0", "W", "E"],
-                ["0", "E", "0", "0"]]
-        self.assertEqual(5, max_killed_enemies(grid1))
-        self.assertEqual(3, max_killed_enemies(grid2))
-
-
-if __name__ == "__main__":
-    unittest.main()
+    Returns:
+        Number of enemies in the column segment.
+    """
+    count = 0
+    num_rows = len(grid)
+    while row < num_rows and grid[row][col] != "W":
+        if grid[row][col] == "E":
+            count += 1
+        row += 1
+    return count

@@ -1,83 +1,71 @@
 """
-Given a n*n adjacency array.
-it will give you a maximum flow.
-This version use BFS to search path.
+Maximum Flow via BFS
 
-Assume the first is the source and the last is the sink.
+Computes maximum flow in a network represented as an adjacency matrix,
+using BFS to find augmenting paths.
 
-Time complexity - O(Ef)
+Reference: https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm
 
-example
-
-graph = [[0, 16, 13, 0, 0, 0],
-        [0, 0, 10, 12, 0, 0],
-        [0, 4, 0, 0, 14, 0],
-        [0, 0, 9, 0, 0, 20],
-        [0, 0, 0, 7, 0, 4],
-        [0, 0, 0, 0, 0, 0]]
-
-answer should be
-
-23
-
+Complexity:
+    Time:  O(V * E^2)
+    Space: O(V^2)
 """
-import copy
-import queue
-import math
 
-def maximum_flow_bfs(adjacency_matrix):
+from __future__ import annotations
+
+import copy
+import math
+import queue
+
+
+def maximum_flow_bfs(adjacency_matrix: list[list[int]]) -> int:
+    """Compute maximum flow using BFS augmenting paths.
+
+    The source is the first vertex and the sink is the last vertex.
+
+    Args:
+        adjacency_matrix: n*n capacity matrix.
+
+    Returns:
+        The maximum flow value.
+
+    Examples:
+        >>> maximum_flow_bfs([[0, 10, 0], [0, 0, 10], [0, 0, 0]])
+        10
     """
-    Get the maximum flow through a graph using a breadth first search
-    """
-    #initial setting
     new_array = copy.deepcopy(adjacency_matrix)
     total = 0
 
     while True:
-        #setting min to max_value
         min_flow = math.inf
-        #save visited nodes
-        visited = [0]*len(new_array)
-        #save parent nodes
-        path = [0]*len(new_array)
+        visited = [0] * len(new_array)
+        path = [0] * len(new_array)
 
-        #initialize queue for BFS
-        bfs = queue.Queue()
+        bfs: queue.Queue[int] = queue.Queue()
 
-        #initial setting
         visited[0] = 1
         bfs.put(0)
 
-        #BFS to find path
         while bfs.qsize() > 0:
-            #pop from queue
             src = bfs.get()
             for k in range(len(new_array)):
-                #checking capacity and visit
-                if(new_array[src][k] > 0 and visited[k] == 0 ):
-                    #if not, put into queue and chage to visit and save path
+                if new_array[src][k] > 0 and visited[k] == 0:
                     visited[k] = 1
                     bfs.put(k)
                     path[k] = src
 
-        #if there is no path from src to sink
         if visited[len(new_array) - 1] == 0:
             break
 
-        #initial setting
         tmp = len(new_array) - 1
 
-        #Get minimum flow
         while tmp != 0:
-            #find minimum flow
             if min_flow > new_array[path[tmp]][tmp]:
                 min_flow = new_array[path[tmp]][tmp]
             tmp = path[tmp]
 
-        #initial setting
         tmp = len(new_array) - 1
 
-        #reduce capacity
         while tmp != 0:
             new_array[path[tmp]][tmp] = new_array[path[tmp]][tmp] - min_flow
             tmp = path[tmp]

@@ -1,17 +1,35 @@
 """
-Different ways to traverse a graph
+Graph Traversal Algorithms
+
+Provides DFS and BFS traversal of a graph represented as an adjacency
+dictionary.
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V)
 """
 
-# dfs and bfs are the ultimately same except that they are visiting nodes in
-# different order. To simulate this ordering we would use stack for dfs and
-# queue for bfs.
-#
+from __future__ import annotations
 
-def dfs_traverse(graph, start):
+from typing import Any
+
+
+def dfs_traverse(graph: dict[Any, list[Any]], start: Any) -> set[Any]:
+    """Traverse the graph from *start* using iterative DFS.
+
+    Args:
+        graph: Adjacency list.
+        start: Starting node.
+
+    Returns:
+        Set of visited nodes.
+
+    Examples:
+        >>> sorted(dfs_traverse({'a': ['b'], 'b': []}, 'a'))
+        ['a', 'b']
     """
-    Traversal by depth first search.
-    """
-    visited, stack = set(), [start]
+    visited: set[Any] = set()
+    stack = [start]
     while stack:
         node = stack.pop()
         if node not in visited:
@@ -21,11 +39,23 @@ def dfs_traverse(graph, start):
                     stack.append(next_node)
     return visited
 
-def bfs_traverse(graph, start):
+
+def bfs_traverse(graph: dict[Any, list[Any]], start: Any) -> set[Any]:
+    """Traverse the graph from *start* using BFS.
+
+    Args:
+        graph: Adjacency list.
+        start: Starting node.
+
+    Returns:
+        Set of visited nodes.
+
+    Examples:
+        >>> sorted(bfs_traverse({'a': ['b'], 'b': []}, 'a'))
+        ['a', 'b']
     """
-    Traversal by breadth first search.
-    """
-    visited, queue = set(), [start]
+    visited: set[Any] = set()
+    queue = [start]
     while queue:
         node = queue.pop(0)
         if node not in visited:
@@ -35,9 +65,25 @@ def bfs_traverse(graph, start):
                     queue.append(next_node)
     return visited
 
-def dfs_traverse_recursive(graph, start, visited=None):
-    """
-    Traversal by recursive depth first search.
+
+def dfs_traverse_recursive(
+    graph: dict[Any, list[Any]],
+    start: Any,
+    visited: set[Any] | None = None,
+) -> set[Any]:
+    """Traverse the graph from *start* using recursive DFS.
+
+    Args:
+        graph: Adjacency list.
+        start: Starting node.
+        visited: Already-visited set (internal use).
+
+    Returns:
+        Set of visited nodes.
+
+    Examples:
+        >>> sorted(dfs_traverse_recursive({'a': ['b'], 'b': []}, 'a'))
+        ['a', 'b']
     """
     if visited is None:
         visited = set()

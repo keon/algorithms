@@ -1,30 +1,44 @@
 """
-Given a stack, a function remove_min accepts a stack as a parameter
-and removes the smallest value from the stack.
+Remove Min from Stack
 
-For example:
-bottom [2, 8, 3, -6, 7, 3] top
-After remove_min(stack):
-bottom [2, 8, 3, 7, 3] top
+Remove the smallest value from a stack, preserving the relative order
+of the remaining elements.
 
+Reference: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
 
+from __future__ import annotations
 
-def remove_min(stack):
-    storage_stack = []
-    if len(stack) == 0:  # Stack is empty
+
+def remove_min(stack: list[int]) -> list[int]:
+    """Remove the minimum value from the stack.
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        The stack with the minimum value removed.
+
+    Examples:
+        >>> remove_min([2, 8, 3, -6, 7, 3])
+        [2, 8, 3, 7, 3]
+    """
+    storage_stack: list[int] = []
+    if len(stack) == 0:
         return stack
-    # Find the smallest value
-    min = stack.pop()
-    stack.append(min)
-    for i in range(len(stack)):
+    minimum = stack.pop()
+    stack.append(minimum)
+    for _ in range(len(stack)):
         val = stack.pop()
-        if val <= min:
-            min = val
+        if val <= minimum:
+            minimum = val
         storage_stack.append(val)
-    # Back up stack and remove min value
-    for i in range(len(storage_stack)):
+    for _ in range(len(storage_stack)):
         val = storage_stack.pop()
-        if val != min:
+        if val != minimum:
             stack.append(val)
     return stack

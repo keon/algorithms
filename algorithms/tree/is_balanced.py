@@ -1,37 +1,50 @@
-def is_balanced(root):
-    return __is_balanced_recursive(root)
+"""
+Balanced Binary Tree
+
+Determines whether a binary tree is height-balanced, meaning the depth of the
+left and right subtrees of every node differ by at most one.
+
+Reference: https://en.wikipedia.org/wiki/AVL_tree
+
+Complexity:
+    Time:  O(n)
+    Space: O(n) due to recursion stack
+"""
+
+from __future__ import annotations
+
+from algorithms.tree.tree import TreeNode
 
 
-def __is_balanced_recursive(root):
+def is_balanced(root: TreeNode | None) -> bool:
+    """Check whether a binary tree is height-balanced.
+
+    Args:
+        root: The root of the binary tree.
+
+    Returns:
+        True if the tree is balanced, False otherwise.
+
+    Examples:
+        >>> is_balanced(None)
+        True
     """
-    O(N) solution
-    """
-    return -1 != __get_depth(root)
+    return _get_depth(root) != -1
 
 
-def __get_depth(root):
-    """
-    return 0 if unbalanced else depth + 1
+def _get_depth(root: TreeNode | None) -> int:
+    """Compute the depth of a tree, returning -1 if unbalanced.
+
+    Args:
+        root: The root of the subtree.
+
+    Returns:
+        The depth of the subtree, or -1 if it is unbalanced.
     """
     if root is None:
         return 0
-    left = __get_depth(root.left)
-    right = __get_depth(root.right)
-    if abs(left-right) > 1 or -1 in [left, right]:
+    left = _get_depth(root.left)
+    right = _get_depth(root.right)
+    if abs(left - right) > 1 or -1 in [left, right]:
         return -1
     return 1 + max(left, right)
-
-
-# def is_balanced(root):
-#     """
-#     O(N^2) solution
-#     """
-#     left = max_height(root.left)
-#     right = max_height(root.right)
-#     return abs(left-right) <= 1 and is_balanced(root.left) and
-#     is_balanced(root.right)
-
-# def max_height(root):
-#     if root is None:
-#         return 0
-#     return max(max_height(root.left), max_height(root.right)) + 1

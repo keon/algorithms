@@ -1,21 +1,35 @@
 """
-Bipartite graph is a graph whose vertices can be divided into two disjoint and independent sets.
-(https://en.wikipedia.org/wiki/Bipartite_graph)
+Check Bipartite Graph
+
+Determine whether an undirected graph is bipartite using BFS colouring.
+
+Reference: https://en.wikipedia.org/wiki/Bipartite_graph
+
+Complexity:
+    Time:  O(V^2)  (adjacency-matrix representation)
+    Space: O(V)
 """
 
-def check_bipartite(adj_list):
-    """
-    Determine if the given graph is bipartite.
+from __future__ import annotations
 
-    Time complexity is O(|E|)
-    Space complexity is O(|V|)
-    """
 
+def check_bipartite(adj_list: list[list[int]]) -> bool:
+    """Return True if the graph represented by *adj_list* is bipartite.
+
+    Args:
+        adj_list: An n*n adjacency matrix where adj_list[i][j] is truthy if
+            there is an edge between vertex *i* and vertex *j*.
+
+    Returns:
+        True if bipartite, False otherwise.
+
+    Examples:
+        >>> check_bipartite([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
+        True
+    """
     vertices = len(adj_list)
 
-    # Divide vertexes in the graph into set_type 0 and 1
-    # Initialize all set_types as -1
-    set_type = [-1 for v in range(vertices)]
+    set_type = [-1 for _ in range(vertices)]
     set_type[0] = 0
 
     queue = [0]
@@ -23,7 +37,6 @@ def check_bipartite(adj_list):
     while queue:
         current = queue.pop(0)
 
-        # If there is a self-loop, it cannot be bipartite
         if adj_list[current][current]:
             return False
 
@@ -33,7 +46,6 @@ def check_bipartite(adj_list):
                     return False
 
                 if set_type[adjacent] == -1:
-                    # set type of u opposite of v
                     set_type[adjacent] = 1 - set_type[current]
                     queue.append(adjacent)
 

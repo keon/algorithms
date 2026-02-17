@@ -1,30 +1,41 @@
-'''
-This Prim's Algorithm Code is for finding weight of minimum spanning tree
-of a connected graph.
-For argument graph, it should be a dictionary type such as:
+"""
+Prim's Minimum Spanning Tree
 
-    graph = {
-        'a': [ [3, 'b'], [8,'c'] ],
-        'b': [ [3, 'a'], [5, 'd'] ],
-        'c': [ [8, 'a'], [2, 'd'], [4, 'e'] ],
-        'd': [ [5, 'b'], [2, 'c'], [6, 'e'] ],
-        'e': [ [4, 'c'], [6, 'd'] ]
-    }
+Computes the weight of a minimum spanning tree for a connected weighted
+undirected graph using a priority queue.
 
-where 'a','b','c','d','e' are nodes (these can be 1,2,3,4,5 as well)
-'''
+Reference: https://en.wikipedia.org/wiki/Prim%27s_algorithm
+
+Complexity:
+    Time:  O(E log V)
+    Space: O(V + E)
+"""
+
+from __future__ import annotations
+
+import heapq
+from typing import Any
 
 
-import heapq  # for priority queue
+def prims_minimum_spanning(
+    graph_used: dict[Any, list[list[int | Any]]],
+) -> int:
+    """Return the total weight of the MST using Prim's algorithm.
 
-def prims_minimum_spanning(graph_used):
+    Args:
+        graph_used: Adjacency list as ``{node: [[weight, neighbour], ...]}``.
+
+    Returns:
+        Sum of edge weights in the minimum spanning tree.
+
+    Examples:
+        >>> prims_minimum_spanning({1: [[1, 2]], 2: [[1, 1]]})
+        1
     """
-    Prim's algorithm to find weight of minimum spanning tree
-    """
-    vis=[]
-    heap=[[0,1]]
-    prim = set()
-    mincost=0
+    vis: list[Any] = []
+    heap: list[list[int | Any]] = [[0, 1]]
+    prim: set[Any] = set()
+    mincost = 0
 
     while len(heap) > 0:
         cost, node = heapq.heappop(heap)

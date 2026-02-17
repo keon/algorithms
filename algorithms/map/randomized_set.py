@@ -1,30 +1,64 @@
 """
-Design a data structure that supports all following operations
-in average O(1) time.
+Randomized Set
 
-insert(val): Inserts an item val to the set if not already present.
-remove(val): Removes an item val from the set if present.
-getRandom: Returns a random element from current set of elements.
-Each element must have the same probability of being returned.
+Design a data structure that supports insert, remove, and getRandom
+in average O(1) time. Uses a list for random access and a dictionary
+for O(1) lookup/removal.
+
+Reference: https://leetcode.com/problems/insert-delete-getrandom-o1/
+
+Complexity:
+    Time:  O(1) average for insert, remove, get_random
+    Space: O(n)
 """
 
+from __future__ import annotations
 
 import random
 
 
 class RandomizedSet:
-    def __init__(self):
-        self.nums = []
-        self.idxs = {}
+    """A set supporting O(1) insert, remove, and random element access.
 
-    def insert(self, val):
+    Examples:
+        >>> rs = RandomizedSet()
+        >>> rs.insert(1)
+        True
+        >>> rs.insert(1)
+        False
+        >>> rs.remove(1)
+        True
+    """
+
+    def __init__(self) -> None:
+        """Initialize the randomized set."""
+        self.nums: list[int] = []
+        self.idxs: dict[int, int] = {}
+
+    def insert(self, val: int) -> bool:
+        """Insert a value into the set.
+
+        Args:
+            val: Value to insert.
+
+        Returns:
+            True if the value was inserted, False if already present.
+        """
         if val not in self.idxs:
             self.nums.append(val)
-            self.idxs[val] = len(self.nums)-1
+            self.idxs[val] = len(self.nums) - 1
             return True
         return False
 
-    def remove(self, val):
+    def remove(self, val: int) -> bool:
+        """Remove a value from the set.
+
+        Args:
+            val: Value to remove.
+
+        Returns:
+            True if the value was removed, False if not present.
+        """
         if val in self.idxs:
             idx, last = self.idxs[val], self.nums[-1]
             self.nums[idx], self.idxs[last] = last, idx
@@ -33,21 +67,11 @@ class RandomizedSet:
             return True
         return False
 
-    def get_random(self):
-        idx = random.randint(0, len(self.nums)-1)
+    def get_random(self) -> int:
+        """Return a random element from the set.
+
+        Returns:
+            A randomly chosen element.
+        """
+        idx = random.randint(0, len(self.nums) - 1)
         return self.nums[idx]
-
-
-if __name__ == "__main__":
-    rs = RandomizedSet()
-    print("insert 1: ", rs.insert(1))
-    print("insert 2: ", rs.insert(2))
-    print("insert 3: ", rs.insert(3))
-    print("insert 4: ", rs.insert(4))
-    print("remove 3: ", rs.remove(3))
-    print("remove 3: ", rs.remove(3))
-    print("remove 1: ", rs.remove(1))
-    print("random: ", rs.get_random())
-    print("random: ", rs.get_random())
-    print("random: ", rs.get_random())
-    print("random: ", rs.get_random())

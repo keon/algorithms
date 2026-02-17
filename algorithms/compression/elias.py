@@ -1,53 +1,114 @@
 """
-Elias γ code or Elias gamma code is a universal code
-encoding positive integers.
-It is used most commonly when coding integers whose
-upper-bound cannot be determined beforehand.
-Elias δ code or Elias delta code is a universal code
- encoding the positive integers,
-that includes Elias γ code when calculating.
-Both were developed by Peter Elias.
+Elias Gamma and Delta Coding
 
+Universal codes for encoding positive integers. Elias gamma code uses a unary
+prefix followed by a binary suffix. Elias delta code nests gamma coding for
+the length prefix. Both were developed by Peter Elias.
+
+Reference: https://en.wikipedia.org/wiki/Elias_gamma_coding
+
+Complexity:
+    Time:  O(log n) per encoded integer
+    Space: O(log n)
 """
+
+from __future__ import annotations
+
 from math import log
 
-log2 = lambda x: log(x, 2)
 
-# Calculates the binary number
-def binary(x, l=1):
-	fmt = '{0:0%db}' % l
-	return fmt.format(x)
+def _log2(x: int | float) -> float:
+    """Compute log base 2.
 
-# Calculates the unary number
-def unary(x):
-	return (x-1)*'1'+'0'
+    Args:
+        x: A positive number.
 
-def elias_generic(lencoding, x):
-	"""
-	The compressed data is calculated in two parts.
-	The first part is the unary number of 1 + ⌊log2(x)⌋.
-	The second part is the binary number of x - 2^(⌊log2(x)⌋).
-	For the final result we add these two parts.
-	"""
-	if x == 0:
-		return '0'
-	
-	first_part = 1 + int(log2(x))
-	
-	a = x - 2**(int(log2(x)))
-	
-	k = int(log2(x))
+    Returns:
+        The base-2 logarithm of x.
+    """
+    return log(x, 2)
 
-	return lencoding(first_part) + binary(a, k)
 
-def elias_gamma(x):
-	"""
-	For the first part we put the unary number of x.
-	"""
-	return elias_generic(unary, x)
+def _binary(x: int, length: int = 1) -> str:
+    """Return the binary representation of x zero-padded to length digits.
 
-def elias_delta(x):
-	"""
-	For the first part we put the elias_g of the number.
-	"""
-	return elias_generic(elias_gamma, x)
+    Args:
+        x: A non-negative integer.
+        length: Minimum number of binary digits.
+
+    Returns:
+        A binary string.
+    """
+    fmt = f"{{0:0{length}b}}"
+    return fmt.format(x)
+
+
+def _unary(x: int) -> str:
+    """Return the unary representation of x.
+
+    Args:
+        x: A positive integer.
+
+    Returns:
+        A unary-coded string (x-1 ones followed by a zero).
+    """
+    return (x - 1) * "1" + "0"
+
+
+def _elias_generic(
+    length_encoding: callable,
+    x: int,
+) -> str:
+    """Generic Elias encoding using a pluggable length-encoding function.
+
+    Args:
+        length_encoding: A function to encode the length prefix.
+        x: A non-negative integer to encode.
+
+    Returns:
+        The Elias-coded bit string.
+    """
+    if x == 0:
+        return "0"
+
+    first_part = 1 + int(_log2(x))
+    remainder = x - 2 ** int(_log2(x))
+    bit_count = int(_log2(x))
+
+    return length_encoding(first_part) + _binary(remainder, bit_count)
+
+
+def elias_gamma(x: int) -> str:
+    """Encode a positive integer using Elias gamma coding.
+
+    Args:
+        x: A non-negative integer.
+
+    Returns:
+        The Elias gamma coded bit string.
+
+    Examples:
+        >>> elias_gamma(1)
+        '0'
+        >>> elias_gamma(5)
+        '00101'
+    """
+    return _elias_generic(_unary, x)
+
+
+def elias_delta(x: int) -> str:
+    """Encode a positive integer using Elias delta coding.
+
+    Args:
+        x: A non-negative integer.
+
+    Returns:
+        The Elias delta coded bit string.
+
+    Examples:
+        >>> elias_delta(1)
+        '0'
+        >>> elias_delta(5)
+        '01101'
+    """
+    return _elias_generic(elias_gamma, x)

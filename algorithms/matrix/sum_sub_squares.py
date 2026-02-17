@@ -1,23 +1,43 @@
-# Function to find sum of all
-# sub-squares of size k x k in a given
-# square matrix of size n x n
-def sum_sub_squares(matrix, k):
-    n = len(matrix)
-    result = [[0 for i in range(k)] for j in range(k)]
+"""
+Sum of Sub-Squares
 
-    if k > n:
-        return
-    for i in range(n - k + 1):
-        l = 0
-        for j in range(n - k + 1):
-            sum = 0
+Given a square matrix of size n x n and an integer k, compute the sum
+of all k x k sub-squares and return the results as a matrix.
 
-            # Calculate and print sum of current sub-square
+Reference: https://www.geeksforgeeks.org/given-n-x-n-square-matrix-find-sum-sub-squares-size-k-x-k/
+
+Complexity:
+    Time:  O(n^2 * k^2)
+    Space: O((n - k + 1)^2)
+"""
+
+from __future__ import annotations
+
+
+def sum_sub_squares(matrix: list[list[int]], k: int) -> list[list[int]] | None:
+    """Compute sums of all k x k sub-squares in the matrix.
+
+    Args:
+        matrix: Square matrix of size n x n.
+        k: Side length of the sub-squares.
+
+    Returns:
+        Matrix of sub-square sums, or None if k > n.
+
+    Examples:
+        >>> sum_sub_squares([[1, 1, 1], [2, 2, 2], [3, 3, 3]], 2)
+        [[6, 6], [9, 9]]
+    """
+    size = len(matrix)
+    if k > size:
+        return None
+    result_size = size - k + 1
+    result = [[0] * result_size for _ in range(result_size)]
+    for i in range(result_size):
+        for j in range(result_size):
+            total = 0
             for p in range(i, k + i):
                 for q in range(j, k + j):
-                    sum += matrix[p][q]
-
-            result[i][l] = sum
-            l += 1
-
+                    total += matrix[p][q]
+            result[i][j] = total
     return result
