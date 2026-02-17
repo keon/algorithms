@@ -9,6 +9,12 @@ from algorithms.data_structures.b_tree import BTree
 from algorithms.data_structures.b_tree import Node as BTreeNode
 from algorithms.tree.bin_tree_to_list import bin_tree_to_list
 from algorithms.tree.binary_tree_paths import binary_tree_paths
+from algorithms.tree.binary_tree_views import (
+    bottom_view,
+    left_view,
+    right_view,
+    top_view,
+)
 from algorithms.tree.construct_tree_postorder_preorder import (
     construct_tree,
     construct_tree_util,
@@ -58,4 +64,8 @@ __all__ = [
     "path_sum3",
     "reverse",
     "tree_print",
+    "left_view",
+    "right_view",
+    "top_view",
+    "bottom_view",
 ]

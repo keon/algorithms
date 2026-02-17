@@ -29,6 +29,7 @@ from algorithms.graph.count_islands_unionfind import (
     num_islands as num_islands_unionfind,
 )
 from algorithms.graph.dijkstra import Dijkstra
+from algorithms.graph.dijkstra_heapq import dijkstra
 from algorithms.graph.find_all_cliques import find_all_cliques
 from algorithms.graph.kahns_algorithm import Solution as KahnsSolution
 from algorithms.graph.markov_chain import iterating_markov_chain, next_state
@@ -70,6 +71,7 @@ __all__ = [
     "clone_graph2",
     # dijkstra
     "Dijkstra",
+    "dijkstra",
     # find_all_cliques
     "find_all_cliques",
     # graph
