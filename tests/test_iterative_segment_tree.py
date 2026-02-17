@@ -1,4 +1,4 @@
-from algorithms.tree.segment_tree.iterative_segment_tree import SegmentTree
+from algorithms.data_structures.iterative_segment_tree import SegmentTree
 from functools import reduce
 
 import unittest

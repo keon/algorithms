@@ -23,7 +23,6 @@ from algorithms.sorting.selection_sort import selection_sort
 from algorithms.sorting.shell_sort import shell_sort
 from algorithms.sorting.sort_colors import sort_colors
 from algorithms.sorting.stooge_sort import stooge_sort
-from algorithms.sorting.top_sort import top_sort, top_sort_recursive
 from algorithms.sorting.wiggle_sort import wiggle_sort
 
 __all__ = [
@@ -51,7 +50,5 @@ __all__ = [
     "shell_sort",
     "sort_colors",
     "stooge_sort",
-    "top_sort",
-    "top_sort_recursive",
     "wiggle_sort",
 ]

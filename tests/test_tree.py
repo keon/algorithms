@@ -1,16 +1,11 @@
-from algorithms.tree.traversal import (
-    preorder,
-    preorder_rec,
-    postorder,
-    postorder_rec,
-    inorder,
-    inorder_rec
-)
-from algorithms.tree.b_tree import BTree
+from algorithms.tree.traversal_preorder import preorder, preorder_rec
+from algorithms.tree.traversal_postorder import postorder, postorder_rec
+from algorithms.tree.traversal_inorder import inorder, inorder_rec
+from algorithms.data_structures.b_tree import BTree
 
 from algorithms.tree import construct_tree_postorder_preorder as ctpp
 
-from algorithms.tree.fenwick_tree.fenwick_tree import Fenwick_Tree
+from algorithms.data_structures.fenwick_tree import Fenwick_Tree
 
 import unittest
 

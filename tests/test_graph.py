@@ -509,6 +509,26 @@ class TestMazeSearchDfs(unittest.TestCase):
 # --- Tests merged from test_topological.py ---
 
 from algorithms.graph import topological_sort
+from algorithms.graph import top_sort, top_sort_recursive
+
+
+class TestTopSort(unittest.TestCase):
+    def setUp(self):
+        self.depGraph = {
+            "a": ["b"],
+            "b": ["c"],
+            "c": ['e'],
+            'e': ['g'],
+            "d": [],
+            "f": ["e", "d"],
+            "g": []
+        }
+
+    def test_topsort(self):
+        res = top_sort_recursive(self.depGraph)
+        self.assertTrue(res.index('g') < res.index('e'))
+        res = top_sort(self.depGraph)
+        self.assertTrue(res.index('g') < res.index('e'))
 
 
 class TestTopologicalSort(unittest.TestCase):

@@ -44,6 +44,8 @@ from algorithms.graph.all_factors import get_factors, get_factors_iterative1, ge
 from algorithms.graph.pacific_atlantic import pacific_atlantic
 from algorithms.graph.sudoku_solver import Sudoku
 from algorithms.graph.walls_and_gates import walls_and_gates
+from algorithms.graph.topological_sort_dfs import top_sort, top_sort_recursive
+from algorithms.graph.count_islands_unionfind import num_islands as num_islands_unionfind
 
 __all__ = [
     # a_star
@@ -118,4 +120,9 @@ __all__ = [
     "Sudoku",
     # walls_and_gates
     "walls_and_gates",
+    # topological_sort_dfs
+    "top_sort",
+    "top_sort_recursive",
+    # count_islands_unionfind
+    "num_islands_unionfind",
 ]

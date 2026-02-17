@@ -1,31 +1,9 @@
-"""
-Binary Tree Node
+"""Binary Tree Node (re-export).
 
-Defines the base TreeNode class used across tree algorithms.
-
-Reference: https://en.wikipedia.org/wiki/Binary_tree
-
-Complexity:
-    Time:  O(1) for node creation
-    Space: O(1) per node
+This module re-exports TreeNode from the canonical location in
+``algorithms.common.tree_node`` for backward compatibility.
 """
 
-from __future__ import annotations
+from algorithms.common.tree_node import TreeNode
 
-
-class TreeNode:
-    """A node in a binary tree.
-
-    Args:
-        val: The value stored in this node.
-
-    Examples:
-        >>> node = TreeNode(5)
-        >>> node.val
-        5
-    """
-
-    def __init__(self, val: int = 0) -> None:
-        self.val = val
-        self.left: TreeNode | None = None
-        self.right: TreeNode | None = None
+__all__ = ["TreeNode"]

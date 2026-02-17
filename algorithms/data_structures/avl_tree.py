@@ -1,5 +1,5 @@
 """ Imports TreeNodes"""
-from tree.tree import TreeNode
+from algorithms.common.tree_node import TreeNode
 
 
 class AvlTree(object):

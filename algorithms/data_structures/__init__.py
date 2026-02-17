@@ -31,6 +31,16 @@ from algorithms.data_structures.stack import (
 )
 from algorithms.data_structures.union_find import Union
 
+# Tree data structures (moved from tree/ subdirectories in Phase 8)
+from algorithms.data_structures.avl_tree import AvlTree
+from algorithms.data_structures.b_tree import BTree
+from algorithms.data_structures.bst import BST
+from algorithms.data_structures.fenwick_tree import Fenwick_Tree
+from algorithms.data_structures.iterative_segment_tree import SegmentTree
+from algorithms.data_structures.red_black_tree import RBTree
+from algorithms.data_structures.segment_tree import SegmentTree as SegmentTreeRecursive
+from algorithms.data_structures.trie import Trie
+
 __all__ = [
     "AbstractHeap",
     "AbstractQueue",
@@ -53,4 +63,13 @@ __all__ = [
     "SinglyLinkedListNode",
     "StackNode",
     "Union",
+    # Tree data structures
+    "AvlTree",
+    "BTree",
+    "BST",
+    "Fenwick_Tree",
+    "RBTree",
+    "SegmentTree",
+    "SegmentTreeRecursive",
+    "Trie",
 ]
