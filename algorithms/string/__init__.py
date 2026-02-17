@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from algorithms.string import fizzbuzz
 from algorithms.string.add_binary import add_binary
+from algorithms.string.alphabet_board_path import alphabet_board_path
 from algorithms.string.atbash_cipher import atbash
 from algorithms.string.breaking_bad import bracket, match_symbol, match_symbol_1
 from algorithms.string.caesar_cipher import caesar_cipher
@@ -36,6 +37,7 @@ from algorithms.string.longest_common_prefix import (
 )
 from algorithms.string.longest_palindromic_substring import longest_palindrome
 from algorithms.string.make_sentence import make_sentence
+from algorithms.string.manacher import manacher
 from algorithms.string.merge_string_checker import (
     is_merge_iterative,
     is_merge_recursive,
@@ -63,6 +65,7 @@ from algorithms.string.strip_url_params import (
     strip_url_params3,
 )
 from algorithms.string.strong_password import strong_password
+from algorithms.string.swap_characters import can_swap_to_equal
 from algorithms.string.text_justification import text_justification
 from algorithms.string.unique_morse import convert_morse_word, unique_morse
 from algorithms.string.validate_coordinates import (
@@ -71,6 +74,7 @@ from algorithms.string.validate_coordinates import (
     is_valid_coordinates_regular_expression,
 )
 from algorithms.string.word_squares import word_squares
+from algorithms.string.z_algorithm import compute_z_array, z_search
 
 __all__ = [
     "add_binary",
@@ -140,4 +144,9 @@ __all__ = [
     "ultra_pythonic",
     "unique_morse",
     "word_squares",
+    "z_search",
+    "compute_z_array",
+    "alphabet_board_path",
+    "manacher",
+    "can_swap_to_equal",
 ]

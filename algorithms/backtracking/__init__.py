@@ -10,6 +10,7 @@ from .find_words import find_words
 from .generate_abbreviations import generate_abbreviations
 from .generate_parenthesis import generate_parenthesis_v1, generate_parenthesis_v2
 from .letter_combination import letter_combinations
+from .minimax import minimax
 from .palindrome_partitioning import (
     palindromic_substrings,
     palindromic_substrings_iter,
@@ -43,4 +44,5 @@ __all__ = [
     "subsets",
     "subsets_v2",
     "subsets_unique",
+    "minimax",
 ]

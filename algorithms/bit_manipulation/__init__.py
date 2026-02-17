@@ -12,6 +12,7 @@ from .count_ones import count_ones_iter, count_ones_recur
 from .find_difference import find_difference
 from .find_missing_number import find_missing_number, find_missing_number2
 from .flip_bit_longest_sequence import flip_bit_longest_seq
+from .gray_code import gray_code, gray_to_binary
 from .has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
 from .insert_bit import insert_mult_bits, insert_one_bit
 from .power_of_two import is_power_of_two
@@ -53,4 +54,6 @@ __all__ = [
     "subsets",
     "swap_pair",
     "update_bit",
+    "gray_code",
+    "gray_to_binary",
 ]

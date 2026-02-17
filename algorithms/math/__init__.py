@@ -40,7 +40,9 @@ from algorithms.math.generate_strobogrammtic import (
 )
 from algorithms.math.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from algorithms.math.krishnamurthy_number import krishnamurthy_number
+from algorithms.math.linear_regression import linear_regression, r_squared, rmse
 from algorithms.math.magic_number import magic_number
+from algorithms.math.manhattan_distance import manhattan_distance
 from algorithms.math.modular_exponential import modular_exponential
 from algorithms.math.next_bigger import next_bigger
 from algorithms.math.next_perfect_square import find_next_square, find_next_square2
@@ -116,4 +118,8 @@ __all__ = [
     "square_root",
     "sum_dig_pow",
     "surface_area_of_torus",
+    "linear_regression",
+    "r_squared",
+    "rmse",
+    "manhattan_distance",
 ]

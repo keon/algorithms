@@ -15,6 +15,7 @@ from algorithms.data_structures.graph import DirectedEdge, DirectedGraph, Node
 from algorithms.data_structures.hash_table import HashTable, ResizableHashTable
 from algorithms.data_structures.heap import AbstractHeap, BinaryHeap
 from algorithms.data_structures.iterative_segment_tree import SegmentTree
+from algorithms.data_structures.kd_tree import KDTree
 from algorithms.data_structures.linked_list import (
     DoublyLinkedListNode,
     SinglyLinkedListNode,
@@ -71,4 +72,5 @@ __all__ = [
     "SegmentTree",
     "SegmentTreeRecursive",
     "Trie",
+    "KDTree",
 ]

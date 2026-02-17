@@ -163,6 +163,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 | Graph | `graph.py` | `Node`, `DirectedEdge`, `DirectedGraph` |
 | Hash Table | `hash_table.py` | `HashTable`, `ResizableHashTable` |
 | Heap | `heap.py` | `BinaryHeap` |
+| KD Tree | `kd_tree.py` | `KDTree` |
 | Linked List | `linked_list.py` | `SinglyLinkedListNode`, `DoublyLinkedListNode` |
 | Priority Queue | `priority_queue.py` | `PriorityQueue` |
 | Queue | `queue.py` | `ArrayQueue`, `LinkedListQueue` |
@@ -213,6 +214,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [permute](algorithms/backtracking/permute.py) &mdash; generate all permutations of distinct elements
 - [permute_unique](algorithms/backtracking/permute_unique.py) &mdash; generate unique permutations when duplicates exist
 - [subsets](algorithms/backtracking/subsets.py) &mdash; generate all subsets (power set)
+- [minimax](algorithms/backtracking/minimax.py) &mdash; game-tree search with alpha-beta pruning
 - [subsets_unique](algorithms/backtracking/subsets_unique.py) &mdash; generate unique subsets when duplicates exist
 
 ### Bit Manipulation
@@ -226,6 +228,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [find_difference](algorithms/bit_manipulation/find_difference.py) &mdash; find the added character between two strings using XOR
 - [find_missing_number](algorithms/bit_manipulation/find_missing_number.py) &mdash; find a missing number in a sequence using XOR
 - [flip_bit_longest_sequence](algorithms/bit_manipulation/flip_bit_longest_sequence.py) &mdash; longest run of 1s after flipping a single 0
+- [gray_code](algorithms/bit_manipulation/gray_code.py) &mdash; generate Gray code sequences and convert between Gray and binary
 - [has_alternative_bit](algorithms/bit_manipulation/has_alternative_bit.py) &mdash; check if binary representation has alternating bits
 - [insert_bit](algorithms/bit_manipulation/insert_bit.py) &mdash; insert bits at a specific position in an integer
 - [power_of_two](algorithms/bit_manipulation/power_of_two.py) &mdash; check if an integer is a power of two
@@ -245,10 +248,12 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 
 ### Dynamic Programming
 
+- [bitmask](algorithms/dynamic_programming/bitmask.py) &mdash; travelling salesman problem via bitmask dynamic programming
 - [buy_sell_stock](algorithms/dynamic_programming/buy_sell_stock.py) &mdash; maximize profit from a stock price array
 - [climbing_stairs](algorithms/dynamic_programming/climbing_stairs.py) &mdash; count ways to climb stairs taking 1 or 2 steps
 - [coin_change](algorithms/dynamic_programming/coin_change.py) &mdash; minimum coins to make a given amount
 - [combination_sum](algorithms/dynamic_programming/combination_sum.py) &mdash; count combinations that sum to a target (with reuse)
+- [count_paths_dp](algorithms/dynamic_programming/count_paths_dp.py) &mdash; count paths in a grid using recursion, memoization, and bottom-up DP
 - [edit_distance](algorithms/dynamic_programming/edit_distance.py) &mdash; minimum edits to transform one string into another
 - [egg_drop](algorithms/dynamic_programming/egg_drop.py) &mdash; minimize trials to find the critical floor
 - [fibonacci](algorithms/dynamic_programming/fib.py) &mdash; compute Fibonacci numbers with memoization
@@ -276,6 +281,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [all_factors](algorithms/graph/all_factors.py) &mdash; find all factor combinations of a number
 - [all_pairs_shortest_path](algorithms/graph/all_pairs_shortest_path.py) &mdash; Floyd-Warshall all-pairs shortest paths
 - [bellman_ford](algorithms/graph/bellman_ford.py) &mdash; single-source shortest path with negative edge weights
+- [blossom](algorithms/graph/blossom.py) &mdash; Edmonds' blossom algorithm for maximum matching in general graphs
 - [check_bipartite](algorithms/graph/check_bipartite.py) &mdash; determine if a graph is two-colorable
 - [check_digraph_strongly_connected](algorithms/graph/check_digraph_strongly_connected.py) &mdash; check if a directed graph is strongly connected
 - [clone_graph](algorithms/graph/clone_graph.py) &mdash; deep-copy an undirected graph
@@ -371,7 +377,9 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [hailstone](algorithms/math/hailstone.py) &mdash; Collatz conjecture (hailstone) sequence
 - [is_strobogrammatic](algorithms/math/is_strobogrammatic.py) &mdash; check if a number looks the same upside-down
 - [krishnamurthy_number](algorithms/math/krishnamurthy_number.py) &mdash; check if a number equals the sum of the factorials of its digits
+- [linear_regression](algorithms/math/linear_regression.py) &mdash; ordinary least-squares linear regression with R² and RMSE
 - [magic_number](algorithms/math/magic_number.py) &mdash; check if a number is a magic number
+- [manhattan_distance](algorithms/math/manhattan_distance.py) &mdash; compute Manhattan (L1) distance between two points in any dimension
 - [modular_exponential](algorithms/math/modular_exponential.py) &mdash; compute (base^exp) mod m efficiently
 - [modular_inverse](algorithms/math/modular_inverse.py) &mdash; compute the modular multiplicative inverse
 - [next_bigger](algorithms/math/next_bigger.py) &mdash; next larger number with the same digits
@@ -380,6 +388,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [num_digits](algorithms/math/num_digits.py) &mdash; count the number of digits in an integer
 - [num_perfect_squares](algorithms/math/num_perfect_squares.py) &mdash; minimum perfect squares that sum to n
 - [polynomial](algorithms/math/polynomial.py) &mdash; polynomial and monomial arithmetic operations
+- [polynomial_division](algorithms/math/polynomial_division.py) &mdash; polynomial long division returning quotient and remainder
 - [power](algorithms/math/power.py) &mdash; compute x^n via binary exponentiation
 - [prime_check](algorithms/math/prime_check.py) &mdash; check if a number is prime
 - [primes_sieve_of_eratosthenes](algorithms/math/primes_sieve_of_eratosthenes.py) &mdash; generate primes up to n using the Sieve of Eratosthenes
@@ -421,6 +430,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 ### Searching
 
 - [binary_search](algorithms/searching/binary_search.py) &mdash; search a sorted array in O(log n)
+- [exponential_search](algorithms/searching/exponential_search.py) &mdash; search a sorted array by doubling the range then binary searching
 - [find_min_rotate](algorithms/searching/find_min_rotate.py) &mdash; find the minimum in a rotated sorted array
 - [first_occurrence](algorithms/searching/first_occurrence.py) &mdash; find the first occurrence of a target value
 - [generalized_binary_search](algorithms/searching/generalized_binary_search.py) &mdash; binary search with a custom predicate
@@ -432,6 +442,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [search_insert](algorithms/searching/search_insert.py) &mdash; find the insertion position for a target value
 - [search_range](algorithms/searching/search_range.py) &mdash; find the first and last positions of a target
 - [search_rotate](algorithms/searching/search_rotate.py) &mdash; search in a rotated sorted array
+- [sentinel_search](algorithms/searching/sentinel_search.py) &mdash; linear search optimized by placing a sentinel at the end
 - [ternary_search](algorithms/searching/ternary_search.py) &mdash; search by dividing the array into three parts
 - [two_sum](algorithms/searching/two_sum.py) &mdash; find two numbers that sum to a target
 
@@ -488,6 +499,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 ### String
 
 - [add_binary](algorithms/string/add_binary.py) &mdash; add two binary number strings
+- [alphabet_board_path](algorithms/string/alphabet_board_path.py) &mdash; navigate a 5×5 alphabet board to spell a target word
 - [atbash_cipher](algorithms/string/atbash_cipher.py) &mdash; Atbash substitution cipher (reverse the alphabet)
 - [breaking_bad](algorithms/string/breaking_bad.py) &mdash; spell a string using periodic-table element symbols
 - [caesar_cipher](algorithms/string/caesar_cipher.py) &mdash; Caesar shift cipher encryption / decryption
@@ -510,6 +522,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [longest_common_prefix](algorithms/string/longest_common_prefix.py) &mdash; find the longest common prefix among strings
 - [longest_palindromic_substring](algorithms/string/longest_palindromic_substring.py) &mdash; find the longest palindromic substring
 - [make_sentence](algorithms/string/make_sentence.py) &mdash; break a string into valid dictionary words
+- [manacher](algorithms/string/manacher.py) &mdash; find the longest palindromic substring in O(n) time
 - [merge_string_checker](algorithms/string/merge_string_checker.py) &mdash; check if a string is a valid merge of two others
 - [min_distance](algorithms/string/min_distance.py) &mdash; minimum deletions to make two strings equal
 - [multiply_strings](algorithms/string/multiply_strings.py) &mdash; multiply two numbers represented as strings
@@ -524,11 +537,13 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [roman_to_int](algorithms/string/roman_to_int.py) &mdash; convert a Roman numeral string to an integer
 - [rotate](algorithms/string/rotate.py) &mdash; rotate a string by k positions
 - [strip_url_params](algorithms/string/strip_url_params.py) &mdash; remove duplicate query parameters from a URL
+- [swap_characters](algorithms/string/swap_characters.py) &mdash; check if one character swap can make two strings equal
 - [strong_password](algorithms/string/strong_password.py) &mdash; check minimum changes needed for a strong password
 - [text_justification](algorithms/string/text_justification.py) &mdash; justify text lines to a specified width
 - [unique_morse](algorithms/string/unique_morse.py) &mdash; count unique Morse code representations of words
 - [validate_coordinates](algorithms/string/validate_coordinates.py) &mdash; validate geographic latitude/longitude coordinates
 - [word_squares](algorithms/string/word_squares.py) &mdash; find all valid word squares from a word list
+- [z_algorithm](algorithms/string/z_algorithm.py) &mdash; Z-array computation for linear-time pattern matching
 
 ### Tree
 
