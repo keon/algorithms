@@ -14,9 +14,7 @@ Complexity:
 from __future__ import annotations
 
 
-def missing_ranges(
-    array: list[int], low: int, high: int
-) -> list[tuple[int, int]]:
+def missing_ranges(array: list[int], low: int, high: int) -> list[tuple[int, int]]:
     """Find gaps between low and high not covered by elements in array.
 
     Args:

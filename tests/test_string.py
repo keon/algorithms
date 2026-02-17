@@ -87,24 +87,30 @@ class TestBreakingBad(unittest.TestCase):
     """
 
     def setUp(self):
-        self.words = ['Amazon', 'Microsoft', 'Google']
-        self.symbols = ['i', 'Am', 'cro', 'le', 'abc']
-        self.result = ['M[i]crosoft', '[Am]azon', 'Mi[cro]soft', 'Goog[le]']
+        self.words = ["Amazon", "Microsoft", "Google"]
+        self.symbols = ["i", "Am", "cro", "le", "abc"]
+        self.result = ["M[i]crosoft", "[Am]azon", "Mi[cro]soft", "Goog[le]"]
 
     def test_match_symbol(self):
         self.assertEqual(self.result, match_symbol(self.words, self.symbols))
 
     def test_match_symbol_1(self):
-        self.assertEqual(['[Am]azon', 'Mi[cro]soft', 'Goog[le]'],
-                         match_symbol_1(self.words, self.symbols))
+        self.assertEqual(
+            ["[Am]azon", "Mi[cro]soft", "Goog[le]"],
+            match_symbol_1(self.words, self.symbols),
+        )
 
     def test_bracket(self):
-        self.assertEqual(('[Am]azon', 'Mi[cro]soft', 'Goog[le]'),
-                         bracket(self.words, self.symbols))
-        self.assertEqual(('Amazon', 'Microsoft', 'Google'),
-                         bracket(self.words, ['thisshouldnotmatch']))
-        self.assertEqual(('Amazon', 'M[i]crosoft', 'Google'),
-                         bracket(self.words, ['i', 'i']))
+        self.assertEqual(
+            ("[Am]azon", "Mi[cro]soft", "Goog[le]"), bracket(self.words, self.symbols)
+        )
+        self.assertEqual(
+            ("Amazon", "Microsoft", "Google"),
+            bracket(self.words, ["thisshouldnotmatch"]),
+        )
+        self.assertEqual(
+            ("Amazon", "M[i]crosoft", "Google"), bracket(self.words, ["i", "i"])
+        )
 
 
 class TestDecodeString(unittest.TestCase):
@@ -141,8 +147,7 @@ class TestDomainExtractor(unittest.TestCase):
     """
 
     def test_valid(self):
-        self.assertEqual(domain_name_1("https://github.com/SaadBenn"),
-                         "github")
+        self.assertEqual(domain_name_1("https://github.com/SaadBenn"), "github")
 
     def test_invalid(self):
         self.assertEqual(domain_name_2("http://google.com"), "google")
@@ -160,8 +165,7 @@ class TestEncodeDecode(unittest.TestCase):
         self.assertEqual("4:keon2:is7:awesome", encode("keon is awesome"))
 
     def test_decode(self):
-        self.assertEqual(['keon', 'is', 'awesome'],
-                         decode("4:keon2:is7:awesome"))
+        self.assertEqual(["keon", "is", "awesome"], decode("4:keon2:is7:awesome"))
 
 
 class TestGroupAnagrams(unittest.TestCase):
@@ -173,9 +177,10 @@ class TestGroupAnagrams(unittest.TestCase):
     """
 
     def test_group_anagrams(self):
-        self.assertEqual([['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']], \
-                         group_anagrams(["eat", "tea", "tan", "ate", "nat",
-                                        "bat"]))
+        self.assertEqual(
+            [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]],
+            group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]),
+        )
 
 
 class TestIntToRoman(unittest.TestCase):
@@ -397,8 +402,10 @@ class TestReverseWords(unittest.TestCase):
     """
 
     def test_reverse_words(self):
-        self.assertEqual("pizza like I and kim keon am I", \
-                         reverse_words("I am keon kim and I like pizza"))
+        self.assertEqual(
+            "pizza like I and kim keon am I",
+            reverse_words("I am keon kim and I like pizza"),
+        )
 
 
 class TestRomanToInt(unittest.TestCase):
@@ -454,9 +461,13 @@ class TestValidateCoordinates(unittest.TestCase):
             self.assertTrue(is_valid_coordinates_0(coordinate))
 
     def test_invalid(self):
-        invalid_coordinates = ["23.234, - 23.4234", "99.234, 12.324",
-                               "6.325624, 43.34345.345", "0, 1,2",
-                               "23.245, 1e1"]
+        invalid_coordinates = [
+            "23.234, - 23.4234",
+            "99.234, 12.324",
+            "6.325624, 43.34345.345",
+            "0, 1,2",
+            "23.245, 1e1",
+        ]
         for coordinate in invalid_coordinates:
             self.assertFalse(is_valid_coordinates_0(coordinate))
 
@@ -470,10 +481,10 @@ class TestWordSquares(unittest.TestCase):
     """
 
     def test_word_squares(self):
-        self.assertEqual([['wall', 'area', 'lead', 'lady'], ['ball', 'area',
-                         'lead', 'lady']], \
-                         word_squares(["area", "lead", "wall",
-                                      "lady", "ball"]))
+        self.assertEqual(
+            [["wall", "area", "lead", "lady"], ["ball", "area", "lead", "lady"]],
+            word_squares(["area", "lead", "wall", "lady", "ball"]),
+        )
 
 
 class TestUniqueMorse(unittest.TestCase):
@@ -531,21 +542,19 @@ class TestRepeatString(unittest.TestCase):
 
 class TestTextJustification(unittest.TestCase):
     def test_text_justification(self):
-        self.assertEqual(["This    is    an",
-                          "example  of text",
-                          "justification.  "],
-                         text_justification(["This", "is", "an", "example",
-                                             "of", "text",
-                                             "justification."], 16)
-                         )
+        self.assertEqual(
+            ["This    is    an", "example  of text", "justification.  "],
+            text_justification(
+                ["This", "is", "an", "example", "of", "text", "justification."], 16
+            ),
+        )
 
-        self.assertEqual(["What   must   be",
-                          "acknowledgment  ",
-                          "shall be        "],
-                         text_justification(["What", "must", "be",
-                                             "acknowledgment", "shall",
-                                             "be"], 16)
-                         )
+        self.assertEqual(
+            ["What   must   be", "acknowledgment  ", "shall be        "],
+            text_justification(
+                ["What", "must", "be", "acknowledgment", "shall", "be"], 16
+            ),
+        )
 
 
 class TestMinDistance(unittest.TestCase):
@@ -553,6 +562,7 @@ class TestMinDistance(unittest.TestCase):
         self.assertEqual(2, min_distance("sea", "eat"))
         self.assertEqual(6, min_distance("abAlgocrithmf", "Algorithmmd"))
         self.assertEqual(4, min_distance("acbbd", "aabcd"))
+
 
 class TestMinDistanceDP(unittest.TestCase):
     def test_min_distance(self):
@@ -564,20 +574,14 @@ class TestMinDistanceDP(unittest.TestCase):
 class TestLongestCommonPrefix(unittest.TestCase):
     def test_longest_common_prefix(self):
         # Test first solution
-        self.assertEqual("fl", longest_common_prefix_v1(["flower", "flow",
-                                                        "flight"]))
-        self.assertEqual("", longest_common_prefix_v1(["dog", "racecar",
-                                                      "car"]))
+        self.assertEqual("fl", longest_common_prefix_v1(["flower", "flow", "flight"]))
+        self.assertEqual("", longest_common_prefix_v1(["dog", "racecar", "car"]))
         # Test second solution
-        self.assertEqual("fl", longest_common_prefix_v2(["flower", "flow",
-                                                        "flight"]))
-        self.assertEqual("", longest_common_prefix_v2(["dog", "racecar",
-                                                      "car"]))
+        self.assertEqual("fl", longest_common_prefix_v2(["flower", "flow", "flight"]))
+        self.assertEqual("", longest_common_prefix_v2(["dog", "racecar", "car"]))
         # Test third solution
-        self.assertEqual("fl", longest_common_prefix_v3(["flower", "flow",
-                                                        "flight"]))
-        self.assertEqual("", longest_common_prefix_v3(["dog", "racecar",
-                                                      "car"]))
+        self.assertEqual("fl", longest_common_prefix_v3(["flower", "flow", "flight"]))
+        self.assertEqual("", longest_common_prefix_v3(["dog", "racecar", "car"]))
 
 
 class TestFirstUniqueChar(unittest.TestCase):
@@ -614,6 +618,7 @@ class TestLongestPalindromicSubstring(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_longest_palindromic_substring(self):
         self.assertEqual("bb", longest_palindrome("cbbd"))
         self.assertEqual("abba", longest_palindrome("abba"))
@@ -634,7 +639,7 @@ class TestKnuthMorrisPratt(unittest.TestCase):
         self.assertEqual([0, 1, 2, 3, 4], knuth_morris_pratt("aaaaaaa", "aaa"))
         self.assertEqual([0, 4], knuth_morris_pratt("abcdabc", "abc"))
         self.assertEqual([], knuth_morris_pratt("aabcdaab", "aba"))
-        self.assertEqual([0, 4], knuth_morris_pratt([0,0,1,1,0,0,1,0], [0,0]))
+        self.assertEqual([0, 4], knuth_morris_pratt([0, 0, 1, 1, 0, 0, 1, 0], [0, 0]))
 
 
 class TestPanagram(unittest.TestCase):
@@ -720,6 +725,7 @@ class TestFizzbuzz(unittest.TestCase):
     """[summary]
     Tests for the fizzbuzz method in file fizzbuzz.py
     """
+
     def test_fizzbuzz(self):
         # Testing that n < 0 returns a Value Error
         self.assertRaises(ValueError, fizzbuzz.fizzbuzz, -2)
@@ -739,8 +745,23 @@ class TestFizzbuzz(unittest.TestCase):
 
         # Testing a base case, n = 15 i.e. mod 3 and 5
         result = fizzbuzz.fizzbuzz(15)
-        expected = [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11,
-                    "Fizz", 13, 14, "FizzBuzz"]
+        expected = [
+            1,
+            2,
+            "Fizz",
+            4,
+            "Buzz",
+            "Fizz",
+            7,
+            8,
+            "Fizz",
+            "Buzz",
+            11,
+            "Fizz",
+            13,
+            14,
+            "FizzBuzz",
+        ]
         self.assertEqual(result, expected)
 
 

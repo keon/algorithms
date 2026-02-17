@@ -33,6 +33,6 @@ def swap_pair(number: int) -> int:
         >>> swap_pair(10)
         5
     """
-    odd_bits = (number & int('AAAAAAAA', 16)) >> 1
-    even_bits = (number & int('55555555', 16)) << 1
+    odd_bits = (number & int("AAAAAAAA", 16)) >> 1
+    even_bits = (number & int("55555555", 16)) << 1
     return odd_bits | even_bits

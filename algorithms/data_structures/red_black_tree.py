@@ -65,10 +65,7 @@ class RBTree:
         # find the position of inserted node
         while root is not None:
             insert_node_parent = root
-            if insert_node_parent.val < node.val:
-                root = root.right
-            else:
-                root = root.left
+            root = root.right if insert_node_parent.val < node.val else root.left
         # set the n ode's parent node
         node.parent = insert_node_parent
         if insert_node_parent is None:
@@ -82,7 +79,7 @@ class RBTree:
         node.left = None
         node.right = None
         node.color = 1
-        # fix the tree to 
+        # fix the tree to
         self.fix_insert(node)
 
     def fix_insert(self, node):
@@ -106,7 +103,8 @@ class RBTree:
                     node = node.parent.parent
                     continue
                 elif node is node.parent.right:
-                    # case 3.2 the uncle node is black or null, and the node is right of parent
+                    # case 3.2 the uncle node is black or null,
+                    # and the node is right of parent
                     # then set his parent node is current node
                     # left rotate the node and continue the next
                     node = node.parent
@@ -128,7 +126,8 @@ class RBTree:
                     node = node.parent.parent
                     continue
                 elif node is node.parent.left:
-                    # case 3.2 the uncle node is black or null, and the node is right of parent
+                    # case 3.2 the uncle node is black or null,
+                    # and the node is right of parent
                     # then set his parent node is current node
                     # left rotate the node and continue the next
                     node = node.parent
@@ -144,7 +143,7 @@ class RBTree:
         """
         replace u with v
         :param node_u: replaced node
-        :param node_v: 
+        :param node_v:
         :return: None
         """
         if node_u.parent is None:
@@ -153,15 +152,15 @@ class RBTree:
             node_u.parent.left = node_v
         elif node_u is node_u.parent.right:
             node_u.parent.right = node_v
-        # check is node_v is None 
+        # check is node_v is None
         if node_v:
             node_v.parent = node_u.parent
 
     def maximum(self, node):
         """
-        find the max node when node regard as a root node   
-        :param node: 
-        :return: max node 
+        find the max node when node regard as a root node
+        :param node:
+        :return: max node
         """
         temp_node = node
         while temp_node.right is not None:
@@ -170,9 +169,9 @@ class RBTree:
 
     def minimum(self, node):
         """
-        find the minimum node when node regard as a root node   
+        find the minimum node when node regard as a root node
         :param node:
-        :return: minimum node 
+        :return: minimum node
         """
         temp_node = node
         while temp_node.left:
@@ -193,7 +192,7 @@ class RBTree:
             node_min = self.minimum(node.right)
             node_color = node_min.color
             temp_node = node_min.right
-            ## 
+            ##
             if node_min.parent is not node:
                 self.transplant(node_min, node_min.right)
                 node_min.right = node.right
@@ -215,7 +214,7 @@ class RBTree:
                 node_brother = node.parent.right
 
                 # case 1: node's red, can not get black node
-                # set brother is black and parent is red 
+                # set brother is black and parent is red
                 if node_brother.color == 1:
                     node_brother.color = 0
                     node.parent.color = 1
@@ -224,19 +223,21 @@ class RBTree:
 
                 # case 2: brother node is black, and its children node is both black
                 if (node_brother.left is None or node_brother.left.color == 0) and (
-                                node_brother.right is None or node_brother.right.color == 0):
+                    node_brother.right is None or node_brother.right.color == 0
+                ):
                     node_brother.color = 1
                     node = node.parent
                 else:
-
-                    # case 3: brother node is black , and its left child node is red and right is black
+                    # case 3: brother node is black, and its
+                    # left child node is red and right is black
                     if node_brother.right is None or node_brother.right.color == 0:
                         node_brother.color = 1
                         node_brother.left.color = 0
                         self.right_rotate(node_brother)
                         node_brother = node.parent.right
 
-                    # case 4: brother node is black, and right is red, and left is any color
+                    # case 4: brother node is black, and right
+                    # is red, and left is any color
                     node_brother.color = node.parent.color
                     node.parent.color = 0
                     node_brother.right.color = 0
@@ -250,7 +251,8 @@ class RBTree:
                     self.left_rotate(node.parent)
                     node_brother = node.parent.right
                 if (node_brother.left is None or node_brother.left.color == 0) and (
-                                node_brother.right is None or node_brother.right.color == 0):
+                    node_brother.right is None or node_brother.right.color == 0
+                ):
                     node_brother.color = 1
                     node = node.parent
                 else:
@@ -277,7 +279,7 @@ class RBTree:
                 stack.append(root)
                 root = root.left
             root = stack.pop()
-            res.append({'val': root.val, 'color': root.color})
+            res.append({"val": root.val, "color": root.color})
             root = root.right
         return res
 

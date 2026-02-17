@@ -1,14 +1,20 @@
 import unittest
 
-from algorithms.queue import ArrayQueue, LinkedListQueue, PriorityQueue, max_sliding_window, reconstruct_queue
+from algorithms.queue import (
+    ArrayQueue,
+    LinkedListQueue,
+    PriorityQueue,
+    max_sliding_window,
+    reconstruct_queue,
+)
 
 
 class TestQueue(unittest.TestCase):
     """
-        Test suite for the Queue data structures.
+    Test suite for the Queue data structures.
     """
 
-    def test_ArrayQueue(self):
+    def test_array_queue(self):
         queue = ArrayQueue()
         queue.enqueue(1)
         queue.enqueue(2)
@@ -37,7 +43,7 @@ class TestQueue(unittest.TestCase):
 
         self.assertTrue(queue.is_empty())
 
-    def test_LinkedListQueue(self):
+    def test_linked_list_queue(self):
         queue = LinkedListQueue()
         queue.enqueue(1)
         queue.enqueue(2)
@@ -75,23 +81,23 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(max_sliding_window(array, k=7), [6, 7])
 
         array = [8, 5, 10, 7, 9, 4, 15, 12, 90, 13]
-        self.assertEqual(max_sliding_window(array, k=4),
-                         [10, 10, 10, 15, 15, 90, 90])
+        self.assertEqual(max_sliding_window(array, k=4), [10, 10, 10, 15, 15, 90, 90])
         self.assertEqual(max_sliding_window(array, k=7), [15, 15, 90, 90])
-        self.assertEqual(max_sliding_window(array, k=2),
-                         [8, 10, 10, 9, 9, 15, 15, 90, 90])
+        self.assertEqual(
+            max_sliding_window(array, k=2), [8, 10, 10, 9, 9, 15, 15, 90, 90]
+        )
 
     def test_reconstruct_queue(self):
-        self.assertEqual([[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]],
-                         reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0],
-                                           [6, 1], [5, 2]]))
+        self.assertEqual(
+            [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]],
+            reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]),
+        )
 
 
 class TestPriorityQueue(unittest.TestCase):
-    """Test suite for the PriorityQueue data structures.
-    """
+    """Test suite for the PriorityQueue data structures."""
 
-    def test_PriorityQueue(self):
+    def test_priority_queue(self):
         queue = PriorityQueue([3, 4, 1, 6])
         self.assertEqual(4, queue.size())
         self.assertEqual(1, queue.pop())

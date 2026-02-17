@@ -10,7 +10,7 @@ According to the definition of LCA on Wikipedia:
         _______6______
        /              \
     ___2__          ___8__
-   /      \        /      \
+   /      \\        /      \
    0      _4       7       9
          /  \
          3   5

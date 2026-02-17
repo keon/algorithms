@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from algorithms.data_structures.hash_table import HashTable, ResizableHashTable
-from algorithms.data_structures.separate_chaining_hash_table import SeparateChainingHashTable
+from algorithms.data_structures.separate_chaining_hash_table import (
+    SeparateChainingHashTable,
+)
 
 from .is_anagram import is_anagram
 from .is_isomorphic import is_isomorphic

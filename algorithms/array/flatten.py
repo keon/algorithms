@@ -13,8 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Iterable
-from typing import Any, Generator
+from collections.abc import Generator, Iterable
+from typing import Any
 
 
 def flatten(input_arr: Iterable[Any], output_arr: list[Any] | None = None) -> list[Any]:

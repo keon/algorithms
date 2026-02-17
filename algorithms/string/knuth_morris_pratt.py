@@ -13,10 +13,10 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import List, Sequence
+from collections.abc import Sequence
 
 
-def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> List[int]:
+def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> list[int]:
     """Find all occurrences of pattern in text using the KMP algorithm.
 
     Args:

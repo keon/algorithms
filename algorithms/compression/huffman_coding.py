@@ -45,10 +45,10 @@ class Node:
         return self.frequency == other.frequency
 
     def __str__(self) -> str:
-        return "<ch: {0}: {1}>".format(self.sign, self.frequency)
+        return f"<ch: {self.sign}: {self.frequency}>"
 
     def __repr__(self) -> str:
-        return "<ch: {0}: {1}>".format(self.sign, self.frequency)
+        return f"<ch: {self.sign}: {self.frequency}>"
 
 
 class HuffmanReader:
@@ -123,7 +123,7 @@ class HuffmanReader:
             if not byte:
                 return False
             integer = int.from_bytes(byte, "big")
-            self.buffer.extend(list("{0:08b}".format(integer)))
+            self.buffer.extend(list(f"{integer:08b}"))
         return True
 
     def get_bit(self, buff_limit: int = 8) -> str | int:
@@ -174,7 +174,7 @@ class HuffmanWriter:
         Args:
             num: An integer (0-255) to write.
         """
-        bin_int = "{0:08b}".format(num)
+        bin_int = f"{num:08b}"
         self.write_bits(bin_int)
 
     def write_bits(self, bits: str) -> None:
@@ -215,9 +215,7 @@ class HuffmanWriter:
         for int_sign in signs:
             self.write_int(int_sign)
 
-    def _save_information_about_additional_bits(
-        self, additional_bits: int
-    ) -> None:
+    def _save_information_about_additional_bits(self, additional_bits: int) -> None:
         """Overwrite the first three bits to record padding count.
 
         Args:
@@ -226,8 +224,8 @@ class HuffmanWriter:
         self.file.seek(0)
         first_byte_raw = self.file.read(1)
         self.file.seek(0)
-        first_byte = "{0:08b}".format(int.from_bytes(first_byte_raw, "big"))
-        first_byte = "{0:03b}".format(additional_bits) + first_byte[3:]
+        first_byte = "{:08b}".format(int.from_bytes(first_byte_raw, "big"))
+        first_byte = f"{additional_bits:03b}" + first_byte[3:]
         self.write_bits(first_byte)
 
     def close(self) -> None:
@@ -292,13 +290,9 @@ class HuffmanCoding:
             file_in_name: Path to the encoded input file.
             file_out_name: Path to the decoded output file.
         """
-        with open(file_in_name, "rb") as file_in, open(
-            file_out_name, "wb"
-        ) as file_out:
+        with open(file_in_name, "rb") as file_in, open(file_out_name, "wb") as file_out:
             reader = HuffmanReader(file_in)
-            additional_bits = (
-                reader.get_number_of_additional_bits_in_the_last_byte()
-            )
+            additional_bits = reader.get_number_of_additional_bits_in_the_last_byte()
             tree = reader.load_tree()
             HuffmanCoding._decode_and_write_signs_to_file(
                 file_out, reader, tree, additional_bits
@@ -344,9 +338,10 @@ class HuffmanCoding:
             file_in_name: Path to the raw input file.
             file_out_name: Path to the encoded output file.
         """
-        with open(file_in_name, "rb") as file_in, open(
-            file_out_name, mode="wb+"
-        ) as file_out:
+        with (
+            open(file_in_name, "rb") as file_in,
+            open(file_out_name, mode="wb+") as file_out,
+        ):
             signs_frequency = HuffmanCoding._get_char_frequency(file_in)
             file_in.seek(0)
             tree = HuffmanCoding._create_tree(signs_frequency)
@@ -355,9 +350,7 @@ class HuffmanCoding:
             writer = HuffmanWriter(file_out)
             writer.write_bits("000")
             writer.save_tree(tree)
-            HuffmanCoding._encode_and_write_signs_to_file(
-                file_in, writer, codes
-            )
+            HuffmanCoding._encode_and_write_signs_to_file(file_in, writer, codes)
             writer.close()
 
     @staticmethod

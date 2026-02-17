@@ -41,13 +41,13 @@ class SegmentTree:
             p = p // 2
             self.tree[p] = self.fn(self.tree[p * 2], self.tree[p * 2 + 1])
 
-    def query(self, l, r):
-        l, r = l + self.size, r + self.size
+    def query(self, left, r):
+        left, r = left + self.size, r + self.size
         res = None
-        while l <= r:
-            if l % 2 == 1:
-                res = self.tree[l] if res is None else self.fn(res, self.tree[l])
+        while left <= r:
+            if left % 2 == 1:
+                res = self.tree[left] if res is None else self.fn(res, self.tree[left])
             if r % 2 == 0:
                 res = self.tree[r] if res is None else self.fn(res, self.tree[r])
-            l, r = (l + 1) // 2, (r - 1) // 2
+            left, r = (left + 1) // 2, (r - 1) // 2
         return res

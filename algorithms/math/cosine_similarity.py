@@ -51,17 +51,21 @@ def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
         0.4714045207910317
     """
     if len(vec1) != len(vec2):
-        raise ValueError("The two vectors must be the same length. Got shape " + str(len(vec1))
-                         + " and " + str(len(vec2)))
+        raise ValueError(
+            "The two vectors must be the same length. Got shape "
+            + str(len(vec1))
+            + " and "
+            + str(len(vec2))
+        )
 
     norm_a = _l2_distance(vec1)
     norm_b = _l2_distance(vec2)
 
     similarity = 0.0
 
-    for vec1_element, vec2_element in zip(vec1, vec2):
+    for vec1_element, vec2_element in zip(vec1, vec2, strict=False):
         similarity += vec1_element * vec2_element
 
-    similarity /= (norm_a * norm_b)
+    similarity /= norm_a * norm_b
 
     return similarity

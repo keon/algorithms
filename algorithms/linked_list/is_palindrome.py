@@ -116,11 +116,9 @@ def is_palindrome_dict(head: object | None) -> bool:
         if len(indices) % 2 != 0:
             middle += 1
         else:
-            step = 0
-            for i in range(len(indices)):
+            for step, i in enumerate(range(len(indices))):
                 if indices[i] + indices[len(indices) - 1 - step] != checksum:
                     return False
-                step += 1
         if middle > 1:
             return False
     return True

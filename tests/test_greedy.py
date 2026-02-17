@@ -17,6 +17,6 @@ class TestMaxContiguousSubsequenceSum(unittest.TestCase):
         self.assertEqual(max_contiguous_subsequence_sum(arr3), -1)
         self.assertEqual(max_contiguous_subsequence_sum(arr4), 12)
 
-if __name__ == '__main__':
 
+if __name__ == "__main__":
     unittest.main()

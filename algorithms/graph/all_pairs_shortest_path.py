@@ -29,7 +29,9 @@ def all_pairs_shortest_path(
         A new n*n matrix containing the shortest distance between each pair.
 
     Examples:
-        >>> all_pairs_shortest_path([[0, 1, float('inf')], [float('inf'), 0, 1], [1, float('inf'), 0]])
+        >>> all_pairs_shortest_path(
+        ...     [[0, 1, float('inf')], [float('inf'), 0, 1],
+        ...      [1, float('inf'), 0]])
         [[0, 1, 2], [2, 0, 1], [1, 2, 0]]
     """
     new_array = copy.deepcopy(adjacency_matrix)

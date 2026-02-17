@@ -53,11 +53,9 @@ class Sudoku:
                     d[(i // 3, j // 3)] = d.get((i // 3, j // 3), []) + [ele]
                 else:
                     val[(i, j)] = []
-        for i, j in val.keys():
+        for i, j in val:
             inval = (
-                d.get(("r", i), [])
-                + d.get(("c", j), [])
-                + d.get((i / 3, j / 3), [])
+                d.get(("r", i), []) + d.get(("c", j), []) + d.get((i / 3, j / 3), [])
             )
             val[(i, j)] = [n for n in a if n not in inval]
         return val
@@ -74,8 +72,7 @@ class Sudoku:
         nums = self.val[kee]
         for n in nums:
             update: dict[tuple[int, int], str | list[str]] = {kee: self.val[kee]}
-            if self._valid_one(n, kee, update):
-                if self.solve():
+            if self._valid_one(n, kee, update) and self.solve():
                     return True
             self._undo(kee, update)
         return False
@@ -100,12 +97,11 @@ class Sudoku:
         del self.val[kee]
         i, j = kee
         for ind in list(self.val.keys()):
-            if n in self.val[ind]:
-                if (
-                    ind[0] == i
-                    or ind[1] == j
-                    or (ind[0] / 3, ind[1] / 3) == (i / 3, j / 3)
-                ):
+            if n in self.val[ind] and (
+                ind[0] == i
+                or ind[1] == j
+                or (ind[0] / 3, ind[1] / 3) == (i / 3, j / 3)
+            ):
                     update[ind] = n
                     self.val[ind].remove(n)
                     if len(self.val[ind]) == 0:

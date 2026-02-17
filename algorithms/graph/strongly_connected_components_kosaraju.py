@@ -20,7 +20,7 @@ class Kosaraju:
     def dfs(
         self,
         i: int,
-        V: int,
+        vertices: int,
         adj: list[list[int]],
         visited: list[int],
         stk: list[int],
@@ -29,7 +29,7 @@ class Kosaraju:
 
         Args:
             i: Current vertex.
-            V: Number of vertices.
+            vertices: Number of vertices.
             adj: Adjacency list.
             visited: Visited flags (-1 = unvisited).
             stk: Stack recording finish order.
@@ -38,15 +38,15 @@ class Kosaraju:
 
         for x in adj[i]:
             if visited[x] == -1:
-                self.dfs(x, V, adj, visited, stk)
+                self.dfs(x, vertices, adj, visited, stk)
 
         stk.append(i)
 
-    def kosaraju(self, V: int, adj: list[list[int]]) -> int:
+    def kosaraju(self, vertices: int, adj: list[list[int]]) -> int:
         """Return the number of strongly connected components.
 
         Args:
-            V: Number of vertices.
+            vertices: Number of vertices.
             adj: Adjacency list.
 
         Returns:
@@ -57,19 +57,19 @@ class Kosaraju:
             1
         """
         stk: list[int] = []
-        visited = [-1] * (V + 1)
+        visited = [-1] * (vertices + 1)
 
-        for i in range(V):
+        for i in range(vertices):
             if visited[i] == -1:
-                self.dfs(i, V, adj, visited, stk)
+                self.dfs(i, vertices, adj, visited, stk)
 
         stk.reverse()
         res = stk.copy()
 
         ans = 0
-        visited1 = [-1] * (V + 1)
+        visited1 = [-1] * (vertices + 1)
 
-        adj1: list[list[int]] = [[] for _ in range(V)]
+        adj1: list[list[int]] = [[] for _ in range(vertices)]
 
         for i in range(len(adj)):
             for x in adj[i]:
@@ -78,6 +78,6 @@ class Kosaraju:
         for i in range(len(res)):
             if visited1[res[i]] == -1:
                 ans += 1
-                self.dfs(res[i], V, adj1, visited1, stk)
+                self.dfs(res[i], vertices, adj1, visited1, stk)
 
         return ans

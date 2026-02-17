@@ -31,7 +31,10 @@ def first_unique_char(text: str) -> int:
         return 0
     banned: list[str] = []
     for index in range(len(text)):
-        if all(text[index] != text[other] for other in range(index + 1, len(text))) and text[index] not in banned:
+        if (
+            all(text[index] != text[other] for other in range(index + 1, len(text)))
+            and text[index] not in banned
+        ):
             return index
         else:
             banned.append(text[index])

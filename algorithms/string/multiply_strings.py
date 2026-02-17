@@ -29,17 +29,14 @@ def multiply(num1: str, num2: str) -> str:
         '529'
     """
     intermediate: list[int] = []
-    zero = ord('0')
+    zero = ord("0")
     position_i = 1
     for digit_i in reversed(num1):
         position_j = 1
         accumulator = 0
         for digit_j in reversed(num2):
             product = (
-                (ord(digit_i) - zero)
-                * (ord(digit_j) - zero)
-                * position_j
-                * position_i
+                (ord(digit_i) - zero) * (ord(digit_j) - zero) * position_j * position_i
             )
             position_j *= 10
             accumulator += product

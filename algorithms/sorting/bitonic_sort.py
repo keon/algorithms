@@ -38,8 +38,8 @@ def bitonic_sort(array: list[int], reverse: bool = False) -> list[int]:
     if not (n and not (n & (n - 1))):
         raise ValueError("the size of input should be power of two")
 
-    left = bitonic_sort(array[:n // 2], True)
-    right = bitonic_sort(array[n // 2:], False)
+    left = bitonic_sort(array[: n // 2], True)
+    right = bitonic_sort(array[n // 2 :], False)
     return _bitonic_merge(left + right, reverse)
 
 
@@ -59,6 +59,6 @@ def _bitonic_merge(array: list[int], reverse: bool) -> list[int]:
         return array
 
     array = _compare(array, reverse)
-    left = _bitonic_merge(array[:n // 2], reverse)
-    right = _bitonic_merge(array[n // 2:], reverse)
+    left = _bitonic_merge(array[: n // 2], reverse)
+    right = _bitonic_merge(array[n // 2 :], reverse)
     return left + right

@@ -41,10 +41,7 @@ def flip_bit_longest_seq(number: int) -> int:
         if number & 1 == 1:
             current_length += 1
         elif number & 1 == 0:
-            if number & 2 == 0:
-                previous_length = 0
-            else:
-                previous_length = current_length
+            previous_length = 0 if number & 2 == 0 else current_length
             current_length = 0
 
         max_length = max(max_length, previous_length + current_length)

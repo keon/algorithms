@@ -38,9 +38,7 @@ def planting_trees(trees: list[int], length: int, width: int) -> float:
 
     space_between_pairs = length / (n_pairs - 1)
 
-    target_locations = [
-        location * space_between_pairs for location in range(n_pairs)
-    ]
+    target_locations = [location * space_between_pairs for location in range(n_pairs)]
 
     cmatrix = [[0 for _ in range(n_pairs + 1)] for _ in range(n_pairs + 1)]
     for r_i in range(1, n_pairs + 1):
@@ -56,10 +54,7 @@ def planting_trees(trees: list[int], length: int, width: int) -> float:
         for l_i in range(1, n_pairs + 1):
             cmatrix[r_i][l_i] = min(
                 cmatrix[r_i - 1][l_i]
-                + sqrt(
-                    width
-                    + (trees[l_i + r_i] - target_locations[r_i - 1]) ** 2
-                ),
+                + sqrt(width + (trees[l_i + r_i] - target_locations[r_i - 1]) ** 2),
                 cmatrix[r_i][l_i - 1]
                 + abs(trees[l_i + r_i] - target_locations[l_i - 1]),
             )

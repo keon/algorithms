@@ -39,7 +39,7 @@ def _binary(x: int, length: int = 1) -> str:
     Returns:
         A binary string.
     """
-    fmt = "{0:0%db}" % length
+    fmt = f"{{0:0{length}b}}"
     return fmt.format(x)
 
 

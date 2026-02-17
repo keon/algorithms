@@ -59,12 +59,12 @@ def num_decodings2(enc_mes: str) -> int:
         >>> num_decodings2("226")
         3
     """
-    if not enc_mes or enc_mes.startswith('0'):
+    if not enc_mes or enc_mes.startswith("0"):
         return 0
     stack = [1, 1]
     for i in range(1, len(enc_mes)):
-        if enc_mes[i] == '0':
-            if enc_mes[i - 1] == '0' or enc_mes[i - 1] > '2':
+        if enc_mes[i] == "0":
+            if enc_mes[i - 1] == "0" or enc_mes[i - 1] > "2":
                 return 0
             stack.append(stack[-2])
         elif 9 < int(enc_mes[i - 1 : i + 1]) < 27:

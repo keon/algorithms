@@ -34,7 +34,7 @@ def fib_recursive(n: int) -> int:
         >>> fib_recursive(10)
         55
     """
-    assert n >= 0, 'n must be a positive integer'
+    assert n >= 0, "n must be a positive integer"
 
     if n <= 1:
         return n
@@ -54,7 +54,7 @@ def fib_list(n: int) -> int:
         >>> fib_list(10)
         55
     """
-    assert n >= 0, 'n must be a positive integer'
+    assert n >= 0, "n must be a positive integer"
 
     list_results = [0, 1]
     for i in range(2, n + 1):
@@ -75,7 +75,7 @@ def fib_iter(n: int) -> int:
         >>> fib_iter(10)
         55
     """
-    assert n >= 0, 'n must be positive integer'
+    assert n >= 0, "n must be positive integer"
 
     fib_1 = 0
     fib_2 = 1

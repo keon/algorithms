@@ -35,6 +35,6 @@ def contain_string(haystack: str, needle: str) -> int:
     for index in range(len(haystack)):
         if len(haystack) - index < len(needle):
             return -1
-        if haystack[index:index + len(needle)] == needle:
+        if haystack[index : index + len(needle)] == needle:
             return index
     return -1

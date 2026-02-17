@@ -47,7 +47,7 @@ def _euler_totient(n: int) -> int:
         The count of integers in [1, n] coprime to n.
     """
     result = n
-    for i in range(2, int(n ** 0.5) + 1):
+    for i in range(2, int(n**0.5) + 1):
         if n % i == 0:
             while n % i == 0:
                 n //= i

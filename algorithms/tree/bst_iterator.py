@@ -1,4 +1,3 @@
-
 class BSTIterator:
     def __init__(self, root):
         self.stack = []
@@ -18,7 +17,3 @@ class BSTIterator:
                 self.stack.append(tmp)
                 tmp = tmp.left
         return node.val
-
-
-
-

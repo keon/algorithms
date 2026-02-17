@@ -35,7 +35,7 @@ def trimmean(array: list[float], percentage: float) -> float:
     ratio = percentage / 200
     array.sort()
     trim_count = int(len(array) * ratio)
-    trimmed = array[trim_count:len(array) - trim_count]
+    trimmed = array[trim_count : len(array) - trim_count]
     total = 0
     for value in trimmed:
         total += value

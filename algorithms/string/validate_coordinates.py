@@ -30,7 +30,7 @@ def is_valid_coordinates_0(coordinates: str) -> bool:
         True
     """
     for char in coordinates:
-        if not (char.isdigit() or char in ['-', '.', ',', ' ']):
+        if not (char.isdigit() or char in ["-", ".", ",", " "]):
             return False
     parts = coordinates.split(", ")
     if len(parts) != 2:
@@ -58,9 +58,7 @@ def is_valid_coordinates_1(coordinates: str) -> bool:
     """
     try:
         latitude, longitude = [
-            abs(float(part))
-            for part in coordinates.split(',')
-            if 'e' not in part
+            abs(float(part)) for part in coordinates.split(",") if "e" not in part
         ]
     except ValueError:
         return False

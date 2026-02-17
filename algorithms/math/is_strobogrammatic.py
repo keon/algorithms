@@ -55,4 +55,4 @@ def is_strobogrammatic2(num: str) -> bool:
         >>> is_strobogrammatic2("14")
         False
     """
-    return num == num[::-1].replace('6', '#').replace('9', '6').replace('#', '9')
+    return num == num[::-1].replace("6", "#").replace("9", "6").replace("#", "9")

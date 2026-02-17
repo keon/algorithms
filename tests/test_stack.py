@@ -41,24 +41,24 @@ class TestSuite(unittest.TestCase):
 
     def test_stutter(self):
         # Test case: bottom [3, 7, 1, 14, 9] top
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         first_stutter([3, 7, 1, 14, 9]))
-        self.assertEqual([3, 3, 7, 7, 1, 1, 14, 14, 9, 9],
-                         second_stutter([3, 7, 1, 14, 9]))
+        self.assertEqual(
+            [3, 3, 7, 7, 1, 1, 14, 14, 9, 9], first_stutter([3, 7, 1, 14, 9])
+        )
+        self.assertEqual(
+            [3, 3, 7, 7, 1, 1, 14, 14, 9, 9], second_stutter([3, 7, 1, 14, 9])
+        )
 
     def test_switch_pairs(self):
         # Test case: even number of values in stack
         # bottom [3, 8, 17, 9, 1, 10] top
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1, 10]))
-        self.assertEqual([8, 3, 9, 17, 10, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1, 10]))
+        self.assertEqual([8, 3, 9, 17, 10, 1], first_switch_pairs([3, 8, 17, 9, 1, 10]))
+        self.assertEqual(
+            [8, 3, 9, 17, 10, 1], second_switch_pairs([3, 8, 17, 9, 1, 10])
+        )
         # Test case: odd number of values in stack
         # bottom [3, 8, 17, 9, 1] top
-        self.assertEqual([8, 3, 9, 17, 1],
-                         first_switch_pairs([3, 8, 17, 9, 1]))
-        self.assertEqual([8, 3, 9, 17, 1],
-                         second_switch_pairs([3, 8, 17, 9, 1]))
+        self.assertEqual([8, 3, 9, 17, 1], first_switch_pairs([3, 8, 17, 9, 1]))
+        self.assertEqual([8, 3, 9, 17, 1], second_switch_pairs([3, 8, 17, 9, 1]))
 
     def test_is_valid_parenthesis(self):
 
@@ -69,12 +69,12 @@ class TestSuite(unittest.TestCase):
         self.assertFalse(is_valid("(}"))
 
     def test_simplify_path(self):
-        p = '/my/name/is/..//keon'
-        self.assertEqual('/my/name/keon', simplify_path(p))
+        p = "/my/name/is/..//keon"
+        self.assertEqual("/my/name/keon", simplify_path(p))
 
 
 class TestStack(unittest.TestCase):
-    def test_ArrayStack(self):
+    def test_array_stack(self):
         stack = ArrayStack()
         stack.push(1)
         stack.push(2)
@@ -106,7 +106,7 @@ class TestStack(unittest.TestCase):
 
         self.assertTrue(stack.is_empty())
 
-    def test_LinkedListStack(self):
+    def test_linked_list_stack(self):
         stack = LinkedListStack()
 
         stack.push(1)
@@ -141,7 +141,7 @@ class TestStack(unittest.TestCase):
 
 
 class TestOrderedStack(unittest.TestCase):
-    def test_OrderedStack(self):
+    def test_ordered_stack(self):
         stack = OrderedStack()
         self.assertTrue(stack.is_empty())
         stack.push(1)

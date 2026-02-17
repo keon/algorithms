@@ -46,9 +46,7 @@ def k_closest(
     return [point for _, point in heap]
 
 
-def _distance(
-    point: tuple[int, int], origin: tuple[int, int] = (0, 0)
-) -> int:
+def _distance(point: tuple[int, int], origin: tuple[int, int] = (0, 0)) -> int:
     """Compute squared Euclidean distance from point to origin.
 
     Args:

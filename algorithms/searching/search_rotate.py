@@ -53,7 +53,10 @@ def search_rotate(array: list[int], val: int) -> int:
 
 
 def search_rotate_recur(
-    array: list[int], low: int, high: int, val: int,
+    array: list[int],
+    low: int,
+    high: int,
+    val: int,
 ) -> int:
     """Search for *val* in a rotated sorted *array* (recursive).
 

@@ -37,7 +37,8 @@ def make_sentence(text_piece: str, dictionaries: list[str]) -> bool:
         return True
     for index in range(0, len(text_piece)):
         prefix, suffix = text_piece[0:index], text_piece[index:]
-        if prefix in dictionaries:
-            if suffix in dictionaries or make_sentence(suffix, dictionaries):
+        if (prefix in dictionaries
+                and (suffix in dictionaries
+                     or make_sentence(suffix, dictionaries))):
                 count += 1
     return True

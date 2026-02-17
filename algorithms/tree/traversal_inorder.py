@@ -1,10 +1,9 @@
-'''
+"""
 Time complexity : O(n)
-'''
+"""
 
 
 class Node:
-
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
@@ -12,7 +11,7 @@ class Node:
 
 
 def inorder(root):
-    """ In order function """
+    """In order function"""
     res = []
     if not root:
         return res
@@ -26,8 +25,9 @@ def inorder(root):
         root = root.right
     return res
 
+
 def inorder_rec(root, res=None):
-    """ Recursive Implementation """
+    """Recursive Implementation"""
     if root is None:
         return []
     if res is None:
@@ -38,7 +38,7 @@ def inorder_rec(root, res=None):
     return res
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n1 = Node(100)
     n2 = Node(50)
     n3 = Node(150)

@@ -67,13 +67,13 @@ def _bfs(
     q: list[tuple[int, int, int]] = [(i, j, 0)]
     while q:
         i, j, step = q.pop(0)
-        for k, l in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
+        for k, col in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
             if (
                 0 <= k < len(grid)
-                and 0 <= l < len(grid[0])
-                and matrix[k][l][1] == count
-                and grid[k][l] == 0
+                and 0 <= col < len(grid[0])
+                and matrix[k][col][1] == count
+                and grid[k][col] == 0
             ):
-                matrix[k][l][0] += step + 1
-                matrix[k][l][1] = count + 1
-                q.append((k, l, step + 1))
+                matrix[k][col][0] += step + 1
+                matrix[k][col][1] = count + 1
+                q.append((k, col, step + 1))

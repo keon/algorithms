@@ -14,25 +14,25 @@ from algorithms.map import (
 class TestHashTable(unittest.TestCase):
     def test_one_entry(self):
         m = HashTable(10)
-        m.put(1, '1')
-        self.assertEqual('1', m.get(1))
+        m.put(1, "1")
+        self.assertEqual("1", m.get(1))
 
     def test_add_entry_bigger_than_table_size(self):
         m = HashTable(10)
-        m.put(11, '1')
-        self.assertEqual('1', m.get(11))
+        m.put(11, "1")
+        self.assertEqual("1", m.get(11))
 
     def test_get_none_if_key_missing_and_hash_collision(self):
         m = HashTable(10)
-        m.put(1, '1')
+        m.put(1, "1")
         self.assertEqual(None, m.get(11))
 
     def test_two_entries_with_same_hash(self):
         m = HashTable(10)
-        m.put(1, '1')
-        m.put(11, '11')
-        self.assertEqual('1', m.get(1))
-        self.assertEqual('11', m.get(11))
+        m.put(1, "1")
+        m.put(11, "11")
+        self.assertEqual("1", m.get(1))
+        self.assertEqual("11", m.get(11))
 
     def test_get_on_full_table_does_halts(self):
         # and does not search forever
@@ -84,11 +84,11 @@ class TestHashTable(unittest.TestCase):
         m = ResizableHashTable()
         self.assertEqual(ResizableHashTable.MIN_SIZE, m.size)
         for i in range(ResizableHashTable.MIN_SIZE):
-            m.put(i, 'foo')
+            m.put(i, "foo")
         self.assertEqual(ResizableHashTable.MIN_SIZE * 2, m.size)
-        self.assertEqual('foo', m.get(1))
-        self.assertEqual('foo', m.get(3))
-        self.assertEqual('foo', m.get(ResizableHashTable.MIN_SIZE - 1))
+        self.assertEqual("foo", m.get(1))
+        self.assertEqual("foo", m.get(3))
+        self.assertEqual("foo", m.get(ResizableHashTable.MIN_SIZE - 1))
 
     def test_fill_up_the_limit(self):
         m = HashTable(10)
@@ -101,15 +101,15 @@ class TestHashTable(unittest.TestCase):
 class TestSeparateChainingHashTable(unittest.TestCase):
     def test_one_entry(self):
         m = SeparateChainingHashTable(10)
-        m.put(1, '1')
-        self.assertEqual('1', m.get(1))
+        m.put(1, "1")
+        self.assertEqual("1", m.get(1))
 
     def test_two_entries_with_same_hash(self):
         m = SeparateChainingHashTable(10)
-        m.put(1, '1')
-        m.put(11, '11')
-        self.assertEqual('1', m.get(1))
-        self.assertEqual('11', m.get(11))
+        m.put(1, "1")
+        m.put(11, "11")
+        self.assertEqual("1", m.get(1))
+        self.assertEqual("11", m.get(11))
 
     def test_len_trivial(self):
         m = SeparateChainingHashTable(10)
@@ -144,12 +144,12 @@ class TestSeparateChainingHashTable(unittest.TestCase):
 
     def test_add_entry_bigger_than_table_size(self):
         m = SeparateChainingHashTable(10)
-        m.put(11, '1')
-        self.assertEqual('1', m.get(11))
+        m.put(11, "1")
+        self.assertEqual("1", m.get(11))
 
     def test_get_none_if_key_missing_and_hash_collision(self):
         m = SeparateChainingHashTable(10)
-        m.put(1, '1')
+        m.put(1, "1")
         self.assertEqual(None, m.get(11))
 
 
@@ -170,16 +170,16 @@ class TestIsSomorphic(unittest.TestCase):
 
 class TestLongestPalindromicSubsequence(unittest.TestCase):
     def test_longest_palindromic_subsequence_is_correct(self):
-        self.assertEqual(3, longest_palindromic_subsequence('BBABCBCAB'))
-        self.assertEqual(4, longest_palindromic_subsequence('abbaeae'))
-        self.assertEqual(7, longest_palindromic_subsequence('babbbababaa'))
-        self.assertEqual(4, longest_palindromic_subsequence('daccandeeja'))
+        self.assertEqual(3, longest_palindromic_subsequence("BBABCBCAB"))
+        self.assertEqual(4, longest_palindromic_subsequence("abbaeae"))
+        self.assertEqual(7, longest_palindromic_subsequence("babbbababaa"))
+        self.assertEqual(4, longest_palindromic_subsequence("daccandeeja"))
 
     def test_longest_palindromic_subsequence_is_incorrect(self):
-        self.assertNotEqual(4, longest_palindromic_subsequence('BBABCBCAB'))
-        self.assertNotEqual(5, longest_palindromic_subsequence('abbaeae'))
-        self.assertNotEqual(2, longest_palindromic_subsequence('babbbababaa'))
-        self.assertNotEqual(1, longest_palindromic_subsequence('daccandeeja'))
+        self.assertNotEqual(4, longest_palindromic_subsequence("BBABCBCAB"))
+        self.assertNotEqual(5, longest_palindromic_subsequence("abbaeae"))
+        self.assertNotEqual(2, longest_palindromic_subsequence("babbbababaa"))
+        self.assertNotEqual(1, longest_palindromic_subsequence("daccandeeja"))
 
 
 class TestIsAnagram(unittest.TestCase):

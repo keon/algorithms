@@ -13,7 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import Any, Generator
+from collections.abc import Generator
+from typing import Any
 
 
 def josephus(items: list[Any], skip: int) -> Generator[Any, None, None]:

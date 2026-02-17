@@ -28,10 +28,7 @@ def min_distance(word1: str, word2: str) -> int:
         >>> min_distance("sea", "eat")
         2
     """
-    return (
-        len(word1) + len(word2)
-        - 2 * _lcs(word1, word2, len(word1), len(word2))
-    )
+    return len(word1) + len(word2) - 2 * _lcs(word1, word2, len(word1), len(word2))
 
 
 def _lcs(word1: str, word2: str, length1: int, length2: int) -> int:
@@ -87,8 +84,6 @@ def min_distance_dp(word1: str, word2: str) -> int:
             if word1[row - 1] == word2[col - 1]:
                 table[row][col] = table[row - 1][col - 1]
             else:
-                table[row][col] = min(
-                    table[row - 1][col], table[row][col - 1]
-                ) + 1
+                table[row][col] = min(table[row - 1][col], table[row][col - 1]) + 1
 
     return table[len(word1)][len(word2)]

@@ -36,17 +36,17 @@ def int_to_base(num: int, base: int) -> str:
     """
     is_negative = False
     if num == 0:
-        return '0'
+        return "0"
     if num < 0:
         is_negative = True
         num *= -1
     digit = string.digits + string.ascii_uppercase
-    res = ''
+    res = ""
     while num > 0:
         res += digit[num % base]
         num //= base
     if is_negative:
-        return '-' + res[::-1]
+        return "-" + res[::-1]
     return res[::-1]
 
 

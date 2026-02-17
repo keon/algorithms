@@ -1,8 +1,9 @@
-""" Imports TreeNodes"""
+"""Imports TreeNodes"""
+
 from algorithms.common.tree_node import TreeNode
 
 
-class AvlTree(object):
+class AvlTree:
     """
     An avl tree.
     """
@@ -66,8 +67,7 @@ class AvlTree(object):
                 if self.node.right:
                     self.node.right.update_heights()
 
-            self.height = 1 + max(self.node.left.height,
-                                  self.node.right.height)
+            self.height = 1 + max(self.node.left.height, self.node.right.height)
         else:
             self.height = -1
 

@@ -46,9 +46,7 @@ def find_k_factor(length: int, k_factor: int) -> int:
     for i in range(2, length + 1):
         for j in range((length - 1) // 3 + 2):
             if j == 0:
-                mat[i][j][0] = (
-                    mat[i - 1][j][0] + mat[i - 1][j][1] + mat[i - 1][j][3]
-                )
+                mat[i][j][0] = mat[i - 1][j][0] + mat[i - 1][j][1] + mat[i - 1][j][3]
                 mat[i][j][1] = mat[i - 1][j][0]
                 mat[i][j][2] = mat[i - 1][j][1]
                 mat[i][j][3] = (

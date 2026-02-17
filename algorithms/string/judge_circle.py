@@ -28,14 +28,11 @@ def judge_circle(moves: str) -> bool:
         True
     """
     move_counts = {
-        'U': 0,
-        'D': 0,
-        'R': 0,
-        'L': 0,
+        "U": 0,
+        "D": 0,
+        "R": 0,
+        "L": 0,
     }
     for char in moves:
         move_counts[char] = move_counts[char] + 1
-    return (
-        move_counts['L'] == move_counts['R']
-        and move_counts['U'] == move_counts['D']
-    )
+    return move_counts["L"] == move_counts["R"] and move_counts["U"] == move_counts["D"]

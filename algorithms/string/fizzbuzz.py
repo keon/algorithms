@@ -13,10 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import Union
 
-
-def fizzbuzz(number: int) -> list[Union[int, str]]:
+def fizzbuzz(number: int) -> list[int | str]:
     """Generate FizzBuzz sequence from 1 to number.
 
     Args:
@@ -35,24 +33,24 @@ def fizzbuzz(number: int) -> list[Union[int, str]]:
         [1, 2, 'Fizz', 4, 'Buzz']
     """
     if number < 1:
-        raise ValueError('n cannot be less than one')
+        raise ValueError("n cannot be less than one")
     if number is None:
-        raise TypeError('n cannot be None')
+        raise TypeError("n cannot be None")
 
-    result: list[Union[int, str]] = []
+    result: list[int | str] = []
     for value in range(1, number + 1):
         if value % 3 == 0 and value % 5 == 0:
-            result.append('FizzBuzz')
+            result.append("FizzBuzz")
         elif value % 3 == 0:
-            result.append('Fizz')
+            result.append("Fizz")
         elif value % 5 == 0:
-            result.append('Buzz')
+            result.append("Buzz")
         else:
             result.append(value)
     return result
 
 
-def fizzbuzz_with_helper_func(number: int) -> list[Union[int, str]]:
+def fizzbuzz_with_helper_func(number: int) -> list[int | str]:
     """Generate FizzBuzz sequence using a helper function.
 
     Args:
@@ -68,7 +66,7 @@ def fizzbuzz_with_helper_func(number: int) -> list[Union[int, str]]:
     return [_fb(value) for value in range(1, number + 1)]
 
 
-def _fb(value: int) -> Union[int, str]:
+def _fb(value: int) -> int | str:
     """Return the FizzBuzz value for a single number.
 
     Args:

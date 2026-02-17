@@ -71,12 +71,16 @@ def _backtrack(
     if not used[row][col] and board[row][col] in trie:
         used[row][col] = True
         next_char = board[row][col]
-        _backtrack(board, row + 1, col, trie[next_char],
-                   prefix + next_char, used, found)
-        _backtrack(board, row, col + 1, trie[next_char],
-                   prefix + next_char, used, found)
-        _backtrack(board, row - 1, col, trie[next_char],
-                   prefix + next_char, used, found)
-        _backtrack(board, row, col - 1, trie[next_char],
-                   prefix + next_char, used, found)
+        _backtrack(
+            board, row + 1, col, trie[next_char], prefix + next_char, used, found
+        )
+        _backtrack(
+            board, row, col + 1, trie[next_char], prefix + next_char, used, found
+        )
+        _backtrack(
+            board, row - 1, col, trie[next_char], prefix + next_char, used, found
+        )
+        _backtrack(
+            board, row, col - 1, trie[next_char], prefix + next_char, used, found
+        )
         used[row][col] = False

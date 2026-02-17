@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from algorithms.data_structures.stack import AbstractStack, ArrayStack, LinkedListStack, StackNode
+from algorithms.data_structures.stack import (
+    AbstractStack,
+    ArrayStack,
+    LinkedListStack,
+    StackNode,
+)
 
 from .is_consecutive import first_is_consecutive, second_is_consecutive
 from .is_sorted import is_sorted

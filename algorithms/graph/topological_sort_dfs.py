@@ -41,7 +41,7 @@ def top_sort_recursive(graph: dict[str, list[str]]) -> list[str]:
     def _dfs(node: str) -> None:
         state[node] = _GRAY
         for neighbour in graph.get(node, ()):
-            neighbour_state = state.get(neighbour, None)
+            neighbour_state = state.get(neighbour)
             if neighbour_state == _GRAY:
                 raise ValueError("cycle")
             if neighbour_state == _BLACK:
@@ -81,7 +81,7 @@ def top_sort(graph: dict[str, list[str]]) -> list[str]:
         if len(neighbours) == 0:
             return True
         for neighbour in neighbours:
-            neighbour_state = state.get(neighbour, None)
+            neighbour_state = state.get(neighbour)
             if neighbour_state == _GRAY:
                 raise ValueError("cycle")
             if neighbour_state != _BLACK:
@@ -95,7 +95,7 @@ def top_sort(graph: dict[str, list[str]]) -> list[str]:
             state[node] = _GRAY
             stack.append(node)
             for neighbour in graph.get(node, ()):
-                neighbour_state = state.get(neighbour, None)
+                neighbour_state = state.get(neighbour)
                 if neighbour_state == _GRAY:
                     raise ValueError("cycle")
                 if neighbour_state == _BLACK:

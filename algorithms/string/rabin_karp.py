@@ -28,9 +28,8 @@ class RollingHash:
         self.window_size = window_size
 
         for index in range(0, window_size):
-            self.hash += (
-                (ord(self.text[index]) - ord("a") + 1)
-                * (26 ** (window_size - index - 1))
+            self.hash += (ord(self.text[index]) - ord("a") + 1) * (
+                26 ** (window_size - index - 1)
             )
 
         self.window_start = 0
@@ -39,9 +38,8 @@ class RollingHash:
     def move_window(self) -> None:
         """Slide the hash window one position to the right."""
         if self.window_end <= len(self.text) - 1:
-            self.hash -= (
-                (ord(self.text[self.window_start]) - ord("a") + 1)
-                * 26 ** (self.window_size - 1)
+            self.hash -= (ord(self.text[self.window_start]) - ord("a") + 1) * 26 ** (
+                self.window_size - 1
             )
             self.hash *= 26
             self.hash += ord(self.text[self.window_end]) - ord("a") + 1
@@ -54,7 +52,7 @@ class RollingHash:
         Returns:
             The substring currently covered by the rolling hash window.
         """
-        return self.text[self.window_start:self.window_end]
+        return self.text[self.window_start : self.window_end]
 
 
 def rabin_karp(word: str, text: str) -> int | None:
@@ -80,8 +78,8 @@ def rabin_karp(word: str, text: str) -> int | None:
     word_hash = RollingHash(word, len(word))
 
     for _ in range(len(text) - len(word) + 1):
-        if rolling_hash.hash == word_hash.hash:
-            if rolling_hash.window_text() == word:
+        if (rolling_hash.hash == word_hash.hash
+                and rolling_hash.window_text() == word):
                 return rolling_hash.window_start
         rolling_hash.move_window()
     return None

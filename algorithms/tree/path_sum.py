@@ -58,9 +58,8 @@ def has_path_sum2(root: TreeNode | None, sum: int) -> bool:
     stack: list[tuple[TreeNode, int]] = [(root, root.val)]
     while stack:
         node, val = stack.pop()
-        if node.left is None and node.right is None:
-            if val == sum:
-                return True
+        if node.left is None and node.right is None and val == sum:
+            return True
         if node.left is not None:
             stack.append((node.left, val + node.left.val))
         if node.right is not None:
@@ -87,9 +86,8 @@ def has_path_sum3(root: TreeNode | None, sum: int) -> bool:
     queue: list[tuple[TreeNode, int]] = [(root, sum - root.val)]
     while queue:
         node, val = queue.pop(0)
-        if node.left is None and node.right is None:
-            if val == 0:
-                return True
+        if node.left is None and node.right is None and val == 0:
+            return True
         if node.left is not None:
             queue.append((node.left, val - node.left.val))
         if node.right is not None:

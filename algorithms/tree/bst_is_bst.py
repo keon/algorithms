@@ -20,6 +20,7 @@ Example 2:
 Binary tree [1,2,3], return false.
 """
 
+
 def is_bst(root):
     """
     :type root: TreeNode
@@ -28,7 +29,7 @@ def is_bst(root):
 
     stack = []
     pre = None
-    
+
     while root or stack:
         while root:
             stack.append(root)

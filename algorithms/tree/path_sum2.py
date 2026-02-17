@@ -37,8 +37,7 @@ def path_sum(root: TreeNode | None, sum: int) -> list[list[int]]:
     return result
 
 
-def _dfs(root: TreeNode, sum: int, path: list[int],
-         result: list[list[int]]) -> None:
+def _dfs(root: TreeNode, sum: int, path: list[int], result: list[list[int]]) -> None:
     """Recursively collect paths that sum to the target value.
 
     Args:

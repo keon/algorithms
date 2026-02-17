@@ -14,7 +14,8 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 
 def n_sum(
@@ -63,25 +64,20 @@ def n_sum(
             results = []
             prev_num = None
             for index, num in enumerate(nums):
-                if prev_num is not None and \
-                   same_closure(prev_num, num):
+                if prev_num is not None and same_closure(prev_num, num):
                     continue
 
                 prev_num = num
                 n_minus1_results = _n_sum_inner(
                     n - 1,
-                    nums[index + 1:],
+                    nums[index + 1 :],
                     target - num,
                 )
-                n_minus1_results = _append_elem_to_each_list(
-                    num, n_minus1_results
-                )
+                n_minus1_results = _append_elem_to_each_list(num, n_minus1_results)
                 results += n_minus1_results
         return _union(results)
 
-    def _two_sum(
-        nums: list[Any], target: Any
-    ) -> list[list[Any]]:
+    def _two_sum(nums: list[Any], target: Any) -> list[list[Any]]:
         nums.sort()
         left = 0
         right = len(nums) - 1
@@ -97,11 +93,9 @@ def n_sum(
                 results.append(sorted([nums[left], nums[right]]))
                 left += 1
                 right -= 1
-                while (left < len(nums) and
-                       same_closure(nums[left - 1], nums[left])):
+                while left < len(nums) and same_closure(nums[left - 1], nums[left]):
                     left += 1
-                while (0 <= right and
-                       same_closure(nums[right], nums[right + 1])):
+                while right >= 0 and same_closure(nums[right], nums[right + 1]):
                     right -= 1
         return results
 
@@ -126,8 +120,8 @@ def n_sum(
                     results.append(result)
         return results
 
-    sum_closure = kv.get('sum_closure', _sum_closure_default)
-    same_closure = kv.get('same_closure', _same_closure_default)
-    compare_closure = kv.get('compare_closure', _compare_closure_default)
+    sum_closure = kv.get("sum_closure", _sum_closure_default)
+    same_closure = kv.get("same_closure", _same_closure_default)
+    compare_closure = kv.get("compare_closure", _compare_closure_default)
     nums.sort()
     return _n_sum_inner(n, nums, target)

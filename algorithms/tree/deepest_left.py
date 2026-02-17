@@ -30,8 +30,9 @@ class DeepestLeft:
         self.Node: TreeNode | None = None
 
 
-def find_deepest_left(root: TreeNode | None, is_left: bool,
-                      depth: int, res: DeepestLeft) -> None:
+def find_deepest_left(
+    root: TreeNode | None, is_left: bool, depth: int, res: DeepestLeft
+) -> None:
     """Recursively find the deepest left child in a binary tree.
 
     Args:

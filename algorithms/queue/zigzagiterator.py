@@ -52,6 +52,4 @@ class ZigZagIterator:
         Returns:
             True if elements remain, False otherwise.
         """
-        if self.queue:
-            return True
-        return False
+        return bool(self.queue)

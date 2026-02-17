@@ -27,7 +27,7 @@ class Interval:
         self.end = end
 
     def __repr__(self) -> str:
-        return "Interval ({}, {})".format(self.start, self.end)
+        return f"Interval ({self.start}, {self.end})"
 
     def __iter__(self):
         return iter(range(self.start, self.end))
@@ -41,16 +41,12 @@ class Interval:
         return self.end - self.start
 
     def __contains__(self, item: int) -> bool:
-        if self.start >= item >= self.end:
-            return True
-        return False
+        return self.start >= item >= self.end
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Interval):
             return NotImplemented
-        if self.start == other.start and self.end == other.end:
-            return True
-        return False
+        return self.start == other.start and self.end == other.end
 
     def as_list(self) -> list[int]:
         """Return interval as a list of integers.
@@ -79,7 +75,7 @@ class Interval:
             if out and interval.start <= out[-1].end:
                 out[-1].end = max(out[-1].end, interval.end)
             else:
-                out += interval,
+                out += (interval,)
         return out
 
     @staticmethod

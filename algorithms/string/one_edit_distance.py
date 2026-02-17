@@ -35,8 +35,8 @@ def is_one_edit(source: str, target: str) -> bool:
     for index in range(len(source)):
         if source[index] != target[index]:
             return (
-                source[index + 1:] == target[index + 1:]
-                or source[index:] == target[index + 1:]
+                source[index + 1 :] == target[index + 1 :]
+                or source[index:] == target[index + 1 :]
             )
     return True
 
@@ -63,7 +63,7 @@ def is_one_edit2(source: str, target: str) -> bool:
     for index in range(len(source)):
         if source[index] != target[index]:
             if source_length == target_length:
-                source = source[:index] + target[index] + source[index + 1:]
+                source = source[:index] + target[index] + source[index + 1 :]
             else:
                 source = source[:index] + target[index] + source[index:]
             break

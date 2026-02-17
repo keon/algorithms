@@ -14,9 +14,7 @@ Complexity:
 from __future__ import annotations
 
 
-def is_merge_recursive(
-    text: str, part1: str, part2: str
-) -> bool:
+def is_merge_recursive(text: str, part1: str, part2: str) -> bool:
     """Check if text is an interleaving of part1 and part2 recursively.
 
     Args:
@@ -36,17 +34,14 @@ def is_merge_recursive(
     if not part2:
         return text == part1
     if not text:
-        return part1 + part2 == ''
+        return part1 + part2 == ""
     if text[0] == part1[0] and is_merge_recursive(text[1:], part1[1:], part2):
         return True
-    if text[0] == part2[0] and is_merge_recursive(text[1:], part1, part2[1:]):
-        return True
-    return False
+    return (text[0] == part2[0]
+            and is_merge_recursive(text[1:], part1, part2[1:]))
 
 
-def is_merge_iterative(
-    text: str, part1: str, part2: str
-) -> bool:
+def is_merge_iterative(text: str, part1: str, part2: str) -> bool:
     """Check if text is an interleaving of part1 and part2 iteratively.
 
     Args:

@@ -31,7 +31,7 @@ def group_anagrams(strings: list[str]) -> list[list[str]]:
     groups: list[list[str]] = []
     group_index = 0
     for word in strings:
-        sorted_word = ''.join(sorted(word))
+        sorted_word = "".join(sorted(word))
         if sorted_word not in anagram_map:
             anagram_map[sorted_word] = group_index
             group_index += 1

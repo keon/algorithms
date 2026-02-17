@@ -175,6 +175,6 @@ class ResizableHashTable(HashTable):
         self._len = 0
         self._keys = [self._empty] * self.size
         self._values = [self._empty] * self.size
-        for key, value in zip(keys, values):
+        for key, value in zip(keys, values, strict=False):
             if key is not self._empty and key is not self._deleted:
                 self.put(key, value)

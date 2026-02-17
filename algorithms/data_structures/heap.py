@@ -20,7 +20,7 @@ from abc import ABCMeta, abstractmethod
 class AbstractHeap(metaclass=ABCMeta):
     """Abstract base class for binary heap implementations."""
 
-    def __init__(self) -> None:
+    def __init__(self) -> None:  # noqa: B027
         """Initialize the abstract heap."""
 
     @abstractmethod

@@ -35,7 +35,6 @@ from algorithms.bit_manipulation import (
 
 
 class TestSuite(unittest.TestCase):
-
     def setUp(self):
         """Initialize seed."""
         random.seed("test")
@@ -136,7 +135,7 @@ class TestSuite(unittest.TestCase):
 
     def test_single_number(self):
 
-        random.seed('test')
+        random.seed("test")
 
         self.assertEqual(0, single_number([1, 0, 2, 1, 2, 3, 3]))
         self.assertEqual(101, single_number([101]))
@@ -160,24 +159,37 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(single, single_number2(nums))
 
     def test_single_number3(self):
-        self.assertEqual(sorted([2, 5]),
-                         sorted(single_number3([2, 1, 5, 6, 6, 1])))
-        self.assertEqual(sorted([4, 3]),
-                         sorted(single_number3([9, 9, 4, 3])))
+        self.assertEqual(sorted([2, 5]), sorted(single_number3([2, 1, 5, 6, 6, 1])))
+        self.assertEqual(sorted([4, 3]), sorted(single_number3([9, 9, 4, 3])))
 
     def test_subsets(self):
 
-        self.assertSetEqual(subsets([1, 2, 3]),
-                            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3),
-                            (1, 2, 3)})
+        self.assertSetEqual(
+            subsets([1, 2, 3]),
+            {(), (1,), (2,), (3,), (1, 2), (1, 3), (2, 3), (1, 2, 3)},
+        )
 
-        self.assertSetEqual(subsets([10, 20, 30, 40]),
-                            {(10, 40), (10, 20, 40), (10, 30),
-                            (10, 20, 30, 40), (40,),
-                             (10, 30, 40), (30,), (20, 30), (30, 40), (10,),
-                             (),
-                             (10, 20), (20, 40), (20, 30, 40), (10, 20, 30),
-                             (20,)})
+        self.assertSetEqual(
+            subsets([10, 20, 30, 40]),
+            {
+                (10, 40),
+                (10, 20, 40),
+                (10, 30),
+                (10, 20, 30, 40),
+                (40,),
+                (10, 30, 40),
+                (30,),
+                (20, 30),
+                (30, 40),
+                (10,),
+                (),
+                (10, 20),
+                (20, 40),
+                (20, 30, 40),
+                (10, 20, 30),
+                (20,),
+            },
+        )
 
     def test_get_bit(self):
         # 22 = 10110
@@ -201,16 +213,16 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(18, update_bit(22, 2, 0))
 
     def test_int_to_bytes_big_endian(self):
-        self.assertEqual(b'\x11', int_to_bytes_big_endian(17))
+        self.assertEqual(b"\x11", int_to_bytes_big_endian(17))
 
     def test_int_to_bytes_little_endian(self):
-        self.assertEqual(b'\x11', int_to_bytes_little_endian(17))
+        self.assertEqual(b"\x11", int_to_bytes_little_endian(17))
 
     def test_bytes_big_endian_to_int(self):
-        self.assertEqual(17, bytes_big_endian_to_int(b'\x11'))
+        self.assertEqual(17, bytes_big_endian_to_int(b"\x11"))
 
     def test_bytes_little_endian_to_int(self):
-        self.assertEqual(17, bytes_little_endian_to_int(b'\x11'))
+        self.assertEqual(17, bytes_little_endian_to_int(b"\x11"))
 
     def test_swap_pair(self):
         # 22: 10110  --> 41: 101001
@@ -219,7 +231,7 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(5, swap_pair(10))
 
     def test_find_difference(self):
-        self.assertEqual('e', find_difference("abcd", "abecd"))
+        self.assertEqual("e", find_difference("abcd", "abecd"))
 
     def test_has_alternative_bit(self):
         self.assertTrue(has_alternative_bit(5))
@@ -279,5 +291,5 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(4, binary_gap(145))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

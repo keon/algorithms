@@ -34,7 +34,6 @@ from algorithms.array import (
 
 
 class TestJosephus(unittest.TestCase):
-
     def test_josephus(self):
 
         a = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -52,7 +51,6 @@ class TestJosephus(unittest.TestCase):
 
 
 class TestDeleteNth(unittest.TestCase):
-
     def test_delete_nth_naive(self):
 
         self.assertListEqual(
@@ -89,7 +87,6 @@ class TestDeleteNth(unittest.TestCase):
 
 
 class TestFlatten(unittest.TestCase):
-
     def test_flatten(self):
 
         nested_list = [2, 1, [3, [4, 5], 6], 7, [8]]
@@ -135,7 +132,6 @@ class TestFlatten(unittest.TestCase):
 
 
 class TestGarage(unittest.TestCase):
-
     def test_garage(self):
 
         initial = [1, 2, 3, 0, 4]
@@ -149,7 +145,6 @@ class TestGarage(unittest.TestCase):
 
 
 class TestLongestNonRepeat(unittest.TestCase):
-
     def test_longest_non_repeat_v1(self):
 
         string = "abcabcbb"
@@ -218,7 +213,6 @@ class TestLongestNonRepeat(unittest.TestCase):
 
 
 class TestMaxOnesIndex(unittest.TestCase):
-
     def test_max_ones_index(self):
 
         self.assertEqual(9, max_ones_index([1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1]))
@@ -227,7 +221,6 @@ class TestMaxOnesIndex(unittest.TestCase):
 
 
 class TestMergeInterval(unittest.TestCase):
-
     def test_merge(self):
         interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
         intervals = [Interval(i[0], i[1]) for i in interval_list]
@@ -243,7 +236,6 @@ class TestMergeInterval(unittest.TestCase):
 
 
 class TestMissingRanges(unittest.TestCase):
-
     def test_missing_ranges(self):
 
         arr = [3, 5, 10, 11, 12, 15, 19]
@@ -259,7 +251,6 @@ class TestMissingRanges(unittest.TestCase):
 
 
 class TestMoveZeros(unittest.TestCase):
-
     def test_move_zeros(self):
 
         self.assertListEqual(
@@ -274,7 +265,6 @@ class TestMoveZeros(unittest.TestCase):
 
 
 class TestPlusOne(unittest.TestCase):
-
     def test_plus_one_v1(self):
 
         self.assertListEqual(plus_one_v1([0]), [1])
@@ -301,7 +291,6 @@ class TestPlusOne(unittest.TestCase):
 
 
 class TestRemoveDuplicate(unittest.TestCase):
-
     def test_remove_duplicates(self):
         self.assertListEqual(
             remove_duplicates(
@@ -327,7 +316,6 @@ class TestRemoveDuplicate(unittest.TestCase):
 
 
 class TestRotateArray(unittest.TestCase):
-
     def test_rotate_v1(self):
 
         self.assertListEqual(
@@ -369,7 +357,6 @@ class TestRotateArray(unittest.TestCase):
 
 
 class TestSummaryRanges(unittest.TestCase):
-
     def test_summarize_ranges(self):
 
         self.assertListEqual(
@@ -382,7 +369,6 @@ class TestSummaryRanges(unittest.TestCase):
 
 
 class TestThreeSum(unittest.TestCase):
-
     def test_three_sum(self):
 
         self.assertSetEqual(three_sum([-1, 0, 1, 2, -1, -4]), {(-1, 0, 1), (-1, -1, 2)})
@@ -393,7 +379,6 @@ class TestThreeSum(unittest.TestCase):
 
 
 class TestTwoSum(unittest.TestCase):
-
     def test_two_sum(self):
 
         self.assertTupleEqual((0, 2), two_sum([2, 11, 7, 9], target=9))
@@ -403,7 +388,6 @@ class TestTwoSum(unittest.TestCase):
 
 
 class TestTrimmean(unittest.TestCase):
-
     def test_trimmean(self):
 
         self.assertEqual(trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20), 5.5)
@@ -411,14 +395,12 @@ class TestTrimmean(unittest.TestCase):
 
 
 class TestTop1(unittest.TestCase):
-
     def test_top_1(self):
         self.assertListEqual(top_1([1, 1, 2, 2, 3]), [1, 2])
         self.assertListEqual(top_1([1, 2, 3, 324, 234, 23, 23, 1, 23, 23]), [23])
 
 
 class TestLimit(unittest.TestCase):
-
     def test_limit(self):
         self.assertListEqual(limit([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
         self.assertListEqual(limit([1, 2, 3, 4, 5], 2, 4), [2, 3, 4])
@@ -427,7 +409,6 @@ class TestLimit(unittest.TestCase):
 
 
 class TestNSum(unittest.TestCase):
-
     def test_n_sum(self):
         self.assertEqual(n_sum(2, [-3, 5, 2, 3, 8, -9], 6), [])  # noqa: E501
         self.assertEqual(
@@ -540,5 +521,4 @@ class TestNSum(unittest.TestCase):
 
 
 if __name__ == "__main__":
-
     unittest.main()

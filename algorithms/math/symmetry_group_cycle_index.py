@@ -15,7 +15,6 @@ Complexity:
 from __future__ import annotations
 
 from fractions import Fraction
-from typing import Dict, Union
 
 from algorithms.math.gcd import lcm
 from algorithms.math.polynomial import Monomial, Polynomial
@@ -48,8 +47,8 @@ def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
 
 
 def cycle_product_for_two_polynomials(
-    p1: Polynomial, p2: Polynomial, q: Union[float, int, Fraction]
-) -> Union[float, int, Fraction]:
+    p1: Polynomial, p2: Polynomial, q: float | int | Fraction
+) -> float | int | Fraction:
     """Compute the product of two cycle indices and evaluate at q.
 
     Args:
@@ -68,7 +67,7 @@ def cycle_product_for_two_polynomials(
     return ans
 
 
-def _cycle_index_sym_helper(n: int, memo: Dict[int, Polynomial]) -> Polynomial:
+def _cycle_index_sym_helper(n: int, memo: dict[int, Polynomial]) -> Polynomial:
     """Recursively compute the cycle index of S_n with memoization.
 
     Args:
@@ -82,7 +81,10 @@ def _cycle_index_sym_helper(n: int, memo: Dict[int, Polynomial]) -> Polynomial:
         return memo[n]
     ans = Polynomial([Monomial({}, Fraction(0, 1))])
     for t in range(1, n + 1):
-        ans = ans.__add__(Polynomial([Monomial({t: 1}, Fraction(1, 1))]) * _cycle_index_sym_helper(n - t, memo))
+        ans = ans.__add__(
+            Polynomial([Monomial({t: 1}, Fraction(1, 1))])
+            * _cycle_index_sym_helper(n - t, memo)
+        )
     ans *= Fraction(1, n)
     memo[n] = ans
     return memo[n]
@@ -105,31 +107,30 @@ def get_cycle_index_sym(n: int) -> Polynomial:
         Polynomial(...)
     """
     if n < 0:
-        raise ValueError('n should be a non-negative integer.')
+        raise ValueError("n should be a non-negative integer.")
 
     memo = {
-        0: Polynomial([
-            Monomial({}, Fraction(1, 1))
-        ]),
-        1: Polynomial([
-            Monomial({1: 1}, Fraction(1, 1))
-        ]),
-        2: Polynomial([
-            Monomial({1: 2}, Fraction(1, 2)),
-            Monomial({2: 1}, Fraction(1, 2))
-        ]),
-        3: Polynomial([
-            Monomial({1: 3}, Fraction(1, 6)),
-            Monomial({1: 1, 2: 1}, Fraction(1, 2)),
-            Monomial({3: 1}, Fraction(1, 3))
-        ]),
-        4: Polynomial([
-            Monomial({1: 4}, Fraction(1, 24)),
-            Monomial({2: 1, 1: 2}, Fraction(1, 4)),
-            Monomial({3: 1, 1: 1}, Fraction(1, 3)),
-            Monomial({2: 2}, Fraction(1, 8)),
-            Monomial({4: 1}, Fraction(1, 4)),
-        ])
+        0: Polynomial([Monomial({}, Fraction(1, 1))]),
+        1: Polynomial([Monomial({1: 1}, Fraction(1, 1))]),
+        2: Polynomial(
+            [Monomial({1: 2}, Fraction(1, 2)), Monomial({2: 1}, Fraction(1, 2))]
+        ),
+        3: Polynomial(
+            [
+                Monomial({1: 3}, Fraction(1, 6)),
+                Monomial({1: 1, 2: 1}, Fraction(1, 2)),
+                Monomial({3: 1}, Fraction(1, 3)),
+            ]
+        ),
+        4: Polynomial(
+            [
+                Monomial({1: 4}, Fraction(1, 24)),
+                Monomial({2: 1, 1: 2}, Fraction(1, 4)),
+                Monomial({3: 1, 1: 1}, Fraction(1, 3)),
+                Monomial({2: 2}, Fraction(1, 8)),
+                Monomial({4: 1}, Fraction(1, 4)),
+            ]
+        ),
     }
     result = _cycle_index_sym_helper(n, memo)
     return result

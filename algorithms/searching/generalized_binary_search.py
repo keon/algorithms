@@ -60,6 +60,6 @@ def binary_search_first_true(
 
 
 if __name__ == "__main__":
-    print(binary_search_first_true(0, 10, lambda x: x >= 7))       # 7
+    print(binary_search_first_true(0, 10, lambda x: x >= 7))  # 7
     print(binary_search_first_true(0, 10, lambda x: x * x >= 25))  # 5
-    print(binary_search_first_true(0, 5, lambda x: x > 10))        # -1
+    print(binary_search_first_true(0, 5, lambda x: x > 10))  # -1

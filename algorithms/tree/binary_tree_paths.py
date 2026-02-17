@@ -47,6 +47,6 @@ def _dfs(result: list[str], root: TreeNode, current: str) -> None:
     if root.left is None and root.right is None:
         result.append(current)
     if root.left:
-        _dfs(result, root.left, current + '->' + str(root.left.val))
+        _dfs(result, root.left, current + "->" + str(root.left.val))
     if root.right:
-        _dfs(result, root.right, current + '->' + str(root.right.val))
+        _dfs(result, root.right, current + "->" + str(root.right.val))

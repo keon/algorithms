@@ -30,9 +30,9 @@ def rotate(text: str, positions: int) -> str:
     """
     long_string = text * (positions // len(text) + 2)
     if positions <= len(text):
-        return long_string[positions:positions + len(text)]
+        return long_string[positions : positions + len(text)]
     else:
-        return long_string[positions - len(text):positions]
+        return long_string[positions - len(text) : positions]
 
 
 def rotate_alt(string: str, positions: int) -> str:

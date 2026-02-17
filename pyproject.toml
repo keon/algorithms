@@ -42,12 +42,11 @@ testpaths = ["tests"]
 addopts = ["-v", "--tb=short"]
 
 [tool.ruff]
-line-length = 120
+line-length = 88
 target-version = "py310"
 
 [tool.ruff.lint]
-select = ["F", "I"]
-ignore = ["F401"]   # re-exports in __init__.py are intentional
+select = ["E", "W", "F", "I", "N", "UP", "B", "SIM"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["algorithms"]

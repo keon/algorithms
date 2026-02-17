@@ -39,7 +39,10 @@ def garage(initial: list[int], final: list[int]) -> tuple[int, list[list[int]]]:
         if zero_pos != final.index(0):
             target_car = final[zero_pos]
             target_pos = current.index(target_car)
-            current[zero_pos], current[target_pos] = current[target_pos], current[zero_pos]
+            current[zero_pos], current[target_pos] = (
+                current[target_pos],
+                current[zero_pos],
+            )
         else:
             for i in range(len(current)):
                 if current[i] != final[i]:

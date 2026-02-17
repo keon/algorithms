@@ -7,7 +7,7 @@ For example: height of tree is 4
                     9
                  /      \
                6         12
-              / \       /   \
+              / \\       /   \
             3     8   10      15
                  /              \
                 7                18
@@ -15,9 +15,10 @@ For example: height of tree is 4
     height = 4
 
 """
+
 import unittest
 
-from bst import Node, bst
+from bst import bst
 
 
 def height(root):
@@ -26,13 +27,14 @@ def height(root):
     else:
         return 1 + max(height(root.left), height(root.right))
 
+
 """
     The tree is created for testing:
 
                     9
                  /      \
                6         12
-              / \       /   \
+              / \\       /   \
             3     8   10      15
                  /              \
                 7                18
@@ -40,6 +42,7 @@ def height(root):
     count_left_node = 4
 
 """
+
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -57,5 +60,6 @@ class TestSuite(unittest.TestCase):
     def test_height(self):
         self.assertEqual(4, height(self.tree.root))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

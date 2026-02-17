@@ -47,9 +47,7 @@ def _backtrack(
         return
 
     if count > 0:
-        _backtrack(result, word, position + 1, 0,
-                   current + str(count) + word[position])
+        _backtrack(result, word, position + 1, 0, current + str(count) + word[position])
     else:
-        _backtrack(result, word, position + 1, 0,
-                   current + word[position])
+        _backtrack(result, word, position + 1, 0, current + word[position])
     _backtrack(result, word, position + 1, count + 1, current)

@@ -29,8 +29,13 @@ def roman_to_int(text: str) -> int:
     """
     number = 0
     roman_values = {
-        'M': 1000, 'D': 500, 'C': 100,
-        'L': 50, 'X': 10, 'V': 5, 'I': 1,
+        "M": 1000,
+        "D": 500,
+        "C": 100,
+        "L": 50,
+        "X": 10,
+        "V": 5,
+        "I": 1,
     }
     for index in range(len(text) - 1):
         if roman_values[text[index]] < roman_values[text[index + 1]]:

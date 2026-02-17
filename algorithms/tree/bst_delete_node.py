@@ -1,5 +1,7 @@
 """
-Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
+Given a root node reference of a BST and a key, delete the node
+with the given key in the BST. Return the root node reference
+(possibly updated) of the BST.
 
 Basically, the deletion can be divided into two stages:
 
@@ -15,7 +17,7 @@ key = 3
     5
    / \
   3   6
- / \   \
+ / \\   \
 2   4   7
 
 Given key to delete is 3. So we find the node with value 3 and delete it.
@@ -33,18 +35,20 @@ Another valid answer is [5,2,6,null,4,null,7].
     5
    / \
   2   6
-   \   \
+   \\   \
     4   7
 """
 
-class Solution(object):
+
+class Solution:
     def delete_node(self, root, key):
         """
         :type root: TreeNode
         :type key: int
         :rtype: TreeNode
         """
-        if not root: return None
+        if not root:
+            return None
 
         if root.val == key:
             if root.left:
@@ -58,7 +62,8 @@ class Solution(object):
                 return root.left
             else:
                 return root.right
-        # If left or right child got deleted, the returned root is the child of the deleted node.
+        # If left or right child got deleted, the returned root is
+        # the child of the deleted node.
         elif root.val > key:
             root.left = self.deleteNode(root.left, key)
         else:

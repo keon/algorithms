@@ -30,9 +30,7 @@ def _powerset(iterable: list[str]) -> chain[tuple[str, ...]]:
         An iterator over all subsets (the power set).
     """
     items = list(iterable)
-    return chain.from_iterable(
-        combinations(items, r) for r in range(len(items) + 1)
-    )
+    return chain.from_iterable(combinations(items, r) for r in range(len(items) + 1))
 
 
 def optimal_set_cover(

@@ -29,7 +29,7 @@ def decimal_to_binary_util(val: str) -> str:
     """
     bits = [128, 64, 32, 16, 8, 4, 2, 1]
     val_int = int(val)
-    binary_rep = ''
+    binary_rep = ""
     for bit in bits:
         if val_int >= bit:
             binary_rep += str(1)
@@ -53,8 +53,8 @@ def decimal_to_binary_ip(ip: str) -> str:
         >>> decimal_to_binary_ip('192.168.0.1')
         '11000000.10101000.00000000.00000001'
     """
-    values = ip.split('.')
+    values = ip.split(".")
     binary_list = []
     for val in values:
         binary_list.append(decimal_to_binary_util(val))
-    return '.'.join(binary_list)
+    return ".".join(binary_list)

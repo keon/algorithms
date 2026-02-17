@@ -12,7 +12,7 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import Generator
+from collections.abc import Generator
 
 
 def permute(elements: list | str) -> list:
@@ -85,4 +85,4 @@ def _dfs(
     if not nums:
         result.append(path)
     for i in range(len(nums)):
-        _dfs(result, nums[:i] + nums[i + 1:], path + [nums[i]])
+        _dfs(result, nums[:i] + nums[i + 1 :], path + [nums[i]])

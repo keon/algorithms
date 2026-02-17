@@ -16,9 +16,7 @@ from __future__ import annotations
 from math import sqrt
 
 
-def distance_between_two_points(
-    x1: float, y1: float, x2: float, y2: float
-) -> float:
+def distance_between_two_points(x1: float, y1: float, x2: float, y2: float) -> float:
     """Calculate the Euclidean distance between two points in 2D space.
 
     Args:

@@ -45,7 +45,7 @@ def num_perfect_squares(number: int) -> int:
         return 4
 
     for i in range(1, int(math.sqrt(number)) + 1):
-        if int(math.sqrt(number - i ** 2)) ** 2 == number - i ** 2:
+        if int(math.sqrt(number - i**2)) ** 2 == number - i**2:
             return 2
 
     return 3

@@ -1,6 +1,4 @@
-
-
-class TreeNode(object):
+class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -15,6 +13,7 @@ def serialize(root):
             build_string(node.right)
         else:
             vals.append("#")
+
     vals = []
     build_string(root)
     return " ".join(vals)
@@ -29,5 +28,6 @@ def deserialize(data):
         node.left = build_tree()
         node.right = build_tree()
         return node
+
     vals = iter(data.split())
     return build_tree()

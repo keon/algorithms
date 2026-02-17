@@ -54,7 +54,9 @@ def is_rotated_v1(first: str, second: str) -> bool:
         return True
 
     for offset in range(len(first)):
-        if all(first[(offset + index) % len(first)] == second[index]
-               for index in range(len(first))):
+        if all(
+            first[(offset + index) % len(first)] == second[index]
+            for index in range(len(first))
+        ):
             return True
     return False

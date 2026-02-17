@@ -43,9 +43,7 @@ def matrix_chain_order(array: list[int]) -> tuple[list[list[int]], list[list[int
             matrix[a][b] = _INF
             for c in range(a, b):
                 cost = (
-                    matrix[a][c]
-                    + matrix[c + 1][b]
-                    + array[a - 1] * array[c] * array[b]
+                    matrix[a][c] + matrix[c + 1][b] + array[a - 1] * array[c] * array[b]
                 )
                 if cost < matrix[a][b]:
                     matrix[a][b] = cost

@@ -37,7 +37,7 @@ def match_symbol(words: list[str], symbols: list[str]) -> list[str]:
         for word in words:
             match = re.search(symbol, word)
             if match:
-                combined.append(re.sub(symbol, "[{}]".format(symbol), word))
+                combined.append(re.sub(symbol, f"[{symbol}]", word))
     return combined
 
 
@@ -58,13 +58,13 @@ def match_symbol_1(words: list[str], symbols: list[str]) -> list[str]:
     result = []
     symbols = sorted(symbols, key=lambda item: len(item), reverse=True)
     for word in words:
-        word_replaced = ''
+        word_replaced = ""
         for symbol in symbols:
             if word.find(symbol) != -1:
-                word_replaced = word.replace(symbol, '[' + symbol + ']')
+                word_replaced = word.replace(symbol, "[" + symbol + "]")
                 result.append(word_replaced)
                 break
-        if word_replaced == '':
+        if word_replaced == "":
             result.append(word)
     return result
 
@@ -119,10 +119,6 @@ def bracket(words: list[str], symbols: list[str]) -> tuple[str, ...]:
                 lambda x, y: x if x[1] - x[0] >= y[1] - y[0] else y,
                 symbol_list,
             )
-            matched[word] = "{}[{}]{}".format(
-                word[:best[0]], best[2], word[best[1]:]
-            )
+            matched[word] = f"{word[: best[0]]}[{best[2]}]{word[best[1] :]}"
 
-    return tuple(
-        word if word not in matched else matched[word] for word in words
-    )
+    return tuple(matched.get(word, word) for word in words)

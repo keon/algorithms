@@ -6,7 +6,11 @@ from __future__ import annotations
 
 from algorithms.data_structures.graph import DirectedEdge, DirectedGraph, Node
 from algorithms.graph.a_star import a_star
-from algorithms.graph.all_factors import get_factors, get_factors_iterative1, get_factors_iterative2
+from algorithms.graph.all_factors import (
+    get_factors,
+    get_factors_iterative1,
+    get_factors_iterative2,
+)
 from algorithms.graph.all_pairs_shortest_path import (
     all_pairs_shortest_path,
 )
@@ -20,7 +24,9 @@ from algorithms.graph.clone_graph import (
 )
 from algorithms.graph.count_islands_bfs import count_islands
 from algorithms.graph.count_islands_dfs import num_islands as num_islands_dfs
-from algorithms.graph.count_islands_unionfind import num_islands as num_islands_unionfind
+from algorithms.graph.count_islands_unionfind import (
+    num_islands as num_islands_unionfind,
+)
 from algorithms.graph.dijkstra import Dijkstra
 from algorithms.graph.find_all_cliques import find_all_cliques
 from algorithms.graph.kahns_algorithm import Solution as KahnsSolution

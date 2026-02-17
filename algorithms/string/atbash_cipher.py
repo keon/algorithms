@@ -32,11 +32,11 @@ def atbash(text: str) -> str:
         code = ord(char)
         if char.isalpha():
             if char.isupper():
-                offset = code - ord('A')
-                translated += chr(ord('Z') - offset)
+                offset = code - ord("A")
+                translated += chr(ord("Z") - offset)
             elif char.islower():
-                offset = code - ord('a')
-                translated += chr(ord('z') - offset)
+                offset = code - ord("a")
+                translated += chr(ord("z") - offset)
         else:
             translated += char
     return translated

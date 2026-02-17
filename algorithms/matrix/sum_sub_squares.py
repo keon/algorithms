@@ -14,9 +14,7 @@ Complexity:
 from __future__ import annotations
 
 
-def sum_sub_squares(
-    matrix: list[list[int]], k: int
-) -> list[list[int]] | None:
+def sum_sub_squares(matrix: list[list[int]], k: int) -> list[list[int]] | None:
     """Compute sums of all k x k sub-squares in the matrix.
 
     Args:

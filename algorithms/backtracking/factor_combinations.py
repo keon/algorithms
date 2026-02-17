@@ -62,8 +62,9 @@ def recursive_get_factors(number: int) -> list[list[int]]:
         while divisor * divisor <= remaining:
             if remaining % divisor == 0:
                 combinations.append(partial + [divisor, remaining // divisor])
-                _factor(remaining // divisor, divisor, partial + [divisor],
-                        combinations)
+                _factor(
+                    remaining // divisor, divisor, partial + [divisor], combinations
+                )
             divisor += 1
         return combinations
 

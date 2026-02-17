@@ -51,6 +51,6 @@ def count_ones_iter(number: int) -> int:
     """
     count = 0
     while number:
-        number &= (number - 1)
+        number &= number - 1
         count += 1
     return count

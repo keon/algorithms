@@ -47,14 +47,12 @@ def _backtrack(
         return True
 
     for end in range(1, len(string) - len(pattern) + 2):
-        if (pattern[0] not in mapping
-                and string[:end] not in mapping.values()):
+        if pattern[0] not in mapping and string[:end] not in mapping.values():
             mapping[pattern[0]] = string[:end]
             if _backtrack(pattern[1:], string[end:], mapping):
                 return True
             del mapping[pattern[0]]
-        elif (pattern[0] in mapping
-              and mapping[pattern[0]] == string[:end]):
+        elif pattern[0] in mapping and mapping[pattern[0]] == string[:end]:
             if _backtrack(pattern[1:], string[end:], mapping):
                 return True
     return False

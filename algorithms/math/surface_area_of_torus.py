@@ -37,4 +37,4 @@ def surface_area_of_torus(major_radius: float, minor_radius: float) -> float:
     if major_radius < 0 or minor_radius < 0:
         raise ValueError("Radii must be non-negative")
 
-    return 4 * pi ** 2 * major_radius * minor_radius
+    return 4 * pi**2 * major_radius * minor_radius

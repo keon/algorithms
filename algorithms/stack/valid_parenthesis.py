@@ -34,7 +34,6 @@ def is_valid(s: str) -> bool:
     for char in s:
         if char in matching.values():
             stack.append(char)
-        elif char in matching:
-            if not stack or matching[char] != stack.pop():
+        elif char in matching and (not stack or matching[char] != stack.pop()):
                 return False
     return not stack

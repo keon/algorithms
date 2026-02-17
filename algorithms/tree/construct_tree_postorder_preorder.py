@@ -24,8 +24,9 @@ class TreeNode:
         right: The right child node.
     """
 
-    def __init__(self, val: int, left: TreeNode | None = None,
-                 right: TreeNode | None = None) -> None:
+    def __init__(
+        self, val: int, left: TreeNode | None = None, right: TreeNode | None = None
+    ) -> None:
         self.val = val
         self.left = left
         self.right = right
@@ -34,8 +35,9 @@ class TreeNode:
 pre_index = 0
 
 
-def construct_tree_util(pre: list[int], post: list[int],
-                        low: int, high: int, size: int) -> TreeNode | None:
+def construct_tree_util(
+    pre: list[int], post: list[int], low: int, high: int, size: int
+) -> TreeNode | None:
     """Recursively construct a binary tree from preorder and postorder arrays.
 
     Uses a global pre_index to track the current position in the preorder

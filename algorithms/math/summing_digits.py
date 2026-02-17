@@ -40,7 +40,7 @@ def sum_dig_pow(low: int, high: int) -> list[int]:
         tokens = list(map(int, number_as_string))
 
         for k in tokens:
-            summation = summation + (k ** exponent)
+            summation = summation + (k**exponent)
             exponent += 1
 
         if summation == number:

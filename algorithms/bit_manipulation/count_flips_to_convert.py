@@ -34,6 +34,6 @@ def count_flips_to_convert(first: int, second: int) -> int:
     diff = first ^ second
     count = 0
     while diff:
-        diff &= (diff - 1)
+        diff &= diff - 1
         count += 1
     return count

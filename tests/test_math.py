@@ -95,12 +95,16 @@ class TestDecimalToBinaryIP(unittest.TestCase):
     """
 
     def test_decimal_to_binary_ip(self):
-        self.assertEqual("00000000.00000000.00000000.00000000",
-                         decimal_to_binary_ip("0.0.0.0"))
-        self.assertEqual("11111111.11111111.11111111.11111111",
-                         decimal_to_binary_ip("255.255.255.255"))
-        self.assertEqual("11000000.10101000.00000000.00000001",
-                         decimal_to_binary_ip("192.168.0.1"))
+        self.assertEqual(
+            "00000000.00000000.00000000.00000000", decimal_to_binary_ip("0.0.0.0")
+        )
+        self.assertEqual(
+            "11111111.11111111.11111111.11111111",
+            decimal_to_binary_ip("255.255.255.255"),
+        )
+        self.assertEqual(
+            "11000000.10101000.00000000.00000001", decimal_to_binary_ip("192.168.0.1")
+        )
 
 
 class TestEulerTotient(unittest.TestCase):
@@ -144,15 +148,15 @@ class TestGcd(unittest.TestCase):
         self.assertEqual(1, gcd(13, 17))
 
     def test_gcd_non_integer_input(self):
-        with pytest.raises(ValueError,
-                           match=r"Input arguments are not integers"):
+        with pytest.raises(ValueError, match=r"Input arguments are not integers"):
             gcd(1.0, 5)
             gcd(5, 6.7)
             gcd(33.8649, 6.12312312)
 
     def test_gcd_zero_input(self):
-        with pytest.raises(ValueError,
-                           match=r"One or more input arguments equals zero"):
+        with pytest.raises(
+            ValueError, match=r"One or more input arguments equals zero"
+        ):
             gcd(0, 12)
             gcd(12, 0)
             gcd(0, 0)
@@ -172,8 +176,9 @@ class TestGcd(unittest.TestCase):
         self.assertEqual(1, lcm(-1, 1))
 
     def test_lcm_zero_input(self):
-        with pytest.raises(ValueError,
-                           match=r"One or more input arguments equals zero"):
+        with pytest.raises(
+            ValueError, match=r"One or more input arguments equals zero"
+        ):
             lcm(0, 12)
             lcm(12, 0)
             lcm(0, 0)
@@ -196,7 +201,7 @@ class TestGenerateStroboGrammatic(unittest.TestCase):
     """
 
     def test_gen_strobomatic(self):
-        self.assertEqual(['88', '11', '96', '69'], gen_strobogrammatic(2))
+        self.assertEqual(["88", "11", "96", "69"], gen_strobogrammatic(2))
 
     def test_strobogrammatic_in_range(self):
         self.assertEqual(4, strobogrammatic_in_range("10", "100"))
@@ -231,8 +236,9 @@ class TestModularInverse(unittest.TestCase):
         # checks if x * x_inv == 1 (mod m)
         self.assertEqual(1, 2 * modular_inverse.modular_inverse(2, 19) % 19)
         self.assertEqual(1, 53 * modular_inverse.modular_inverse(53, 91) % 91)
-        self.assertEqual(1, 2 * modular_inverse.modular_inverse(2, 1000000007)
-                         % 1000000007)
+        self.assertEqual(
+            1, 2 * modular_inverse.modular_inverse(2, 1000000007) % 1000000007
+        )
         self.assertRaises(ValueError, modular_inverse.modular_inverse, 2, 20)
 
 
@@ -246,8 +252,9 @@ class TestModularExponential(unittest.TestCase):
 
     def test_modular_exponential(self):
         self.assertEqual(1, modular_exponential(5, 117, 19))
-        self.assertEqual(pow(1243, 65321, 10 ** 9 + 7),
-                         modular_exponential(1243, 65321, 10 ** 9 + 7))
+        self.assertEqual(
+            pow(1243, 65321, 10**9 + 7), modular_exponential(1243, 65321, 10**9 + 7)
+        )
         self.assertEqual(1, modular_exponential(12, 0, 78))
         self.assertRaises(ValueError, modular_exponential, 12, -2, 455)
 
@@ -292,8 +299,8 @@ class TestPrimeTest(unittest.TestCase):
 
     def test_prime_test(self):
         """
-            checks all prime numbers between 2 up to 100.
-            Between 2 up to 100 exists 25 prime numbers!
+        checks all prime numbers between 2 up to 100.
+        Between 2 up to 100 exists 25 prime numbers!
         """
         counter = 0
         for i in range(2, 101):
@@ -311,8 +318,7 @@ class TestPythagoras(unittest.TestCase):
     """
 
     def test_pythagoras(self):
-        self.assertEqual("Hypotenuse = 3.605551275463989",
-                         pythagoras(3, 2, "?"))
+        self.assertEqual("Hypotenuse = 3.605551275463989", pythagoras(3, 2, "?"))
 
 
 class TestRabinMiller(unittest.TestCase):
@@ -379,7 +385,7 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(1, factorial(0))
         self.assertEqual(120, factorial(5))
         self.assertEqual(3628800, factorial(10))
-        self.assertEqual(637816310, factorial(34521, 10 ** 9 + 7))
+        self.assertEqual(637816310, factorial(34521, 10**9 + 7))
         self.assertRaises(ValueError, factorial, -42)
         self.assertRaises(ValueError, factorial, 42, -1)
 
@@ -387,7 +393,7 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(1, factorial_recur(0))
         self.assertEqual(120, factorial_recur(5))
         self.assertEqual(3628800, factorial_recur(10))
-        self.assertEqual(637816310, factorial_recur(34521, 10 ** 9 + 7))
+        self.assertEqual(637816310, factorial_recur(34521, 10**9 + 7))
         self.assertRaises(ValueError, factorial_recur, -42)
         self.assertRaises(ValueError, factorial_recur, 42, -1)
 
@@ -434,8 +440,9 @@ class TestFindPrimitiveRoot(unittest.TestCase):
         self.assertListEqual([0], find_primitive_root(1))
         self.assertListEqual([2, 3], find_primitive_root(5))
         self.assertListEqual([], find_primitive_root(24))
-        self.assertListEqual([2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35],
-                             find_primitive_root(37))
+        self.assertListEqual(
+            [2, 5, 13, 15, 17, 18, 19, 20, 22, 24, 32, 35], find_primitive_root(37)
+        )
 
 
 class TestFindOrder(unittest.TestCase):
@@ -508,6 +515,7 @@ class TestNumberOfDigits(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_num_digits(self):
         self.assertEqual(2, num_digits(12))
         self.assertEqual(5, num_digits(99999))
@@ -517,7 +525,6 @@ class TestNumberOfDigits(unittest.TestCase):
         self.assertEqual(3, num_digits(-254))
 
 
-
 class TestNumberOfPerfectSquares(unittest.TestCase):
     """[summary]
     Test for the file num_perfect_squares.py
@@ -525,15 +532,16 @@ class TestNumberOfPerfectSquares(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_num_perfect_squares(self):
-        self.assertEqual(4,num_perfect_squares(31))
-        self.assertEqual(3,num_perfect_squares(12))
-        self.assertEqual(2,num_perfect_squares(13))
-        self.assertEqual(2,num_perfect_squares(10))
-        self.assertEqual(4,num_perfect_squares(1500))        
-        self.assertEqual(2,num_perfect_squares(1548524521))
-        self.assertEqual(3,num_perfect_squares(9999999993))
-        self.assertEqual(1,num_perfect_squares(9))
+        self.assertEqual(4, num_perfect_squares(31))
+        self.assertEqual(3, num_perfect_squares(12))
+        self.assertEqual(2, num_perfect_squares(13))
+        self.assertEqual(2, num_perfect_squares(10))
+        self.assertEqual(4, num_perfect_squares(1500))
+        self.assertEqual(2, num_perfect_squares(1548524521))
+        self.assertEqual(3, num_perfect_squares(9999999993))
+        self.assertEqual(1, num_perfect_squares(9))
 
 
 class TestChineseRemainderSolver(unittest.TestCase):
@@ -543,8 +551,9 @@ class TestChineseRemainderSolver(unittest.TestCase):
         # solves the system of equations
         num = [3, 7, 10]
         rem = [2, 3, 3]
-        self.assertEqual(chinese_remainder_theorem.
-                         solve_chinese_remainder(num, rem), 143)
+        self.assertEqual(
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem), 143
+        )
 
     def test_k_five(self):
         # Example which should give the answer 3383
@@ -552,21 +561,22 @@ class TestChineseRemainderSolver(unittest.TestCase):
         # solves the system of equations
         num = [3, 5, 7, 11, 26]
         rem = [2, 3, 2, 6, 3]
-        self.assertEqual(chinese_remainder_theorem.
-                         solve_chinese_remainder(num, rem), 3383)
+        self.assertEqual(
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem), 3383
+        )
 
     def test_exception_non_coprime(self):
         # There should be an exception when all
         # numbers in num are not pairwise coprime
         num = [3, 7, 10, 14]
         rem = [2, 3, 3, 1]
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception):  # noqa: B017
             chinese_remainder_theorem.solve_chinese_remainder(num, rem)
 
     def test_empty_lists(self):
         num = []
         rem = []
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception):  # noqa: B017
             chinese_remainder_theorem.solve_chinese_remainder(num, rem)
 
 
@@ -577,34 +587,35 @@ class TestFFT(unittest.TestCase):
     Arguments:
         unittest {[type]} -- [description]
     """
+
     def test_real_numbers(self):
         x = [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0]
         y = [4.000, 2.613, 0.000, 1.082, 0.000, 1.082, 0.000, 2.613]
         # abs(complex) returns the magnitude
-        result = [float("%.3f" % abs(f)) for f in fft.fft(x)]
+        result = [float(f"{abs(f):.3f}") for f in fft.fft(x)]
         self.assertEqual(result, y)
-    
+
     def test_all_zero(self):
         x = [0.0, 0.0, 0.0, 0.0]
         y = [0.0, 0.0, 0.0, 0.0]
-        result = [float("%.1f" % abs(f)) for f in fft.fft(x)]
+        result = [float(f"{abs(f):.1f}") for f in fft.fft(x)]
         self.assertEqual(result, y)
-    
+
     def test_all_ones(self):
         x = [1.0, 1.0, 1.0, 1.0]
         y = [4.0, 0.0, 0.0, 0.0]
-        result = [float("%.1f" % abs(f)) for f in fft.fft(x)]
+        result = [float(f"{abs(f):.1f}") for f in fft.fft(x)]
         self.assertEqual(result, y)
 
     def test_complex_numbers(self):
-        x = [2.0+2j, 1.0+3j, 3.0+1j, 2.0+2j]
+        x = [2.0 + 2j, 1.0 + 3j, 3.0 + 1j, 2.0 + 2j]
         real = [8.0, 0.0, 2.0, -2.0]
         imag = [8.0, 2.0, -2.0, 0.0]
-        realResult = [float("%.1f" % f.real) for f in fft.fft(x)]
-        imagResult = [float("%.1f" % f.imag) for f in fft.fft(x)]
-        self.assertEqual(real, realResult)
-        self.assertEqual(imag, imagResult)
-        
+        real_result = [float(f"{f.real:.1f}") for f in fft.fft(x)]
+        imag_result = [float(f"{f.imag:.1f}") for f in fft.fft(x)]
+        self.assertEqual(real, real_result)
+        self.assertEqual(imag, imag_result)
+
 
 if __name__ == "__main__":
     unittest.main()

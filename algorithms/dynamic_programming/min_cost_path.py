@@ -28,7 +28,8 @@ def min_cost(cost: list[list[int]]) -> int:
         Minimum cost to reach station N-1 from station 0.
 
     Examples:
-        >>> min_cost([[0, 15, 80, 90], [-1, 0, 40, 50], [-1, -1, 0, 70], [-1, -1, -1, 0]])
+        >>> min_cost([[0, 15, 80, 90], [-1, 0, 40, 50],
+        ...          [-1, -1, 0, 70], [-1, -1, -1, 0]])
         65
     """
     length = len(cost)

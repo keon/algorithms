@@ -46,6 +46,6 @@ def crout_matrix_decomposition(
             for k in range(j):
                 temp -= float(lower[j][k] * upper[k][i])
             if int(lower[j][j]) == 0:
-                lower[j][j] = float(0.1 ** 40)
+                lower[j][j] = float(0.1**40)
             upper[j][i] = float(temp / lower[j][j])
     return (lower, upper)

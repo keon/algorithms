@@ -79,7 +79,10 @@ def _min_heapify(array: list[int], start: int) -> None:
         current = parent
         while current <= last_parent:
             child = 2 * current + 1
-            if child + 1 <= end - start and array[child + start] > array[child + 1 + start]:
+            if (
+                child + 1 <= end - start
+                and array[child + start] > array[child + 1 + start]
+            ):
                 child += 1
             if array[child + start] < array[current + start]:
                 array[current + start], array[child + start] = (

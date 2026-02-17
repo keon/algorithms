@@ -80,8 +80,8 @@ def get_longest_non_repeat_v1(string: str) -> tuple[int, str]:
         (3, 'abc')
     """
     if string is None:
-        return 0, ''
-    substring = ''
+        return 0, ""
+    substring = ""
     char_index = {}
     max_length = 0
     start = 0
@@ -91,7 +91,7 @@ def get_longest_non_repeat_v1(string: str) -> tuple[int, str]:
         char_index[string[index]] = index + 1
         if index - start + 1 > max_length:
             max_length = index - start + 1
-            substring = string[start: index + 1]
+            substring = string[start : index + 1]
     return max_length, substring
 
 
@@ -109,8 +109,8 @@ def get_longest_non_repeat_v2(string: str) -> tuple[int, str]:
         (3, 'abc')
     """
     if string is None:
-        return 0, ''
-    substring = ''
+        return 0, ""
+    substring = ""
     start, max_length = 0, 0
     used_char = {}
     for index, char in enumerate(string):
@@ -119,7 +119,7 @@ def get_longest_non_repeat_v2(string: str) -> tuple[int, str]:
         else:
             if index - start + 1 > max_length:
                 max_length = index - start + 1
-                substring = string[start: index + 1]
+                substring = string[start : index + 1]
         used_char[char] = index
     return max_length, substring
 
@@ -137,7 +137,7 @@ def get_longest_non_repeat_v3(string: str) -> tuple[int, str]:
         >>> get_longest_non_repeat_v3("abcabcbb")
         (3, 'abc')
     """
-    longest_substring = ''
+    longest_substring = ""
     seen = set()
     start_index = 0
     for i in range(len(string)):
@@ -145,7 +145,5 @@ def get_longest_non_repeat_v3(string: str) -> tuple[int, str]:
             seen.remove(string[start_index])
             start_index += 1
         seen.add(string[i])
-        longest_substring = max(
-            longest_substring, string[start_index: i + 1], key=len
-        )
+        longest_substring = max(longest_substring, string[start_index : i + 1], key=len)
     return len(longest_substring), longest_substring

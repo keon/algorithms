@@ -28,7 +28,7 @@ def delete_reoccurring_characters(string: str) -> str:
         'abc'
     """
     seen_characters: set[str] = set()
-    output_string = ''
+    output_string = ""
     for char in string:
         if char not in seen_characters:
             seen_characters.add(char)

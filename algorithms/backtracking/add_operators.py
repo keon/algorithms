@@ -55,13 +55,32 @@ def _dfs(
             break
         current = int(digits[position : i + 1])
         if position == 0:
-            _dfs(result, path + str(current), digits, target,
-                 i + 1, current, current)
+            _dfs(result, path + str(current), digits, target, i + 1, current, current)
         else:
-            _dfs(result, path + "+" + str(current), digits, target,
-                 i + 1, evaluated + current, current)
-            _dfs(result, path + "-" + str(current), digits, target,
-                 i + 1, evaluated - current, -current)
-            _dfs(result, path + "*" + str(current), digits, target,
-                 i + 1, evaluated - multed + multed * current,
-                 multed * current)
+            _dfs(
+                result,
+                path + "+" + str(current),
+                digits,
+                target,
+                i + 1,
+                evaluated + current,
+                current,
+            )
+            _dfs(
+                result,
+                path + "-" + str(current),
+                digits,
+                target,
+                i + 1,
+                evaluated - current,
+                -current,
+            )
+            _dfs(
+                result,
+                path + "*" + str(current),
+                digits,
+                target,
+                i + 1,
+                evaluated - multed + multed * current,
+                multed * current,
+            )

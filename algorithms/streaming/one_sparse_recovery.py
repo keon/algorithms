@@ -27,7 +27,8 @@ def one_sparse(array: list[tuple[int, str]]) -> int | None:
     Examples:
         >>> one_sparse([(4, '+'), (2, '+'), (2, '-'), (4, '+'), (3, '+'), (3, '-')])
         4
-        >>> one_sparse([(2, '+'), (2, '+'), (2, '+'), (2, '+'), (2, '+'), (2, '+'), (1, '+')])
+        >>> one_sparse([(2, '+'), (2, '+'), (2, '+'),
+        ...            (2, '+'), (2, '+'), (2, '+'), (1, '+')])
     """
     sum_signs = 0
     bitsum: list[int] = [0] * 32
@@ -57,10 +58,7 @@ def _check_bit_sum_consistency(bitsum: list[int], sum_signs: int) -> bool:
     Returns:
         True if the bitsum is consistent with a 1-sparse stream.
     """
-    for val in bitsum:
-        if val != 0 and val != sum_signs:
-            return False
-    return True
+    return all(val == 0 or val == sum_signs for val in bitsum)
 
 
 def _update_bit_sum(bitsum: list[int], val: int, sign: str) -> None:

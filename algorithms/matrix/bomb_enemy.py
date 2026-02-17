@@ -37,11 +37,11 @@ def max_killed_enemies(grid: list[list[str]]) -> int:
     row_enemies, col_enemies = 0, [0] * cols
     for i in range(rows):
         for j in range(cols):
-            if j == 0 or grid[i][j - 1] == 'W':
+            if j == 0 or grid[i][j - 1] == "W":
                 row_enemies = _row_kills(grid, i, j)
-            if i == 0 or grid[i - 1][j] == 'W':
+            if i == 0 or grid[i - 1][j] == "W":
                 col_enemies[j] = _col_kills(grid, i, j)
-            if grid[i][j] == '0':
+            if grid[i][j] == "0":
                 max_killed = max(max_killed, row_enemies + col_enemies[j])
     return max_killed
 
@@ -59,8 +59,8 @@ def _row_kills(grid: list[list[str]], row: int, col: int) -> int:
     """
     count = 0
     num_cols = len(grid[0])
-    while col < num_cols and grid[row][col] != 'W':
-        if grid[row][col] == 'E':
+    while col < num_cols and grid[row][col] != "W":
+        if grid[row][col] == "E":
             count += 1
         col += 1
     return count
@@ -79,8 +79,8 @@ def _col_kills(grid: list[list[str]], row: int, col: int) -> int:
     """
     count = 0
     num_rows = len(grid)
-    while row < num_rows and grid[row][col] != 'W':
-        if grid[row][col] == 'E':
+    while row < num_rows and grid[row][col] != "W":
+        if grid[row][col] == "E":
             count += 1
         row += 1
     return count

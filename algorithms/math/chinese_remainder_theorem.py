@@ -14,12 +14,10 @@ Complexity:
 
 from __future__ import annotations
 
-from typing import List
-
 from algorithms.math.gcd import gcd
 
 
-def solve_chinese_remainder(nums: List[int], rems: List[int]) -> int:
+def solve_chinese_remainder(nums: list[int], rems: list[int]) -> int:
     """Find the smallest x satisfying x % nums[i] == rems[i] for all i.
 
     Args:
@@ -58,7 +56,7 @@ def solve_chinese_remainder(nums: List[int], rems: List[int]) -> int:
         x += 1
 
 
-def _check_coprime(list_to_check: List[int]) -> bool:
+def _check_coprime(list_to_check: list[int]) -> bool:
     """Check whether all pairs of numbers in the list are coprime.
 
     Args:
@@ -68,7 +66,7 @@ def _check_coprime(list_to_check: List[int]) -> bool:
         True if all pairs are coprime, False otherwise.
     """
     for ind, num in enumerate(list_to_check):
-        for num2 in list_to_check[ind + 1:]:
+        for num2 in list_to_check[ind + 1 :]:
             if gcd(num, num2) != 1:
                 return False
     return True

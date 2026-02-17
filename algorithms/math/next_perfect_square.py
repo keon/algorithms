@@ -29,7 +29,7 @@ def find_next_square(sq: float) -> float:
         >>> find_next_square(10)
         -1
     """
-    root = sq ** 0.5
+    root = sq**0.5
     if root.is_integer():
         return (root + 1) ** 2
     return -1
@@ -50,5 +50,5 @@ def find_next_square2(sq: float) -> float:
         >>> find_next_square2(10)
         -1
     """
-    root = sq ** 0.5
+    root = sq**0.5
     return -1 if root % 1 else (root + 1) ** 2

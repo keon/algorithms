@@ -30,7 +30,7 @@ def recursive(text: str) -> str:
     length = len(text)
     if length < 2:
         return text
-    return recursive(text[length // 2:]) + recursive(text[:length // 2])
+    return recursive(text[length // 2 :]) + recursive(text[: length // 2])
 
 
 def iterative(text: str) -> str:

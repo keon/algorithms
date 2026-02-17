@@ -30,12 +30,12 @@ def maze_search(maze: list[list[int]]) -> int:
         >>> maze_search([[1, 0], [0, 1]])
         -1
     """
-    BLOCKED, ALLOWED = 0, 1
-    UNVISITED, VISITED = 0, 1
+    blocked, allowed = 0, 1
+    unvisited, visited = 0, 1
 
     initial_x, initial_y = 0, 0
 
-    if maze[initial_x][initial_y] == BLOCKED:
+    if maze[initial_x][initial_y] == blocked:
         return -1
 
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
@@ -46,8 +46,8 @@ def maze_search(maze: list[list[int]]) -> int:
 
     queue = deque([(initial_x, initial_y, 0)])
 
-    is_visited = [[UNVISITED for _ in range(width)] for _ in range(height)]
-    is_visited[initial_x][initial_y] = VISITED
+    is_visited = [[unvisited for _ in range(width)] for _ in range(height)]
+    is_visited[initial_x][initial_y] = visited
 
     while queue:
         x, y, steps = queue.popleft()
@@ -62,8 +62,8 @@ def maze_search(maze: list[list[int]]) -> int:
             if not (0 <= new_x < height and 0 <= new_y < width):
                 continue
 
-            if maze[new_x][new_y] == ALLOWED and is_visited[new_x][new_y] == UNVISITED:
+            if maze[new_x][new_y] == allowed and is_visited[new_x][new_y] == unvisited:
                 queue.append((new_x, new_y, steps + 1))
-                is_visited[new_x][new_y] = VISITED
+                is_visited[new_x][new_y] = visited
 
     return -1

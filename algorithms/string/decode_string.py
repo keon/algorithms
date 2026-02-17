@@ -30,13 +30,13 @@ def decode_string(text: str) -> str:
     """
     stack: list[tuple[str, int]] = []
     current_num = 0
-    current_string = ''
+    current_string = ""
     for char in text:
-        if char == '[':
+        if char == "[":
             stack.append((current_string, current_num))
-            current_string = ''
+            current_string = ""
             current_num = 0
-        elif char == ']':
+        elif char == "]":
             prev_string, num = stack.pop()
             current_string = prev_string + num * current_string
         elif char.isdigit():

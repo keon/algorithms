@@ -19,7 +19,7 @@ from algorithms.linked_list import (
 )
 
 
-class Node(object):
+class Node:
     def __init__(self, x):
         self.val = x
         self.next = None
@@ -39,16 +39,16 @@ def convert(head):
 class TestSuite(unittest.TestCase):
     def setUp(self):
         # list test for palindrome
-        self.l = Node('A')
-        self.l.next = Node('B')
-        self.l.next.next = Node('C')
-        self.l.next.next.next = Node('B')
-        self.l.next.next.next.next = Node('A')
+        self.l = Node("A")
+        self.l.next = Node("B")
+        self.l.next.next = Node("C")
+        self.l.next.next.next = Node("B")
+        self.l.next.next.next.next = Node("A")
 
-        self.l1 = Node('A')
-        self.l1.next = Node('B')
-        self.l1.next.next = Node('C')
-        self.l1.next.next.next = Node('B')
+        self.l1 = Node("A")
+        self.l1.next = Node("B")
+        self.l1.next.next = Node("C")
+        self.l1.next.next.next = Node("B")
 
     def test_reverse_list(self):
         head = Node(1)
@@ -125,15 +125,15 @@ class TestSuite(unittest.TestCase):
 
     def test_is_cyclic(self):
         # create linked list => A -> B -> C -> D -> E -> C
-        head = Node('A')
-        head.next = Node('B')
+        head = Node("A")
+        head.next = Node("B")
         curr = head.next
-        cyclic_node = Node('C')
+        cyclic_node = Node("C")
         curr.next = cyclic_node
         curr = curr.next
-        curr.next = Node('D')
+        curr.next = Node("D")
         curr = curr.next
-        curr.next = Node('E')
+        curr.next = Node("E")
         curr = curr.next
         curr.next = cyclic_node
         self.assertTrue(is_cyclic(head))
@@ -157,8 +157,7 @@ class TestSuite(unittest.TestCase):
         head2 = Node(1)
         head2.next = Node(3)
         head2.next.next = Node(4)
-        self.assertEqual([1, 1, 2, 3, 4, 4],
-                         convert(merge_two_list(head1, head2)))
+        self.assertEqual([1, 1, 2, 3, 4, 4], convert(merge_two_list(head1, head2)))
         # Test recursive
         head1 = Node(1)
         head1.next = Node(2)
@@ -166,8 +165,9 @@ class TestSuite(unittest.TestCase):
         head2 = Node(1)
         head2.next = Node(3)
         head2.next.next = Node(4)
-        self.assertEqual([1, 1, 2, 3, 4, 4],
-                         convert(merge_two_list_recur(head1, head2)))
+        self.assertEqual(
+            [1, 1, 2, 3, 4, 4], convert(merge_two_list_recur(head1, head2))
+        )
 
     def test_is_palindrome(self):
         self.assertTrue(is_palindrome(self.l))
@@ -210,9 +210,18 @@ class TestSuite(unittest.TestCase):
         random_list_node4 = RandomListNode(4)
         random_list_node5 = RandomListNode(5)
 
-        self.random_list_node1.next, self.random_list_node1.random = random_list_node2, random_list_node4
-        random_list_node2.next, random_list_node2.random = random_list_node3, random_list_node5
-        random_list_node3.next, random_list_node3.random = random_list_node4, random_list_node2
+        self.random_list_node1.next, self.random_list_node1.random = (
+            random_list_node2,
+            random_list_node4,
+        )
+        random_list_node2.next, random_list_node2.random = (
+            random_list_node3,
+            random_list_node5,
+        )
+        random_list_node3.next, random_list_node3.random = (
+            random_list_node4,
+            random_list_node2,
+        )
         random_list_node4.next = random_list_node5
         random_list_node5.random = random_list_node3
 

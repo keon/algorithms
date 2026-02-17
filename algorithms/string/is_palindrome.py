@@ -81,9 +81,7 @@ def is_palindrome_reverse(text: str) -> bool:
         True
     """
     text = _remove_punctuation(text)
-    if text == _string_reverse(text):
-        return True
-    return False
+    return text == _string_reverse(text)
 
 
 def is_palindrome_two_pointer(text: str) -> bool:
@@ -123,10 +121,7 @@ def is_palindrome_stack(text: str) -> bool:
     text = _remove_punctuation(text)
     for index in range(len(text) // 2, len(text)):
         stack.append(text[index])
-    for index in range(0, len(text) // 2):
-        if text[index] != stack.pop():
-            return False
-    return True
+    return all(text[index] == stack.pop() for index in range(0, len(text) // 2))
 
 
 def is_palindrome_deque(text: str) -> bool:

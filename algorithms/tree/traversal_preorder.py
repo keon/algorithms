@@ -1,10 +1,10 @@
-'''
+"""
 Time complexity : O(n)
-'''
+"""
 
 
 class Node:
-    """ This is a class of Node """
+    """This is a class of Node"""
 
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -13,7 +13,7 @@ class Node:
 
 
 def preorder(root):
-    """ Function to Preorder """
+    """Function to Preorder"""
     res = []
     if not root:
         return res
@@ -28,8 +28,9 @@ def preorder(root):
             stack.append(root.left)
     return res
 
+
 def preorder_rec(root, res=None):
-    """ Recursive Implementation """
+    """Recursive Implementation"""
     if root is None:
         return []
     if res is None:

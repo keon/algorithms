@@ -19,8 +19,6 @@ from algorithms.dynamic_programming import (
     house_robber,
     int_divide,
     longest_increasing_subsequence,
-    longest_increasing_subsequence_optimized,
-    longest_increasing_subsequence_optimized2,
     max_profit_naive,
     max_profit_optimized,
     planting_trees,
@@ -65,8 +63,8 @@ class TestCombinationSum(unittest.TestCase):
 
 class TestEditDistance(unittest.TestCase):
     def test_edit_distance(self):
-        self.assertEqual(edit_distance('food', 'money'), 4)
-        self.assertEqual(edit_distance('horse', 'ros'), 3)
+        self.assertEqual(edit_distance("food", "money"), 4)
+        self.assertEqual(edit_distance("horse", "ros"), 3)
 
 
 class TestEggDrop(unittest.TestCase):
@@ -100,24 +98,70 @@ class TestHosoyaTriangle(unittest.TestCase):
 
     def test_hosoya(self):
         self.assertEqual([1], hosoya_testing(1))
-        self.assertEqual([1,
-                         1, 1,
-                         2, 1, 2,
-                         3, 2, 2, 3,
-                         5, 3, 4, 3, 5,
-                         8, 5, 6, 6, 5, 8],
-                         hosoya_testing(6))
-        self.assertEqual([1,
-                          1, 1,
-                          2, 1, 2,
-                          3, 2, 2, 3,
-                          5, 3, 4, 3, 5,
-                          8, 5, 6, 6, 5, 8,
-                          13, 8, 10, 9, 10, 8, 13,
-                          21, 13, 16, 15, 15, 16, 13, 21,
-                          34, 21, 26, 24, 25, 24, 26, 21, 34,
-                          55, 34, 42, 39, 40, 40, 39, 42, 34, 55],
-                         hosoya_testing(10))
+        self.assertEqual(
+            [1, 1, 1, 2, 1, 2, 3, 2, 2, 3, 5, 3, 4, 3, 5, 8, 5, 6, 6, 5, 8],
+            hosoya_testing(6),
+        )
+        self.assertEqual(
+            [
+                1,
+                1,
+                1,
+                2,
+                1,
+                2,
+                3,
+                2,
+                2,
+                3,
+                5,
+                3,
+                4,
+                3,
+                5,
+                8,
+                5,
+                6,
+                6,
+                5,
+                8,
+                13,
+                8,
+                10,
+                9,
+                10,
+                8,
+                13,
+                21,
+                13,
+                16,
+                15,
+                15,
+                16,
+                13,
+                21,
+                34,
+                21,
+                26,
+                24,
+                25,
+                24,
+                26,
+                21,
+                34,
+                55,
+                34,
+                42,
+                39,
+                40,
+                40,
+                39,
+                42,
+                34,
+                55,
+            ],
+            hosoya_testing(10),
+        )
 
 
 class TestHouseRobber(unittest.TestCase):
@@ -137,8 +181,7 @@ class TestKnapsack(unittest.TestCase):
         self.assertEqual(220, get_maximum_value([item1, item2, item3], 50))
 
         item1, item2, item3, item4 = Item(60, 5), Item(50, 3), Item(70, 4), Item(30, 2)
-        self.assertEqual(80, get_maximum_value([item1, item2, item3, item4],
-                                               5))
+        self.assertEqual(80, get_maximum_value([item1, item2, item3, item4], 5))
 
 
 class TestLongestIncreasingSubsequence(unittest.TestCase):
@@ -166,7 +209,7 @@ class TestIntDivide(unittest.TestCase):
         self.assertEqual(204226, int_divide(50))
 
 
-class Test_dp_K_Factor(unittest.TestCase):
+class TestDpKFactor(unittest.TestCase):
     def test_kfactor(self):
         # Test 1
         n1 = 4
@@ -198,11 +241,11 @@ class TestPlantingTrees(unittest.TestCase):
     def test_simple(self):
         # arrange
         trees = [0, 1, 10, 10]
-        L = 10
-        W = 1
+        length = 10
+        width = 1
 
         # act
-        res = planting_trees(trees, L, W)
+        res = planting_trees(trees, length, width)
 
         # assert
         self.assertEqual(res, 2.414213562373095)
@@ -210,15 +253,16 @@ class TestPlantingTrees(unittest.TestCase):
     def test_simple2(self):
         # arrange
         trees = [0, 3, 5, 5, 6, 9]
-        L = 10
-        W = 1
+        length = 10
+        width = 1
 
         # act
-        res = planting_trees(trees, L, W)
+        res = planting_trees(trees, length, width)
 
         # assert
         self.assertEqual(res, 9.28538328578604)
-    
+
+
 class TestRegexMatching(unittest.TestCase):
     def test_none_0(self):
         s = ""
@@ -267,5 +311,5 @@ class TestRegexMatching(unittest.TestCase):
         self.assertTrue(regex_matching.is_match(s, p))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -35,7 +35,7 @@ def move_zeros(array: list[Any]) -> list[Any]:
     zeros = 0
 
     for element in array:
-        if element == 0 and type(element) != bool:
+        if element == 0 and type(element) is not bool:
             zeros += 1
         else:
             result.append(element)

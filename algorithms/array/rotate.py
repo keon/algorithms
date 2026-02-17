@@ -87,4 +87,4 @@ def rotate_v3(array: list[int] | None, k: int) -> list[int] | None:
         return None
     length = len(array)
     k = k % length
-    return array[length - k:] + array[:length - k]
+    return array[length - k :] + array[: length - k]

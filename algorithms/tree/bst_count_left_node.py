@@ -6,7 +6,7 @@ storing the values 6, 3, 7, and 10):
                     9
                  /      \
                6         12
-              / \       /   \
+              / \\       /   \
             3     8   10      15
                  /              \
                 7                18
@@ -14,9 +14,10 @@ storing the values 6, 3, 7, and 10):
     count_left_node = 4
 
 """
+
 import unittest
 
-from bst import Node, bst
+from bst import bst
 
 
 def count_left_node(root):
@@ -27,13 +28,14 @@ def count_left_node(root):
     else:
         return 1 + count_left_node(root.left) + count_left_node(root.right)
 
+
 """
     The tree is created for testing:
 
                     9
                  /      \
                6         12
-              / \       /   \
+              / \\       /   \
             3     8   10      15
                  /              \
                 7                18
@@ -41,6 +43,7 @@ def count_left_node(root):
     count_left_node = 4
 
 """
+
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -58,5 +61,6 @@ class TestSuite(unittest.TestCase):
     def test_count_left_node(self):
         self.assertEqual(4, count_left_node(self.tree.root))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

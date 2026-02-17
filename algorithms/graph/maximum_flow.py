@@ -117,7 +117,9 @@ def edmonds_karp(capacity: list[list[int]], source: int, sink: int) -> int:
                 if not visit[nxt] and flow[idx][nxt] < capacity[idx][nxt]:
                     visit[nxt] = True
                     par[nxt] = idx
-                    queue.put((nxt, min(current_flow, capacity[idx][nxt] - flow[idx][nxt])))
+                    queue.put(
+                        (nxt, min(current_flow, capacity[idx][nxt] - flow[idx][nxt]))
+                    )
         if par[sink] == -1:
             break
         ret += tmp

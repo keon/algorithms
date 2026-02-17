@@ -6,21 +6,22 @@ it considered as a 1 empty branch
 For example: the following tree has 10 empty branch (* is empty branch)
 
                     9 __
-                 /      \___
+                 /      \\___
                6            12
-              / \          /   \
+              / \\          /   \
             3     8       10      15
-          /  \   / \     /  \    /   \
+          /  \\   / \\     /  \\    /   \
          *    * 7   *   *    *  *    18
-               / \                   /  \
+               / \\                   /  \
               *   *                 *    *
 
     empty_branch = 10
 
 """
+
 import unittest
 
-from bst import Node, bst
+from bst import bst
 
 
 def num_empty(root):
@@ -33,13 +34,14 @@ def num_empty(root):
     else:
         return num_empty(root.left) + num_empty(root.right)
 
+
 """
     The tree is created for testing:
 
                     9
                  /      \
                6         12
-              / \       /   \
+              / \\       /   \
             3     8   10      15
                  /              \
                 7                18
@@ -47,6 +49,7 @@ def num_empty(root):
     num_empty = 10
 
 """
+
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
@@ -64,5 +67,6 @@ class TestSuite(unittest.TestCase):
     def test_num_empty(self):
         self.assertEqual(10, num_empty(self.tree.root))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

@@ -41,4 +41,4 @@ def limit(
     if max_lim is None:
         max_lim = max(array)
 
-    return list(filter(lambda x: (min_lim <= x <= max_lim), array))
+    return list(filter(lambda x: min_lim <= x <= max_lim, array))

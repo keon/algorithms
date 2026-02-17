@@ -36,6 +36,6 @@ def strong_password(length: int, password: str) -> int:
         missing_types += 1
     if not any(char.isupper() for char in password):
         missing_types += 1
-    if not any(char in '!@#$%^&*()-+' for char in password):
+    if not any(char in "!@#$%^&*()-+" for char in password):
         missing_types += 1
     return max(missing_types, 6 - length)

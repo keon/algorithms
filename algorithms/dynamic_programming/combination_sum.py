@@ -18,9 +18,7 @@ Complexity:
 from __future__ import annotations
 
 
-def _helper_topdown(
-    nums: list[int], target: int, dp: list[int]
-) -> int:
+def _helper_topdown(nums: list[int], target: int, dp: list[int]) -> int:
     """Recursive helper that fills the dp table top-down.
 
     Args:

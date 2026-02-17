@@ -36,9 +36,7 @@ def multiply(
     multiplicand_rows, multiplicand_cols = len(multiplicand), len(multiplicand[0])
     multiplier_rows, multiplier_cols = len(multiplier), len(multiplier[0])
     if multiplicand_cols != multiplier_rows:
-        raise Exception(
-            "Multiplicand matrix not compatible with Multiplier matrix."
-        )
+        raise Exception("Multiplicand matrix not compatible with Multiplier matrix.")
     result = [[0] * multiplier_cols for _ in range(multiplicand_rows)]
     for i in range(multiplicand_rows):
         for j in range(multiplier_cols):

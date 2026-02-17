@@ -34,7 +34,7 @@ def recursive_binomial_coefficient(n: int, k: int) -> int:
         28
     """
     if k > n:
-        raise ValueError('Invalid Inputs, ensure that n >= k')
+        raise ValueError("Invalid Inputs, ensure that n >= k")
     if k == 0 or n == k:
         return 1
     if k > n / 2:

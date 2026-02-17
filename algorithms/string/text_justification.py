@@ -59,25 +59,23 @@ def text_justification(words: list[str], max_width: int) -> list[str]:
         row = ""
         if index == len(words):
             for word in row_words:
-                row += (word + ' ')
+                row += word + " "
             row = row[:-1]
-            row += ' ' * (max_width - len(row))
+            row += " " * (max_width - len(row))
         elif len(row_words) != 1:
             extra_spaces = max_width - row_length
             spaces_per_gap = extra_spaces // (len(row_words) - 1)
-            remaining_spaces = (
-                extra_spaces - spaces_per_gap * (len(row_words) - 1)
-            )
+            remaining_spaces = extra_spaces - spaces_per_gap * (len(row_words) - 1)
             for word_index in range(len(row_words)):
                 row += row_words[word_index]
                 if word_index != len(row_words) - 1:
-                    row += ' ' * (1 + spaces_per_gap)
+                    row += " " * (1 + spaces_per_gap)
                 if remaining_spaces > 0:
-                    row += ' '
+                    row += " "
                     remaining_spaces -= 1
         else:
             row += row_words[0]
-            row += ' ' * (max_width - len(row))
+            row += " " * (max_width - len(row))
 
         result.append(row)
         row_length = 0

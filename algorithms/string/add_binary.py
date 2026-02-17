@@ -29,7 +29,7 @@ def add_binary(first: str, second: str) -> str:
     """
     result = ""
     carry, index_a, index_b = 0, len(first) - 1, len(second) - 1
-    zero = ord('0')
+    zero = ord("0")
     while index_a >= 0 or index_b >= 0 or carry == 1:
         if index_a >= 0:
             carry += ord(first[index_a]) - zero

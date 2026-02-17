@@ -35,6 +35,6 @@ def pancake_sort(array: list[int]) -> list[int]:
         index_max = array.index(max(array[0:cur]))
         if index_max + 1 != cur:
             if index_max != 0:
-                array[:index_max + 1] = reversed(array[:index_max + 1])
+                array[: index_max + 1] = reversed(array[: index_max + 1])
             array[:cur] = reversed(array[:cur])
     return array

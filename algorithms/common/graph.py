@@ -37,9 +37,7 @@ class Graph:
     directed: bool = True
 
     @classmethod
-    def unweighted(
-        cls, adj: dict[str, list[str]], directed: bool = True
-    ) -> Graph:
+    def unweighted(cls, adj: dict[str, list[str]], directed: bool = True) -> Graph:
         """Create a graph from an unweighted adjacency list.
 
         Args:

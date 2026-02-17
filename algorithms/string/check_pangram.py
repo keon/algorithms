@@ -28,7 +28,4 @@ def check_pangram(input_string: str) -> bool:
         True
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-    for char in alphabet:
-        if char not in input_string.lower():
-            return False
-    return True
+    return all(char in input_string.lower() for char in alphabet)

@@ -57,8 +57,8 @@ def _merge(left: list[int], right: list[int], merged: list[int]) -> None:
             merged[left_cursor + right_cursor] = right[right_cursor]
             right_cursor += 1
 
-    for left_cursor in range(left_cursor, len(left)):
+    for left_cursor in range(left_cursor, len(left)):  # noqa: B020
         merged[left_cursor + right_cursor] = left[left_cursor]
 
-    for right_cursor in range(right_cursor, len(right)):
+    for right_cursor in range(right_cursor, len(right)):  # noqa: B020
         merged[left_cursor + right_cursor] = right[right_cursor]

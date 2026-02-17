@@ -97,9 +97,7 @@ def _get_matrix_of_minors(
     for row in range(size):
         for col in range(len(matrix[0])):
             sign = 1 if (row + col) % 2 == 0 else -1
-            result[row][col] = sign * get_determinant(
-                _get_minor(matrix, row, col)
-            )
+            result[row][col] = sign * get_determinant(_get_minor(matrix, row, col))
     return result
 
 
@@ -120,7 +118,7 @@ def _get_minor(
     for i in range(len(matrix)):
         if i != row:
             new_row = matrix[i][:col]
-            new_row.extend(matrix[i][col + 1:])
+            new_row.extend(matrix[i][col + 1 :])
             minors.append(new_row)
     return minors
 
@@ -158,7 +156,4 @@ def _array_is_matrix(matrix: list[list]) -> bool:
     if len(matrix) == 0:
         return False
     first_col = len(matrix[0])
-    for row in matrix:
-        if len(row) != first_col:
-            return False
-    return True
+    return all(len(row) == first_col for row in matrix)

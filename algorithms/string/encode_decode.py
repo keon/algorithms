@@ -27,7 +27,7 @@ def encode(strs: str) -> str:
         >>> encode("keon is awesome")
         '4:keon2:is7:awesome'
     """
-    result = ''
+    result = ""
     for word in strs.split():
         result += str(len(word)) + ":" + word
     return result
@@ -51,6 +51,6 @@ def decode(text: str) -> list[str]:
     while index < len(text):
         colon_index = text.find(":", index)
         size = int(text[index:colon_index])
-        words.append(text[colon_index + 1: colon_index + 1 + size])
+        words.append(text[colon_index + 1 : colon_index + 1 + size])
         index = colon_index + 1 + size
     return words

@@ -95,9 +95,7 @@ def longest_common_prefix_v3(strings: list[str]) -> str:
     return _longest_common_recursive(strings, 0, len(strings) - 1)
 
 
-def _longest_common_recursive(
-    strings: list[str], left: int, right: int
-) -> str:
+def _longest_common_recursive(strings: list[str], left: int, right: int) -> str:
     """Recursively find the longest common prefix using divide and conquer.
 
     Args:

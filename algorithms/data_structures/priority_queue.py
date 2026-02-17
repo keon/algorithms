@@ -14,7 +14,8 @@ Complexity:
 from __future__ import annotations
 
 import itertools
-from typing import Any, Iterable
+from collections.abc import Iterable
+from typing import Any
 
 
 class PriorityQueueNode:
@@ -35,7 +36,7 @@ class PriorityQueueNode:
         Returns:
             Formatted string with data and priority.
         """
-        return "{}: {}".format(self.data, self.priority)
+        return f"{self.data}: {self.priority}"
 
 
 class PriorityQueue:
@@ -65,7 +66,7 @@ class PriorityQueue:
             return
         if priorities is None:
             priorities = itertools.repeat(None)
-        for item, priority in zip(items, priorities):
+        for item, priority in zip(items, priorities, strict=False):
             self.push(item, priority=priority)
 
     def __repr__(self) -> str:
@@ -74,7 +75,7 @@ class PriorityQueue:
         Returns:
             Formatted string.
         """
-        return "PriorityQueue({!r})".format(self.priority_queue_list)
+        return f"PriorityQueue({self.priority_queue_list!r})"
 
     def size(self) -> int:
         """Return the number of elements in the queue.

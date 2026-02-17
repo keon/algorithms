@@ -57,9 +57,7 @@ def identity(size: int) -> list[list[int]]:
     return result
 
 
-def matrix_exponentiation(
-    mat: list[list[int]], power: int
-) -> list[list[int]]:
+def matrix_exponentiation(mat: list[list[int]], power: int) -> list[list[int]]:
     """Compute mat raised to the given power by repeated squaring.
 
     Args:

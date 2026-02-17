@@ -38,8 +38,8 @@ def kth_to_last_eval(head: Node, k: int) -> Node | bool:
     if not isinstance(k, int) or not head.val:
         return False
 
-    nexts = '.'.join(['next' for _ in range(1, k + 1)])
-    seeker = '.'.join(['head', nexts])
+    nexts = ".".join(["next" for _ in range(1, k + 1)])
+    seeker = ".".join(["head", nexts])
 
     while head:
         if eval(seeker) is None:  # noqa: S307

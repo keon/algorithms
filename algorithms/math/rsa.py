@@ -42,7 +42,7 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
             b such that (a * b) % m == 1.
         """
         b = 1
-        while not (a * b) % m == 1:
+        while (a * b) % m != 1:
             b += 1
         return b
 
@@ -60,14 +60,14 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
         def _is_prime(num: int) -> bool:
             if num == 2:
                 return True
-            for i in range(2, int(num ** 0.5) + 1):
-                if num % i == 0:
-                    return False
-            return True
+            return all(
+                num % i != 0
+                for i in range(2, int(num**0.5) + 1)
+            )
 
         random.seed(seed)
         while True:
-            key = random.randrange(int(2 ** (k - 1)), int(2 ** k))
+            key = random.randrange(int(2 ** (k - 1)), int(2**k))
             if _is_prime(key):
                 return key
 

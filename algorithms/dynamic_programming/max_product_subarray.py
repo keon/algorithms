@@ -80,4 +80,4 @@ def subarray_with_max_product(arr: list[int]) -> tuple[int, list[int]]:
         product = reduce(lambda x, y: x * y, arr)
         return product, arr
 
-    return product_so_far, arr[so_far_start_i:so_far_end_i + 1]
+    return product_so_far, arr[so_far_start_i : so_far_end_i + 1]

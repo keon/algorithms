@@ -64,7 +64,7 @@ def is_prime(n: int, k: int) -> bool:
             return False
 
         for _ in range(r - 1):
-            x = pow(int(x), int(2), int(n))
+            x = pow(int(x), 2, int(n))
 
             if x == 1:
                 return True
@@ -78,8 +78,7 @@ def is_prime(n: int, k: int) -> bool:
 
     r, d = _pow2_factor(n - 1)
 
-    for _ in range(k):
-        if _valid_witness(random.randrange(2, n - 2)):
-            return False
-
-    return True
+    return all(
+        not _valid_witness(random.randrange(2, n - 2))
+        for _ in range(k)
+    )
