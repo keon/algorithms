@@ -1,4 +1,4 @@
-from algorithms.dp import (
+from algorithms.dynamic_programming import (
     max_profit_naive, max_profit_optimized,
     climb_stairs, climb_stairs_optimized,
     count,

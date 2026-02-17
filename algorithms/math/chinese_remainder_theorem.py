@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from typing import List
 
-from algorithms.maths.gcd import gcd
+from algorithms.math.gcd import gcd
 
 
 def solve_chinese_remainder(nums: List[int], rems: List[int]) -> int:

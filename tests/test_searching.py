@@ -1,4 +1,4 @@
-from algorithms.search import (
+from algorithms.searching import (
     binary_search, binary_search_recur,
     ternary_search,
     first_occurrence,

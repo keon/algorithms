@@ -1,4 +1,4 @@
-from algorithms.maths.polynomial import Monomial
+from algorithms.math.polynomial import Monomial
 from fractions import Fraction
 import math
 

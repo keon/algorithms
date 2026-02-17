@@ -1,4 +1,4 @@
-from algorithms.maths import (
+from algorithms.math import (
     power, power_recur,
     int_to_base, base_to_int,
     decimal_to_binary_ip,

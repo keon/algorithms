@@ -1,4 +1,4 @@
-from algorithms.sort import (
+from algorithms.sorting import (
     bitonic_sort,
     bogo_sort,
     bubble_sort,

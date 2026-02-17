@@ -1,6 +1,6 @@
 import unittest
 
-from algorithms.linkedlist import (
+from algorithms.linked_list import (
     reverse_list, reverse_list_recursive,
     is_sorted,
     remove_range,

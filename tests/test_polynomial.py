@@ -1,4 +1,4 @@
-from algorithms.maths.polynomial import (
+from algorithms.math.polynomial import (
 	Polynomial,
 	Monomial
 )
