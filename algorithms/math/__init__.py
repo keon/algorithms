@@ -38,6 +38,7 @@ from algorithms.math.generate_strobogrammtic import (
     gen_strobogrammatic,
     strobogrammatic_in_range,
 )
+from algorithms.math.goldbach import goldbach, verify_goldbach
 from algorithms.math.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from algorithms.math.krishnamurthy_number import krishnamurthy_number
 from algorithms.math.linear_regression import linear_regression, r_squared, rmse
@@ -122,4 +123,6 @@ __all__ = [
     "r_squared",
     "rmse",
     "manhattan_distance",
+    "goldbach",
+    "verify_goldbach",
 ]

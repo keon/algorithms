@@ -170,6 +170,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 | Red-Black Tree | `red_black_tree.py` | `RBTree` |
 | Segment Tree | `segment_tree.py`, `iterative_segment_tree.py` | `SegmentTree` |
 | Separate Chaining Hash Table | `separate_chaining_hash_table.py` | `SeparateChainingHashTable` |
+| Sqrt Decomposition | `sqrt_decomposition.py` | `SqrtDecomposition` |
 | Stack | `stack.py` | `ArrayStack`, `LinkedListStack` |
 | Trie | `trie.py` | `Trie` |
 | Union-Find | `union_find.py` | `Union` |
@@ -291,6 +292,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [count_islands (Union-Find)](algorithms/graph/count_islands_unionfind.py) &mdash; count islands using a disjoint-set structure
 - [cycle_detection](algorithms/graph/cycle_detection.py) &mdash; detect cycles in a directed graph
 - [dijkstra](algorithms/graph/dijkstra.py) &mdash; single-source shortest path for non-negative weights
+- [dijkstra_heapq](algorithms/graph/dijkstra_heapq.py) &mdash; heap-optimised Dijkstra in O((V+E) log V) for sparse graphs
 - [find_all_cliques](algorithms/graph/find_all_cliques.py) &mdash; Bron-Kerbosch algorithm for finding all cliques
 - [find_path](algorithms/graph/find_path.py) &mdash; find paths between two vertices
 - [kahns_algorithm](algorithms/graph/kahns_algorithm.py) &mdash; topological sort via in-degree counting (Kahn's)
@@ -374,6 +376,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 - [find_primitive_root_simple](algorithms/math/find_primitive_root_simple.py) &mdash; find a primitive root modulo a prime
 - [gcd](algorithms/math/gcd.py) &mdash; greatest common divisor and least common multiple
 - [generate_strobogrammtic](algorithms/math/generate_strobogrammtic.py) &mdash; generate strobogrammatic numbers of length n
+- [goldbach](algorithms/math/goldbach.py) &mdash; decompose an even number into a sum of two primes (Goldbach's conjecture)
 - [hailstone](algorithms/math/hailstone.py) &mdash; Collatz conjecture (hailstone) sequence
 - [is_strobogrammatic](algorithms/math/is_strobogrammatic.py) &mdash; check if a number looks the same upside-down
 - [krishnamurthy_number](algorithms/math/krishnamurthy_number.py) &mdash; check if a number equals the sum of the factorials of its digits
@@ -549,6 +552,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 
 - [bin_tree_to_list](algorithms/tree/bin_tree_to_list.py) &mdash; convert a binary tree to a doubly linked list
 - [binary_tree_paths](algorithms/tree/binary_tree_paths.py) &mdash; enumerate all root-to-leaf paths
+- [binary_tree_views](algorithms/tree/binary_tree_views.py) &mdash; left, right, top, and bottom views of a binary tree
 - [bst_array_to_bst](algorithms/tree/bst_array_to_bst.py) &mdash; convert a sorted array into a height-balanced BST
 - [bst_closest_value](algorithms/tree/bst_closest_value.py) &mdash; find the value closest to a target in a BST
 - [bst_count_left_node](algorithms/tree/bst_count_left_node.py) &mdash; count the number of left-child nodes

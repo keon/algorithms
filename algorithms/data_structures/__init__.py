@@ -32,6 +32,7 @@ from algorithms.data_structures.segment_tree import SegmentTree as SegmentTreeRe
 from algorithms.data_structures.separate_chaining_hash_table import (
     SeparateChainingHashTable,
 )
+from algorithms.data_structures.sqrt_decomposition import SqrtDecomposition
 from algorithms.data_structures.stack import (
     AbstractStack,
     ArrayStack,
@@ -73,4 +74,5 @@ __all__ = [
     "SegmentTreeRecursive",
     "Trie",
     "KDTree",
+    "SqrtDecomposition",
 ]
