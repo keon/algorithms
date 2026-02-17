@@ -1,63 +1,44 @@
 """
-Write a function to delete a node (except the tail)
-in a singly linked list, given only access to that node.
+Delete Node in a Linked List
 
-Supposed the linked list is 1 -> 2 -> 3 -> 4 and
-you are given the third node with value 3,
-the linked list should become 1 -> 2 -> 4 after calling your function.
+Given only access to a node (not the tail) in a singly linked list, delete
+that node by copying the next node's value and skipping over it.
+
+Reference: https://leetcode.com/problems/delete-node-in-a-linked-list/
+
+Complexity:
+    Time:  O(1)
+    Space: O(1)
 """
-import unittest
+
+from __future__ import annotations
 
 
 class Node:
-    def __init__(self, x):
+    def __init__(self, x: int) -> None:
         self.val = x
-        self.next = None
+        self.next: Node | None = None
 
 
-def delete_node(node):
+def delete_node(node: Node | None) -> None:
+    """Delete the given node from a singly linked list in-place.
+
+    The node must not be the tail node. The deletion is performed by copying
+    the value from the next node and then skipping the next node.
+
+    Args:
+        node: The node to delete (must not be None or the tail).
+
+    Raises:
+        ValueError: If node is None or is the tail node.
+
+    Examples:
+        >>> head = Node(1); head.next = Node(2); head.next.next = Node(3)
+        >>> delete_node(head.next)
+        >>> head.next.val
+        3
+    """
     if node is None or node.next is None:
         raise ValueError
     node.val = node.next.val
     node.next = node.next.next
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_delete_node(self):
-
-        # make linkedlist 1 -> 2 -> 3 -> 4
-        head = Node(1)
-        curr = head
-        for i in range(2, 6):
-            curr.next = Node(i)
-            curr = curr.next
-
-        # node3 = 3
-        node3 = head.next.next
-
-        # after delete_node => 1 -> 2 -> 4
-        delete_node(node3)
-
-        curr = head
-        self.assertEqual(1, curr.val)
-
-        curr = curr.next
-        self.assertEqual(2, curr.val)
-
-        curr = curr.next
-        self.assertEqual(4, curr.val)
-
-        curr = curr.next
-        self.assertEqual(5, curr.val)
-
-        tail = curr
-        self.assertIsNone(tail.next)
-
-        self.assertRaises(ValueError, delete_node, tail)
-        self.assertRaises(ValueError, delete_node, tail.next)
-
-
-if __name__ == '__main__':
-
-    unittest.main()

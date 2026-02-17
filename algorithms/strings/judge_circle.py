@@ -1,25 +1,41 @@
 """
-Initially, there is a Robot at position (0, 0). Given a sequence of its moves,
-judge if this robot makes a circle, which means it moves back to the original place.
+Judge Route Circle
 
-The move sequence is represented by a string. And each move is represent by a
-character. The valid robot moves are R (Right), L (Left), U (Up) and D (down).
-The output should be true or false representing whether the robot makes a circle.
+Given a sequence of robot moves (R, L, U, D), determine whether the robot
+returns to its starting position after completing all moves.
 
-Example 1:
-Input: "UD"
-Output: true
-Example 2:
-Input: "LL"
-Output: false
+Reference: https://leetcode.com/problems/robot-return-to-origin/
+
+Complexity:
+    Time:  O(n) where n is the number of moves
+    Space: O(1)
 """
-def judge_circle(moves):
-    dict_moves = {
-        'U' : 0,
-        'D' : 0,
-        'R' : 0,
-        'L' : 0
+
+from __future__ import annotations
+
+
+def judge_circle(moves: str) -> bool:
+    """Determine whether a sequence of moves returns to the origin.
+
+    Args:
+        moves: A string of move characters ('U', 'D', 'L', 'R').
+
+    Returns:
+        True if the robot ends at the starting position, False otherwise.
+
+    Examples:
+        >>> judge_circle("UD")
+        True
+    """
+    move_counts = {
+        'U': 0,
+        'D': 0,
+        'R': 0,
+        'L': 0,
     }
     for char in moves:
-        dict_moves[char] = dict_moves[char] + 1
-    return dict_moves['L'] == dict_moves['R'] and dict_moves['U'] == dict_moves['D']
+        move_counts[char] = move_counts[char] + 1
+    return (
+        move_counts['L'] == move_counts['R']
+        and move_counts['U'] == move_counts['D']
+    )

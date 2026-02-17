@@ -1,62 +1,94 @@
 """
-Given two words word1 and word2, find the minimum number of steps required to
-make word1 and word2 the same, where in each step you can delete one character
-in either string.
+Minimum Edit Distance (Delete Operation)
 
-For example:
-Input: "sea", "eat"
-Output: 2
-Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+Given two words, find the minimum number of steps required to make them the
+same, where each step deletes one character from either string.
 
-Reference: https://leetcode.com/problems/delete-operation-for-two-strings/description/
+Reference: https://leetcode.com/problems/delete-operation-for-two-strings/
+
+Complexity:
+    Time:  O(2^n) for recursive LCS, O(m * n) for DP approach
+    Space: O(m * n) for DP table
 """
 
-def min_distance(word1, word2):
-    """
-    Finds minimum distance by getting longest common subsequence
+from __future__ import annotations
 
-    :type word1: str
-    :type word2: str
-    :rtype: int
-    """
-    return len(word1) + len(word2) - 2 * lcs(word1, word2, len(word1), len(word2))
 
-def lcs(word1, word2, i, j):
+def min_distance(word1: str, word2: str) -> int:
+    """Find minimum deletions to make two words equal via recursive LCS.
+
+    Args:
+        word1: The first word.
+        word2: The second word.
+
+    Returns:
+        The minimum number of deletion steps.
+
+    Examples:
+        >>> min_distance("sea", "eat")
+        2
     """
-    The length of longest common subsequence among the two given strings word1 and word2
+    return (
+        len(word1) + len(word2)
+        - 2 * _lcs(word1, word2, len(word1), len(word2))
+    )
+
+
+def _lcs(word1: str, word2: str, length1: int, length2: int) -> int:
+    """Compute the length of the longest common subsequence recursively.
+
+    Args:
+        word1: The first word.
+        word2: The second word.
+        length1: Current length to consider in word1.
+        length2: Current length to consider in word2.
+
+    Returns:
+        The length of the longest common subsequence.
     """
-    if i == 0 or j == 0:
+    if length1 == 0 or length2 == 0:
         return 0
-    if word1[i - 1] == word2[j - 1]:
-        return 1 + lcs(word1, word2, i - 1, j - 1)
-    return max(lcs(word1, word2, i - 1, j), lcs(word1, word2, i, j - 1))
+    if word1[length1 - 1] == word2[length2 - 1]:
+        return 1 + _lcs(word1, word2, length1 - 1, length2 - 1)
+    return max(
+        _lcs(word1, word2, length1 - 1, length2),
+        _lcs(word1, word2, length1, length2 - 1),
+    )
 
-def min_distance_dp(word1, word2):
+
+def min_distance_dp(word1: str, word2: str) -> int:
+    """Find minimum deletions to make two words equal using dynamic programming.
+
+    Args:
+        word1: The first word.
+        word2: The second word.
+
+    Returns:
+        The minimum number of deletion steps.
+
+    Examples:
+        >>> min_distance_dp("sea", "eat")
+        2
     """
-    Finds minimum distance in a dynamic programming manner
-    TC: O(length1*length2), SC: O(length1*length2)
+    rows, cols = len(word1) + 1, len(word2) + 1
+    table = [[0 for _ in range(cols)] for _ in range(rows)]
 
-    :type word1: str
-    :type word2: str
-    :rtype: int
-    """
-    length1, length2 = len(word1)+1, len(word2)+1
-    res = [[0 for _ in range(length2)] for _ in range(length1)]
-
-    if length1 == length2:
-        for i in range(1, length1):
-            res[i][0], res[0][i] = i, i
+    if rows == cols:
+        for index in range(1, rows):
+            table[index][0], table[0][index] = index, index
     else:
-        for i in range(length1):
-            res[i][0] = i
-        for i in range(length2):
-            res[0][i] = i
+        for index in range(rows):
+            table[index][0] = index
+        for index in range(cols):
+            table[0][index] = index
 
-    for i in range(1, length1):
-        for j in range(1, length2):
-            if word1[i-1] == word2[j-1]:
-                res[i][j] = res[i-1][j-1]
+    for row in range(1, rows):
+        for col in range(1, cols):
+            if word1[row - 1] == word2[col - 1]:
+                table[row][col] = table[row - 1][col - 1]
             else:
-                res[i][j] = min(res[i-1][j], res[i][j-1]) + 1
+                table[row][col] = min(
+                    table[row - 1][col], table[row][col - 1]
+                ) + 1
 
-    return res[len(word1)][len(word2)]
+    return table[len(word1)][len(word2)]

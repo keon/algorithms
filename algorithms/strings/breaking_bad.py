@@ -1,95 +1,128 @@
 """
-Given an api which returns an array of words and an array of symbols, display
-the word with their matched symbol surrounded by square brackets.
+Breaking Bad Symbol Matching
 
-If the word string matches more than one symbol, then choose the one with
-longest length. (ex. 'Microsoft' matches 'i' and 'cro'):
+Given an array of words and an array of symbols, display each word with its
+matched symbol surrounded by square brackets. If a word matches more than one
+symbol, choose the one with the longest length.
 
-Example:
-Words array: ['Amazon', 'Microsoft', 'Google']
-Symbols: ['i', 'Am', 'cro', 'Na', 'le', 'abc']
+Reference: https://en.wikipedia.org/wiki/Trie
 
-Output:
-[Am]azon, Mi[cro]soft, Goog[le]
-
-My solution(Wrong):
-(I sorted the symbols array in descending order of length and ran loop over
-words array to find a symbol match(using indexOf in javascript) which
-worked. But I didn't make it through the interview, I am guessing my solution
-was O(n^2) and they expected an efficient algorithm.
-
-output:
-['[Am]azon', 'Mi[cro]soft', 'Goog[le]', 'Amaz[o]n', 'Micr[o]s[o]ft', 'G[o][o]gle']
+Complexity:
+    Time:  O(n * m) for brute force, O(n * k) for trie-based approach
+    Space: O(n * m) for storing results
 """
 
+from __future__ import annotations
+
+import re
 from functools import reduce
 
 
-def match_symbol(words, symbols):
-    import re
+def match_symbol(words: list[str], symbols: list[str]) -> list[str]:
+    """Match symbols in words using regex and surround matches with brackets.
+
+    Args:
+        words: List of words to search through.
+        symbols: List of symbols to match within the words.
+
+    Returns:
+        List of words with matched symbols surrounded by square brackets.
+
+    Examples:
+        >>> match_symbol(['Google'], ['le'])
+        ['Goog[le]']
+    """
     combined = []
-    for s in symbols:
-        for c in words:
-            r = re.search(s, c)
-            if r:
-                combined.append(re.sub(s, "[{}]".format(s), c))
+    for symbol in symbols:
+        for word in words:
+            match = re.search(symbol, word)
+            if match:
+                combined.append(re.sub(symbol, "[{}]".format(symbol), word))
     return combined
 
-def match_symbol_1(words, symbols):
-    res = []
-    # reversely sort the symbols according to their lengths.
-    symbols = sorted(symbols, key=lambda _: len(_), reverse=True)
+
+def match_symbol_1(words: list[str], symbols: list[str]) -> list[str]:
+    """Match the longest symbol in each word using sorted symbol list.
+
+    Args:
+        words: List of words to search through.
+        symbols: List of symbols to match, sorted by length descending.
+
+    Returns:
+        List of words with the longest matched symbol bracketed.
+
+    Examples:
+        >>> match_symbol_1(['Microsoft'], ['i', 'cro'])
+        ['Mi[cro]soft']
+    """
+    result = []
+    symbols = sorted(symbols, key=lambda item: len(item), reverse=True)
     for word in words:
+        word_replaced = ''
         for symbol in symbols:
-            word_replaced = ''
-            # once match, append the `word_replaced` to res, process next word
             if word.find(symbol) != -1:
                 word_replaced = word.replace(symbol, '[' + symbol + ']')
-                res.append(word_replaced)
+                result.append(word_replaced)
                 break
-        # if this word matches no symbol, append it.
         if word_replaced == '':
-            res.append(word)
-    return res
-
-"""
-Another approach is to use a Tree for the dictionary (the symbols), and then
-match brute force. The complexity will depend on the dictionary;
-if all are suffixes of the other, it will be n*m
-(where m is the size of the dictionary). For example, in Python:
-"""
+            result.append(word)
+    return result
 
 
-class TreeNode:
-    def __init__(self):
-        self.c = dict()
-        self.sym = None
+class _TrieNode:
+    """Internal trie node for the bracket function."""
+
+    def __init__(self) -> None:
+        self.children: dict[str, _TrieNode] = {}
+        self.symbol: str | None = None
 
 
-def bracket(words, symbols):
-    root = TreeNode()
-    for s in symbols:
-        t = root
-        for char in s:
-            if char not in t.c:
-                t.c[char] = TreeNode()
-            t = t.c[char]
-        t.sym = s
-    result = dict()
+def bracket(words: list[str], symbols: list[str]) -> tuple[str, ...]:
+    """Match the longest symbol in each word using a trie-based approach.
+
+    Args:
+        words: List of words to search through.
+        symbols: List of symbols to build the trie from.
+
+    Returns:
+        Tuple of words with the longest matched symbol bracketed.
+
+    Examples:
+        >>> bracket(['Amazon', 'Microsoft', 'Google'], ['Am', 'cro', 'le'])
+        ('[Am]azon', 'Mi[cro]soft', 'Goog[le]')
+    """
+    root = _TrieNode()
+    for symbol in symbols:
+        node = root
+        for char in symbol:
+            if char not in node.children:
+                node.children[char] = _TrieNode()
+            node = node.children[char]
+        node.symbol = symbol
+
+    matched = {}
     for word in words:
-        i = 0
-        symlist = list()
-        while i < len(word):
-            j, t = i, root
-            while j < len(word) and word[j] in t.c:
-                t = t.c[word[j]]
-                if t.sym is not None:
-                    symlist.append((j + 1 - len(t.sym), j + 1, t.sym))
-                j += 1
-            i += 1
-        if len(symlist) > 0:
-            sym = reduce(lambda x, y: x if x[1] - x[0] >= y[1] - y[0] else y,
-                         symlist)
-            result[word] = "{}[{}]{}".format(word[:sym[0]], sym[2],
-                                             word[sym[1]:])
-    return tuple(word if word not in result else result[word] for word in words)
+        index = 0
+        symbol_list = []
+        while index < len(word):
+            cursor, node = index, root
+            while cursor < len(word) and word[cursor] in node.children:
+                node = node.children[word[cursor]]
+                if node.symbol is not None:
+                    symbol_list.append(
+                        (cursor + 1 - len(node.symbol), cursor + 1, node.symbol)
+                    )
+                cursor += 1
+            index += 1
+        if len(symbol_list) > 0:
+            best = reduce(
+                lambda x, y: x if x[1] - x[0] >= y[1] - y[0] else y,
+                symbol_list,
+            )
+            matched[word] = "{}[{}]{}".format(
+                word[:best[0]], best[2], word[best[1]:]
+            )
+
+    return tuple(
+        word if word not in matched else matched[word] for word in words
+    )

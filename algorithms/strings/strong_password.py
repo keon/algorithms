@@ -1,43 +1,41 @@
 """
-The signup page required her to input a name and a password. However, the password
-must be strong. The website considers a password to be strong if it satisfies the following criteria:
+Strong Password Checker
 
-1) Its length is at least 6.
-2) It contains at least one digit.
-3) It contains at least one lowercase English character.
-4) It contains at least one uppercase English character.
-5) It contains at least one special character. The special characters are: !@#$%^&*()-+
-She typed a random string of length  in the password field but wasn't sure if it was strong.
-Given the string she typed, can you find the minimum number of characters she must add to make her password strong?
+Given a password string, determine the minimum number of characters that
+must be added to make it strong. A strong password has at least 6 characters,
+a digit, a lowercase letter, an uppercase letter, and a special character.
 
-Note: Here's the set of types of characters in a form you can paste in your solution:
-numbers = "0123456789"
-lower_case = "abcdefghijklmnopqrstuvwxyz"
-upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-special_characters = "!@#$%^&*()-+"
+Reference: https://www.hackerrank.com/challenges/strong-password/problem
 
-Input Format
-The first line contains an integer  denoting the length of the string.
-The second line contains a string consisting of  characters, the password
-typed by Louise. Each character is either a lowercase/uppercase English alphabet, a digit, or a special character.
-
-Sample Input 1: strong_password(3,"Ab1")
-Output: 3 (Because She can make the password strong by adding  characters,for example, $hk, turning the password into Ab1$hk which is strong.
-2 characters aren't enough since the length must be at least 6.)
-
-Sample Output 2: strong_password(11,"#Algorithms")
-Output: 1 (Because the password isn't strong, but she can make it strong by adding a single digit.)
-
+Complexity:
+    Time:  O(n) where n is the length of the password
+    Space: O(1)
 """
-def strong_password(n, password):
-    count_error = 0
-    # Return the minimum number of characters to make the password strong
-    if any(i.isdigit() for i in password) == False:
-        count_error = count_error + 1
-    if any(i.islower() for i in password) == False:
-        count_error = count_error + 1
-    if any(i.isupper() for i in password) == False:
-        count_error = count_error + 1
-    if any(i in '!@#$%^&*()-+' for i in password) == False:
-        count_error = count_error + 1
-    return max(count_error, 6 - n)
+
+from __future__ import annotations
+
+
+def strong_password(length: int, password: str) -> int:
+    """Calculate minimum characters to add for a strong password.
+
+    Args:
+        length: The current length of the password.
+        password: The password string to evaluate.
+
+    Returns:
+        The minimum number of characters to add.
+
+    Examples:
+        >>> strong_password(3, "Ab1")
+        3
+    """
+    missing_types = 0
+    if not any(char.isdigit() for char in password):
+        missing_types += 1
+    if not any(char.islower() for char in password):
+        missing_types += 1
+    if not any(char.isupper() for char in password):
+        missing_types += 1
+    if not any(char in '!@#$%^&*()-+' for char in password):
+        missing_types += 1
+    return max(missing_types, 6 - length)

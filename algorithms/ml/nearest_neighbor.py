@@ -1,41 +1,61 @@
+"""
+Nearest Neighbor Classifier
+
+Classifies a query vector by finding the closest vector in a training set
+(using Euclidean distance) and returning its label.
+
+Reference: https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm
+
+Complexity:
+    Time:  O(n * d) where n is training set size and d is dimensionality
+    Space: O(1)
+"""
+
+from __future__ import annotations
+
 import math
 
-def distance(x,y):
-    """[summary]
-    HELPER-FUNCTION
-    calculates the (eulidean) distance between vector x and y.
 
-    Arguments:
-        x {[tuple]} -- [vector]
-        y {[tuple]} -- [vector]
-    """
-    assert len(x) == len(y), "The vector must have same length"
-    result = ()
-    sum = 0
-    for i in range(len(x)):
-        result += (x[i] -y[i],)
-    for component in result:
-        sum += component**2
-    return math.sqrt(sum)
+def distance(x: tuple[float, ...], y: tuple[float, ...]) -> float:
+    """Compute the Euclidean distance between two vectors.
 
-
-def nearest_neighbor(x, tSet):
-    """[summary]
-    Implements the nearest neighbor algorithm
-
-    Arguments:
-        x {[tupel]} -- [vector]
-        tSet {[dict]} -- [training set]
+    Args:
+        x: First vector.
+        y: Second vector.
 
     Returns:
-        [type] -- [result of the AND-function]
+        The Euclidean distance.
+
+    Raises:
+        AssertionError: If the vectors have different lengths.
     """
-    assert isinstance(x, tuple) and isinstance(tSet, dict)
-    current_key = ()
-    min_d = float('inf')
-    for key in tSet:
-        d = distance(x, key)
-        if d < min_d:
-            min_d = d
-            current_key = key
-    return tSet[current_key]
+    assert len(x) == len(y), "The vectors must have same length"
+    return math.sqrt(sum((a - b) ** 2 for a, b in zip(x, y)))
+
+
+def nearest_neighbor(
+    x: tuple[float, ...],
+    training_set: dict[tuple[float, ...], int],
+) -> int:
+    """Classify a vector using the nearest neighbor algorithm.
+
+    Args:
+        x: The query vector.
+        training_set: A dict mapping training vectors to their labels.
+
+    Returns:
+        The label of the nearest training vector.
+
+    Examples:
+        >>> nearest_neighbor((0, 0), {(1, 1): 1, (0, 0.5): 0})
+        0
+    """
+    assert isinstance(x, tuple) and isinstance(training_set, dict)
+    closest_key: tuple[float, ...] = ()
+    min_dist = float("inf")
+    for key in training_set:
+        dist = distance(x, key)
+        if dist < min_dist:
+            min_dist = dist
+            closest_key = key
+    return training_set[closest_key]

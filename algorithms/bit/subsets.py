@@ -1,80 +1,43 @@
 """
-Given a set of distinct integers, nums,
-return all possible subsets.
+Subsets via Bit Manipulation
 
-Note: The solution set must not contain duplicate subsets.
+Generate all possible subsets of a set of distinct integers using bitmask
+enumeration. Each integer from 0 to 2^n - 1 represents a unique subset.
 
-For example,
-If nums = [1,2,3], a solution is:
+Reference: https://en.wikipedia.org/wiki/Power_set
 
-{
-    (1, 2),
-    (1, 3),
-    (1,),
-    (2,),
-    (3,),
-    (1, 2, 3),
-    (),
-    (2, 3)
-}
+Complexity:
+    Time:  O(n * 2^n)
+    Space: O(n * 2^n)
 """
-def subsets(nums):
+
+from __future__ import annotations
+
+
+def subsets(nums: list[int]) -> set[tuple[int, ...]]:
+    """Return all subsets of the given list as a set of tuples.
+
+    Uses bitmask enumeration: for each number from 0 to 2^n - 1, the
+    set bits indicate which elements are included in that subset.
+
+    Args:
+        nums: A list of distinct integers.
+
+    Returns:
+        A set of tuples, each representing one subset.
+
+    Examples:
+        >>> sorted(subsets([1, 2, 3]))
+        [(), (1,), (1, 2), (1, 2, 3), (1, 3), (2,), (2, 3), (3,)]
     """
-    :param nums: List[int]
-    :return: Set[tuple]
-    """
-    n = len(nums)
-    total = 1 << n
-    res = set()
+    length = len(nums)
+    total = 1 << length
+    result: set[tuple[int, ...]] = set()
 
-    for i in range(total):
-        subset = tuple(num for j, num in enumerate(nums) if i & 1 << j)
-        res.add(subset)
+    for mask in range(total):
+        subset = tuple(
+            number for bit_index, number in enumerate(nums) if mask & 1 << bit_index
+        )
+        result.add(subset)
 
-    return res
-"""
-this explanation is from leet_nik @ leetcode
-This is an amazing solution. Learnt a lot.
-
-Number of subsets for {1 , 2 , 3 } = 2^3 .
-why ?
-case    possible outcomes for the set of subsets
-  1   ->          Take or dont take = 2
-  2   ->          Take or dont take = 2
-  3   ->          Take or dont take = 2
-
-therefore,
-total = 2*2*2 = 2^3 = {{}, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}
-
-Lets assign bits to each outcome  ->
-First bit to 1 , Second bit to 2 and third bit to 3
-Take = 1
-Dont take = 0
-
-0) 0 0 0  -> Dont take 3 , Dont take 2 , Dont take 1 = { }
-1) 0 0 1  -> Dont take 3 , Dont take 2 ,   take 1    = { 1 }
-2) 0 1 0  -> Dont take 3 ,    take 2   , Dont take 1 = { 2 }
-3) 0 1 1  -> Dont take 3 ,    take 2   ,   take 1    = { 1 , 2 }
-4) 1 0 0  ->    take 3   , Dont take 2 , Dont take 1 = { 3 }
-5) 1 0 1  ->    take 3   , Dont take 2 ,   take 1    = { 1 , 3 }
-6) 1 1 0  ->    take 3   ,    take 2   , Dont take 1 = { 2 , 3 }
-7) 1 1 1  ->    take 3   ,    take 2   ,   take 1    = { 1 , 2 , 3 }
-
-In the above logic ,Insert S[i] only if (j>>i)&1 ==true
-{ j E { 0,1,2,3,4,5,6,7 }   i = ith element in the input array }
-
-element 1 is inserted only into those places where 1st bit of j is 1
-if( j >> 0 &1 )  ==> for above above eg.
-this is true for sl.no.( j )= 1 , 3 , 5 , 7
-
-element 2 is inserted only into those places where 2nd bit of j is 1
-if( j >> 1 &1 )  == for above above eg.
-this is true for sl.no.( j ) = 2 , 3 , 6 , 7
-
-element 3 is inserted only into those places where 3rd bit of j is 1
-if( j >> 2 & 1 )  == for above above eg.
-this is true for sl.no.( j ) = 4 , 5 , 6 , 7
-
-Time complexity : O(n*2^n) , for every input element loop traverses
-the whole solution set length i.e. 2^n
-"""
+    return result

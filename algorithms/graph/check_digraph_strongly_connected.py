@@ -1,66 +1,78 @@
 """
-In a directed graph, a strongly connected component is a set of vertices such
-that for any pairs of vertices u and v there exists a path (u-...-v) that
-connects them. A graph is strongly connected if it is a single strongly
-connected component.
+Check if a Directed Graph is Strongly Connected
+
+A directed graph is strongly connected if every vertex is reachable from
+every other vertex.  This implementation uses two DFS passes (one on the
+original graph and one on the reversed graph).
+
+Reference: https://en.wikipedia.org/wiki/Strongly_connected_component
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V + E)
 """
+
+from __future__ import annotations
 
 from collections import defaultdict
 
+
 class Graph:
-    """
-    A directed graph where edges are one-way (a two-way edge can be represented by using two edges).
-    """
+    """A directed graph for strong-connectivity testing."""
 
-    def __init__(self,vertex_count):
-        """
-        Create a new graph with vertex_count vertices.
-        """
+    def __init__(self, vertex_count: int) -> None:
+        """Create a new graph with *vertex_count* vertices.
 
+        Args:
+            vertex_count: Number of vertices (labelled 0 .. vertex_count-1).
+        """
         self.vertex_count = vertex_count
-        self.graph = defaultdict(list)
+        self.graph: dict[int, list[int]] = defaultdict(list)
 
-    def add_edge(self,source,target):
-        """
-        Add an edge going from source to target
+    def add_edge(self, source: int, target: int) -> None:
+        """Add a directed edge from *source* to *target*.
+
+        Args:
+            source: Source vertex.
+            target: Target vertex.
         """
         self.graph[source].append(target)
 
-    def dfs(self):
-        """
-        Determine if all nodes are reachable from node 0
-        """
+    def dfs(self) -> bool:
+        """Return True if all vertices are reachable from vertex 0."""
         visited = [False] * self.vertex_count
-        self.dfs_util(0,visited)
-        if visited == [True]*self.vertex_count:
-            return True
-        return False
+        self._dfs_util(0, visited)
+        return visited == [True] * self.vertex_count
 
-    def dfs_util(self,source,visited):
-        """
-        Determine if all nodes are reachable from the given node
+    def _dfs_util(self, source: int, visited: list[bool]) -> None:
+        """Recursive DFS helper.
+
+        Args:
+            source: Current vertex.
+            visited: Visited flags (modified in place).
         """
         visited[source] = True
         for adjacent in self.graph[source]:
             if not visited[adjacent]:
-                self.dfs_util(adjacent,visited)
+                self._dfs_util(adjacent, visited)
 
-    def reverse_graph(self):
+    def reverse_graph(self) -> Graph:
+        """Return a new graph with every edge reversed.
+
+        Returns:
+            A new Graph instance with reversed edges.
         """
-        Create a new graph where every edge a->b is replaced with an edge b->a
-        """
-        reverse_graph = Graph(self.vertex_count)
+        reverse = Graph(self.vertex_count)
         for source, adjacent in self.graph.items():
             for target in adjacent:
-                # Note: we reverse the order of arguments
-                # pylint: disable=arguments-out-of-order
-                reverse_graph.add_edge(target,source)
-        return reverse_graph
+                reverse.add_edge(target, source)
+        return reverse
 
+    def is_strongly_connected(self) -> bool:
+        """Return True if the graph is strongly connected.
 
-    def is_strongly_connected(self):
-        """
-        Determine if the graph is strongly connected.
+        Returns:
+            True when every vertex can reach every other vertex.
         """
         if self.dfs():
             reversed_graph = self.reverse_graph()

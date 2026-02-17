@@ -1,32 +1,54 @@
-def quick_sort(arr, simulation=False):
-    """ Quick sort
-        Complexity: best O(n log(n)) avg O(n log(n)), worst O(N^2)
+"""
+Quick Sort
+
+Quick sort selects a pivot element, partitions the array around the
+pivot, and recursively sorts the two partitions.
+
+Reference: https://en.wikipedia.org/wiki/Quicksort
+
+Complexity:
+    Time:  O(n log n) best / O(n log n) average / O(n^2) worst
+    Space: O(log n)
+"""
+
+from __future__ import annotations
+
+
+def quick_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using quick sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> quick_sort([3, 1, 2])
+        [1, 2, 3]
     """
-    
-    iteration = 0
-    if simulation:
-        print("iteration",iteration,":",*arr)
-    arr, _ = quick_sort_recur(arr, 0, len(arr) - 1, iteration, simulation)
-    return arr
+    _quick_sort_recursive(array, 0, len(array) - 1)
+    return array
 
-def quick_sort_recur(arr, first, last, iteration, simulation):
+
+def _quick_sort_recursive(array: list[int], first: int, last: int) -> None:
+    """Recursively sort *array[first..last]* in-place."""
     if first < last:
-        pos = partition(arr, first, last)
-        # Start our two recursive calls
-        if simulation:
-            iteration = iteration + 1
-            print("iteration",iteration,":",*arr)
-            
-        _, iteration = quick_sort_recur(arr, first, pos - 1, iteration, simulation)
-        _, iteration = quick_sort_recur(arr, pos + 1, last, iteration, simulation)
+        pivot = _partition(array, first, last)
+        _quick_sort_recursive(array, first, pivot - 1)
+        _quick_sort_recursive(array, pivot + 1, last)
 
-    return arr, iteration
 
-def partition(arr, first, last):
+def _partition(array: list[int], first: int, last: int) -> int:
+    """Partition *array[first..last]* using the last element as pivot.
+
+    Returns:
+        The final index of the pivot element.
+    """
     wall = first
     for pos in range(first, last):
-        if arr[pos] < arr[last]:  # last is the pivot
-            arr[pos], arr[wall] = arr[wall], arr[pos]
+        if array[pos] < array[last]:
+            array[pos], array[wall] = array[wall], array[pos]
             wall += 1
-    arr[wall], arr[last] = arr[last], arr[wall]
+    array[wall], array[last] = array[last], array[wall]
     return wall

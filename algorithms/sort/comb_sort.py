@@ -1,32 +1,49 @@
 """
+Comb Sort
 
-https://en.wikipedia.org/wiki/Comb_sort
+Comb sort improves on bubble sort by using a gap sequence that shrinks by
+a factor of approximately 1.3 on each pass, eliminating small values near
+the end of the list (known as "turtles") more quickly.
 
-Worst-case performance: O(N^2)
+Reference: https://en.wikipedia.org/wiki/Comb_sort
 
+Complexity:
+    Time:  O(n log n) best / O(n^2) average / O(n^2) worst
+    Space: O(1)
 """
 
+from __future__ import annotations
 
-def comb_sort(arr):
-    def swap(i, j):
-        arr[i], arr[j] = arr[j], arr[i]
 
-    n = len(arr)
+def comb_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using comb sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> comb_sort([3, 1, 2])
+        [1, 2, 3]
+    """
+    n = len(array)
     gap = n
-    shrink = 1.3
-    sorted = False
-    while not sorted:
-        gap = int(gap / shrink)
-        if gap > 1:
-            sorted = False
-        else:
+    shrink_factor = 1.3
+    is_sorted = False
+
+    while not is_sorted:
+        gap = int(gap / shrink_factor)
+        if gap <= 1:
             gap = 1
-            sorted = True
+            is_sorted = True
 
         i = 0
         while i + gap < n:
-            if arr[i] > arr[i + gap]:
-                swap(i, i + gap)
-                sorted = False
-            i = i + 1
-    return arr
+            if array[i] > array[i + gap]:
+                array[i], array[i + gap] = array[i + gap], array[i]
+                is_sorted = False
+            i += 1
+
+    return array

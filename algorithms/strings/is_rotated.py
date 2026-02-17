@@ -1,31 +1,60 @@
 """
-Given two strings s1 and s2, determine if s2 is a rotated version of s1.
-For example,
-is_rotated("hello", "llohe") returns True
-is_rotated("hello", "helol") returns False
+Is Rotated String
 
-accepts two strings
-returns bool
-Reference: https://leetcode.com/problems/rotate-string/description/
+Given two strings, determine if the second is a rotated version of the first.
+Two approaches are provided: concatenation check and brute force.
+
+Reference: https://leetcode.com/problems/rotate-string/
+
+Complexity:
+    Time:  O(n) for concatenation approach, O(n^2) for brute force
+    Space: O(n)
 """
 
-def is_rotated(s1, s2):
-    if len(s1) == len(s2):
-        return s2 in s1 + s1
+from __future__ import annotations
+
+
+def is_rotated(first: str, second: str) -> bool:
+    """Check if second is a rotation of first using string concatenation.
+
+    Args:
+        first: The original string.
+        second: The string to check as a rotation.
+
+    Returns:
+        True if second is a rotation of first, False otherwise.
+
+    Examples:
+        >>> is_rotated("hello", "llohe")
+        True
+    """
+    if len(first) == len(second):
+        return second in first + first
     else:
         return False
 
-"""
-Another solution: brutal force
-Complexity: O(N^2)
-"""
-def is_rotated_v1(s1, s2):
-    if len(s1) != len(s2):
+
+def is_rotated_v1(first: str, second: str) -> bool:
+    """Check if second is a rotation of first using brute force comparison.
+
+    Args:
+        first: The original string.
+        second: The string to check as a rotation.
+
+    Returns:
+        True if second is a rotation of first, False otherwise.
+
+    Examples:
+        >>> is_rotated_v1("hello", "llohe")
+        True
+    """
+    if len(first) != len(second):
         return False
-    if len(s1) == 0:
+    if len(first) == 0:
         return True
 
-    for c in range(len(s1)):
-        if all(s1[(c + i) % len(s1)] == s2[i] for i in range(len(s1))):
+    for offset in range(len(first)):
+        if all(first[(offset + index) % len(first)] == second[index]
+               for index in range(len(first))):
             return True
     return False

@@ -1,44 +1,61 @@
 """
-Find the contiguous subarray within an array
-(containing at least one number) which has the largest product.
+Maximum Product Subarray
 
-For example, given the array [2,3,-2,4],
-the contiguous subarray [2,3] has the largest product = 6.
+Find the contiguous subarray within an array that has the largest product.
+
+Reference: https://leetcode.com/problems/maximum-product-subarray/
+
+Complexity:
+    max_product:
+        Time:  O(n)
+        Space: O(1)
+    subarray_with_max_product:
+        Time:  O(n)
+        Space: O(1)
 """
+
+from __future__ import annotations
+
 from functools import reduce
 
 
-def max_product(nums):
-    """
-    :type nums: List[int]
-    :rtype: int
+def max_product(nums: list[int]) -> int:
+    """Find the maximum product of a contiguous subarray.
+
+    Args:
+        nums: List of integers (containing at least one number).
+
+    Returns:
+        Largest product among all contiguous subarrays.
+
+    Examples:
+        >>> max_product([2, 3, -2, 4])
+        6
     """
     lmin = lmax = gmax = nums[0]
-    for num in nums:
+    for num in nums[1:]:
         t_1 = num * lmax
         t_2 = num * lmin
         lmax = max(max(t_1, t_2), num)
         lmin = min(min(t_1, t_2), num)
         gmax = max(gmax, lmax)
+    return gmax
 
 
-"""
-Another approach that would print max product and the subarray
+def subarray_with_max_product(arr: list[int]) -> tuple[int, list[int]]:
+    """Find the maximum product subarray and return the product and subarray.
 
-Examples:
-subarray_with_max_product([2,3,6,-1,-1,9,5])
-    #=> max_product_so_far: 45, [-1, -1, 9, 5]
-subarray_with_max_product([-2,-3,6,0,-7,-5])
-    #=> max_product_so_far: 36, [-2, -3, 6]
-subarray_with_max_product([-4,-3,-2,-1])
-    #=> max_product_so_far: 24, [-4, -3, -2, -1]
-subarray_with_max_product([-3,0,1])
-    #=> max_product_so_far: 1, [1]
-"""
+    Args:
+        arr: List of positive or negative integers.
 
+    Returns:
+        A tuple of (max_product, subarray) where subarray is the contiguous
+        slice that achieves the maximum product.
 
-def subarray_with_max_product(arr):
-    ''' arr is list of positive/negative numbers '''
+    Examples:
+        >>> subarray_with_max_product([-2, -3, 6, 0, -7, -5])
+        (36, [-2, -3, 6])
+    """
     length = len(arr)
     product_so_far = max_product_end = 1
     max_start_i = 0
@@ -60,7 +77,7 @@ def subarray_with_max_product(arr):
             so_far_start_i = max_start_i
 
     if all_negative_flag:
-        print(f"max_product_so_far: {reduce(lambda x, y: x * y, arr)}, {arr}")
+        product = reduce(lambda x, y: x * y, arr)
+        return product, arr
 
-    else:
-        print(f"max_product_so_far: {product_so_far},{arr[so_far_start_i:so_far_end_i + 1]}")
+    return product_so_far, arr[so_far_start_i:so_far_end_i + 1]

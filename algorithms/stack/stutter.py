@@ -1,24 +1,38 @@
 """
-Given a stack, stutter takes a stack as a parameter and  replaces every value
-in the stack with two occurrences of that value.
+Stutter
 
-For example, suppose the stack stores these values:
-bottom [3, 7, 1, 14, 9] top
-Then the stack should store these values after the method terminates:
-bottom [3, 3, 7, 7, 1, 1, 14, 14, 9, 9] top
+Replace every value in a stack with two occurrences of that value.
+Two approaches: one using an auxiliary stack, one using an auxiliary queue.
 
-Note: There are 2 solutions:
-first_stutter: it uses a single stack as auxiliary storage
-second_stutter: it uses a single queue as auxiliary storage
+Reference: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
+
+from __future__ import annotations
+
 import collections
 
 
-def first_stutter(stack):
-    storage_stack = []
-    for i in range(len(stack)):
+def first_stutter(stack: list[int]) -> list[int]:
+    """Stutter a stack using an auxiliary stack.
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        The stack with each value duplicated.
+
+    Examples:
+        >>> first_stutter([3, 7, 1, 14, 9])
+        [3, 3, 7, 7, 1, 1, 14, 14, 9, 9]
+    """
+    storage_stack: list[int] = []
+    for _ in range(len(stack)):
         storage_stack.append(stack.pop())
-    for i in range(len(storage_stack)):
+    for _ in range(len(storage_stack)):
         val = storage_stack.pop()
         stack.append(val)
         stack.append(val)
@@ -26,20 +40,28 @@ def first_stutter(stack):
     return stack
 
 
-def second_stutter(stack):
-    q = collections.deque()
-    # Put all values into queue from stack
-    for i in range(len(stack)):
-        q.append(stack.pop())
-    # Put values back into stack from queue
-    for i in range(len(q)):
-        stack.append(q.pop())
-    # Now, stack is reverse, put all values into queue from stack
-    for i in range(len(stack)):
-        q.append(stack.pop())
-    # Put 2 times value into stack from queue
-    for i in range(len(q)):
-        val = q.pop()
+def second_stutter(stack: list[int]) -> list[int]:
+    """Stutter a stack using an auxiliary queue.
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        The stack with each value duplicated.
+
+    Examples:
+        >>> second_stutter([3, 7, 1, 14, 9])
+        [3, 3, 7, 7, 1, 1, 14, 14, 9, 9]
+    """
+    queue: collections.deque[int] = collections.deque()
+    for _ in range(len(stack)):
+        queue.append(stack.pop())
+    for _ in range(len(queue)):
+        stack.append(queue.pop())
+    for _ in range(len(stack)):
+        queue.append(stack.pop())
+    for _ in range(len(queue)):
+        val = queue.pop()
         stack.append(val)
         stack.append(val)
 

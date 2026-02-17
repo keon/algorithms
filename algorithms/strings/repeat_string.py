@@ -1,24 +1,41 @@
 """
-Given two strings A and B, find the minimum number of times A has to be repeated such that B is a substring of it. If no such solution, return -1.
+Repeated String Match
 
-For example, with A = "abcd" and B = "cdabcdab".
+Given two strings A and B, find the minimum number of times A has to be
+repeated such that B is a substring of the result. Return -1 if impossible.
 
-Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring of it; and B is not a substring of A repeated two times ("abcdabcd").
+Reference: https://leetcode.com/problems/repeated-string-match/
 
-Note:
-The length of A and B will be between 1 and 10000.
-
-Reference: https://leetcode.com/problems/repeated-string-match/description/
+Complexity:
+    Time:  O(n * m) where n = len(A), m = len(B)
+    Space: O(n * (m/n + 2))
 """
-def repeat_string(A, B):
-    count = 1
-    tmp = A
-    max_count = (len(B) / len(A)) + 1
-    while not(B in tmp):
-        tmp = tmp + A
-        if (count > max_count):
-            count = -1
-            break
-        count = count + 1
 
-    return count
+from __future__ import annotations
+
+
+def repeat_string(base: str, target: str) -> int:
+    """Find minimum repetitions of base needed to contain target as a substring.
+
+    Args:
+        base: The string to repeat.
+        target: The string that should appear as a substring.
+
+    Returns:
+        The minimum number of repetitions, or -1 if not possible.
+
+    Examples:
+        >>> repeat_string("abcd", "cdabcdab")
+        3
+    """
+    repetition_count = 1
+    repeated = base
+    max_count = (len(target) / len(base)) + 1
+    while target not in repeated:
+        repeated = repeated + base
+        if repetition_count > max_count:
+            repetition_count = -1
+            break
+        repetition_count = repetition_count + 1
+
+    return repetition_count

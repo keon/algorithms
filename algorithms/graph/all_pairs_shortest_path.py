@@ -1,35 +1,37 @@
 """
-Given a n*n adjacency array.
-it will give you all pairs shortest path length.
-use deepcopy to preserve the original information.
+All-Pairs Shortest Path (Floyd-Warshall)
 
-Time complexity : O(E^3)
+Given an n*n adjacency matrix, computes the shortest path between every pair
+of vertices using the Floyd-Warshall algorithm.
 
-example
+Reference: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
 
-a = [[0    , 0.1  , 0.101, 0.142, 0.277],
-     [0.465, 0    , 0.191, 0.192, 0.587],
-     [0.245, 0.554, 0    , 0.333, 0.931],
-     [1.032, 0.668, 0.656, 0    , 0.151],
-     [0.867, 0.119, 0.352, 0.398, 0]]
-
-result
-
-[[0    , 0.1  , 0.101, 0.142, 0.277],
- [0.436, 0    , 0.191, 0.192, 0.343],
- [0.245, 0.345, 0    , 0.333, 0.484],
- [0.706, 0.27 , 0.461, 0    , 0.151],
- [0.555, 0.119, 0.31 , 0.311, 0]]
-
+Complexity:
+    Time:  O(V^3)
+    Space: O(V^2)
 """
+
+from __future__ import annotations
+
 import copy
 
-def all_pairs_shortest_path(adjacency_matrix):
-    """
-    Given a matrix of the edge weights between respective nodes, returns a
-    matrix containing the shortest distance distance between the two nodes.
-    """
 
+def all_pairs_shortest_path(
+    adjacency_matrix: list[list[float]],
+) -> list[list[float]]:
+    """Compute shortest distances between all pairs of vertices.
+
+    Args:
+        adjacency_matrix: An n*n matrix where entry [i][j] is the edge weight
+            from vertex i to vertex j.
+
+    Returns:
+        A new n*n matrix containing the shortest distance between each pair.
+
+    Examples:
+        >>> all_pairs_shortest_path([[0, 1, float('inf')], [float('inf'), 0, 1], [1, float('inf'), 0]])
+        [[0, 1, 2], [2, 0, 1], [1, 2, 0]]
+    """
     new_array = copy.deepcopy(adjacency_matrix)
 
     size = len(new_array)

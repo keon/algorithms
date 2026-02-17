@@ -1,32 +1,45 @@
 """
-Implementation of the Cooley-Tukey, which is the most common FFT algorithm.
+Fast Fourier Transform (Cooley-Tukey)
 
-Input: an array of complex values which has a size of N, where N is an integer power of 2
-Output: an array of complex values which is the discrete fourier transform of the input
+Compute the Discrete Fourier Transform of a sequence using the Cooley-Tukey
+radix-2 decimation-in-time algorithm. Input length must be a power of 2.
 
-Example 1
-Input: [2.0+2j, 1.0+3j, 3.0+1j, 2.0+2j]
-Output: [8+8j, 2j, 2-2j, -2+0j]
+Reference: https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
 
-
-Pseudocode: https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
+Complexity:
+    Time:  O(n log n)
+    Space: O(n log n)
 """
+
+from __future__ import annotations
+
 from cmath import exp, pi
 
-def fft(x):
-    """ Recursive implementation of the Cooley-Tukey"""
-    N = len(x)
-    if N == 1:
+
+def fft(x: list[complex]) -> list[complex]:
+    """Compute the FFT of a sequence using the Cooley-Tukey algorithm.
+
+    Args:
+        x: Input array of complex values. Length must be a power of 2.
+
+    Returns:
+        The Discrete Fourier Transform of x.
+
+    Examples:
+        >>> fft([1.0, 1.0, 1.0, 1.0])
+        [(4+0j), 0j, 0j, 0j]
+    """
+    n = len(x)
+    if n == 1:
         return x
 
-    # get the elements at even/odd indices
     even = fft(x[0::2])
     odd = fft(x[1::2])
 
-    y = [0 for i in range(N)]
-    for k in range(N//2):
-        q = exp(-2j*pi*k/N)*odd[k]
+    y = [0 for _ in range(n)]
+    for k in range(n // 2):
+        q = exp(-2j * pi * k / n) * odd[k]
         y[k] = even[k] + q
-        y[k + N//2] = even[k] - q
+        y[k + n // 2] = even[k] - q
 
     return y

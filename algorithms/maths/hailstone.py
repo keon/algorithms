@@ -1,21 +1,39 @@
 """
-Implementation of hailstone function which generates a sequence for some n by following these rules:
-* n == 1    : done
-* n is even : the next n = n/2
-* n is odd  : the next n = 3n + 1
+Hailstone Sequence (Collatz Conjecture)
+
+Generate the hailstone sequence starting from n: if n is even, next is n/2;
+if n is odd, next is 3n + 1. The sequence ends when it reaches 1.
+
+Reference: https://en.wikipedia.org/wiki/Collatz_conjecture
+
+Complexity:
+    Time:  O(unknown) - conjectured to always terminate
+    Space: O(sequence length)
 """
 
-def hailstone(n):
-    """
-    Return the 'hailstone sequence' from n to 1
-    n: The starting point of the hailstone sequence
-    """
+from __future__ import annotations
 
+
+def hailstone(n: int) -> list[int]:
+    """Generate the hailstone sequence from n to 1.
+
+    Args:
+        n: The starting positive integer.
+
+    Returns:
+        The complete hailstone sequence from n down to 1.
+
+    Examples:
+        >>> hailstone(8)
+        [8, 4, 2, 1]
+        >>> hailstone(10)
+        [10, 5, 16, 8, 4, 2, 1]
+    """
     sequence = [n]
     while n > 1:
-        if n%2 != 0:
-            n = 3*n + 1
+        if n % 2 != 0:
+            n = 3 * n + 1
         else:
-            n = int(n/2)
+            n = int(n / 2)
         sequence.append(n)
     return sequence

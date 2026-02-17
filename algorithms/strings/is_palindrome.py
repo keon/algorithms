@@ -1,105 +1,157 @@
 """
-Given a string, determine if it is a palindrome,
-considering only alphanumeric characters and ignoring cases.
-For example,
-"A man, a plan, a canal: Panama" is a palindrome.
-"race a car" is not a palindrome.
-Note:
-Have you consider that the string might be empty?
-This is a good question to ask during an interview.
-For the purpose of this problem,
-we define empty string as valid palindrome.
+Is Palindrome
+
+Determine if a string is a palindrome, considering only alphanumeric
+characters and ignoring cases. Multiple approaches are provided.
+
+Reference: https://en.wikipedia.org/wiki/Palindrome
+
+Complexity:
+    Time:  O(n) for all variations
+    Space: O(n) for variations that create new strings, O(1) for two-pointer
 """
-from string import ascii_letters
+
+from __future__ import annotations
+
 from collections import deque
+from string import ascii_letters
 
 
-def is_palindrome(s):
+def is_palindrome(text: str) -> bool:
+    """Check if a string is a palindrome using two pointers on the original.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a palindrome, False otherwise.
+
+    Examples:
+        >>> is_palindrome("Otto")
+        True
     """
-    :type s: str
-    :rtype: bool
-    """
-    i = 0
-    j = len(s)-1
-    while i < j:
-        while not s[i].isalnum():
-            i += 1
-        while not s[j].isalnum():
-            j -= 1
-        if s[i].lower() != s[j].lower():
+    left = 0
+    right = len(text) - 1
+    while left < right:
+        while not text[left].isalnum():
+            left += 1
+        while not text[right].isalnum():
+            right -= 1
+        if text[left].lower() != text[right].lower():
             return False
-        i, j = i+1, j-1
+        left, right = left + 1, right - 1
     return True
 
-"""
-Here is a bunch of other variations of is_palindrome function.
 
-Variation 1:
-Find the reverse of the string and compare it with the original string
+def _remove_punctuation(text: str) -> str:
+    """Remove punctuation, case sensitivity and spaces from a string.
 
-Variation 2:
-Loop from the start to length/2 and check the first character and last character
-and so on... for instance s[0] compared with s[n-1], s[1] == s[n-2]...
+    Args:
+        text: The input string to clean.
 
-Variation 3:
-Using stack idea. 
-
-Note: We are assuming that we are just checking a one word string. To check if a complete sentence 
-"""  
-def remove_punctuation(s):
+    Returns:
+        A lowercase string with only alphabetic characters.
     """
-    Remove punctuation, case sensitivity and spaces
+    return "".join(char.lower() for char in text if char in ascii_letters)
+
+
+def _string_reverse(text: str) -> str:
+    """Reverse a string using slicing.
+
+    Args:
+        text: The string to reverse.
+
+    Returns:
+        The reversed string.
     """
-    return "".join(i.lower() for i in s if i in ascii_letters)
-
-# Variation 1
-def string_reverse(s):
-	return s[::-1]
-
-def is_palindrome_reverse(s):
-	s = remove_punctuation(s)
-	
-	# can also get rid of the string_reverse function and just do this return s == s[::-1] in one line.
-	if (s == string_reverse(s)): 
-		return True
-	return False	
+    return text[::-1]
 
 
-# Variation 2
-def is_palindrome_two_pointer(s):
-    s = remove_punctuation(s)
-	
-    for i in range(0, len(s)//2):
-        if (s[i] != s[len(s) - i - 1]):
+def is_palindrome_reverse(text: str) -> bool:
+    """Check if a string is a palindrome by comparing with its reverse.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a palindrome, False otherwise.
+
+    Examples:
+        >>> is_palindrome_reverse("Otto")
+        True
+    """
+    text = _remove_punctuation(text)
+    if text == _string_reverse(text):
+        return True
+    return False
+
+
+def is_palindrome_two_pointer(text: str) -> bool:
+    """Check if a string is a palindrome using two pointers from both ends.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a palindrome, False otherwise.
+
+    Examples:
+        >>> is_palindrome_two_pointer("Otto")
+        True
+    """
+    text = _remove_punctuation(text)
+    for index in range(0, len(text) // 2):
+        if text[index] != text[len(text) - index - 1]:
             return False
     return True
-	
 
-# Variation 3
-def is_palindrome_stack(s):
-    stack = []
-    s = remove_punctuation(s)
-	
-    for i in range(len(s)//2, len(s)):
-        stack.append(s[i])
-    for i in range(0, len(s)//2):
-        if s[i] != stack.pop():
+
+def is_palindrome_stack(text: str) -> bool:
+    """Check if a string is a palindrome using a stack.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a palindrome, False otherwise.
+
+    Examples:
+        >>> is_palindrome_stack("Otto")
+        True
+    """
+    stack: list[str] = []
+    text = _remove_punctuation(text)
+    for index in range(len(text) // 2, len(text)):
+        stack.append(text[index])
+    for index in range(0, len(text) // 2):
+        if text[index] != stack.pop():
             return False
-    return True	
+    return True
 
-# Variation 4 (using deque)
-def is_palindrome_deque(s):
-    s = remove_punctuation(s)
-    deq = deque()
-    for char in s:
-        deq.appendleft(char)
+
+def is_palindrome_deque(text: str) -> bool:
+    """Check if a string is a palindrome using a deque.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a palindrome, False otherwise.
+
+    Examples:
+        >>> is_palindrome_deque("Otto")
+        True
+    """
+    text = _remove_punctuation(text)
+    character_deque: deque[str] = deque()
+    for char in text:
+        character_deque.appendleft(char)
 
     equal = True
-
-    while len(deq) > 1 and equal:
-        first = deq.pop()
-        last = deq.popleft()
-        if first != last :
+    while len(character_deque) > 1 and equal:
+        first = character_deque.pop()
+        last = character_deque.popleft()
+        if first != last:
             equal = False
 
     return equal

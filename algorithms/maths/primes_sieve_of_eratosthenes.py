@@ -1,44 +1,45 @@
 """
-Return list of all primes less than n,
-Using sieve of Eratosthenes.
+Sieve of Eratosthenes
 
-Modification:
-We don't need to check all even numbers, we can make the sieve excluding even
-numbers and adding 2 to the primes list by default.
+Generate all prime numbers less than n using an optimized sieve that skips
+even numbers.
 
-We are going to make an array of: x / 2 - 1 if number is even, else x / 2
-(The -1 with even number it's to exclude the number itself)
-Because we just need numbers [from 3..x if x is odd]
+Reference: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-# We can get value represented at index i with (i*2 + 3)
-
-For example, for x = 10, we start with an array of x / 2 - 1 = 4
-[1, 1, 1, 1]
- 3  5  7  9
-
-For x = 11:
-[1, 1, 1, 1, 1]
- 3  5  7  9  11  # 11 is odd, it's included in the list
-
-With this, we have reduced the array size to a half,
-and complexity it's also a half now.
+Complexity:
+    Time:  O(n log log n)
+    Space: O(n)
 """
 
-def get_primes(n):
-    """Return list of all primes less than n,
-    Using sieve of Eratosthenes.
+from __future__ import annotations
+
+
+def get_primes(n: int) -> list[int]:
+    """Return all primes less than n using the Sieve of Eratosthenes.
+
+    Args:
+        n: Upper bound (exclusive). Must be a positive integer.
+
+    Returns:
+        A sorted list of all primes less than n.
+
+    Raises:
+        ValueError: If n is not positive.
+
+    Examples:
+        >>> get_primes(7)
+        [2, 3, 5, 7]
     """
     if n <= 0:
         raise ValueError("'n' must be a positive integer.")
-    # If x is even, exclude x from list (-1):
     sieve_size = (n // 2 - 1) if n % 2 == 0 else (n // 2)
-    sieve = [True for _ in range(sieve_size)]   # Sieve
-    primes = []      # List of Primes
+    sieve = [True for _ in range(sieve_size)]
+    primes: list[int] = []
     if n >= 2:
-        primes.append(2)      # 2 is prime by default
+        primes.append(2)
     for i in range(sieve_size):
         if sieve[i]:
-            value_at_i = i*2 + 3
+            value_at_i = i * 2 + 3
             primes.append(value_at_i)
             for j in range(i, sieve_size, value_at_i):
                 sieve[j] = False

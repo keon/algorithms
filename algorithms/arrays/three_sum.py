@@ -1,48 +1,53 @@
 """
-Given an array S of n integers, are there three distinct elements
-a, b, c in S such that a + b + c = 0?
-Find all unique triplets in the array which gives the sum of zero.
+Three Sum
 
-Note: The solution set must not contain duplicate triplets.
+Given an array of integers, find all unique triplets that sum to zero
+using the two-pointer technique.
 
-For example, given array S = [-1, 0, 1, 2, -1, -4],
+Reference: https://leetcode.com/problems/3sum/
 
-A solution set is:
-{
-  (-1, 0, 1),
-  (-1, -1, 2)
-}
+Complexity:
+    Time:  O(n^2)
+    Space: O(n) for the result set
 """
 
+from __future__ import annotations
 
-def three_sum(array):
+
+def three_sum(array: list[int]) -> set[tuple[int, int, int]]:
+    """Find all unique triplets in the array that sum to zero.
+
+    Args:
+        array: List of integers to search.
+
+    Returns:
+        Set of sorted tuples, each containing three integers summing to zero.
+
+    Examples:
+        >>> three_sum([-1, 0, 1, 2, -1, -4]) == {(-1, 0, 1), (-1, -1, 2)}
+        True
     """
-    :param array: List[int]
-    :return: Set[ Tuple[int, int, int] ]
-    """
-    res = set()
+    result = set()
     array.sort()
     for i in range(len(array) - 2):
         if i > 0 and array[i] == array[i - 1]:
             continue
-        l, r = i + 1, len(array) - 1
-        while l < r:
-            s = array[i] + array[l] + array[r]
-            if s > 0:
-                r -= 1
-            elif s < 0:
-                l += 1
+        left, right = i + 1, len(array) - 1
+        while left < right:
+            current_sum = array[i] + array[left] + array[right]
+            if current_sum > 0:
+                right -= 1
+            elif current_sum < 0:
+                left += 1
             else:
-                # found three sum
-                res.add((array[i], array[l], array[r]))
+                result.add((array[i], array[left], array[right]))
 
-                # remove duplicates
-                while l < r and array[l] == array[l + 1]:
-                    l += 1
+                while left < right and array[left] == array[left + 1]:
+                    left += 1
 
-                while l < r and array[r] == array[r - 1]:
-                    r -= 1
+                while left < right and array[right] == array[right - 1]:
+                    right -= 1
 
-                l += 1
-                r -= 1
-    return res
+                left += 1
+                right -= 1
+    return result

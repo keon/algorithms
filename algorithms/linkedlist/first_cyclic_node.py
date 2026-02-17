@@ -1,25 +1,39 @@
 """
-    Given a linked list, find the first node of a cycle in it.
-    1 -> 2 -> 3 -> 4 -> 5 -> 1  => 1
-    A -> B -> C -> D -> E -> C  => C
+First Cyclic Node
 
-    Note: The solution is a direct implementation
-          Floyd's cycle-finding algorithm (Floyd's Tortoise and Hare).
+Given a linked list, find the first node of a cycle in it using Floyd's
+cycle-finding algorithm (Tortoise and Hare).
+
+Reference: https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
-import unittest
+
+from __future__ import annotations
 
 
 class Node:
-
-    def __init__(self, x):
+    def __init__(self, x: object) -> None:
         self.val = x
-        self.next = None
+        self.next: Node | None = None
 
 
-def first_cyclic_node(head):
-    """
-    :type head: Node
-    :rtype: Node
+def first_cyclic_node(head: Node | None) -> Node | None:
+    """Find the first node of a cycle in the linked list.
+
+    Args:
+        head: Head of the linked list.
+
+    Returns:
+        The first node in the cycle, or None if there is no cycle.
+
+    Examples:
+        >>> a = Node(1); b = Node(2); c = Node(3)
+        >>> a.next = b; b.next = c; c.next = b
+        >>> first_cyclic_node(a).val
+        2
     """
     runner = walker = head
     while runner and runner.next:
@@ -35,30 +49,3 @@ def first_cyclic_node(head):
     while runner is not walker:
         runner, walker = runner.next, walker.next
     return runner
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_first_cyclic_node(self):
-
-        # create linked list => A -> B -> C -> D -> E -> C
-        head = Node('A')
-        head.next = Node('B')
-        curr = head.next
-
-        cyclic_node = Node('C')
-        curr.next = cyclic_node
-
-        curr = curr.next
-        curr.next = Node('D')
-        curr = curr.next
-        curr.next = Node('E')
-        curr = curr.next
-        curr.next = cyclic_node
-
-        self.assertEqual('C', first_cyclic_node(head).val)
-
-
-if __name__ == '__main__':
-
-    unittest.main()

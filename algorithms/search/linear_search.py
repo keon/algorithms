@@ -1,13 +1,34 @@
 """
-Linear search works in any array.
-T(n): O(n)
+Linear Search
+
+Search for a target value in an array by checking every element sequentially.
+The array does not need to be sorted.
+
+Reference: https://en.wikipedia.org/wiki/Linear_search
+
+Complexity:
+    Time:  O(1) best / O(n) average / O(n) worst
+    Space: O(1)
 """
 
-def linear_search(array, query):
-    """
-    Find the index of the given element in the array.
-    There are no restrictions on the order of the elements in the array.
-    If the element couldn't be found, returns -1.
+from __future__ import annotations
+
+
+def linear_search(array: list[int], query: int) -> int:
+    """Search for *query* in *array* using linear search.
+
+    Args:
+        array: List of integers (order does not matter).
+        query: Value to search for.
+
+    Returns:
+        Index of *query* in *array*, or -1 if not found.
+
+    Examples:
+        >>> linear_search([5, 1, 3, 2, 4], 3)
+        2
+        >>> linear_search([5, 1, 3, 2, 4], 6)
+        -1
     """
     for i, value in enumerate(array):
         if value == query:

@@ -1,124 +1,164 @@
 """
-Inverts an invertible n x n matrix -- i.e., given an n x n matrix A, returns
-an n x n matrix B such that AB = BA = In, the n x n identity matrix.
+Matrix Inversion
 
-For a 2 x 2 matrix, inversion is simple using the cofactor equation. For
-larger matrices, this is a four step process:
-1. calculate the matrix of minors: create an n x n matrix by considering each
-position in the original matrix in turn. Exclude the current row and column
-and calculate the determinant of the remaining matrix, then place that value
-in the current position's equivalent in the matrix of minors.
-2. create the matrix of cofactors: take the matrix of minors and multiply
-alternate values by -1 in a checkerboard pattern.
-3. adjugate: hold the top left to bottom right diagonal constant, but swap all
-other values over it.
-4. multiply the adjugated matrix by 1 / the determinant of the original matrix
+Compute the inverse of an invertible n x n matrix A, returning an n x n
+matrix B such that A * B = B * A = I (the identity matrix). Uses cofactor
+expansion: compute the matrix of minors with checkerboard signs, adjugate
+(transpose), and multiply by 1/determinant.
 
-This code combines steps 1 and 2 into one method to reduce traversals of the
-matrix.
+Reference: https://en.wikipedia.org/wiki/Invertible_matrix
 
-Possible edge cases: will not work for 0x0 or 1x1 matrix, though these are
-trivial to calculate without use of this file.
+Complexity:
+    Time:  O(n! * n)  (cofactor expansion)
+    Space: O(n^2)
 """
+
+from __future__ import annotations
+
 import fractions
 
 
-def invert_matrix(m):
-    """invert an n x n matrix"""
-    # Error conditions
-    if not array_is_matrix(m):
-        print("Invalid matrix: array is not a matrix")
-        return [[-1]]
-    elif len(m) != len(m[0]):
-        print("Invalid matrix: matrix is not square")
-        return [[-2]]
-    elif len(m) < 2:
-        print("Invalid matrix: matrix is too small")
-        return [[-3]]
-    elif get_determinant(m) == 0:
-        print("Invalid matrix: matrix is square, but singular (determinant = 0)")
-        return [[-4]]
+def invert_matrix(
+    matrix: list[list[int | float]],
+) -> list[list[int | float | fractions.Fraction]]:
+    """Invert an n x n matrix.
 
-    # Calculation
-    elif len(m) == 2:
-        # simple case
-        multiplier = 1 / get_determinant(m)
-        inverted = [[multiplier] * len(m) for n in range(len(m))]
-        inverted[0][1] = inverted[0][1] * -1 * m[0][1]
-        inverted[1][0] = inverted[1][0] * -1 * m[1][0]
-        inverted[0][0] = multiplier * m[1][1]
-        inverted[1][1] = multiplier * m[0][0]
-        return inverted
-    else:
-        """some steps combined in helpers to reduce traversals"""
-        # get matrix of minors w/ "checkerboard" signs
-        m_of_minors = get_matrix_of_minors(m)
+    Args:
+        matrix: Square matrix of size n x n (n >= 2).
 
-        # calculate determinant (we need to know 1/det)
-        multiplier = fractions.Fraction(1, get_determinant(m))
+    Returns:
+        Inverted matrix, or an error sentinel:
+        [[-1]] if not a valid matrix, [[-2]] if not square,
+        [[-3]] if too small, [[-4]] if singular.
 
-        # adjugate (swap on diagonals) and multiply by 1/det
-        inverted = transpose_and_multiply(m_of_minors, multiplier)
-
-        return inverted
-
-
-def get_determinant(m):
-    """recursively calculate the determinant of an n x n matrix, n >= 2"""
-    if len(m) == 2:
-        # trivial case
-        return (m[0][0] * m[1][1]) - (m[0][1] * m[1][0])
-    else:
-        sign = 1
-        det = 0
-        for i in range(len(m)):
-            det += sign * m[0][i] * get_determinant(get_minor(m, 0, i))
-            sign *= -1
-        return det
-
-
-def get_matrix_of_minors(m):
-    """get the matrix of minors and alternate signs"""
-    matrix_of_minors = [[0 for i in range(len(m))] for j in range(len(m))]
-    for row in range(len(m)):
-        for col in range(len(m[0])):
-            if (row + col) % 2 == 0:
-                sign = 1
-            else:
-                sign = -1
-            matrix_of_minors[row][col] = sign * get_determinant(get_minor(m, row, col))
-    return matrix_of_minors
-
-
-def get_minor(m, row, col):
+    Examples:
+        >>> invert_matrix([[1, 1], [1, 2]])
+        [[2, -1], [-1, 1]]
     """
-    get the minor of the matrix position m[row][col]
-    (all values m[r][c] where r != row and c != col)
+    if not _array_is_matrix(matrix):
+        return [[-1]]
+    elif len(matrix) != len(matrix[0]):
+        return [[-2]]
+    elif len(matrix) < 2:
+        return [[-3]]
+    elif get_determinant(matrix) == 0:
+        return [[-4]]
+    elif len(matrix) == 2:
+        multiplier = 1 / get_determinant(matrix)
+        inverted = [[multiplier] * len(matrix) for _ in range(len(matrix))]
+        inverted[0][1] = inverted[0][1] * -1 * matrix[0][1]
+        inverted[1][0] = inverted[1][0] * -1 * matrix[1][0]
+        inverted[0][0] = multiplier * matrix[1][1]
+        inverted[1][1] = multiplier * matrix[0][0]
+        return inverted
+    else:
+        matrix_of_minors = _get_matrix_of_minors(matrix)
+        multiplier = fractions.Fraction(1, get_determinant(matrix))
+        inverted = _transpose_and_multiply(matrix_of_minors, multiplier)
+        return inverted
+
+
+def get_determinant(matrix: list[list[int | float]]) -> int | float:
+    """Recursively compute the determinant of an n x n matrix.
+
+    Args:
+        matrix: Square matrix of size n x n (n >= 2).
+
+    Returns:
+        Determinant value.
+
+    Examples:
+        >>> get_determinant([[1, 2], [3, 4]])
+        -2
+    """
+    if len(matrix) == 2:
+        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
+    sign = 1
+    det = 0
+    for i in range(len(matrix)):
+        det += sign * matrix[0][i] * get_determinant(_get_minor(matrix, 0, i))
+        sign *= -1
+    return det
+
+
+def _get_matrix_of_minors(
+    matrix: list[list[int | float]],
+) -> list[list[int | float]]:
+    """Compute the matrix of minors with alternating signs (cofactor matrix).
+
+    Args:
+        matrix: Square matrix of size n x n.
+
+    Returns:
+        Cofactor matrix.
+    """
+    size = len(matrix)
+    result = [[0] * size for _ in range(size)]
+    for row in range(size):
+        for col in range(len(matrix[0])):
+            sign = 1 if (row + col) % 2 == 0 else -1
+            result[row][col] = sign * get_determinant(
+                _get_minor(matrix, row, col)
+            )
+    return result
+
+
+def _get_minor(
+    matrix: list[list[int | float]], row: int, col: int
+) -> list[list[int | float]]:
+    """Extract the minor by removing the given row and column.
+
+    Args:
+        matrix: Square matrix.
+        row: Row index to remove.
+        col: Column index to remove.
+
+    Returns:
+        Sub-matrix with the specified row and column removed.
     """
     minors = []
-    for i in range(len(m)):
+    for i in range(len(matrix)):
         if i != row:
-            new_row = m[i][:col]
-            new_row.extend(m[i][col + 1:])
+            new_row = matrix[i][:col]
+            new_row.extend(matrix[i][col + 1:])
             minors.append(new_row)
     return minors
 
 
-def transpose_and_multiply(m, multiplier=1):
-    """swap values along diagonal, optionally adding multiplier"""
-    for row in range(len(m)):
+def _transpose_and_multiply(
+    matrix: list[list[int | float]],
+    multiplier: int | float | fractions.Fraction = 1,
+) -> list[list[int | float | fractions.Fraction]]:
+    """Transpose the matrix and multiply each element by a scalar.
+
+    Args:
+        matrix: Square matrix to transpose.
+        multiplier: Scalar to multiply each element by.
+
+    Returns:
+        Transposed and scaled matrix.
+    """
+    for row in range(len(matrix)):
         for col in range(row + 1):
-            temp = m[row][col] * multiplier
-            m[row][col] = m[col][row] * multiplier
-            m[col][row] = temp
-    return m
+            temp = matrix[row][col] * multiplier
+            matrix[row][col] = matrix[col][row] * multiplier
+            matrix[col][row] = temp
+    return matrix
 
 
-def array_is_matrix(m):
-    if len(m) == 0:
+def _array_is_matrix(matrix: list[list]) -> bool:
+    """Check whether a 2D list has consistent row lengths.
+
+    Args:
+        matrix: 2D list to validate.
+
+    Returns:
+        True if all rows have the same length, False otherwise.
+    """
+    if len(matrix) == 0:
         return False
-    first_col = len(m[0])
-    for row in m:
+    first_col = len(matrix[0])
+    for row in matrix:
         if len(row) != first_col:
             return False
     return True

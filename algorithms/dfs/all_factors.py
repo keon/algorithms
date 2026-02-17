@@ -1,101 +1,90 @@
 """
-Numbers can be regarded as product of its factors. For example,
-8 = 2 x 2 x 2;
-  = 2 x 4.
+Factor Combinations
 
+Given an integer n, return all possible combinations of its factors
+(excluding 1 and n itself in the factorisation).
 
-Write a function that takes an integer n and return all possible combinations
-of its factors.Numbers can be regarded as product of its factors. For example,
-8 = 2 x 2 x 2;
-  = 2 x 4.
+Reference: https://leetcode.com/problems/factor-combinations/
 
-Examples:
-input: 1
-output:
-[]
-
-
-input: 37
-output:
-[]
-
-input: 32
-output:
-[
-  [2, 16],
-  [2, 2, 8],
-  [2, 2, 2, 4],
-  [2, 2, 2, 2, 2],
+Complexity:
+    Time:  O(n^(1/2) * log n)  (approximate, depends on factor density)
+    Space: O(log n)
 """
-def get_factors(n):
-    """[summary]
-    
-    Arguments:
-        n {[int]} -- [to analysed number]
-    
+
+from __future__ import annotations
+
+
+def get_factors(n: int) -> list[list[int]]:
+    """Return all factor combinations of *n* using recursion.
+
+    Args:
+        n: The number to factorise.
+
     Returns:
-        [list of lists] -- [all factors of the number n]
+        List of factor lists.
+
+    Examples:
+        >>> get_factors(12)
+        [[2, 6], [2, 2, 3], [3, 4]]
     """
 
-    def factor(n, i, combi, res):
-        """[summary]
-        helper function
-
-        Arguments:
-            n {[int]} -- [number]
-            i {[int]} -- [to tested divisor]
-            combi {[list]} -- [catch divisors]
-            res {[list]} -- [all factors of the number n]
-        
-        Returns:
-            [list] -- [res]
-        """
-
+    def _factor(
+        n: int,
+        i: int,
+        combi: list[int],
+        res: list[list[int]],
+    ) -> list[list[int]]:
         while i * i <= n:
             if n % i == 0:
-                res += combi + [i, int(n/i)],
-                factor(n/i, i, combi+[i], res)
+                res += (combi + [i, int(n / i)],)
+                _factor(n / i, i, combi + [i], res)
             i += 1
         return res
-    return factor(n, 2, [], [])
+
+    return _factor(n, 2, [], [])
 
 
-def get_factors_iterative1(n):
-    """[summary]
-    Computes all factors of n.
-    Translated the function get_factors(...) in
-    a call-stack modell.
+def get_factors_iterative1(n: int) -> list[list[int]]:
+    """Return all factor combinations using an explicit stack.
 
-    Arguments:
-        n {[int]} -- [to analysed number]
-    
+    Args:
+        n: The number to factorise.
+
     Returns:
-        [list of lists] -- [all factors]
-    """
+        List of factor lists.
 
-    todo, res = [(n, 2, [])], []
+    Examples:
+        >>> get_factors_iterative1(12)
+        [[2, 6], [3, 4], [2, 2, 3]]
+    """
+    todo: list[tuple[int, int, list[int]]] = [(n, 2, [])]
+    res: list[list[int]] = []
     while todo:
         n, i, combi = todo.pop()
         while i * i <= n:
             if n % i == 0:
-                res += combi + [i, n//i],
-                todo.append((n//i, i, combi+[i])),
+                res += (combi + [i, n // i],)
+                todo.append((n // i, i, combi + [i]))
             i += 1
     return res
 
 
-def get_factors_iterative2(n):
-    """[summary]
-    analog as above
+def get_factors_iterative2(n: int) -> list[list[int]]:
+    """Return all factor combinations using a stack-based approach.
 
-    Arguments:
-        n {[int]} -- [description]
-    
+    Args:
+        n: The number to factorise.
+
     Returns:
-        [list of lists] -- [all factors of n]
-    """
+        List of factor lists.
 
-    ans, stack, x = [], [], 2
+    Examples:
+        >>> get_factors_iterative2(12)
+        [[2, 2, 3], [2, 6], [3, 4]]
+    """
+    ans: list[list[int]] = []
+    stack: list[int] = []
+    x = 2
     while True:
         if x > n // x:
             if not stack:

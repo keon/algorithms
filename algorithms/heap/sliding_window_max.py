@@ -1,41 +1,45 @@
 """
-Given an array nums, there is a sliding window of size k
-which is moving from the very left of the array to the very right.
-You can only see the k numbers in the window.
-Each time the sliding window moves right by one position.
+Sliding Window Maximum (Heap-based)
 
-For example,
-Given nums = [1,3,-1,-3,5,3,6,7], and k = 3.
+Given an array and a window size k, find the maximum element in each
+sliding window using a deque that maintains decreasing order of values.
 
-Window position                Max
----------------               -----
-[1  3  -1] -3  5  3  6  7       3
- 1 [3  -1  -3] 5  3  6  7       3
- 1  3 [-1  -3  5] 3  6  7       5
- 1  3  -1 [-3  5  3] 6  7       5
- 1  3  -1  -3 [5  3  6] 7       6
- 1  3  -1  -3  5 [3  6  7]      7
-Therefore, return the max sliding window as [3,3,5,5,6,7].
+Reference: https://leetcode.com/problems/sliding-window-maximum/
+
+Complexity:
+    Time:  O(n)
+    Space: O(k)
 """
+
+from __future__ import annotations
+
 import collections
 
 
-def max_sliding_window(nums, k):
-    """
-    :type nums: List[int]
-    :type k: int
-    :rtype: List[int]
+def max_sliding_window(nums: list[int], k: int) -> list[int]:
+    """Find the maximum in each sliding window of size k.
+
+    Args:
+        nums: Input array of integers.
+        k: Window size.
+
+    Returns:
+        List of maximum values for each window position.
+
+    Examples:
+        >>> max_sliding_window([1, 3, -1, -3, 5, 3, 6, 7], 3)
+        [3, 3, 5, 5, 6, 7]
     """
     if not nums:
         return nums
-    queue = collections.deque()
-    res = []
+    queue: collections.deque[int] = collections.deque()
+    result: list[int] = []
     for num in nums:
         if len(queue) < k:
             queue.append(num)
         else:
-            res.append(max(queue))
+            result.append(max(queue))
             queue.popleft()
             queue.append(num)
-    res.append(max(queue))
-    return res
+    result.append(max(queue))
+    return result

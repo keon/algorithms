@@ -1,32 +1,37 @@
 """
-Given an unsorted array of integers, find the length of
-longest increasing subsequence.
+Longest Increasing Subsequence
 
-Example:
+Find the length of the longest strictly increasing subsequence in an array.
 
-Input: [10,9,2,5,3,7,101,18]
-Output: 4
-Explanation: The longest increasing subsequence is [2,3,7,101], therefore the
-length is 4.
+Reference: https://en.wikipedia.org/wiki/Longest_increasing_subsequence
 
-Time complexity:
-First algorithm is O(n^2).
-Second algorithm is O(nlogx) where x is the max element in the list
-Third algorithm is O(nlogn)
-
-Space complexity:
-First algorithm is O(n)
-Second algorithm is O(x) where x is the max element in the list
-Third algorithm is O(n)
+Complexity:
+    longest_increasing_subsequence:
+        Time:  O(n^2)
+        Space: O(n)
+    longest_increasing_subsequence_optimized:
+        Time:  O(n * log(x))  where x is the max element
+        Space: O(x)
+    longest_increasing_subsequence_optimized2:
+        Time:  O(n * log(n))
+        Space: O(n)
 """
 
+from __future__ import annotations
 
-def longest_increasing_subsequence(sequence):
-    """
-    Dynamic Programming Algorithm for
-    counting the length of longest increasing subsequence
-    type sequence: list[int]
-    rtype: int
+
+def longest_increasing_subsequence(sequence: list[int]) -> int:
+    """Find length of the longest increasing subsequence using O(n^2) DP.
+
+    Args:
+        sequence: List of integers.
+
+    Returns:
+        Length of the longest strictly increasing subsequence.
+
+    Examples:
+        >>> longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18])
+        4
     """
     length = len(sequence)
     counts = [1 for _ in range(length)]
@@ -34,84 +39,98 @@ def longest_increasing_subsequence(sequence):
         for j in range(0, i):
             if sequence[i] > sequence[j]:
                 counts[i] = max(counts[i], counts[j] + 1)
-                print(counts)
     return max(counts)
 
 
-def longest_increasing_subsequence_optimized(sequence):
-    """
-    Optimized dynamic programming algorithm for
-    couting the length of the longest increasing subsequence
-    using segment tree data structure to achieve better complexity
-    if max element is larger than 10^5 then use
-    longest_increasing_subsequence_optimied2() instead
-    type sequence: list[int]
-    rtype: int
-    """
-    max_seq = max(sequence)
-    tree = [0] * (max_seq<<2)
+def longest_increasing_subsequence_optimized(sequence: list[int]) -> int:
+    """Find length of LIS using a segment tree for O(n*log(x)) time.
 
-    def update(pos, left, right, target, vertex):
+    Args:
+        sequence: List of integers.
+
+    Returns:
+        Length of the longest strictly increasing subsequence.
+
+    Examples:
+        >>> longest_increasing_subsequence_optimized([10, 9, 2, 5, 3, 7, 101, 18])
+        4
+    """
+    max_val = max(sequence)
+    tree = [0] * (max_val << 2)
+
+    def _update(pos: int, left: int, right: int, target: int, vertex: int) -> None:
         if left == right:
             tree[pos] = vertex
             return
-        mid = (left+right)>>1
+        mid = (left + right) >> 1
         if target <= mid:
-            update(pos<<1, left, mid, target, vertex)
+            _update(pos << 1, left, mid, target, vertex)
         else:
-            update((pos<<1)|1, mid+1, right, target, vertex)
-        tree[pos] = max_seq(tree[pos<<1], tree[(pos<<1)|1])
+            _update((pos << 1) | 1, mid + 1, right, target, vertex)
+        tree[pos] = max(tree[pos << 1], tree[(pos << 1) | 1])
 
-    def get_max(pos, left, right, start, end):
+    def _get_max(pos: int, left: int, right: int, start: int, end: int) -> int:
         if left > end or right < start:
             return 0
         if left >= start and right <= end:
             return tree[pos]
-        mid = (left+right)>>1
-        return max_seq(get_max(pos<<1, left, mid, start, end),
-            get_max((pos<<1)|1, mid+1, right, start, end))
+        mid = (left + right) >> 1
+        return max(
+            _get_max(pos << 1, left, mid, start, end),
+            _get_max((pos << 1) | 1, mid + 1, right, start, end),
+        )
+
     ans = 0
     for element in sequence:
-        cur = get_max(1, 0, max_seq, 0, element-1)+1
-        ans = max_seq(ans, cur)
-        update(1, 0, max_seq, element, cur)
+        cur = _get_max(1, 0, max_val, 0, element - 1) + 1
+        ans = max(ans, cur)
+        _update(1, 0, max_val, element, cur)
     return ans
 
 
-def longest_increasing_subsequence_optimized2(sequence):
-    """
-    Optimized dynamic programming algorithm for
-    counting the length of the longest increasing subsequence
-    using segment tree data structure to achieve better complexity
-    type sequence: list[int]
-    rtype: int
+def longest_increasing_subsequence_optimized2(sequence: list[int]) -> int:
+    """Find length of LIS using coordinate-compressed segment tree for O(n*log(n)).
+
+    Args:
+        sequence: List of integers.
+
+    Returns:
+        Length of the longest strictly increasing subsequence.
+
+    Examples:
+        >>> longest_increasing_subsequence_optimized2([10, 9, 2, 5, 3, 7, 101, 18])
+        4
     """
     length = len(sequence)
-    tree = [0] * (length<<2)
+    tree = [0] * (length << 2)
     sorted_seq = sorted((x, -i) for i, x in enumerate(sequence))
-    def update(pos, left, right, target, vertex):
+
+    def _update(pos: int, left: int, right: int, target: int, vertex: int) -> None:
         if left == right:
             tree[pos] = vertex
             return
-        mid = (left+right)>>1
+        mid = (left + right) >> 1
         if target <= mid:
-            vertex(pos<<1, left, mid, target, vertex)
+            _update(pos << 1, left, mid, target, vertex)
         else:
-            vertex((pos<<1)|1, mid+1, right, target, vertex)
-        tree[pos] = max(tree[pos<<1], tree[(pos<<1)|1])
+            _update((pos << 1) | 1, mid + 1, right, target, vertex)
+        tree[pos] = max(tree[pos << 1], tree[(pos << 1) | 1])
 
-    def get_max(pos, left, right, start, end):
+    def _get_max(pos: int, left: int, right: int, start: int, end: int) -> int:
         if left > end or right < start:
             return 0
         if left >= start and right <= end:
             return tree[pos]
-        mid = (left+right)>>1
-        return max(get_max(pos<<1, left, mid, start, end),
-            get_max((pos<<1)|1, mid+1, right, start, end))
+        mid = (left + right) >> 1
+        return max(
+            _get_max(pos << 1, left, mid, start, end),
+            _get_max((pos << 1) | 1, mid + 1, right, start, end),
+        )
+
     ans = 0
     for tup in sorted_seq:
         i = -tup[1]
-        cur = get_max(1, 0, length-1, 0, i-1)+1
+        cur = _get_max(1, 0, length - 1, 0, i - 1) + 1
         ans = max(ans, cur)
-        update(1, 0, length-1, i, cur)
+        _update(1, 0, length - 1, i, cur)
     return ans

@@ -1,66 +1,116 @@
 """
-Write a function to find the longest common prefix string amongst an array of strings.
+Longest Common Prefix
 
-If there is no common prefix, return an empty string "".
+Find the longest common prefix string amongst an array of strings.
+Three approaches: horizontal scanning, vertical scanning, and divide and conquer.
 
-Example 1:
-Input: ["flower","flow","flight"]
-Output: "fl"
+Reference: https://leetcode.com/problems/longest-common-prefix/
 
-Example 2:
-Input: ["dog","racecar","car"]
-Output: ""
-Explanation: There is no common prefix among the input strings.
-
-Reference: https://leetcode.com/problems/longest-common-prefix/description/
+Complexity:
+    Time:  O(S) where S is the sum of all characters in all strings
+    Space: O(1) for iterative, O(m * log n) for divide and conquer
 """
 
-"""
-First solution: Horizontal scanning
-"""
-def common_prefix(s1, s2):
-    "Return prefix common of 2 strings"
-    if not s1 or not s2:
+from __future__ import annotations
+
+
+def _common_prefix(first: str, second: str) -> str:
+    """Return the common prefix of two strings.
+
+    Args:
+        first: The first string.
+        second: The second string.
+
+    Returns:
+        The common prefix shared by both strings.
+    """
+    if not first or not second:
         return ""
-    k = 0
-    while s1[k] == s2[k]:
-        k = k + 1
-        if k >= len(s1) or k >= len(s2):
-            return s1[0:k]
-    return s1[0:k]
+    index = 0
+    while first[index] == second[index]:
+        index = index + 1
+        if index >= len(first) or index >= len(second):
+            return first[0:index]
+    return first[0:index]
 
-def longest_common_prefix_v1(strs):
-    if not strs:
+
+def longest_common_prefix_v1(strings: list[str]) -> str:
+    """Find longest common prefix using horizontal scanning.
+
+    Args:
+        strings: A list of strings to compare.
+
+    Returns:
+        The longest common prefix, or empty string if none exists.
+
+    Examples:
+        >>> longest_common_prefix_v1(["flower", "flow", "flight"])
+        'fl'
+    """
+    if not strings:
         return ""
-    result = strs[0]
-    for i in range(len(strs)):
-        result = common_prefix(result, strs[i])
+    result = strings[0]
+    for index in range(len(strings)):
+        result = _common_prefix(result, strings[index])
     return result
 
-"""
-Second solution: Vertical scanning
-"""
-def longest_common_prefix_v2(strs):
-    if not strs:
-        return ""
-    for i in range(len(strs[0])):
-        for string in strs[1:]:
-            if i == len(string) or string[i] != strs[0][i]:
-                return strs[0][0:i]
-    return strs[0]
 
-"""
-Third solution: Divide and Conquer
-"""
-def longest_common_prefix_v3(strs):
-    if not strs:
-        return ""
-    return longest_common(strs, 0, len(strs) -1)
+def longest_common_prefix_v2(strings: list[str]) -> str:
+    """Find longest common prefix using vertical scanning.
 
-def longest_common(strs, left, right):
+    Args:
+        strings: A list of strings to compare.
+
+    Returns:
+        The longest common prefix, or empty string if none exists.
+
+    Examples:
+        >>> longest_common_prefix_v2(["flower", "flow", "flight"])
+        'fl'
+    """
+    if not strings:
+        return ""
+    for index in range(len(strings[0])):
+        for string in strings[1:]:
+            if index == len(string) or string[index] != strings[0][index]:
+                return strings[0][0:index]
+    return strings[0]
+
+
+def longest_common_prefix_v3(strings: list[str]) -> str:
+    """Find longest common prefix using divide and conquer.
+
+    Args:
+        strings: A list of strings to compare.
+
+    Returns:
+        The longest common prefix, or empty string if none exists.
+
+    Examples:
+        >>> longest_common_prefix_v3(["flower", "flow", "flight"])
+        'fl'
+    """
+    if not strings:
+        return ""
+    return _longest_common_recursive(strings, 0, len(strings) - 1)
+
+
+def _longest_common_recursive(
+    strings: list[str], left: int, right: int
+) -> str:
+    """Recursively find the longest common prefix using divide and conquer.
+
+    Args:
+        strings: The list of strings.
+        left: The left index of the current partition.
+        right: The right index of the current partition.
+
+    Returns:
+        The longest common prefix for the partition.
+    """
     if left == right:
-        return strs[left]
+        return strings[left]
     mid = (left + right) // 2
-    lcp_left = longest_common(strs, left, mid)
-    lcp_right = longest_common(strs, mid + 1, right)
-    return common_prefix(lcp_left, lcp_right)
+    lcp_left = _longest_common_recursive(strings, left, mid)
+    lcp_right = _longest_common_recursive(strings, mid + 1, right)
+    return _common_prefix(lcp_left, lcp_right)

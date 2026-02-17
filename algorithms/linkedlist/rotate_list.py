@@ -1,38 +1,43 @@
 """
-Given a list, rotate the list to the right by k places,
-where k is non-negative.
+Rotate List
 
-For example:
-Given 1->2->3->4->5->NULL and k = 2,
-return 4->5->1->2->3->NULL.
+Given a linked list, rotate the list to the right by k places, where k is
+non-negative.
+
+Reference: https://leetcode.com/problems/rotate-list/
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
 
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+from __future__ import annotations
 
 
-def rotate_right(head, k):
-    """
-    :type head: ListNode
-    :type k: int
-    :rtype: ListNode
+def rotate_right(head: object | None, k: int) -> object | None:
+    """Rotate a linked list to the right by k positions.
+
+    Args:
+        head: Head node of the linked list (must have .val and .next attrs).
+        k: Number of positions to rotate right (non-negative).
+
+    Returns:
+        The new head of the rotated list.
+
+    Examples:
+        >>> rotate_right(None, 5) is None
+        True
     """
     if not head or not head.next:
         return head
     current = head
     length = 1
-    # count length of the list
     while current.next:
         current = current.next
         length += 1
-    # make it circular
     current.next = head
     k = k % length
-    # rotate until length-k
-    for i in range(length-k):
+    for _ in range(length - k):
         current = current.next
     head = current.next
     current.next = None

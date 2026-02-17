@@ -1,24 +1,43 @@
 """
-Recently, I encountered an interview question whose description was as below:
+Summing Digits Power
 
-The number 89 is the first integer with more than one digit whose digits when raised up to
-consecutive powers give the same number. For example, 89 = 8**1 + 9**2 gives the number 89.
+Find all integers in a range where each digit raised to its positional power
+(1-indexed) sums to the number itself (e.g., 89 = 8^1 + 9^2).
 
-The next number after 89 with this property is 135 = 1**1 + 3**2 + 5**3 = 135.
+Reference: https://en.wikipedia.org/wiki/Perfect_digit-to-digit_invariant
 
-Write a function that returns a list of numbers with the above property. The function will
-receive range as parameter.
+Complexity:
+    Time:  O((high - low) * d) where d is the number of digits
+    Space: O(result size)
 """
 
-def sum_dig_pow(low, high):
+from __future__ import annotations
+
+
+def sum_dig_pow(low: int, high: int) -> list[int]:
+    """Find numbers where digits raised to positional powers equal the number.
+
+    Args:
+        low: Lower bound of the range (inclusive).
+        high: Upper bound of the range (inclusive).
+
+    Returns:
+        List of matching numbers in the range.
+
+    Examples:
+        >>> sum_dig_pow(1, 10)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        >>> sum_dig_pow(1, 100)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+    """
     result = []
 
     for number in range(low, high + 1):
-        exponent = 1  # set to 1
-        summation = 0    # set to 1
+        exponent = 1
+        summation = 0
         number_as_string = str(number)
 
-        tokens = list(map(int, number_as_string))  # parse the string into individual digits
+        tokens = list(map(int, number_as_string))
 
         for k in tokens:
             summation = summation + (k ** exponent)
@@ -27,8 +46,3 @@ def sum_dig_pow(low, high):
         if summation == number:
             result.append(number)
     return result
-
-
-# Some test cases:
-assert sum_dig_pow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
-assert sum_dig_pow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]

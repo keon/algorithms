@@ -1,28 +1,41 @@
 """
-Given an absolute path for a file (Unix-style), simplify it.
+Simplify Path
 
-For example,
-path = "/home/", => "/home"
-path = "/a/./b/../../c/", => "/c"
+Given an absolute Unix-style file path, simplify it by resolving '.'
+(current directory), '..' (parent directory), and multiple slashes.
 
-* Did you consider the case where path = "/../"?
-    In this case, you should return "/".
-* Another corner case is the path might contain multiple slashes '/' together,
-    such as "/home//foo/". In this case, you should ignore redundant
-    slashes and return "/home/foo".
+Reference: https://leetcode.com/problems/simplify-path/
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
-def simplify_path(path):
+
+from __future__ import annotations
+
+
+def simplify_path(path: str) -> str:
+    """Simplify a Unix-style absolute path.
+
+    Args:
+        path: An absolute file path string.
+
+    Returns:
+        The simplified canonical path.
+
+    Examples:
+        >>> simplify_path("/home/")
+        '/home'
+        >>> simplify_path("/a/./b/../../c/")
+        '/c'
     """
-    :type path: str
-    :rtype: str
-    """
-    skip = {'..', '.', ''}
-    stack = []
-    paths = path.split('/')
-    for tok in paths:
-        if tok == '..':
+    skip = {"..", ".", ""}
+    stack: list[str] = []
+    tokens = path.split("/")
+    for token in tokens:
+        if token == "..":
             if stack:
                 stack.pop()
-        elif tok not in skip:
-            stack.append(tok)
-    return '/' + '/'.join(stack)
+        elif token not in skip:
+            stack.append(token)
+    return "/" + "/".join(stack)

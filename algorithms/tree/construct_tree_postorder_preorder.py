@@ -1,30 +1,31 @@
 """
-    Given two arrays representing preorder and postorder traversal of a full
-    binary tree, construct the binary tree and print the inorder traversal of the
-    tree.
-    A full binary tree has either 0 or 2 children.
-    Algorithm:
-        1. Assign the first element of preorder array as root of the tree.
-        2. Find the same element in the postorder array and divide the postorder
-            array into left and right subtree.
-        3. Repeat the above steps for all the elements and construct the tree.
-    Eg: pre[] = {1, 2, 4, 8, 9, 5, 3, 6, 7}
-        post[] = {8, 9, 4, 5, 2, 6, 7, 3, 1}
-        Tree:
-                1
-              /   \
-             2     3
-            / \   / \
-           4   5 6   7
-          / \
-         8   9
-      Output: 8 4 9 2 5 1 6 3 7
+Construct Tree from Preorder and Postorder Traversal
+
+Given preorder and postorder traversals of a full binary tree, construct the
+tree and return its inorder traversal. A full binary tree has either zero or
+two children per node.
+
+Reference: https://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees
+
+Complexity:
+    Time:  O(n^2) due to linear search in postorder array
+    Space: O(n) for the constructed tree
 """
+
+from __future__ import annotations
 
 
 class TreeNode:
+    """A node in a binary tree.
 
-    def __init__(self, val, left=None, right=None):
+    Args:
+        val: The value stored in this node.
+        left: The left child node.
+        right: The right child node.
+    """
+
+    def __init__(self, val: int, left: TreeNode | None = None,
+                 right: TreeNode | None = None) -> None:
         self.val = val
         self.left = left
         self.right = right
@@ -33,42 +34,47 @@ class TreeNode:
 pre_index = 0
 
 
-def construct_tree_util(pre: list, post: list, low: int, high: int, size: int):
-    """
-    Recursive function that constructs tree from preorder and postorder array.
+def construct_tree_util(pre: list[int], post: list[int],
+                        low: int, high: int, size: int) -> TreeNode | None:
+    """Recursively construct a binary tree from preorder and postorder arrays.
 
-    preIndex is a global variable that keeps track of the index in preorder
-    array.
-    preorder and postorder array are represented are pre[] and post[] respectively.
-    low and high are the indices for the postorder array.
-    """
+    Uses a global pre_index to track the current position in the preorder
+    array during recursive construction.
 
+    Args:
+        pre: The preorder traversal array.
+        post: The postorder traversal array.
+        low: The lower bound index in the postorder array.
+        high: The upper bound index in the postorder array.
+        size: The total number of elements.
+
+    Returns:
+        The root of the constructed subtree, or None if bounds are invalid.
+
+    Examples:
+        >>> construct_tree_util([1, 2, 3], [2, 3, 1], 0, 2, 3) is not None
+        True
+    """
     global pre_index
 
     if pre_index == -1:
         pre_index = 0
 
-    # Base case
     if pre_index >= size or low > high:
         return None
 
     root = TreeNode(pre[pre_index])
     pre_index += 1
 
-    # If only one element in the subarray return root
     if low == high or pre_index >= size:
         return root
 
-    # Find the next element of pre[] in post[]
     i = low
     while i <= high:
         if pre[pre_index] == post[i]:
             break
-
         i += 1
 
-    # Use index of element present in postorder to divide postorder array
-    # to two parts: left subtree and right subtree
     if i <= high:
         root.left = construct_tree_util(pre, post, low, i, size)
         root.right = construct_tree_util(pre, post, i + 1, high, size)
@@ -76,37 +82,42 @@ def construct_tree_util(pre: list, post: list, low: int, high: int, size: int):
     return root
 
 
-def construct_tree(pre: list, post: list, size: int):
-    """
-    Main Function that will construct the full binary tree from given preorder
-    and postorder array.
-    """
+def construct_tree(pre: list[int], post: list[int], size: int) -> list[int]:
+    """Construct a full binary tree and return its inorder traversal.
 
+    Args:
+        pre: The preorder traversal array.
+        post: The postorder traversal array.
+        size: The number of elements.
+
+    Returns:
+        A list of values representing the inorder traversal of the
+        constructed tree.
+
+    Examples:
+        >>> construct_tree([1, 2, 4, 5, 3, 6, 7], [4, 5, 2, 6, 7, 3, 1], 7)
+        [4, 2, 5, 1, 6, 3, 7]
+    """
     root = construct_tree_util(pre, post, 0, size - 1, size)
+    return _inorder(root)
 
-    return print_inorder(root)
 
+def _inorder(root: TreeNode | None, result: list[int] | None = None) -> list[int]:
+    """Return the inorder traversal of a binary tree.
 
-def print_inorder(root: TreeNode, result=None):
-    """
-    Prints the tree constructed in inorder format
+    Args:
+        root: The root of the tree to traverse.
+        result: Accumulator list for the traversal values.
+
+    Returns:
+        A list of node values in inorder sequence.
     """
     if root is None:
         return []
     if result is None:
         result = []
 
-    print_inorder(root.left, result)
+    _inorder(root.left, result)
     result.append(root.val)
-    print_inorder(root.right, result)
+    _inorder(root.right, result)
     return result
-
-
-if __name__ == "__main__":
-    pre = [1, 2, 4, 5, 3, 6, 7]
-    post = [4, 5, 2, 6, 7, 3, 1]
-    size = len(pre)
-
-    result = construct_tree(pre, post, size)
-
-    print(result)

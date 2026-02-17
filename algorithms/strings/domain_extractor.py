@@ -1,29 +1,50 @@
 """
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. 
+Domain Name Extractor
 
-Examples:
-domain_name("http://github.com/SaadBenn") == "github" 
-domain_name("http://www.zombie-bites.com") == "zombie-bites"
-domain_name("https://www.cnet.com") == "cnet"
+Given a URL as a string, parse out just the domain name and return it.
+Uses only the .split() built-in function without regex or urlparse.
 
-Note: The idea is not to use any built-in libraries such as re (regular expression) or urlparse except .split() built-in function
+Reference: https://en.wikipedia.org/wiki/Domain_name
+
+Complexity:
+    Time:  O(n) where n is the length of the URL
+    Space: O(n)
 """
 
-# Non pythonic way
-def domain_name_1(url):
-	#grab only the non http(s) part
-    full_domain_name = url.split('//')[-1] 
-    #grab the actual one depending on the len of the list  
-    actual_domain = full_domain_name.split('.')  
-    
-    # case when www is in the url
-    if (len(actual_domain) > 2):
-        return actual_domain[1]    
-    # case when www is not in the url
+from __future__ import annotations
+
+
+def domain_name_1(url: str) -> str:
+    """Extract the domain name from a URL by splitting on protocol and dots.
+
+    Args:
+        url: The full URL string.
+
+    Returns:
+        The domain name extracted from the URL.
+
+    Examples:
+        >>> domain_name_1("https://github.com/SaadBenn")
+        'github'
+    """
+    full_domain_name = url.split('//')[-1]
+    actual_domain = full_domain_name.split('.')
+    if len(actual_domain) > 2:
+        return actual_domain[1]
     return actual_domain[0]
 
 
-# pythonic one liner
-def domain_name_2(url):
-    return url.split("//")[-1].split("www.")[-1].split(".")[0]
+def domain_name_2(url: str) -> str:
+    """Extract the domain name from a URL using chained splits.
 
+    Args:
+        url: The full URL string.
+
+    Returns:
+        The domain name extracted from the URL.
+
+    Examples:
+        >>> domain_name_2("http://google.com")
+        'google'
+    """
+    return url.split("//")[-1].split("www.")[-1].split(".")[0]

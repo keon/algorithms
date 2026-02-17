@@ -1,34 +1,39 @@
 """
-Problem
-Given a value `value`, if we want to make change for `value` cents, and we have infinite
-supply of each of coins = {S1, S2, .. , Sm} valued `coins`, how many ways can we make the change?
-The order of `coins` doesn't matter.
-For example, for `value` = 4 and `coins` = [1, 2, 3], there are four solutions:
-[1, 1, 1, 1], [1, 1, 2], [2, 2], [1, 3].
-So output should be 4.
+Coin Change (Number of Ways)
 
-For `value` = 10 and `coins` = [2, 5, 3, 6], there are five solutions:
+Given a value and a set of coin denominations, count how many distinct
+combinations of coins sum to the given value.
 
-[2, 2, 2, 2, 2], [2, 2, 3, 3], [2, 2, 6], [2, 3, 5] and [5, 5].
-So the output should be 5.
+Reference: https://leetcode.com/problems/coin-change-ii/
 
-Time complexity: O(n * m) where n is the `value` and m is the number of `coins`
-Space complexity: O(n)
+Complexity:
+    Time:  O(n * m)  where n is the value and m is the number of coins
+    Space: O(n)
 """
 
-def count(coins, value):
-    """ Find number of combination of `coins` that adds upp to `value`
+from __future__ import annotations
 
-    Keyword arguments:
-    coins -- int[]
-    value -- int
+
+def count(coins: list[int], value: int) -> int:
+    """Find the number of coin combinations that add up to value.
+
+    Args:
+        coins: List of coin denominations.
+        value: Target sum.
+
+    Returns:
+        Number of distinct combinations that sum to value.
+
+    Examples:
+        >>> count([1, 2, 3], 4)
+        4
+        >>> count([2, 5, 3, 6], 10)
+        5
     """
-    # initialize dp array and set base case as 1
     dp_array = [1] + [0] * value
 
-    # fill dp in a bottom up manner
     for coin in coins:
-        for i in range(coin, value+1):
-            dp_array[i] += dp_array[i-coin]
+        for i in range(coin, value + 1):
+            dp_array[i] += dp_array[i - coin]
 
     return dp_array[value]

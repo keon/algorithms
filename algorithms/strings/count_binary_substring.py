@@ -1,33 +1,41 @@
 """
-Give a string s, count the number of non-empty (contiguous) substrings that have
- the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.
+Count Binary Substrings
 
-Substrings that occur multiple times are counted the number of times they occur.
-Example 1:
-Input: "00110011"
-Output: 6
-Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10", "0011", and "01".
+Count the number of non-empty contiguous substrings that have the same number
+of 0s and 1s, where all 0s and all 1s are grouped consecutively.
 
-Notice that some of these substrings repeat and are counted the number of times they occur.
+Reference: https://leetcode.com/problems/count-binary-substrings/
 
-Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
-
-Example 2:
-Input: "10101"
-Output: 4
-Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1's and 0's.
-Reference: https://leetcode.com/problems/count-binary-substrings/description/
+Complexity:
+    Time:  O(n) where n is the length of the string
+    Space: O(1)
 """
-def count_binary_substring(s):
-    cur = 1
-    pre = 0
+
+from __future__ import annotations
+
+
+def count_binary_substring(text: str) -> int:
+    """Count substrings with equal consecutive 0s and 1s.
+
+    Args:
+        text: A binary string consisting of '0' and '1' characters.
+
+    Returns:
+        The number of valid binary substrings.
+
+    Examples:
+        >>> count_binary_substring("00110011")
+        6
+    """
+    current = 1
+    previous = 0
     count = 0
-    for i in range(1, len(s)):
-        if s[i] != s[i - 1]:
-            count = count + min(pre, cur)
-            pre = cur
-            cur = 1
+    for index in range(1, len(text)):
+        if text[index] != text[index - 1]:
+            count = count + min(previous, current)
+            previous = current
+            current = 1
         else:
-            cur = cur + 1
-    count = count + min(pre, cur)
+            current = current + 1
+    count = count + min(previous, current)
     return count

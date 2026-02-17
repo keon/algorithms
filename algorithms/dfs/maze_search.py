@@ -1,32 +1,54 @@
-'''
-Find shortest path from top left column to the right lowest column using DFS.
-only step on the columns whose value is 1
-if there is no path, it returns -1
-(The first column(top left column) is not included in the answer.)
+"""
+Maze Search (DFS)
 
-Ex 1)
-If maze is
-[[1,0,1,1,1,1],
- [1,0,1,0,1,0],
- [1,0,1,0,1,1],
- [1,1,1,0,1,1]],
-the answer is: 14
+Find the shortest path from the top-left corner to the bottom-right corner
+of a grid using depth-first search with backtracking.  Only cells with
+value 1 may be traversed.  Returns -1 if no path exists.
 
-Ex 2)
-If maze is
-[[1,0,0],
- [0,1,1],
- [0,1,1]],
-the answer is: -1
-'''
+Complexity:
+    Time:  O(4^(M*N)) worst case (backtracking)
+    Space: O(M * N)
+"""
+
+from __future__ import annotations
 
 
-def find_path(maze):
-    cnt = dfs(maze, 0, 0, 0, -1)
+def find_path(maze: list[list[int]]) -> int:
+    """Return the shortest path length in *maze*, or -1 if unreachable.
+
+    Args:
+        maze: 2D grid where 1 = passable, 0 = blocked.
+
+    Returns:
+        Minimum steps from (0,0) to (height-1, width-1), or -1.
+
+    Examples:
+        >>> find_path([[1, 1], [1, 1]])
+        2
+    """
+    cnt = _dfs(maze, 0, 0, 0, -1)
     return cnt
 
 
-def dfs(maze, i, j, depth, cnt):
+def _dfs(
+    maze: list[list[int]],
+    i: int,
+    j: int,
+    depth: int,
+    cnt: int,
+) -> int:
+    """Recursive DFS helper for maze search.
+
+    Args:
+        maze: The grid (modified temporarily during recursion).
+        i: Current row.
+        j: Current column.
+        depth: Current path length.
+        cnt: Best path length found so far (-1 = none).
+
+    Returns:
+        Updated best path length.
+    """
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
     row = len(maze)
@@ -46,9 +68,9 @@ def dfs(maze, i, j, depth, cnt):
         nx_i = i + directions[k][0]
         nx_j = j + directions[k][1]
 
-        if nx_i >= 0 and nx_i < row and nx_j >= 0 and nx_j < col:
+        if 0 <= nx_i < row and 0 <= nx_j < col:
             if maze[nx_i][nx_j] == 1:
-                cnt = dfs(maze, nx_i, nx_j, depth + 1, cnt)
+                cnt = _dfs(maze, nx_i, nx_j, depth + 1, cnt)
 
     maze[i][j] = 1
 

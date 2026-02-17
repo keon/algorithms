@@ -1,25 +1,31 @@
 """
-Given a non-empty string check if it can be constructed by taking
-a substring of it and appending multiple copies of the substring together.
+Repeated Substring Pattern
 
-For example:
-Input: "abab"
-Output: True
-Explanation: It's the substring "ab" twice.
+Given a non-empty string, check if it can be constructed by taking a
+substring of it and appending multiple copies of the substring together.
 
-Input: "aba"
-Output: False
+Reference: https://leetcode.com/problems/repeated-substring-pattern/
 
-Input: "abcabcabcabc"
-Output: True
-Explanation: It's the substring "abc" four times.
-
-Reference: https://leetcode.com/problems/repeated-substring-pattern/description/
+Complexity:
+    Time:  O(n) for the string containment check
+    Space: O(n)
 """
-def repeat_substring(s):
+
+from __future__ import annotations
+
+
+def repeat_substring(text: str) -> bool:
+    """Check if a string is composed of a repeated substring pattern.
+
+    Args:
+        text: The input string to check.
+
+    Returns:
+        True if the string is a repeated pattern, False otherwise.
+
+    Examples:
+        >>> repeat_substring("abab")
+        True
     """
-    :type s: str
-    :rtype: bool
-    """
-    str = (s + s)[1:-1]
-    return s in str
+    doubled = (text + text)[1:-1]
+    return text in doubled

@@ -1,54 +1,63 @@
 """
-RSA encryption algorithm
-a method for encrypting a number that uses seperate encryption and decryption keys
-this file only implements the key generation algorithm
+RSA Encryption Algorithm
 
-there are three important numbers in RSA called n, e, and d
-e is called the encryption exponent
-d is called the decryption exponent
-n is called the modulus
+Implements RSA key generation, encryption, and decryption. RSA uses separate
+public and private keys where ((x^e)^d) % n == x % n.
 
-these three numbers satisfy
-((x ** e) ** d) % n == x % n
+Reference: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
-to use this system for encryption, n and e are made publicly available, and d is kept secret
-a number x can be encrypted by computing (x ** e) % n
-the original number can then be recovered by computing (E ** d) % n, where E is
-the encrypted number
-
-fortunately, python provides a three argument version of pow() that can compute powers modulo
-a number very quickly:
-(a ** b) % c == pow(a,b,c)
+Complexity:
+    Time:  O(k^3) for key generation (k = bit length)
+    Space: O(k)
 """
 
-# sample usage:
-# n,e,d = generate_key(16)
-# data = 20
-# encrypted = pow(data,e,n)
-# decrypted = pow(encrypted,d,n)
-# assert decrypted == data
+from __future__ import annotations
 
 import random
 
 
-def generate_key(k, seed=None):
-    """
-    the RSA key generating algorithm
-    k is the number of bits in n
+def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
+    """Generate an RSA key triplet (n, e, d).
+
+    Args:
+        k: The number of bits in the modulus n.
+        seed: Optional random seed for reproducibility.
+
+    Returns:
+        A tuple (n, e, d) where n is the modulus, e is the encryption
+        exponent, and d is the decryption exponent.
+
+    Examples:
+        >>> n, e, d = generate_key(16, seed=42)
     """
 
-    def modinv(a, m):
-        """calculate the inverse of a mod m
-        that is, find b such that (a * b) % m == 1"""
+    def _modinv(a: int, m: int) -> int:
+        """Calculate the modular inverse of a mod m.
+
+        Args:
+            a: The integer.
+            m: The modulus.
+
+        Returns:
+            b such that (a * b) % m == 1.
+        """
         b = 1
         while not (a * b) % m == 1:
             b += 1
         return b
 
-    def gen_prime(k, seed=None):
-        """generate a prime with k bits"""
+    def _gen_prime(k: int, seed: int | None = None) -> int:
+        """Generate a random prime with k bits.
 
-        def is_prime(num):
+        Args:
+            k: The number of bits.
+            seed: Optional random seed.
+
+        Returns:
+            A prime number.
+        """
+
+        def _is_prime(num: int) -> bool:
             if num == 2:
                 return True
             for i in range(2, int(num ** 0.5) + 1):
@@ -59,35 +68,62 @@ def generate_key(k, seed=None):
         random.seed(seed)
         while True:
             key = random.randrange(int(2 ** (k - 1)), int(2 ** k))
-            if is_prime(key):
+            if _is_prime(key):
                 return key
 
-    # size in bits of p and q need to add up to the size of n
     p_size = k / 2
     q_size = k - p_size
 
-    e = gen_prime(k, seed)  # in many cases, e is also chosen to be a small constant
+    e = _gen_prime(k, seed)
 
     while True:
-        p = gen_prime(p_size, seed)
+        p = _gen_prime(p_size, seed)
         if p % e != 1:
             break
 
     while True:
-        q = gen_prime(q_size, seed)
+        q = _gen_prime(q_size, seed)
         if q % e != 1:
             break
 
     n = p * q
-    l = (p - 1) * (q - 1)  # calculate totient function
-    d = modinv(e, l)
+    totient = (p - 1) * (q - 1)
+    d = _modinv(e, totient)
 
     return int(n), int(e), int(d)
 
 
-def encrypt(data, e, n):
+def encrypt(data: int, e: int, n: int) -> int:
+    """Encrypt data using RSA public key.
+
+    Args:
+        data: The plaintext integer.
+        e: The encryption exponent.
+        n: The modulus.
+
+    Returns:
+        The encrypted integer.
+
+    Examples:
+        >>> encrypt(7, 23, 143)
+        2
+    """
     return pow(int(data), int(e), int(n))
 
 
-def decrypt(data, d, n):
+def decrypt(data: int, d: int, n: int) -> int:
+    """Decrypt data using RSA private key.
+
+    Args:
+        data: The encrypted integer.
+        d: The decryption exponent.
+        n: The modulus.
+
+    Returns:
+        The decrypted plaintext integer.
+
+    Examples:
+        >>> decrypt(2, 47, 143)
+        7
+    """
     return pow(int(data), int(d), int(n))

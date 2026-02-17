@@ -1,19 +1,39 @@
+"""
+Caesar Cipher
 
+Caesar's cipher shifts each letter by a fixed number of positions in the
+alphabet. Letters wrap around when they pass the end of the alphabet.
+
+Reference: https://en.wikipedia.org/wiki/Caesar_cipher
+
+Complexity:
+    Time:  O(n) where n is the length of the input string
+    Space: O(n)
 """
-Julius Caesar protected his confidential information by encrypting it using a cipher.
-Caesar's cipher shifts each letter by a number of letters. If the shift takes you
-past the end of the alphabet, just rotate back to the front of the alphabet.
-In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
-Original alphabet:      abcdefghijklmnopqrstuvwxyz
-Alphabet rotated +3:    defghijklmnopqrstuvwxyzabc
-"""
-def caesar_cipher(s, k):
+
+from __future__ import annotations
+
+
+def caesar_cipher(text: str, shift: int) -> str:
+    """Encrypt a string using the Caesar cipher with the given shift.
+
+    Args:
+        text: The plaintext string to encrypt.
+        shift: The number of positions to shift each letter.
+
+    Returns:
+        The encrypted string with shifted letters.
+
+    Examples:
+        >>> caesar_cipher("Hello_World!", 4)
+        'Lipps_Asvph!'
+    """
     result = ""
-    for char in s:
-        n = ord(char)
-        if 64 < n < 91:
-            n = ((n - 65 + k) % 26) + 65
-        if 96 < n < 123:
-            n = ((n - 97 + k) % 26) + 97
-        result = result + chr(n)
+    for char in text:
+        code = ord(char)
+        if 64 < code < 91:
+            code = ((code - 65 + shift) % 26) + 65
+        if 96 < code < 123:
+            code = ((code - 97 + shift) % 26) + 97
+        result = result + chr(code)
     return result

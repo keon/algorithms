@@ -1,18 +1,38 @@
 """
-Integer base conversion algorithm
+Integer Base Conversion
 
-int_to_base(5, 2) return '101'.
-base_to_int('F', 16) return 15.
+Convert integers between arbitrary bases (2-36). Supports conversion from
+integer to string representation in a given base, and vice versa.
 
+Reference: https://en.wikipedia.org/wiki/Positional_notation
+
+Complexity:
+    Time:  O(log_base(num)) for both directions
+    Space: O(log_base(num))
 """
+
+from __future__ import annotations
 
 import string
 
-def int_to_base(num, base):
-    """
-        :type num: int
-        :type base: int
-        :rtype: str
+
+def int_to_base(num: int, base: int) -> str:
+    """Convert a base-10 integer to a string in the given base.
+
+    Args:
+        num: The integer to convert.
+        base: The target base (2-36).
+
+    Returns:
+        String representation of num in the given base.
+
+    Examples:
+        >>> int_to_base(5, 2)
+        '101'
+        >>> int_to_base(255, 16)
+        'FF'
+        >>> int_to_base(0, 2)
+        '0'
     """
     is_negative = False
     if num == 0:
@@ -30,14 +50,22 @@ def int_to_base(num, base):
     return res[::-1]
 
 
-def base_to_int(str_to_convert, base):
-    """
-        Note : You can use int() built-in function instead of this.
-        :type str_to_convert: str
-        :type base: int
-        :rtype: int
-    """
+def base_to_int(str_to_convert: str, base: int) -> int:
+    """Convert a string in a given base to a base-10 integer.
 
+    Args:
+        str_to_convert: The string representation of the number.
+        base: The base of the input string (2-36).
+
+    Returns:
+        The base-10 integer value.
+
+    Examples:
+        >>> base_to_int('101', 2)
+        5
+        >>> base_to_int('FF', 16)
+        255
+    """
     digit = {}
     for ind, char in enumerate(string.digits + string.ascii_uppercase):
         digit[char] = ind

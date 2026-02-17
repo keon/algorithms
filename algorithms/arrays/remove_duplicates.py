@@ -1,30 +1,48 @@
 """
-This algorithm removes any duplicates from an array and returns a new array with those duplicates
-removed.
+Remove Duplicates
 
-For example:
+Remove duplicate elements from an array while preserving the original order.
+Handles both hashable and unhashable items.
 
-Input: [1, 1 ,1 ,2 ,2 ,3 ,4 ,4 ,"hey", "hey", "hello", True, True]
-Output: [1, 2, 3, 4, 'hey', 'hello']
+Reference: https://en.wikipedia.org/wiki/Duplicate_code
 
-Time Complexity: O(n) for hashable items, O(n²) worst case for unhashable items
-Space Complexity: O(n) for the seen set and result array
+Complexity:
+    Time:  O(n) for hashable items / O(n^2) worst case for unhashable items
+    Space: O(n)
 """
 
+from __future__ import annotations
+
 from collections.abc import Hashable
+from typing import Any
 
 
-def remove_duplicates(array):
+def remove_duplicates(array: list[Any]) -> list[Any]:
+    """Remove duplicate elements from an array, preserving order.
+
+    Uses a set for O(1) lookups on hashable items and falls back to
+    linear search for unhashable items.
+
+    Args:
+        array: Input list potentially containing duplicates.
+
+    Returns:
+        New list with duplicates removed, original order preserved.
+
+    Examples:
+        >>> remove_duplicates([1, 1, 2, 2, 3])
+        [1, 2, 3]
+    """
     seen = set()
-    new_array = []
+    unique_array = []
 
     for item in array:
         if isinstance(item, Hashable):
             if item not in seen:
                 seen.add(item)
-                new_array.append(item)
+                unique_array.append(item)
         else:
-            if item not in new_array:
-                new_array.append(item)
+            if item not in unique_array:
+                unique_array.append(item)
 
-    return new_array
+    return unique_array

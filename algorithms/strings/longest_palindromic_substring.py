@@ -1,44 +1,67 @@
-'''
-Given string s, find the longest palindromic substring.
+"""
+Longest Palindromic Substring
 
-Example1:
+Given a string, find the longest palindromic substring using Manacher's
+algorithm, which runs in linear time.
 
-* input: "dasdasdasdasdasdadsa"
-* output: "asdadsa"
+Reference: https://en.wikipedia.org/wiki/Longest_palindromic_substring
 
-Example2:
+Complexity:
+    Time:  O(n) using Manacher's algorithm
+    Space: O(n)
+"""
 
-* input: "acdbbdaa"
-* output: "dbbd"
+from __future__ import annotations
 
-Manacher's algorithm
 
-'''
+def longest_palindrome(text: str) -> str:
+    """Find the longest palindromic substring using Manacher's algorithm.
 
-def longest_palindrome(s):
-    if len(s) < 2:
-        return s
+    Args:
+        text: The input string to search.
 
-    n_str = '#' + '#'.join(s) + '#'
-    p = [0] * len(n_str)
-    mx, loc = 0, 0
-    index, maxlen = 0, 0
-    for i in range(len(n_str)):
-        if i < mx and 2 * loc - i < len(n_str):
-            p[i] = min(mx - i, p[2 * loc - i])
+    Returns:
+        The longest palindromic substring.
+
+    Examples:
+        >>> longest_palindrome("cbbd")
+        'bb'
+    """
+    if len(text) < 2:
+        return text
+
+    expanded = '#' + '#'.join(text) + '#'
+    palindrome_radii = [0] * len(expanded)
+    center, right_boundary = 0, 0
+    best_index, best_length = 0, 0
+
+    for index in range(len(expanded)):
+        if index < right_boundary and 2 * center - index < len(expanded):
+            palindrome_radii[index] = min(
+                right_boundary - index,
+                palindrome_radii[2 * center - index],
+            )
         else:
-            p[i] = 1
+            palindrome_radii[index] = 1
 
-        while p[i] + i < len(n_str) and i - p[i] >= 0 and n_str[
-                i - p[i]] == n_str[i + p[i]]:
-            p[i] += 1
+        while (
+            palindrome_radii[index] + index < len(expanded)
+            and index - palindrome_radii[index] >= 0
+            and expanded[index - palindrome_radii[index]]
+            == expanded[index + palindrome_radii[index]]
+        ):
+            palindrome_radii[index] += 1
 
-        if i + p[i] > mx:
-            mx = i + p[i]
-            loc = i
+        if index + palindrome_radii[index] > right_boundary:
+            right_boundary = index + palindrome_radii[index]
+            center = index
 
-        if p[i] > maxlen:
-            index = i
-            maxlen = p[i]
-    s = n_str[index - p[index] + 1:index + p[index]]
-    return s.replace('#', '')
+        if palindrome_radii[index] > best_length:
+            best_index = index
+            best_length = palindrome_radii[index]
+
+    substring = expanded[
+        best_index - palindrome_radii[best_index] + 1:
+        best_index + palindrome_radii[best_index]
+    ]
+    return substring.replace('#', '')

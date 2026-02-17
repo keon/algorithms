@@ -1,0 +1,5439 @@
+{
+  "summary": {
+    "total_modules": 383,
+    "total_loc": 8696,
+    "by_classification": {
+      "data_structure": 58,
+      "algorithm": 294,
+      "utility": 28,
+      "test": 3
+    }
+  },
+  "modules": [
+    {
+      "path": "algorithms/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/arrays/__init__.py",
+      "classification": "utility",
+      "loc": 19,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "delete_nth",
+        "flatten",
+        "garage",
+        "josephus",
+        "longest_non_repeat",
+        "max_ones_index",
+        "merge_intervals",
+        "missing_ranges",
+        "move_zeros",
+        "plus_one",
+        "rotate",
+        "summarize_ranges",
+        "three_sum",
+        "trimmean",
+        "top_1",
+        "two_sum",
+        "limit",
+        "n_sum",
+        "remove_duplicates"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/arrays/delete_nth.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "delete_nth_naive",
+        "delete_nth"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/flatten.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "flatten",
+        "flatten_iter"
+      ],
+      "imports": [
+        "collections.abc"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/garage.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "garage"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/josephus.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "josephus"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/limit.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "limit"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/longest_non_repeat.py",
+      "classification": "algorithm",
+      "loc": 65,
+      "classes": [],
+      "functions": [
+        "longest_non_repeat_v1",
+        "longest_non_repeat_v2",
+        "get_longest_non_repeat_v1",
+        "get_longest_non_repeat_v2",
+        "get_longest_non_repeat_v3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/max_ones_index.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "max_ones_index"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/merge_intervals.py",
+      "classification": "data_structure",
+      "loc": 42,
+      "classes": [
+        "Interval"
+      ],
+      "functions": [
+        "__init__",
+        "__repr__",
+        "__iter__",
+        "__getitem__",
+        "__len__",
+        "__contains__",
+        "__eq__",
+        "as_list",
+        "merge",
+        "print_intervals",
+        "merge_intervals"
+      ],
+      "imports": [],
+      "confidence": 0.8
+    },
+    {
+      "path": "algorithms/arrays/missing_ranges.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "missing_ranges"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/move_zeros.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "move_zeros"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/n_sum.py",
+      "classification": "algorithm",
+      "loc": 4,
+      "classes": [],
+      "functions": [
+        "n_sum",
+        "sum_closure_default",
+        "compare_closure_default",
+        "same_closure_default",
+        "n_sum",
+        "two_sum",
+        "append_elem_to_each_list",
+        "union"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/plus_one.py",
+      "classification": "algorithm",
+      "loc": 30,
+      "classes": [],
+      "functions": [
+        "plus_one_v1",
+        "plus_one_v2",
+        "plus_one_v3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/remove_duplicates.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "remove_duplicates"
+      ],
+      "imports": [
+        "collections.abc"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/rotate.py",
+      "classification": "algorithm",
+      "loc": 28,
+      "classes": [],
+      "functions": [
+        "rotate_v1",
+        "rotate_v2",
+        "reverse",
+        "rotate_v3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/summarize_ranges.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "summarize_ranges"
+      ],
+      "imports": [
+        "typing"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/three_sum.py",
+      "classification": "algorithm",
+      "loc": 22,
+      "classes": [],
+      "functions": [
+        "three_sum"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/top_1.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "top_1"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/trimmean.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "trimmean"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/arrays/two_sum.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "two_sum"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/automata/__init__.py",
+      "classification": "utility",
+      "loc": 1,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "dfa"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/automata/dfa.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "DFA"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/backtrack/__init__.py",
+      "classification": "utility",
+      "loc": 15,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "add_operators",
+        "anagram",
+        "array_sum_combinations",
+        "combination_sum",
+        "factor_combinations",
+        "find_words",
+        "generate_abbreviations",
+        "generate_parenthesis",
+        "letter_combination",
+        "palindrome_partitioning",
+        "pattern_match",
+        "permute_unique",
+        "permute",
+        "subsets_unique",
+        "subsets"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/backtrack/add_operators.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "add_operators",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/anagram.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "anagram"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/array_sum_combinations.py",
+      "classification": "algorithm",
+      "loc": 48,
+      "classes": [],
+      "functions": [
+        "array_sum_combinations",
+        "over",
+        "construct_candidates",
+        "backtrack",
+        "unique_array_sum_combinations",
+        "check_sum"
+      ],
+      "imports": [
+        "itertools",
+        "functools"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/combination_sum.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "combination_sum",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/factor_combinations.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "get_factors",
+        "recursive_get_factors",
+        "factor"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/find_words.py",
+      "classification": "algorithm",
+      "loc": 31,
+      "classes": [],
+      "functions": [
+        "find_words",
+        "backtrack"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/generate_abbreviations.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "generate_abbreviations",
+        "backtrack"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/generate_parenthesis.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "generate_parenthesis_v1",
+        "add_pair",
+        "generate_parenthesis_v2",
+        "add_pair"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/letter_combination.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "letter_combinations"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/palindrome_partitioning.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "palindromic_substrings",
+        "palindromic_substrings_iter"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/pattern_match.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "pattern_match",
+        "backtrack"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/permute.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "permute",
+        "permute_iter",
+        "permute_recursive",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/permute_unique.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "permute_unique"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/subsets.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "subsets",
+        "backtrack",
+        "subsets_v2"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/backtrack/subsets_unique.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "subsets_unique",
+        "backtrack"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/bfs/__init__.py",
+      "classification": "utility",
+      "loc": 4,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "count_islands",
+        "maze_search",
+        "shortest_distance_from_all_buildings",
+        "word_ladder"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/bfs/count_islands.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "count_islands"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/bfs/maze_search.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "maze_search"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/bfs/shortest_distance_from_all_buildings.py",
+      "classification": "test",
+      "loc": 27,
+      "classes": [],
+      "functions": [
+        "shortest_distance",
+        "bfs"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/bfs/word_ladder.py",
+      "classification": "algorithm",
+      "loc": 32,
+      "classes": [],
+      "functions": [
+        "ladder_length",
+        "word_range"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/bit/__init__.py",
+      "classification": "utility",
+      "loc": 19,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "add_bitwise_operator",
+        "count_ones",
+        "find_missing_number",
+        "power_of_two",
+        "reverse_bits",
+        "single_number",
+        "single_number2",
+        "single_number3",
+        "subsets",
+        "bit_operation",
+        "swap_pair",
+        "find_difference",
+        "has_alternative_bit",
+        "insert_bit",
+        "remove_bit",
+        "count_flips_to_convert",
+        "flip_bit_longest_sequence",
+        "binary_gap",
+        "bytes_int_conversion"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/bit/add_bitwise_operator.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "add_bitwise_operator"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/binary_gap.py",
+      "classification": "algorithm",
+      "loc": 30,
+      "classes": [],
+      "functions": [
+        "binary_gap",
+        "binary_gap_improved"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/bit_operation.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "get_bit",
+        "set_bit",
+        "clear_bit",
+        "update_bit"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/bytes_int_conversion.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "int_to_bytes_big_endian",
+        "int_to_bytes_little_endian",
+        "bytes_big_endian_to_int",
+        "bytes_little_endian_to_int"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/count_flips_to_convert.py",
+      "classification": "algorithm",
+      "loc": 7,
+      "classes": [],
+      "functions": [
+        "count_flips_to_convert"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/count_ones.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "count_ones_recur",
+        "count_ones_iter"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/find_difference.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "find_difference"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/find_missing_number.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "find_missing_number",
+        "find_missing_number2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/flip_bit_longest_sequence.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "flip_bit_longest_seq"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/has_alternative_bit.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "has_alternative_bit",
+        "has_alternative_bit_fast"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/insert_bit.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "insert_one_bit",
+        "insert_mult_bits"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/power_of_two.py",
+      "classification": "algorithm",
+      "loc": 2,
+      "classes": [],
+      "functions": [
+        "is_power_of_two"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/remove_bit.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "remove_bit"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/reverse_bits.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "reverse_bits"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/single_number.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "single_number"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/single_number2.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "single_number2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/single_number3.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "single_number3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/subsets.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "subsets"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/bit/swap_pair.py",
+      "classification": "algorithm",
+      "loc": 4,
+      "classes": [],
+      "functions": [
+        "swap_pair"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/compression/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/compression/elias.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "binary",
+        "unary",
+        "elias_generic",
+        "elias_gamma",
+        "elias_delta"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/compression/huffman_coding.py",
+      "classification": "data_structure",
+      "loc": 226,
+      "classes": [
+        "Node",
+        "HuffmanReader",
+        "HuffmanWriter",
+        "TreeFinder",
+        "HuffmanCoding"
+      ],
+      "functions": [
+        "__init__",
+        "__lt__",
+        "__gt__",
+        "__eq__",
+        "__str__",
+        "__repr__",
+        "__init__",
+        "get_number_of_additional_bits_in_the_last_byte",
+        "load_tree",
+        "_fill_tree",
+        "_load_byte",
+        "get_bit",
+        "get_byte",
+        "__init__",
+        "write_char",
+        "write_int",
+        "write_bits",
+        "save_tree",
+        "get_code_tree",
+        "_save_information_about_additional_bits",
+        "close",
+        "__init__",
+        "find",
+        "_reset",
+        "__init__",
+        "decode_file",
+        "_decode_and_write_signs_to_file",
+        "encode_file",
+        "_encode_and_write_signs_to_file",
+        "_get_char_frequency",
+        "_generate_codes",
+        "_create_tree",
+        "_go_through_tree_and_create_codes"
+      ],
+      "imports": [
+        "collections",
+        "heapq"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "path": "algorithms/compression/rle_compression.py",
+      "classification": "algorithm",
+      "loc": 25,
+      "classes": [],
+      "functions": [
+        "encode_rle",
+        "decode_rle"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/dfs/__init__.py",
+      "classification": "utility",
+      "loc": 6,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "all_factors",
+        "count_islands",
+        "pacific_atlantic",
+        "sudoku_solver",
+        "walls_and_gates",
+        "maze_search"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/dfs/all_factors.py",
+      "classification": "algorithm",
+      "loc": 34,
+      "classes": [],
+      "functions": [
+        "get_factors",
+        "factor",
+        "get_factors_iterative1",
+        "get_factors_iterative2"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dfs/count_islands.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "num_islands",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dfs/maze_search.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "find_path",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dfs/pacific_atlantic.py",
+      "classification": "algorithm",
+      "loc": 29,
+      "classes": [],
+      "functions": [
+        "pacific_atlantic",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dfs/sudoku_solver.py",
+      "classification": "algorithm",
+      "loc": 61,
+      "classes": [
+        "Sudoku"
+      ],
+      "functions": [
+        "__init__",
+        "possible_values",
+        "solve",
+        "valid_one",
+        "undo",
+        "__str__"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dfs/walls_and_gates.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "walls_and_gates",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/distribution/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/distribution/histogram.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "get_histogram"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/dp/__init__.py",
+      "classification": "utility",
+      "loc": 23,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "buy_sell_stock",
+        "climbing_stairs",
+        "coin_change",
+        "combination_sum",
+        "edit_distance",
+        "egg_drop",
+        "fib",
+        "hosoya_triangle",
+        "house_robber",
+        "job_scheduling",
+        "knapsack",
+        "longest_increasing",
+        "matrix_chain_order",
+        "max_product_subarray",
+        "max_subarray",
+        "min_cost_path",
+        "num_decodings",
+        "regex_matching",
+        "rod_cut",
+        "word_break",
+        "int_divide",
+        "k_factor",
+        "planting_trees"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/dp/buy_sell_stock.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "max_profit_naive",
+        "max_profit_optimized"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/climbing_stairs.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "climb_stairs",
+        "climb_stairs_optimized"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/coin_change.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "count"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/combination_sum.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "helper_topdown",
+        "combination_sum_topdown",
+        "combination_sum_bottom_up"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/edit_distance.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "edit_distance"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/egg_drop.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "egg_drop"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/fib.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "fib_recursive",
+        "fib_list",
+        "fib_iter"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/hosoya_triangle.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "hosoya",
+        "print_hosoya",
+        "hosoya_testing"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/house_robber.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "house_robber"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/int_divide.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "int_divide"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/job_scheduling.py",
+      "classification": "algorithm",
+      "loc": 30,
+      "classes": [
+        "Job"
+      ],
+      "functions": [
+        "__init__",
+        "binary_search",
+        "schedule"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/k_factor.py",
+      "classification": "algorithm",
+      "loc": 31,
+      "classes": [],
+      "functions": [
+        "find_k_factor"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/knapsack.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [
+        "Item"
+      ],
+      "functions": [
+        "__init__",
+        "get_maximum_value"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/longest_common_subsequence.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "longest_common_subsequence"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/longest_increasing.py",
+      "classification": "algorithm",
+      "loc": 65,
+      "classes": [],
+      "functions": [
+        "longest_increasing_subsequence",
+        "longest_increasing_subsequence_optimized",
+        "update",
+        "get_max",
+        "longest_increasing_subsequence_optimized2",
+        "update",
+        "get_max"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/matrix_chain_order.py",
+      "classification": "algorithm",
+      "loc": 31,
+      "classes": [],
+      "functions": [
+        "matrix_chain_order",
+        "print_optimal_solution",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/max_product_subarray.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "max_product",
+        "subarray_with_max_product"
+      ],
+      "imports": [
+        "functools"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/max_subarray.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "max_subarray"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/min_cost_path.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "min_cost"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/num_decodings.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "num_decodings",
+        "num_decodings2"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/planting_trees.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "planting_trees"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/regex_matching.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "is_match"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/rod_cut.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "cut_rod"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/dp/word_break.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "word_break"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/graph/__init__.py",
+      "classification": "utility",
+      "loc": 8,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "tarjan",
+        "check_bipartite",
+        "maximum_flow",
+        "maximum_flow_bfs",
+        "maximum_flow_dfs",
+        "all_pairs_shortest_path",
+        "bellman_ford",
+        "prims_minimum_spanning"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/graph/all_pairs_shortest_path.py",
+      "classification": "test",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "all_pairs_shortest_path"
+      ],
+      "imports": [
+        "copy"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/graph/bellman_ford.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "bellman_ford",
+        "initialize_single_source"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/graph/check_bipartite.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "check_bipartite"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/check_digraph_strongly_connected.py",
+      "classification": "data_structure",
+      "loc": 30,
+      "classes": [
+        "Graph"
+      ],
+      "functions": [
+        "__init__",
+        "add_edge",
+        "dfs",
+        "dfs_util",
+        "reverse_graph",
+        "is_strongly_connected"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/clone_graph.py",
+      "classification": "data_structure",
+      "loc": 59,
+      "classes": [
+        "UndirectedGraphNode"
+      ],
+      "functions": [
+        "__init__",
+        "shallow_copy",
+        "add_neighbor",
+        "clone_graph1",
+        "clone_graph2",
+        "clone_graph",
+        "dfs"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/count_connected_number_of_component.py",
+      "classification": "algorithm",
+      "loc": 4,
+      "classes": [],
+      "functions": [
+        "dfs",
+        "count_components",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/cycle_detection.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [
+        "TraversalState"
+      ],
+      "functions": [
+        "is_in_cycle",
+        "contains_cycle"
+      ],
+      "imports": [
+        "enum"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/dijkstra.py",
+      "classification": "data_structure",
+      "loc": 26,
+      "classes": [
+        "Dijkstra"
+      ],
+      "functions": [
+        "__init__",
+        "min_distance",
+        "dijkstra"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/find_all_cliques.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "find_all_cliques",
+        "expand_clique",
+        "get_connected"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/find_path.py",
+      "classification": "algorithm",
+      "loc": 38,
+      "classes": [],
+      "functions": [
+        "find_path",
+        "find_all_path",
+        "find_shortest_path"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/graph.py",
+      "classification": "data_structure",
+      "loc": 65,
+      "classes": [
+        "Node",
+        "DirectedEdge",
+        "DirectedGraph"
+      ],
+      "functions": [
+        "__init__",
+        "get_name",
+        "__eq__",
+        "__repr__",
+        "__hash__",
+        "__ne__",
+        "__lt__",
+        "__le__",
+        "__gt__",
+        "__ge__",
+        "__bool__",
+        "__init__",
+        "__eq__",
+        "__repr__",
+        "__init__",
+        "add_node",
+        "add_edge"
+      ],
+      "imports": [],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/graph/markov_chain.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "__choose_state",
+        "next_state",
+        "iterating_markov_chain"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/maximum_flow.py",
+      "classification": "algorithm",
+      "loc": 102,
+      "classes": [],
+      "functions": [
+        "dfs",
+        "ford_fulkerson",
+        "edmonds_karp",
+        "dinic_bfs",
+        "dinic_dfs",
+        "dinic"
+      ],
+      "imports": [
+        "queue"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/maximum_flow_bfs.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [],
+      "functions": [
+        "maximum_flow_bfs"
+      ],
+      "imports": [
+        "copy",
+        "queue",
+        "math"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/graph/maximum_flow_dfs.py",
+      "classification": "algorithm",
+      "loc": 32,
+      "classes": [],
+      "functions": [
+        "maximum_flow_dfs"
+      ],
+      "imports": [
+        "copy",
+        "math"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/graph/minimum_spanning_tree.py",
+      "classification": "data_structure",
+      "loc": 50,
+      "classes": [
+        "Edge",
+        "DisjointSet"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "merge_set",
+        "find_set",
+        "kruskal",
+        "main"
+      ],
+      "imports": [
+        "sys"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/path_between_two_vertices_in_digraph.py",
+      "classification": "data_structure",
+      "loc": 23,
+      "classes": [
+        "Graph"
+      ],
+      "functions": [
+        "__init__",
+        "add_edge",
+        "dfs",
+        "dfsutil",
+        "is_reachable"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/prims_minimum_spanning.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "prims_minimum_spanning"
+      ],
+      "imports": [
+        "heapq"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/satisfiability.py",
+      "classification": "algorithm",
+      "loc": 56,
+      "classes": [],
+      "functions": [
+        "dfs_transposed",
+        "dfs",
+        "add_edge",
+        "scc",
+        "build_graph",
+        "solve_sat",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/strongly_connected_components_kosaraju.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [
+        "Kosaraju"
+      ],
+      "functions": [
+        "dfs",
+        "kosaraju",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/graph/tarjan.py",
+      "classification": "data_structure",
+      "loc": 34,
+      "classes": [
+        "Tarjan"
+      ],
+      "functions": [
+        "__init__",
+        "strongconnect"
+      ],
+      "imports": [
+        "algorithms.graph.graph"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/transitive_closure_dfs.py",
+      "classification": "data_structure",
+      "loc": 19,
+      "classes": [
+        "Graph"
+      ],
+      "functions": [
+        "__init__",
+        "add_edge",
+        "dfs_util",
+        "transitive_closure"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/graph/traversal.py",
+      "classification": "algorithm",
+      "loc": 28,
+      "classes": [],
+      "functions": [
+        "dfs_traverse",
+        "bfs_traverse",
+        "dfs_traverse_recursive"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/greedy/__init__.py",
+      "classification": "utility",
+      "loc": 2,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "max_contiguous_subsequence_sum",
+        "gale_shapley"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/greedy/gale_shapley.py",
+      "classification": "algorithm",
+      "loc": 31,
+      "classes": [],
+      "functions": [
+        "gale_shapley"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/greedy/max_contiguous_subsequence_sum.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "max_contiguous_subsequence_sum"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/heap/__init__.py",
+      "classification": "utility",
+      "loc": 5,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "binary_heap",
+        "skyline",
+        "sliding_window_max",
+        "merge_sorted_k_lists",
+        "k_closest_points"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/heap/binary_heap.py",
+      "classification": "data_structure",
+      "loc": 39,
+      "classes": [
+        "AbstractHeap",
+        "BinaryHeap"
+      ],
+      "functions": [
+        "__init__",
+        "perc_up",
+        "insert",
+        "perc_down",
+        "min_child",
+        "remove_min",
+        "__init__",
+        "perc_up",
+        "insert",
+        "min_child",
+        "perc_down",
+        "remove_min"
+      ],
+      "imports": [
+        "abc"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/heap/k_closest_points.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "k_closest",
+        "distance"
+      ],
+      "imports": [
+        "heapq"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/heap/merge_sorted_k_lists.py",
+      "classification": "data_structure",
+      "loc": 29,
+      "classes": [
+        "ListNode"
+      ],
+      "functions": [
+        "__init__",
+        "merge_k_lists",
+        "merge_k_lists"
+      ],
+      "imports": [
+        "heapq",
+        "queue"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/heap/skyline.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "get_skyline"
+      ],
+      "imports": [
+        "heapq"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/heap/sliding_window_max.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "max_sliding_window"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/linkedlist/__init__.py",
+      "classification": "utility",
+      "loc": 9,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "reverse",
+        "is_sorted",
+        "remove_range",
+        "swap_in_pairs",
+        "rotate_list",
+        "is_cyclic",
+        "merge_two_list",
+        "is_palindrome",
+        "copy_random_pointer"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/linkedlist/add_two_numbers.py",
+      "classification": "data_structure",
+      "loc": 84,
+      "classes": [
+        "Node",
+        "TestSuite"
+      ],
+      "functions": [
+        "__init__",
+        "add_two_numbers",
+        "convert_to_list",
+        "convert_to_str",
+        "test_convert_to_str",
+        "test_add_two_numbers",
+        "test_convert_to_list"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/copy_random_pointer.py",
+      "classification": "data_structure",
+      "loc": 27,
+      "classes": [
+        "RandomListNode"
+      ],
+      "functions": [
+        "__init__",
+        "copy_random_pointer_v1",
+        "copy_random_pointer_v2"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/delete_node.py",
+      "classification": "data_structure",
+      "loc": 33,
+      "classes": [
+        "Node",
+        "TestSuite"
+      ],
+      "functions": [
+        "__init__",
+        "delete_node",
+        "test_delete_node"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/first_cyclic_node.py",
+      "classification": "data_structure",
+      "loc": 34,
+      "classes": [
+        "Node",
+        "TestSuite"
+      ],
+      "functions": [
+        "__init__",
+        "first_cyclic_node",
+        "test_first_cyclic_node"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/intersection.py",
+      "classification": "data_structure",
+      "loc": 58,
+      "classes": [
+        "Node",
+        "TestSuite"
+      ],
+      "functions": [
+        "__init__",
+        "intersection",
+        "test_intersection"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/is_cyclic.py",
+      "classification": "data_structure",
+      "loc": 15,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "is_cyclic"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/is_palindrome.py",
+      "classification": "algorithm",
+      "loc": 62,
+      "classes": [],
+      "functions": [
+        "is_palindrome",
+        "is_palindrome_stack",
+        "is_palindrome_dict"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/linkedlist/is_sorted.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "is_sorted"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/linkedlist/kth_to_last.py",
+      "classification": "data_structure",
+      "loc": 83,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "kth_to_last_eval",
+        "kth_to_last_dict",
+        "kth_to_last",
+        "print_linked_list",
+        "test"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/linkedlist.py",
+      "classification": "data_structure",
+      "loc": 9,
+      "classes": [
+        "DoublyLinkedListNode",
+        "SinglyLinkedListNode"
+      ],
+      "functions": [
+        "__init__",
+        "__init__"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/merge_two_list.py",
+      "classification": "data_structure",
+      "loc": 25,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "merge_two_list",
+        "merge_two_list_recur"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/partition.py",
+      "classification": "data_structure",
+      "loc": 51,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "print_linked_list",
+        "partition",
+        "test"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/remove_duplicates.py",
+      "classification": "data_structure",
+      "loc": 50,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "remove_dups",
+        "remove_dups_wothout_set",
+        "print_linked_list"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/linkedlist/remove_range.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "remove_range"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/linkedlist/reverse.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "reverse_list",
+        "reverse_list_recursive"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/linkedlist/rotate_list.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "rotate_right"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/linkedlist/swap_in_pairs.py",
+      "classification": "data_structure",
+      "loc": 18,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "swap_pairs"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/map/__init__.py",
+      "classification": "utility",
+      "loc": 6,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "hashtable",
+        "separate_chaining_hashtable",
+        "word_pattern",
+        "is_isomorphic",
+        "is_anagram",
+        "longest_palindromic_subsequence"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/map/hashtable.py",
+      "classification": "data_structure",
+      "loc": 75,
+      "classes": [
+        "HashTable",
+        "ResizableHashTable"
+      ],
+      "functions": [
+        "__init__",
+        "put",
+        "get",
+        "del_",
+        "hash",
+        "_rehash",
+        "__getitem__",
+        "__delitem__",
+        "__setitem__",
+        "__len__",
+        "__init__",
+        "put",
+        "__resize"
+      ],
+      "imports": [],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/map/is_anagram.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "is_anagram"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/map/is_isomorphic.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "is_isomorphic"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/map/longest_common_subsequence.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "max_common_sub_string"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/map/longest_palindromic_subsequence.py",
+      "classification": "algorithm",
+      "loc": 25,
+      "classes": [],
+      "functions": [
+        "longest_palindromic_subsequence"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/map/randomized_set.py",
+      "classification": "data_structure",
+      "loc": 35,
+      "classes": [
+        "RandomizedSet"
+      ],
+      "functions": [
+        "__init__",
+        "insert",
+        "remove",
+        "get_random"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.6000000000000001
+    },
+    {
+      "path": "algorithms/map/separate_chaining_hashtable.py",
+      "classification": "data_structure",
+      "loc": 56,
+      "classes": [
+        "Node",
+        "SeparateChainingHashTable"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "put",
+        "get",
+        "del_",
+        "hash",
+        "__len__",
+        "__getitem__",
+        "__delitem__",
+        "__setitem__"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/map/valid_sudoku.py",
+      "classification": "algorithm",
+      "loc": 7,
+      "classes": [],
+      "functions": [
+        "is_valid_sudoku"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/map/word_pattern.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "word_pattern"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/__init__.py",
+      "classification": "utility",
+      "loc": 25,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "base_conversion",
+        "decimal_to_binary_ip",
+        "euler_totient",
+        "extended_gcd",
+        "factorial",
+        "gcd",
+        "generate_strobogrammtic",
+        "is_strobogrammatic",
+        "modular_exponential",
+        "next_perfect_square",
+        "prime_check",
+        "primes_sieve_of_eratosthenes",
+        "pythagoras",
+        "rabin_miller",
+        "rsa",
+        "combination",
+        "cosine_similarity",
+        "find_order_simple",
+        "find_primitive_root_simple",
+        "diffie_hellman_key_exchange",
+        "num_digits",
+        "power",
+        "magic_number",
+        "krishnamurthy_number",
+        "num_perfect_squares"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/maths/base_conversion.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "int_to_base",
+        "base_to_int"
+      ],
+      "imports": [
+        "string"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/chinese_remainder_theorem.py",
+      "classification": "algorithm",
+      "loc": 29,
+      "classes": [],
+      "functions": [
+        "solve_chinese_remainder",
+        "_check_coprime"
+      ],
+      "imports": [
+        "typing",
+        "algorithms.maths.gcd"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/combination.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "combination",
+        "combination_memo",
+        "recur"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/cosine_similarity.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "_l2_distance",
+        "cosine_similarity"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/decimal_to_binary_ip.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "decimal_to_binary_util",
+        "decimal_to_binary_ip"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/diffie_hellman_key_exchange.py",
+      "classification": "algorithm",
+      "loc": 76,
+      "classes": [],
+      "functions": [
+        "prime_check",
+        "find_order",
+        "euler_totient",
+        "find_primitive_root",
+        "alice_private_key",
+        "alice_public_key",
+        "bob_private_key",
+        "bob_public_key",
+        "alice_shared_key",
+        "bob_shared_key",
+        "diffie_hellman_key_exchange"
+      ],
+      "imports": [
+        "math",
+        "random"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/euler_totient.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "euler_totient"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/extended_gcd.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "extended_gcd"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/factorial.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "factorial",
+        "factorial_recur"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/fft.py",
+      "classification": "algorithm",
+      "loc": 2,
+      "classes": [],
+      "functions": [
+        "fft"
+      ],
+      "imports": [
+        "cmath"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/find_order_simple.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "find_order"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/find_primitive_root_simple.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "find_order",
+        "euler_totient",
+        "find_primitive_root"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/gcd.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [],
+      "functions": [
+        "gcd",
+        "lcm",
+        "trailing_zero",
+        "gcd_bit"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/generate_strobogrammtic.py",
+      "classification": "algorithm",
+      "loc": 46,
+      "classes": [],
+      "functions": [
+        "gen_strobogrammatic",
+        "helper",
+        "strobogrammatic_in_range",
+        "helper2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/hailstone.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "hailstone"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/is_strobogrammatic.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "is_strobogrammatic",
+        "is_strobogrammatic2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/krishnamurthy_number.py",
+      "classification": "algorithm",
+      "loc": 1,
+      "classes": [],
+      "functions": [
+        "find_factorial",
+        "krishnamurthy_number"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/magic_number.py",
+      "classification": "algorithm",
+      "loc": 1,
+      "classes": [],
+      "functions": [
+        "magic_number"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/modular_exponential.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "modular_exponential"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/modular_inverse.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "extended_gcd",
+        "modular_inverse"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/next_bigger.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [
+        "TestSuite"
+      ],
+      "functions": [
+        "next_bigger",
+        "test_next_bigger"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/next_perfect_square.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "find_next_square",
+        "find_next_square2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/nth_digit.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "find_nth_digit"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/num_digits.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "num_digits"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/num_perfect_squares.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "num_perfect_squares"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/polynomial.py",
+      "classification": "data_structure",
+      "loc": 304,
+      "classes": [
+        "Monomial",
+        "Polynomial"
+      ],
+      "functions": [
+        "__init__",
+        "_rationalize_if_possible",
+        "equal_upto_scalar",
+        "__add__",
+        "__eq__",
+        "__mul__",
+        "inverse",
+        "__truediv__",
+        "__floordiv__",
+        "clone",
+        "clean",
+        "__sub__",
+        "__hash__",
+        "all_variables",
+        "substitute",
+        "__str__",
+        "__init__",
+        "_rationalize_if_possible",
+        "__add__",
+        "__sub__",
+        "__mul__",
+        "__floordiv__",
+        "__truediv__",
+        "clone",
+        "variables",
+        "all_monomials",
+        "__eq__",
+        "subs",
+        "__str__",
+        "poly_long_division"
+      ],
+      "imports": [
+        "fractions",
+        "typing",
+        "numbers",
+        "functools"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "path": "algorithms/maths/power.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "power",
+        "power_recur"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/prime_check.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "prime_check"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/primes_sieve_of_eratosthenes.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "get_primes"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/pythagoras.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "pythagoras"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/rabin_miller.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "is_prime",
+        "pow2_factor",
+        "valid_witness"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/recursive_binomial_coefficient.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "recursive_binomial_coefficient"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/rsa.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "generate_key",
+        "modinv",
+        "gen_prime",
+        "is_prime",
+        "encrypt",
+        "decrypt"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/sqrt_precision_factor.py",
+      "classification": "algorithm",
+      "loc": 1,
+      "classes": [],
+      "functions": [
+        "square_root"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/summing_digits.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "sum_dig_pow"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/maths/symmetry_group_cycle_index.py",
+      "classification": "algorithm",
+      "loc": 62,
+      "classes": [],
+      "functions": [
+        "cycle_product",
+        "cycle_product_for_two_polynomials",
+        "cycle_index_sym_helper",
+        "get_cycle_index_sym"
+      ],
+      "imports": [
+        "fractions",
+        "typing",
+        "polynomial",
+        "gcd"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/matrix/bomb_enemy.py",
+      "classification": "algorithm",
+      "loc": 53,
+      "classes": [
+        "TestBombEnemy"
+      ],
+      "functions": [
+        "max_killed_enemies",
+        "row_kills",
+        "col_kills",
+        "test_3x4",
+        "test_4x4"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/cholesky_matrix_decomposition.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "cholesky_decomposition"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/copy_transform.py",
+      "classification": "algorithm",
+      "loc": 56,
+      "classes": [],
+      "functions": [
+        "rotate_clockwise",
+        "rotate_counterclockwise",
+        "top_left_invert",
+        "bottom_left_invert",
+        "print_matrix"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/count_paths.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "count_paths",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/crout_matrix_decomposition.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "crout_matrix_decomposition"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/matrix_exponentiation.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "multiply",
+        "identity",
+        "matrix_exponentiation"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/matrix_inversion.py",
+      "classification": "algorithm",
+      "loc": 25,
+      "classes": [],
+      "functions": [
+        "invert_matrix",
+        "get_determinant",
+        "get_matrix_of_minors",
+        "get_minor",
+        "transpose_and_multiply",
+        "array_is_matrix"
+      ],
+      "imports": [
+        "fractions"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/multiply.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "multiply"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/rotate_image.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "rotate"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/search_in_sorted_matrix.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "search_in_a_sorted_matrix",
+        "main"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/matrix/sort_matrix_diagonally.py",
+      "classification": "algorithm",
+      "loc": 37,
+      "classes": [],
+      "functions": [
+        "sort_diagonally"
+      ],
+      "imports": [
+        "heapq",
+        "typing"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/matrix/sparse_dot_vector.py",
+      "classification": "algorithm",
+      "loc": 43,
+      "classes": [],
+      "functions": [
+        "vector_to_index_value_list",
+        "dot_product",
+        "__test_simple",
+        "__test_time",
+        "random_vector"
+      ],
+      "imports": [
+        "random",
+        "time"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/sparse_mul.py",
+      "classification": "algorithm",
+      "loc": 61,
+      "classes": [],
+      "functions": [
+        "multiply",
+        "multiply",
+        "multiply"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/spiral_traversal.py",
+      "classification": "algorithm",
+      "loc": 29,
+      "classes": [],
+      "functions": [
+        "spiral_traversal"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/sudoku_validator.py",
+      "classification": "algorithm",
+      "loc": 56,
+      "classes": [],
+      "functions": [
+        "valid_solution_hashtable",
+        "valid_solution",
+        "valid_solution_set"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/matrix/sum_sub_squares.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "sum_sub_squares"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/ml/nearest_neighbor.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "distance",
+        "nearest_neighbor"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/queues/__init__.py",
+      "classification": "utility",
+      "loc": 4,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "queue",
+        "max_sliding_window",
+        "reconstruct_queue",
+        "priority_queue"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/queues/max_sliding_window.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "max_sliding_window"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/queues/moving_average.py",
+      "classification": "data_structure",
+      "loc": 14,
+      "classes": [
+        "MovingAverage"
+      ],
+      "functions": [
+        "__init__",
+        "next"
+      ],
+      "imports": [
+        "__future__",
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/queues/priority_queue.py",
+      "classification": "data_structure",
+      "loc": 30,
+      "classes": [
+        "PriorityQueueNode",
+        "PriorityQueue"
+      ],
+      "functions": [
+        "__init__",
+        "__repr__",
+        "__init__",
+        "__repr__",
+        "size",
+        "push",
+        "pop"
+      ],
+      "imports": [
+        "itertools"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/queues/queue.py",
+      "classification": "data_structure",
+      "loc": 52,
+      "classes": [
+        "AbstractQueue",
+        "ArrayQueue",
+        "QueueNode",
+        "LinkedListQueue"
+      ],
+      "functions": [
+        "__init__",
+        "__len__",
+        "is_empty",
+        "enqueue",
+        "dequeue",
+        "peek",
+        "__iter__",
+        "__init__",
+        "__iter__",
+        "enqueue",
+        "dequeue",
+        "peek",
+        "_expand",
+        "__init__",
+        "__init__",
+        "__iter__",
+        "enqueue",
+        "dequeue",
+        "peek"
+      ],
+      "imports": [
+        "abc"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/queues/reconstruct_queue.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "reconstruct_queue"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/queues/zigzagiterator.py",
+      "classification": "data_structure",
+      "loc": 19,
+      "classes": [
+        "ZigZagIterator"
+      ],
+      "functions": [
+        "__init__",
+        "next",
+        "has_next"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/search/__init__.py",
+      "classification": "utility",
+      "loc": 13,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "binary_search",
+        "ternary_search",
+        "first_occurrence",
+        "last_occurrence",
+        "linear_search",
+        "search_insert",
+        "two_sum",
+        "search_range",
+        "find_min_rotate",
+        "search_rotate",
+        "jump_search",
+        "next_greatest_letter",
+        "interpolation_search"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/search/binary_search.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "binary_search",
+        "binary_search_recur"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/find_min_rotate.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "find_min_rotate",
+        "find_min_rotate_recur"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/first_occurrence.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "first_occurrence"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/interpolation_search.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "interpolation_search"
+      ],
+      "imports": [
+        "typing",
+        "doctest"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/jump_search.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "jump_search"
+      ],
+      "imports": [
+        "math"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/last_occurrence.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "last_occurrence"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/linear_search.py",
+      "classification": "algorithm",
+      "loc": 5,
+      "classes": [],
+      "functions": [
+        "linear_search"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/next_greatest_letter.py",
+      "classification": "test",
+      "loc": 22,
+      "classes": [],
+      "functions": [
+        "next_greatest_letter",
+        "next_greatest_letter_v1",
+        "next_greatest_letter_v2"
+      ],
+      "imports": [
+        "bisect"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/search/search_insert.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "search_insert"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/search_range.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "search_range"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/search_rotate.py",
+      "classification": "algorithm",
+      "loc": 30,
+      "classes": [],
+      "functions": [
+        "search_rotate",
+        "search_rotate_recur"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/ternary_search.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "ternary_search"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/search/two_sum.py",
+      "classification": "algorithm",
+      "loc": 31,
+      "classes": [],
+      "functions": [
+        "two_sum",
+        "two_sum1",
+        "two_sum2"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/set/__init__.py",
+      "classification": "utility",
+      "loc": 1,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "find_keyboard_row"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/set/find_keyboard_row.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "find_keyboard_row"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/set/randomized_set.py",
+      "classification": "data_structure",
+      "loc": 40,
+      "classes": [
+        "RandomizedSet"
+      ],
+      "functions": [
+        "__init__",
+        "insert",
+        "remove",
+        "random_element",
+        "__test"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.6000000000000001
+    },
+    {
+      "path": "algorithms/set/set_covering.py",
+      "classification": "algorithm",
+      "loc": 52,
+      "classes": [],
+      "functions": [
+        "powerset",
+        "optimal_set_cover",
+        "greedy_set_cover"
+      ],
+      "imports": [
+        "itertools"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/sort/__init__.py",
+      "classification": "utility",
+      "loc": 21,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "bitonic_sort",
+        "bogo_sort",
+        "bubble_sort",
+        "comb_sort",
+        "counting_sort",
+        "cycle_sort",
+        "exchange_sort",
+        "heap_sort",
+        "insertion_sort",
+        "merge_sort",
+        "pancake_sort",
+        "pigeonhole_sort",
+        "quick_sort",
+        "selection_sort",
+        "top_sort",
+        "bucket_sort",
+        "shell_sort",
+        "stooge_sort",
+        "radix_sort",
+        "gnome_sort",
+        "cocktail_shaker_sort"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/sort/bead_sort.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "bead_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/bitonic_sort.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "bitonic_sort",
+        "compare",
+        "bitonic_merge"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/bogo_sort.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "bogo_sort",
+        "is_sorted"
+      ],
+      "imports": [
+        "random"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/bubble_sort.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "bubble_sort",
+        "swap"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/bucket_sort.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "bucket_sort",
+        "next_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/cocktail_shaker_sort.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "cocktail_shaker_sort",
+        "swap"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/comb_sort.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "comb_sort",
+        "swap"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/counting_sort.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "counting_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/cycle_sort.py",
+      "classification": "algorithm",
+      "loc": 22,
+      "classes": [],
+      "functions": [
+        "cycle_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/exchange_sort.py",
+      "classification": "algorithm",
+      "loc": 7,
+      "classes": [],
+      "functions": [
+        "exchange_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/gnome_sort.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "gnome_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/heap_sort.py",
+      "classification": "algorithm",
+      "loc": 55,
+      "classes": [],
+      "functions": [
+        "max_heap_sort",
+        "max_heapify",
+        "min_heap_sort",
+        "min_heapify"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/insertion_sort.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "insertion_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/meeting_rooms.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "can_attend_meetings"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/merge_sort.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "merge_sort",
+        "merge"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/pancake_sort.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "pancake_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/pigeonhole_sort.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "pigeonhole_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/quick_sort.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "quick_sort",
+        "quick_sort_recur",
+        "partition"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/radix_sort.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "radix_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/selection_sort.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "selection_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/shell_sort.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "shell_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/sort_colors.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "sort_colors"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/stooge_sort.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "stoogesort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/top_sort.py",
+      "classification": "algorithm",
+      "loc": 52,
+      "classes": [],
+      "functions": [
+        "top_sort_recursive",
+        "dfs",
+        "top_sort",
+        "is_ready"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/sort/wiggle_sort.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "wiggle_sort"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/stack/__init__.py",
+      "classification": "utility",
+      "loc": 10,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "stack",
+        "is_consecutive",
+        "is_sorted",
+        "remove_min",
+        "stutter",
+        "switch_pairs",
+        "valid_parenthesis",
+        "simplify_path",
+        "stack",
+        "ordered_stack"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/stack/is_consecutive.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [],
+      "functions": [
+        "first_is_consecutive",
+        "second_is_consecutive"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/is_sorted.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "is_sorted"
+      ],
+      "imports": [],
+      "confidence": 0.7
+    },
+    {
+      "path": "algorithms/stack/longest_abs_path.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "length_longest_path"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/ordered_stack.py",
+      "classification": "data_structure",
+      "loc": 25,
+      "classes": [
+        "OrderedStack"
+      ],
+      "functions": [
+        "__init__",
+        "is_empty",
+        "push_t",
+        "push",
+        "pop",
+        "peek",
+        "size"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/stack/remove_min.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "remove_min"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/simplify_path.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "simplify_path"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/stack.py",
+      "classification": "data_structure",
+      "loc": 11,
+      "classes": [
+        "AbstractStack",
+        "ArrayStack",
+        "StackNode",
+        "LinkedListStack"
+      ],
+      "functions": [
+        "__init__",
+        "__len__",
+        "__str__",
+        "is_empty",
+        "__iter__",
+        "push",
+        "pop",
+        "peek",
+        "__init__",
+        "__iter__",
+        "push",
+        "pop",
+        "peek",
+        "_expand",
+        "__init__",
+        "__init__",
+        "__iter__",
+        "push",
+        "pop",
+        "peek"
+      ],
+      "imports": [
+        "abc"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/stack/stutter.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "first_stutter",
+        "second_stutter"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/switch_pairs.py",
+      "classification": "algorithm",
+      "loc": 35,
+      "classes": [],
+      "functions": [
+        "first_switch_pairs",
+        "second_switch_pairs"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/stack/valid_parenthesis.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "is_valid"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/streaming/__init__.py",
+      "classification": "utility",
+      "loc": 2,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "one_sparse_recovery",
+        "misra_gries"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/streaming/misra_gries.py",
+      "classification": "algorithm",
+      "loc": 22,
+      "classes": [],
+      "functions": [
+        "misras_gries",
+        "_count_frequency"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/streaming/one_sparse_recovery.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [],
+      "functions": [
+        "one_sparse",
+        "_check_every_number_in_bitsum",
+        "_get_bit_sum"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/__init__.py",
+      "classification": "utility",
+      "loc": 41,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "add_binary",
+        "breaking_bad",
+        "decode_string",
+        "delete_reoccurring",
+        "domain_extractor",
+        "encode_decode",
+        "group_anagrams",
+        "int_to_roman",
+        "is_palindrome",
+        "is_rotated",
+        "license_number",
+        "make_sentence",
+        "merge_string_checker",
+        "multiply_strings",
+        "one_edit_distance",
+        "rabin_karp",
+        "reverse_string",
+        "reverse_vowel",
+        "reverse_words",
+        "roman_to_int",
+        "strip_url_params",
+        "validate_coordinates",
+        "word_squares",
+        "unique_morse",
+        "judge_circle",
+        "strong_password",
+        "caesar_cipher",
+        "check_pangram",
+        "contain_string",
+        "count_binary_substring",
+        "repeat_string",
+        "text_justification",
+        "min_distance",
+        "longest_common_prefix",
+        "rotate",
+        "first_unique_char",
+        "repeat_substring",
+        "atbash_cipher",
+        "longest_palindromic_substring",
+        "knuth_morris_pratt",
+        "panagram"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/strings/add_binary.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "add_binary"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/atbash_cipher.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "atbash"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/breaking_bad.py",
+      "classification": "data_structure",
+      "loc": 54,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "match_symbol",
+        "match_symbol_1",
+        "__init__",
+        "bracket"
+      ],
+      "imports": [
+        "functools",
+        "re"
+      ],
+      "confidence": 0.6000000000000001
+    },
+    {
+      "path": "algorithms/strings/caesar_cipher.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "caesar_cipher"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/check_pangram.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "check_pangram"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/contain_string.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "contain_string"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/count_binary_substring.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "count_binary_substring"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/decode_string.py",
+      "classification": "algorithm",
+      "loc": 15,
+      "classes": [],
+      "functions": [
+        "decode_string"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/delete_reoccurring.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "delete_reoccurring_characters"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/domain_extractor.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "domain_name_1",
+        "domain_name_2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/encode_decode.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "encode",
+        "decode"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/first_unique_char.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "first_unique_char"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/fizzbuzz.py",
+      "classification": "algorithm",
+      "loc": 21,
+      "classes": [],
+      "functions": [
+        "fizzbuzz",
+        "fizzbuzz_with_helper_func",
+        "fb"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/group_anagrams.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "group_anagrams"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/int_to_roman.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "int_to_roman"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/is_palindrome.py",
+      "classification": "algorithm",
+      "loc": 50,
+      "classes": [],
+      "functions": [
+        "is_palindrome",
+        "remove_punctuation",
+        "string_reverse",
+        "is_palindrome_reverse",
+        "is_palindrome_two_pointer",
+        "is_palindrome_stack",
+        "is_palindrome_deque"
+      ],
+      "imports": [
+        "string",
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/is_rotated.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "is_rotated",
+        "is_rotated_v1"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/judge_circle.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "judge_circle"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/knuth_morris_pratt.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [],
+      "functions": [
+        "knuth_morris_pratt"
+      ],
+      "imports": [
+        "typing"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/license_number.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "license_number"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/longest_common_prefix.py",
+      "classification": "algorithm",
+      "loc": 36,
+      "classes": [],
+      "functions": [
+        "common_prefix",
+        "longest_common_prefix_v1",
+        "longest_common_prefix_v2",
+        "longest_common_prefix_v3",
+        "longest_common"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/longest_palindromic_substring.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "longest_palindrome"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/make_sentence.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "make_sentence"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/merge_string_checker.py",
+      "classification": "algorithm",
+      "loc": 25,
+      "classes": [],
+      "functions": [
+        "is_merge_recursive",
+        "is_merge_iterative"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/min_distance.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "min_distance",
+        "lcs",
+        "min_distance_dp"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/multiply_strings.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "multiply"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/one_edit_distance.py",
+      "classification": "algorithm",
+      "loc": 23,
+      "classes": [],
+      "functions": [
+        "is_one_edit",
+        "is_one_edit2"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/panagram.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "panagram"
+      ],
+      "imports": [
+        "string"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/rabin_karp.py",
+      "classification": "data_structure",
+      "loc": 31,
+      "classes": [
+        "RollingHash"
+      ],
+      "functions": [
+        "__init__",
+        "move_window",
+        "window_text",
+        "rabin_karp"
+      ],
+      "imports": [],
+      "confidence": 0.6000000000000001
+    },
+    {
+      "path": "algorithms/strings/repeat_string.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "repeat_string"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/repeat_substring.py",
+      "classification": "algorithm",
+      "loc": 3,
+      "classes": [],
+      "functions": [
+        "repeat_substring"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/reverse_string.py",
+      "classification": "algorithm",
+      "loc": 18,
+      "classes": [],
+      "functions": [
+        "recursive",
+        "iterative",
+        "pythonic",
+        "ultra_pythonic"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/reverse_vowel.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "reverse_vowel"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/reverse_words.py",
+      "classification": "algorithm",
+      "loc": 14,
+      "classes": [],
+      "functions": [
+        "reverse",
+        "reverse_words"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/roman_to_int.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "roman_to_int"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/rotate.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "rotate",
+        "rotate_alt"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/strip_url_params.py",
+      "classification": "algorithm",
+      "loc": 70,
+      "classes": [],
+      "functions": [
+        "strip_url_params1",
+        "strip_url_params2",
+        "strip_url_params3"
+      ],
+      "imports": [
+        "collections",
+        "urllib",
+        "urllib.parse"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/strong_password.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "strong_password"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/text_justification.py",
+      "classification": "algorithm",
+      "loc": 46,
+      "classes": [],
+      "functions": [
+        "text_justification"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/unique_morse.py",
+      "classification": "algorithm",
+      "loc": 41,
+      "classes": [],
+      "functions": [
+        "convert_morse_word",
+        "unique_morse"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/validate_coordinates.py",
+      "classification": "algorithm",
+      "loc": 22,
+      "classes": [],
+      "functions": [
+        "is_valid_coordinates_0",
+        "is_valid_coordinates_1",
+        "is_valid_coordinates_regular_expression"
+      ],
+      "imports": [
+        "re"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/strings/word_squares.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "word_squares",
+        "build"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/tree/avl/__init__.py",
+      "classification": "utility",
+      "loc": 0,
+      "classes": [],
+      "functions": [],
+      "imports": [],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/tree/avl/avl.py",
+      "classification": "data_structure",
+      "loc": 8,
+      "classes": [
+        "AvlTree"
+      ],
+      "functions": [
+        "__init__",
+        "insert",
+        "re_balance",
+        "update_heights",
+        "update_balances",
+        "rotate_right",
+        "rotate_left",
+        "in_order_traverse"
+      ],
+      "imports": [
+        "tree.tree"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/b_tree.py",
+      "classification": "data_structure",
+      "loc": 26,
+      "classes": [
+        "Node",
+        "BTree"
+      ],
+      "functions": [
+        "__init__",
+        "__repr__",
+        "is_leaf",
+        "__init__",
+        "_split_child",
+        "insert_key",
+        "_insert_to_nonfull_node",
+        "find",
+        "remove_key",
+        "_remove_key",
+        "_repair_tree",
+        "_rotate_left",
+        "_rotate_right",
+        "_merge",
+        "_remove_from_nonleaf_node",
+        "_find_largest_and_delete_in_left_subtree",
+        "_find_largest_and_delete_in_right_subtree",
+        "traverse_tree",
+        "_traverse_tree"
+      ],
+      "imports": [],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/tree/bin_tree_to_list.py",
+      "classification": "algorithm",
+      "loc": 28,
+      "classes": [],
+      "functions": [
+        "bin_tree_to_list",
+        "bin_tree_to_list_util",
+        "print_tree"
+      ],
+      "imports": [
+        "tree.tree"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/binary_tree_paths.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "binary_tree_paths",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/BSTIterator.py",
+      "classification": "data_structure",
+      "loc": 17,
+      "classes": [
+        "BSTIterator"
+      ],
+      "functions": [
+        "__init__",
+        "has_next",
+        "next"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/bst/array_to_bst.py",
+      "classification": "data_structure",
+      "loc": 13,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "__init__",
+        "array_to_bst"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/bst/bst.py",
+      "classification": "data_structure",
+      "loc": 86,
+      "classes": [
+        "Node",
+        "BST",
+        "TestSuite"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "get_root",
+        "size",
+        "recur_size",
+        "search",
+        "recur_search",
+        "insert",
+        "recur_insert",
+        "preorder",
+        "inorder",
+        "postorder",
+        "setUp",
+        "test_search",
+        "test_size"
+      ],
+      "imports": [
+        "unittest"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/bst/bst_closest_value.py",
+      "classification": "algorithm",
+      "loc": 7,
+      "classes": [],
+      "functions": [
+        "closest_value"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/count_left_node.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [
+        "TestSuite"
+      ],
+      "functions": [
+        "count_left_node",
+        "setUp",
+        "test_count_left_node"
+      ],
+      "imports": [
+        "unittest",
+        "bst",
+        "bst"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/delete_node.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [
+        "Solution"
+      ],
+      "functions": [
+        "delete_node"
+      ],
+      "imports": [],
+      "confidence": 0.3
+    },
+    {
+      "path": "algorithms/tree/bst/depth_sum.py",
+      "classification": "algorithm",
+      "loc": 29,
+      "classes": [
+        "TestSuite"
+      ],
+      "functions": [
+        "depth_sum",
+        "recur_depth_sum",
+        "setUp",
+        "test_depth_sum"
+      ],
+      "imports": [
+        "unittest",
+        "bst",
+        "bst"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/height.py",
+      "classification": "algorithm",
+      "loc": 24,
+      "classes": [
+        "TestSuite"
+      ],
+      "functions": [
+        "height",
+        "setUp",
+        "test_height"
+      ],
+      "imports": [
+        "unittest",
+        "bst",
+        "bst"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/is_bst.py",
+      "classification": "algorithm",
+      "loc": 13,
+      "classes": [],
+      "functions": [
+        "is_bst"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/kth_smallest.py",
+      "classification": "data_structure",
+      "loc": 41,
+      "classes": [
+        "Node",
+        "Solution"
+      ],
+      "functions": [
+        "__init__",
+        "kth_smallest",
+        "kth_smallest",
+        "helper"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/bst/lowest_common_ancestor.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "lowest_common_ancestor"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/num_empty.py",
+      "classification": "algorithm",
+      "loc": 28,
+      "classes": [
+        "TestSuite"
+      ],
+      "functions": [
+        "num_empty",
+        "setUp",
+        "test_num_empty"
+      ],
+      "imports": [
+        "unittest",
+        "bst",
+        "bst"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/predecessor.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "predecessor"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/serialize_deserialize.py",
+      "classification": "data_structure",
+      "loc": 27,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "__init__",
+        "serialize",
+        "build_string",
+        "deserialize",
+        "build_tree"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/bst/successor.py",
+      "classification": "algorithm",
+      "loc": 9,
+      "classes": [],
+      "functions": [
+        "successor"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/unique_bst.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "num_trees"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/bst/validate_bst.py",
+      "classification": "data_structure",
+      "loc": 41,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "__init__",
+        "validate_bst"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/construct_tree_postorder_preorder.py",
+      "classification": "data_structure",
+      "loc": 43,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "__init__",
+        "construct_tree_util",
+        "construct_tree",
+        "print_inorder"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/deepest_left.py",
+      "classification": "data_structure",
+      "loc": 25,
+      "classes": [
+        "DeepestLeft"
+      ],
+      "functions": [
+        "__init__",
+        "find_deepest_left"
+      ],
+      "imports": [
+        "tree.tree"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/fenwick_tree/fenwick_tree.py",
+      "classification": "data_structure",
+      "loc": 21,
+      "classes": [
+        "Fenwick_Tree"
+      ],
+      "functions": [
+        "__init__",
+        "get_sum",
+        "update_bit",
+        "construct"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/invert_tree.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "reverse"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/is_balanced.py",
+      "classification": "algorithm",
+      "loc": 12,
+      "classes": [],
+      "functions": [
+        "is_balanced",
+        "__is_balanced_recursive",
+        "__get_depth"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/is_subtree.py",
+      "classification": "algorithm",
+      "loc": 20,
+      "classes": [],
+      "functions": [
+        "is_subtree",
+        "comp"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/is_symmetric.py",
+      "classification": "algorithm",
+      "loc": 26,
+      "classes": [],
+      "functions": [
+        "is_symmetric",
+        "helper",
+        "is_symmetric_iterative"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/longest_consecutive.py",
+      "classification": "algorithm",
+      "loc": 16,
+      "classes": [],
+      "functions": [
+        "longest_consecutive",
+        "dfs"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/lowest_common_ancestor.py",
+      "classification": "algorithm",
+      "loc": 8,
+      "classes": [],
+      "functions": [
+        "lca"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/max_height.py",
+      "classification": "algorithm",
+      "loc": 33,
+      "classes": [],
+      "functions": [
+        "max_height",
+        "print_tree"
+      ],
+      "imports": [
+        "tree"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/max_path_sum.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "max_path_sum",
+        "helper"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/min_height.py",
+      "classification": "algorithm",
+      "loc": 40,
+      "classes": [],
+      "functions": [
+        "min_depth",
+        "min_height",
+        "print_tree"
+      ],
+      "imports": [
+        "tree"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/path_sum.py",
+      "classification": "algorithm",
+      "loc": 35,
+      "classes": [],
+      "functions": [
+        "has_path_sum",
+        "has_path_sum2",
+        "has_path_sum3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/path_sum2.py",
+      "classification": "algorithm",
+      "loc": 42,
+      "classes": [],
+      "functions": [
+        "path_sum",
+        "dfs",
+        "path_sum2",
+        "path_sum3"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/pretty_print.py",
+      "classification": "algorithm",
+      "loc": 10,
+      "classes": [],
+      "functions": [
+        "tree_print"
+      ],
+      "imports": [
+        "__future__"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/red_black_tree/red_black_tree.py",
+      "classification": "data_structure",
+      "loc": 209,
+      "classes": [
+        "RBNode",
+        "RBTree"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "left_rotate",
+        "right_rotate",
+        "insert",
+        "fix_insert",
+        "transplant",
+        "maximum",
+        "minimum",
+        "delete",
+        "delete_fixup",
+        "inorder"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/same_tree.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "is_same_tree"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/segment_tree/iterative_segment_tree.py",
+      "classification": "data_structure",
+      "loc": 25,
+      "classes": [
+        "SegmentTree"
+      ],
+      "functions": [
+        "__init__",
+        "build_tree",
+        "update",
+        "query"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/segment_tree/segment_tree.py",
+      "classification": "data_structure",
+      "loc": 28,
+      "classes": [
+        "SegmentTree"
+      ],
+      "functions": [
+        "__init__",
+        "make_tree",
+        "__query",
+        "query"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/traversal/__init__.py",
+      "classification": "utility",
+      "loc": 3,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "preorder",
+        "postorder",
+        "inorder"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/tree/traversal/inorder.py",
+      "classification": "data_structure",
+      "loc": 27,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "inorder",
+        "inorder_rec"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/traversal/level_order.py",
+      "classification": "algorithm",
+      "loc": 17,
+      "classes": [],
+      "functions": [
+        "level_order"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/traversal/postorder.py",
+      "classification": "data_structure",
+      "loc": 31,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "postorder",
+        "postorder_rec"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/traversal/preorder.py",
+      "classification": "data_structure",
+      "loc": 15,
+      "classes": [
+        "Node"
+      ],
+      "functions": [
+        "__init__",
+        "preorder",
+        "preorder_rec"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/traversal/zigzag.py",
+      "classification": "algorithm",
+      "loc": 19,
+      "classes": [],
+      "functions": [
+        "zigzag_level"
+      ],
+      "imports": [],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/tree/tree.py",
+      "classification": "data_structure",
+      "loc": 5,
+      "classes": [
+        "TreeNode"
+      ],
+      "functions": [
+        "__init__"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/tree/trie/add_and_search.py",
+      "classification": "data_structure",
+      "loc": 53,
+      "classes": [
+        "TrieNode",
+        "WordDictionary",
+        "WordDictionary2"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "add_word",
+        "search",
+        "__init__",
+        "add_word",
+        "search"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "path": "algorithms/tree/trie/trie.py",
+      "classification": "data_structure",
+      "loc": 27,
+      "classes": [
+        "TrieNode",
+        "Trie"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "insert",
+        "search",
+        "starts_with"
+      ],
+      "imports": [
+        "collections"
+      ],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/unionfind/count_islands.py",
+      "classification": "data_structure",
+      "loc": 34,
+      "classes": [
+        "Union"
+      ],
+      "functions": [
+        "__init__",
+        "add",
+        "root",
+        "unite",
+        "num_islands"
+      ],
+      "imports": [],
+      "confidence": 0.7000000000000001
+    },
+    {
+      "path": "algorithms/unix/__init__.py",
+      "classification": "utility",
+      "loc": 4,
+      "classes": [],
+      "functions": [],
+      "imports": [
+        "path.join_with_slash",
+        "path.full_path",
+        "path.split",
+        "path.simplify_path"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "path": "algorithms/unix/path/full_path.py",
+      "classification": "algorithm",
+      "loc": 3,
+      "classes": [],
+      "functions": [
+        "full_path"
+      ],
+      "imports": [
+        "os"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/unix/path/join_with_slash.py",
+      "classification": "algorithm",
+      "loc": 6,
+      "classes": [],
+      "functions": [
+        "join_with_slash"
+      ],
+      "imports": [
+        "os"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/unix/path/simplify_path.py",
+      "classification": "algorithm",
+      "loc": 11,
+      "classes": [],
+      "functions": [
+        "simplify_path_v1",
+        "simplify_path_v2"
+      ],
+      "imports": [
+        "os"
+      ],
+      "confidence": 0.5
+    },
+    {
+      "path": "algorithms/unix/path/split.py",
+      "classification": "algorithm",
+      "loc": 7,
+      "classes": [],
+      "functions": [
+        "split"
+      ],
+      "imports": [
+        "os"
+      ],
+      "confidence": 0.5
+    }
+  ]
+}

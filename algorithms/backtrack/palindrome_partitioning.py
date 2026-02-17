@@ -1,45 +1,65 @@
-""" It looks like you need to be looking not for all palindromic substrings,
-but rather for all the ways you can divide the input string
-up into palindromic substrings.
-(There's always at least one way,
-since one-character substrings are always palindromes.)
+"""
+Palindrome Partitioning
 
-ex)
-'abcbab' => [['abcba', 'b'], ['a', 'bcb', 'a', 'b'], ['a', 'b', 'c', 'bab'], ['a', 'b', 'c', 'b', 'a', 'b']]
+Given a string, find all ways to partition it into palindromic substrings.
+There is always at least one way since single characters are palindromes.
+
+Reference: https://leetcode.com/problems/palindrome-partitioning/
+
+Complexity:
+    Time:  O(n * 2^n) where n is the string length
+    Space: O(n) recursion depth
 """
 
+from __future__ import annotations
 
-def palindromic_substrings(s):
-    if not s:
+from typing import Generator
+
+
+def palindromic_substrings(text: str) -> list[list[str]]:
+    """Return all palindrome partitions of the input string.
+
+    Args:
+        text: The string to partition.
+
+    Returns:
+        A list of partitions, each being a list of palindromic substrings.
+
+    Examples:
+        >>> palindromic_substrings("abc")
+        [['a', 'b', 'c']]
+    """
+    if not text:
         return [[]]
-    results = []
-    for i in range(len(s), 0, -1):
-        sub = s[:i]
-        if sub == sub[::-1]:
-            for rest in palindromic_substrings(s[i:]):
-                results.append([sub] + rest)
+    results: list[list[str]] = []
+    for i in range(len(text), 0, -1):
+        substring = text[:i]
+        if substring == substring[::-1]:
+            for rest in palindromic_substrings(text[i:]):
+                results.append([substring] + rest)
     return results
 
 
-"""
-There's two loops.
-The outer loop checks each length of initial substring
-(in descending length order) to see if it is a palindrome.
-If so, it recurses on the rest of the string and loops over the returned
-values, adding the initial substring to
-each item before adding it to the results.
-"""
+def palindromic_substrings_iter(text: str) -> Generator[list[str], None, None]:
+    """Yield all palindrome partitions of the input string via a generator.
 
+    A slightly more Pythonic approach using a recursive generator.
 
-def palindromic_substrings_iter(s):
+    Args:
+        text: The string to partition.
+
+    Yields:
+        Lists of palindromic substrings forming a valid partition.
+
+    Examples:
+        >>> list(palindromic_substrings_iter("abc"))
+        [['a', 'b', 'c']]
     """
-    A slightly more Pythonic approach with a recursive generator
-    """
-    if not s:
+    if not text:
         yield []
         return
-    for i in range(len(s), 0, -1):
-        sub = s[:i]
-        if sub == sub[::-1]:
-            for rest in palindromic_substrings_iter(s[i:]):
-                yield [sub] + rest
+    for i in range(len(text), 0, -1):
+        substring = text[:i]
+        if substring == substring[::-1]:
+            for rest in palindromic_substrings_iter(text[i:]):
+                yield [substring] + rest

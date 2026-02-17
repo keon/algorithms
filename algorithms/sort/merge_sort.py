@@ -1,40 +1,64 @@
-def merge_sort(arr):
-    """ Merge Sort
-        Complexity: O(n log(n))
+"""
+Merge Sort
+
+Merge sort divides the array in half, recursively sorts each half, and
+then merges the two sorted halves back together.
+
+Reference: https://en.wikipedia.org/wiki/Merge_sort
+
+Complexity:
+    Time:  O(n log n) best / O(n log n) average / O(n log n) worst
+    Space: O(n)
+"""
+
+from __future__ import annotations
+
+
+def merge_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using merge sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> merge_sort([3, 1, 2])
+        [1, 2, 3]
     """
-    # Our recursive base case
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    # Perform merge_sort recursively on both halves
-    left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
+    if len(array) <= 1:
+        return array
 
-    # Merge each side together
-    # return merge(left, right, arr.copy()) # changed, no need to copy, mutate inplace.
-    merge(left,right,arr)
-    return arr
+    mid = len(array) // 2
+    left = merge_sort(array[:mid])
+    right = merge_sort(array[mid:])
+
+    _merge(left, right, array)
+    return array
 
 
-def merge(left, right, merged):
-    """ Merge helper
-        Complexity: O(n)
+def _merge(left: list[int], right: list[int], merged: list[int]) -> None:
+    """Merge two sorted lists into *merged* in-place.
+
+    Args:
+        left:   Sorted left half.
+        right:  Sorted right half.
+        merged: Destination list (length == len(left) + len(right)).
     """
+    left_cursor = 0
+    right_cursor = 0
 
-    left_cursor, right_cursor = 0, 0
     while left_cursor < len(left) and right_cursor < len(right):
-        # Sort each one and place into the result
         if left[left_cursor] <= right[right_cursor]:
-            merged[left_cursor+right_cursor]=left[left_cursor]
+            merged[left_cursor + right_cursor] = left[left_cursor]
             left_cursor += 1
         else:
             merged[left_cursor + right_cursor] = right[right_cursor]
             right_cursor += 1
-    # Add the left overs if there's any left to the result
+
     for left_cursor in range(left_cursor, len(left)):
         merged[left_cursor + right_cursor] = left[left_cursor]
-    # Add the left overs if there's any left to the result
+
     for right_cursor in range(right_cursor, len(right)):
         merged[left_cursor + right_cursor] = right[right_cursor]
-
-    # Return result
-    # return merged # do not return anything, as it is replacing inplace.

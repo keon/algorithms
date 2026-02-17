@@ -1,38 +1,46 @@
-# Given an encoded string, return it's decoded string.
+"""
+Decode String
 
-# The encoding rule is: k[encoded_string], where the encoded_string
-# inside the square brackets is being repeated exactly k times.
-# Note that k is guaranteed to be a positive integer.
+Given an encoded string, return its decoded string. The encoding rule is
+k[encoded_string], where the encoded_string inside the brackets is repeated
+exactly k times.
 
-# You may assume that the input string is always valid; No extra white spaces,
-# square brackets are well-formed, etc.
+Reference: https://leetcode.com/problems/decode-string/
 
-# Furthermore, you may assume that the original data does not contain any
-# digits and that digits are only for those repeat numbers, k.
-# For example, there won't be input like 3a or 2[4].
+Complexity:
+    Time:  O(n * max_k) where n is the length of the string
+    Space: O(n) for the stack
+"""
 
-# Examples:
+from __future__ import annotations
 
-# s = "3[a]2[bc]", return "aaabcbc".
-# s = "3[a2[c]]", return "accaccacc".
-# s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
-def decode_string(s):
+def decode_string(text: str) -> str:
+    """Decode an encoded string with nested repeat patterns.
+
+    Args:
+        text: The encoded string in the format k[encoded_string].
+
+    Returns:
+        The fully decoded string.
+
+    Examples:
+        >>> decode_string("3[a]2[bc]")
+        'aaabcbc'
     """
-    :type s: str
-    :rtype: str
-    """
-    stack = []; cur_num = 0; cur_string = ''
-    for c in s:
-        if c == '[':
-            stack.append((cur_string, cur_num))
-            cur_string = ''
-            cur_num = 0
-        elif c == ']':
+    stack: list[tuple[str, int]] = []
+    current_num = 0
+    current_string = ''
+    for char in text:
+        if char == '[':
+            stack.append((current_string, current_num))
+            current_string = ''
+            current_num = 0
+        elif char == ']':
             prev_string, num = stack.pop()
-            cur_string = prev_string + num * cur_string
-        elif c.isdigit():
-            cur_num = cur_num*10 + int(c)
+            current_string = prev_string + num * current_string
+        elif char.isdigit():
+            current_num = current_num * 10 + int(char)
         else:
-            cur_string += c
-    return cur_string
+            current_string += char
+    return current_string

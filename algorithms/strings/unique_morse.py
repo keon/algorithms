@@ -1,94 +1,64 @@
 """
-International Morse Code defines a standard encoding where each letter is mapped to
-a series of dots and dashes, as follows: "a" maps to ".-", "b" maps to "-...", "c"
-maps to "-.-.", and so on.
+Unique Morse Code Representations
 
-For convenience, the full table for the 26 letters of the English alphabet is given below:
-        'a':".-",
-        'b':"-...",
-        'c':"-.-.",
-        'd': "-..",
-        'e':".",
-        'f':"..-.",
-        'g':"--.",
-        'h':"....",
-        'i':"..",
-        'j':".---",
-        'k':"-.-",
-        'l':".-..",
-        'm':"--",
-        'n':"-.",
-        'o':"---",
-        'p':".--.",
-        'q':"--.-",
-        'r':".-.",
-        's':"...",
-        't':"-",
-        'u':"..-",
-        'v':"...-",
-        'w':".--",
-        'x':"-..-",
-        'y':"-.--",
-        'z':"--.."
+Given a list of words, determine the number of unique Morse code
+transformations among all the words.
 
-Now, given a list of words, each word can be written as a concatenation of the
-Morse code of each letter. For example, "cab" can be written as "-.-.-....-",
-(which is the concatenation "-.-." + "-..." + ".-"). We'll call such a
-concatenation, the transformation of a word.
+Reference: https://leetcode.com/problems/unique-morse-code-words/
 
-Return the number of different transformations among all words we have.
-Example:
-Input: words = ["gin", "zen", "gig", "msg"]
-Output: 2
-Explanation:
-The transformation of each word is:
-"gin" -> "--...-."
-"zen" -> "--...-."
-"gig" -> "--...--."
-"msg" -> "--...--."
-
-There are 2 different transformations, "--...-." and "--...--.".
+Complexity:
+    Time:  O(n * k) where n is the number of words, k is average word length
+    Space: O(n)
 """
 
-morse_code = {
-    'a':".-",
-    'b':"-...",
-    'c':"-.-.",
-    'd': "-..",
-    'e':".",
-    'f':"..-.",
-    'g':"--.",
-    'h':"....",
-    'i':"..",
-    'j':".---",
-    'k':"-.-",
-    'l':".-..",
-    'm':"--",
-    'n':"-.",
-    'o':"---",
-    'p':".--.",
-    'q':"--.-",
-    'r':".-.",
-    's':"...",
-    't':"-",
-    'u':"..-",
-    'v':"...-",
-    'w':".--",
-    'x':"-..-",
-    'y':"-.--",
-    'z':"--.."
+from __future__ import annotations
+
+_MORSE_CODE = {
+    'a': ".-", 'b': "-...", 'c': "-.-.", 'd': "-..", 'e': ".",
+    'f': "..-.", 'g': "--.", 'h': "....", 'i': "..", 'j': ".---",
+    'k': "-.-", 'l': ".-..", 'm': "--", 'n': "-.", 'o': "---",
+    'p': ".--.", 'q': "--.-", 'r': ".-.", 's': "...", 't': "-",
+    'u': "..-", 'v': "...-", 'w': ".--", 'x': "-..-", 'y': "-.--",
+    'z': "--..",
 }
-def convert_morse_word(word):
+
+
+def convert_morse_word(word: str) -> str:
+    """Convert a word to its Morse code representation.
+
+    Args:
+        word: The word to convert (case-insensitive).
+
+    Returns:
+        The Morse code string for the word.
+
+    Examples:
+        >>> convert_morse_word("gin")
+        '--...-.'
+    """
     morse_word = ""
     word = word.lower()
     for char in word:
-        morse_word = morse_word + morse_code[char]
+        morse_word = morse_word + _MORSE_CODE[char]
     return morse_word
 
-def unique_morse(words):
-    unique_morse_word = []
+
+def unique_morse(words: list[str]) -> int:
+    """Count the number of unique Morse code transformations.
+
+    Args:
+        words: A list of words to transform and count.
+
+    Returns:
+        The number of distinct Morse code representations.
+
+    Examples:
+        >>> unique_morse(["gin", "zen", "gig", "msg"])
+        2
+    """
+    unique_transformations: list[str] = []
     for word in words:
         morse_word = convert_morse_word(word)
-        if morse_word not in unique_morse_word:
-            unique_morse_word.append(morse_word)
-    return len(unique_morse_word)
+        if morse_word not in unique_transformations:
+            unique_transformations.append(morse_word)
+    return len(unique_transformations)

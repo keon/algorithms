@@ -1,58 +1,76 @@
 """
-Run-length encoding (RLE) is a simple compression algorithm 
-that gets a stream of data as the input and returns a
-sequence of counts of consecutive data values in a row.
-When decompressed the data will be fully recovered as RLE
-is a lossless data compression.
+Run-Length Encoding (RLE)
+
+A simple lossless compression algorithm that encodes consecutive repeated
+characters as a count followed by the character. Decompression fully recovers
+the original data.
+
+Reference: https://en.wikipedia.org/wiki/Run-length_encoding
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
 
-def encode_rle(input):
+from __future__ import annotations
+
+
+def encode_rle(data: str) -> str:
+    """Compress a string using run-length encoding.
+
+    Args:
+        data: The input string to compress.
+
+    Returns:
+        The RLE-encoded string.
+
+    Examples:
+        >>> encode_rle("aaabbc")
+        '3a2b1c'
+        >>> encode_rle("")
+        ''
     """
-    Gets a stream of data and compresses it
-    under a Run-Length Encoding.
-    :param input: The data to be encoded.
-    :return: The encoded string.
-    """
-    if not input: return ''
+    if not data:
+        return ""
 
-    encoded_str = ''
-    prev_ch = ''
-    count = 1
+    encoded: str = ""
+    prev_char: str = ""
+    count: int = 1
 
-    for ch in input:
-
-        # Check If the subsequent character does not match
-        if ch != prev_ch:
-            # Add the count and character
-            if prev_ch:
-                encoded_str += str(count) + prev_ch
-            # Reset the count and set the character
+    for char in data:
+        if char != prev_char:
+            if prev_char:
+                encoded += str(count) + prev_char
             count = 1
-            prev_ch = ch
+            prev_char = char
         else:
-            # Otherwise increment the counter
             count += 1
-    else:
-        return encoded_str + (str(count) + prev_ch)
+
+    return encoded + str(count) + prev_char
 
 
-def decode_rle(input):
+def decode_rle(data: str) -> str:
+    """Decompress a run-length encoded string.
+
+    Args:
+        data: The RLE-encoded string.
+
+    Returns:
+        The decoded original string.
+
+    Examples:
+        >>> decode_rle("3a2b1c")
+        'aaabbc'
+        >>> decode_rle("")
+        ''
     """
-    Gets a stream of data and decompresses it
-    under a Run-Length Decoding.
-    :param input: The data to be decoded.
-    :return: The decoded string.
-    """
-    decode_str = ''
-    count = ''
+    decoded: str = ""
+    count: str = ""
 
-    for ch in input:
-        # If not numerical
-        if not ch.isdigit():
-            # Expand it for the decoding
-            decode_str += ch * int(count)
-            count = ''
+    for char in data:
+        if not char.isdigit():
+            decoded += char * int(count)
+            count = ""
         else:
-            # Add it in the counter
-            count += ch
-    return decode_str
+            count += char
+    return decoded

@@ -1,26 +1,55 @@
 """
-Bead Sort (also known as Gravity Sort) is a natural sorting algorithm that simulates how beads would settle under gravity on an abacus. It is most useful for sorting positive integers, especially when the range of numbers isn't excessively large. However, it is not a comparison-based sort and is generally impractical for large inputs due to its reliance on physical modeling.
-Time Complexity
-- Best Case: O(n) if the numbers are already sorted
-- Average Case: O(n^2) because each bead needs to be placed and then fall under gravity
-- Worst Case: O(n^2) since each bead must "fall" individually
+Bead Sort
+
+Bead sort (also known as gravity sort) simulates how beads settle under
+gravity on an abacus.  It only works with non-negative integers.
+
+Reference: https://en.wikipedia.org/wiki/Bead_sort
+
+Complexity:
+    Time:  O(n) best / O(n * max_value) average / O(n * max_value) worst
+    Space: O(n * max_value)
 """
 
-def bead_sort(arr):
-    if any(num < 0 for num in arr):
+from __future__ import annotations
+
+
+def bead_sort(array: list[int]) -> list[int]:
+    """Sort an array of non-negative integers using bead sort.
+
+    Args:
+        array: List of non-negative integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Raises:
+        ValueError: If any element is negative.
+
+    Examples:
+        >>> bead_sort([6, 3, 4, 1, 5, 2])
+        [1, 2, 3, 4, 5, 6]
+    """
+    if any(num < 0 for num in array):
         raise ValueError("Bead sort only works with non-negative integers.")
 
-    max_num = max(arr) if arr else 0
-    grid = [[0] * len(arr) for _ in range(max_num)]
+    max_value = max(array) if array else 0
+    grid = [[0] * len(array) for _ in range(max_value)]
 
     # Drop beads (place beads in columns)
-    for col, num in enumerate(arr):
+    for col, num in enumerate(array):
         for row in range(num):
             grid[row][col] = 1
 
     # Let the beads "fall" (count beads in each row)
     for row in grid:
-        sum_beads = sum(row)
-        for col in range(len(arr)):
-            row[col] = 1 if col < sum_beads else 0
+        bead_count = sum(row)
+        for col in range(len(array)):
+            row[col] = 1 if col < bead_count else 0
 
+    # Read sorted values from the grid (rightmost column has fewest beads)
+    n = len(array)
+    sorted_array = [0] * n
+    for col in range(n):
+        sorted_array[col] = sum(grid[row][n - 1 - col] for row in range(max_value))
+    return sorted_array

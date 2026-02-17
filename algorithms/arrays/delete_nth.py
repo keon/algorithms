@@ -1,32 +1,66 @@
 """
-Given a list lst and a number N, create a new list
-that contains each number of the list at most N times without reordering.
+Delete Nth Occurrence
 
-For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], 
-drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, 
-which leads to [1,2,3,1,2,3]
+Given a list and a number N, create a new list that contains each element
+of the original list at most N times, without reordering.
+
+Reference: https://www.geeksforgeeks.org/remove-duplicates-from-an-array/
+
+Complexity:
+    delete_nth_naive:
+        Time:  O(n^2) due to list.count()
+        Space: O(n)
+    delete_nth:
+        Time:  O(n)
+        Space: O(n)
 """
+
+from __future__ import annotations
+
 import collections
 
 
-# Time complexity O(n^2)
-def delete_nth_naive(array, n):
-    ans = []
-    for num in array:
-        if ans.count(num) < n:
-            ans.append(num)
-    return ans
+def delete_nth_naive(array: list[int], n: int) -> list[int]:
+    """Keep at most n copies of each element using naive counting.
 
+    Args:
+        array: Source list of integers.
+        n: Maximum number of allowed occurrences per element.
 
-# Time Complexity O(n), using hash tables.
-def delete_nth(array, n):
+    Returns:
+        New list with each element appearing at most n times.
+
+    Examples:
+        >>> delete_nth_naive([1, 2, 3, 1, 2, 1, 2, 3], 2)
+        [1, 2, 3, 1, 2, 3]
+    """
     result = []
-    counts = collections.defaultdict(int)  # keep track of occurrences
+    for num in array:
+        if result.count(num) < n:
+            result.append(num)
+    return result
 
-    for i in array:
 
-        if counts[i] < n:
-            result.append(i)
-            counts[i] += 1
+def delete_nth(array: list[int], n: int) -> list[int]:
+    """Keep at most n copies of each element using a hash table.
+
+    Args:
+        array: Source list of integers.
+        n: Maximum number of allowed occurrences per element.
+
+    Returns:
+        New list with each element appearing at most n times.
+
+    Examples:
+        >>> delete_nth([1, 2, 3, 1, 2, 1, 2, 3], 2)
+        [1, 2, 3, 1, 2, 3]
+    """
+    result = []
+    counts = collections.defaultdict(int)
+
+    for element in array:
+        if counts[element] < n:
+            result.append(element)
+            counts[element] += 1
 
     return result

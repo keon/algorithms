@@ -1,25 +1,39 @@
 """
-Given a collection of numbers that might contain duplicates,
-return all possible unique permutations.
+Unique Permutations
 
-For example,
-[1,1,2] have the following unique permutations:
-[
-  [1,1,2],
-  [1,2,1],
-  [2,1,1]
-]
+Given a collection of numbers that might contain duplicates, return all
+possible unique permutations.
+
+Reference: https://leetcode.com/problems/permutations-ii/
+
+Complexity:
+    Time:  O(n * n!) worst case
+    Space: O(n * n!) to store all unique permutations
 """
 
+from __future__ import annotations
 
-def permute_unique(nums):
-    perms = [[]]
-    for n in nums:
-        new_perms = []
-        for l in perms:
-            for i in range(len(l)+1):
-                new_perms.append(l[:i]+[n]+l[i:])
-                if i < len(l) and l[i] == n:
-                    break  # handles duplication
-        perms = new_perms
-    return perms
+
+def permute_unique(nums: list[int]) -> list[list[int]]:
+    """Return all unique permutations of a list that may have duplicates.
+
+    Args:
+        nums: A list of integers, possibly with duplicates.
+
+    Returns:
+        A list of all unique permutations.
+
+    Examples:
+        >>> sorted(permute_unique([1, 1, 2]))
+        [[1, 1, 2], [1, 2, 1], [2, 1, 1]]
+    """
+    permutations: list[list[int]] = [[]]
+    for number in nums:
+        new_permutations: list[list[int]] = []
+        for existing in permutations:
+            for i in range(len(existing) + 1):
+                new_permutations.append(existing[:i] + [number] + existing[i:])
+                if i < len(existing) and existing[i] == number:
+                    break
+        permutations = new_permutations
+    return permutations

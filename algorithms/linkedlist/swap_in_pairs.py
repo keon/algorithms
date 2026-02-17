@@ -1,25 +1,45 @@
 """
-Given a linked list, swap every two adjacent nodes
-and return its head.
+Swap Nodes in Pairs
 
-For example,
-Given 1->2->3->4, you should return the list as 2->1->4->3.
+Given a linked list, swap every two adjacent nodes and return the new head.
+Only node links are changed, not node values.
 
-Your algorithm should use only constant space.
-You may not modify the values in the list,
-only nodes itself can be changed.
+Reference: https://leetcode.com/problems/swap-nodes-in-pairs/
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
-class Node(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
 
-def swap_pairs(head):
+from __future__ import annotations
+
+
+class Node:
+    def __init__(self, x: int) -> None:
+        self.val = x
+        self.next: Node | None = None
+
+
+def swap_pairs(head: Node | None) -> Node | None:
+    """Swap every two adjacent nodes in a linked list.
+
+    Args:
+        head: Head of the linked list.
+
+    Returns:
+        The new head after pairwise swapping.
+
+    Examples:
+        >>> a = Node(1); b = Node(2); a.next = b
+        >>> result = swap_pairs(a)
+        >>> result.val
+        2
+    """
     if not head:
         return head
-    start = Node(0)
-    start.next = head
-    current = start
+    sentinel = Node(0)
+    sentinel.next = head
+    current = sentinel
     while current.next and current.next.next:
         first = current.next
         second = current.next.next
@@ -27,4 +47,4 @@ def swap_pairs(head):
         current.next = second
         current.next.next = first
         current = current.next.next
-    return start.next
+    return sentinel.next

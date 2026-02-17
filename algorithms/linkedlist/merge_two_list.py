@@ -1,32 +1,72 @@
 """
-Merge two sorted linked lists and return it as a new list. The new list should
-be made by splicing together the nodes of the first two lists.
+Merge Two Sorted Lists
 
-For example:
-Input: 1->2->4, 1->3->4
-Output: 1->1->2->3->4->4
+Merge two sorted linked lists into a single sorted list by splicing together
+the nodes of the two input lists.
+
+Reference: https://leetcode.com/problems/merge-two-sorted-lists/
+
+Complexity:
+    Time:  O(m + n)
+    Space: O(1) iterative, O(m + n) recursive
 """
+
+from __future__ import annotations
+
+
 class Node:
-
-    def __init__(self, x):
+    def __init__(self, x: int) -> None:
         self.val = x
-        self.next = None
+        self.next: Node | None = None
 
-def merge_two_list(l1, l2):
-    ret = cur = Node(0)
+
+def merge_two_list(l1: Node | None, l2: Node | None) -> Node | None:
+    """Merge two sorted linked lists iteratively.
+
+    Args:
+        l1: Head of the first sorted list.
+        l2: Head of the second sorted list.
+
+    Returns:
+        Head of the merged sorted list.
+
+    Examples:
+        >>> a = Node(1); a.next = Node(3)
+        >>> b = Node(2); b.next = Node(4)
+        >>> result = merge_two_list(a, b)
+        >>> result.val
+        1
+    """
+    sentinel = current = Node(0)
     while l1 and l2:
         if l1.val < l2.val:
-            cur.next = l1
+            current.next = l1
             l1 = l1.next
         else:
-            cur.next = l2
+            current.next = l2
             l2 = l2.next
-        cur = cur.next
-    cur.next = l1 or l2
-    return ret.next
+        current = current.next
+    current.next = l1 or l2
+    return sentinel.next
 
-# recursively
-def merge_two_list_recur(l1, l2):
+
+def merge_two_list_recur(l1: Node | None, l2: Node | None) -> Node | None:
+    """Merge two sorted linked lists recursively.
+
+    Args:
+        l1: Head of the first sorted list.
+        l2: Head of the second sorted list.
+
+    Returns:
+        Head of the merged sorted list.
+
+    Examples:
+        >>> a = Node(1); a.next = Node(3)
+        >>> b = Node(2); b.next = Node(4)
+        >>> result = merge_two_list_recur(a, b)
+        >>> result.val
+        1
+    """
     if not l1 or not l2:
         return l1 or l2
     if l1.val < l2.val:

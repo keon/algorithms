@@ -1,59 +1,51 @@
 """
-Given an array of n integers, are there elements a, b, .. , n in nums
-such that a + b + .. + n = target?
+N-Sum
 
-Find all unique n-tuplets in the array which gives the sum of target.
+Given an array of integers, find all unique n-tuples that sum to a target
+value. Supports custom sum, comparison, and equality closures for advanced
+use cases with non-integer elements.
 
-Example:
-    basic:
-        Given:
-            n = 4
-            nums = [1, 0, -1, 0, -2, 2]
-            target = 0,
-        return [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+Reference: https://leetcode.com/problems/4sum/
 
-    advanced:
-        Given:
-            n = 2
-            nums = [[-3, 0], [-2, 1], [2, 2], [3, 3], [8, 4], [-9, 5]]
-            target = -5
-            def sum(a, b):
-                return [a[0] + b[1], a[1] + b[0]]
-            def compare(num, target):
-                if num[0] < target:
-                    return -1
-                elif if num[0] > target:
-                    return 1
-                else:
-                    return 0
-        return [[-9, 5], [8, 4]]
-(TL:DR) because -9 + 4 = -5
+Complexity:
+    Time:  O(n^(k-1)) where k is the tuple size
+    Space: O(n^(k-1)) for storing results
 """
 
+from __future__ import annotations
 
-def n_sum(n, nums, target, **kv):
+from typing import Any, Callable
+
+
+def n_sum(
+    n: int,
+    nums: list[Any],
+    target: Any,
+    **kv: Callable[..., Any],
+) -> list[list[Any]]:
+    """Find all unique n-tuples in nums that sum to target.
+
+    Args:
+        n: Size of each tuple to find.
+        nums: List of elements to search.
+        target: Desired sum for each n-tuple.
+        **kv: Optional closures:
+            sum_closure(a, b) - returns sum of two elements.
+            compare_closure(num, target) - returns -1, 0, or 1.
+            same_closure(a, b) - returns True if elements are equal.
+
+    Returns:
+        Sorted list of unique n-tuples (as lists) that sum to target.
+
+    Examples:
+        >>> n_sum(3, [-1, 0, 1, 2, -1, -4], 0)
+        [[-1, -1, 2], [-1, 0, 1]]
     """
-    n: int
-    nums: list[object]
-    target: object
-    sum_closure: function, optional
-        Given two elements of nums, return sum of both.
-    compare_closure: function, optional
-        Given one object of nums and target, return -1, 1, or 0.
-    same_closure: function, optional
-        Given two object of nums, return bool.
-    return: list[list[object]]
 
-    Note:
-    1. type of sum_closure's return should be same 
-       as type of compare_closure's first param
-    """
-
-    def sum_closure_default(a, b):
+    def _sum_closure_default(a: Any, b: Any) -> Any:
         return a + b
 
-    def compare_closure_default(num, target):
-        """ above, below, or right on? """
+    def _compare_closure_default(num: Any, target: Any) -> int:
         if num < target:
             return -1
         elif num > target:
@@ -61,12 +53,12 @@ def n_sum(n, nums, target, **kv):
         else:
             return 0
 
-    def same_closure_default(a, b):
+    def _same_closure_default(a: Any, b: Any) -> bool:
         return a == b
 
-    def n_sum(n, nums, target):
-        if n == 2:      # want answers with only 2 terms? easy!
-            results = two_sum(nums, target)
+    def _n_sum_inner(n: int, nums: list[Any], target: Any) -> list[list[Any]]:
+        if n == 2:
+            results = _two_sum(nums, target)
         else:
             results = []
             prev_num = None
@@ -76,65 +68,66 @@ def n_sum(n, nums, target, **kv):
                     continue
 
                 prev_num = num
-                n_minus1_results = (
-                    n_sum(                      # recursive call
-                        n - 1,                  # a
-                        nums[index + 1:],       # b
-                        target - num            # c
-                        )   # x = n_sum( a, b, c )
-                    )   # n_minus1_results = x
-
-                n_minus1_results = (
-                    append_elem_to_each_list(num, n_minus1_results)
-                    )
+                n_minus1_results = _n_sum_inner(
+                    n - 1,
+                    nums[index + 1:],
+                    target - num,
+                )
+                n_minus1_results = _append_elem_to_each_list(
+                    num, n_minus1_results
+                )
                 results += n_minus1_results
-        return union(results)
+        return _union(results)
 
-    def two_sum(nums, target):
+    def _two_sum(
+        nums: list[Any], target: Any
+    ) -> list[list[Any]]:
         nums.sort()
-        lt = 0
-        rt = len(nums) - 1
+        left = 0
+        right = len(nums) - 1
         results = []
-        while lt < rt:
-            sum_ = sum_closure(nums[lt], nums[rt])
-            flag = compare_closure(sum_, target)
+        while left < right:
+            current_sum = sum_closure(nums[left], nums[right])
+            flag = compare_closure(current_sum, target)
             if flag == -1:
-                lt += 1
+                left += 1
             elif flag == 1:
-                rt -= 1
+                right -= 1
             else:
-                results.append(sorted([nums[lt], nums[rt]]))
-                lt += 1
-                rt -= 1
-                while (lt < len(nums) and
-                       same_closure(nums[lt - 1], nums[lt])):
-                    lt += 1
-                while (0 <= rt and
-                       same_closure(nums[rt], nums[rt + 1])):
-                    rt -= 1
+                results.append(sorted([nums[left], nums[right]]))
+                left += 1
+                right -= 1
+                while (left < len(nums) and
+                       same_closure(nums[left - 1], nums[left])):
+                    left += 1
+                while (0 <= right and
+                       same_closure(nums[right], nums[right + 1])):
+                    right -= 1
         return results
 
-    def append_elem_to_each_list(elem, container):
+    def _append_elem_to_each_list(
+        elem: Any, container: list[list[Any]]
+    ) -> list[list[Any]]:
         results = []
         for elems in container:
             elems.append(elem)
             results.append(sorted(elems))
         return results
 
-    def union(duplicate_results):
+    def _union(
+        duplicate_results: list[list[Any]],
+    ) -> list[list[Any]]:
         results = []
-
         if len(duplicate_results) != 0:
             duplicate_results.sort()
             results.append(duplicate_results[0])
             for result in duplicate_results[1:]:
                 if results[-1] != result:
                     results.append(result)
-
         return results
 
-    sum_closure = kv.get('sum_closure', sum_closure_default)
-    same_closure = kv.get('same_closure', same_closure_default)
-    compare_closure = kv.get('compare_closure', compare_closure_default)
+    sum_closure = kv.get('sum_closure', _sum_closure_default)
+    same_closure = kv.get('same_closure', _same_closure_default)
+    compare_closure = kv.get('compare_closure', _compare_closure_default)
     nums.sort()
-    return n_sum(n, nums, target)
+    return _n_sum_inner(n, nums, target)

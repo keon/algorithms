@@ -1,20 +1,54 @@
-#! /usr/bin/env python3
-
 """
-Suppose we have very large sparse vectors, which contains a lot of
-zeros and double .
+Sparse Dot Vector
 
-find a data structure to store them
-get the dot product of them
+Compute the dot product of two large sparse vectors efficiently by
+converting them to index-value pair representations and merging.
+
+Reference: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
+
+Complexity:
+    Time:  O(n) for conversion, O(k) for dot product where k = non-zero count
+    Space: O(k)
 """
 
+from __future__ import annotations
 
-def vector_to_index_value_list(vector):
+
+def vector_to_index_value_list(
+    vector: list[float],
+) -> list[tuple[int, float]]:
+    """Convert a dense vector to a sparse index-value list.
+
+    Args:
+        vector: Dense vector of floats.
+
+    Returns:
+        List of (index, value) tuples for non-zero elements.
+
+    Examples:
+        >>> vector_to_index_value_list([0.0, 2.0, 0.0, 3.0])
+        [(1, 2.0), (3, 3.0)]
+    """
     return [(i, v) for i, v in enumerate(vector) if v != 0.0]
 
 
-def dot_product(iv_list1, iv_list2):
+def dot_product(
+    iv_list1: list[tuple[int, float]],
+    iv_list2: list[tuple[int, float]],
+) -> float:
+    """Compute the dot product of two sparse index-value lists.
 
+    Args:
+        iv_list1: First sparse vector as index-value pairs.
+        iv_list2: Second sparse vector as index-value pairs.
+
+    Returns:
+        Dot product of the two vectors.
+
+    Examples:
+        >>> dot_product([(0, 1.0), (1, 2.0), (2, 3.0)], [(1, 2.0), (2, 2.0)])
+        10.0
+    """
     product = 0
     p1 = len(iv_list1) - 1
     p2 = len(iv_list2) - 1
@@ -33,40 +67,3 @@ def dot_product(iv_list1, iv_list2):
             p2 -= 1
 
     return product
-
-
-def __test_simple():
-    print(dot_product(vector_to_index_value_list([1., 2., 3.]),
-                      vector_to_index_value_list([0., 2., 2.])))
-    # 10
-
-
-def __test_time():
-    vector_length = 1024
-    vector_count = 1024
-    nozero_counut = 10
-
-    def random_vector():
-        import random
-        vector = [0 for _ in range(vector_length)]
-        for i in random.sample(range(vector_length), nozero_counut):
-            vector[i] = random.random()
-        return vector
-
-    vectors = [random_vector() for _ in range(vector_count)]
-    iv_lists = [vector_to_index_value_list(vector) for vector in vectors]
-
-    import time
-
-    time_start = time.time()
-    for i in range(vector_count):
-        for j in range(i):
-            dot_product(iv_lists[i], iv_lists[j])
-    time_end = time.time()
-
-    print(time_end - time_start, 'seconds')
-
-
-if __name__ == '__main__':
-    __test_simple()
-    __test_time()

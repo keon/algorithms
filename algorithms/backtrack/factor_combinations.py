@@ -1,63 +1,70 @@
 """
-Numbers can be regarded as product of its factors. For example,
+Factor Combinations
 
-8 = 2 x 2 x 2;
-  = 2 x 4.
-Write a function that takes an integer n
-and return all possible combinations of its factors.
-
-Note:
-You may assume that n is always positive.
+Given an integer n, return all possible combinations of its factors.
 Factors should be greater than 1 and less than n.
-Examples:
-input: 1
-output:
-[]
-input: 37
-output:
-[]
-input: 12
-output:
-[
-  [2, 6],
-  [2, 2, 3],
-  [3, 4]
-]
-input: 32
-output:
-[
-  [2, 16],
-  [2, 2, 8],
-  [2, 2, 2, 4],
-  [2, 2, 2, 2, 2],
-  [2, 4, 4],
-  [4, 8]
-]
+
+Reference: https://leetcode.com/problems/factor-combinations/
+
+Complexity:
+    Time:  O(n * log(n)) approximate
+    Space: O(log(n)) recursion depth
 """
 
+from __future__ import annotations
 
-# Iterative:
-def get_factors(n):
-    todo, combis = [(n, 2, [])], []
+
+def get_factors(number: int) -> list[list[int]]:
+    """Return all factor combinations of number using iteration.
+
+    Args:
+        number: A positive integer.
+
+    Returns:
+        A list of lists, each containing a valid factorization.
+
+    Examples:
+        >>> get_factors(12)
+        [[2, 6], [2, 2, 3], [3, 4]]
+    """
+    todo: list[tuple[int, int, list[int]]] = [(number, 2, [])]
+    combinations: list[list[int]] = []
     while todo:
-        n, i, combi = todo.pop()
-        while i * i <= n:
-            if n % i == 0:
-                combis.append(combi + [i, n//i])
-                todo.append((n//i, i, combi+[i]))
-            i += 1
-    return combis
+        remaining, divisor, partial = todo.pop()
+        while divisor * divisor <= remaining:
+            if remaining % divisor == 0:
+                combinations.append(partial + [divisor, remaining // divisor])
+                todo.append((remaining // divisor, divisor, partial + [divisor]))
+            divisor += 1
+    return combinations
 
 
-# Recursive:
-def recursive_get_factors(n):
+def recursive_get_factors(number: int) -> list[list[int]]:
+    """Return all factor combinations of number using recursion.
 
-    def factor(n, i, combi, combis):
-        while i * i <= n:
-            if n % i == 0:
-                combis.append(combi + [i, n//i]),
-                factor(n//i, i, combi+[i], combis)
-            i += 1
-        return combis
+    Args:
+        number: A positive integer.
 
-    return factor(n, 2, [], [])
+    Returns:
+        A list of lists, each containing a valid factorization.
+
+    Examples:
+        >>> recursive_get_factors(12)
+        [[2, 6], [2, 2, 3], [3, 4]]
+    """
+
+    def _factor(
+        remaining: int,
+        divisor: int,
+        partial: list[int],
+        combinations: list[list[int]],
+    ) -> list[list[int]]:
+        while divisor * divisor <= remaining:
+            if remaining % divisor == 0:
+                combinations.append(partial + [divisor, remaining // divisor])
+                _factor(remaining // divisor, divisor, partial + [divisor],
+                        combinations)
+            divisor += 1
+        return combinations
+
+    return _factor(number, 2, [], [])

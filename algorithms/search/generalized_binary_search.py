@@ -1,50 +1,51 @@
 """
 Generalized Binary Search
 
-This module provides a generalized binary search implementation that
-operates over a numeric range using a monotonic boolean predicate.
+Find the smallest value in a numeric range for which a monotonic boolean
+predicate evaluates to True.  Instead of searching for a specific value in
+an array, this version accepts an arbitrary predicate, allowing the same
+binary search logic to be reused across many problem domains.
 
-Instead of searching for a specific value in an array, this version
-returns the smallest value in a given range for which the predicate
-function evaluates to True.
+Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
 
-This abstraction allows the same binary search logic to be reused
-across multiple problem domains.
+Complexity:
+    Time:  O(log n)
+    Space: O(1)
 """
 
-from typing import Callable, Optional
+from __future__ import annotations
+
+from collections.abc import Callable
 
 
 def binary_search_first_true(
     low: int,
     high: int,
-    predicate: Callable[[int], bool]
-) -> Optional[int]:
-    """
-    Finds the smallest value x in the range [low, high] such that
-    predicate(x) returns True.
+    predicate: Callable[[int], bool],
+) -> int:
+    """Find the smallest *x* in [low, high] where *predicate(x)* is True.
 
-    Assumptions:
-        The predicate function must be monotonic:
-        False False False True True True
-
-    Time Complexity:
-        O(log N)
-
-    Space Complexity:
-        O(1)
+    The predicate must be monotonic: once it returns True for some value,
+    it must return True for all larger values in the range.
 
     Args:
-        low (int): Lower bound of the search range (inclusive)
-        high (int): Upper bound of the search range (inclusive)
-        predicate (Callable[[int], bool]): A monotonic boolean function
+        low: Lower bound of the search range (inclusive).
+        high: Upper bound of the search range (inclusive).
+        predicate: A monotonic boolean function.
 
     Returns:
-        Optional[int]: The smallest x for which predicate(x) is True,
-                       or None if no such value exists in the range.
-    """
+        The smallest *x* for which *predicate(x)* is True, or -1 if no
+        such value exists in the range.
 
-    result = None
+    Examples:
+        >>> binary_search_first_true(0, 10, lambda x: x >= 7)
+        7
+        >>> binary_search_first_true(0, 10, lambda x: x * x >= 25)
+        5
+        >>> binary_search_first_true(0, 5, lambda x: x > 10)
+        -1
+    """
+    result = -1
 
     while low <= high:
         mid = low + (high - low) // 2
@@ -58,16 +59,7 @@ def binary_search_first_true(
     return result
 
 
-# -----------------------------
-# Example Use Cases
-# -----------------------------
-
 if __name__ == "__main__":
-    # Example 1: Find smallest x such that x >= 7
-    print(binary_search_first_true(0, 10, lambda x: x >= 7))  # Output: 7
-
-    # Example 2: Find smallest x such that x^2 >= 25
-    print(binary_search_first_true(0, 10, lambda x: x * x >= 25))  # Output: 5
-
-    # Example 3: No value satisfies the predicate
-    print(binary_search_first_true(0, 5, lambda x: x > 10))  # Output: None
+    print(binary_search_first_true(0, 10, lambda x: x >= 7))       # 7
+    print(binary_search_first_true(0, 10, lambda x: x * x >= 25))  # 5
+    print(binary_search_first_true(0, 5, lambda x: x > 10))        # -1

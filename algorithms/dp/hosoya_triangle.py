@@ -1,32 +1,36 @@
 """
-Hosoya triangle (originally Fibonacci triangle) is a triangular arrangement
-of numbers, where if you take any number it is the sum of 2 numbers above.
-First line is always 1, and second line is always {1     1}.
+Hosoya Triangle
 
-This printHosoya function takes argument n which is the height of the triangle
-(number of lines).
+The Hosoya triangle (originally Fibonacci triangle) is a triangular arrangement
+of numbers where each entry is the sum of two entries above it.
 
-For example:
-printHosoya( 6 ) would return:
-1
-1 1
-2 1 2
-3 2 2 3
-5 3 4 3 5
-8 5 6 6 5 8
+Reference: https://en.wikipedia.org/wiki/Hosoya%27s_triangle
 
-The complexity is O(n^3).
-
+Complexity:
+    Time:  O(n^3)  (naive recursive per entry)
+    Space: O(n)    (call stack depth)
 """
 
-def hosoya(height, width):
-    """ Calculates the hosoya triangle
+from __future__ import annotations
 
-    height -- height of the triangle
+
+def hosoya(height: int, width: int) -> int:
+    """Compute a single entry in the Hosoya triangle.
+
+    Args:
+        height: Row index (0-based).
+        width: Column index (0-based).
+
+    Returns:
+        The value at position (height, width) in the Hosoya triangle.
+
+    Examples:
+        >>> hosoya(4, 2)
+        4
     """
-    if (width == 0) and (height in (0,1)):
+    if (width == 0) and (height in (0, 1)):
         return 1
-    if (width == 1) and (height in (1,2)):
+    if (width == 1) and (height in (1, 2)):
         return 1
     if height > width:
         return hosoya(height - 1, width) + hosoya(height - 2, width)
@@ -34,20 +38,19 @@ def hosoya(height, width):
         return hosoya(height - 1, width - 1) + hosoya(height - 2, width - 2)
     return 0
 
-def print_hosoya(height):
-    """Prints the hosoya triangle
 
-    height -- height of the triangle
-    """
-    for i in range(height):
-        for j in range(i + 1):
-            print(hosoya(i, j) , end = " ")
-        print ("\n", end = "")
+def hosoya_testing(height: int) -> list[int]:
+    """Generate a flat list of all Hosoya triangle values up to given height.
 
-def hosoya_testing(height):
-    """Test hosoya function
+    Args:
+        height: Number of rows to generate.
 
-    height -- height of the triangle
+    Returns:
+        Flat list of triangle values row by row.
+
+    Examples:
+        >>> hosoya_testing(1)
+        [1]
     """
     res = []
     for i in range(height):

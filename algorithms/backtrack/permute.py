@@ -1,36 +1,54 @@
 """
-Given a collection of distinct numbers, return all possible permutations.
+Permutations
 
-For example,
-[1,2,3] have the following permutations:
-[
-  [1,2,3],
-  [1,3,2],
-  [2,1,3],
-  [2,3,1],
-  [3,1,2],
-  [3,2,1]
-]
+Given a collection of distinct elements, return all possible permutations.
+
+Reference: https://en.wikipedia.org/wiki/Permutation
+
+Complexity:
+    Time:  O(n * n!) where n is the number of elements
+    Space: O(n * n!) to store all permutations
 """
 
+from __future__ import annotations
 
-def permute(elements):
-    """
-        returns a list with the permuations.
+from typing import Generator
+
+
+def permute(elements: list | str) -> list:
+    """Return all permutations of the given elements.
+
+    Args:
+        elements: A list or string of distinct elements.
+
+    Returns:
+        A list of all permutations (same type as input elements).
+
+    Examples:
+        >>> permute([1, 2, 3])
+        [[1, 2, 3], [2, 1, 3], [2, 3, 1], [1, 3, 2], [3, 1, 2], [3, 2, 1]]
     """
     if len(elements) <= 1:
         return [elements]
-    else:
-        tmp = []
-        for perm in permute(elements[1:]):
-            for i in range(len(elements)):
-                tmp.append(perm[:i] + elements[0:1] + perm[i:])
-        return tmp
+    result = []
+    for perm in permute(elements[1:]):
+        for i in range(len(elements)):
+            result.append(perm[:i] + elements[0:1] + perm[i:])
+    return result
 
 
-def permute_iter(elements):
-    """
-        iterator: returns a perumation by each call.
+def permute_iter(elements: list | str) -> Generator:
+    """Yield all permutations of the given elements one at a time.
+
+    Args:
+        elements: A list or string of distinct elements.
+
+    Yields:
+        One permutation at a time (same type as input elements).
+
+    Examples:
+        >>> list(permute_iter([1, 2]))
+        [[1, 2], [2, 1]]
     """
     if len(elements) <= 1:
         yield elements
@@ -40,15 +58,31 @@ def permute_iter(elements):
                 yield perm[:i] + elements[0:1] + perm[i:]
 
 
-# DFS Version
-def permute_recursive(nums):
-    def dfs(res, nums, path):
-        if not nums:
-            res.append(path)
-        for i in range(len(nums)):
-            print(nums[:i]+nums[i+1:])
-            dfs(res, nums[:i]+nums[i+1:], path+[nums[i]])
+def permute_recursive(nums: list[int]) -> list[list[int]]:
+    """Return all permutations using DFS backtracking.
 
-    res = []
-    dfs(res, nums, [])
-    return res
+    Args:
+        nums: A list of distinct integers.
+
+    Returns:
+        A list of all permutations.
+
+    Examples:
+        >>> sorted(permute_recursive([1, 2]))
+        [[1, 2], [2, 1]]
+    """
+    result: list[list[int]] = []
+    _dfs(result, nums, [])
+    return result
+
+
+def _dfs(
+    result: list[list[int]],
+    nums: list[int],
+    path: list[int],
+) -> None:
+    """DFS helper that builds permutations by choosing remaining elements."""
+    if not nums:
+        result.append(path)
+    for i in range(len(nums)):
+        _dfs(result, nums[:i] + nums[i + 1:], path + [nums[i]])

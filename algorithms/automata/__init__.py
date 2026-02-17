@@ -1,1 +1,5 @@
-from .dfa import *
+from .dfa import DFA
+
+__all__ = [
+    "DFA",
+]

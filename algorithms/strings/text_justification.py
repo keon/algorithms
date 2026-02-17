@@ -1,89 +1,87 @@
 """
-Given an array of words and a width maxWidth, format the text such that each line
-has exactly maxWidth characters and is fully (left and right) justified.
+Text Justification
 
-You should pack your words in a greedy approach; that is, pack as many words as
-you can in each line. Pad extra spaces ' ' when necessary so that each line has
-exactly maxWidth characters.
+Given an array of words and a max width, format the text such that each line
+has exactly max_width characters and is fully justified. Extra spaces are
+distributed as evenly as possible with left slots getting more.
 
-Extra spaces between words should be distributed as evenly as possible. If the
-number of spaces on a line do not divide evenly between words, the empty slots
-on the left will be assigned more spaces than the slots on the right.
+Reference: https://leetcode.com/problems/text-justification/
 
-For the last line of text, it should be left justified and no extra space is
-inserted between words.
-
-Note:
-A word is defined as a character sequence consisting of non-space characters only.
-Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
-The input array words contains at least one word.
-
-Example:
-Input:
-words = ["What","must","be","acknowledgment","shall","be"]
-maxWidth = 16
-Output:
-[
-  "What   must   be",
-  "acknowledgment  ",
-  "shall be        "
-]
+Complexity:
+    Time:  O(n) where n is the total number of characters
+    Space: O(n)
 """
 
+from __future__ import annotations
 
-def text_justification(words, max_width):
-    '''
-    :type words: list
-    :type max_width: int
-    :rtype: list
-    '''
-    ret = []  # return value
-    row_len = 0  # current length of strs in a row
-    row_words = []  # current words in a row
-    index = 0  # the index of current word in words
-    is_first_word = True  # is current word the first in a row
+
+def text_justification(words: list[str], max_width: int) -> list[str]:
+    """Justify text to a fixed width with evenly distributed spaces.
+
+    Args:
+        words: A list of words to justify.
+        max_width: The maximum width of each line.
+
+    Returns:
+        A list of fully justified strings.
+
+    Raises:
+        ValueError: If any word is longer than max_width.
+
+    Examples:
+        >>> text_justification(["What", "must", "be"], 16)
+        ['What   must   be']
+    """
+    result: list[str] = []
+    row_length = 0
+    row_words: list[str] = []
+    index = 0
+    is_first_word = True
+
     while index < len(words):
-        while row_len <= max_width and index < len(words):
+        while row_length <= max_width and index < len(words):
             if len(words[index]) > max_width:
-                raise ValueError("there exists word whose length is larger than max_width")
-            tmp = row_len
+                raise ValueError(
+                    "there exists word whose length is larger than max_width"
+                )
+            tentative_length = row_length
             row_words.append(words[index])
-            tmp += len(words[index])
+            tentative_length += len(words[index])
             if not is_first_word:
-                tmp += 1  # except for the first word, each word should have at least a ' ' before it.
-            if tmp > max_width:
+                tentative_length += 1
+            if tentative_length > max_width:
                 row_words.pop()
                 break
-            row_len = tmp
+            row_length = tentative_length
             index += 1
             is_first_word = False
-        # here we have already got a row of str , then we should supplement enough ' ' to make sure the length is max_width.
+
         row = ""
-        # if the row is the last
         if index == len(words):
             for word in row_words:
                 row += (word + ' ')
             row = row[:-1]
             row += ' ' * (max_width - len(row))
-        # not the last row and more than one word
         elif len(row_words) != 1:
-            space_num = max_width - row_len
-            space_num_of_each_interval = space_num // (len(row_words) - 1)
-            space_num_rest = space_num - space_num_of_each_interval * (len(row_words) - 1)
-            for j in range(len(row_words)):
-                row += row_words[j]
-                if j != len(row_words) - 1:
-                    row += ' ' * (1 + space_num_of_each_interval)
-                if space_num_rest > 0:
+            extra_spaces = max_width - row_length
+            spaces_per_gap = extra_spaces // (len(row_words) - 1)
+            remaining_spaces = (
+                extra_spaces - spaces_per_gap * (len(row_words) - 1)
+            )
+            for word_index in range(len(row_words)):
+                row += row_words[word_index]
+                if word_index != len(row_words) - 1:
+                    row += ' ' * (1 + spaces_per_gap)
+                if remaining_spaces > 0:
                     row += ' '
-                    space_num_rest -= 1
-        # row with only one word
+                    remaining_spaces -= 1
         else:
             row += row_words[0]
             row += ' ' * (max_width - len(row))
-        ret.append(row)
-        # after a row , reset those value
-        row_len = 0
+
+        result.append(row)
+        row_length = 0
         row_words = []
         is_first_word = True
-    return ret
+
+    return result

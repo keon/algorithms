@@ -1,30 +1,56 @@
-""" Design an algorithm to encode a list of strings to a string.
- The encoded mystring is then sent over the network and is decoded
- back to the original list of strings.
+"""
+Encode and Decode Strings
+
+Design an algorithm to encode a list of strings to a single string, and
+decode it back to the original list of strings.
+
+Reference: https://leetcode.com/problems/encode-and-decode-strings/
+
+Complexity:
+    Time:  O(n) for both encode and decode
+    Space: O(n)
 """
 
-# Implement the encode and decode methods.
+from __future__ import annotations
 
-def encode(strs):
-    """Encodes a list of strings to a single string.
-    :type strs: List[str]
-    :rtype: str
-    """
-    res = ''
-    for string in strs.split():
-        res += str(len(string)) + ":" + string
-    return res
 
-def decode(s):
-    """Decodes a single string to a list of strings.
-    :type s: str
-    :rtype: List[str]
+def encode(strs: str) -> str:
+    """Encode a space-separated string into a length-prefixed format.
+
+    Args:
+        strs: A space-separated string of words.
+
+    Returns:
+        A single encoded string with length-prefixed words.
+
+    Examples:
+        >>> encode("keon is awesome")
+        '4:keon2:is7:awesome'
     """
-    strs = []
-    i = 0
-    while i < len(s):
-        index = s.find(":", i)
-        size = int(s[i:index])
-        strs.append(s[index+1: index+1+size])
-        i = index+1+size
-    return strs
+    result = ''
+    for word in strs.split():
+        result += str(len(word)) + ":" + word
+    return result
+
+
+def decode(text: str) -> list[str]:
+    """Decode a length-prefixed string back into a list of strings.
+
+    Args:
+        text: The encoded string with length-prefixed words.
+
+    Returns:
+        A list of the original decoded strings.
+
+    Examples:
+        >>> decode("4:keon2:is7:awesome")
+        ['keon', 'is', 'awesome']
+    """
+    words: list[str] = []
+    index = 0
+    while index < len(text):
+        colon_index = text.find(":", index)
+        size = int(text[index:colon_index])
+        words.append(text[colon_index + 1: colon_index + 1 + size])
+        index = colon_index + 1 + size
+    return words

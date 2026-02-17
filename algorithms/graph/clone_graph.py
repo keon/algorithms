@@ -1,70 +1,63 @@
-r"""
-Clone an undirected graph. Each node in the graph contains a label and a list
-of its neighbors.
-
-
-OJ's undirected graph serialization:
-Nodes are labeled uniquely.
-
-We use # as a separator for each node, and , as a separator for node label and
-each neighbor of the node.
-As an example, consider the serialized graph {0,1,2#1,2#2,2}.
-
-The graph has a total of three nodes, and therefore contains three parts as
-separated by #.
-
-First node is labeled as 0. Connect node 0 to both nodes 1 and 2.
-Second node is labeled as 1. Connect node 1 to node 2.
-Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming a
-self-cycle.
-Visually, the graph looks like the following:
-
-       1
-      / \
-     /   \
-    0 --- 2
-         / \
-         \_/
 """
+Clone an Undirected Graph
+
+Each node contains a label and a list of its neighbours.  Three strategies
+are provided: BFS-based, iterative DFS, and recursive DFS.
+
+Reference: https://leetcode.com/problems/clone-graph/
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V)
+"""
+
+from __future__ import annotations
+
 import collections
 
 
 class UndirectedGraphNode:
-    """
-    A node in an undirected graph. Contains a label and a list of neighbouring
-    nodes (initially empty).
-    """
+    """A node in an undirected graph."""
 
-    def __init__(self, label):
+    def __init__(self, label: int) -> None:
         self.label = label
-        self.neighbors = []
+        self.neighbors: list[UndirectedGraphNode] = []
 
-    def shallow_copy(self):
-        """
-        Return a shallow copy of this node (ignoring any neighbors)
+    def shallow_copy(self) -> UndirectedGraphNode:
+        """Return a copy of this node without neighbours.
+
+        Returns:
+            A new node with the same label.
         """
         return UndirectedGraphNode(self.label)
 
-    def add_neighbor(self, node):
-        """
-        Adds a new neighbor
+    def add_neighbor(self, node: UndirectedGraphNode) -> None:
+        """Append *node* to the neighbour list.
+
+        Args:
+            node: Neighbour to add.
         """
         self.neighbors.append(node)
 
 
-def clone_graph1(node):
-    """
-    Returns a new graph as seen from the given node using a breadth first search (BFS).
+def clone_graph1(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None:
+    """Clone a graph using BFS.
+
+    Args:
+        node: Any node in the original graph.
+
+    Returns:
+        The corresponding node in the cloned graph, or None.
     """
     if not node:
         return None
     node_copy = node.shallow_copy()
-    dic = {node: node_copy}
-    queue = collections.deque([node])
+    dic: dict[UndirectedGraphNode, UndirectedGraphNode] = {node: node_copy}
+    queue: collections.deque[UndirectedGraphNode] = collections.deque([node])
     while queue:
         node = queue.popleft()
         for neighbor in node.neighbors:
-            if neighbor not in dic:  # neighbor is not visited
+            if neighbor not in dic:
                 neighbor_copy = neighbor.shallow_copy()
                 dic[neighbor] = neighbor_copy
                 dic[node].add_neighbor(neighbor_copy)
@@ -74,14 +67,19 @@ def clone_graph1(node):
     return node_copy
 
 
-def clone_graph2(node):
-    """
-    Returns a new graph as seen from the given node using an iterative depth first search (DFS).
+def clone_graph2(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None:
+    """Clone a graph using iterative DFS.
+
+    Args:
+        node: Any node in the original graph.
+
+    Returns:
+        The corresponding node in the cloned graph, or None.
     """
     if not node:
         return None
     node_copy = node.shallow_copy()
-    dic = {node: node_copy}
+    dic: dict[UndirectedGraphNode, UndirectedGraphNode] = {node: node_copy}
     stack = [node]
     while stack:
         node = stack.pop()
@@ -96,28 +94,38 @@ def clone_graph2(node):
     return node_copy
 
 
-def clone_graph(node):
-    """
-    Returns a new graph as seen from the given node using a recursive depth first search (DFS).
+def clone_graph(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None:
+    """Clone a graph using recursive DFS.
+
+    Args:
+        node: Any node in the original graph.
+
+    Returns:
+        The corresponding node in the cloned graph, or None.
     """
     if not node:
         return None
     node_copy = node.shallow_copy()
-    dic = {node: node_copy}
-    dfs(node, dic)
+    dic: dict[UndirectedGraphNode, UndirectedGraphNode] = {node: node_copy}
+    _dfs(node, dic)
     return node_copy
 
 
-def dfs(node, dic):
-    """
-    Clones a graph using a recursive depth first search. Stores the clones in
-    the dictionary, keyed by the original nodes.
+def _dfs(
+    node: UndirectedGraphNode,
+    dic: dict[UndirectedGraphNode, UndirectedGraphNode],
+) -> None:
+    """Recursively clone neighbours into *dic*.
+
+    Args:
+        node: Current node being cloned.
+        dic: Mapping from original nodes to their clones.
     """
     for neighbor in node.neighbors:
         if neighbor not in dic:
             neighbor_copy = neighbor.shallow_copy()
             dic[neighbor] = neighbor_copy
             dic[node].add_neighbor(neighbor_copy)
-            dfs(neighbor, dic)
+            _dfs(neighbor, dic)
         else:
             dic[node].add_neighbor(dic[neighbor])

@@ -1,32 +1,42 @@
+"""
+Bogo Sort
+
+Bogo sort repeatedly shuffles the array at random until it happens to be
+sorted.  It is extremely inefficient and used only for educational purposes.
+
+Reference: https://en.wikipedia.org/wiki/Bogosort
+
+Complexity:
+    Time:  O(n) best / O(n * n!) average / O(infinity) worst
+    Space: O(1)
+"""
+
+from __future__ import annotations
+
 import random
 
-def bogo_sort(arr, simulation=False):
-    """Bogo Sort
-        Best Case Complexity: O(n)
-        Worst Case Complexity: O(∞)
-        Average Case Complexity: O(n(n-1)!)
-    """
-    
-    iteration = 0
-    if simulation:
-        print("iteration",iteration,":",*arr)
-    
-    def is_sorted(arr):
-        #check the array is inorder
-        i = 0
-        arr_len = len(arr)
-        while i+1 < arr_len:
-            if arr[i] > arr[i+1]:
-                return False
-            i += 1
-            
 
-        return True
-    while not is_sorted(arr):
-        random.shuffle(arr)
-        
-        if simulation:
-            iteration = iteration + 1
-            print("iteration",iteration,":",*arr)
-            
-    return arr
+def bogo_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using bogo sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> bogo_sort([3, 1, 2])
+        [1, 2, 3]
+    """
+    while not _is_sorted(array):
+        random.shuffle(array)
+    return array
+
+
+def _is_sorted(array: list[int]) -> bool:
+    """Return True if *array* is in non-decreasing order."""
+    for i in range(len(array) - 1):
+        if array[i] > array[i + 1]:
+            return False
+    return True

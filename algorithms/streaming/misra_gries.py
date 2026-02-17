@@ -1,60 +1,70 @@
-
 """
-Implementation of the Misra-Gries algorithm.
-Given a list of items and a value k, it returns the every item in the list
-that appears at least n/k times, where n is the length of the array
+Misra-Gries Frequency Estimation
 
-By default, k is set to 2, solving the majority problem.
+Given a list of items and a value k, returns every item that appears at least
+n/k times, where n is the length of the list. Defaults to k=2 (majority
+problem).
 
-For the majority problem, this algorithm only guarantees that if there is
-an element that appears more than n/2 times, it will be outputed. If there
-is no such element, any arbitrary element is returned by the algorithm.
-Therefore, we need to iterate through again at the end. But since we have filtred
-out the suspects, the memory complexity is significantly lower than
-it would be to create counter for every element in the list.
+Reference: https://en.wikipedia.org/wiki/Misra%E2%80%93Gries_summary
 
-For example:
-Input misras_gries([1,4,4,4,5,4,4])
-Output {'4':5}
-Input misras_gries([0,0,0,1,1,1,1])
-Output {'1':4}
-Input misras_gries([0,0,0,0,1,1,1,2,2],3)
-Output {'0':4,'1':3}
-Input misras_gries([0,0,0,1,1,1]
-Output None
+Complexity:
+    Time:  O(n * k)
+    Space: O(k)
 """
 
-def misras_gries(array,k=2):
-    """Misra-Gries algorithm
+from __future__ import annotations
 
-    Keyword arguments:
-    array -- list of integers
-    k -- value of k (default 2)
+
+def misras_gries(array: list[int], k: int = 2) -> dict[str, int] | None:
+    """Find all elements appearing at least n/k times.
+
+    Args:
+        array: A list of integers.
+        k: The frequency threshold divisor (default 2).
+
+    Returns:
+        A dict mapping element (as string) to its frequency, or None
+        if no element meets the threshold.
+
+    Examples:
+        >>> misras_gries([1, 4, 4, 4, 5, 4, 4])
+        {'4': 5}
+        >>> misras_gries([0, 0, 0, 1, 1, 1, 1])
+        {'1': 4}
+        >>> misras_gries([0, 0, 0, 0, 1, 1, 1, 2, 2], 3)
+        {'0': 4, '1': 3}
     """
-    keys = {}
-    for i in array:
-        val = str(i)
+    keys: dict[str, int] = {}
+    for item in array:
+        val = str(item)
         if val in keys:
-            keys[val] = keys[val] + 1
-
+            keys[val] += 1
         elif len(keys) < k - 1:
             keys[val] = 1
-
         else:
             for key in list(keys):
-                keys[key] = keys[key] - 1
+                keys[key] -= 1
                 if keys[key] == 0:
                     del keys[key]
 
-    suspects =  keys.keys()
-    frequencies = {}
+    suspects = keys.keys()
+    frequencies: dict[str, int] = {}
     for suspect in suspects:
-        freq = _count_frequency(array,int(suspect))
+        freq = _count_frequency(array, int(suspect))
         if freq >= len(array) / k:
             frequencies[suspect] = freq
 
-    return frequencies if len(frequencies) > 0 else None
+    return frequencies if frequencies else None
 
 
-def _count_frequency(array,element):
+def _count_frequency(array: list[int], element: int) -> int:
+    """Count occurrences of element in array.
+
+    Args:
+        array: The list to search.
+        element: The value to count.
+
+    Returns:
+        The number of occurrences.
+    """
     return array.count(element)

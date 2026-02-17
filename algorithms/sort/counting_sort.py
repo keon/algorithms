@@ -1,36 +1,50 @@
-def counting_sort(arr):
+"""
+Counting Sort
+
+Counting sort counts the occurrences of each value and uses cumulative
+counts to place each element in its correct position.  It supports
+negative integers by shifting values internally.
+
+Reference: https://en.wikipedia.org/wiki/Counting_sort
+
+Complexity:
+    Time:  O(n + k) best / O(n + k) average / O(n + k) worst
+    Space: O(n + k)   where k is the range of input values
+"""
+
+from __future__ import annotations
+
+
+def counting_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using counting sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> counting_sort([3, 1, 2])
+        [1, 2, 3]
     """
-    Counting_sort
-    Sorting a array which has no element greater than k
-    Creating a new temp_arr,where temp_arr[i] contain the number of
-    element less than or equal to i in the arr
-    Then placing the number i into a correct position in the result_arr
-    return the result_arr
-    Complexity: 0(n)
-    """
+    min_value = min(array)
+    offset = -min_value if min_value < 0 else 0
 
-    m = min(arr)
-    # in case there are negative elements, change the array to all positive element
-    different = 0
-    if m < 0:
-        # save the change, so that we can convert the array back to all positive number
-        different = -m
-        for i in range(len(arr)):
-            arr[i] += -m
-    k = max(arr)
-    temp_arr = [0] * (k + 1)
-    for i in range(0, len(arr)):
-        temp_arr[arr[i]] = temp_arr[arr[i]] + 1
-    # temp_array[i] contain the times the number i appear in arr
+    shifted = [v + offset for v in array]
+    max_value = max(shifted)
 
-    for i in range(1, k + 1):
-        temp_arr[i] = temp_arr[i] + temp_arr[i - 1]
-    # temp_array[i] contain the number of element less than or equal i in arr
+    counts = [0] * (max_value + 1)
+    for value in shifted:
+        counts[value] += 1
 
-    result_arr = arr.copy()
-    # creating a result_arr an put the element in a correct positon
-    for i in range(len(arr) - 1, -1, -1):
-        result_arr[temp_arr[arr[i]] - 1] = arr[i] - different
-        temp_arr[arr[i]] = temp_arr[arr[i]] - 1
+    # Build cumulative counts
+    for i in range(1, max_value + 1):
+        counts[i] += counts[i - 1]
 
-    return result_arr
+    result = [0] * len(array)
+    for i in range(len(array) - 1, -1, -1):
+        value = shifted[i]
+        counts[value] -= 1
+        result[counts[value]] = value - offset
+    return result

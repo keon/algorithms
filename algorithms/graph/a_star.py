@@ -3,24 +3,44 @@ A* (A-star) Search Algorithm
 
 Finds the shortest path in a weighted graph using a heuristic function.
 
-Wikipedia reference: https://en.wikipedia.org/wiki/A*_search_algorithm
+Reference: https://en.wikipedia.org/wiki/A*_search_algorithm
+
+Complexity:
+    Time:  O(E log V) with a binary heap
+    Space: O(V)
 """
 
+from __future__ import annotations
+
 import heapq
+from typing import Any, Callable
 
-def a_star(graph, start, goal, h):
-    """
-    Performs A* search on a graph.
 
-    :param graph: dict mapping node -> list of (neighbor, cost) pairs
-    :param start: starting node
-    :param goal: goal node
-    :param h: heuristic function h(node) -> estimated cost to goal
-    :return: tuple (path, total_cost)
+def a_star(
+    graph: dict[Any, list[tuple[Any, float]]],
+    start: Any,
+    goal: Any,
+    h: Callable[[Any], float],
+) -> tuple[list[Any] | None, float]:
+    """Find the shortest path using A* search.
+
+    Args:
+        graph: Adjacency list mapping node to list of (neighbor, cost) pairs.
+        start: Starting node.
+        goal: Goal node.
+        h: Heuristic function estimating cost from a node to the goal.
+
+    Returns:
+        A tuple (path, total_cost). If no path exists, returns (None, inf).
+
+    Examples:
+        >>> g = {'A': [('B', 1)], 'B': [('C', 2)], 'C': []}
+        >>> a_star(g, 'A', 'C', lambda n: 0)
+        (['A', 'B', 'C'], 3)
     """
-    open_set = []
-    heapq.heappush(open_set, (h(start), 0, start, [start]))  # (f_score, g_score, node, path)
-    visited = set()
+    open_set: list[tuple[float, float, Any, list[Any]]] = []
+    heapq.heappush(open_set, (h(start), 0, start, [start]))
+    visited: set[Any] = set()
 
     while open_set:
         f_score, g_score, current, path = heapq.heappop(open_set)
@@ -38,26 +58,3 @@ def a_star(graph, start, goal, h):
                 heapq.heappush(open_set, (f, g, neighbor, path + [neighbor]))
 
     return None, float("inf")
-
-
-if __name__ == "__main__":
-    # Example graph as adjacency list with weights
-    graph = {
-        "A": [("B", 1), ("C", 3)],
-        "B": [("A", 1), ("D", 2)],
-        "C": [("A", 3), ("D", 1)],
-        "D": [("B", 2), ("C", 1), ("E", 5)],
-        "E": [("D", 5)]
-    }
-
-    # Simple heuristic: straight-line distance (example)
-    h = lambda node: {
-        "A": 7,
-        "B": 6,
-        "C": 2,
-        "D": 1,
-        "E": 0
-    }[node]
-
-    path, cost = a_star(graph, "A", "E", h)
-    print(f"Shortest path: {path}, Total cost: {cost}")

@@ -1,14 +1,32 @@
 """
-Given a linked list, is_sort function returns true if the list is in sorted
-(increasing) order and return false otherwise. An empty list is considered
-to be sorted.
+Is Sorted Linked List
 
-For example:
-Null :List is sorted
-1 2 3 4 :List is sorted
-1 2 -1 3 :List is not sorted
+Given a linked list, determine whether the list is sorted in non-decreasing
+order. An empty list is considered sorted.
+
+Reference: https://en.wikipedia.org/wiki/Linked_list
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
-def is_sorted(head):
+
+from __future__ import annotations
+
+
+def is_sorted(head: object | None) -> bool:
+    """Check if a linked list is sorted in non-decreasing order.
+
+    Args:
+        head: Head node of the linked list (must have .val and .next attrs).
+
+    Returns:
+        True if the list is sorted or empty, False otherwise.
+
+    Examples:
+        >>> is_sorted(None)
+        True
+    """
     if not head:
         return True
     current = head

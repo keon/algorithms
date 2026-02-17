@@ -1,46 +1,33 @@
 """
-Given positive integer decompose, find an algorithm to find the number of
-non-negative number division, or decomposition.
+Integer Partition
 
-The complexity is O(n^2).
+Count the number of ways a positive integer can be represented as a sum
+of positive integers (order does not matter).
 
-Example 1:
-Input: 4
-Output: 5
-Explaination:
-4=4
-4=3+1
-4=2+2
-4=2+1+1
-4=1+1+1+1
+Reference: https://en.wikipedia.org/wiki/Partition_(number_theory)
 
-Example :
-Input: 7
-Output: 15
-Explaination:
-7=7
-7=6+1
-7=5+2
-7=5+1+1
-7=4+3
-7=4+2+1
-7=4+1+1+1
-7=3+3+1
-7=3+2+2
-7=3+2+1+1
-7=3+1+1+1+1
-7=2+2+2+1
-7=2+2+1+1+1
-7=2+1+1+1+1+1
-7=1+1+1+1+1+1+1
-
+Complexity:
+    Time:  O(n^2)
+    Space: O(n^2)
 """
 
+from __future__ import annotations
 
-def int_divide(decompose):
-    """Find number of decompositions from `decompose`
 
-    decompose -- integer
+def int_divide(decompose: int) -> int:
+    """Count the number of partitions of a positive integer.
+
+    Args:
+        decompose: The positive integer to partition.
+
+    Returns:
+        Number of distinct partitions.
+
+    Examples:
+        >>> int_divide(4)
+        5
+        >>> int_divide(7)
+        15
     """
     arr = [[0 for i in range(decompose + 1)] for j in range(decompose + 1)]
     arr[1][1] = 1

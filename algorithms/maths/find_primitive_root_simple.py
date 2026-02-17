@@ -1,40 +1,51 @@
 """
-Function to find the primitive root of a number.
+Primitive Root Finder
+
+Find all primitive roots of a positive integer n. A primitive root modulo n
+is an integer whose multiplicative order modulo n equals Euler's totient
+of n.
+
+Reference: https://en.wikipedia.org/wiki/Primitive_root_modulo_n
+
+Complexity:
+    Time:  O(n^2 log n)
+    Space: O(n)
 """
+
+from __future__ import annotations
+
 import math
 
-"""
-For positive integer n and given integer a that satisfies gcd(a, n) = 1,
-the order of a modulo n is the smallest positive integer k that satisfies
-pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
-Order of certain number may or may not be exist. If so, return -1.
-"""
-def find_order(a, n):
-    """
-    Find order for positive integer n and given integer a that satisfies gcd(a, n) = 1.
-    Time complexity O(nlog(n))
+
+def _find_order(a: int, n: int) -> int:
+    """Find the multiplicative order of a modulo n.
+
+    Args:
+        a: The base integer.
+        n: The modulus.
+
+    Returns:
+        The smallest positive k where a^k = 1 (mod n), or -1 if none exists.
     """
     if (a == 1) & (n == 1):
-        # Exception Handeling : 1 is the order of of 1
         return 1
     if math.gcd(a, n) != 1:
-        print ("a and n should be relative prime!")
         return -1
     for i in range(1, n):
         if pow(a, i) % n == 1:
             return i
     return -1
 
-"""
-Euler's totient function, also known as phi-function ϕ(n),
-counts the number of integers between 1 and n inclusive,
-which are coprime to n.
-(Two numbers are coprime if their greatest common divisor (GCD) equals 1).
-Code from /algorithms/maths/euler_totient.py, written by 'goswami-rahul'
-"""
-def euler_totient(n):
-    """Euler's totient function or Phi function.
-    Time Complexity: O(sqrt(n))."""
+
+def _euler_totient(n: int) -> int:
+    """Compute Euler's totient function phi(n).
+
+    Args:
+        n: A positive integer.
+
+    Returns:
+        The count of integers in [1, n] coprime to n.
+    """
     result = n
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
@@ -45,23 +56,30 @@ def euler_totient(n):
         result -= result // n
     return result
 
-"""
-For positive integer n and given integer a that satisfies gcd(a, n) = 1,
-a is the primitive root of n, if a's order k for n satisfies k = ϕ(n).
-Primitive roots of certain number may or may not exist.
-If so, return empty list.
-"""
-def find_primitive_root(n):
+
+def find_primitive_root(n: int) -> list[int]:
+    """Find all primitive roots of n.
+
+    Args:
+        n: A positive integer.
+
+    Returns:
+        List of all primitive roots of n. Returns [0] for n=1, or an
+        empty list if no primitive roots exist.
+
+    Examples:
+        >>> find_primitive_root(5)
+        [2, 3]
+        >>> find_primitive_root(1)
+        [0]
+    """
     if n == 1:
-        # Exception Handeling : 0 is the only primitive root of 1
         return [0]
-    phi = euler_totient(n)
+    phi = _euler_totient(n)
     p_root_list = []
-    """ It will return every primitive roots of n. """
-    for i in range (1, n):
-        #To have order, a and n must be relative prime with each other.
+    for i in range(1, n):
         if math.gcd(i, n) == 1:
-            order = find_order(i, n)
+            order = _find_order(i, n)
             if order == phi:
                 p_root_list.append(i)
     return p_root_list

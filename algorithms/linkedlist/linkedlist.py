@@ -1,24 +1,42 @@
-# Pros
-# Linked Lists have constant-time insertions and deletions in any position,
-# in comparison, arrays require O(n) time to do the same thing.
-# Linked lists can continue to expand without having to specify
-# their size ahead of time (remember our lectures on Array sizing
-# from the Array Sequence section of the course!)
+"""
+Linked List Node Definitions
 
-# Cons
-# To access an element in a linked list, you need to take O(k) time
-# to go from the head of the list to the kth element.
-# In contrast, arrays have constant time operations to access
-# elements in an array.
+Basic node classes for singly and doubly linked lists, serving as foundational
+building blocks for linked list algorithms.
 
-class DoublyLinkedListNode(object):
-    def __init__(self, value):
+Reference: https://en.wikipedia.org/wiki/Linked_list
+
+Complexity:
+    Time:  O(1) for node creation
+    Space: O(1) per node
+"""
+
+from __future__ import annotations
+
+
+class SinglyLinkedListNode:
+    """A node in a singly linked list.
+
+    Attributes:
+        value: The value stored in the node.
+        next: Reference to the next node, or None.
+    """
+
+    def __init__(self, value: object) -> None:
         self.value = value
-        self.next = None
-        self.prev = None
+        self.next: SinglyLinkedListNode | None = None
 
 
-class SinglyLinkedListNode(object):
-    def __init__(self, value):
+class DoublyLinkedListNode:
+    """A node in a doubly linked list.
+
+    Attributes:
+        value: The value stored in the node.
+        next: Reference to the next node, or None.
+        prev: Reference to the previous node, or None.
+    """
+
+    def __init__(self, value: object) -> None:
         self.value = value
-        self.next = None
+        self.next: DoublyLinkedListNode | None = None
+        self.prev: DoublyLinkedListNode | None = None

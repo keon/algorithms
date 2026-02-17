@@ -1,33 +1,41 @@
 """
 Magic Number
-A number is said to be a magic number,
-if summing the digits of the number and then recursively repeating this process for the given sum
-untill the number becomes a single digit number equal to 1.
 
-Example:
-    Number = 50113 => 5+0+1+1+3=10 => 1+0=1 [This is a Magic Number]
-    Number = 1234 => 1+2+3+4=10 => 1+0=1 [This is a Magic Number]
-    Number = 199 => 1+9+9=19 => 1+9=10 => 1+0=1 [This is a Magic Number]
-    Number = 111 => 1+1+1=3 [This is NOT a Magic Number]
+A magic number is a number where recursively summing its digits eventually
+yields 1. For example, 199 -> 1+9+9=19 -> 1+9=10 -> 1+0=1.
 
-The following function checks for Magic numbers and returns a Boolean accordingly.
+Reference: https://en.wikipedia.org/wiki/Digital_root
+
+Complexity:
+    Time:  O(log n) amortized
+    Space: O(1)
 """
 
-def magic_number(n):
-    """ Checks if n is a magic number """
+from __future__ import annotations
+
+
+def magic_number(n: int) -> bool:
+    """Check if n is a magic number (digital root equals 1).
+
+    Args:
+        n: The integer to check.
+
+    Returns:
+        True if the digital root of n is 1, False otherwise.
+
+    Examples:
+        >>> magic_number(1234)
+        True
+        >>> magic_number(111)
+        False
+    """
     total_sum = 0
 
-    # will end when n becomes 0
-    # AND
-    # sum becomes single digit.
     while n > 0 or total_sum > 9:
-        # when n becomes 0 but we have a total_sum,
-        # we update the value of n with the value of the sum digits
         if n == 0:
-            n = total_sum  # only when sum of digits isn't single digit
+            n = total_sum
             total_sum = 0
         total_sum += n % 10
         n //= 10
 
-    # Return true if sum becomes 1
     return total_sum == 1

@@ -1,33 +1,43 @@
 """
-Write code to partition a linked list around a value x, such that all nodes less
-than x come before all nodes greater than or equal to x.  If x is contained
-within the list, the values of x only need to be after the elements less than x.
-The partition element x can appear anywhere in the "right partition";
-it does not need to appear between the left and right partitions.
+Partition Linked List
 
-3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition=5]
-3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
+Partition a linked list around a value x so that all nodes with values less
+than x come before nodes with values greater than or equal to x.
 
-We assume the values of all linked list nodes are int and that x in an int.
+Reference: https://leetcode.com/problems/partition-list/
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
 
+from __future__ import annotations
 
-class Node():
-    def __init__(self, val=None):
+
+class Node:
+    def __init__(self, val: object = None) -> None:
         self.val = int(val)
-        self.next = None
+        self.next: Node | None = None
 
 
-def print_linked_list(head):
-    string = ""
-    while head.next:
-        string += str(head.val) + " -> "
-        head = head.next
-    string += str(head.val)
-    print(string)
+def partition(head: Node | None, x: int) -> None:
+    """Partition a linked list in-place around value x.
 
+    Rearranges nodes so that all nodes with values less than x appear before
+    nodes with values greater than or equal to x.
 
-def partition(head, x):
+    Args:
+        head: Head of the linked list.
+        x: The partition value.
+
+    Returns:
+        None. The list is modified in-place.
+
+    Examples:
+        >>> a = Node(3); b = Node(5); c = Node(1)
+        >>> a.next = b; b.next = c
+        >>> partition(a, 5)
+    """
     left = None
     right = None
     prev = None
@@ -46,31 +56,5 @@ def partition(head, x):
                 left.next = right
         if prev and prev.next is None:
             break
-        # cache previous value in case it needs to be pointed elsewhere
         prev = current
         current = current.next
-
-
-def test():
-    a = Node("3")
-    b = Node("5")
-    c = Node("8")
-    d = Node("5")
-    e = Node("10")
-    f = Node("2")
-    g = Node("1")
-
-    a.next = b
-    b.next = c
-    c.next = d
-    d.next = e
-    e.next = f
-    f.next = g
-
-    print_linked_list(a)
-    partition(a, 5)
-    print_linked_list(a)
-
-
-if __name__ == '__main__':
-    test()

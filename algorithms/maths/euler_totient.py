@@ -1,12 +1,34 @@
 """
-Euler's totient function, also known as phi-function ϕ(n),
-counts the number of integers between 1 and n inclusive,
-which are coprime to n.
-(Two numbers are coprime if their greatest common divisor (GCD) equals 1).
+Euler's Totient Function
+
+Compute Euler's totient function phi(n), which counts the number of integers
+from 1 to n inclusive that are coprime to n.
+
+Reference: https://en.wikipedia.org/wiki/Euler%27s_totient_function
+
+Complexity:
+    Time:  O(sqrt(n))
+    Space: O(1)
 """
-def euler_totient(n):
-    """Euler's totient function or Phi function.
-    Time Complexity: O(sqrt(n))."""
+
+from __future__ import annotations
+
+
+def euler_totient(n: int) -> int:
+    """Compute Euler's totient function phi(n).
+
+    Args:
+        n: A positive integer.
+
+    Returns:
+        The count of integers in [1, n] coprime to n.
+
+    Examples:
+        >>> euler_totient(8)
+        4
+        >>> euler_totient(21)
+        12
+    """
     result = n
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:

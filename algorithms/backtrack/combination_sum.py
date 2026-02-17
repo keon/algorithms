@@ -1,33 +1,52 @@
 """
-Given a set of candidate numbers (C) (without duplicates) and a target number
-(T), find all unique combinations in C where the candidate numbers sums to T.
+Combination Sum
 
-The same repeated number may be chosen from C unlimited number of times.
+Given a set of candidate numbers (without duplicates) and a target number,
+find all unique combinations where the candidate numbers sum to the target.
+The same number may be chosen an unlimited number of times.
 
-Note:
-All numbers (including target) will be positive integers.
-The solution set must not contain duplicate combinations.
-For example, given candidate set [2, 3, 6, 7] and target 7,
-A solution set is:
-[
-  [7],
-  [2, 2, 3]
-]
+Reference: https://leetcode.com/problems/combination-sum/
+
+Complexity:
+    Time:  O(n^(T/M)) where T is target, M is minimum candidate
+    Space: O(T/M) recursion depth
 """
 
+from __future__ import annotations
 
-def combination_sum(candidates, target):
 
-    def dfs(nums, target, index, path, res):
-        if target < 0:
-            return  # backtracking
-        if target == 0:
-            res.append(path)
-            return
-        for i in range(index, len(nums)):
-            dfs(nums, target-nums[i], i, path+[nums[i]], res)
+def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
+    """Find all unique combinations of candidates that sum to target.
 
-    res = []
+    Args:
+        candidates: A list of distinct positive integers.
+        target: The target sum.
+
+    Returns:
+        A list of lists, each containing a valid combination.
+
+    Examples:
+        >>> combination_sum([2, 3, 6, 7], 7)
+        [[2, 2, 3], [7]]
+    """
+    result: list[list[int]] = []
     candidates.sort()
-    dfs(candidates, target, 0, [], res)
-    return res
+    _dfs(candidates, target, 0, [], result)
+    return result
+
+
+def _dfs(
+    nums: list[int],
+    target: int,
+    index: int,
+    path: list[int],
+    result: list[list[int]],
+) -> None:
+    """Depth-first search helper for building combinations."""
+    if target < 0:
+        return
+    if target == 0:
+        result.append(path)
+        return
+    for i in range(index, len(nums)):
+        _dfs(nums, target - nums[i], i, path + [nums[i]], result)

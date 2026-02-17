@@ -1,20 +1,37 @@
 """
-You are climbing a stair case.
-It takes `steps` number of steps to reach to the top.
+Climbing Stairs
 
-Each time you can either climb 1 or 2 steps.
-In how many distinct ways can you climb to the top?
+Count the number of distinct ways to climb a staircase of n steps,
+where each move is either 1 or 2 steps.
 
-Note: Given argument `steps` will be a positive integer.
+Reference: https://leetcode.com/problems/climbing-stairs/
+
+Complexity:
+    climb_stairs:
+        Time:  O(n)
+        Space: O(n)
+    climb_stairs_optimized:
+        Time:  O(n)
+        Space: O(1)
 """
 
+from __future__ import annotations
 
-# O(n) space
 
-def climb_stairs(steps):
-    """
-    :type steps: int
-    :rtype: int
+def climb_stairs(steps: int) -> int:
+    """Count distinct ways to climb n steps using a list-based DP approach.
+
+    Args:
+        steps: Number of steps in the staircase (positive integer).
+
+    Returns:
+        Number of distinct ways to reach the top.
+
+    Examples:
+        >>> climb_stairs(2)
+        2
+        >>> climb_stairs(10)
+        89
     """
     arr = [1, 1]
     for _ in range(1, steps):
@@ -22,13 +39,20 @@ def climb_stairs(steps):
     return arr[-1]
 
 
-# the above function can be optimized as:
-# O(1) space
+def climb_stairs_optimized(steps: int) -> int:
+    """Count distinct ways to climb n steps using constant space.
 
-def climb_stairs_optimized(steps):
-    """
-    :type steps: int
-    :rtype: int
+    Args:
+        steps: Number of steps in the staircase (positive integer).
+
+    Returns:
+        Number of distinct ways to reach the top.
+
+    Examples:
+        >>> climb_stairs_optimized(2)
+        2
+        >>> climb_stairs_optimized(10)
+        89
     """
     a_steps = b_steps = 1
     for _ in range(steps):

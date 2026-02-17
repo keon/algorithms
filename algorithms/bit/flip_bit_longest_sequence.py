@@ -1,30 +1,53 @@
 """
-You have an integer and you can flip exactly one bit from a 0 to 1.
-Write code to find the length of the longest sequence of 1s you could create.
-For example:
-Input: 1775 ( or: 11011101111)
-Output: 8
+Flip Bit Longest Sequence
+
+Given an integer, find the length of the longest sequence of 1-bits you
+can create by flipping exactly one 0-bit to a 1-bit.
+
+Reference: https://en.wikipedia.org/wiki/Bit_manipulation
+
+Complexity:
+    Time:  O(b) where b is the number of bits in the integer
+    Space: O(1)
 """
 
+from __future__ import annotations
 
-def flip_bit_longest_seq(num):
 
-    curr_len = 0
-    prev_len = 0
-    max_len = 0
+def flip_bit_longest_seq(number: int) -> int:
+    """Find the longest 1-bit run achievable by flipping a single 0-bit.
 
-    while num:
-        if num & 1 == 1:  # last digit is 1
-            curr_len += 1
+    Tracks the current run length and the previous run length to
+    determine the best sequence that can be formed by bridging two
+    runs with a single flipped bit.
 
-        elif num & 1 == 0:  # last digit is 0
-            if num & 2 == 0:  # second last digit is 0
-                prev_len = 0
+    Args:
+        number: A non-negative integer.
+
+    Returns:
+        The length of the longest sequence of 1-bits after one flip.
+
+    Examples:
+        >>> flip_bit_longest_seq(1775)
+        8
+        >>> flip_bit_longest_seq(0)
+        1
+    """
+    current_length = 0
+    previous_length = 0
+    max_length = 0
+
+    while number:
+        if number & 1 == 1:
+            current_length += 1
+        elif number & 1 == 0:
+            if number & 2 == 0:
+                previous_length = 0
             else:
-                prev_len = curr_len
-            curr_len = 0
+                previous_length = current_length
+            current_length = 0
 
-        max_len = max(max_len, prev_len + curr_len)
-        num = num >> 1  # right shift num
+        max_length = max(max_length, previous_length + current_length)
+        number >>= 1
 
-    return max_len + 1
+    return max_length + 1

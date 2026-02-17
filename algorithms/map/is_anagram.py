@@ -1,29 +1,39 @@
 """
-Given two strings s and t , write a function to determine if t is an anagram of s.
+Is Anagram
 
-Example 1:
-Input: s = "anagram", t = "nagaram"
-Output: true
-
-Example 2:
-Input: s = "rat", t = "car"
-Output: false
-
-Note:
-You may assume the string contains only lowercase alphabets.
+Determine whether two strings are anagrams of each other by comparing
+character frequency maps.
 
 Reference: https://leetcode.com/problems/valid-anagram/description/
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
-def is_anagram(s, t):
+
+from __future__ import annotations
+
+
+def is_anagram(s: str, t: str) -> bool:
+    """Check if string t is an anagram of string s.
+
+    Args:
+        s: First string.
+        t: Second string.
+
+    Returns:
+        True if t is an anagram of s, False otherwise.
+
+    Examples:
+        >>> is_anagram("anagram", "nagaram")
+        True
+        >>> is_anagram("rat", "car")
+        False
     """
-    :type s: str
-    :type t: str
-    :rtype: bool
-    """
-    maps = {}
-    mapt = {}
-    for i in s:
-        maps[i] = maps.get(i, 0) + 1
-    for i in t:
-        mapt[i] = mapt.get(i, 0) + 1
-    return maps == mapt
+    freq_s: dict[str, int] = {}
+    freq_t: dict[str, int] = {}
+    for char in s:
+        freq_s[char] = freq_s.get(char, 0) + 1
+    for char in t:
+        freq_t[char] = freq_t.get(char, 0) + 1
+    return freq_s == freq_t

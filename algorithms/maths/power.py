@@ -1,16 +1,35 @@
 """
-Performs exponentiation, similarly to the built-in pow() or ** functions.
-Allows also for calculating the exponentiation modulo.
+Binary Exponentiation
+
+Compute a^n efficiently using binary exponentiation (exponentiation by
+squaring), with optional modular arithmetic.
+
+Reference: https://en.wikipedia.org/wiki/Exponentiation_by_squaring
+
+Complexity:
+    Time:  O(log n)
+    Space: O(1) iterative, O(log n) recursive
 """
-def power(a: int, n: int, mod: int = None):
-    """
-    Iterative version of binary exponentiation
 
-    Calculate a ^ n
-    if mod is specified, return the result modulo mod
+from __future__ import annotations
 
-    Time Complexity :  O(log(n))
-    Space Complexity : O(1)
+
+def power(a: int, n: int, mod: int | None = None) -> int:
+    """Compute a^n iteratively using binary exponentiation.
+
+    Args:
+        a: The base.
+        n: The exponent.
+        mod: Optional modulus for modular exponentiation.
+
+    Returns:
+        a^n, or a^n % mod if mod is specified.
+
+    Examples:
+        >>> power(2, 3)
+        8
+        >>> power(10, 3, 5)
+        0
     """
     ans = 1
     while n:
@@ -24,15 +43,20 @@ def power(a: int, n: int, mod: int = None):
     return ans
 
 
-def power_recur(a: int, n: int, mod: int = None):
-    """
-    Recursive version of binary exponentiation
+def power_recur(a: int, n: int, mod: int | None = None) -> int:
+    """Compute a^n recursively using binary exponentiation.
 
-    Calculate a ^ n
-    if mod is specified, return the result modulo mod
+    Args:
+        a: The base.
+        n: The exponent.
+        mod: Optional modulus for modular exponentiation.
 
-    Time Complexity :  O(log(n))
-    Space Complexity : O(log(n))
+    Returns:
+        a^n, or a^n % mod if mod is specified.
+
+    Examples:
+        >>> power_recur(2, 3)
+        8
     """
     if n == 0:
         ans = 1

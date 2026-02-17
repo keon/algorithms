@@ -1,59 +1,70 @@
 """
-Given a set of distinct integers, nums, return all possible subsets.
+Subsets
 
-Note: The solution set must not contain duplicate subsets.
+Given a set of distinct integers, return all possible subsets (the power
+set). The solution set must not contain duplicate subsets.
 
-For example,
-If nums = [1,2,3], a solution is:
+Reference: https://en.wikipedia.org/wiki/Power_set
 
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],
-  [1,3],
-  [2,3],
-  [1,2],
-  []
-]
+Complexity:
+    Time:  O(2^n) where n is the number of elements
+    Space: O(2^n) to store all subsets
 """
 
+from __future__ import annotations
 
-def subsets(nums):
+
+def subsets(nums: list[int]) -> list[list[int]]:
+    """Return all subsets of the given list using backtracking.
+
+    Args:
+        nums: A list of distinct integers.
+
+    Returns:
+        A list of all subsets.
+
+    Examples:
+        >>> sorted(subsets([1, 2]), key=str)
+        [[], [1], [1, 2], [2]]
     """
-    O(2**n)
-    """
-    def backtrack(res, nums, stack, pos):
-        if pos == len(nums):
-            res.append(list(stack))
-        else:
-            # take nums[pos]
-            stack.append(nums[pos])
-            backtrack(res, nums, stack, pos+1)
-            stack.pop()
-            # dont take nums[pos]
-            backtrack(res, nums, stack, pos+1)
-
-    res = []
-    backtrack(res, nums, [], 0)
-    return res
+    result: list[list[int]] = []
+    _backtrack(result, nums, [], 0)
+    return result
 
 
-"""
-simplified backtrack
-
-def backtrack(res, nums, cur, pos):
-    if pos >= len(nums):
-        res.append(cur)
+def _backtrack(
+    result: list[list[int]],
+    nums: list[int],
+    stack: list[int],
+    position: int,
+) -> None:
+    """Recursive helper that includes or excludes each element."""
+    if position == len(nums):
+        result.append(list(stack))
     else:
-        backtrack(res, nums, cur+[nums[pos]], pos+1)
-        backtrack(res, nums, cur, pos+1)
-"""
+        stack.append(nums[position])
+        _backtrack(result, nums, stack, position + 1)
+        stack.pop()
+        _backtrack(result, nums, stack, position + 1)
 
 
-# Iteratively
-def subsets_v2(nums):
-    res = [[]]
-    for num in sorted(nums):
-        res += [item+[num] for item in res]
-    return res
+def subsets_v2(nums: list[int]) -> list[list[int]]:
+    """Return all subsets of the given list using iteration.
+
+    Builds subsets iteratively by extending each existing subset
+    with the next element.
+
+    Args:
+        nums: A list of distinct integers.
+
+    Returns:
+        A list of all subsets.
+
+    Examples:
+        >>> sorted(subsets_v2([1, 2]), key=str)
+        [[], [1], [1, 2], [2]]
+    """
+    result: list[list[int]] = [[]]
+    for number in sorted(nums):
+        result += [item + [number] for item in result]
+    return result

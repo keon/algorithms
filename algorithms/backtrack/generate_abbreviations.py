@@ -1,26 +1,55 @@
 """
-given input word, return the list of abbreviations.
-ex)
-word => ['word', 'wor1', 'wo1d', 'wo2', 'w1rd', 'w1r1', 'w2d', 'w3', '1ord', '1or1', '1o1d', '1o2', '2rd', '2r1', '3d', '4']
+Generalized Abbreviations
+
+Given a word, return all possible generalized abbreviations. Each
+abbreviation replaces contiguous substrings with their lengths.
+
+Reference: https://leetcode.com/problems/generalized-abbreviation/
+
+Complexity:
+    Time:  O(2^n) where n is the length of the word
+    Space: O(n) recursion depth
 """
 
+from __future__ import annotations
 
-def generate_abbreviations(word):
 
-    def backtrack(result, word, pos, count, cur):
-        if pos == len(word):
-            if count > 0:
-                cur += str(count)
-            result.append(cur)
-            return
+def generate_abbreviations(word: str) -> list[str]:
+    """Generate all possible abbreviations of a word.
 
-        if count > 0:  # add the current word
-            backtrack(result, word, pos+1, 0, cur+str(count)+word[pos])
-        else:
-            backtrack(result, word, pos+1, 0, cur+word[pos])
-        # skip the current word
-        backtrack(result, word, pos+1, count+1, cur)
+    Args:
+        word: The input word to abbreviate.
 
-    result = []
-    backtrack(result, word, 0, 0, "")
+    Returns:
+        A list of all valid abbreviations.
+
+    Examples:
+        >>> sorted(generate_abbreviations("ab"))
+        ['1b', '2', 'a1', 'ab']
+    """
+    result: list[str] = []
+    _backtrack(result, word, 0, 0, "")
     return result
+
+
+def _backtrack(
+    result: list[str],
+    word: str,
+    position: int,
+    count: int,
+    current: str,
+) -> None:
+    """Recursively build abbreviations by including or skipping characters."""
+    if position == len(word):
+        if count > 0:
+            current += str(count)
+        result.append(current)
+        return
+
+    if count > 0:
+        _backtrack(result, word, position + 1, 0,
+                   current + str(count) + word[position])
+    else:
+        _backtrack(result, word, position + 1, 0,
+                   current + word[position])
+    _backtrack(result, word, position + 1, count + 1, current)

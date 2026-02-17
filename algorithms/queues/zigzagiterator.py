@@ -1,34 +1,57 @@
-class ZigZagIterator:
-    def __init__(self, v1, v2):
-        """
-        Initialize your data structure here.
-        :type v1: List[int]
-        :type v2: List[int]
-        """
-        self.queue = [_ for _ in (v1, v2) if _]
-        print(self.queue)
+"""
+Zigzag Iterator
 
-    def next(self):
+Interleave elements from two lists in a zigzag fashion. Elements are
+yielded alternately from each list until both are exhausted.
+
+Reference: https://leetcode.com/problems/zigzag-iterator/
+
+Complexity:
+    Time:  O(n) total across all next() calls
+    Space: O(n)
+"""
+
+from __future__ import annotations
+
+
+class ZigZagIterator:
+    """Iterator that interleaves elements from two lists.
+
+    Examples:
+        >>> it = ZigZagIterator([1, 2], [3, 4, 5])
+        >>> it.next()
+        1
+        >>> it.next()
+        3
+    """
+
+    def __init__(self, v1: list[int], v2: list[int]) -> None:
+        """Initialize with two lists.
+
+        Args:
+            v1: First input list.
+            v2: Second input list.
         """
-        :rtype: int
+        self.queue: list[list[int]] = [lst for lst in (v1, v2) if lst]
+
+    def next(self) -> int:
+        """Return the next element in zigzag order.
+
+        Returns:
+            The next interleaved element.
         """
-        v = self.queue.pop(0)
-        ret = v.pop(0)
-        if v:
-            self.queue.append(v)
+        current_list = self.queue.pop(0)
+        ret = current_list.pop(0)
+        if current_list:
+            self.queue.append(current_list)
         return ret
 
-    def has_next(self):
-        """
-        :rtype: bool
+    def has_next(self) -> bool:
+        """Check if there are more elements.
+
+        Returns:
+            True if elements remain, False otherwise.
         """
         if self.queue:
             return True
         return False
-
-
-l1 = [1, 2]
-l2 = [3, 4, 5, 6]
-it = ZigZagIterator(l1, l2)
-while it.has_next():
-    print(it.next())

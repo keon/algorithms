@@ -1,59 +1,88 @@
 """
+Rotate Array
+
 Rotate an array of n elements to the right by k steps.
+Three algorithm variants are provided with different time complexities.
 
-For example, with n = 7 and k = 3,
-the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+Reference: https://leetcode.com/problems/rotate-array/
 
-Note:
-Try to come up as many solutions as you can,
-there are at least 3 different ways to solve this problem.
+Complexity:
+    rotate_v1: Time O(n*k), Space O(n)
+    rotate_v2: Time O(n),   Space O(n)
+    rotate_v3: Time O(n),   Space O(n)
 """
 
+from __future__ import annotations
 
-def rotate_v1(array, k):
-    """
-    Rotate the entire array 'k' times
-    T(n)- O(nk)
 
-    :type array: List[int]
-    :type k: int
-    :rtype: void Do not return anything, modify array in-place instead.
+def rotate_v1(array: list[int], k: int) -> list[int]:
+    """Rotate array to the right by k steps using repeated single shifts.
+
+    Args:
+        array: List of integers to rotate.
+        k: Number of positions to rotate right.
+
+    Returns:
+        New rotated list.
+
+    Examples:
+        >>> rotate_v1([1, 2, 3, 4, 5, 6, 7], 3)
+        [5, 6, 7, 1, 2, 3, 4]
     """
     array = array[:]
-    n = len(array)
-    for i in range(k):      # unused variable is not a problem
-        temp = array[n - 1]
-        for j in range(n-1, 0, -1):
-            array[j] = array[j - 1]
+    length = len(array)
+    for _ in range(k):
+        temp = array[length - 1]
+        for position in range(length - 1, 0, -1):
+            array[position] = array[position - 1]
         array[0] = temp
     return array
 
 
-def rotate_v2(array, k):
-    """
-    Reverse segments of the array, followed by the entire array
-    T(n)- O(n)
-    :type array: List[int]
-    :type k: int
-    :rtype: void Do not return anything, modify nums in-place instead.
+def rotate_v2(array: list[int], k: int) -> list[int]:
+    """Rotate array to the right by k steps using three reversals.
+
+    Args:
+        array: List of integers to rotate.
+        k: Number of positions to rotate right.
+
+    Returns:
+        New rotated list.
+
+    Examples:
+        >>> rotate_v2([1, 2, 3, 4, 5, 6, 7], 3)
+        [5, 6, 7, 1, 2, 3, 4]
     """
     array = array[:]
 
-    def reverse(arr, a, b):
-        while a < b:
-            arr[a], arr[b] = arr[b], arr[a]
-            a += 1
-            b -= 1
+    def _reverse(arr: list[int], left: int, right: int) -> None:
+        while left < right:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
 
-    n = len(array)
-    k = k % n
-    reverse(array, 0, n - k - 1)
-    reverse(array, n - k, n - 1)
-    reverse(array, 0, n - 1)
+    length = len(array)
+    k = k % length
+    _reverse(array, 0, length - k - 1)
+    _reverse(array, length - k, length - 1)
+    _reverse(array, 0, length - 1)
     return array
 
 
-def rotate_v3(array, k):
+def rotate_v3(array: list[int] | None, k: int) -> list[int] | None:
+    """Rotate array to the right by k steps using slicing.
+
+    Args:
+        array: List of integers to rotate, or None.
+        k: Number of positions to rotate right.
+
+    Returns:
+        New rotated list, or None if input is None.
+
+    Examples:
+        >>> rotate_v3([1, 2, 3, 4, 5, 6, 7], 3)
+        [5, 6, 7, 1, 2, 3, 4]
+    """
     if array is None:
         return None
     length = len(array)

@@ -1,19 +1,36 @@
 """
-Given a stack, a function is_sorted accepts a stack as a parameter and returns
-true if the elements in the stack occur in ascending increasing order from
-bottom, and false otherwise. That is, the smallest element should be at bottom
+Is Sorted
 
-For example:
-bottom [6, 3, 5, 1, 2, 4] top
-The function should return false
-bottom [1, 2, 3, 4, 5, 6] top
-The function should return true
+Check whether a stack is sorted in ascending order from bottom to top
+using a single auxiliary stack.
+
+Reference: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
 
+from __future__ import annotations
 
-def is_sorted(stack):
-    storage_stack = []
-    for i in range(len(stack)):
+
+def is_sorted(stack: list[int]) -> bool:
+    """Check if a stack is sorted in ascending order (bottom to top).
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        True if sorted in ascending order, False otherwise.
+
+    Examples:
+        >>> is_sorted([1, 2, 3, 4, 5, 6])
+        True
+        >>> is_sorted([6, 3, 5, 1, 2, 4])
+        False
+    """
+    storage_stack: list[int] = []
+    for _ in range(len(stack)):
         if len(stack) == 0:
             break
         first_val = stack.pop()
@@ -25,8 +42,7 @@ def is_sorted(stack):
         storage_stack.append(first_val)
         stack.append(second_val)
 
-    # Backup stack
-    for i in range(len(storage_stack)):
+    for _ in range(len(storage_stack)):
         stack.append(storage_stack.pop())
 
     return True

@@ -1,42 +1,75 @@
 """
-At a job interview, you are challenged to write an algorithm to check if a 
-given string, s, can be formed from two other strings, part1 and part2.
-The restriction is that the characters in part1 and part2 are in the same 
-order as in s. The interviewer gives you the following example and tells 
-you to figure out the rest from the given test cases.
-'codewars' is a merge from 'cdw' and 'oears':
-s:  c o d e w a r s   = codewars
-part1:  c   d   w         = cdw
-part2:    o   e   a r s   = oears
+Merge String Checker
+
+Determine if a given string can be formed by interleaving two other strings,
+preserving the character order from each part.
+
+Reference: https://leetcode.com/problems/interleaving-string/
+
+Complexity:
+    Time:  O(2^n) worst case for recursive, similar for iterative
+    Space: O(n) for recursion depth / stack
 """
 
+from __future__ import annotations
 
-# Recursive Solution
-def is_merge_recursive(s, part1, part2):
+
+def is_merge_recursive(
+    text: str, part1: str, part2: str
+) -> bool:
+    """Check if text is an interleaving of part1 and part2 recursively.
+
+    Args:
+        text: The merged string to verify.
+        part1: The first source string.
+        part2: The second source string.
+
+    Returns:
+        True if text is a valid interleaving of part1 and part2.
+
+    Examples:
+        >>> is_merge_recursive("codewars", "cdw", "oears")
+        True
+    """
     if not part1:
-        return s == part2
+        return text == part2
     if not part2:
-        return s == part1
-    if not s:
+        return text == part1
+    if not text:
         return part1 + part2 == ''
-    if s[0] == part1[0] and is_merge_recursive(s[1:], part1[1:], part2):
+    if text[0] == part1[0] and is_merge_recursive(text[1:], part1[1:], part2):
         return True
-    if s[0] == part2[0] and is_merge_recursive(s[1:], part1, part2[1:]):
+    if text[0] == part2[0] and is_merge_recursive(text[1:], part1, part2[1:]):
         return True
     return False
 
 
-# An iterative approach
-def is_merge_iterative(s, part1, part2):
-    tuple_list = [(s, part1, part2)]
+def is_merge_iterative(
+    text: str, part1: str, part2: str
+) -> bool:
+    """Check if text is an interleaving of part1 and part2 iteratively.
+
+    Args:
+        text: The merged string to verify.
+        part1: The first source string.
+        part2: The second source string.
+
+    Returns:
+        True if text is a valid interleaving of part1 and part2.
+
+    Examples:
+        >>> is_merge_iterative("codewars", "cdw", "oears")
+        True
+    """
+    tuple_list = [(text, part1, part2)]
     while tuple_list:
-        string, p1, p2 = tuple_list.pop()            
+        string, first_part, second_part = tuple_list.pop()
         if string:
-            if p1 and string[0] == p1[0]:
-                tuple_list.append((string[1:], p1[1:], p2))
-            if p2 and string[0] == p2[0]:
-                tuple_list.append((string[1:], p1, p2[1:]))
+            if first_part and string[0] == first_part[0]:
+                tuple_list.append((string[1:], first_part[1:], second_part))
+            if second_part and string[0] == second_part[0]:
+                tuple_list.append((string[1:], first_part, second_part[1:]))
         else:
-            if not p1 and not p2:
+            if not first_part and not second_part:
                 return True
     return False

@@ -1,32 +1,56 @@
 """
-Write a function that takes an unsigned integer and
-returns the number of '1' bits it has
-(also known as the Hamming weight).
+Count Ones (Hamming Weight)
 
-For example, the 32-bit integer '11' has binary
-representation 00000000000000000000000000001011,
-so the function should return 3.
+Count the number of 1-bits in the binary representation of an unsigned
+integer using Brian Kernighan's algorithm.
 
-T(n)- O(k)   : k is the number of 1s present in binary representation.
-NOTE: this complexity is better than O(log n).
-e.g. for n = 00010100000000000000000000000000
-only 2 iterations are required.
+Reference: https://en.wikipedia.org/wiki/Hamming_weight
 
-Number of loops is
-equal to the number of 1s in the binary representation."""
-def count_ones_recur(n):
-    """Using Brian Kernighan's Algorithm. (Recursive Approach)"""
+Complexity:
+    Time:  O(k) where k is the number of set bits
+    Space: O(1) iterative / O(k) recursive (call stack)
+"""
 
-    if not n:
+from __future__ import annotations
+
+
+def count_ones_recur(number: int) -> int:
+    """Count set bits using Brian Kernighan's algorithm (recursive).
+
+    Args:
+        number: A non-negative integer.
+
+    Returns:
+        The number of 1-bits in the binary representation.
+
+    Examples:
+        >>> count_ones_recur(8)
+        1
+        >>> count_ones_recur(63)
+        6
+    """
+    if not number:
         return 0
-    return 1 + count_ones_recur(n & (n-1))
+    return 1 + count_ones_recur(number & (number - 1))
 
 
-def count_ones_iter(n):
-    """Using Brian Kernighan's Algorithm. (Iterative Approach)"""
+def count_ones_iter(number: int) -> int:
+    """Count set bits using Brian Kernighan's algorithm (iterative).
 
+    Args:
+        number: A non-negative integer.
+
+    Returns:
+        The number of 1-bits in the binary representation.
+
+    Examples:
+        >>> count_ones_iter(8)
+        1
+        >>> count_ones_iter(63)
+        6
+    """
     count = 0
-    while n:
-        n &= (n-1)
+    while number:
+        number &= (number - 1)
         count += 1
     return count

@@ -1,23 +1,39 @@
 """
-Given an array of integers, every element appears
-twice except for one. Find that single one.
+Single Number
 
-NOTE: This also works for finding a number occurring odd
-      number of times, where all the other numbers appear
-      even number of times.
+Given an array of integers where every element appears twice except for
+one, find the unique element using XOR.
 
-Note:
-Your algorithm should have a linear runtime complexity.
-Could you implement it without using extra memory?
+Reference: https://en.wikipedia.org/wiki/Exclusive_or
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
 """
-def single_number(nums):
+
+from __future__ import annotations
+
+
+def single_number(nums: list[int]) -> int:
+    """Find the element that appears only once (all others appear twice).
+
+    XORs all values together; paired values cancel to zero, leaving the
+    unique value.
+
+    Args:
+        nums: A list of integers where every element except one appears
+              an even number of times.
+
+    Returns:
+        The single element, or 0 if all elements are paired.
+
+    Examples:
+        >>> single_number([1, 0, 2, 1, 2, 3, 3])
+        0
+        >>> single_number([101])
+        101
     """
-    Returns single number, if found.
-    Else if all numbers appear twice, returns 0.
-    :type nums: List[int]
-    :rtype: int
-    """
-    i = 0
-    for num in nums:
-        i ^= num
-    return i
+    result = 0
+    for number in nums:
+        result ^= number
+    return result

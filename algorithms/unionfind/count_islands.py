@@ -1,74 +1,76 @@
 """
-Defines the Union-Find (or Disjoint Set) data structure.
+Union-Find (Count Islands)
 
-A disjoint set is made up of a number of elements contained within another
-number of sets. Initially, elements are put in their own set, but sets may be
-merged using the `unite` operation. We can check if two elements are in the
-same seet by comparing their `root`s. If they are identical, the two elements
-are in the same set. All operations can be completed in O(a(n)) where `n` is
-the number of elements, and `a` the inverse ackermann function. a(n) grows so
-slowly that it might as well be constant for any conceivable `n`.
+Implements Union-Find (Disjoint Set) data structure and uses it to solve the
+"Number of Islands" problem. Supports union by size and path compression,
+yielding nearly O(1) amortized operations.
+
+Reference: https://en.wikipedia.org/wiki/Disjoint-set_data_structure
+
+Complexity:
+    Union/Find operations:
+        Time:  O(alpha(n)) amortized (inverse Ackermann)
+        Space: O(n)
+    num_islands:
+        Time:  O(m * alpha(m)) where m is number of positions
+        Space: O(m)
 """
 
+from __future__ import annotations
+
+
 class Union:
-    """
-    A Union-Find data structure.
+    """A Union-Find (Disjoint Set) data structure.
 
-    Consider the following sequence of events:
-    Starting with the elements 1, 2, 3, and 4:
+    Supports adding elements, finding set representatives, and merging sets.
+    Uses union by size and path compression for near-constant amortized time.
 
-        {1} {2} {3} {4}
-
-    Initally they all live in their own sets, which means that `root(1) !=
-    root(3)`, however, if we call `unite(1, 3)` we would then have the following:
-
-        {1,3} {2} {4}
-
-    Now we have `root(1) == root(3)`, but it is still the case that `root(1) != root(2)`.
-
-    We may call `unite(2, 4)` and end up with:
-
-        {1,3} {2,4}
-
-    Again we have `root(1) != root(2)`. But after `unite(3, 4)` we end up with:
-
-        {1,2,3,4}
-
-    which results in `root(1) == root(2)`.
+    Examples:
+        >>> uf = Union()
+        >>> uf.add(1); uf.add(2); uf.add(3)
+        >>> uf.unite(1, 2)
+        >>> uf.root(1) == uf.root(2)
+        True
+        >>> uf.root(1) == uf.root(3)
+        False
     """
 
-    def __init__(self):
-        self.parents = {}
-        self.size = {}
-        self.count = 0
+    def __init__(self) -> None:
+        self.parents: dict[object, object] = {}
+        self.size: dict[object, int] = {}
+        self.count: int = 0
 
-    def add(self, element):
-        """
-        Add a new set containing the single element
-        """
+    def add(self, element: object) -> None:
+        """Add a new singleton set containing the given element.
 
+        Args:
+            element: The element to add.
+        """
         self.parents[element] = element
         self.size[element] = 1
         self.count += 1
 
-    def root(self, element):
-        """
-        Find the root element which represents the set of a given element.
-        That is, all elements that are in the same set will return the same
-        root element.
-        """
+    def root(self, element: object) -> object:
+        """Find the root representative of the set containing element.
 
+        Args:
+            element: The element whose root to find.
+
+        Returns:
+            The root representative of the element's set.
+        """
         while element != self.parents[element]:
             self.parents[element] = self.parents[self.parents[element]]
             element = self.parents[element]
         return element
 
-    def unite(self, element1, element2):
-        """
-        Finds the sets which contains the two elements and merges them into a
-        single set.
-        """
+    def unite(self, element1: object, element2: object) -> None:
+        """Merge the sets containing the two elements.
 
+        Args:
+            element1: An element in the first set.
+            element2: An element in the second set.
+        """
         root1, root2 = self.root(element1), self.root(element2)
         if root1 == root2:
             return
@@ -78,43 +80,25 @@ class Union:
         self.size[root2] += self.size[root1]
         self.count -= 1
 
-def num_islands(positions):
+
+def num_islands(positions: list[list[int]]) -> list[int]:
+    """Count islands after each addLand operation.
+
+    Given a sequence of positions on a 2D grid, each operation turns a water
+    cell into land. After each operation, count the number of distinct islands
+    (connected components of land cells).
+
+    Args:
+        positions: A list of [row, col] pairs indicating land additions.
+
+    Returns:
+        A list of island counts, one per operation.
+
+    Examples:
+        >>> num_islands([[0, 0], [0, 1], [1, 2], [2, 1]])
+        [1, 1, 2, 3]
     """
-    Given a list of positions to operate, count the number of islands
-    after each addLand operation. An island is surrounded by water and is
-    formed by connecting adjacent lands horizontally or vertically. You may
-    assume all four edges of the grid are all surrounded by water.
-
-    Given a 3x3 grid, positions = [[0,0], [0,1], [1,2], [2,1]].
-    Initially, the 2d grid grid is filled with water.
-    (Assume 0 represents water and 1 represents land).
-
-    0 0 0
-    0 0 0
-    0 0 0
-    Operation #1: addLand(0, 0) turns the water at grid[0][0] into a land.
-
-    1 0 0
-    0 0 0   Number of islands = 1
-    0 0 0
-    Operation #2: addLand(0, 1) turns the water at grid[0][1] into a land.
-
-    1 1 0
-    0 0 0   Number of islands = 1
-    0 0 0
-    Operation #3: addLand(1, 2) turns the water at grid[1][2] into a land.
-
-    1 1 0
-    0 0 1   Number of islands = 2
-    0 0 0
-    Operation #4: addLand(2, 1) turns the water at grid[2][1] into a land.
-
-    1 1 0
-    0 0 1   Number of islands = 3
-    0 1 0
-    """
-
-    ans = []
+    result: list[int] = []
     islands = Union()
     for position in map(tuple, positions):
         islands.add(position)
@@ -122,5 +106,5 @@ def num_islands(positions):
             adjacent = (position[0] + delta[0], position[1] + delta[1])
             if adjacent in islands.parents:
                 islands.unite(position, adjacent)
-        ans += [islands.count]
-    return ans
+        result.append(islands.count)
+    return result

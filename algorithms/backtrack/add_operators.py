@@ -1,45 +1,67 @@
 """
-Given a string that contains only digits 0-9 and a target value,
-return all possibilities to add binary operators (not unary) +, -, or *
-between the digits so they prevuate to the target value.
+Expression Add Operators
 
-Examples:
-"123", 6 -> ["1+2+3", "1*2*3"]
-"232", 8 -> ["2*3+2", "2+3*2"]
-"105", 5 -> ["1*0+5","10-5"]
-"00", 0 -> ["0+0", "0-0", "0*0"]
-"3456237490", 9191 -> []
+Given a string of digits and a target value, return all possibilities to
+insert binary operators (+, -, *) between the digits so they evaluate to
+the target value.
+
+Reference: https://leetcode.com/problems/expression-add-operators/
+
+Complexity:
+    Time:  O(4^n) worst
+    Space: O(n) recursion depth
 """
 
+from __future__ import annotations
 
-def add_operators(num, target):
+
+def add_operators(digits: str, target: int) -> list[str]:
+    """Return all expressions formed by inserting +, -, * that equal target.
+
+    Args:
+        digits: A string containing only digits 0-9.
+        target: The target integer value.
+
+    Returns:
+        A list of valid expression strings.
+
+    Examples:
+        >>> add_operators("123", 6)
+        ['1+2+3', '1*2*3']
     """
-    :type num: str
-    :type target: int
-    :rtype: List[str]
-    """
+    result: list[str] = []
+    if not digits:
+        return result
+    _dfs(result, "", digits, target, 0, 0, 0)
+    return result
 
-    def dfs(res, path, num, target, pos, prev, multed):
-        if pos == len(num):
-            if target == prev:
-                res.append(path)
-            return
-        for i in range(pos, len(num)):
-            if i != pos and num[pos] == '0':  # all digits have to be used
-                break
-            cur = int(num[pos:i+1])
-            if pos == 0:
-                dfs(res, path + str(cur), num, target, i+1, cur, cur)
-            else:
-                dfs(res, path + "+" + str(cur), num, target,
-                    i+1, prev + cur, cur)
-                dfs(res, path + "-" + str(cur), num, target,
-                    i+1, prev - cur, -cur)
-                dfs(res, path + "*" + str(cur), num, target,
-                    i+1, prev - multed + multed * cur, multed * cur)
 
-    res = []
-    if not num:
-        return res
-    dfs(res, "", num, target, 0, 0, 0)
-    return res
+def _dfs(
+    result: list[str],
+    path: str,
+    digits: str,
+    target: int,
+    position: int,
+    evaluated: int,
+    multed: int,
+) -> None:
+    """Depth-first search helper that builds expressions recursively."""
+    if position == len(digits):
+        if target == evaluated:
+            result.append(path)
+        return
+    for i in range(position, len(digits)):
+        if i != position and digits[position] == "0":
+            break
+        current = int(digits[position : i + 1])
+        if position == 0:
+            _dfs(result, path + str(current), digits, target,
+                 i + 1, current, current)
+        else:
+            _dfs(result, path + "+" + str(current), digits, target,
+                 i + 1, evaluated + current, current)
+            _dfs(result, path + "-" + str(current), digits, target,
+                 i + 1, evaluated - current, -current)
+            _dfs(result, path + "*" + str(current), digits, target,
+                 i + 1, evaluated - multed + multed * current,
+                 multed * current)

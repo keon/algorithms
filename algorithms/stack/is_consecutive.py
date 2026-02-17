@@ -1,60 +1,84 @@
 """
-Given a stack, a function is_consecutive takes a stack as a parameter and that
-returns whether or not the stack contains a sequence of consecutive integers
-starting from the bottom of the stack (returning true if it does, returning
-false if it does not).
+Is Consecutive
 
-For example:
-bottom [3, 4, 5, 6, 7] top
-Then the call of is_consecutive(s) should return true.
-bottom [3, 4, 6, 7] top
-Then the call of is_consecutive(s) should return false.
-bottom [3, 2, 1] top
-The function should return false due to reverse order.
+Check whether a stack contains a sequence of consecutive integers
+starting from the bottom. Two approaches are provided: one using an
+auxiliary stack, and one using an auxiliary queue.
 
-Note: There are 2 solutions:
-first_is_consecutive: it uses a single stack as auxiliary storage
-second_is_consecutive: it uses a single queue as auxiliary storage
+Reference: https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
+
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
+
+from __future__ import annotations
+
 import collections
 
 
-def first_is_consecutive(stack):
-    storage_stack = []
-    for i in range(len(stack)):
+def first_is_consecutive(stack: list[int]) -> bool:
+    """Check if a stack has consecutive integers using an auxiliary stack.
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        True if the values are consecutive from bottom to top.
+
+    Examples:
+        >>> first_is_consecutive([3, 4, 5, 6, 7])
+        True
+        >>> first_is_consecutive([3, 4, 6, 7])
+        False
+    """
+    storage_stack: list[int] = []
+    for _ in range(len(stack)):
         first_value = stack.pop()
-        if len(stack) == 0:  # Case odd number of values in stack
+        if len(stack) == 0:
             return True
         second_value = stack.pop()
-        if first_value - second_value != 1:  # Not consecutive
+        if first_value - second_value != 1:
             return False
-        stack.append(second_value)          # Backup second value
+        stack.append(second_value)
         storage_stack.append(first_value)
 
-    # Back up stack from storage stack
-    for i in range(len(storage_stack)):
+    for _ in range(len(storage_stack)):
         stack.append(storage_stack.pop())
     return True
 
 
-def second_is_consecutive(stack):
-    q = collections.deque()
-    for i in range(len(stack)):
+def second_is_consecutive(stack: list[int]) -> bool:
+    """Check if a stack has consecutive integers using an auxiliary queue.
+
+    Args:
+        stack: A list representing a stack (bottom to top).
+
+    Returns:
+        True if the values are consecutive from bottom to top.
+
+    Examples:
+        >>> second_is_consecutive([3, 4, 5, 6, 7])
+        True
+        >>> second_is_consecutive([3, 4, 6, 7])
+        False
+    """
+    queue: collections.deque[int] = collections.deque()
+    for _ in range(len(stack)):
         first_value = stack.pop()
-        if len(stack) == 0:  # Case odd number of values in stack
+        if len(stack) == 0:
             return True
         second_value = stack.pop()
-        if first_value - second_value != 1:  # Not consecutive
+        if first_value - second_value != 1:
             return False
-        stack.append(second_value)          # Backup second value
-        q.append(first_value)
+        stack.append(second_value)
+        queue.append(first_value)
 
-    # Back up stack from queue
-    for i in range(len(q)):
-        stack.append(q.pop())
-    for i in range(len(stack)):
-        q.append(stack.pop())
-    for i in range(len(q)):
-        stack.append(q.pop())
+    for _ in range(len(queue)):
+        stack.append(queue.pop())
+    for _ in range(len(stack)):
+        queue.append(stack.pop())
+    for _ in range(len(queue)):
+        stack.append(queue.pop())
 
     return True

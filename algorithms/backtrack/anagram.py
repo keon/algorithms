@@ -1,22 +1,44 @@
 """
-Given two strings, determine if they are equal after reordering.
+Anagram Checker
 
-Examples:
-"apple", "pleap"  -> True
-"apple", "cherry" -> False
+Given two strings, determine if they are anagrams of each other (i.e. one
+can be rearranged to form the other).
+
+Reference: https://en.wikipedia.org/wiki/Anagram
+
+Complexity:
+    Time:  O(n) where n is the length of the strings
+    Space: O(1) fixed 26-character alphabet
 """
 
+from __future__ import annotations
 
-def anagram(s1, s2):
-    c1 = [0] * 26
-    c2 = [0] * 26
 
-    for c in s1:
-        pos = ord(c)-ord('a')
-        c1[pos] = c1[pos] + 1
+def anagram(first: str, second: str) -> bool:
+    """Check whether two strings are anagrams of each other.
 
-    for c in s2:
-        pos = ord(c)-ord('a')
-        c2[pos] = c2[pos] + 1
+    Args:
+        first: The first string (lowercase letters only).
+        second: The second string (lowercase letters only).
 
-    return c1 == c2
+    Returns:
+        True if the strings are anagrams, False otherwise.
+
+    Examples:
+        >>> anagram('apple', 'pleap')
+        True
+        >>> anagram('apple', 'cherry')
+        False
+    """
+    count_first = [0] * 26
+    count_second = [0] * 26
+
+    for char in first:
+        index = ord(char) - ord("a")
+        count_first[index] += 1
+
+    for char in second:
+        index = ord(char) - ord("a")
+        count_second[index] += 1
+
+    return count_first == count_second

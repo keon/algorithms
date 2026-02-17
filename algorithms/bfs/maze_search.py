@@ -1,32 +1,35 @@
+"""
+Maze Search (BFS)
+
+Find the minimum number of steps from the top-left corner to the
+bottom-right corner of a grid.  Only cells with value 1 may be traversed.
+Returns -1 if no path exists.
+
+Complexity:
+    Time:  O(M * N)
+    Space: O(M * N)
+"""
+
+from __future__ import annotations
+
 from collections import deque
 
-'''
-BFS time complexity : O(|E| + |V|)
-BFS space complexity : O(|E| + |V|)
 
-do BFS from (0,0) of the grid and get the minimum number of steps needed to get to the lower right column
+def maze_search(maze: list[list[int]]) -> int:
+    """Return the shortest path length in *maze*, or -1 if unreachable.
 
-only step on the columns whose value is 1
+    Args:
+        maze: 2D grid where 1 = passable, 0 = blocked.
 
-if there is no path, it returns -1
+    Returns:
+        Minimum steps from (0,0) to (height-1, width-1), or -1.
 
-Ex 1)
-If grid is
-[[1,0,1,1,1,1],
- [1,0,1,0,1,0],
- [1,0,1,0,1,1],
- [1,1,1,0,1,1]], 
-the answer is: 14
-
-Ex 2)
-If grid is
-[[1,0,0],
- [0,1,1],
- [0,1,1]], 
-the answer is: -1
-'''
-
-def maze_search(maze):
+    Examples:
+        >>> maze_search([[1, 1], [1, 1]])
+        2
+        >>> maze_search([[1, 0], [0, 1]])
+        -1
+    """
     BLOCKED, ALLOWED = 0, 1
     UNVISITED, VISITED = 0, 1
 
@@ -34,7 +37,7 @@ def maze_search(maze):
 
     if maze[initial_x][initial_y] == BLOCKED:
         return -1
-    
+
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
     height, width = len(maze), len(maze[0])
@@ -43,7 +46,7 @@ def maze_search(maze):
 
     queue = deque([(initial_x, initial_y, 0)])
 
-    is_visited = [[UNVISITED for w in range(width)] for h in range(height)]
+    is_visited = [[UNVISITED for _ in range(width)] for _ in range(height)]
     is_visited[initial_x][initial_y] = VISITED
 
     while queue:
@@ -63,5 +66,4 @@ def maze_search(maze):
                 queue.append((new_x, new_y, steps + 1))
                 is_visited[new_x][new_y] = VISITED
 
-    return -1 
-
+    return -1

@@ -1,5 +1,5 @@
 
-from topological import topological_sort
+from algorithms.bfs.topological import topological_sort
 
 import unittest
 

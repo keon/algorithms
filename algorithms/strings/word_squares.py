@@ -1,67 +1,51 @@
-# Given a set of words (without duplicates),
-# find all word squares you can build from them.
+"""
+Word Squares
 
-# A sequence of words forms a valid word square
-# if the kth row and column read the exact same string,
-# where 0 ≤ k < max(numRows, numColumns).
+Given a set of words (without duplicates), find all word squares that can be
+built from them. A word square reads the same horizontally and vertically.
 
-# For example, the word sequence ["ball","area","lead","lady"] forms
-# a word square because each word reads the same both horizontally
-# and vertically.
+Reference: https://leetcode.com/problems/word-squares/
 
-# b a l l
-# a r e a
-# l e a d
-# l a d y
-# Note:
-# There are at least 1 and at most 1000 words.
-# All words will have the exact same length.
-# Word length is at least 1 and at most 5.
-# Each word contains only lowercase English alphabet a-z.
+Complexity:
+    Time:  O(n * 26^L) where n is the number of words, L is word length
+    Space: O(n * L) for the prefix map
+"""
 
-# Example 1:
-
-# Input:
-# ["area","lead","wall","lady","ball"]
-
-# Output:
-# [
-  # [ "wall",
-    # "area",
-    # "lead",
-    # "lady"
-  # ],
-  # [ "ball",
-    # "area",
-    # "lead",
-    # "lady"
-  # ]
-# ]
-
-# Explanation:
-# The output consists of two word squares. The order of output does not matter
-# (just the order of words in each word square matters).
+from __future__ import annotations
 
 import collections
 
-def word_squares(words):
-    n = len(words[0])
-    fulls = collections.defaultdict(list)
-    for word in words:
-        for i in range(n):
-            fulls[word[:i]].append(word)
 
-    def build(square):
-        if len(square) == n:
+def word_squares(words: list[str]) -> list[list[str]]:
+    """Find all valid word squares from a list of same-length words.
+
+    Args:
+        words: A list of words, all having the same length.
+
+    Returns:
+        A list of word squares, where each square is a list of words.
+
+    Examples:
+        >>> word_squares(["area", "lead", "wall", "lady", "ball"])
+        [['wall', 'area', 'lead', 'lady'], ['ball', 'area', 'lead', 'lady']]
+    """
+    word_length = len(words[0])
+    prefix_map: dict[str, list[str]] = collections.defaultdict(list)
+    for word in words:
+        for index in range(word_length):
+            prefix_map[word[:index]].append(word)
+
+    def _build(square: list[str]) -> None:
+        if len(square) == word_length:
             squares.append(square)
             return
         prefix = ""
-        for k in range(len(square)):
-            prefix += square[k][len(square)]
-        for word in fulls[prefix]:
-            build(square + [word])
-    squares = []
-    for word in words:
-        build([word])
-    return squares
+        for row in range(len(square)):
+            prefix += square[row][len(square)]
+        for word in prefix_map[prefix]:
+            _build(square + [word])
 
+    squares: list[list[str]] = []
+    for word in words:
+        _build([word])
+    return squares

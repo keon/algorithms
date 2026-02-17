@@ -1,50 +1,40 @@
 """
-This is a bfs-version of counting-islands problem in dfs section.
-Given a 2d grid map of '1's (land) and '0's (water),
-count the number of islands.
-An island is surrounded by water and is formed by
-connecting adjacent lands horizontally or vertically.
-You may assume all four edges of the grid are all surrounded by water.
+Count Islands (BFS)
 
-Example 1:
-11110
-11010
-11000
-00000
-Answer: 1
+Given a 2D grid of 1s (land) and 0s (water), count the number of islands
+using breadth-first search.  An island is a group of adjacent lands
+connected horizontally or vertically.
 
-Example 2:
-11000
-11000
-00100
-00011
-Answer: 3
+Reference: https://leetcode.com/problems/number-of-islands/
 
-Example 3:
-111000
-110000
-100001
-001101
-001100
-Answer: 3
-
-Example 4:
-110011
-001100
-000001
-111100
-Answer: 5
+Complexity:
+    Time:  O(M * N)
+    Space: O(M * N)
 """
 
+from __future__ import annotations
 
-def count_islands(grid):
+
+def count_islands(grid: list[list[int]]) -> int:
+    """Return the number of islands in *grid*.
+
+    Args:
+        grid: 2D matrix of 0s and 1s.
+
+    Returns:
+        Number of connected components of 1s.
+
+    Examples:
+        >>> count_islands([[1, 0], [0, 1]])
+        2
+    """
     row = len(grid)
     col = len(grid[0])
 
     num_islands = 0
-    visited = [[0] * col for i in range(row)]
+    visited = [[0] * col for _ in range(row)]
     directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-    queue = []
+    queue: list[tuple[int, int]] = []
 
     for i in range(row):
         for j, num in enumerate(grid[i]):
@@ -56,7 +46,7 @@ def count_islands(grid):
                     for k in range(len(directions)):
                         nx_x = x + directions[k][0]
                         nx_y = y + directions[k][1]
-                        if nx_x >= 0 and nx_y >= 0 and nx_x < row and nx_y < col:
+                        if 0 <= nx_x < row and 0 <= nx_y < col:
                             if visited[nx_x][nx_y] != 1 and grid[nx_x][nx_y] == 1:
                                 queue.append((nx_x, nx_y))
                                 visited[nx_x][nx_y] = 1

@@ -1,24 +1,42 @@
 """
-When make reliable means, we need to neglect best and worst values.
-For example, when making average score on athletes we need this option.
-So, this algorithm affixes some percentage to neglect when making mean.
-For example, if you suggest 20%, it will neglect the best 10% of values
-and the worst 10% of values.
+Trimmed Mean
 
-This algorithm takes an array and percentage to neglect. After sorted,
-if index of array is larger or smaller than desired ratio, we don't
-compute it.
+Compute the mean of an array after discarding a given percentage of the
+highest and lowest values. Useful for robust averaging in scoring systems.
 
-Compleity: O(n)
+Reference: https://en.wikipedia.org/wiki/Truncated_mean
+
+Complexity:
+    Time:  O(n log n) due to sorting
+    Space: O(n) for the trimmed copy
 """
-def trimmean(arr, per):
-    ratio = per/200
-    # /100 for easy calculation by *, and /2 for easy adaption to best and worst parts.
-    cal_sum = 0
-    # sum value to be calculated to trimmean.
-    arr.sort()
-    neg_val = int(len(arr)*ratio)
-    arr = arr[neg_val:len(arr)-neg_val]
-    for i in arr:
-        cal_sum += i
-    return cal_sum/len(arr)
+
+from __future__ import annotations
+
+
+def trimmean(array: list[float], percentage: float) -> float:
+    """Calculate the trimmed mean of an array.
+
+    Discards the top and bottom halves of the given percentage before
+    computing the arithmetic mean.
+
+    Args:
+        array: List of numeric values.
+        percentage: Total percentage to trim (split equally between
+            top and bottom). E.g., 20 trims the top 10% and bottom 10%.
+
+    Returns:
+        The trimmed arithmetic mean.
+
+    Examples:
+        >>> trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20)
+        5.5
+    """
+    ratio = percentage / 200
+    array.sort()
+    trim_count = int(len(array) * ratio)
+    trimmed = array[trim_count:len(array) - trim_count]
+    total = 0
+    for value in trimmed:
+        total += value
+    return total / len(trimmed)

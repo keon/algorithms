@@ -1,19 +1,39 @@
 """
-Implementing strongly connected components in a graph using Kosaraju's algorithm.
-https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+Strongly Connected Components (Kosaraju's Algorithm)
+
+Counts the number of strongly connected components in a directed graph
+using two DFS passes.
+
+Reference: https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V + E)
 """
+
+from __future__ import annotations
 
 
 class Kosaraju:
-    """
-    Kosaraju's algorithm use depth first search approach to find strongly connected components in a directed graph.
-    Approach:
-        1. Make a DFS call to keep track of finish time of each vertex.
-        2. Tranpose the original graph. ie 1->2 transpose is 1<-2
-        3. Make another DFS call to calculate strongly connected components.
-    """
+    """Kosaraju's algorithm for counting SCCs."""
 
-    def dfs(self, i, V, adj, visited, stk):
+    def dfs(
+        self,
+        i: int,
+        V: int,
+        adj: list[list[int]],
+        visited: list[int],
+        stk: list[int],
+    ) -> None:
+        """DFS that records vertices in finish-time order.
+
+        Args:
+            i: Current vertex.
+            V: Number of vertices.
+            adj: Adjacency list.
+            visited: Visited flags (-1 = unvisited).
+            stk: Stack recording finish order.
+        """
         visited[i] = 1
 
         for x in adj[i]:
@@ -22,9 +42,22 @@ class Kosaraju:
 
         stk.append(i)
 
-    def kosaraju(self, V, adj):
+    def kosaraju(self, V: int, adj: list[list[int]]) -> int:
+        """Return the number of strongly connected components.
 
-        stk, visited = [], [-1]*(V+1)
+        Args:
+            V: Number of vertices.
+            adj: Adjacency list.
+
+        Returns:
+            Count of SCCs.
+
+        Examples:
+            >>> Kosaraju().kosaraju(3, [[1], [2], [0]])
+            1
+        """
+        stk: list[int] = []
+        visited = [-1] * (V + 1)
 
         for i in range(V):
             if visited[i] == -1:
@@ -33,9 +66,10 @@ class Kosaraju:
         stk.reverse()
         res = stk.copy()
 
-        ans, visited1 = 0, [-1]*(V+1)
+        ans = 0
+        visited1 = [-1] * (V + 1)
 
-        adj1 = [[] for x in range(V)]
+        adj1: list[list[int]] = [[] for _ in range(V)]
 
         for i in range(len(adj)):
             for x in adj[i]:
@@ -47,35 +81,3 @@ class Kosaraju:
                 self.dfs(res[i], V, adj1, visited1, stk)
 
         return ans
-
-
-def main():
-    """
-    Let's look at the sample input.
-
-    6 7  #no of vertex, no of edges
-    0 2  #directed edge 0->2
-    1 0
-    2 3
-    3 1
-    3 4
-    4 5
-    5 4
-
-    calculating no of strongly connected compnenets in a directed graph.
-    answer should be: 2
-    1st strong component: 0->2->3->1->0
-    2nd strongly connected component: 4->5->4
-    """
-    V, E = map(int, input().split())
-    adj = [[] for x in range(V)]
-
-    for i in range(E):
-        u, v = map(int, input().split())
-        adj[u].append(v)
-
-    print(Kosaraju().kosaraju(V, adj))
-
-
-if __name__ == '__main__':
-    main()

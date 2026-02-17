@@ -1,26 +1,42 @@
 """
-For a given string and dictionary, how many sentences can you make from the
-string, such that all the words are contained in the dictionary.
+Make Sentence
 
-eg: for given string -> "appletablet"
-"apple", "tablet"
-"applet", "able", "t"
-"apple", "table", "t"
-"app", "let", "able", "t"
+For a given string and dictionary, count how many sentences can be formed
+from the string such that all words are contained in the dictionary.
 
-"applet", {app, let, apple, t, applet} => 3
-"thing", {"thing"} -> 1
+Reference: https://en.wikipedia.org/wiki/Word_break_problem
+
+Complexity:
+    Time:  O(2^n) worst case due to recursive exploration
+    Space: O(n) recursion depth
 """
+
+from __future__ import annotations
 
 count = 0
 
 
-def make_sentence(str_piece, dictionaries):
+def make_sentence(text_piece: str, dictionaries: list[str]) -> bool:
+    """Check if a string can be segmented into dictionary words and count ways.
+
+    Updates the global ``count`` variable with the number of valid segmentations.
+
+    Args:
+        text_piece: The string to segment.
+        dictionaries: A list of valid dictionary words.
+
+    Returns:
+        True if any segmentation is possible (always returns True).
+
+    Examples:
+        >>> make_sentence("applet", ["", "app", "let", "t", "apple", "applet"])
+        True
+    """
     global count
-    if len(str_piece) == 0:
+    if len(text_piece) == 0:
         return True
-    for i in range(0, len(str_piece)):
-        prefix, suffix = str_piece[0:i], str_piece[i:]
+    for index in range(0, len(text_piece)):
+        prefix, suffix = text_piece[0:index], text_piece[index:]
         if prefix in dictionaries:
             if suffix in dictionaries or make_sentence(suffix, dictionaries):
                 count += 1

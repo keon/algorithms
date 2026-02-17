@@ -1,16 +1,35 @@
 """
-Reverse bits of a given 32 bits unsigned integer.
+Reverse Bits
 
-For example, given input 43261596
-(represented in binary as 00000010100101000001111010011100),
-return 964176192
-(represented in binary as 00111001011110000010100101000000).
+Reverse the bits of a 32-bit unsigned integer.
+
+Reference: https://en.wikipedia.org/wiki/Bit_reversal
+
+Complexity:
+    Time:  O(1) -- always iterates exactly 32 times
+    Space: O(1)
 """
-def reverse_bits(n):
-    m = 0
-    i = 0
-    while i < 32:
-        m = (m << 1) + (n & 1)
-        n >>= 1
-        i += 1
-    return m
+
+from __future__ import annotations
+
+
+def reverse_bits(number: int) -> int:
+    """Reverse all 32 bits of an unsigned integer.
+
+    Args:
+        number: A 32-bit unsigned integer (0 to 2**32 - 1).
+
+    Returns:
+        The integer formed by reversing the bit order.
+
+    Examples:
+        >>> reverse_bits(43261596)
+        964176192
+        >>> reverse_bits(0)
+        0
+    """
+    result = 0
+    for _ in range(32):
+        result = (result << 1) + (number & 1)
+        number >>= 1
+    return result

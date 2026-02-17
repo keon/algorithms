@@ -1,48 +1,57 @@
-from collections import deque, defaultdict
+"""
+Topological Sort (Kahn's Algorithm / BFS)
 
-def topological_sort(vertices, edges):
-    """
-    Kahn’s Algorithm provides a clear and efficient way to perform topological ordering while also offering built-in cycle detection and avoiding recursion-depth issues.
-    Uses collections, for O(1) implementation.
+Computes a topological ordering of a directed acyclic graph.  Raises
+ValueError when a cycle is detected.
+
+Reference: https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm
+
+Complexity:
+    Time:  O(V + E)
+    Space: O(V + E)
+"""
+
+from __future__ import annotations
+
+from collections import defaultdict, deque
+
+
+def topological_sort(vertices: int, edges: list[tuple[int, int]]) -> list[int]:
+    """Return a topological ordering of the vertices.
 
     Args:
-        vertices (_type_): int
-        edges (_type_): list[tuple[int, int]]
-
-    Vertices are the number of vertices, from 0 to vertices-1
-    Edges are directed edges (u, v), where u -> v
+        vertices: Number of vertices (labelled 0 .. vertices-1).
+        edges: Directed edges as (u, v) meaning u -> v.
 
     Returns:
-        list: Topological ordering of vertices
+        List of vertices in topological order.
 
     Raises:
-        ValueError: If a cycle is detected
+        ValueError: If the graph contains a cycle.
+
+    Examples:
+        >>> topological_sort(3, [(0, 1), (1, 2)])
+        [0, 1, 2]
     """
+    graph: dict[int, list[int]] = defaultdict(list)
 
-    # Adjacency list
-    graph = defaultdict(list)
-
-    # In-degree array
     in_degree = [0] * vertices
 
-    # Build the graph and compute in-degrees
     for u, v in edges:
         graph[u].append(v)
         in_degree[v] += 1
 
-    # Queue of all vertices with in-degree 0
-    queue = deque()
+    queue: deque[int] = deque()
     for i in range(vertices):
         if in_degree[i] == 0:
             queue.append(i)
 
-    sorted = []
+    sorted_order: list[int] = []
     processed = 0
 
-    # BFS
     while queue:
         node = queue.popleft()
-        sorted.append(node)
+        sorted_order.append(node)
         processed += 1
 
         for neighbor in graph[node]:
@@ -50,8 +59,7 @@ def topological_sort(vertices, edges):
             if in_degree[neighbor] == 0:
                 queue.append(neighbor)
 
-    # Cycle detection
     if processed != vertices:
-        raise ValueError("Cycle detected, topolical sort failed")
+        raise ValueError("Cycle detected, topological sort failed")
 
-    return sorted
+    return sorted_order

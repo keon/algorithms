@@ -1,58 +1,43 @@
 """
-author @goswami-rahul
+Minimum Cost Path
 
-To find minimum cost path
-from station 0 to station N-1,
-where cost of moving from ith station to jth station is given as:
+Find the minimum cost to travel from station 0 to station N-1 given
+a cost matrix where cost[i][j] is the price of going from station i
+to station j (for i < j).
 
-Matrix of size (N x N)
-where Matrix[i][j] denotes the cost of moving from
-station i --> station j   for i < j
+Reference: https://en.wikipedia.org/wiki/Shortest_path_problem
 
-NOTE that values where Matrix[i][j] and i > j does not
-mean anything, and hence represented by -1 or INF
-
-For the input below (cost matrix),
-Minimum cost is obtained as from  { 0 --> 1 --> 3}
-                                  = cost[0][1] + cost[1][3] = 65
-the Output will be:
-
-The Minimum cost to reach station 4 is 65
-
-Time Complexity: O(n^2)
-Space Complexity: O(n)
+Complexity:
+    Time:  O(n^2)
+    Space: O(n)
 """
 
-INF = float("inf")
+from __future__ import annotations
+
+_INF = float("inf")
 
 
-def min_cost(cost):
-    """Find minimum cost.
+def min_cost(cost: list[list[int]]) -> int:
+    """Compute the minimum cost to reach the last station from station 0.
 
-    Keyword arguments:
-    cost -- matrix containing costs
+    Args:
+        cost: Square matrix where cost[i][j] is the travel cost from
+              station i to station j (for i < j).
+
+    Returns:
+        Minimum cost to reach station N-1 from station 0.
+
+    Examples:
+        >>> min_cost([[0, 15, 80, 90], [-1, 0, 40, 50], [-1, -1, 0, 70], [-1, -1, -1, 0]])
+        65
     """
     length = len(cost)
-    # dist[i] stores minimum cost from 0 --> i.
-    dist = [INF] * length
+    dist = [_INF] * length
 
-    dist[0] = 0   # cost from 0 --> 0 is zero.
+    dist[0] = 0
 
     for i in range(length):
-        for j in range(i+1,length):
+        for j in range(i + 1, length):
             dist[j] = min(dist[j], dist[i] + cost[i][j])
 
-    return dist[length-1]
-
-
-if __name__ == '__main__':
-    costs = [ [ 0, 15, 80, 90],         # cost[i][j] is the cost of
-             [-1,  0, 40, 50],         # going from i --> j
-             [-1, -1,  0, 70],
-             [-1, -1, -1,  0] ]        # cost[i][j] = -1 for i > j
-    TOTAL_LEN = len(costs)
-
-    mcost = min_cost(costs)
-    assert mcost == 65
-
-    print(f"The minimum cost to reach station {TOTAL_LEN} is {mcost}")
+    return dist[length - 1]

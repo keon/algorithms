@@ -1,72 +1,62 @@
 """
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+Merge K Sorted Linked Lists
+
+Merge k sorted linked lists into one sorted linked list using a heap
+for efficient minimum extraction.
+
+Reference: https://leetcode.com/problems/merge-k-sorted-lists/
+
+Complexity:
+    Time:  O(n log k) where n is total elements and k is number of lists
+    Space: O(k)
 """
 
+from __future__ import annotations
 
 from heapq import heappop, heapreplace, heapify
-from queue import PriorityQueue
 
 
-# Definition for singly-linked list.
-class ListNode(object):
-    """ ListNode Class"""
+class ListNode:
+    """Singly linked list node.
 
-    def __init__(self, val):
+    Args:
+        val: The node value.
+    """
+
+    def __init__(self, val: int) -> None:
         self.val = val
-        self.next = None
+        self.next: ListNode | None = None
 
 
-def merge_k_lists(lists):
-    """ Merge Lists """
+def merge_k_lists(lists: list[ListNode | None]) -> ListNode | None:
+    """Merge k sorted linked lists into a single sorted linked list.
+
+    Args:
+        lists: A list of head nodes of sorted linked lists.
+
+    Returns:
+        Head of the merged sorted linked list, or None if all are empty.
+
+    Examples:
+        >>> n1 = ListNode(1)
+        >>> n2 = ListNode(2)
+        >>> result = merge_k_lists([n1, n2])
+        >>> result.val
+        1
+    """
     dummy = node = ListNode(0)
-    list_h = [(n.val, n) for n in lists if n]
-    heapify(list_h)
-    while list_h:
-        _, n_val = list_h[0]
+    heap: list[tuple[int, int, ListNode]] = []
+    for idx, head in enumerate(lists):
+        if head:
+            heap.append((head.val, idx, head))
+    heapify(heap)
+    while heap:
+        val, idx, n_val = heap[0]
         if n_val.next is None:
-            heappop(list_h)  # only change heap size when necessary
+            heappop(heap)
         else:
-            heapreplace(list_h, (n_val.next.val, n_val.next))
+            heapreplace(heap, (n_val.next.val, idx, n_val.next))
         node.next = n_val
         node = node.next
 
     return dummy.next
-
-
-def merge_k_lists(lists):
-    """ Merge List """
-    dummy = ListNode(None)
-    curr = dummy
-    q = PriorityQueue()
-    for node in lists:
-        if node:
-            q.put((node.val, node))
-    while not q.empty():
-        curr.next = q.get()[1]  # These two lines seem to
-        curr = curr.next  # be equivalent to :-   curr = q.get()[1]
-        if curr.next:
-            q.put((curr.next.val, curr.next))
-    return dummy.next
-
-
-"""
-I think my code's complexity is also O(nlogk) and not using heap or priority queue,
-n means the total elements and k means the size of list.
-
-The mergeTwoLists function in my code comes from the problem Merge Two Sorted Lists
-whose complexity obviously is O(n), n is the sum of length of l1 and l2.
-
-To put it simpler, assume the k is 2^x, So the progress of combination is like a full binary tree,
-from bottom to top. So on every level of tree, the combination complexity is n,
-because every level have all n numbers without repetition.
-The level of tree is x, ie log k. So the complexity is O(n log k).
-
-for example, 8 ListNode, and the length of every ListNode is x1, x2,
-x3, x4, x5, x6, x7, x8, total is n.
-
-on level 3: x1+x2, x3+x4, x5+x6, x7+x8 sum: n
-
-on level 2: x1+x2+x3+x4, x5+x6+x7+x8 sum: n
-
-on level 1: x1+x2+x3+x4+x5+x6+x7+x8 sum: n
-"""

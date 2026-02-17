@@ -1,42 +1,50 @@
-'''
-Algorithm used => Kadane's Algorithm
+"""
+Maximum Contiguous Subsequence Sum (Kadane's Algorithm)
 
-kadane's algorithm is used for finding the maximum sum of contiguous subsequence in a sequence.
-It is considered a greedy/dp algorithm but I think they more greedy than dp
-here are some of the examples to understand the use case more clearly
-Example1 => [-2, 3, 8, -1, 4]
-result =>  {3, 8, -1, 4} => 14
-Example2 => [-1, 1, 0]
-result => {1} => 1
-Example3 => [-1, -3, -4]
-result => -1
-Example1 => [-2, 3, 8, -12, 8, 4]
-result =>  {8, 4} => 12
-Basic Algorithm Idea
-    If the sum of the current contiguous subsequence after adding the value at the current position is less than the value
-    at the current position then we know that it will be better if we start the current contiguous subsequence from this position.
-    Else we add the value at the current position to the current contiguous subsequence.
-Note
-    In the implementation, the contiguous subsequence has at least one element.
-    If it can have 0 elements then the result will be max(max_till_now, 0)
-'''
+Finds the maximum sum of a contiguous sub-array within a one-dimensional
+array of numbers.  The algorithm is greedy / dynamic-programming hybrid.
+
+Reference: https://en.wikipedia.org/wiki/Maximum_subarray_problem
+
+Complexity:
+    Time:  O(n)
+    Space: O(1)
+"""
+
+from __future__ import annotations
 
 
-def max_contiguous_subsequence_sum(arr) -> int:
-    arr_size = len(arr)
+def max_contiguous_subsequence_sum(arr: list[int]) -> int:
+    """Return the maximum contiguous subsequence sum.
 
-    if arr_size == 0:
+    The contiguous subsequence must contain at least one element.
+    Returns 0 for an empty array.
+
+    Args:
+        arr: A list of integers.
+
+    Returns:
+        The maximum contiguous subsequence sum.
+
+    Examples:
+        >>> max_contiguous_subsequence_sum([-2, 3, 8, -1, 4])
+        14
+        >>> max_contiguous_subsequence_sum([-1, -3, -4])
+        -1
+        >>> max_contiguous_subsequence_sum([])
+        0
+    """
+    if not arr:
         return 0
 
-    max_till_now = arr[0]
-    curr_sub_sum = 0
+    max_sum = arr[0]
+    current_sum = 0
 
-    for i in range(0, arr_size):
-        if curr_sub_sum + arr[i] < arr[i]:
-            curr_sub_sum = arr[i]
+    for value in arr:
+        if current_sum + value < value:
+            current_sum = value
         else:
-            curr_sub_sum += arr[i]
+            current_sum += value
+        max_sum = max(max_sum, current_sum)
 
-        max_till_now = max(max_till_now, curr_sub_sum)
-
-    return max_till_now
+    return max_sum

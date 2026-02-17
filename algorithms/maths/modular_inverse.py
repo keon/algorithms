@@ -1,13 +1,29 @@
-# extended_gcd(a, b) modified from
-# https://github.com/keon/algorithms/blob/master/algorithms/maths/extended_gcd.py
+"""
+Modular Multiplicative Inverse
 
-def extended_gcd(a: int, b: int) -> [int, int, int]:
-    """Extended GCD algorithm.
-    Return s, t, g
-    such that a * s + b * t = GCD(a, b)
-    and s and t are co-prime.
+Find x such that a * x = 1 (mod m) using the Extended Euclidean Algorithm.
+Requires a and m to be coprime.
+
+Reference: https://en.wikipedia.org/wiki/Modular_multiplicative_inverse
+
+Complexity:
+    Time:  O(log(min(a, m)))
+    Space: O(1)
+"""
+
+from __future__ import annotations
+
+
+def _extended_gcd(a: int, b: int) -> tuple[int, int, int]:
+    """Compute the extended GCD of two integers.
+
+    Args:
+        a: First integer.
+        b: Second integer.
+
+    Returns:
+        A tuple (s, t, g) where a * s + b * t = g = gcd(a, b).
     """
-
     old_s, s = 1, 0
     old_t, t = 0, 1
     old_r, r = a, b
@@ -23,12 +39,23 @@ def extended_gcd(a: int, b: int) -> [int, int, int]:
 
 
 def modular_inverse(a: int, m: int) -> int:
-    """
-    Returns x such that a * x = 1 (mod m)
-    a and m must be coprime
-    """
+    """Find x such that a * x = 1 (mod m).
 
-    s, _, g = extended_gcd(a, m)
+    Args:
+        a: The integer to find the inverse of.
+        m: The modulus (must be coprime with a).
+
+    Returns:
+        The modular multiplicative inverse of a modulo m.
+
+    Raises:
+        ValueError: If a and m are not coprime.
+
+    Examples:
+        >>> modular_inverse(2, 19)
+        10
+    """
+    s, _, g = _extended_gcd(a, m)
     if g != 1:
         raise ValueError("a and m must be coprime")
     return s % m

@@ -1,27 +1,35 @@
-# Suppose you have a random list of people standing in a queue.
-# Each person is described by a pair of integers (h, k),
-# where h is the height of the person and k is the number of people
-# in front of this person who have a height greater than or equal to h.
-# Write an algorithm to reconstruct the queue.
+"""
+Reconstruct Queue by Height
 
-# Note:
-# The number of people is less than 1,100.
+Given a list of people described by (height, k) pairs where k is the
+number of taller-or-equal people in front, reconstruct the queue by
+sorting and inserting.
 
-# Example
+Reference: https://leetcode.com/problems/queue-reconstruction-by-height/
 
-# Input:
-# [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+Complexity:
+    Time:  O(n^2)
+    Space: O(n)
+"""
 
-# Output:
-# [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+from __future__ import annotations
 
-def reconstruct_queue(people):
+
+def reconstruct_queue(people: list[list[int]]) -> list[list[int]]:
+    """Reconstruct the queue from (height, k) pairs.
+
+    Args:
+        people: List of [height, k] pairs.
+
+    Returns:
+        The reconstructed queue as a list of [height, k] pairs.
+
+    Examples:
+        >>> reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]])
+        [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
     """
-    :type people: List[List[int]]
-    :rtype: List[List[int]]
-    """
-    queue = []
+    queue: list[list[int]] = []
     people.sort(key=lambda x: (-x[0], x[1]))
-    for h, k in people:
-        queue.insert(k, [h, k])
+    for height, count in people:
+        queue.insert(count, [height, count])
     return queue

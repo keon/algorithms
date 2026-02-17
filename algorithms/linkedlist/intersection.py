@@ -1,25 +1,42 @@
 """
-   This function takes two lists and returns the node they have in common, if any.
-   In this example:
-   1 -> 3 -> 5
-               \
-                7 -> 9 -> 11
-               /
-   2 -> 4 -> 6
-   ...we would return 7.
-   Note that the node itself is the unique identifier, not the value of the node.
-   """
-import unittest
+Intersection of Two Linked Lists
+
+Given two singly linked lists that converge at some node, find and return the
+intersecting node. The node identity (not value) is the unique identifier.
+
+Reference: https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+Complexity:
+    Time:  O(m + n)
+    Space: O(1)
+"""
+
+from __future__ import annotations
 
 
-class Node(object):
-    def __init__(self, val=None):
+class Node:
+    def __init__(self, val: object = None) -> None:
         self.val = val
-        self.next = None
+        self.next: Node | None = None
 
 
-def intersection(h1, h2):
+def intersection(h1: Node, h2: Node) -> Node | None:
+    """Find the intersection node of two linked lists.
 
+    Args:
+        h1: Head of the first linked list.
+        h2: Head of the second linked list.
+
+    Returns:
+        The intersecting node, or None if the lists do not intersect.
+
+    Examples:
+        >>> shared = Node(7)
+        >>> a = Node(1); a.next = shared
+        >>> b = Node(2); b.next = shared
+        >>> intersection(a, b).val
+        7
+    """
     count = 0
     flag = None
     h1_orig = h1
@@ -29,7 +46,6 @@ def intersection(h1, h2):
         count += 1
 
         if not flag and (h1.next is None or h2.next is None):
-            # We hit the end of one of the lists, set a flag for this
             flag = (count, h1.next, h2.next)
 
         if h1:
@@ -37,7 +53,7 @@ def intersection(h1, h2):
         if h2:
             h2 = h2.next
 
-    long_len = count    # Mark the length of the longer of the two lists
+    long_len = count
     short_len = flag[0]
 
     if flag[1] is None:
@@ -48,54 +64,14 @@ def intersection(h1, h2):
         longer = h1_orig
 
     while longer and shorter:
-
         while long_len > short_len:
-            # force the longer of the two lists to "catch up"
             longer = longer.next
             long_len -= 1
 
         if longer == shorter:
-            # The nodes match, return the node
             return longer
         else:
             longer = longer.next
             shorter = shorter.next
 
     return None
-
-
-class TestSuite(unittest.TestCase):
-
-    def test_intersection(self):
-
-        # create linked list as:
-        # 1 -> 3 -> 5
-        #            \
-        #             7 -> 9 -> 11
-        #            /
-        # 2 -> 4 -> 6
-        a1 = Node(1)
-        b1 = Node(3)
-        c1 = Node(5)
-        d = Node(7)
-        a2 = Node(2)
-        b2 = Node(4)
-        c2 = Node(6)
-        e = Node(9)
-        f = Node(11)
-
-        a1.next = b1
-        b1.next = c1
-        c1.next = d
-        a2.next = b2
-        b2.next = c2
-        c2.next = d
-        d.next = e
-        e.next = f
-
-        self.assertEqual(7, intersection(a1, a2).val)
-
-
-if __name__ == '__main__':
-
-    unittest.main()

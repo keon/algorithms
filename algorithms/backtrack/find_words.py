@@ -1,73 +1,82 @@
-'''
-Given a matrix of words and a list of words to search,
-return a list of words that exists in the board
-This is Word Search II on LeetCode
+"""
+Word Search II
 
-board = [
-         ['o','a','a','n'],
-         ['e','t','a','e'],
-         ['i','h','k','r'],
-         ['i','f','l','v']
-         ]
+Given a board of characters and a list of words, find all words that can
+be constructed from adjacent cells (horizontally or vertically). Each cell
+may only be used once per word. Uses a trie for efficient prefix matching.
 
-words = ["oath","pea","eat","rain"]
-'''
+Reference: https://leetcode.com/problems/word-search-ii/
+
+Complexity:
+    Time:  O(M * N * 4^L) where M*N is board size, L is max word length
+    Space: O(W * L) for the trie, where W is number of words
+"""
+
+from __future__ import annotations
 
 
-def find_words(board, words):
+def find_words(board: list[list[str]], words: list[str]) -> list[str]:
+    """Find all words from the list that exist on the board.
 
-    def backtrack(board, i, j, trie, pre, used, result):
-        '''
-        backtrack tries to build each words from
-        the board and return all words found
+    Builds a trie from the word list, then uses backtracking to search
+    the board for each word.
 
-        @param: board, the passed in board of characters
-        @param: i, the row index
-        @param: j, the column index
-        @param: trie, a trie of the passed in words
-        @param: pre, a buffer of currently build string that differs
-                by recursion stack
-        @param: used, a replica of the board except in booleans
-                to state whether a character has been used
-        @param: result, the resulting set that contains all words found
+    Args:
+        board: A 2D grid of characters.
+        words: A list of words to search for.
 
-        @return: list of words found
-        '''
+    Returns:
+        A list of words found on the board.
 
-        if '#' in trie:
-            result.add(pre)
-
-        if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
-            return
-
-        if not used[i][j] and board[i][j] in trie:
-            used[i][j] = True
-            backtrack(board, i+1, j, trie[board[i][j]],
-                      pre+board[i][j], used, result)
-            backtrack(board, i, j+1, trie[board[i][j]],
-                      pre+board[i][j], used, result)
-            backtrack(board, i-1, j, trie[board[i][j]],
-                      pre+board[i][j], used, result)
-            backtrack(board, i, j-1, trie[board[i][j]],
-                      pre+board[i][j], used, result)
-            used[i][j] = False
-
-    # make a trie structure that is essentially dictionaries of dictionaries
-    # that map each character to a potential next character
-    trie = {}
+    Examples:
+        >>> board = [['o','a','a','n'], ['e','t','a','e']]
+        >>> sorted(find_words(board, ['eat', 'oath']))
+        ['eat']
+    """
+    trie: dict = {}
     for word in words:
-        curr_trie = trie
+        current_node = trie
         for char in word:
-            if char not in curr_trie:
-                curr_trie[char] = {}
-            curr_trie = curr_trie[char]
-        curr_trie['#'] = '#'
+            if char not in current_node:
+                current_node[char] = {}
+            current_node = current_node[char]
+        current_node["#"] = "#"
 
-    # result is a set of found words since we do not want repeats
-    result = set()
-    used = [[False]*len(board[0]) for _ in range(len(board))]
+    found: set[str] = set()
+    used = [[False] * len(board[0]) for _ in range(len(board))] if board else []
 
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            backtrack(board, i, j, trie, '', used, result)
-    return list(result)
+    for row in range(len(board)):
+        for col in range(len(board[0])):
+            _backtrack(board, row, col, trie, "", used, found)
+
+    return list(found)
+
+
+def _backtrack(
+    board: list[list[str]],
+    row: int,
+    col: int,
+    trie: dict,
+    prefix: str,
+    used: list[list[bool]],
+    found: set[str],
+) -> None:
+    """Recursively search the board for words matching the trie."""
+    if "#" in trie:
+        found.add(prefix)
+
+    if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]):
+        return
+
+    if not used[row][col] and board[row][col] in trie:
+        used[row][col] = True
+        next_char = board[row][col]
+        _backtrack(board, row + 1, col, trie[next_char],
+                   prefix + next_char, used, found)
+        _backtrack(board, row, col + 1, trie[next_char],
+                   prefix + next_char, used, found)
+        _backtrack(board, row - 1, col, trie[next_char],
+                   prefix + next_char, used, found)
+        _backtrack(board, row, col - 1, trie[next_char],
+                   prefix + next_char, used, found)
+        used[row][col] = False

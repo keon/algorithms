@@ -1,19 +1,32 @@
 """
-Algorithms for performing diffie-hellman key exchange.
+Diffie-Hellman Key Exchange
+
+Implements the Diffie-Hellman key exchange protocol, which enables two parties
+to establish a shared secret over an insecure channel using discrete
+logarithm properties.
+
+Reference: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+
+Complexity:
+    Time:  O(p) for primitive root finding, O(log(p)) for key generation
+    Space: O(p) for primitive root list
 """
+
+from __future__ import annotations
+
 import math
 from random import randint
 
 
-"""
-Code from /algorithms/maths/prime_check.py,
-written by 'goswami-rahul' and 'Hai Honag Dang'
-"""
-def prime_check(num):
-    """Return True if num is a prime number
-    Else return False.
-    """
+def _prime_check(num: int) -> bool:
+    """Check whether a number is prime.
 
+    Args:
+        num: The integer to test.
+
+    Returns:
+        True if num is prime, False otherwise.
+    """
     if num <= 1:
         return False
     if num == 2 or num == 3:
@@ -28,18 +41,19 @@ def prime_check(num):
     return True
 
 
-"""
-For positive integer n and given integer a that satisfies gcd(a, n) = 1,
-the order of a modulo n is the smallest positive integer k that satisfies
-pow (a, k) % n = 1. In other words, (a^k) ≡ 1 (mod n).
-Order of certain number may or may not exist. If not, return -1.
-"""
-def find_order(a, n):
+def _find_order(a: int, n: int) -> int:
+    """Find the multiplicative order of a modulo n.
+
+    Args:
+        a: The base integer.
+        n: The modulus.
+
+    Returns:
+        The smallest positive k such that a^k = 1 (mod n), or -1 if none exists.
+    """
     if (a == 1) & (n == 1):
-        # Exception Handeling : 1 is the order of of 1
         return 1
     if math.gcd(a, n) != 1:
-        print ("a and n should be relative prime!")
         return -1
     for i in range(1, n):
         if pow(a, i) % n == 1:
@@ -47,16 +61,15 @@ def find_order(a, n):
     return -1
 
 
-"""
-Euler's totient function, also known as phi-function ϕ(n),
-counts the number of integers between 1 and n inclusive,
-which are coprime to n.
-(Two numbers are coprime if their greatest common divisor (GCD) equals 1).
-Code from /algorithms/maths/euler_totient.py, written by 'goswami-rahul'
-"""
-def euler_totient(n):
-    """Euler's totient function or Phi function.
-    Time Complexity: O(sqrt(n))."""
+def _euler_totient(n: int) -> int:
+    """Compute Euler's totient function phi(n).
+
+    Args:
+        n: A positive integer.
+
+    Returns:
+        The number of integers from 1 to n that are coprime with n.
+    """
     result = n
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
@@ -67,99 +80,131 @@ def euler_totient(n):
         result -= result // n
     return result
 
-"""
-For positive integer n and given integer a that satisfies gcd(a, n) = 1,
-a is the primitive root of n, if a's order k for n satisfies k = ϕ(n).
-Primitive roots of certain number may or may not be exist.
-If so, return empty list.
-"""
 
-def find_primitive_root(n):
-    """ Returns all primitive roots of n. """
+def _find_primitive_root(n: int) -> list[int]:
+    """Find all primitive roots of n.
+
+    Args:
+        n: A positive integer.
+
+    Returns:
+        List of all primitive roots of n, or empty list if none exist.
+    """
     if n == 1:
-        # Exception Handeling : 0 is the only primitive root of 1
         return [0]
-    phi = euler_totient(n)
+    phi = _euler_totient(n)
     p_root_list = []
-    for i in range (1, n):
+    for i in range(1, n):
         if math.gcd(i, n) != 1:
-            # To have order, a and n must be relative prime with each other.
             continue
-        order = find_order(i, n)
+        order = _find_order(i, n)
         if order == phi:
             p_root_list.append(i)
     return p_root_list
 
 
-"""
-Diffie-Hellman key exchange is the method that enables
-two entities (in here, Alice and Bob), not knowing each other,
-to share common secret key through not-encrypted communication network.
-This method use the property of one-way function (discrete logarithm)
-For example, given a, b and n, it is easy to calculate x
-that satisfies (a^b) ≡ x (mod n).
-However, it is very hard to calculate x that satisfies (a^x) ≡ b (mod n).
-For using this method, large prime number p and its primitive root a
-must be given.
-"""
+def alice_private_key(p: int) -> int:
+    """Generate Alice's private key in range [1, p-1].
 
-def alice_private_key(p):
-    """Alice determine her private key
-    in the range of 1 ~ p-1.
-    This must be kept in secret"""
-    return randint(1, p-1)
+    Args:
+        p: A large prime number.
+
+    Returns:
+        A random private key.
+    """
+    return randint(1, p - 1)
 
 
-def alice_public_key(a_pr_k, a, p):
-    """Alice calculate her public key
-    with her private key.
-    This is open to public"""
+def alice_public_key(a_pr_k: int, a: int, p: int) -> int:
+    """Calculate Alice's public key.
+
+    Args:
+        a_pr_k: Alice's private key.
+        a: The primitive root (generator).
+        p: The prime modulus.
+
+    Returns:
+        Alice's public key.
+    """
     return pow(a, a_pr_k) % p
 
 
-def bob_private_key(p):
-    """Bob determine his private key
-    in the range of 1 ~ p-1.
-    This must be kept in secret"""
-    return randint(1, p-1)
+def bob_private_key(p: int) -> int:
+    """Generate Bob's private key in range [1, p-1].
+
+    Args:
+        p: A large prime number.
+
+    Returns:
+        A random private key.
+    """
+    return randint(1, p - 1)
 
 
-def bob_public_key(b_pr_k, a, p):
-    """Bob calculate his public key
-    with his private key.
-    This is open to public"""
+def bob_public_key(b_pr_k: int, a: int, p: int) -> int:
+    """Calculate Bob's public key.
+
+    Args:
+        b_pr_k: Bob's private key.
+        a: The primitive root (generator).
+        p: The prime modulus.
+
+    Returns:
+        Bob's public key.
+    """
     return pow(a, b_pr_k) % p
 
 
-def alice_shared_key(b_pu_k, a_pr_k, p):
-    """ Alice calculate secret key shared with Bob,
-    with her private key and Bob's public key.
-    This must be kept in secret"""
+def alice_shared_key(b_pu_k: int, a_pr_k: int, p: int) -> int:
+    """Calculate Alice's shared secret key.
+
+    Args:
+        b_pu_k: Bob's public key.
+        a_pr_k: Alice's private key.
+        p: The prime modulus.
+
+    Returns:
+        The shared secret key.
+    """
     return pow(b_pu_k, a_pr_k) % p
 
 
-def bob_shared_key(a_pu_k, b_pr_k, p):
-    """ Bob calculate secret key shared with Alice,
-    with his private key and Alice's public key.
-    This must be kept in secret"""
+def bob_shared_key(a_pu_k: int, b_pr_k: int, p: int) -> int:
+    """Calculate Bob's shared secret key.
+
+    Args:
+        a_pu_k: Alice's public key.
+        b_pr_k: Bob's private key.
+        p: The prime modulus.
+
+    Returns:
+        The shared secret key.
+    """
     return pow(a_pu_k, b_pr_k) % p
 
 
-def diffie_hellman_key_exchange(a, p, option = None):
-    """ Perform diffie-helmman key exchange. """
-    if option is not None:
-        # Print explanation of process when option parameter is given
-        option = 1
-    if prime_check(p) is False:
-        print(f"{p} is not a prime number")
-        # p must be large prime number
+def diffie_hellman_key_exchange(a: int, p: int, option: int | None = None) -> bool:
+    """Perform Diffie-Hellman key exchange and verify shared keys match.
+
+    Args:
+        a: The primitive root (generator).
+        p: A large prime number.
+        option: Unused, kept for API compatibility.
+
+    Returns:
+        True if both parties compute the same shared key, False if
+        inputs are invalid.
+
+    Examples:
+        >>> diffie_hellman_key_exchange(3, 353)
+        True
+    """
+    if _prime_check(p) is False:
         return False
     try:
-        p_root_list = find_primitive_root(p)
+        p_root_list = _find_primitive_root(p)
         p_root_list.index(a)
     except ValueError:
-        print(f"{a} is not a primitive root of {p}")
-        # a must be primitive root of p
         return False
 
     a_pr_k = alice_private_key(p)
@@ -168,17 +213,7 @@ def diffie_hellman_key_exchange(a, p, option = None):
     b_pr_k = bob_private_key(p)
     b_pu_k = bob_public_key(b_pr_k, a, p)
 
-    if option == 1:
-        print(f"Alice's private key: {a_pr_k}")
-        print(f"Alice's public key: {a_pu_k}")
-        print(f"Bob's private key: {b_pr_k}")
-        print(f"Bob's public key: {b_pu_k}")
-
-    # In here, Alice send her public key to Bob, and Bob also send his public key to Alice.
-
     a_sh_k = alice_shared_key(b_pu_k, a_pr_k, p)
     b_sh_k = bob_shared_key(a_pu_k, b_pr_k, p)
-    print (f"Shared key calculated by Alice = {a_sh_k}")
-    print (f"Shared key calculated by Bob = {b_sh_k}")
 
     return a_sh_k == b_sh_k

@@ -1,35 +1,48 @@
 """
-Given two non-negative integers num1 and num2 represented as strings,
-return the product of num1 and num2.
+Multiply Strings
 
-Note:
+Given two non-negative integers represented as strings, return their product
+as a string without using built-in BigInteger or direct integer conversion.
 
-The length of both num1 and num2 is < 110.
-Both num1 and num2 contains only digits 0-9.
-Both num1 and num2 does not contain any leading zero.
-You must not use any built-in BigInteger library or convert
-the inputs to integer directly.
+Reference: https://leetcode.com/problems/multiply-strings/
+
+Complexity:
+    Time:  O(m * n) where m, n are the lengths of the two numbers
+    Space: O(m + n)
 """
 
+from __future__ import annotations
 
-def multiply(num1: "str", num2: "str") -> "str":
-    interm = []
+
+def multiply(num1: str, num2: str) -> str:
+    """Multiply two numbers represented as strings.
+
+    Args:
+        num1: The first number as a string.
+        num2: The second number as a string.
+
+    Returns:
+        The product of the two numbers as a string.
+
+    Examples:
+        >>> multiply("23", "23")
+        '529'
+    """
+    intermediate: list[int] = []
     zero = ord('0')
-    i_pos = 1
-    for i in reversed(num1):
-        j_pos = 1
-        add = 0
-        for j in reversed(num2):
-            mult = (ord(i)-zero) * (ord(j)-zero) * j_pos * i_pos
-            j_pos *= 10
-            add += mult
-        i_pos *= 10
-        interm.append(add)
-    return str(sum(interm))
-
-
-if __name__ == "__main__":
-    print(multiply("1", "23"))
-    print(multiply("23", "23"))
-    print(multiply("100", "23"))
-    print(multiply("100", "10000"))
+    position_i = 1
+    for digit_i in reversed(num1):
+        position_j = 1
+        accumulator = 0
+        for digit_j in reversed(num2):
+            product = (
+                (ord(digit_i) - zero)
+                * (ord(digit_j) - zero)
+                * position_j
+                * position_i
+            )
+            position_j *= 10
+            accumulator += product
+        position_i *= 10
+        intermediate.append(accumulator)
+    return str(sum(intermediate))

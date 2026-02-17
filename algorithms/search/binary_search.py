@@ -1,52 +1,71 @@
 """
 Binary Search
 
-Find an element in a sorted array (in ascending order).
+Search for an element in a sorted array by repeatedly dividing the search
+interval in half.
+
+Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
+
+Complexity:
+    Time:  O(1) best / O(log n) average / O(log n) worst
+    Space: O(1) iterative, O(log n) recursive
 """
 
-# For Binary Search, T(N) = T(N/2) + O(1) // the recurrence relation
-# Apply Masters Theorem for computing Run time complexity of recurrence relations:
-#       T(N) = aT(N/b) + f(N)
-# Here,
-#       a = 1, b = 2 => log (a base b) = 1
-# also, here
-#       f(N) = n^c log^k(n)  // k = 0 & c = log (a base b)
-# So,
-#       T(N) = O(N^c log^(k+1)N) = O(log(N))
+from __future__ import annotations
 
-def binary_search(array, query):
+
+def binary_search(array: list[int], query: int) -> int:
+    """Search for *query* in a sorted *array* using iterative binary search.
+
+    Args:
+        array: Sorted list of integers in ascending order.
+        query: Value to search for.
+
+    Returns:
+        Index of *query* in *array*, or -1 if not found.
+
+    Examples:
+        >>> binary_search([1, 2, 3, 4, 5], 3)
+        2
+        >>> binary_search([1, 2, 3, 4, 5], 6)
+        -1
     """
-    Worst-case Complexity: O(log(n))
-
-    reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
-    """
-
     low, high = 0, len(array) - 1
     while low <= high:
         mid = low + (high - low) // 2
         val = array[mid]
         if val == query:
             return mid
-
         if val < query:
             low = mid + 1
         else:
             high = mid - 1
-    return None
+    return -1
 
-#In this below function we are passing array, it's first index , last index and value to be searched
-def binary_search_recur(array, low, high, val):
-    """
-    Worst-case Complexity: O(log(n))
 
-    reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
+def binary_search_recur(array: list[int], low: int, high: int, val: int) -> int:
+    """Search for *val* in a sorted *array* using recursive binary search.
+
+    Args:
+        array: Sorted list of integers in ascending order.
+        low: Lower bound index of the current search range.
+        high: Upper bound index of the current search range.
+        val: Value to search for.
+
+    Returns:
+        Index of *val* in *array*, or -1 if not found.
+
+    Examples:
+        >>> binary_search_recur([1, 2, 3, 4, 5], 0, 4, 3)
+        2
+        >>> binary_search_recur([1, 2, 3, 4, 5], 0, 4, 6)
+        -1
     """
-#Here in Logic section first we are checking if low is greater than high which means its an error condition because low index should not move ahead of high index
-    if low > high:       
+    if low > high:
         return -1
-    mid = low + (high-low)//2   #This mid will not break integer range
-    if val < array[mid]:  
-        return binary_search_recur(array, low, mid - 1, val) #Go search in the left subarray
+    mid = low + (high - low) // 2
+    if val < array[mid]:
+        return binary_search_recur(array, low, mid - 1, val)
     if val > array[mid]:
-        return binary_search_recur(array, mid + 1, high, val) #Go search in the right subarray
+        return binary_search_recur(array, mid + 1, high, val)
     return mid

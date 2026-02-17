@@ -1,27 +1,42 @@
 """
-Atbash cipher is mapping the alphabet to it's reverse.
-So if we take "a" as it is the first letter, we change it to the last - z.
+Atbash Cipher
 
-Example:
-Attack at dawn --> Zggzxp zg wzdm
+Atbash cipher maps each letter of the alphabet to its reverse.
+The first letter 'a' maps to 'z', 'b' maps to 'y', and so on.
 
-Complexity: O(n)
+Reference: https://en.wikipedia.org/wiki/Atbash
+
+Complexity:
+    Time:  O(n) where n is the length of the input string
+    Space: O(n)
 """
 
-def atbash(s):
+from __future__ import annotations
+
+
+def atbash(text: str) -> str:
+    """Encrypt or decrypt a string using the Atbash cipher.
+
+    Args:
+        text: The input string to transform.
+
+    Returns:
+        The Atbash-transformed string.
+
+    Examples:
+        >>> atbash("abcdefghijklmno")
+        'zyxwvutsrqponml'
+    """
     translated = ""
-    for i in range(len(s)):
-        n = ord(s[i])
-        
-        if s[i].isalpha():
-            
-            if s[i].isupper():
-                x = n - ord('A')
-                translated += chr(ord('Z') - x)
-            
-            if s[i].islower():
-                x = n - ord('a')
-                translated += chr(ord('z') - x)
+    for char in text:
+        code = ord(char)
+        if char.isalpha():
+            if char.isupper():
+                offset = code - ord('A')
+                translated += chr(ord('Z') - offset)
+            elif char.islower():
+                offset = code - ord('a')
+                translated += chr(ord('z') - offset)
         else:
-            translated += s[i]
+            translated += char
     return translated

@@ -1,35 +1,70 @@
 """
-Given two strings S and T, determine if they are both one edit distance apart.
+One Edit Distance
+
+Given two strings, determine if they are exactly one edit distance apart.
+An edit is an insertion, deletion, or replacement of a single character.
+
+Reference: https://leetcode.com/problems/one-edit-distance/
+
+Complexity:
+    Time:  O(n) where n is the length of the shorter string
+    Space: O(n) for string slicing
 """
 
+from __future__ import annotations
 
-def is_one_edit(s, t):
+
+def is_one_edit(source: str, target: str) -> bool:
+    """Check if two strings are exactly one edit apart using slicing.
+
+    Args:
+        source: The first string.
+        target: The second string.
+
+    Returns:
+        True if the strings are exactly one edit apart, False otherwise.
+
+    Examples:
+        >>> is_one_edit("abc", "abd")
+        True
     """
-    :type s: str
-    :type t: str
-    :rtype: bool
-    """
-    if len(s) > len(t):
-        return is_one_edit(t, s)
-    if len(t) - len(s) > 1 or t == s:
+    if len(source) > len(target):
+        return is_one_edit(target, source)
+    if len(target) - len(source) > 1 or target == source:
         return False
-    for i in range(len(s)):
-        if s[i] != t[i]:
-            return s[i+1:] == t[i+1:] or s[i:] == t[i+1:]
+    for index in range(len(source)):
+        if source[index] != target[index]:
+            return (
+                source[index + 1:] == target[index + 1:]
+                or source[index:] == target[index + 1:]
+            )
     return True
 
 
-def is_one_edit2(s, t):
-    l1, l2 = len(s), len(t)
-    if l1 > l2:
-        return is_one_edit2(t, s)
-    if len(t) - len(s) > 1 or t == s:
+def is_one_edit2(source: str, target: str) -> bool:
+    """Check if two strings are exactly one edit apart using modification.
+
+    Args:
+        source: The first string.
+        target: The second string.
+
+    Returns:
+        True if the strings are exactly one edit apart, False otherwise.
+
+    Examples:
+        >>> is_one_edit2("abc", "abd")
+        True
+    """
+    source_length, target_length = len(source), len(target)
+    if source_length > target_length:
+        return is_one_edit2(target, source)
+    if len(target) - len(source) > 1 or target == source:
         return False
-    for i in range(len(s)):
-        if s[i] != t[i]:
-            if l1 == l2:
-                s = s[:i]+t[i]+s[i+1:]  # modify
+    for index in range(len(source)):
+        if source[index] != target[index]:
+            if source_length == target_length:
+                source = source[:index] + target[index] + source[index + 1:]
             else:
-                s = s[:i]+t[i]+s[i:]  # insertion
+                source = source[:index] + target[index] + source[index:]
             break
-    return s == t or s == t[:-1]
+    return source == target or source == target[:-1]

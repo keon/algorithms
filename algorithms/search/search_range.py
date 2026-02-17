@@ -1,24 +1,40 @@
 """
-Given an array of integers nums sorted in ascending order, find the starting
-and ending position of a given target value. If the target is not found in the
-array, return [-1, -1].
+Search Range
 
-For example:
-Input: nums = [5,7,7,8,8,8,10], target = 8
-Output: [3,5]
-Input: nums = [5,7,7,8,8,8,10], target = 11
-Output: [-1,-1]
+Given a sorted array of integers and a target value, find the starting and
+ending positions of the target.  Returns [-1, -1] if the target is not found.
+
+Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
+
+Complexity:
+    Time:  O(log n + k) where k is the number of occurrences in the worst
+           case for the backward scan, O(log n) for the initial search
+    Space: O(1)
 """
-def search_range(nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
+
+from __future__ import annotations
+
+
+def search_range(nums: list[int], target: int) -> list[int]:
+    """Find the first and last positions of *target* in *nums*.
+
+    Args:
+        nums: Sorted list of integers in ascending order.
+        target: Value to search for.
+
+    Returns:
+        A two-element list ``[first, last]`` of indices, or ``[-1, -1]``
+        if *target* is not present.
+
+    Examples:
+        >>> search_range([5, 7, 7, 8, 8, 8, 10], 8)
+        [3, 5]
+        >>> search_range([5, 7, 7, 8, 8, 8, 10], 11)
+        [-1, -1]
     """
     low = 0
     high = len(nums) - 1
-    # breaks at low == high
-    # both pointing to first occurence of target
+
     while low < high:
         mid = low + (high - low) // 2
         if target <= nums[mid]:

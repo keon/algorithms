@@ -1,46 +1,62 @@
-def cycle_sort(arr):
-    """
-    cycle_sort
-    This is based on the idea that the permutations to be sorted
-    can be decomposed into cycles,
-    and the results can be individually sorted by cycling.
-    
-    reference: https://en.wikipedia.org/wiki/Cycle_sort
-    
-    Average time complexity : O(N^2)
-    Worst case time complexity : O(N^2)
-    """
-    len_arr = len(arr)
-    # Finding cycle to rotate.
-    for cur in range(len_arr - 1):
-        item = arr[cur]
+"""
+Cycle Sort
 
-        # Finding an indx to put items in.
-        index = cur
-        for i in range(cur + 1, len_arr):
-            if arr[i] < item:
-                index += 1
+Cycle sort decomposes the permutation into cycles and rotates each cycle
+to produce a sorted result.  It minimises the number of writes to the
+array, making it useful when writes are expensive.
 
-        # Case of there is not a cycle
-        if index == cur:
+Reference: https://en.wikipedia.org/wiki/Cycle_sort
+
+Complexity:
+    Time:  O(n^2) best / O(n^2) average / O(n^2) worst
+    Space: O(1)
+"""
+
+from __future__ import annotations
+
+
+def cycle_sort(array: list[int]) -> list[int]:
+    """Sort an array in ascending order using cycle sort.
+
+    Args:
+        array: List of integers to sort.
+
+    Returns:
+        A sorted list.
+
+    Examples:
+        >>> cycle_sort([3, 1, 2])
+        [1, 2, 3]
+    """
+    length = len(array)
+
+    for start in range(length - 1):
+        item = array[start]
+
+        # Count how many elements are smaller to find the correct position
+        position = start
+        for i in range(start + 1, length):
+            if array[i] < item:
+                position += 1
+
+        # No cycle needed for this element
+        if position == start:
             continue
 
-        # Putting the item immediately right after the duplicate item or on the right.
-        while item == arr[index]:
-            index += 1
-        arr[index], item = item, arr[index]
+        # Skip duplicates
+        while item == array[position]:
+            position += 1
+        array[position], item = item, array[position]
 
-        # Rotating the remaining cycle.
-        while index != cur:
+        # Rotate the rest of the cycle
+        while position != start:
+            position = start
+            for i in range(start + 1, length):
+                if array[i] < item:
+                    position += 1
 
-            # Finding where to put the item.
-            index = cur
-            for i in range(cur + 1, len_arr):
-                if arr[i] < item:
-                    index += 1
+            while item == array[position]:
+                position += 1
+            array[position], item = item, array[position]
 
-            # After item is duplicated, put it in place or put it there.
-            while item == arr[index]:
-                index += 1
-            arr[index], item = item, arr[index]
-    return arr
+    return array

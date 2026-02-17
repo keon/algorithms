@@ -1,25 +1,44 @@
 """
-Sometimes you need to limit array result to use. Such as you only need the 
- value over 10 or, you need value under than 100. By use this algorithms, you
- can limit your array to specific value
+Limit Array Values
 
-If array, Min, Max value was given, it returns array that contains values of 
- given array which was larger than Min, and lower than Max. You need to give
- 'unlimit' to use only Min or Max.
+Filter an array to include only elements within a specified minimum and
+maximum range (inclusive).
 
-ex) limit([1,2,3,4,5], None, 3) = [1,2,3]
+Reference: https://en.wikipedia.org/wiki/Clipping_(signal_processing)
 
-Complexity = O(n)
+Complexity:
+    Time:  O(n)
+    Space: O(n)
 """
 
-# tl:dr -- array slicing by value
-def limit(arr, min_lim=None, max_lim=None):
-    if len(arr) == 0:
-        return arr
+from __future__ import annotations
+
+
+def limit(
+    array: list[int],
+    min_lim: int | None = None,
+    max_lim: int | None = None,
+) -> list[int]:
+    """Return elements of array that fall within [min_lim, max_lim].
+
+    Args:
+        array: Source list of integers.
+        min_lim: Minimum value (inclusive). Defaults to the array minimum.
+        max_lim: Maximum value (inclusive). Defaults to the array maximum.
+
+    Returns:
+        A new list containing only values within the specified range.
+
+    Examples:
+        >>> limit([1, 2, 3, 4, 5], 2, 4)
+        [2, 3, 4]
+    """
+    if len(array) == 0:
+        return array
 
     if min_lim is None:
-        min_lim = min(arr)
+        min_lim = min(array)
     if max_lim is None:
-        max_lim = max(arr)
+        max_lim = max(array)
 
-    return list(filter(lambda x: (min_lim <= x <= max_lim), arr))
+    return list(filter(lambda x: (min_lim <= x <= max_lim), array))

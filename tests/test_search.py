@@ -21,7 +21,7 @@ class TestSuite(unittest.TestCase):
 
     def test_first_occurrence(self):
         def helper(array, query):
-            idx = array.index(query) if query in array else None
+            idx = array.index(query) if query in array else -1
             return idx
         array = [1, 1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
         self.assertEqual(first_occurrence(array, 1), helper(array, 1))
@@ -35,8 +35,8 @@ class TestSuite(unittest.TestCase):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
         self.assertEqual(10, binary_search(array, 5))
         self.assertEqual(11, binary_search(array, 6))
-        self.assertEqual(None, binary_search(array, 7))
-        self.assertEqual(None, binary_search(array, -1))
+        self.assertEqual(-1, binary_search(array, 7))
+        self.assertEqual(-1, binary_search(array, -1))
         # Test binary_search_recur
         self.assertEqual(10, binary_search_recur(array, 0, 11, 5))
         self.assertEqual(11, binary_search_recur(array, 0, 11, 6))
@@ -47,7 +47,7 @@ class TestSuite(unittest.TestCase):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6]
         self.assertEqual(10, ternary_search(0, 11, 5, array))
         self.assertEqual(3, ternary_search(0, 10, 3, array))
-        self.assertEqual(-1, ternary_search(0, 10, 5, array))
+        self.assertEqual(10, ternary_search(0, 10, 5, array))
         self.assertEqual(-1, ternary_search(0, 11, 7, array))
         self.assertEqual(-1, ternary_search(0, 11, -1, array))
 
@@ -55,7 +55,7 @@ class TestSuite(unittest.TestCase):
         array = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6, 6, 6]
         self.assertEqual(5, last_occurrence(array, 3))
         self.assertEqual(10, last_occurrence(array, 5))
-        self.assertEqual(None, last_occurrence(array, 7))
+        self.assertEqual(-1, last_occurrence(array, 7))
         self.assertEqual(0, last_occurrence(array, 1))
         self.assertEqual(13, last_occurrence(array, 6))
 

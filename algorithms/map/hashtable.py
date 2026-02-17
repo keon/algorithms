@@ -1,36 +1,63 @@
-class HashTable(object):
-    """
-    HashMap Data Type
-    HashMap() Create a new, empty map. It returns an empty map collection.
-    put(key, val) Add a new key-value pair to the map. If the key is already in the map then replace
-                    the old value with the new value.
-    get(key) Given a key, return the value stored in the map or None otherwise.
-    del_(key) or del map[key] Delete the key-value pair from the map using a statement of the form del map[key].
-    len() Return the number of key-value pairs stored in the map.
-    in Return True for a statement of the form key in map, if the given key is in the map, False otherwise.
+"""
+Hash Table (Open Addressing)
+
+Hash map implementation using open addressing with linear probing
+for collision resolution. Includes a resizable variant that doubles
+capacity when the load factor reaches two-thirds.
+
+Reference: https://en.wikipedia.org/wiki/Open_addressing
+
+Complexity:
+    Time:  O(1) average for put/get/del, O(n) worst case
+    Space: O(n)
+"""
+
+from __future__ import annotations
+
+
+class HashTable:
+    """Hash table using open addressing with linear probing.
+
+    Examples:
+        >>> ht = HashTable(10)
+        >>> ht.put(1, 'one')
+        >>> ht.get(1)
+        'one'
     """
 
     _empty = object()
     _deleted = object()
 
-    def __init__(self, size=11):
+    def __init__(self, size: int = 11) -> None:
+        """Initialize the hash table.
+
+        Args:
+            size: Number of slots in the underlying array.
+        """
         self.size = size
         self._len = 0
-        self._keys = [self._empty] * size  # keys
-        self._values = [self._empty] * size  # values
+        self._keys: list[object] = [self._empty] * size
+        self._values: list[object] = [self._empty] * size
 
-    def put(self, key, value):
+    def put(self, key: int, value: object) -> None:
+        """Insert or update a key-value pair.
+
+        Args:
+            key: The key to insert.
+            value: The value associated with the key.
+
+        Raises:
+            ValueError: If the table is full.
+        """
         initial_hash = hash_ = self.hash(key)
 
         while True:
             if self._keys[hash_] is self._empty or self._keys[hash_] is self._deleted:
-                # can assign to hash_ index
                 self._keys[hash_] = key
                 self._values[hash_] = value
                 self._len += 1
                 return
             elif self._keys[hash_] == key:
-                # key already exists here, assign over
                 self._keys[hash_] = key
                 self._values[hash_] = value
                 return
@@ -38,32 +65,39 @@ class HashTable(object):
             hash_ = self._rehash(hash_)
 
             if initial_hash == hash_:
-                # table is full
                 raise ValueError("Table is full")
 
-    def get(self, key):
+    def get(self, key: int) -> object | None:
+        """Retrieve the value for a given key.
+
+        Args:
+            key: The key to look up.
+
+        Returns:
+            The value associated with the key, or None if not found.
+        """
         initial_hash = hash_ = self.hash(key)
         while True:
             if self._keys[hash_] is self._empty:
-                # That key was never assigned
                 return None
             elif self._keys[hash_] == key:
-                # key found
                 return self._values[hash_]
 
             hash_ = self._rehash(hash_)
             if initial_hash == hash_:
-                # table is full and wrapped around
                 return None
 
-    def del_(self, key):
+    def del_(self, key: int) -> None:
+        """Delete a key-value pair.
+
+        Args:
+            key: The key to delete.
+        """
         initial_hash = hash_ = self.hash(key)
         while True:
             if self._keys[hash_] is self._empty:
-                # That key was never assigned
                 return None
             elif self._keys[hash_] == key:
-                # key found, assign with deleted sentinel
                 self._keys[hash_] = self._deleted
                 self._values[hash_] = self._deleted
                 self._len -= 1
@@ -71,46 +105,73 @@ class HashTable(object):
 
             hash_ = self._rehash(hash_)
             if initial_hash == hash_:
-                # table is full and wrapped around
                 return None
 
-    def hash(self, key):
+    def hash(self, key: int) -> int:
+        """Compute the hash index for a key.
+
+        Args:
+            key: The key to hash.
+
+        Returns:
+            Index into the internal array.
+        """
         return key % self.size
 
-    def _rehash(self, old_hash):
-        """
-        linear probing
+    def _rehash(self, old_hash: int) -> int:
+        """Linear probing rehash.
+
+        Args:
+            old_hash: The previous hash index.
+
+        Returns:
+            Next index to probe.
         """
         return (old_hash + 1) % self.size
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: int) -> object | None:
         return self.get(key)
 
-    def __delitem__(self, key):
+    def __delitem__(self, key: int) -> None:
         return self.del_(key)
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key: int, value: object) -> None:
         self.put(key, value)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self._len
 
 
 class ResizableHashTable(HashTable):
+    """Hash table that automatically doubles in size when load exceeds 2/3.
+
+    Examples:
+        >>> rht = ResizableHashTable()
+        >>> rht.put(1, 'a')
+        >>> rht.get(1)
+        'a'
+    """
+
     MIN_SIZE = 8
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(self.MIN_SIZE)
 
-    def put(self, key, value):
-        rv = super().put(key, value)
-        # increase size of dict * 2 if filled >= 2/3 size (like python dict)
-        if len(self) >= (self.size * 2) / 3:
-            self.__resize()
+    def put(self, key: int, value: object) -> None:
+        """Insert or update, resizing if load factor exceeds two-thirds.
 
-    def __resize(self):
+        Args:
+            key: The key to insert.
+            value: The value associated with the key.
+        """
+        rv = super().put(key, value)
+        if len(self) >= (self.size * 2) / 3:
+            self._resize()
+
+    def _resize(self) -> None:
+        """Double the table size and rehash all existing entries."""
         keys, values = self._keys, self._values
-        self.size *= 2  # this will be the new size
+        self.size *= 2
         self._len = 0
         self._keys = [self._empty] * self.size
         self._values = [self._empty] * self.size

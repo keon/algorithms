@@ -1,23 +1,53 @@
 """
-Given a strings s and int k, return a string that rotates k times
+Rotate String
 
-k can be any positive integer.
+Given a string and an integer k, return the string rotated by k positions
+to the left. Two approaches are provided.
 
-For example,
-rotate("hello", 2) return "llohe"
-rotate("hello", 5) return "hello"
-rotate("hello", 6) return "elloh"
-rotate("hello", 7) return "llohe"
-rotate("hello", 102) return "lohel"
+Reference: https://en.wikipedia.org/wiki/Circular_shift
 
+Complexity:
+    Time:  O(n) where n is the length of the string
+    Space: O(n)
 """
-def rotate(s, k):
-    long_string = s * (k // len(s) + 2)
-    if k <= len(s):
-        return long_string[k:k + len(s)]
+
+from __future__ import annotations
+
+
+def rotate(text: str, positions: int) -> str:
+    """Rotate a string left by k positions using repeated string approach.
+
+    Args:
+        text: The string to rotate.
+        positions: The number of positions to rotate left.
+
+    Returns:
+        The rotated string.
+
+    Examples:
+        >>> rotate("hello", 2)
+        'llohe'
+    """
+    long_string = text * (positions // len(text) + 2)
+    if positions <= len(text):
+        return long_string[positions:positions + len(text)]
     else:
-        return long_string[k-len(s):k]
-    
-def rotate_alt(string, k):
-    k = k % len(string)
-    return string[k:] + string[:k]
+        return long_string[positions - len(text):positions]
+
+
+def rotate_alt(string: str, positions: int) -> str:
+    """Rotate a string left by k positions using modular arithmetic.
+
+    Args:
+        string: The string to rotate.
+        positions: The number of positions to rotate left.
+
+    Returns:
+        The rotated string.
+
+    Examples:
+        >>> rotate_alt("hello", 2)
+        'llohe'
+    """
+    positions = positions % len(string)
+    return string[positions:] + string[:positions]
