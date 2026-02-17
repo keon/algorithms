@@ -1,4 +1,4 @@
-from algorithms.backtrack import (
+from algorithms.backtracking import (
     add_operators,
     permute_iter,
     anagram,

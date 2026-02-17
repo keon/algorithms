@@ -1,4 +1,4 @@
-from algorithms.bit import (
+from algorithms.bit_manipulation import (
     add_bitwise_operator,
     count_ones_iter, count_ones_recur,
     count_flips_to_convert,
