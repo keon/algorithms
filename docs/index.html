@@ -125,18 +125,44 @@ function fmt(s){return s.replace(/_/g," ")}
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function getDesc(dir,a){return DESC[dir+"/"+a]||""}
 
-// Parse source into {mechanism, code}
+// Parse source into {mechanism, code, examples, funcName, isClass}
 function parseSource(src){
- let mechanism="",code=src;
+ let mechanism="",code=src,examples=[],funcName="",isClass=false;
  // Extract module docstring
  const m=src.match(/^("""|''')([\s\S]*?)\1/);
  if(m){
   mechanism=m[2].trim();
   code=src.slice(m.index+m[0].length).trim();
-  // Remove leading from __future__ import line if it follows
   code=code.replace(/^from __future__ import annotations\s*/,"");
  }
- return {mechanism,code};
+ // Find first public function or class name
+ const cm=code.match(/^class\s+(\w+)/m);
+ const fm=code.match(/^def\s+(\w+)/m);
+ if(cm && (!fm || code.indexOf(cm[0])<code.indexOf(fm[0]))){
+  funcName=cm[1]; isClass=true;
+ } else if(fm){
+  funcName=fm[1];
+ }
+ // Extract >>> examples from any docstring
+ const docstrings=[...src.matchAll(/"""([\s\S]*?)"""/g)];
+ for(const ds of docstrings){
+  const lines=ds[1].split("\n");
+  let ex=[];
+  for(const l of lines){
+   const t=l.trim();
+   if(t.startsWith(">>>")){
+    ex.push(t);
+   } else if(t.startsWith("...")){
+    ex.push(t);
+   } else if(ex.length && t){
+    ex.push("# "+t);
+   }
+  }
+  if(ex.length){examples.push(ex.join("\n"));break;}
+ }
+ // Detect re-export files (just imports + __all__)
+ const isReexport=/^(from\s|import\s|__all__\s*=|#|\s*$)/m.test(code) && code.split("\n").every(l=>/^\s*$|^from\s|^import\s|^__all__\s*=|^#/.test(l));
+ return {mechanism,code,examples,funcName,isClass,isReexport};
 }
 
 async function openModal(cat,dir,algo){
@@ -165,10 +191,38 @@ async function openModal(cat,dir,algo){
   }
  }
 
- const {mechanism,code}=parseSource(src);
+ const {mechanism,code,examples,funcName,isClass,isReexport}=parseSource(src);
 
- let html=`<div class="section-label">Mechanism</div><div class="mechanism">${esc(mechanism||desc)}</div>`;
- html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ let html="";
+
+ if(isReexport){
+  // Re-export file: just show description + code, no usage/mechanism
+  html+=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div>`;
+  html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ } else {
+  // Build usage snippet
+  let usage=`pip install algorithms\n`;
+  if(isClass){
+   usage+=`from algorithms.${dir} import ${funcName}\n\n`;
+   if(examples.length){
+    usage+=examples[0].replace(/^>>> /gm,"").replace(/^\.\.\. /gm,"").replace(/^# /gm,"# => ");
+   } else {
+    usage+=`obj = ${funcName}(...)\n# see source for constructor args`;
+   }
+  } else if(funcName){
+   usage+=`from algorithms.${dir} import ${funcName}\n\n`;
+   if(examples.length){
+    usage+=examples[0].replace(/^>>> /gm,"").replace(/^\.\.\. /gm,"").replace(/^# /gm,"# => ");
+   } else {
+    usage+=`result = ${funcName}(...)\n# see source for arguments`;
+   }
+  }
+
+  if(funcName) html+=`<div class="section-label">Usage</div><pre><code>${esc(usage)}</code></pre>`;
+  if(mechanism) html+=`<div class="section-label">Mechanism</div><div class="mechanism">${esc(mechanism)}</div>`;
+  html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ }
+
  html+=`<a class="src-link" href="${href}" target="_blank" rel="noopener">View on GitHub &rarr;</a>`;
  modalBody.innerHTML=html;
 }
