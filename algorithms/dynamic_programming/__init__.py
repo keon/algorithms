@@ -4,13 +4,14 @@ Dynamic Programming Algorithms
 A collection of dynamic programming algorithm implementations.
 """
 
+from . import regex_matching
 from .buy_sell_stock import max_profit_naive, max_profit_optimized
 from .climbing_stairs import climb_stairs, climb_stairs_optimized
 from .coin_change import count
-from .combination_sum import combination_sum_topdown, combination_sum_bottom_up
+from .combination_sum import combination_sum_bottom_up, combination_sum_topdown
 from .edit_distance import edit_distance
 from .egg_drop import egg_drop
-from .fib import fib_recursive, fib_list, fib_iter
+from .fib import fib_iter, fib_list, fib_recursive
 from .hosoya_triangle import hosoya, hosoya_testing
 from .house_robber import house_robber
 from .int_divide import int_divide
@@ -29,7 +30,6 @@ from .max_subarray import max_subarray
 from .min_cost_path import min_cost
 from .num_decodings import num_decodings, num_decodings2
 from .planting_trees import planting_trees
-from . import regex_matching
 from .regex_matching import is_match
 from .rod_cut import cut_rod
 from .word_break import word_break

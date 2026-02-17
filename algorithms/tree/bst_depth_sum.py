@@ -16,8 +16,9 @@ For example:
 
 """
 import unittest
-from bst import Node
-from bst import bst
+
+from bst import Node, bst
+
 
 def depth_sum(root, n):
     if root:

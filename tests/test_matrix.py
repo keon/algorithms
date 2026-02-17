@@ -1,19 +1,20 @@
+import unittest
+
 from algorithms.matrix import (
     bomb_enemy,
+    cholesky_matrix_decomposition,
     copy_transform,
     crout_matrix_decomposition,
-    cholesky_matrix_decomposition,
     matrix_exponentiation,
     matrix_inversion,
     multiply,
     rotate_image,
+    sort_matrix_diagonally,
     sparse_dot_vector,
     spiral_traversal,
     sudoku_validator,
     sum_sub_squares,
-    sort_matrix_diagonally
 )
-import unittest
 
 
 class TestBombEnemy(unittest.TestCase):

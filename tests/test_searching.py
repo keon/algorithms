@@ -1,20 +1,27 @@
+import unittest
+
 from algorithms.searching import (
-    binary_search, binary_search_recur,
-    ternary_search,
+    binary_search,
+    binary_search_recur,
+    find_min_rotate,
+    find_min_rotate_recur,
     first_occurrence,
+    interpolation_search,
+    jump_search,
     last_occurrence,
     linear_search,
+    next_greatest_letter,
+    next_greatest_letter_v1,
+    next_greatest_letter_v2,
     search_insert,
-    two_sum, two_sum1, two_sum2,
     search_range,
-    find_min_rotate, find_min_rotate_recur,
-    search_rotate, search_rotate_recur,
-    jump_search,
-    next_greatest_letter, next_greatest_letter_v1, next_greatest_letter_v2,
-    interpolation_search
+    search_rotate,
+    search_rotate_recur,
+    ternary_search,
+    two_sum,
+    two_sum1,
+    two_sum2,
 )
-
-import unittest
 
 
 class TestSuite(unittest.TestCase):

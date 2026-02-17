@@ -1,24 +1,32 @@
+import unittest
+
 from algorithms.dynamic_programming import (
-    max_profit_naive, max_profit_optimized,
-    climb_stairs, climb_stairs_optimized,
+    Item,
+    Job,
+    climb_stairs,
+    climb_stairs_optimized,
+    combination_sum_bottom_up,
+    combination_sum_topdown,
     count,
-    combination_sum_topdown, combination_sum_bottom_up,
     edit_distance,
     egg_drop,
-    fib_recursive, fib_list, fib_iter,
+    fib_iter,
+    fib_list,
+    fib_recursive,
+    find_k_factor,
+    get_maximum_value,
     hosoya_testing,
     house_robber,
-    Job, schedule,
-    Item, get_maximum_value,
+    int_divide,
     longest_increasing_subsequence,
     longest_increasing_subsequence_optimized,
     longest_increasing_subsequence_optimized2,
-    int_divide,find_k_factor,
-    planting_trees, regex_matching
+    max_profit_naive,
+    max_profit_optimized,
+    planting_trees,
+    regex_matching,
+    schedule,
 )
-
-
-import unittest
 
 
 class TestBuySellStock(unittest.TestCase):

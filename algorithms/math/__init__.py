@@ -4,6 +4,13 @@ Collection of mathematical algorithms and functions.
 
 from __future__ import annotations
 
+# Module-level imports for backward compatibility (tests use module.function syntax)
+from algorithms.math import (
+    chinese_remainder_theorem,  # noqa: E402
+    fft,  # noqa: E402
+    hailstone,  # noqa: E402
+    modular_inverse,  # type: ignore[no-redef]  # noqa: E402
+)
 from algorithms.math.base_conversion import base_to_int, int_to_base
 from algorithms.math.combination import combination, combination_memo
 from algorithms.math.cosine_similarity import cosine_similarity
@@ -52,12 +59,6 @@ from algorithms.math.rsa import decrypt, encrypt, generate_key
 from algorithms.math.sqrt_precision_factor import square_root
 from algorithms.math.summing_digits import sum_dig_pow
 from algorithms.math.surface_area_of_torus import surface_area_of_torus
-
-# Module-level imports for backward compatibility (tests use module.function syntax)
-from algorithms.math import chinese_remainder_theorem  # noqa: E402
-from algorithms.math import fft  # noqa: E402
-from algorithms.math import hailstone  # noqa: E402
-from algorithms.math import modular_inverse  # type: ignore[no-redef]  # noqa: E402
 
 __all__ = [
     "base_to_int",

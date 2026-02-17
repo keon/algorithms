@@ -1,8 +1,9 @@
+import unittest
+
 from algorithms.greedy import (
     max_contiguous_subsequence_sum,
 )
 
-import unittest
 
 class TestMaxContiguousSubsequenceSum(unittest.TestCase):
     def test_max_contiguous_subsequence_sum(self):

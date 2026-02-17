@@ -1,8 +1,6 @@
-from algorithms.set import (
-    find_keyboard_row
-)
-
 import unittest
+
+from algorithms.set import find_keyboard_row
 
 
 class TestFindKeyboardRow(unittest.TestCase):

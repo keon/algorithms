@@ -1,15 +1,21 @@
 import unittest
 
 from algorithms.linked_list import (
-    reverse_list, reverse_list_recursive,
-    is_sorted,
-    remove_range,
-    swap_pairs,
-    rotate_right,
+    RandomListNode,
+    copy_random_pointer_v1,
+    copy_random_pointer_v2,
     is_cyclic,
-    merge_two_list, merge_two_list_recur,
-    is_palindrome, is_palindrome_stack, is_palindrome_dict,
-    RandomListNode, copy_random_pointer_v1, copy_random_pointer_v2
+    is_palindrome,
+    is_palindrome_dict,
+    is_palindrome_stack,
+    is_sorted,
+    merge_two_list,
+    merge_two_list_recur,
+    remove_range,
+    reverse_list,
+    reverse_list_recursive,
+    rotate_right,
+    swap_pairs,
 )
 
 

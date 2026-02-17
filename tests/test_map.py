@@ -1,13 +1,14 @@
-from algorithms.map import (
-    HashTable, ResizableHashTable,
-    SeparateChainingHashTable,
-    word_pattern,
-    is_isomorphic,
-    is_anagram,
-    longest_palindromic_subsequence,
-)
-
 import unittest
+
+from algorithms.map import (
+    HashTable,
+    ResizableHashTable,
+    SeparateChainingHashTable,
+    is_anagram,
+    is_isomorphic,
+    longest_palindromic_subsequence,
+    word_pattern,
+)
 
 
 class TestHashTable(unittest.TestCase):

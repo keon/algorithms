@@ -1,22 +1,24 @@
-from algorithms.graph import Tarjan
-from algorithms.graph import check_bipartite
-from algorithms.graph.dijkstra import Dijkstra
-from algorithms.graph import ford_fulkerson
-from algorithms.graph import edmonds_karp
-from algorithms.graph import dinic
-from algorithms.graph import maximum_flow_bfs
-from algorithms.graph import maximum_flow_dfs
-from algorithms.graph import all_pairs_shortest_path
-from algorithms.graph import bellman_ford
-from algorithms.graph import count_connected_number_of_component
-from algorithms.graph import prims_minimum_spanning
-from algorithms.graph import check_digraph_strongly_connected
-from algorithms.graph import cycle_detection
-from algorithms.graph import find_path
-from algorithms.graph import path_between_two_vertices_in_digraph
-from algorithms.graph import strongly_connected_components_kosaraju
-
 import unittest
+
+from algorithms.graph import (
+    Tarjan,
+    all_pairs_shortest_path,
+    bellman_ford,
+    check_bipartite,
+    check_digraph_strongly_connected,
+    count_connected_number_of_component,
+    cycle_detection,
+    dinic,
+    edmonds_karp,
+    find_path,
+    ford_fulkerson,
+    maximum_flow_bfs,
+    maximum_flow_dfs,
+    path_between_two_vertices_in_digraph,
+    prims_minimum_spanning,
+    strongly_connected_components_kosaraju,
+)
+from algorithms.graph.dijkstra import Dijkstra
 
 
 class TestTarjan(unittest.TestCase):
@@ -372,8 +374,8 @@ class TestStronglyConnectedComponentsKosaraju(unittest.TestCase):
 
 from algorithms.graph import (
     count_islands,
-    maze_search,
     ladder_length,
+    maze_search,
 )
 
 
@@ -431,12 +433,14 @@ class TestWordLadder(unittest.TestCase):
 # --- Tests merged from test_dfs.py ---
 
 from algorithms.graph import (
-    get_factors, get_factors_iterative1, get_factors_iterative2,
+    Sudoku,
+    find_path_dfs,
+    get_factors,
+    get_factors_iterative1,
+    get_factors_iterative2,
     num_islands_dfs,
     pacific_atlantic,
-    Sudoku,
     walls_and_gates,
-    find_path_dfs,
 )
 
 
@@ -508,8 +512,7 @@ class TestMazeSearchDfs(unittest.TestCase):
 
 # --- Tests merged from test_topological.py ---
 
-from algorithms.graph import topological_sort
-from algorithms.graph import top_sort, top_sort_recursive
+from algorithms.graph import top_sort, top_sort_recursive, topological_sort
 
 
 class TestTopSort(unittest.TestCase):

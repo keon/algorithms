@@ -1,9 +1,8 @@
-from algorithms.math.polynomial import Monomial
-from fractions import Fraction
 import math
-
-
 import unittest
+from fractions import Fraction
+
+from algorithms.math.polynomial import Monomial
 
 
 class TestSuite(unittest.TestCase):

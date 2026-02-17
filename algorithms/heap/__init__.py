@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from algorithms.data_structures.heap import AbstractHeap, BinaryHeap
+
 from .k_closest_points import k_closest
 from .merge_sorted_k_lists import ListNode, merge_k_lists
 from .skyline import get_skyline

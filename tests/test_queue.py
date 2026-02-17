@@ -1,11 +1,6 @@
 import unittest
 
-from algorithms.queue import (
-    ArrayQueue, LinkedListQueue,
-    max_sliding_window,
-    reconstruct_queue,
-    PriorityQueue
-)
+from algorithms.queue import ArrayQueue, LinkedListQueue, PriorityQueue, max_sliding_window, reconstruct_queue
 
 
 class TestQueue(unittest.TestCase):

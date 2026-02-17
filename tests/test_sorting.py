@@ -1,25 +1,26 @@
+import unittest
+
 from algorithms.sorting import (
     bitonic_sort,
     bogo_sort,
     bubble_sort,
+    bucket_sort,
+    cocktail_shaker_sort,
     comb_sort,
     counting_sort,
     cycle_sort,
     exchange_sort,
-    max_heap_sort, min_heap_sort,
+    gnome_sort,
+    max_heap_sort,
     merge_sort,
+    min_heap_sort,
     pancake_sort,
     pigeonhole_sort,
     quick_sort,
-    selection_sort,
-    bucket_sort,
-    shell_sort,
     radix_sort,
-    gnome_sort,
-    cocktail_shaker_sort,
+    selection_sort,
+    shell_sort,
 )
-
-import unittest
 
 
 def is_sorted(array):

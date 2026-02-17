@@ -1,19 +1,19 @@
 from .add_bitwise_operator import add_bitwise_operator
 from .binary_gap import binary_gap
-from .bit_operation import get_bit, set_bit, clear_bit, update_bit
+from .bit_operation import clear_bit, get_bit, set_bit, update_bit
 from .bytes_int_conversion import (
-    int_to_bytes_big_endian,
-    int_to_bytes_little_endian,
     bytes_big_endian_to_int,
     bytes_little_endian_to_int,
+    int_to_bytes_big_endian,
+    int_to_bytes_little_endian,
 )
 from .count_flips_to_convert import count_flips_to_convert
-from .count_ones import count_ones_recur, count_ones_iter
+from .count_ones import count_ones_iter, count_ones_recur
 from .find_difference import find_difference
 from .find_missing_number import find_missing_number, find_missing_number2
 from .flip_bit_longest_sequence import flip_bit_longest_seq
 from .has_alternative_bit import has_alternative_bit, has_alternative_bit_fast
-from .insert_bit import insert_one_bit, insert_mult_bits
+from .insert_bit import insert_mult_bits, insert_one_bit
 from .power_of_two import is_power_of_two
 from .remove_bit import remove_bit
 from .reverse_bits import reverse_bits

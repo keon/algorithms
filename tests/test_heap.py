@@ -1,11 +1,6 @@
-from algorithms.heap import (
-    BinaryHeap,
-    get_skyline,
-    max_sliding_window,
-    k_closest
-)
-
 import unittest
+
+from algorithms.heap import BinaryHeap, get_skyline, k_closest, max_sliding_window
 
 
 class TestBinaryHeap(unittest.TestCase):

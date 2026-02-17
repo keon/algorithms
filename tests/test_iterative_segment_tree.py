@@ -1,7 +1,7 @@
-from algorithms.data_structures.iterative_segment_tree import SegmentTree
+import unittest
 from functools import reduce
 
-import unittest
+from algorithms.data_structures.iterative_segment_tree import SegmentTree
 
 
 def gcd(a, b):

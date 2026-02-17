@@ -19,8 +19,9 @@ For example: the following tree has 10 empty branch (* is empty branch)
 
 """
 import unittest
-from bst import Node
-from bst import bst
+
+from bst import Node, bst
+
 
 def num_empty(root):
     if root is None:

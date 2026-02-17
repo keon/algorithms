@@ -15,9 +15,9 @@ Complexity:
 from __future__ import annotations
 
 from fractions import Fraction
-from typing import Dict, Union, Set, Iterable
-from numbers import Rational
 from functools import reduce
+from numbers import Rational
+from typing import Dict, Iterable, Set, Union
 
 
 class Monomial:

@@ -13,7 +13,7 @@ Complexity:
 
 from __future__ import annotations
 
-from heapq import heappop, heapreplace, heapify
+from heapq import heapify, heappop, heapreplace
 
 
 class ListNode:

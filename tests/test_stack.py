@@ -1,16 +1,20 @@
-from algorithms.stack import (
-    first_is_consecutive, second_is_consecutive,
-    is_sorted,
-    remove_min,
-    first_stutter, second_stutter,
-    first_switch_pairs, second_switch_pairs,
-    is_valid,
-    simplify_path,
-    ArrayStack, LinkedListStack,
-    OrderedStack
-)
-
 import unittest
+
+from algorithms.stack import (
+    ArrayStack,
+    LinkedListStack,
+    OrderedStack,
+    first_is_consecutive,
+    first_stutter,
+    first_switch_pairs,
+    is_sorted,
+    is_valid,
+    remove_min,
+    second_is_consecutive,
+    second_stutter,
+    second_switch_pairs,
+    simplify_path,
+)
 
 
 class TestSuite(unittest.TestCase):

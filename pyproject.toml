@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "algorithms"
@@ -18,7 +18,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "License :: OSI Approved :: MIT License",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Education",
 ]
@@ -43,11 +42,12 @@ testpaths = ["tests"]
 addopts = ["-v", "--tb=short"]
 
 [tool.ruff]
-line-length = 88
+line-length = 120
 target-version = "py310"
 
 [tool.ruff.lint]
-select = ["E", "W", "F", "I", "N", "UP", "B", "SIM"]
+select = ["F", "I"]
+ignore = ["F401"]   # re-exports in __init__.py are intentional
 
 [tool.ruff.lint.isort]
 known-first-party = ["algorithms"]

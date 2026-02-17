@@ -1,5 +1,9 @@
 """Linked list algorithm implementations."""
 
+from algorithms.data_structures.linked_list import (
+    DoublyLinkedListNode,
+    SinglyLinkedListNode,
+)
 from algorithms.linked_list.add_two_numbers import (
     add_two_numbers,
     convert_to_list,
@@ -24,10 +28,6 @@ from algorithms.linked_list.kth_to_last import (
     kth_to_last,
     kth_to_last_dict,
     kth_to_last_eval,
-)
-from algorithms.data_structures.linked_list import (
-    DoublyLinkedListNode,
-    SinglyLinkedListNode,
 )
 from algorithms.linked_list.merge_two_list import (
     merge_two_list,

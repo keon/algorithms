@@ -1,12 +1,9 @@
-from algorithms.math.polynomial import (
-	Polynomial,
-	Monomial
-)
-from fractions import Fraction
 import math
-
-
 import unittest
+from fractions import Fraction
+
+from algorithms.math.polynomial import Monomial, Polynomial
+
 
 class TestSuite(unittest.TestCase):
 

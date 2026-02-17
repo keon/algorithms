@@ -1,18 +1,23 @@
+import unittest
+
 from algorithms.array import (
+    Interval,
     delete_nth,
     delete_nth_naive,
-    flatten_iter,
     flatten,
+    flatten_iter,
     garage,
-    josephus,
-    longest_non_repeat_v1,
-    longest_non_repeat_v2,
     get_longest_non_repeat_v1,
     get_longest_non_repeat_v2,
-    Interval,
+    josephus,
+    limit,
+    longest_non_repeat_v1,
+    longest_non_repeat_v2,
+    max_ones_index,
     merge_intervals,
     missing_ranges,
     move_zeros,
+    n_sum,
     plus_one_v1,
     plus_one_v2,
     plus_one_v3,
@@ -22,15 +27,10 @@ from algorithms.array import (
     rotate_v3,
     summarize_ranges,
     three_sum,
-    two_sum,
-    max_ones_index,
-    trimmean,
     top_1,
-    limit,
-    n_sum,
+    trimmean,
+    two_sum,
 )
-
-import unittest
 
 
 class TestJosephus(unittest.TestCase):

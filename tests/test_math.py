@@ -1,36 +1,49 @@
+import unittest
+
+import pytest
+
 from algorithms.math import (
-    power, power_recur,
-    int_to_base, base_to_int,
+    base_to_int,
+    chinese_remainder_theorem,
+    combination,
+    combination_memo,
+    cosine_similarity,
     decimal_to_binary_ip,
+    decrypt,
+    diffie_hellman_key_exchange,
+    encrypt,
     euler_totient,
     extended_gcd,
-    factorial, factorial_recur,
-    gcd, lcm, trailing_zero, gcd_bit,
-    gen_strobogrammatic, strobogrammatic_in_range,
-    is_strobogrammatic, is_strobogrammatic2,
-    modular_inverse,
-    modular_exponential,
-    find_next_square, find_next_square2,
-    prime_check,
-    get_primes,
-    pythagoras,
-    is_prime,
-    encrypt, decrypt,
-    combination, combination_memo,
-    hailstone,
-    cosine_similarity,
-    magic_number,
+    factorial,
+    factorial_recur,
+    fft,
+    find_next_square,
+    find_next_square2,
     find_order,
     find_primitive_root,
+    gcd,
+    gcd_bit,
+    gen_strobogrammatic,
+    get_primes,
+    hailstone,
+    int_to_base,
+    is_prime,
+    is_strobogrammatic,
+    is_strobogrammatic2,
+    krishnamurthy_number,
+    lcm,
+    magic_number,
+    modular_exponential,
+    modular_inverse,
     num_digits,
-    diffie_hellman_key_exchange, krishnamurthy_number,
     num_perfect_squares,
-    chinese_remainder_theorem,
-    fft
+    power,
+    power_recur,
+    prime_check,
+    pythagoras,
+    strobogrammatic_in_range,
+    trailing_zero,
 )
-
-import unittest
-import pytest
 
 
 class TestPower(unittest.TestCase):

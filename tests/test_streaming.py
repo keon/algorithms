@@ -1,10 +1,9 @@
+import unittest
+
+from algorithms.streaming import one_sparse
 from algorithms.streaming.misra_gries import (
     misras_gries,
 )
-from algorithms.streaming import (
-    one_sparse
-)
-import unittest
 
 
 class TestMisraGreis(unittest.TestCase):

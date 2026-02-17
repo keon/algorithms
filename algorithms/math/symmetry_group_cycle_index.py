@@ -17,8 +17,8 @@ from __future__ import annotations
 from fractions import Fraction
 from typing import Dict, Union
 
-from algorithms.math.polynomial import Monomial, Polynomial
 from algorithms.math.gcd import lcm
+from algorithms.math.polynomial import Monomial, Polynomial
 
 
 def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:

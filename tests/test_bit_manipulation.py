@@ -1,28 +1,37 @@
+import random
+import unittest
+
 from algorithms.bit_manipulation import (
     add_bitwise_operator,
-    count_ones_iter, count_ones_recur,
+    binary_gap,
+    bytes_big_endian_to_int,
+    bytes_little_endian_to_int,
+    clear_bit,
     count_flips_to_convert,
-    find_missing_number, find_missing_number2,
+    count_ones_iter,
+    count_ones_recur,
+    find_difference,
+    find_missing_number,
+    find_missing_number2,
     flip_bit_longest_seq,
+    get_bit,
+    has_alternative_bit,
+    has_alternative_bit_fast,
+    insert_mult_bits,
+    insert_one_bit,
+    int_to_bytes_big_endian,
+    int_to_bytes_little_endian,
     is_power_of_two,
+    remove_bit,
     reverse_bits,
+    set_bit,
     single_number,
     single_number2,
     single_number3,
     subsets,
-    get_bit, set_bit, clear_bit, update_bit,
-    int_to_bytes_big_endian, int_to_bytes_little_endian,
-    bytes_big_endian_to_int, bytes_little_endian_to_int,
     swap_pair,
-    find_difference,
-    has_alternative_bit, has_alternative_bit_fast,
-    insert_one_bit, insert_mult_bits,
-    remove_bit,
-    binary_gap
+    update_bit,
 )
-
-import unittest
-import random
 
 
 class TestSuite(unittest.TestCase):

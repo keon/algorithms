@@ -5,7 +5,8 @@ A collection of binary tree and general tree algorithms including traversal,
 search, construction, and property-checking operations.
 """
 
-from algorithms.data_structures.b_tree import BTree, Node as BTreeNode
+from algorithms.data_structures.b_tree import BTree
+from algorithms.data_structures.b_tree import Node as BTreeNode
 from algorithms.tree.bin_tree_to_list import bin_tree_to_list
 from algorithms.tree.binary_tree_paths import binary_tree_paths
 from algorithms.tree.construct_tree_postorder_preorder import (

@@ -15,6 +15,7 @@ search(“b..”) -> true
 """
 import collections
 
+
 class TrieNode(object):
     def __init__(self, letter, is_terminal=False):
         self.children = dict()

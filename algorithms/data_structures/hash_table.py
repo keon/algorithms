@@ -164,7 +164,7 @@ class ResizableHashTable(HashTable):
             key: The key to insert.
             value: The value associated with the key.
         """
-        rv = super().put(key, value)
+        super().put(key, value)
         if len(self) >= (self.size * 2) / 3:
             self._resize()
 
