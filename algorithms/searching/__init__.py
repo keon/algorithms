@@ -1,6 +1,7 @@
 """Collection of search algorithms: finding the needle in a haystack."""
 
 from algorithms.searching.binary_search import binary_search, binary_search_recur
+from algorithms.searching.exponential_search import exponential_search
 from algorithms.searching.find_min_rotate import find_min_rotate, find_min_rotate_recur
 from algorithms.searching.first_occurrence import first_occurrence
 from algorithms.searching.generalized_binary_search import binary_search_first_true
@@ -16,6 +17,7 @@ from algorithms.searching.next_greatest_letter import (
 from algorithms.searching.search_insert import search_insert
 from algorithms.searching.search_range import search_range
 from algorithms.searching.search_rotate import search_rotate, search_rotate_recur
+from algorithms.searching.sentinel_search import sentinel_search
 from algorithms.searching.ternary_search import ternary_search
 from algorithms.searching.two_sum import two_sum, two_sum1, two_sum2
 
@@ -41,4 +43,6 @@ __all__ = [
     "two_sum",
     "two_sum1",
     "two_sum2",
+    "exponential_search",
+    "sentinel_search",
 ]

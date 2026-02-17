@@ -5,10 +5,12 @@ A collection of dynamic programming algorithm implementations.
 """
 
 from . import regex_matching
+from .bitmask import tsp
 from .buy_sell_stock import max_profit_naive, max_profit_optimized
 from .climbing_stairs import climb_stairs, climb_stairs_optimized
 from .coin_change import count
 from .combination_sum import combination_sum_bottom_up, combination_sum_topdown
+from .count_paths_dp import count_paths_dp, count_paths_memo, count_paths_recursive
 from .edit_distance import edit_distance
 from .egg_drop import egg_drop
 from .fib import fib_iter, fib_list, fib_recursive
@@ -96,4 +98,10 @@ __all__ = [
     "cut_rod",
     # word_break
     "word_break",
+    # bitmask
+    "tsp",
+    # count_paths_dp
+    "count_paths_dp",
+    "count_paths_memo",
+    "count_paths_recursive",
 ]

@@ -15,6 +15,7 @@ from algorithms.graph.all_pairs_shortest_path import (
     all_pairs_shortest_path,
 )
 from algorithms.graph.bellman_ford import bellman_ford
+from algorithms.graph.blossom import max_matching
 from algorithms.graph.check_bipartite import check_bipartite
 from algorithms.graph.clone_graph import (
     UndirectedGraphNode,
@@ -131,4 +132,6 @@ __all__ = [
     "top_sort_recursive",
     # count_islands_unionfind
     "num_islands_unionfind",
+    # blossom
+    "max_matching",
 ]
