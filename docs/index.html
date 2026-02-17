@@ -24,18 +24,35 @@ h1 span{font-weight:400;color:#666;font-size:.85rem;margin-left:.5rem}
 .cat-header.collapsed .arrow{transform:rotate(-90deg)}
 .algo-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0;border-left:1px solid #ddd;border-right:1px solid #ddd}
 .algo-list.hidden{display:none}
-.algo{padding:.3rem .5rem;font-size:.8rem;border-bottom:1px solid #eee;cursor:pointer}
-.algo .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.algo .name a{color:#1a1a1a;text-decoration:none}
-.algo .name a:hover{text-decoration:underline}
-.algo .desc{display:none;color:#555;font-size:.75rem;padding:.15rem 0 .1rem;white-space:normal;line-height:1.3}
-.algo.open .desc{display:block}
+.algo{padding:.3rem .5rem;font-size:.8rem;border-bottom:1px solid #eee;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.algo:hover{background:#f5f5f5}
+.algo .desc{color:#888;font-size:.7rem;margin-left:.25rem}
 mark{background:#fff3b0;padding:0 1px;border-radius:2px}
 .no-results{text-align:center;padding:2rem;color:#888;font-size:.9rem;display:none}
+/* Modal */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center}
+.modal-backdrop.open{display:flex}
+.modal{background:#fff;border-radius:6px;width:min(720px,95vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;padding:.75rem 1rem;border-bottom:1px solid #eee;gap:.5rem}
+.modal-head h2{font-size:1rem;font-weight:700;line-height:1.3}
+.modal-head h2 small{font-weight:400;color:#888;font-size:.75rem;display:block}
+.modal-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;padding:0 .25rem;line-height:1;flex-shrink:0}
+.modal-close:hover{color:#111}
+.modal-body{overflow-y:auto;padding:1rem;font-size:.85rem}
+.modal-body .section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#888;margin:1rem 0 .35rem;padding-bottom:.2rem;border-bottom:1px solid #eee}
+.modal-body .section-label:first-child{margin-top:0}
+.modal-body .mechanism{white-space:pre-wrap;font-size:.8rem;line-height:1.5;color:#333}
+.modal-body pre{background:#f6f6f6;border:1px solid #e0e0e0;border-radius:4px;padding:.75rem;overflow-x:auto;font-size:.75rem;line-height:1.5;tab-size:4}
+.modal-body code{font-family:"SF Mono",Menlo,Consolas,monospace}
+.modal-body .src-link{display:inline-block;margin-top:.5rem;font-size:.75rem;color:#0066ff;text-decoration:none}
+.modal-body .src-link:hover{text-decoration:underline}
+.modal-body .loading{color:#888;font-style:italic}
 @media(max-width:600px){
  .algo-list{grid-template-columns:1fr}
  .algo{font-size:.75rem;padding:.25rem .4rem}
  .cat-header{font-size:.8rem;top:3rem}
+ .modal{width:100vw;height:100vh;max-height:100vh;border-radius:0}
+ .modal-body pre{font-size:.65rem}
 }
 </style>
 </head>
@@ -50,8 +67,20 @@ mark{background:#fff3b0;padding:0 1px;border-radius:2px}
 </div>
 <main id="main"></main>
 <div class="no-results" id="no-results">No algorithms found.</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+<div class="modal" id="modal">
+<div class="modal-head">
+<h2 id="modal-title">Algorithm<small id="modal-cat"></small></h2>
+<button class="modal-close" id="modal-close">&times;</button>
+</div>
+<div class="modal-body" id="modal-body"></div>
+</div>
+</div>
+
 <script>
 const REPO="https://github.com/keon/algorithms/blob/main/algorithms";
+const RAW="https://raw.githubusercontent.com/keon/algorithms/main/algorithms";
 const DATA={
 "Array":["delete_nth","flatten","garage","josephus","limit","longest_non_repeat","max_ones_index","merge_intervals","missing_ranges","move_zeros","n_sum","plus_one","remove_duplicates","rotate","summarize_ranges","three_sum","top_1","trimmean","two_sum"],
 "Backtracking":["add_operators","anagram","array_sum_combinations","combination_sum","factor_combinations","find_words","generate_abbreviations","generate_parenthesis","letter_combination","minimax","palindrome_partitioning","pattern_match","permute","permute_unique","subsets","subsets_unique"],
@@ -80,20 +109,84 @@ const DESC={"array/delete_nth":"Keep at most N occurrences of each element in an
 
 const catDirs={"Array":"array","Backtracking":"backtracking","Bit Manipulation":"bit_manipulation","Compression":"compression","Data Structures":"data_structures","Dynamic Programming":"dynamic_programming","Graph":"graph","Greedy":"greedy","Heap":"heap","Linked List":"linked_list","Map":"map","Math":"math","Matrix":"matrix","Queue":"queue","Searching":"searching","Set":"set","Sorting":"sorting","Stack":"stack","Streaming":"streaming","String":"string","Tree":"tree"};
 
-const main=document.getElementById("main");
+const mainEl=document.getElementById("main");
 const searchInput=document.getElementById("search");
 const statsEl=document.getElementById("stats");
 const noResults=document.getElementById("no-results");
+const backdrop=document.getElementById("modal-backdrop");
+const modalTitle=document.getElementById("modal-title");
+const modalCat=document.getElementById("modal-cat");
+const modalBody=document.getElementById("modal-body");
 
-let total=0;
-for(const k in DATA)total+=DATA[k].length;
+// Source cache
+const cache=new Map();
 
 function fmt(s){return s.replace(/_/g," ")}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
 function getDesc(dir,a){return DESC[dir+"/"+a]||""}
+
+// Parse source into {mechanism, code}
+function parseSource(src){
+ let mechanism="",code=src;
+ // Extract module docstring
+ const m=src.match(/^("""|''')([\s\S]*?)\1/);
+ if(m){
+  mechanism=m[2].trim();
+  code=src.slice(m.index+m[0].length).trim();
+  // Remove leading from __future__ import line if it follows
+  code=code.replace(/^from __future__ import annotations\s*/,"");
+ }
+ return {mechanism,code};
+}
+
+async function openModal(cat,dir,algo){
+ const label=fmt(algo);
+ const desc=getDesc(dir,algo);
+ modalTitle.textContent=label;
+ modalCat.textContent=cat;
+ backdrop.classList.add("open");
+ document.body.style.overflow="hidden";
+
+ const href=`${REPO}/${dir}/${algo}.py`;
+ const rawUrl=`${RAW}/${dir}/${algo}.py`;
+
+ // Show loading
+ modalBody.innerHTML=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div><div class="section-label">Source</div><div class="loading">Loading...</div>`;
+
+ let src=cache.get(rawUrl);
+ if(!src){
+  try{
+   const r=await fetch(rawUrl);
+   src=await r.text();
+   cache.set(rawUrl,src);
+  }catch(e){
+   modalBody.innerHTML=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div><div class="section-label">Source</div><p>Failed to load source. <a href="${href}" target="_blank" rel="noopener">View on GitHub</a></p>`;
+   return;
+  }
+ }
+
+ const {mechanism,code}=parseSource(src);
+
+ let html=`<div class="section-label">Mechanism</div><div class="mechanism">${esc(mechanism||desc)}</div>`;
+ html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ html+=`<a class="src-link" href="${href}" target="_blank" rel="noopener">View on GitHub &rarr;</a>`;
+ modalBody.innerHTML=html;
+}
+
+function closeModal(){
+ backdrop.classList.remove("open");
+ document.body.style.overflow="";
+}
+
+document.getElementById("modal-close").onclick=closeModal;
+backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+// Stop clicks inside modal from closing it
+document.getElementById("modal").onclick=e=>e.stopPropagation();
 
 function render(q=""){
  const lq=q.toLowerCase().trim();
- main.innerHTML="";
+ mainEl.innerHTML="";
  let shown=0,cats=0;
  for(const[cat,algos]of Object.entries(DATA)){
   const dir=catDirs[cat];
@@ -117,24 +210,19 @@ function render(q=""){
    d.className="algo";
    const label=fmt(a);
    const desc=getDesc(dir,a);
-   const href=`${REPO}/${dir}/${a}.py`;
-   let nameHtml;
    if(lq){
-    const esc=lq.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    const re=new RegExp(`(${esc})`,"gi");
-    nameHtml=label.replace(re,"<mark>$1</mark>");
+    const re=new RegExp(`(${lq.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,"gi");
+    d.innerHTML=label.replace(re,"<mark>$1</mark>")+`<span class="desc">${desc}</span>`;
    }else{
-    nameHtml=label;
+    d.textContent=label;
    }
-   d.innerHTML=`<div class="name"><a href="${href}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${nameHtml}</a></div><div class="desc">${desc} &middot; <a href="${href}" target="_blank" rel="noopener">source</a></div>`;
-   d.onclick=()=>d.classList.toggle("open");
-   if(lq)d.classList.add("open");
+   d.onclick=()=>openModal(cat,dir,a);
    list.appendChild(d);
   }
   hdr.onclick=()=>{hdr.classList.toggle("collapsed");list.classList.toggle("hidden")};
   sec.appendChild(hdr);
   sec.appendChild(list);
-  main.appendChild(sec);
+  mainEl.appendChild(sec);
  }
  noResults.style.display=shown?"none":"block";
  statsEl.textContent=lq?`${shown} result${shown!==1?"s":""} in ${cats} categor${cats!==1?"ies":"y"}`:"";
