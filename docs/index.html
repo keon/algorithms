@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Algorithms - Pythonic Data Structures and Algorithms</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#1a1a1a;line-height:1.4;padding:1rem;max-width:960px;margin:0 auto}
+header{padding:1rem 0;border-bottom:2px solid #111}
+h1{font-size:1.4rem;font-weight:700}
+h1 span{font-weight:400;color:#666;font-size:.85rem;margin-left:.5rem}
+.meta{color:#666;font-size:.8rem;margin-top:.25rem}
+.meta a{color:#111}
+.search-box{position:sticky;top:0;background:#fff;padding:.75rem 0;z-index:10}
+.search-box input{width:100%;padding:.5rem .75rem;border:2px solid #111;border-radius:4px;font-size:.95rem;outline:none}
+.search-box input:focus{border-color:#0066ff}
+.stats{font-size:.75rem;color:#888;margin-top:.25rem}
+.category{margin-bottom:.5rem}
+.cat-header{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#111;padding:.25rem .5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;position:sticky;top:3.2rem;z-index:5}
+.cat-header:hover{background:#333}
+.cat-header .count{font-weight:400;font-size:.75rem;color:#aaa}
+.cat-header .arrow{transition:transform .15s}
+.cat-header.collapsed .arrow{transform:rotate(-90deg)}
+.algo-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0;border-left:1px solid #ddd;border-right:1px solid #ddd}
+.algo-list.hidden{display:none}
+.algo{padding:.3rem .5rem;font-size:.8rem;border-bottom:1px solid #eee;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.algo:hover{background:#f5f5f5}
+.algo .desc{color:#888;font-size:.7rem;margin-left:.25rem}
+mark{background:#fff3b0;padding:0 1px;border-radius:2px}
+.no-results{text-align:center;padding:2rem;color:#888;font-size:.9rem;display:none}
+/* Modal */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:center}
+.modal-backdrop.open{display:flex}
+.modal{background:#fff;border-radius:6px;width:min(720px,95vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;padding:.75rem 1rem;border-bottom:1px solid #eee;gap:.5rem}
+.modal-head h2{font-size:1rem;font-weight:700;line-height:1.3}
+.modal-head h2 small{font-weight:400;color:#888;font-size:.75rem;display:block}
+.modal-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;padding:0 .25rem;line-height:1;flex-shrink:0}
+.modal-close:hover{color:#111}
+.modal-body{overflow-y:auto;padding:1rem;font-size:.85rem}
+.modal-body .section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#888;margin:1rem 0 .35rem;padding-bottom:.2rem;border-bottom:1px solid #eee}
+.modal-body .section-label:first-child{margin-top:0}
+.modal-body .mechanism{white-space:pre-wrap;font-size:.8rem;line-height:1.5;color:#333}
+.modal-body pre{background:#f6f6f6;border:1px solid #e0e0e0;border-radius:4px;padding:.75rem;overflow-x:auto;font-size:.75rem;line-height:1.5;tab-size:4}
+.modal-body code{font-family:"SF Mono",Menlo,Consolas,monospace}
+.modal-body .src-link{display:inline-block;margin-top:.5rem;font-size:.75rem;color:#0066ff;text-decoration:none}
+.modal-body .src-link:hover{text-decoration:underline}
+.modal-body .loading{color:#888;font-style:italic}
+@media(max-width:600px){
+ .algo-list{grid-template-columns:1fr}
+ .algo{font-size:.75rem;padding:.25rem .4rem}
+ .cat-header{font-size:.8rem;top:3rem}
+ .modal{width:100vw;height:100vh;max-height:100vh;border-radius:0}
+ .modal-body pre{font-size:.65rem}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>algorithms <span>v1.0.0</span></h1>
+<div class="meta">Pythonic Data Structures and Algorithms &middot; <a href="https://github.com/keon/algorithms">GitHub</a> &middot; <code>pip install algorithms</code></div>
+</header>
+<div class="search-box">
+<input type="text" id="search" placeholder="Search 358 algorithms..." autocomplete="off" spellcheck="false">
+<div class="stats" id="stats"></div>
+</div>
+<main id="main"></main>
+<div class="no-results" id="no-results">No algorithms found.</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+<div class="modal" id="modal">
+<div class="modal-head">
+<h2 id="modal-title">Algorithm<small id="modal-cat"></small></h2>
+<button class="modal-close" id="modal-close">&times;</button>
+</div>
+<div class="modal-body" id="modal-body"></div>
+</div>
+</div>
+
+<script>
+const REPO="https://github.com/keon/algorithms/blob/main/algorithms";
+const RAW="https://raw.githubusercontent.com/keon/algorithms/main/algorithms";
+const DATA={
+"Array":["delete_nth","flatten","garage","josephus","limit","longest_non_repeat","max_ones_index","merge_intervals","missing_ranges","move_zeros","n_sum","plus_one","remove_duplicates","rotate","summarize_ranges","three_sum","top_1","trimmean","two_sum"],
+"Backtracking":["add_operators","anagram","array_sum_combinations","combination_sum","factor_combinations","find_words","generate_abbreviations","generate_parenthesis","letter_combination","minimax","palindrome_partitioning","pattern_match","permute","permute_unique","subsets","subsets_unique"],
+"Bit Manipulation":["add_bitwise_operator","binary_gap","bit_operation","bytes_int_conversion","count_flips_to_convert","count_ones","find_difference","find_missing_number","flip_bit_longest_sequence","gray_code","has_alternative_bit","insert_bit","power_of_two","remove_bit","reverse_bits","single_number","single_number2","single_number3","subsets","swap_pair"],
+"Compression":["elias","huffman_coding","rle_compression"],
+"Data Structures":["avl_tree","b_tree","bst","fenwick_tree","graph","hash_table","heap","iterative_segment_tree","kd_tree","linked_list","priority_queue","queue","red_black_tree","segment_tree","separate_chaining_hash_table","sqrt_decomposition","stack","trie","union_find"],
+"Dynamic Programming":["bitmask","buy_sell_stock","climbing_stairs","coin_change","combination_sum","count_paths_dp","edit_distance","egg_drop","fib","hosoya_triangle","house_robber","int_divide","job_scheduling","k_factor","knapsack","longest_common_subsequence","longest_increasing","matrix_chain_order","max_product_subarray","max_subarray","min_cost_path","num_decodings","planting_trees","regex_matching","rod_cut","word_break"],
+"Graph":["a_star","all_factors","all_pairs_shortest_path","bellman_ford","blossom","check_bipartite","check_digraph_strongly_connected","clone_graph","count_connected_number_of_component","count_islands_bfs","count_islands_dfs","count_islands_unionfind","cycle_detection","dijkstra","dijkstra_heapq","find_all_cliques","find_path","graph","kahns_algorithm","markov_chain","maximum_flow","maximum_flow_bfs","maximum_flow_dfs","maze_search_bfs","maze_search_dfs","minimum_spanning_tree","pacific_atlantic","path_between_two_vertices_in_digraph","prims_minimum_spanning","satisfiability","shortest_distance_from_all_buildings","strongly_connected_components_kosaraju","sudoku_solver","tarjan","topological_sort_bfs","topological_sort_dfs","transitive_closure_dfs","traversal","walls_and_gates","word_ladder"],
+"Greedy":["gale_shapley","max_contiguous_subsequence_sum"],
+"Heap":["k_closest_points","merge_sorted_k_lists","skyline","sliding_window_max"],
+"Linked List":["add_two_numbers","copy_random_pointer","delete_node","first_cyclic_node","intersection","is_cyclic","is_palindrome","is_sorted","kth_to_last","merge_two_list","partition","remove_duplicates","remove_range","reverse","rotate_list","swap_in_pairs"],
+"Map":["is_anagram","is_isomorphic","longest_common_subsequence","longest_palindromic_subsequence","randomized_set","valid_sudoku","word_pattern"],
+"Math":["base_conversion","chinese_remainder_theorem","combination","cosine_similarity","decimal_to_binary_ip","diffie_hellman_key_exchange","distance_between_two_points","euler_totient","extended_gcd","factorial","fft","find_order_simple","find_primitive_root_simple","gcd","generate_strobogrammtic","goldbach","hailstone","is_strobogrammatic","krishnamurthy_number","linear_regression","magic_number","manhattan_distance","modular_exponential","modular_inverse","next_bigger","next_perfect_square","nth_digit","num_digits","num_perfect_squares","polynomial","polynomial_division","power","prime_check","primes_sieve_of_eratosthenes","pythagoras","rabin_miller","recursive_binomial_coefficient","rsa","sqrt_precision_factor","summing_digits","surface_area_of_torus","symmetry_group_cycle_index"],
+"Matrix":["bomb_enemy","cholesky_matrix_decomposition","copy_transform","count_paths","crout_matrix_decomposition","matrix_exponentiation","matrix_inversion","multiply","rotate_image","search_in_sorted_matrix","sort_matrix_diagonally","sparse_dot_vector","sparse_mul","spiral_traversal","sudoku_validator","sum_sub_squares"],
+"Queue":["max_sliding_window","moving_average","reconstruct_queue","zigzagiterator"],
+"Searching":["binary_search","exponential_search","find_min_rotate","first_occurrence","generalized_binary_search","interpolation_search","jump_search","last_occurrence","linear_search","next_greatest_letter","search_insert","search_range","search_rotate","sentinel_search","ternary_search","two_sum"],
+"Set":["find_keyboard_row","randomized_set","set_covering"],
+"Sorting":["bead_sort","bitonic_sort","bogo_sort","bubble_sort","bucket_sort","cocktail_shaker_sort","comb_sort","counting_sort","cycle_sort","exchange_sort","gnome_sort","heap_sort","insertion_sort","meeting_rooms","merge_sort","pancake_sort","pigeonhole_sort","quick_sort","radix_sort","selection_sort","shell_sort","sort_colors","stooge_sort","wiggle_sort"],
+"Stack":["is_consecutive","is_sorted","longest_abs_path","ordered_stack","remove_min","simplify_path","stutter","switch_pairs","valid_parenthesis"],
+"Streaming":["misra_gries","one_sparse_recovery"],
+"String":["add_binary","alphabet_board_path","atbash_cipher","breaking_bad","caesar_cipher","check_pangram","contain_string","count_binary_substring","decode_string","delete_reoccurring","domain_extractor","encode_decode","first_unique_char","fizzbuzz","group_anagrams","int_to_roman","is_palindrome","is_rotated","judge_circle","knuth_morris_pratt","license_number","longest_common_prefix","longest_palindromic_substring","make_sentence","manacher","merge_string_checker","min_distance","multiply_strings","one_edit_distance","panagram","rabin_karp","repeat_string","repeat_substring","reverse_string","reverse_vowel","reverse_words","roman_to_int","rotate","strip_url_params","strong_password","swap_characters","text_justification","unique_morse","validate_coordinates","word_squares","z_algorithm"],
+"Tree":["bin_tree_to_list","binary_tree_paths","binary_tree_views","bst_array_to_bst","bst_closest_value","bst_count_left_node","bst_delete_node","bst_depth_sum","bst_height","bst_is_bst","bst_iterator","bst_kth_smallest","bst_lowest_common_ancestor","bst_num_empty","bst_predecessor","bst_serialize_deserialize","bst_successor","bst_unique_bst","bst_validate_bst","construct_tree_postorder_preorder","deepest_left","invert_tree","is_balanced","is_subtree","is_symmetric","longest_consecutive","lowest_common_ancestor","max_height","max_path_sum","min_height","path_sum","path_sum2","pretty_print","same_tree","traversal_inorder","traversal_level_order","traversal_postorder","traversal_preorder","traversal_zigzag","tree","trie_add_and_search"]
+};
+
+const DESC={"array/delete_nth":"Keep at most N occurrences of each element in an array","array/max_ones_index":"Find the 0 to flip for the longest run of 1s in a binary array","array/plus_one":"Add one to a number represented as a digit array","array/remove_duplicates":"Remove duplicate elements from an array preserving order","array/summarize_ranges":"Summarize consecutive runs in a sorted array as ranges","array/three_sum":"Find all unique triplets in an array that sum to zero","array/top_1":"Find the most frequently occurring value(s) in an array","array/two_sum":"Find two indices whose values sum to a target","array/flatten":"Flatten a nested iterable into a single list","array/garage":"Find minimum swaps to rearrange a parking lot with one empty spot","array/josephus":"Yield elimination order in the Josephus circle problem","array/limit":"Filter array elements to those within a min/max range","array/longest_non_repeat":"Find the longest substring without repeating characters","array/merge_intervals":"Merge overlapping intervals into a consolidated set","array/missing_ranges":"Find gaps in a sorted array between low and high bounds","array/move_zeros":"Move all zeros to the end while preserving element order","array/n_sum":"Find all unique n-tuples in an array that sum to a target","array/rotate":"Rotate an array to the right by k positions","array/trimmean":"Compute the mean after discarding extreme values by percentage","backtracking/anagram":"Check whether two strings are anagrams of each other","backtracking/array_sum_combinations":"Find three-array element combos that sum to a target","backtracking/combination_sum":"Find all unique combinations of candidates summing to target","backtracking/generate_parenthesis":"Generate all valid combinations of n pairs of parentheses","backtracking/letter_combination":"Map digit string to all possible letter combinations","backtracking/permute_unique":"Return all unique permutations of a list with duplicates","backtracking/subsets":"Generate all possible subsets (power set) of distinct integers","backtracking/subsets_unique":"Generate all unique subsets of a list that may have duplicates","backtracking/add_operators":"Insert +, -, * between digits to reach a target value","backtracking/factor_combinations":"Find all ways to factor a number into smaller factors","backtracking/find_words":"Find words from a list that can be traced on a character board","backtracking/generate_abbreviations":"Generate all generalized abbreviations of a word","backtracking/palindrome_partitioning":"Partition a string into all possible palindromic substrings","backtracking/pattern_match":"Check if a string matches a pattern via bijective mapping","backtracking/permute":"Generate all permutations of a collection of distinct elements","backtracking/minimax":"Find optimal move in a two-player game with alpha-beta pruning","bit_manipulation/add_bitwise_operator":"Add two integers using only bitwise operations","bit_manipulation/binary_gap":"Find the longest gap between consecutive 1-bits in binary","bit_manipulation/bit_operation":"Get, set, clear, and update individual bits in an integer","bit_manipulation/bytes_int_conversion":"Convert between integers and byte sequences","bit_manipulation/find_difference":"Find the extra character added to a shuffled string","bit_manipulation/find_missing_number":"Find the missing number in a sequence from 0 to n","bit_manipulation/insert_bit":"Insert one or more bits into an integer at a given position","bit_manipulation/power_of_two":"Check whether an integer is a power of two","bit_manipulation/remove_bit":"Remove a bit at a specific position from an integer","bit_manipulation/reverse_bits":"Reverse all 32 bits of an unsigned integer","bit_manipulation/single_number":"Find the element that appears once; others appear twice","bit_manipulation/single_number2":"Find the element appearing once; others appear three times","bit_manipulation/single_number3":"Find two unique elements; all others appear exactly twice","bit_manipulation/subsets":"Generate all subsets of a set using bitmask enumeration","bit_manipulation/count_flips_to_convert":"Count bit flips needed to convert one integer to another","bit_manipulation/count_ones":"Count the number of set bits (Hamming weight) in an integer","bit_manipulation/flip_bit_longest_sequence":"Find longest 1-bit run achievable by flipping one 0-bit","bit_manipulation/has_alternative_bit":"Check whether an integer has alternating bit pattern","bit_manipulation/swap_pair":"Swap every pair of adjacent bits in an integer","bit_manipulation/gray_code":"Generate n-bit Gray code sequences and convert back to binary","compression/rle_compression":"Encode and decode strings using run-length encoding","compression/elias":"Encode positive integers using Elias gamma and delta coding","compression/huffman_coding":"Compress and decompress files using Huffman coding","data_structures/separate_chaining_hash_table":"Hash table using separate chaining for collision resolution","data_structures/linked_list":"Define singly and doubly linked list node classes","data_structures/graph":"Represent directed graphs with nodes, edges, and adjacency lists","data_structures/union_find":"Disjoint set with union by size and path compression","data_structures/avl_tree":"Self-balancing AVL tree with insert and in-order traversal","data_structures/b_tree":"Self-balancing B-tree with search, insert, and delete","data_structures/bst":"Binary search tree with insert, search, and traversals","data_structures/fenwick_tree":"Binary indexed tree for prefix sums and point updates","data_structures/hash_table":"Hash table using open addressing with linear probing","data_structures/heap":"Min binary heap with insert and remove-min operations","data_structures/iterative_segment_tree":"Iterative segment tree for range queries and point updates","data_structures/priority_queue":"Priority queue backed by a sorted linear array","data_structures/queue":"Queue ADT implemented with array and linked list","data_structures/red_black_tree":"Red-black tree with insert, delete, and rebalancing","data_structures/segment_tree":"Recursive segment tree for range queries","data_structures/stack":"Stack ADT implemented with array and linked list","data_structures/trie":"Trie (prefix tree) with insert, search, and starts-with","data_structures/kd_tree":"KD-tree for k-dimensional nearest-neighbour queries","data_structures/sqrt_decomposition":"Sqrt decomposition for range sum queries and point updates","dynamic_programming/buy_sell_stock":"Find maximum profit from a single buy-sell stock transaction","dynamic_programming/climbing_stairs":"Count distinct ways to climb n steps using 1 or 2 steps","dynamic_programming/coin_change":"Count coin combinations that sum to a given value","dynamic_programming/edit_distance":"Find minimum edits to transform one string into another","dynamic_programming/egg_drop":"Find minimum trials to identify the critical floor","dynamic_programming/hosoya_triangle":"Compute entries of the Hosoya (Fibonacci) triangle","dynamic_programming/house_robber":"Find max robbery amount without hitting adjacent houses","dynamic_programming/int_divide":"Count partitions of a positive integer into sums","dynamic_programming/job_scheduling":"Find max profit from non-overlapping weighted jobs","dynamic_programming/knapsack":"Find max value fitting in a 0/1 knapsack with capacity limit","dynamic_programming/longest_common_subsequence":"Find length of longest common subsequence of two strings","dynamic_programming/longest_increasing":"Find length of the longest increasing subsequence","dynamic_programming/max_subarray":"Find contiguous subarray with the largest sum","dynamic_programming/rod_cut":"Find max revenue from cutting a rod into priced pieces","dynamic_programming/word_break":"Check if a string can be segmented into dictionary words","dynamic_programming/combination_sum":"Count ordered combinations of numbers summing to target","dynamic_programming/fib":"Compute the n-th Fibonacci number","dynamic_programming/k_factor":"Count strings of given length with exactly k 'abba' substrings","dynamic_programming/matrix_chain_order":"Find optimal parenthesization to minimize matrix multiplications","dynamic_programming/max_product_subarray":"Find contiguous subarray with the largest product","dynamic_programming/min_cost_path":"Find minimum cost to travel from first to last station","dynamic_programming/num_decodings":"Count ways to decode a digit string into letters A-Z","dynamic_programming/planting_trees":"Find min distance to rearrange trees into valid positions","dynamic_programming/regex_matching":"Match strings against patterns with '.' and '*' support","dynamic_programming/bitmask":"Solve the Travelling Salesman Problem using bitmask DP","dynamic_programming/count_paths_dp":"Count unique paths in an m x n grid moving right or down","graph/bellman_ford":"Find shortest paths from source, handling negative edge weights","graph/check_bipartite":"Check whether an undirected graph is bipartite via BFS","graph/check_digraph_strongly_connected":"Check if a directed graph is strongly connected","graph/clone_graph":"Deep-clone an undirected graph using BFS or DFS","graph/count_connected_number_of_component":"Count connected components in an undirected graph","graph/cycle_detection":"Detect cycles in a directed graph using DFS colouring","graph/dijkstra":"Find shortest paths from source with non-negative weights","graph/find_all_cliques":"Find all maximal cliques using Bron-Kerbosch","graph/markov_chain":"Simulate state transitions in a discrete Markov chain","graph/maximum_flow_bfs":"Compute max flow using BFS augmenting paths","graph/maximum_flow_dfs":"Compute max flow using DFS augmenting paths","graph/minimum_spanning_tree":"Find MST weight using Kruskal's union-find approach","graph/path_between_two_vertices_in_digraph":"Check if a path exists between two vertices in a digraph","graph/prims_minimum_spanning":"Find MST weight using Prim's priority-queue approach","graph/satisfiability":"Solve 2-SAT and find a satisfying variable assignment","graph/tarjan":"Find all strongly connected components via Tarjan's method","graph/transitive_closure_dfs":"Compute the transitive closure matrix of a directed graph","graph/traversal":"Traverse a graph using DFS and BFS","graph/topological_sort_bfs":"Produce topological ordering of a DAG using BFS (Kahn's)","graph/all_factors":"Find all factor combinations of an integer","graph/count_islands_dfs":"Count islands in a 2D grid using DFS flood-fill","graph/pacific_atlantic":"Find cells where water flows to both Pacific and Atlantic","graph/walls_and_gates":"Fill rooms with distance to nearest gate via DFS","graph/count_islands_unionfind":"Count islands incrementally using union-find","graph/graph":"Re-export Node, DirectedEdge, and DirectedGraph data structures","graph/a_star":"Find shortest path using A* with a heuristic function","graph/all_pairs_shortest_path":"Compute all-pairs shortest paths via Floyd-Warshall","graph/count_islands_bfs":"Count islands in a 2D grid using BFS","graph/find_path":"Find single, all, or shortest paths between two nodes","graph/kahns_algorithm":"Topological sort via Kahn's in-degree BFS approach","graph/maximum_flow":"Compute max flow via Ford-Fulkerson, Edmonds-Karp, or Dinic","graph/maze_search_bfs":"Find shortest path through a maze using BFS","graph/maze_search_dfs":"Find shortest path through a maze using DFS backtracking","graph/shortest_distance_from_all_buildings":"Find land cell with min total distance to all buildings","graph/strongly_connected_components_kosaraju":"Count strongly connected components via Kosaraju's method","graph/sudoku_solver":"Solve a Sudoku puzzle using constraint propagation and DFS","graph/topological_sort_dfs":"Produce topological ordering of a DAG using DFS","graph/word_ladder":"Find shortest word transformation sequence via bidirectional BFS","graph/blossom":"Find maximum cardinality matching in a general graph","graph/dijkstra_heapq":"Find shortest path using heap-optimised Dijkstra's","greedy/gale_shapley":"Find a stable matching between two groups using ranked preferences","greedy/max_contiguous_subsequence_sum":"Find the maximum sum of a contiguous subarray","heap/skyline":"Compute the skyline contour from a list of building triplets","heap/sliding_window_max":"Find the maximum element in each sliding window of size k","heap/k_closest_points":"Find the k closest points to the origin using a max heap","heap/merge_sorted_k_lists":"Merge k sorted linked lists into one sorted linked list","linked_list/add_two_numbers":"Add two numbers represented as reversed linked lists","linked_list/copy_random_pointer":"Deep-copy a linked list with random pointers","linked_list/delete_node":"Delete a node from a singly linked list given only that node","linked_list/first_cyclic_node":"Find the first node of a cycle using Floyd's method","linked_list/intersection":"Find the intersection node of two singly linked lists","linked_list/is_cyclic":"Detect whether a linked list contains a cycle","linked_list/is_sorted":"Check if a linked list is sorted in non-decreasing order","linked_list/merge_two_list":"Merge two sorted linked lists into one sorted list","linked_list/partition":"Partition a linked list around a given value","linked_list/remove_duplicates":"Remove duplicate values from an unsorted linked list","linked_list/remove_range":"Remove nodes in an index range from a linked list","linked_list/reverse":"Reverse a singly linked list iteratively or recursively","linked_list/rotate_list":"Rotate a linked list to the right by k positions","linked_list/swap_in_pairs":"Swap every two adjacent nodes in a linked list","linked_list/is_palindrome":"Check if a singly linked list is a palindrome","linked_list/kth_to_last":"Find the kth to last element of a singly linked list","map/is_anagram":"Check if two strings are anagrams of each other","map/is_isomorphic":"Check if two strings are isomorphic via character mapping","map/longest_common_subsequence":"Find the longest common substring between two strings","map/longest_palindromic_subsequence":"Find the length of the longest palindromic substring","map/randomized_set":"Set supporting O(1) insert, remove, and random element access","map/valid_sudoku":"Check whether a 9x9 Sudoku board configuration is valid","map/word_pattern":"Check if a string follows a given letter-to-word pattern","math/combination":"Compute n-choose-r using recursive and memoized approaches","math/extended_gcd":"Find Bezout coefficients using the extended Euclidean method","math/factorial":"Compute the factorial of a non-negative integer","math/fft":"Compute the discrete Fourier transform via Cooley-Tukey FFT","math/find_order_simple":"Find the multiplicative order of a modulo n","math/gcd":"Compute greatest common divisor and least common multiple","math/generate_strobogrammtic":"Generate all strobogrammatic numbers of a given length","math/krishnamurthy_number":"Check if a number equals the sum of factorials of its digits","math/magic_number":"Check if recursive digit summing yields 1 (digital root)","math/modular_exponential":"Compute (base ^ exponent) % mod via binary exponentiation","math/modular_inverse":"Find modular multiplicative inverse using extended GCD","math/nth_digit":"Find the nth digit in the sequence of natural numbers","math/num_digits":"Count the number of digits in an integer","math/power":"Compute a^n efficiently using exponentiation by squaring","math/prime_check":"Check if an integer is prime using trial division","math/primes_sieve_of_eratosthenes":"Generate all primes up to n using the Sieve of Eratosthenes","math/sqrt_precision_factor":"Compute square root using Newton's method with precision","math/base_conversion":"Convert integers between arbitrary bases (2-36)","math/chinese_remainder_theorem":"Solve a system of simultaneous congruences","math/cosine_similarity":"Compute cosine similarity between two vectors","math/decimal_to_binary_ip":"Convert a dotted-decimal IP address to binary","math/diffie_hellman_key_exchange":"Perform Diffie-Hellman key exchange and verify shared keys","math/distance_between_two_points":"Compute Euclidean distance between two 2D points","math/euler_totient":"Compute Euler's totient function phi(n)","math/find_primitive_root_simple":"Find all primitive roots of a positive integer","math/hailstone":"Generate the hailstone (Collatz) sequence from n to 1","math/is_strobogrammatic":"Check if a number looks the same rotated 180 degrees","math/next_bigger":"Find the next higher number using the same digits","math/next_perfect_square":"Find the next perfect square if input is a perfect square","math/num_perfect_squares":"Find minimum count of perfect squares that sum to n","math/polynomial":"Symbolic polynomial and monomial arithmetic with exact fractions","math/pythagoras":"Compute the unknown side of a right triangle","math/rabin_miller":"Test probable primality using the Rabin-Miller method","math/recursive_binomial_coefficient":"Compute binomial coefficient C(n,k) recursively","math/rsa":"Generate RSA keys and perform encryption/decryption","math/summing_digits":"Find numbers where positional-power digit sums equal themselves","math/surface_area_of_torus":"Compute the surface area of a torus from its radii","math/symmetry_group_cycle_index":"Compute the cycle index of symmetric group S_n","math/linear_regression":"Fit a least-squares regression line to (x, y) data","math/manhattan_distance":"Compute Manhattan (L1) distance between two points","math/polynomial_division":"Divide one polynomial by another via long division","math/goldbach":"Find two primes that sum to a given even integer","matrix/bomb_enemy":"Find max enemies killed by placing one bomb in a grid","matrix/cholesky_matrix_decomposition":"Decompose a positive-definite matrix into lower-triangular form","matrix/copy_transform":"Rotate and transpose a matrix by creating transformed copies","matrix/count_paths":"Count unique paths from top-left to bottom-right of a grid","matrix/crout_matrix_decomposition":"Decompose a matrix into lower and upper triangular matrices","matrix/matrix_exponentiation":"Compute the n-th power of a square matrix via repeated squaring","matrix/matrix_inversion":"Compute the inverse of an n x n matrix using cofactor expansion","matrix/multiply":"Multiply two compatible matrices and return their product","matrix/rotate_image":"Rotate a square matrix 90 degrees clockwise in-place","matrix/search_in_sorted_matrix":"Search for a value in a row-wise and column-wise sorted matrix","matrix/sort_matrix_diagonally":"Sort each top-left to bottom-right diagonal in ascending order","matrix/sparse_dot_vector":"Compute dot product of two sparse vectors efficiently","matrix/sparse_mul":"Multiply two sparse matrices, skipping zero elements","matrix/spiral_traversal":"Traverse matrix elements in spiral order","matrix/sudoku_validator":"Validate whether a completed 9x9 Sudoku board is correct","matrix/sum_sub_squares":"Compute sums of all k x k sub-squares in a matrix","queue/max_sliding_window":"Find the maximum element in each sliding window of size k","queue/moving_average":"Compute moving average of a data stream over a fixed window","queue/reconstruct_queue":"Reconstruct a queue from (height, k) pairs by sorting","queue/zigzagiterator":"Interleave elements from two lists in zigzag fashion","searching/binary_search":"Search for a value in a sorted array by halving the interval","searching/exponential_search":"Search by doubling index to find range, then binary search","searching/find_min_rotate":"Find the minimum element in a rotated sorted array","searching/first_occurrence":"Find the index of the first occurrence in a sorted array","searching/generalized_binary_search":"Find smallest value where a monotonic predicate is true","searching/interpolation_search":"Search a uniformly distributed sorted array via interpolation","searching/jump_search":"Search a sorted array by jumping in fixed-size blocks","searching/last_occurrence":"Find the index of the last occurrence in a sorted array","searching/linear_search":"Search for a value by checking every element sequentially","searching/next_greatest_letter":"Find the smallest letter greater than a given target","searching/search_insert":"Find index of target or its sorted insertion position","searching/search_range":"Find first and last positions of a target in a sorted array","searching/search_rotate":"Search for a value in a rotated sorted array","searching/sentinel_search":"Linear search optimized with a sentinel to skip bounds checks","searching/ternary_search":"Search a sorted array by dividing the range into three parts","searching/two_sum":"Find two numbers in an array that add up to a target sum","set/find_keyboard_row":"Find words that can be typed using one keyboard row","set/randomized_set":"Insert, remove, and get random element in O(1) average time","set/set_covering":"Find minimum-cost sub-collection of sets that covers a universe","sorting/bead_sort":"Sort non-negative integers by simulating beads settling on abacus","sorting/bitonic_sort":"Sort by recursively building and merging bitonic sequences","sorting/bogo_sort":"Sort by randomly shuffling until the array is ordered","sorting/bubble_sort":"Sort by repeatedly swapping adjacent out-of-order elements","sorting/bucket_sort":"Sort by distributing elements into buckets, then sorting each","sorting/cocktail_shaker_sort":"Sort by bubbling in both directions alternately","sorting/comb_sort":"Sort by comparing elements with a shrinking gap sequence","sorting/counting_sort":"Sort integers by counting occurrences of each value","sorting/cycle_sort":"Sort by rotating cycles to minimize write operations","sorting/exchange_sort":"Sort by comparing and swapping every pair of elements","sorting/gnome_sort":"Sort by swapping backward until the element is in place","sorting/heap_sort":"Sort by building a heap and repeatedly extracting the extreme","sorting/insertion_sort":"Sort by inserting each element into its correct position","sorting/meeting_rooms":"Check whether all meeting intervals can be attended without overlap","sorting/merge_sort":"Sort by dividing in half, sorting each, and merging back","sorting/pancake_sort":"Sort by flipping subarrays to move max elements into place","sorting/pigeonhole_sort":"Sort integers when range is close to the number of elements","sorting/quick_sort":"Sort by partitioning around a pivot and recursing on halves","sorting/radix_sort":"Sort integers by processing digits from least to most significant","sorting/selection_sort":"Sort by repeatedly selecting the minimum from unsorted portion","sorting/shell_sort":"Sort using insertion sort with a shrinking gap between elements","sorting/sort_colors":"Sort array of 0s, 1s, and 2s in-place (Dutch National Flag)","sorting/stooge_sort":"Sort by recursively sorting overlapping two-thirds of the array","sorting/wiggle_sort":"Reorder array so that nums[0]<nums[1]>nums[2]<nums[3]...","stack/is_consecutive":"Check if a stack contains consecutive integers from bottom to top","stack/is_sorted":"Check if a stack is sorted in ascending order from bottom to top","stack/longest_abs_path":"Find the length of the longest absolute file path in a string","stack/ordered_stack":"Implement a stack that maintains elements in sorted order","stack/remove_min":"Remove the minimum value from a stack preserving element order","stack/simplify_path":"Simplify a Unix-style absolute file path","stack/stutter":"Replace every value in a stack with two copies of that value","stack/switch_pairs":"Swap successive pairs of values in a stack from the bottom","stack/valid_parenthesis":"Check if a string of brackets is properly closed and nested","streaming/misra_gries":"Find all elements appearing at least n/k times in a stream","streaming/one_sparse_recovery":"Recover the unique element from a 1-sparse data stream","string/add_binary":"Add two binary number strings and return their binary sum","string/atbash_cipher":"Encrypt or decrypt a string using the Atbash cipher","string/breaking_bad":"Match and bracket chemical symbols within words using a trie","string/caesar_cipher":"Encrypt a string by shifting letters a fixed number of positions","string/check_pangram":"Check if a string contains every letter of the alphabet","string/contain_string":"Find the first occurrence of a substring in a string","string/count_binary_substring":"Count substrings with equal grouped consecutive 0s and 1s","string/decode_string":"Decode a string with nested k[encoded_string] repeat patterns","string/delete_reoccurring":"Remove duplicate characters keeping only the first occurrence","string/domain_extractor":"Extract the domain name from a URL string","string/encode_decode":"Encode a list of strings into one string and decode it back","string/first_unique_char":"Find the index of the first non-repeating character in a string","string/fizzbuzz":"Generate FizzBuzz sequence replacing multiples of 3 and 5","string/group_anagrams":"Group a list of strings by anagram equivalence","string/is_palindrome":"Check if a string reads the same forwards and backwards","string/is_rotated":"Check if one string is a rotation of another","string/judge_circle":"Check if a sequence of moves returns a robot to the origin","string/knuth_morris_pratt":"Find all pattern occurrences in text using KMP search","string/longest_common_prefix":"Find the longest common prefix among an array of strings","string/longest_palindromic_substring":"Find the longest palindromic substring in a string","string/make_sentence":"Count ways to segment a string into dictionary words","string/merge_string_checker":"Check if a string is a valid interleaving of two others","string/min_distance":"Find minimum deletions to make two strings equal","string/multiply_strings":"Multiply two numbers represented as strings","string/one_edit_distance":"Check if two strings are exactly one edit apart","string/rabin_karp":"Find pattern in text using Rabin-Karp rolling hash search","string/reverse_string":"Reverse a string using recursive, iterative, and slice methods","string/roman_to_int":"Convert a Roman numeral string to an integer","string/rotate":"Rotate a string left by k positions","string/strip_url_params":"Remove duplicate and specified query parameters from a URL","string/strong_password":"Calculate minimum characters needed for a strong password","string/text_justification":"Justify text to a fixed width with evenly distributed spaces","string/unique_morse":"Count unique Morse code representations for a list of words","string/validate_coordinates":"Validate if a string contains valid geographic coordinates","string/int_to_roman":"Convert an integer to its Roman numeral representation","string/license_number":"Reformat a license key string into groups of a given size","string/panagram":"Check if a sentence uses every letter of the alphabet","string/repeat_string":"Find minimum string repetitions to contain another as substring","string/repeat_substring":"Check if a string is built from a repeated substring pattern","string/reverse_vowel":"Reverse only the vowels in a string","string/reverse_words":"Reverse the order of words in a string","string/word_squares":"Find all valid word squares from a list of same-length words","string/alphabet_board_path":"Find move sequence to spell a word on a 5x5 letter board","string/manacher":"Find the longest palindromic substring in linear time","string/swap_characters":"Check if one character swap can make two strings equal","string/z_algorithm":"Find all pattern occurrences in text using the Z-array","tree/binary_tree_paths":"Return all root-to-leaf paths in a binary tree","tree/bst_array_to_bst":"Convert a sorted array to a height-balanced BST","tree/bst_closest_value":"Find the BST value closest to a given target","tree/bst_count_left_node":"Count the number of left children in a binary tree","tree/bst_delete_node":"Delete a node with a given key from a BST","tree/bst_depth_sum":"Compute depth-weighted sum of all node values in a BST","tree/bst_height":"Compute the height (number of levels) of a binary tree","tree/bst_is_bst":"Check if a binary tree is a valid BST using inorder traversal","tree/bst_iterator":"Implement an iterator over BST nodes in inorder sequence","tree/bst_kth_smallest":"Find the kth smallest element in a BST","tree/bst_lowest_common_ancestor":"Find the lowest common ancestor of two nodes in a BST","tree/bst_num_empty":"Count the number of empty branches in a binary tree","tree/bst_serialize_deserialize":"Serialize and deserialize a binary tree to/from a string","tree/bst_unique_bst":"Count structurally unique BSTs that store values 1 to n","tree/bst_validate_bst":"Validate if a binary tree satisfies BST properties recursively","tree/construct_tree_postorder_preorder":"Build a binary tree from preorder and postorder traversals","tree/deepest_left":"Find the deepest left-child node in a binary tree","tree/path_sum":"Check if a root-to-leaf path with a given sum exists","tree/path_sum2":"Find all root-to-leaf paths that sum to a target value","tree/same_tree":"Check if two binary trees are structurally identical","tree/traversal_inorder":"Traverse a binary tree in inorder (left, root, right)","tree/traversal_postorder":"Traverse a binary tree in postorder (left, right, root)","tree/traversal_preorder":"Traverse a binary tree in preorder (root, left, right)","tree/trie_add_and_search":"Add and search words in a trie with wildcard support","tree/bin_tree_to_list":"Convert a binary tree to a sorted doubly linked list","tree/invert_tree":"Invert a binary tree by swapping left and right children","tree/is_balanced":"Check if a binary tree is height-balanced","tree/is_subtree":"Check if one binary tree is a subtree of another","tree/is_symmetric":"Check if a binary tree is a mirror of itself","tree/longest_consecutive":"Find the longest parent-to-child consecutive value sequence","tree/lowest_common_ancestor":"Find the lowest common ancestor of two nodes in a tree","tree/max_height":"Find the maximum depth of a binary tree","tree/max_path_sum":"Find the maximum path sum in a binary tree","tree/min_height":"Find the minimum depth of a binary tree","tree/pretty_print":"Print a dictionary-based tree in a readable arrow format","tree/tree":"Re-export TreeNode class for backward compatibility","tree/bst_predecessor":"Find the inorder predecessor of a node in a BST","tree/bst_successor":"Find the inorder successor of a node in a BST","tree/traversal_level_order":"Traverse a binary tree level by level left to right","tree/traversal_zigzag":"Traverse a binary tree in zigzag (alternating) level order","tree/binary_tree_views":"Compute left, right, top, and bottom views of a binary tree"};
+
+const catDirs={"Array":"array","Backtracking":"backtracking","Bit Manipulation":"bit_manipulation","Compression":"compression","Data Structures":"data_structures","Dynamic Programming":"dynamic_programming","Graph":"graph","Greedy":"greedy","Heap":"heap","Linked List":"linked_list","Map":"map","Math":"math","Matrix":"matrix","Queue":"queue","Searching":"searching","Set":"set","Sorting":"sorting","Stack":"stack","Streaming":"streaming","String":"string","Tree":"tree"};
+
+const mainEl=document.getElementById("main");
+const searchInput=document.getElementById("search");
+const statsEl=document.getElementById("stats");
+const noResults=document.getElementById("no-results");
+const backdrop=document.getElementById("modal-backdrop");
+const modalTitle=document.getElementById("modal-title");
+const modalCat=document.getElementById("modal-cat");
+const modalBody=document.getElementById("modal-body");
+
+// Source cache
+const cache=new Map();
+
+function fmt(s){return s.replace(/_/g," ")}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function getDesc(dir,a){return DESC[dir+"/"+a]||""}
+
+// Parse source into {mechanism, code, examples, funcName, isClass}
+function parseSource(src){
+ let mechanism="",code=src,examples=[],funcName="",isClass=false;
+ // Extract module docstring
+ const m=src.match(/^("""|''')([\s\S]*?)\1/);
+ if(m){
+  mechanism=m[2].trim();
+  code=src.slice(m.index+m[0].length).trim();
+  code=code.replace(/^from __future__ import annotations\s*/,"");
+ }
+ // Find first public function or class name
+ const cm=code.match(/^class\s+(\w+)/m);
+ const fm=code.match(/^def\s+(\w+)/m);
+ if(cm && (!fm || code.indexOf(cm[0])<code.indexOf(fm[0]))){
+  funcName=cm[1]; isClass=true;
+ } else if(fm){
+  funcName=fm[1];
+ }
+ // Extract >>> examples from any docstring
+ const docstrings=[...src.matchAll(/"""([\s\S]*?)"""/g)];
+ for(const ds of docstrings){
+  const lines=ds[1].split("\n");
+  let ex=[];
+  for(const l of lines){
+   const t=l.trim();
+   if(t.startsWith(">>>")){
+    ex.push(t);
+   } else if(t.startsWith("...")){
+    ex.push(t);
+   } else if(ex.length && t){
+    ex.push("# "+t);
+   }
+  }
+  if(ex.length){examples.push(ex.join("\n"));break;}
+ }
+ // Detect re-export files (just imports + __all__)
+ const isReexport=/^(from\s|import\s|__all__\s*=|#|\s*$)/m.test(code) && code.split("\n").every(l=>/^\s*$|^from\s|^import\s|^__all__\s*=|^#/.test(l));
+ return {mechanism,code,examples,funcName,isClass,isReexport};
+}
+
+async function openModal(cat,dir,algo){
+ const label=fmt(algo);
+ const desc=getDesc(dir,algo);
+ modalTitle.textContent=label;
+ modalCat.textContent=cat;
+ backdrop.classList.add("open");
+ document.body.style.overflow="hidden";
+
+ const href=`${REPO}/${dir}/${algo}.py`;
+ const rawUrl=`${RAW}/${dir}/${algo}.py`;
+
+ // Show loading
+ modalBody.innerHTML=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div><div class="section-label">Source</div><div class="loading">Loading...</div>`;
+
+ let src=cache.get(rawUrl);
+ if(!src){
+  try{
+   const r=await fetch(rawUrl);
+   src=await r.text();
+   cache.set(rawUrl,src);
+  }catch(e){
+   modalBody.innerHTML=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div><div class="section-label">Source</div><p>Failed to load source. <a href="${href}" target="_blank" rel="noopener">View on GitHub</a></p>`;
+   return;
+  }
+ }
+
+ const {mechanism,code,examples,funcName,isClass,isReexport}=parseSource(src);
+
+ let html="";
+
+ if(isReexport){
+  // Re-export file: just show description + code, no usage/mechanism
+  html+=`<div class="section-label">Description</div><div class="mechanism">${esc(desc)}</div>`;
+  html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ } else {
+  // Build usage snippet
+  let usage=`pip install algorithms\n`;
+  if(isClass){
+   usage+=`from algorithms.${dir} import ${funcName}\n\n`;
+   if(examples.length){
+    usage+=examples[0].replace(/^>>> /gm,"").replace(/^\.\.\. /gm,"").replace(/^# /gm,"# => ");
+   } else {
+    usage+=`obj = ${funcName}(...)\n# see source for constructor args`;
+   }
+  } else if(funcName){
+   usage+=`from algorithms.${dir} import ${funcName}\n\n`;
+   if(examples.length){
+    usage+=examples[0].replace(/^>>> /gm,"").replace(/^\.\.\. /gm,"").replace(/^# /gm,"# => ");
+   } else {
+    usage+=`result = ${funcName}(...)\n# see source for arguments`;
+   }
+  }
+
+  if(funcName) html+=`<div class="section-label">Usage</div><pre><code>${esc(usage)}</code></pre>`;
+  if(mechanism) html+=`<div class="section-label">Mechanism</div><div class="mechanism">${esc(mechanism)}</div>`;
+  html+=`<div class="section-label">Code</div><pre><code>${esc(code)}</code></pre>`;
+ }
+
+ html+=`<a class="src-link" href="${href}" target="_blank" rel="noopener">View on GitHub &rarr;</a>`;
+ modalBody.innerHTML=html;
+}
+
+function closeModal(){
+ backdrop.classList.remove("open");
+ document.body.style.overflow="";
+}
+
+document.getElementById("modal-close").onclick=closeModal;
+backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+// Stop clicks inside modal from closing it
+document.getElementById("modal").onclick=e=>e.stopPropagation();
+
+function render(q=""){
+ const lq=q.toLowerCase().trim();
+ mainEl.innerHTML="";
+ let shown=0,cats=0;
+ for(const[cat,algos]of Object.entries(DATA)){
+  const dir=catDirs[cat];
+  const matched=lq?algos.filter(a=>{
+   const name=a.replaceAll("_"," ");
+   const desc=getDesc(dir,a).toLowerCase();
+   return name.includes(lq)||cat.toLowerCase().includes(lq)||desc.includes(lq);
+  }):algos;
+  if(!matched.length)continue;
+  cats++;
+  shown+=matched.length;
+  const sec=document.createElement("div");
+  sec.className="category";
+  const hdr=document.createElement("div");
+  hdr.className="cat-header";
+  hdr.innerHTML=`<span>${cat} <span class="count">${matched.length}</span></span><span class="arrow">&#9660;</span>`;
+  const list=document.createElement("div");
+  list.className="algo-list";
+  for(const a of matched){
+   const d=document.createElement("div");
+   d.className="algo";
+   const label=fmt(a);
+   const desc=getDesc(dir,a);
+   if(lq){
+    const re=new RegExp(`(${lq.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,"gi");
+    d.innerHTML=label.replace(re,"<mark>$1</mark>")+`<span class="desc">${desc}</span>`;
+   }else{
+    d.textContent=label;
+   }
+   d.onclick=()=>openModal(cat,dir,a);
+   list.appendChild(d);
+  }
+  hdr.onclick=()=>{hdr.classList.toggle("collapsed");list.classList.toggle("hidden")};
+  sec.appendChild(hdr);
+  sec.appendChild(list);
+  mainEl.appendChild(sec);
+ }
+ noResults.style.display=shown?"none":"block";
+ statsEl.textContent=lq?`${shown} result${shown!==1?"s":""} in ${cats} categor${cats!==1?"ies":"y"}`:"";
+}
+
+searchInput.addEventListener("input",e=>render(e.target.value));
+render();
+</script>
+</body>
+</html>
