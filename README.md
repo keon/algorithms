@@ -1,9 +1,7 @@
 [![PyPI version](https://badge.fury.io/py/algorithms.svg)](https://badge.fury.io/py/algorithms)
 [![Open Source Helpers](https://www.codetriage.com/keon/algorithms/badges/users.svg)](https://www.codetriage.com/keon/algorithms)
 
-<p align="center"><img src="https://raw.githubusercontent.com/keon/algorithms/main/docs/source/_static/logo/logotype1blue.png"></p>
-
-# Pythonic Data Structures and Algorithms
+# algorithms
 
 Minimal, clean, and well-documented implementations of data structures and algorithms in Python 3.
 
