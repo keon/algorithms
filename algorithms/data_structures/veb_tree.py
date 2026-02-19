@@ -1,6 +1,8 @@
 """
 Van Emde Boas Tree (vEB Tree) / van Emde Boas priority queue
 
+Reference: https://en.wikipedia.org/wiki/Van_Emde_Boas_tree
+
 A van Emde Boas tree is a recursive data structure for storing integers
 from a fixed universe [0, u - 1], where u is a power of 2.
 
