@@ -6,49 +6,39 @@ Reference: https://en.wikipedia.org/wiki/Van_Emde_Boas_tree
 A van Emde Boas tree is a recursive data structure for storing integers
 from a fixed universe [0, u - 1], where u is a power of 2.
 
-Core idea:
-    Recursively split the universe of size u into:
-        - sqrt(u) clusters of size sqrt(u)
-        - a summary structure tracking which clusters are non-empty
-
-Each node stores:
-    - min: smallest element
-    - max: largest element
-    - summary: vEB tree over cluster indices
-    - cluster[]: array of vEB trees for subranges
-
-Operations work by:
-    - Decomposing a key x into:
-          high(x) -> cluster index
-          low(x)  -> position within cluster
-    - Recursing into the appropriate cluster
-    - Using the summary to find the next non-empty cluster when needed
-
 Time complexity:
-    insert      : O(log log u)
-    delete      : O(log log u)
-    successor   : O(log log u)
-    member      : O(log log u)
-    min / max   : O(1)
+    insert / delete / successor / member : O(log log u)
+    min / max                            : O(1)
 
 Space complexity:
     O(u)
-
-Where:
-    u = universe size (must be a power of 2)
-
-Strength:
-    Extremely fast operations for integer keys.
-
-Weakness:
-    High memory usage proportional to universe size.
 """
 
 
 import math
 
 class VEBTree:
+    """
+    Van Emde Boas tree supporting fast predecessor/successor queries.
+
+    Attributes:
+        u (int): Universe size (power of 2)
+        min (int | None): Minimum element in the tree
+        max (int | None): Maximum element in the tree
+        summary (VEBTree | None): Summary tree
+        cluster (list[VEBTree] | None): Array of clusters
+    """
     def __init__(self, universe_size):
+        """
+        Initialize a Van Emde Boas tree.
+
+        Args:
+            universe_size (int): Size of the universe; must be a power of 2 and > 0.
+
+        Raises:
+            TypeError: If universe_size is not an integer.
+            ValueError: If universe_size <= 0 or not a power of 2.
+        """
         if not isinstance(universe_size, int):
             raise TypeError("universe_size must be an integer.")
         if not universe_size > 0:
@@ -71,22 +61,74 @@ class VEBTree:
             self.cluster = [VEBTree(self.lower_sqrt) for _ in range(self.upper_sqrt)]
 
     def _validate_key(self, x):
+        """
+        Check if x is within the universe range.
+
+        Args:
+            x (int): Element to validate.
+
+        Raises:
+            ValueError: If x is not in the range [0, u-1].
+        """
         if not (0 <= x < self.u):
             raise ValueError(f"Key {x} out of universe range [0, {self.u - 1}]")
 
     def high(self, x):
+        """
+        Return the high part (cluster index) of element x.
+
+        Args:
+            x (int): Element to split.
+
+        Returns:
+            int: Cluster index corresponding to x.
+        """
         return x // self.lower_sqrt
 
     def low(self, x):
+        """
+        Return the low part (position within cluster) of element x.
+
+        Args:
+            x (int): Element to split.
+
+        Returns:
+            int: Position within cluster corresponding to x.
+        """
         return x % self.lower_sqrt
 
     def index(self, high, low):
+        """
+        Combine high and low parts to get original element.
+
+        Args:
+            high (int): Cluster index.
+            low (int): Position within cluster.
+
+        Returns:
+            int: Original element corresponding to high and low.
+        """
         return high * self.lower_sqrt + low
 
     def empty_insert(self, x):
+        """
+        Insert x into an empty vEB tree (sets min and max).
+
+        Args:
+            x (int): Element to insert.
+        """
         self.min = self.max = x
 
     def insert(self, x):
+        """
+        Insert an element into the Van Emde Boas tree.
+
+        Args:
+            x (int): Element to insert; must be in the universe [0, u-1].
+
+        Raises:
+            ValueError: If x is outside the universe.
+        """
         self._validate_key(x)
         if self.min is None:
             self.empty_insert(x)
@@ -109,6 +151,18 @@ class VEBTree:
             self.max = x
 
     def member(self, x):
+        """
+        Check whether element x exists in the tree.
+
+        Args:
+            x (int): Element to check.
+
+        Returns:
+            bool: True if x exists, False otherwise.
+
+        Raises:
+            ValueError: If x is outside the universe.
+        """
         self._validate_key(x)
         if x == self.min or x == self.max:
             return True
@@ -118,6 +172,18 @@ class VEBTree:
             return self.cluster[self.high(x)].member(self.low(x))
 
     def successor(self, x):
+        """
+        Return the smallest element greater than x in the tree.
+
+        Args:
+            x (int): Element to find successor for.
+
+        Returns:
+            int | None: Successor of x if exists, otherwise None.
+
+        Raises:
+            ValueError: If x is outside the universe.
+        """
         self._validate_key(x)
         if self.u == 2:
             if x == 0 and self.max == 1:
@@ -143,6 +209,15 @@ class VEBTree:
             return self.index(succ_cluster, offset)
 
     def delete(self, x):
+        """
+        Remove element x from the Van Emde Boas tree.
+
+        Args:
+            x (int): Element to delete.
+
+        Raises:
+            ValueError: If x is outside the universe.
+        """
         self._validate_key(x)
         if self.min == self.max:
             self.min = self.max = None
@@ -181,7 +256,19 @@ class VEBTree:
             self.max = self.index(h, self.cluster[h].max)
 
     def minimum(self):
+        """
+        Get the minimum element in the tree.
+
+        Returns:
+            int | None: Minimum element, or None if tree is empty.
+        """
         return self.min
 
     def maximum(self):
+        """
+        Get the maximum element in the tree.
+
+        Returns:
+            int | None: Maximum element, or None if tree is empty.
+        """
         return self.max
