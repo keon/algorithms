@@ -172,6 +172,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 | Stack | `stack.py` | `ArrayStack`, `LinkedListStack` |
 | Trie | `trie.py` | `Trie` |
 | Union-Find | `union_find.py` | `Union` |
+| vEB Tree | `veb_tree.py` | `VEBTree` |
 
 ## Algorithms
 
