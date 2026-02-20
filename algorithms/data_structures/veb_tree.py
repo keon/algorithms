@@ -14,8 +14,8 @@ Space complexity:
     O(u)
 """
 
-
 import math
+
 
 class VEBTree:
     """
@@ -28,6 +28,7 @@ class VEBTree:
         summary (VEBTree | None): Summary tree
         cluster (list[VEBTree] | None): Array of clusters
     """
+
     def __init__(self, universe_size):
         """
         Initialize a Van Emde Boas tree.
@@ -49,14 +50,14 @@ class VEBTree:
         self.u = universe_size
         self.min = None
         self.max = None
-        
+
         if universe_size <= 2:
             self.summary = None
             self.cluster = None
         else:
             self.lower_sqrt = 2 ** (math.floor(math.log2(universe_size) / 2))
             self.upper_sqrt = 2 ** (math.ceil(math.log2(universe_size) / 2))
-            
+
             self.summary = VEBTree(self.upper_sqrt)
             self.cluster = [VEBTree(self.lower_sqrt) for _ in range(self.upper_sqrt)]
 
@@ -133,20 +134,20 @@ class VEBTree:
         if self.min is None:
             self.empty_insert(x)
             return
-        
+
         if x < self.min:
             x, self.min = self.min, x
-        
+
         if self.u > 2:
-            h = self.high(x)
-            l = self.low(x)
-            
-            if self.cluster[h].min is None:
-                self.summary.insert(h)
-                self.cluster[h].empty_insert(l)
+            high = self.high(x)
+            low = self.low(x)
+
+            if self.cluster[high].min is None:
+                self.summary.insert(high)
+                self.cluster[high].empty_insert(low)
             else:
-                self.cluster[h].insert(l)
-        
+                self.cluster[high].insert(low)
+
         if x > self.max:
             self.max = x
 
@@ -189,20 +190,20 @@ class VEBTree:
             if x == 0 and self.max == 1:
                 return 1
             return None
-        
+
         if self.min is not None and x < self.min:
             return self.min
-        
-        h = self.high(x)
-        l = self.low(x)
-        
-        max_low = self.cluster[h].max
-        
-        if max_low is not None and l < max_low:
-            offset = self.cluster[h].successor(l)
-            return self.index(h, offset)
+
+        high = self.high(x)
+        low = self.low(x)
+
+        max_low = self.cluster[high].max
+
+        if max_low is not None and low < max_low:
+            offset = self.cluster[high].successor(low)
+            return self.index(high, offset)
         else:
-            succ_cluster = self.summary.successor(h)
+            succ_cluster = self.summary.successor(high)
             if succ_cluster is None:
                 return None
             offset = self.cluster[succ_cluster].min
@@ -222,7 +223,7 @@ class VEBTree:
         if self.min == self.max:
             self.min = self.max = None
             return
-        
+
         if self.u == 2:
             if x == 0:
                 self.min = 1
@@ -230,30 +231,27 @@ class VEBTree:
                 self.min = 0
             self.max = self.min
             return
-        
+
         if x == self.min:
             first_cluster = self.summary.min
             x = self.index(first_cluster, self.cluster[first_cluster].min)
             self.min = x
-        
-        h = self.high(x)
-        l = self.low(x)
-        self.cluster[h].delete(l)
-        
-        if self.cluster[h].min is None:
-            self.summary.delete(h)
-            
+
+        high = self.high(x)
+        low = self.low(x)
+        self.cluster[high].delete(low)
+
+        if self.cluster[high].min is None:
+            self.summary.delete(high)
+
             if x == self.max:
                 summary_max = self.summary.max
                 if summary_max is None:
                     self.max = self.min
                 else:
-                    self.max = self.index(
-                        summary_max,
-                        self.cluster[summary_max].max
-                    )
+                    self.max = self.index(summary_max, self.cluster[summary_max].max)
         elif x == self.max:
-            self.max = self.index(h, self.cluster[h].max)
+            self.max = self.index(high, self.cluster[high].max)
 
     def minimum(self):
         """

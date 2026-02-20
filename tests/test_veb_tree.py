@@ -4,7 +4,6 @@ from algorithms.data_structures.veb_tree import VEBTree
 
 
 class TestVEBTree(unittest.TestCase):
-
     def setUp(self):
         self.veb = VEBTree(16)
 
