@@ -66,10 +66,18 @@ jobs:
             -d @request.json)
 
           REVIEW_TEXT=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "Erro: Não foi possível processar a resposta da IA."')
+          
+          # Extrair informações de tokens
+          INPUT_TOKENS=$(echo "$RESPONSE" | jq -r '.usageMetadata.promptTokenCount // "N/A"')
+          OUTPUT_TOKENS=$(echo "$RESPONSE" | jq -r '.usageMetadata.candidatesTokenCount // "N/A"')
+          TOTAL_TOKENS=$(echo "$RESPONSE" | jq -r '.usageMetadata.totalTokenCount // "N/A"')
 
           echo "REVIEW<<EOF" >> $GITHUB_OUTPUT
           echo "$REVIEW_TEXT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+          echo "INPUT_TOKENS=$INPUT_TOKENS" >> $GITHUB_OUTPUT
+          echo "OUTPUT_TOKENS=$OUTPUT_TOKENS" >> $GITHUB_OUTPUT
+          echo "TOTAL_TOKENS=$TOTAL_TOKENS" >> $GITHUB_OUTPUT
 
       - name: Comment on PR
         if: steps.files.outputs.CHANGED_FILES != ''
@@ -80,3 +88,6 @@ jobs:
           body: |
             ## ⚡ Gemini 2.5 Flash Code Review
             ${{ steps.gemini.outputs.REVIEW }}
+            
+            ---
+            📊 **Token Usage:** Input: `${{ steps.gemini.outputs.INPUT_TOKENS }}` | Output: `${{ steps.gemini.outputs.OUTPUT_TOKENS }}` | Total: `${{ steps.gemini.outputs.TOTAL_TOKENS }}`
