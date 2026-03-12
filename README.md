@@ -52,11 +52,11 @@ print(dijkstra(graph, "s", "t"))
 **Dynamic programming &mdash; coin change:**
 
 ```python
-from algorithms.dynamic_programming import coin_change
+from algorithms.dynamic_programming import count
 
-# Minimum coins to make amount 29 using denominations [1, 5, 10, 25]
-print(coin_change([1, 5, 10, 25], 29))
-# 7   (25 + 1 + 1 + 1 + 1)
+# Number of ways to make amount 10 using denominations [2, 5, 3, 6]
+print(count([2, 5, 3, 6], 10))
+# 5
 ```
 
 **Backtracking &mdash; generate permutations:**
@@ -172,6 +172,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 | Stack | `stack.py` | `ArrayStack`, `LinkedListStack` |
 | Trie | `trie.py` | `Trie` |
 | Union-Find | `union_find.py` | `Union` |
+| vEB Tree | `veb_tree.py` | `VEBTree` |
 
 ## Algorithms
 
