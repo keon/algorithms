@@ -3,12 +3,7 @@ Given an array where elements are sorted in ascending order,
 convert it to a height balanced BST.
 """
 
-
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+from algorithms.common.tree_node import TreeNode
 
 
 def array_to_bst(nums):

@@ -14,22 +14,7 @@ Complexity:
 
 from __future__ import annotations
 
-
-class TreeNode:
-    """A node in a binary tree.
-
-    Args:
-        val: The value stored in this node.
-        left: The left child node.
-        right: The right child node.
-    """
-
-    def __init__(
-        self, val: int, left: TreeNode | None = None, right: TreeNode | None = None
-    ) -> None:
-        self.val = val
-        self.left = left
-        self.right = right
+from algorithms.common.tree_node import TreeNode
 
 
 pre_index = 0
