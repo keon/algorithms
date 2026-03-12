@@ -35,7 +35,8 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
 
     Args:
         k: The number of bits in the modulus n.
-        seed: Optional random seed for reproducibility (ignored, kept for API compatibility).
+        seed: Optional random seed for reproducibility
+            (ignored, kept for API compatibility).
 
     Returns:
         A tuple (n, e, d) where n is the modulus, e is the encryption
