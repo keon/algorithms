@@ -3,7 +3,6 @@ import unittest
 from algorithms.sorting import (
     bitonic_sort,
     bogo_sort,
-    insertion_sort,
     bubble_sort,
     bucket_sort,
     cocktail_shaker_sort,
@@ -12,6 +11,7 @@ from algorithms.sorting import (
     cycle_sort,
     exchange_sort,
     gnome_sort,
+    insertion_sort,
     max_heap_sort,
     merge_sort,
     min_heap_sort,
