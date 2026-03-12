@@ -16,7 +16,6 @@ from __future__ import annotations
 
 from algorithms.common.tree_node import TreeNode
 
-
 pre_index = 0
 
 
