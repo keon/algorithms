@@ -103,7 +103,8 @@ def path_sum3(root: TreeNode | None, sum: int) -> list[list[int]]:
     if root is None:
         return []
     result: list[list[int]] = []
-    queue: deque[tuple[TreeNode, int, list[int]]] = deque([(root, root.val, [root.val])])
+    initial = (root, root.val, [root.val])
+    queue: deque[tuple[TreeNode, int, list[int]]] = deque([initial])
     while queue:
         node, val, path = queue.popleft()
         if node.left is None and node.right is None and val == sum:
