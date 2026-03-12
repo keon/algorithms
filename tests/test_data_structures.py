@@ -2,15 +2,17 @@
 
 import unittest
 
-from algorithms.data_structures.red_black_tree import RBNode, RBTree
 from algorithms.data_structures.avl_tree import AvlTree
+from algorithms.data_structures.hash_table import HashTable, ResizableHashTable
+from algorithms.data_structures.queue import ArrayQueue, LinkedListQueue
+from algorithms.data_structures.red_black_tree import RBNode, RBTree
+from algorithms.data_structures.segment_tree import SegmentTree
+from algorithms.data_structures.separate_chaining_hash_table import (
+    SeparateChainingHashTable,
+)
+from algorithms.data_structures.stack import ArrayStack, LinkedListStack
 from algorithms.data_structures.trie import Trie
 from algorithms.data_structures.union_find import Union
-from algorithms.data_structures.segment_tree import SegmentTree
-from algorithms.data_structures.hash_table import HashTable, ResizableHashTable
-from algorithms.data_structures.separate_chaining_hash_table import SeparateChainingHashTable
-from algorithms.data_structures.stack import ArrayStack, LinkedListStack
-from algorithms.data_structures.queue import ArrayQueue, LinkedListQueue
 
 
 class TestRBTree(unittest.TestCase):
