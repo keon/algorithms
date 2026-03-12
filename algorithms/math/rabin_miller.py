@@ -14,7 +14,7 @@ Complexity:
 
 from __future__ import annotations
 
-import random
+import secrets
 
 
 def is_prime(n: int, k: int) -> bool:
@@ -34,7 +34,7 @@ def is_prime(n: int, k: int) -> bool:
         False
     """
 
-    def _pow2_factor(num: int) -> tuple[int, float]:
+    def _pow2_factor(num: int) -> tuple[int, int]:
         """Factor num into 2^power * odd_part.
 
         Args:
@@ -45,7 +45,7 @@ def is_prime(n: int, k: int) -> bool:
         """
         power = 0
         while num % 2 == 0:
-            num /= 2
+            num //= 2
             power += 1
         return power, num
 
@@ -79,6 +79,6 @@ def is_prime(n: int, k: int) -> bool:
     r, d = _pow2_factor(n - 1)
 
     return all(
-        not _valid_witness(random.randrange(2, n - 2))
+        not _valid_witness(secrets.randbelow(n - 4) + 2)
         for _ in range(k)
     )
