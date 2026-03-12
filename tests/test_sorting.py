@@ -3,6 +3,7 @@ import unittest
 from algorithms.sorting import (
     bitonic_sort,
     bogo_sort,
+    insertion_sort,
     bubble_sort,
     bucket_sort,
     cocktail_shaker_sort,
@@ -60,7 +61,7 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_sorted(min_heap_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_insertion_sort(self):
-        self.assertTrue(is_sorted(bitonic_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+        self.assertTrue(is_sorted(insertion_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
 
     def test_merge_sort(self):
         self.assertTrue(is_sorted(merge_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
