@@ -13,6 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 
 class ZigZagIterator:
     """Iterator that interleaves elements from two lists.
@@ -32,7 +34,7 @@ class ZigZagIterator:
             v1: First input list.
             v2: Second input list.
         """
-        self.queue: list[list[int]] = [lst for lst in (v1, v2) if lst]
+        self.queue: deque[list[int]] = deque(lst for lst in (v1, v2) if lst)
 
     def next(self) -> int:
         """Return the next element in zigzag order.
@@ -40,7 +42,7 @@ class ZigZagIterator:
         Returns:
             The next interleaved element.
         """
-        current_list = self.queue.pop(0)
+        current_list = self.queue.popleft()
         ret = current_list.pop(0)
         if current_list:
             self.queue.append(current_list)

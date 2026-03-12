@@ -69,7 +69,10 @@ def _initialize_single_source(
         distance: Dictionary to store shortest distances (modified in place).
         predecessor: Dictionary to store path predecessors (modified in place).
     """
-    for node in graph:
+    all_nodes: set[str] = set(graph.keys())
+    for neighbors in graph.values():
+        all_nodes.update(neighbors.keys())
+    for node in all_nodes:
         distance[node] = float("inf")
         predecessor[node] = None
     distance[source] = 0

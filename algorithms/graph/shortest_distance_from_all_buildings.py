@@ -13,6 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 
 def shortest_distance(grid: list[list[int]]) -> int:
     """Return the minimum total distance from an empty cell to all buildings.
@@ -64,9 +66,9 @@ def _bfs(
         j: Column of the building.
         count: Number of buildings visited so far.
     """
-    q: list[tuple[int, int, int]] = [(i, j, 0)]
+    q: deque[tuple[int, int, int]] = deque([(i, j, 0)])
     while q:
-        i, j, step = q.pop(0)
+        i, j, step = q.popleft()
         for k, col in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
             if (
                 0 <= k < len(grid)

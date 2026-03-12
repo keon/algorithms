@@ -13,6 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 from algorithms.tree.tree import TreeNode
 
 
@@ -101,9 +103,9 @@ def path_sum3(root: TreeNode | None, sum: int) -> list[list[int]]:
     if root is None:
         return []
     result: list[list[int]] = []
-    queue: list[tuple[TreeNode, int, list[int]]] = [(root, root.val, [root.val])]
+    queue: deque[tuple[TreeNode, int, list[int]]] = deque([(root, root.val, [root.val])])
     while queue:
-        node, val, path = queue.pop(0)
+        node, val, path = queue.popleft()
         if node.left is None and node.right is None and val == sum:
             result.append(path)
         if node.left is not None:

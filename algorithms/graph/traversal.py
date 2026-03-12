@@ -11,6 +11,7 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
 from typing import Any
 
 
@@ -55,9 +56,9 @@ def bfs_traverse(graph: dict[Any, list[Any]], start: Any) -> set[Any]:
         ['a', 'b']
     """
     visited: set[Any] = set()
-    queue = [start]
+    queue = deque([start])
     while queue:
-        node = queue.pop(0)
+        node = queue.popleft()
         if node not in visited:
             visited.add(node)
             for next_node in graph[node]:

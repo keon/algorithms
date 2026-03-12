@@ -12,6 +12,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 
 def check_bipartite(adj_list: list[list[int]]) -> bool:
     """Return True if the graph represented by *adj_list* is bipartite.
@@ -32,10 +34,10 @@ def check_bipartite(adj_list: list[list[int]]) -> bool:
     set_type = [-1 for _ in range(vertices)]
     set_type[0] = 0
 
-    queue = [0]
+    queue = deque([0])
 
     while queue:
-        current = queue.pop(0)
+        current = queue.popleft()
 
         if adj_list[current][current]:
             return False

@@ -13,6 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 from algorithms.tree.tree import TreeNode
 
 
@@ -32,12 +34,12 @@ def max_height(root: TreeNode | None) -> int:
     if root is None:
         return 0
     height = 0
-    queue: list[TreeNode] = [root]
+    queue: deque[TreeNode] = deque([root])
     while queue:
         height += 1
         level: list[TreeNode] = []
         while queue:
-            node = queue.pop(0)
+            node = queue.popleft()
             if node.left is not None:
                 level.append(node.left)
             if node.right is not None:
