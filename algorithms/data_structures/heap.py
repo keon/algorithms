@@ -95,7 +95,9 @@ class BinaryHeap(AbstractHeap):
                     self.heap[index // 2],
                     self.heap[index],
                 )
-            index = index // 2
+                index = index // 2
+            else:
+                break
 
     def insert(self, val: int) -> None:
         """Insert a value into the heap.
@@ -128,7 +130,7 @@ class BinaryHeap(AbstractHeap):
         Args:
             index: Index of the element to percolate down.
         """
-        while 2 * index < self.current_size:
+        while 2 * index <= self.current_size:
             smaller_child = self.min_child(index)
             if self.heap[smaller_child] < self.heap[index]:
                 self.heap[smaller_child], self.heap[index] = (

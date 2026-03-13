@@ -14,6 +14,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import deque
+
 
 def count_islands(grid: list[list[int]]) -> int:
     """Return the number of islands in *grid*.
@@ -34,7 +36,7 @@ def count_islands(grid: list[list[int]]) -> int:
     num_islands = 0
     visited = [[0] * col for _ in range(row)]
     directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-    queue: list[tuple[int, int]] = []
+    queue: deque[tuple[int, int]] = deque()
 
     for i in range(row):
         for j, num in enumerate(grid[i]):
@@ -42,7 +44,7 @@ def count_islands(grid: list[list[int]]) -> int:
                 visited[i][j] = 1
                 queue.append((i, j))
                 while queue:
-                    x, y = queue.pop(0)
+                    x, y = queue.popleft()
                     for k in range(len(directions)):
                         nx_x = x + directions[k][0]
                         nx_y = y + directions[k][1]
