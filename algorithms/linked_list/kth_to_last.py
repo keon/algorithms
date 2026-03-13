@@ -21,7 +21,7 @@ class Node:
 
 
 def kth_to_last_eval(head: Node, k: int) -> Node | bool:
-    """Find the kth to last element using eval (not safe for user input).
+    """Find the kth to last element using a safe iterative loop.
 
     Args:
         head: Head of the linked list.
@@ -38,14 +38,15 @@ def kth_to_last_eval(head: Node, k: int) -> Node | bool:
     if not isinstance(k, int) or not head.val:
         return False
 
-    nexts = ".".join(["next" for _ in range(1, k + 1)])
-    seeker = ".".join(["head", nexts])
-
     while head:
-        if eval(seeker) is None:  # noqa: S307
+        seeker = head
+        for _ in range(k):
+            if seeker is None:
+                return False
+            seeker = seeker.next
+        if seeker is None:
             return head
-        else:
-            head = head.next
+        head = head.next
 
     return False
 

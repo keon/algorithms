@@ -13,7 +13,26 @@ Complexity:
 
 from __future__ import annotations
 
-import random
+import secrets
+
+
+def _extended_gcd(a: int, b: int) -> tuple[int, int, int]:
+    old_r, r = a, b
+    old_s, s = 1, 0
+    old_t, t = 0, 1
+    while r != 0:
+        q = old_r // r
+        old_r, r = r, old_r - q * r
+        old_s, s = s, old_s - q * s
+        old_t, t = t, old_t - q * t
+    return old_r, old_s, old_t
+
+
+def _modinv(a: int, m: int) -> int:
+    g, x, _ = _extended_gcd(a, m)
+    if g != 1:
+        raise ValueError(f"Modular inverse does not exist: gcd({a}, {m}) = {g}")
+    return x % m
 
 
 def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
@@ -21,37 +40,23 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
 
     Args:
         k: The number of bits in the modulus n.
-        seed: Optional random seed for reproducibility.
+        seed: Optional random seed for reproducibility
+            (ignored, kept for API compatibility).
 
     Returns:
         A tuple (n, e, d) where n is the modulus, e is the encryption
         exponent, and d is the decryption exponent.
 
     Examples:
-        >>> n, e, d = generate_key(16, seed=42)
+        >>> n, e, d = generate_key(16)
     """
-
-    def _modinv(a: int, m: int) -> int:
-        """Calculate the modular inverse of a mod m.
-
-        Args:
-            a: The integer.
-            m: The modulus.
-
-        Returns:
-            b such that (a * b) % m == 1.
-        """
-        b = 1
-        while (a * b) % m != 1:
-            b += 1
-        return b
 
     def _gen_prime(k: int, seed: int | None = None) -> int:
         """Generate a random prime with k bits.
 
         Args:
             k: The number of bits.
-            seed: Optional random seed.
+            seed: Unused, kept for API compatibility.
 
         Returns:
             A prime number.
@@ -65,13 +70,12 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
                 for i in range(2, int(num**0.5) + 1)
             )
 
-        random.seed(seed)
         while True:
-            key = random.randrange(int(2 ** (k - 1)), int(2**k))
+            key = secrets.randbelow(int(2**k) - int(2 ** (k - 1))) + int(2 ** (k - 1))
             if _is_prime(key):
                 return key
 
-    p_size = k / 2
+    p_size = k // 2
     q_size = k - p_size
 
     e = _gen_prime(k, seed)

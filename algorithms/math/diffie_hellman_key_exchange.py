@@ -15,7 +15,7 @@ Complexity:
 from __future__ import annotations
 
 import math
-from random import randint
+import secrets
 
 
 def _prime_check(num: int) -> bool:
@@ -112,7 +112,7 @@ def alice_private_key(p: int) -> int:
     Returns:
         A random private key.
     """
-    return randint(1, p - 1)
+    return secrets.randbelow(p - 1) + 1
 
 
 def alice_public_key(a_pr_k: int, a: int, p: int) -> int:
@@ -126,7 +126,7 @@ def alice_public_key(a_pr_k: int, a: int, p: int) -> int:
     Returns:
         Alice's public key.
     """
-    return pow(a, a_pr_k) % p
+    return pow(a, a_pr_k, p)
 
 
 def bob_private_key(p: int) -> int:
@@ -138,7 +138,7 @@ def bob_private_key(p: int) -> int:
     Returns:
         A random private key.
     """
-    return randint(1, p - 1)
+    return secrets.randbelow(p - 1) + 1
 
 
 def bob_public_key(b_pr_k: int, a: int, p: int) -> int:
@@ -152,7 +152,7 @@ def bob_public_key(b_pr_k: int, a: int, p: int) -> int:
     Returns:
         Bob's public key.
     """
-    return pow(a, b_pr_k) % p
+    return pow(a, b_pr_k, p)
 
 
 def alice_shared_key(b_pu_k: int, a_pr_k: int, p: int) -> int:
@@ -166,7 +166,7 @@ def alice_shared_key(b_pu_k: int, a_pr_k: int, p: int) -> int:
     Returns:
         The shared secret key.
     """
-    return pow(b_pu_k, a_pr_k) % p
+    return pow(b_pu_k, a_pr_k, p)
 
 
 def bob_shared_key(a_pu_k: int, b_pr_k: int, p: int) -> int:
@@ -180,7 +180,7 @@ def bob_shared_key(a_pu_k: int, b_pr_k: int, p: int) -> int:
     Returns:
         The shared secret key.
     """
-    return pow(a_pu_k, b_pr_k) % p
+    return pow(a_pu_k, b_pr_k, p)
 
 
 def diffie_hellman_key_exchange(a: int, p: int, option: int | None = None) -> bool:
