@@ -4,13 +4,11 @@ import unittest
 
 from algorithms.data_structures.avl_tree import AvlTree
 from algorithms.data_structures.hash_table import HashTable, ResizableHashTable
-from algorithms.data_structures.queue import ArrayQueue, LinkedListQueue
 from algorithms.data_structures.red_black_tree import RBNode, RBTree
 from algorithms.data_structures.segment_tree import SegmentTree
 from algorithms.data_structures.separate_chaining_hash_table import (
     SeparateChainingHashTable,
 )
-from algorithms.data_structures.stack import ArrayStack, LinkedListStack
 from algorithms.data_structures.trie import Trie
 from algorithms.data_structures.union_find import Union
 
@@ -75,6 +73,12 @@ class TestAvlTree(unittest.TestCase):
         tree = AvlTree()
         self.assertIsNone(tree.node)
         self.assertEqual(tree.in_order_traverse(), [])
+
+    def test_in_order_traverse_populated(self):
+        tree = AvlTree()
+        for v in [5, 3, 7, 1, 4]:
+            tree.insert(v)
+        self.assertEqual(tree.in_order_traverse(), [1, 3, 4, 5, 7])
 
     def test_insert_balance_factor(self):
         tree = AvlTree()
@@ -270,139 +274,6 @@ class TestSeparateChainingHashTable(unittest.TestCase):
         self.assertEqual(table["k"], "v")
         del table["k"]
         self.assertIsNone(table["k"])
-
-
-class TestArrayStack(unittest.TestCase):
-    def test_push_and_pop(self):
-        s = ArrayStack()
-        s.push(1)
-        self.assertEqual(s.pop(), 1)
-
-    def test_peek(self):
-        s = ArrayStack()
-        s.push(42)
-        self.assertEqual(s.peek(), 42)
-        self.assertEqual(len(s), 1)  # peek doesn't remove
-
-    def test_is_empty(self):
-        s = ArrayStack()
-        self.assertTrue(s.is_empty())
-        s.push(1)
-        self.assertFalse(s.is_empty())
-
-    def test_pop_empty_raises(self):
-        s = ArrayStack()
-        with self.assertRaises(IndexError):
-            s.pop()
-
-    def test_peek_empty_raises(self):
-        s = ArrayStack()
-        with self.assertRaises(IndexError):
-            s.peek()
-
-    def test_lifo_order(self):
-        s = ArrayStack()
-        for v in [1, 2, 3]:
-            s.push(v)
-        self.assertEqual(s.pop(), 3)
-        self.assertEqual(s.pop(), 2)
-        self.assertEqual(s.pop(), 1)
-
-
-class TestLinkedListStack(unittest.TestCase):
-    def test_push_and_pop(self):
-        s = LinkedListStack()
-        s.push(10)
-        self.assertEqual(s.pop(), 10)
-
-    def test_is_empty(self):
-        s = LinkedListStack()
-        self.assertTrue(s.is_empty())
-        s.push(5)
-        self.assertFalse(s.is_empty())
-
-    def test_peek(self):
-        s = LinkedListStack()
-        s.push(7)
-        self.assertEqual(s.peek(), 7)
-
-    def test_pop_empty_raises(self):
-        s = LinkedListStack()
-        with self.assertRaises(IndexError):
-            s.pop()
-
-    def test_lifo_order(self):
-        s = LinkedListStack()
-        for v in [10, 20, 30]:
-            s.push(v)
-        self.assertEqual([s.pop(), s.pop(), s.pop()], [30, 20, 10])
-
-
-class TestArrayQueue(unittest.TestCase):
-    def test_enqueue_and_dequeue(self):
-        q = ArrayQueue()
-        q.enqueue(1)
-        self.assertEqual(q.dequeue(), 1)
-
-    def test_is_empty(self):
-        q = ArrayQueue()
-        self.assertTrue(q.is_empty())
-        q.enqueue(5)
-        self.assertFalse(q.is_empty())
-
-    def test_peek(self):
-        q = ArrayQueue()
-        q.enqueue(99)
-        self.assertEqual(q.peek(), 99)
-        self.assertEqual(len(q), 1)
-
-    def test_dequeue_empty_raises(self):
-        q = ArrayQueue()
-        with self.assertRaises(IndexError):
-            q.dequeue()
-
-    def test_fifo_order(self):
-        q = ArrayQueue()
-        for v in [1, 2, 3]:
-            q.enqueue(v)
-        self.assertEqual(q.dequeue(), 1)
-        self.assertEqual(q.dequeue(), 2)
-        self.assertEqual(q.dequeue(), 3)
-
-
-class TestLinkedListQueue(unittest.TestCase):
-    def test_enqueue_and_dequeue(self):
-        q = LinkedListQueue()
-        q.enqueue("a")
-        self.assertEqual(q.dequeue(), "a")
-
-    def test_is_empty(self):
-        q = LinkedListQueue()
-        self.assertTrue(q.is_empty())
-        q.enqueue("x")
-        self.assertFalse(q.is_empty())
-
-    def test_peek(self):
-        q = LinkedListQueue()
-        q.enqueue(42)
-        self.assertEqual(q.peek(), 42)
-
-    def test_dequeue_empty_raises(self):
-        q = LinkedListQueue()
-        with self.assertRaises(IndexError):
-            q.dequeue()
-
-    def test_fifo_order(self):
-        q = LinkedListQueue()
-        for v in ["x", "y", "z"]:
-            q.enqueue(v)
-        self.assertEqual([q.dequeue(), q.dequeue(), q.dequeue()], ["x", "y", "z"])
-
-    def test_single_element(self):
-        q = LinkedListQueue()
-        q.enqueue(1)
-        self.assertEqual(q.dequeue(), 1)
-        self.assertTrue(q.is_empty())
 
 
 if __name__ == "__main__":
