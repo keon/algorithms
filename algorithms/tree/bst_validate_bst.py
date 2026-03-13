@@ -12,14 +12,7 @@ tree (BST), we need to ensure that:
 """
 # ===============================================================================
 
-
-# Tree class definition
-class TreeNode:
-    def __init__(self, value):
-
-        self.val = value
-        self.left = None
-        self.right = None
+from algorithms.common.tree_node import TreeNode
 
 
 # Function to validate if a binary tree is a BST
@@ -46,24 +39,24 @@ def validate_bst(node):
     if not valid_left or not valid_right:
         return (
             False,
-            minn_left if minn_left else node.val,
-            maxx_right if maxx_right else node.val,
+            minn_left if minn_left is not None else node.val,
+            maxx_right if maxx_right is not None else node.val,
         )
 
     # Check the current node's value against the max of the left subtree
     if maxx_left is not None and maxx_left > node.val:
         return (
             False,
-            minn_left if minn_left else node.val,
-            maxx_right if maxx_right else node.val,
+            minn_left if minn_left is not None else node.val,
+            maxx_right if maxx_right is not None else node.val,
         )
 
     # Check the current node's value against the min of the right subtree
     if minn_right is not None and minn_right < node.val:
         return (
             False,
-            minn_left if minn_left else node.val,
-            maxx_right if maxx_right else node.val,
+            minn_left if minn_left is not None else node.val,
+            maxx_right if maxx_right is not None else node.val,
         )
 
     # If all checks pass, the tree/subtree is a valid BST

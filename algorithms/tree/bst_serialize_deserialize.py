@@ -1,8 +1,4 @@
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+from algorithms.common.tree_node import TreeNode
 
 
 def serialize(root):
