@@ -37,7 +37,7 @@ def max_height(root: TreeNode | None) -> int:
     queue: deque[TreeNode] = deque([root])
     while queue:
         height += 1
-        level: list[TreeNode] = []
+        level: deque[TreeNode] = deque()
         while queue:
             node = queue.popleft()
             if node.left is not None:
