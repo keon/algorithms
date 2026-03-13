@@ -121,6 +121,6 @@ class AvlTree:
             return result
 
         result.extend(self.node.left.in_order_traverse())
-        result.append(self.node.key)
+        result.append(self.node.val)
         result.extend(self.node.right.in_order_traverse())
         return result
