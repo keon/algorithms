@@ -1,148 +1,108 @@
-"""
-Implement Binary Search Tree. It has method:
-    1. Insert
-    2. Search
-    3. Size
-    4. Traversal (Preorder, Inorder, Postorder)
-"""
+"""Binary Search Tree implementation.
 
-import unittest
+A BST is a node-based binary tree where each node's left subtree contains
+only nodes with data less than the node's data, and the right subtree
+contains only nodes with data greater than the node's data.
+
+Operations and complexities (n = number of nodes):
+    - insert:    O(log n) average, O(n) worst case
+    - search:    O(log n) average, O(n) worst case
+    - size:      O(n)
+    - preorder:  O(n)
+    - inorder:   O(n)
+    - postorder: O(n)
+"""
+from __future__ import annotations
 
 
 class Node:
-    def __init__(self, data):
-        self.data = data
-        self.left = None
-        self.right = None
+    def __init__(self, data: int) -> None:
+        self.data: int = data
+        self.left: Node | None = None
+        self.right: Node | None = None
 
 
 class BST:
-    def __init__(self):
-        self.root = None
+    def __init__(self) -> None:
+        self.root: Node | None = None
 
-    def get_root(self):
+    def get_root(self) -> Node | None:
         return self.root
 
-    """
-        Get the number of elements
-        Using recursion. Complexity O(logN)
-    """
+    def size(self) -> int:
+        """Return the number of nodes in the tree. Complexity: O(n)."""
+        return self._recur_size(self.root)
 
-    def size(self):
-        return self.recur_size(self.root)
-
-    def recur_size(self, root):
+    def _recur_size(self, root: Node | None) -> int:
         if root is None:
             return 0
-        else:
-            return 1 + self.recur_size(root.left) + self.recur_size(root.right)
+        return 1 + self._recur_size(root.left) + self._recur_size(root.right)
 
-    """
-        Search data in bst
-        Using recursion. Complexity O(logN)
-    """
+    def search(self, data: int) -> bool:
+        """Return True if data exists in the tree. Complexity: O(log n) average."""
+        return self._recur_search(self.root, data)
 
-    def search(self, data):
-        return self.recur_search(self.root, data)
-
-    def recur_search(self, root, data):
+    def _recur_search(self, root: Node | None, data: int) -> bool:
         if root is None:
             return False
         if root.data == data:
             return True
-        elif data > root.data:  # Go to right root
-            return self.recur_search(root.right, data)
-        else:  # Go to left root
-            return self.recur_search(root.left, data)
+        elif data > root.data:
+            return self._recur_search(root.right, data)
+        else:
+            return self._recur_search(root.left, data)
 
-    """
-        Insert data in bst
-        Using recursion. Complexity O(logN)
-    """
+    def insert(self, data: int) -> bool:
+        """Insert data into the tree.
 
-    def insert(self, data):
+        Return False if data already exists.
+        Complexity: O(log n) average.
+        """
         if self.root:
-            return self.recur_insert(self.root, data)
+            return self._recur_insert(self.root, data)
         else:
             self.root = Node(data)
             return True
 
-    def recur_insert(self, root, data):
-        if root.data == data:  # The data is already there
+    def _recur_insert(self, root: Node, data: int) -> bool:
+        if root.data == data:
             return False
-        elif data < root.data:  # Go to left root
-            if root.left:  # If left root is a node
-                return self.recur_insert(root.left, data)
-            else:  # left root is a None
+        elif data < root.data:
+            if root.left:
+                return self._recur_insert(root.left, data)
+            else:
                 root.left = Node(data)
                 return True
-        else:  # Go to right root
-            if root.right:  # If right root is a node
-                return self.recur_insert(root.right, data)
+        else:
+            if root.right:
+                return self._recur_insert(root.right, data)
             else:
                 root.right = Node(data)
                 return True
 
-    """
-        Preorder, Postorder, Inorder traversal bst
-    """
-
-    def preorder(self, root):
+    def preorder(self, root: Node | None) -> list[int]:
+        """Return list of node values in preorder (root, left, right)."""
+        result: list[int] = []
         if root:
-            print(str(root.data), end=" ")
-            self.preorder(root.left)
-            self.preorder(root.right)
+            result.append(root.data)
+            result.extend(self.preorder(root.left))
+            result.extend(self.preorder(root.right))
+        return result
 
-    def inorder(self, root):
+    def inorder(self, root: Node | None) -> list[int]:
+        """Return list of node values in inorder (left, root, right)."""
+        result: list[int] = []
         if root:
-            self.inorder(root.left)
-            print(str(root.data), end=" ")
-            self.inorder(root.right)
+            result.extend(self.inorder(root.left))
+            result.append(root.data)
+            result.extend(self.inorder(root.right))
+        return result
 
-    def postorder(self, root):
+    def postorder(self, root: Node | None) -> list[int]:
+        """Return list of node values in postorder (left, right, root)."""
+        result: list[int] = []
         if root:
-            self.postorder(root.left)
-            self.postorder(root.right)
-            print(str(root.data), end=" ")
-
-
-"""
-    The tree is created for testing:
-
-                    10
-                 /      \
-               6         15
-              / \\       /   \
-            4     9   12      24
-                 /          /    \
-                7         20      30
-                         /
-                       18
-"""
-
-
-class TestSuite(unittest.TestCase):
-    def setUp(self):
-        self.tree = BST()
-        self.tree.insert(10)
-        self.tree.insert(15)
-        self.tree.insert(6)
-        self.tree.insert(4)
-        self.tree.insert(9)
-        self.tree.insert(12)
-        self.tree.insert(24)
-        self.tree.insert(7)
-        self.tree.insert(20)
-        self.tree.insert(30)
-        self.tree.insert(18)
-
-    def test_search(self):
-        self.assertTrue(self.tree.search(24))
-        self.assertFalse(self.tree.search(50))
-
-    def test_size(self):
-        self.assertEqual(11, self.tree.size())
-
-
-if __name__ == "__main__":
-    unittest.main()
+            result.extend(self.postorder(root.left))
+            result.extend(self.postorder(root.right))
+            result.append(root.data)
+        return result
