@@ -57,71 +57,46 @@ def n_sum(
     def _same_closure_default(a: Any, b: Any) -> bool:
         return a == b
 
-    def _n_sum_inner(n: int, nums: list[Any], target: Any) -> list[list[Any]]:
-        if n == 2:
-            results = _two_sum(nums, target)
-        else:
-            results = []
-            prev_num = None
-            for index, num in enumerate(nums):
-                if prev_num is not None and same_closure(prev_num, num):
-                    continue
-
-                prev_num = num
-                n_minus1_results = _n_sum_inner(
-                    n - 1,
-                    nums[index + 1 :],
-                    target - num,
-                )
-                n_minus1_results = _append_elem_to_each_list(num, n_minus1_results)
-                results += n_minus1_results
-        return _union(results)
-
-    def _two_sum(nums: list[Any], target: Any) -> list[list[Any]]:
-        nums.sort()
-        left = 0
-        right = len(nums) - 1
-        results = []
-        while left < right:
-            current_sum = sum_closure(nums[left], nums[right])
-            flag = compare_closure(current_sum, target)
-            if flag == -1:
-                left += 1
-            elif flag == 1:
-                right -= 1
-            else:
-                results.append(sorted([nums[left], nums[right]]))
-                left += 1
-                right -= 1
-                while left < len(nums) and same_closure(nums[left - 1], nums[left]):
-                    left += 1
-                while right >= 0 and same_closure(nums[right], nums[right + 1]):
-                    right -= 1
-        return results
-
-    def _append_elem_to_each_list(
-        elem: Any, container: list[list[Any]]
-    ) -> list[list[Any]]:
-        results = []
-        for elems in container:
-            elems.append(elem)
-            results.append(sorted(elems))
-        return results
-
-    def _union(
-        duplicate_results: list[list[Any]],
-    ) -> list[list[Any]]:
-        results = []
-        if len(duplicate_results) != 0:
-            duplicate_results.sort()
-            results.append(duplicate_results[0])
-            for result in duplicate_results[1:]:
-                if results[-1] != result:
-                    results.append(result)
-        return results
-
     sum_closure = kv.get("sum_closure", _sum_closure_default)
     same_closure = kv.get("same_closure", _same_closure_default)
     compare_closure = kv.get("compare_closure", _compare_closure_default)
+
+    def _find_n_sum(n: int, start: int, target: Any) -> list[list[Any]]:
+        results = []
+        if n == 2:
+            left = start
+            right = len(nums) - 1
+            while left < right:
+                current_sum = sum_closure(nums[left], nums[right])
+                flag = compare_closure(current_sum, target)
+                if flag == 0:
+                    results.append([nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    while left < right and same_closure(nums[left], nums[left - 1]):
+                        left += 1
+                    while left < right and same_closure(nums[right], nums[right + 1]):
+                        right -= 1
+                elif flag == -1:
+                    left += 1
+                else:
+                    right -= 1
+            return results
+
+        for i in range(start, len(nums) - n + 1):
+            if i > start and same_closure(nums[i], nums[i - 1]):
+                continue
+            
+            # Optimization: if the smallest possible sum is greater than target, break
+            # This only works for numbers/types where sum is monotonic
+            # Since we have custom closures, we can't always assume this, 
+            # but it's a standard optimization for the numeric case.
+            
+            sub_results = _find_n_sum(n - 1, i + 1, target - nums[i])
+            for res in sub_results:
+                results.append([nums[i]] + res)
+        
+        return results
+
     nums.sort()
-    return _n_sum_inner(n, nums, target)
+    return _find_n_sum(n, 0, target)
