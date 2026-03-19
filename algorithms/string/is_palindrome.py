@@ -14,11 +14,12 @@ Complexity:
 from __future__ import annotations
 
 from collections import deque
-from string import ascii_letters
 
 
 def is_palindrome(text: str) -> bool:
     """Check if a string is a palindrome using two pointers on the original.
+    This version is optimized for space (O(1)) and correctly handles strings
+    with no alphanumeric characters.
 
     Args:
         text: The input string to check.
@@ -29,13 +30,15 @@ def is_palindrome(text: str) -> bool:
     Examples:
         >>> is_palindrome("Otto")
         True
+        >>> is_palindrome("!!!")
+        True
     """
     left = 0
     right = len(text) - 1
     while left < right:
-        while not text[left].isalnum():
+        while left < right and not text[left].isalnum():
             left += 1
-        while not text[right].isalnum():
+        while left < right and not text[right].isalnum():
             right -= 1
         if text[left].lower() != text[right].lower():
             return False
@@ -50,21 +53,9 @@ def _remove_punctuation(text: str) -> str:
         text: The input string to clean.
 
     Returns:
-        A lowercase string with only alphabetic characters.
+        A lowercase string with only alphanumeric characters.
     """
-    return "".join(char.lower() for char in text if char in ascii_letters)
-
-
-def _string_reverse(text: str) -> str:
-    """Reverse a string using slicing.
-
-    Args:
-        text: The string to reverse.
-
-    Returns:
-        The reversed string.
-    """
-    return text[::-1]
+    return "".join(char.lower() for char in text if char.isalnum())
 
 
 def is_palindrome_reverse(text: str) -> bool:
@@ -80,8 +71,8 @@ def is_palindrome_reverse(text: str) -> bool:
         >>> is_palindrome_reverse("Otto")
         True
     """
-    text = _remove_punctuation(text)
-    return text == _string_reverse(text)
+    clean_text = _remove_punctuation(text)
+    return clean_text == clean_text[::-1]
 
 
 def is_palindrome_two_pointer(text: str) -> bool:
@@ -98,8 +89,9 @@ def is_palindrome_two_pointer(text: str) -> bool:
         True
     """
     text = _remove_punctuation(text)
-    for index in range(0, len(text) // 2):
-        if text[index] != text[len(text) - index - 1]:
+    n = len(text)
+    for index in range(n // 2):
+        if text[index] != text[n - index - 1]:
             return False
     return True
 
@@ -117,11 +109,17 @@ def is_palindrome_stack(text: str) -> bool:
         >>> is_palindrome_stack("Otto")
         True
     """
-    stack: list[str] = []
     text = _remove_punctuation(text)
-    for index in range(len(text) // 2, len(text)):
-        stack.append(text[index])
-    return all(text[index] == stack.pop() for index in range(0, len(text) // 2))
+    n = len(text)
+    stack = list(text[:n // 2])
+    
+    # Skip middle element for odd length strings
+    start_second_half = n // 2 if n % 2 == 0 else n // 2 + 1
+    
+    for i in range(start_second_half, n):
+        if text[i] != stack.pop():
+            return False
+    return True
 
 
 def is_palindrome_deque(text: str) -> bool:
@@ -138,15 +136,10 @@ def is_palindrome_deque(text: str) -> bool:
         True
     """
     text = _remove_punctuation(text)
-    character_deque: deque[str] = deque()
-    for char in text:
-        character_deque.appendleft(char)
+    character_deque = deque(text)
 
-    equal = True
-    while len(character_deque) > 1 and equal:
-        first = character_deque.pop()
-        last = character_deque.popleft()
-        if first != last:
-            equal = False
+    while len(character_deque) > 1:
+        if character_deque.popleft() != character_deque.pop():
+            return False
 
-    return equal
+    return True
