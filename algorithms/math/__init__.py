@@ -38,6 +38,7 @@ from algorithms.math.generate_strobogrammtic import (
     gen_strobogrammatic,
     strobogrammatic_in_range,
 )
+from algorithms.math.geometric_mean import geometric_mean, geometric_mean_logarithm
 from algorithms.math.goldbach import goldbach, verify_goldbach
 from algorithms.math.is_strobogrammatic import is_strobogrammatic, is_strobogrammatic2
 from algorithms.math.krishnamurthy_number import krishnamurthy_number
@@ -93,6 +94,8 @@ __all__ = [
     "trailing_zero",
     "gen_strobogrammatic",
     "strobogrammatic_in_range",
+    "geometric_mean",
+    "geometric_mean_logarithm",
     "hailstone",
     "is_strobogrammatic",
     "is_strobogrammatic2",
