@@ -33,6 +33,15 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(is_sorted([1, 2, 3, 4, 5, 6]))
         self.assertFalse(is_sorted([3, 4, 7, 8, 5, 6]))
 
+        # Stack must be preserved after the call (True case only)
+        stack = [1, 2, 3, 6]
+        is_sorted(stack)
+        self.assertEqual([1, 2, 3, 6], stack)
+        # Edge case: single element
+        stack = [5]
+        is_sorted(stack)
+        self.assertEqual([5], stack)
+
     def test_remove_min(self):
         # Test case: bottom [2, 8, 3, -6, 7, 3] top
         self.assertEqual([2, 8, 3, 7, 3], remove_min([2, 8, 3, -6, 7, 3]))

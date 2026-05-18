@@ -28,18 +28,23 @@ def is_sorted(stack: list[int]) -> bool:
         True
         >>> is_sorted([6, 3, 5, 1, 2, 4])
         False
+        >>> stack = [1, 2, 3]
+        >>> is_sorted(stack)
+        True
+        >>> stack  # original stack is preserved on True
+        [1, 2, 3]
     """
     storage_stack: list[int] = []
     for _ in range(len(stack)):
         if len(stack) == 0:
             break
         first_val = stack.pop()
+        storage_stack.append(first_val)
         if len(stack) == 0:
             break
         second_val = stack.pop()
         if first_val < second_val:
             return False
-        storage_stack.append(first_val)
         stack.append(second_val)
 
     for _ in range(len(storage_stack)):
