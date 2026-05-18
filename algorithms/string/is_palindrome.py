@@ -14,11 +14,12 @@ Complexity:
 from __future__ import annotations
 
 from collections import deque
-from string import ascii_letters
 
 
 def is_palindrome(text: str) -> bool:
     """Check if a string is a palindrome using two pointers on the original.
+
+    Considers only alphanumeric characters and ignores case.
 
     Args:
         text: The input string to check.
@@ -29,13 +30,17 @@ def is_palindrome(text: str) -> bool:
     Examples:
         >>> is_palindrome("Otto")
         True
+        >>> is_palindrome("12321")
+        True
+        >>> is_palindrome("a1b2a")
+        False
     """
     left = 0
     right = len(text) - 1
     while left < right:
-        while not text[left].isalnum():
+        while left < right and not text[left].isalnum():
             left += 1
-        while not text[right].isalnum():
+        while left < right and not text[right].isalnum():
             right -= 1
         if text[left].lower() != text[right].lower():
             return False
@@ -44,15 +49,15 @@ def is_palindrome(text: str) -> bool:
 
 
 def _remove_punctuation(text: str) -> str:
-    """Remove punctuation, case sensitivity and spaces from a string.
+    """Remove non-alphanumeric characters and normalise case.
 
     Args:
         text: The input string to clean.
 
     Returns:
-        A lowercase string with only alphabetic characters.
+        A lowercase string containing only alphanumeric characters.
     """
-    return "".join(char.lower() for char in text if char in ascii_letters)
+    return "".join(char.lower() for char in text if char.isalnum())
 
 
 def _string_reverse(text: str) -> str:
@@ -70,6 +75,8 @@ def _string_reverse(text: str) -> str:
 def is_palindrome_reverse(text: str) -> bool:
     """Check if a string is a palindrome by comparing with its reverse.
 
+    Considers only alphanumeric characters and ignores case.
+
     Args:
         text: The input string to check.
 
@@ -79,6 +86,10 @@ def is_palindrome_reverse(text: str) -> bool:
     Examples:
         >>> is_palindrome_reverse("Otto")
         True
+        >>> is_palindrome_reverse("12321")
+        True
+        >>> is_palindrome_reverse("a1b2a")
+        False
     """
     text = _remove_punctuation(text)
     return text == _string_reverse(text)
@@ -86,6 +97,8 @@ def is_palindrome_reverse(text: str) -> bool:
 
 def is_palindrome_two_pointer(text: str) -> bool:
     """Check if a string is a palindrome using two pointers from both ends.
+
+    Considers only alphanumeric characters and ignores case.
 
     Args:
         text: The input string to check.
@@ -96,6 +109,10 @@ def is_palindrome_two_pointer(text: str) -> bool:
     Examples:
         >>> is_palindrome_two_pointer("Otto")
         True
+        >>> is_palindrome_two_pointer("12321")
+        True
+        >>> is_palindrome_two_pointer("a1b2a")
+        False
     """
     text = _remove_punctuation(text)
     for index in range(0, len(text) // 2):
@@ -107,6 +124,8 @@ def is_palindrome_two_pointer(text: str) -> bool:
 def is_palindrome_stack(text: str) -> bool:
     """Check if a string is a palindrome using a stack.
 
+    Considers only alphanumeric characters and ignores case.
+
     Args:
         text: The input string to check.
 
@@ -116,6 +135,10 @@ def is_palindrome_stack(text: str) -> bool:
     Examples:
         >>> is_palindrome_stack("Otto")
         True
+        >>> is_palindrome_stack("12321")
+        True
+        >>> is_palindrome_stack("a1b2a")
+        False
     """
     stack: list[str] = []
     text = _remove_punctuation(text)
@@ -127,6 +150,8 @@ def is_palindrome_stack(text: str) -> bool:
 def is_palindrome_deque(text: str) -> bool:
     """Check if a string is a palindrome using a deque.
 
+    Considers only alphanumeric characters and ignores case.
+
     Args:
         text: The input string to check.
 
@@ -136,6 +161,10 @@ def is_palindrome_deque(text: str) -> bool:
     Examples:
         >>> is_palindrome_deque("Otto")
         True
+        >>> is_palindrome_deque("12321")
+        True
+        >>> is_palindrome_deque("a1b2a")
+        False
     """
     text = _remove_punctuation(text)
     character_deque: deque[str] = deque()
