@@ -7,8 +7,8 @@ to be within the range from 1 to 3999.
 Reference: https://en.wikipedia.org/wiki/Roman_numerals
 
 Complexity:
-    Time:  O(n) where n is the length of the Roman numeral string
-    Space: O(1)
+Time: O(n) where n is the length of the Roman numeral string
+Space: O(1)
 """
 
 from __future__ import annotations
@@ -21,12 +21,20 @@ def roman_to_int(text: str) -> int:
         text: A valid Roman numeral string.
 
     Returns:
-        The integer value of the Roman numeral.
+        The integer value of the Roman numeral, or 0 for an empty string.
 
     Examples:
         >>> roman_to_int("DCXXI")
         621
+        >>> roman_to_int("IV")
+        4
+        >>> roman_to_int("MCMXCIV")
+        1994
+        >>> roman_to_int("")
+        0
     """
+    if not text:
+        return 0
     number = 0
     roman_values = {
         "M": 1000,
