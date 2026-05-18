@@ -4,6 +4,7 @@ import pytest
 
 from algorithms.math import (
     base_to_int,
+    chebyshev_distance,
     chinese_remainder_theorem,
     combination,
     combination_memo,
@@ -615,6 +616,19 @@ class TestFFT(unittest.TestCase):
         imag_result = [float(f"{f.imag:.1f}") for f in fft.fft(x)]
         self.assertEqual(real, real_result)
         self.assertEqual(imag, imag_result)
+
+class TestChebyshevDistance(unittest.TestCase):
+    """[summary]
+    Test for the file chebyshev_distance.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_chebyshev_distance(self):
+        self.assertEqual(3, chebyshev_distance([1, 2, 3], [4, 5, 6]))
+        self.assertEqual(0, chebyshev_distance([1, 2], [1, 2]))
+        self.assertEqual(5, chebyshev_distance([-1, -2], [4, 3]))
 
 
 if __name__ == "__main__":

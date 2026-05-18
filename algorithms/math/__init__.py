@@ -12,6 +12,7 @@ from algorithms.math import (
     modular_inverse,  # type: ignore[no-redef]  # noqa: E402
 )
 from algorithms.math.base_conversion import base_to_int, int_to_base
+from algorithms.math.chebyshev_distance import chebyshev_distance
 from algorithms.math.combination import combination, combination_memo
 from algorithms.math.cosine_similarity import cosine_similarity
 from algorithms.math.decimal_to_binary_ip import (
@@ -66,6 +67,7 @@ from algorithms.math.surface_area_of_torus import surface_area_of_torus
 __all__ = [
     "base_to_int",
     "int_to_base",
+    "chebyshev_distance",
     "chinese_remainder_theorem",
     "combination",
     "combination_memo",
