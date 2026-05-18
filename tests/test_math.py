@@ -25,6 +25,8 @@ from algorithms.math import (
     gcd,
     gcd_bit,
     gen_strobogrammatic,
+    geometric_mean,
+    geometric_mean_logarithm,
     get_primes,
     hailstone,
     int_to_base,
@@ -629,6 +631,56 @@ class TestChebyshevDistance(unittest.TestCase):
         self.assertEqual(3, chebyshev_distance([1, 2, 3], [4, 5, 6]))
         self.assertEqual(0, chebyshev_distance([1, 2], [1, 2]))
         self.assertEqual(5, chebyshev_distance([-1, -2], [4, 3]))
+
+
+class TestGeometricMean(unittest.TestCase):
+    """
+    Test for the file geometric_mean.py
+
+    Arguments:
+        unittest {[type]} -- [description]
+    """
+
+    def test_geometric_mean_basic(self):
+        self.assertAlmostEqual(4.0, geometric_mean([2, 8]), places=10)
+        self.assertAlmostEqual(100.0, geometric_mean([100, 100, 100]), places=10)
+
+    def test_geometric_mean_list(self):
+        result = geometric_mean([1, 2, 3, 4, 5])
+        self.assertAlmostEqual(result, 2.605171084697352, places=5)
+
+    def test_geometric_mean_single(self):
+        self.assertEqual(5.0, geometric_mean([5]))
+
+    def test_geometric_mean_logarithm_basic(self):
+        self.assertAlmostEqual(4.0, geometric_mean_logarithm([2, 8]), places=10)
+        self.assertAlmostEqual(
+            100.0, geometric_mean_logarithm([100, 100, 100]), places=10
+        )
+
+    def test_geometric_mean_logarithm_list(self):
+        result = geometric_mean_logarithm([1, 2, 3, 4, 5])
+        self.assertAlmostEqual(result, 2.605171084697352, places=5)
+
+    def test_geometric_mean_empty_list(self):
+        with pytest.raises(ValueError, match=r"List cannot be empty"):
+            geometric_mean([])
+
+    def test_geometric_mean_negative_numbers(self):
+        with pytest.raises(ValueError, match=r"All numbers must be positive"):
+            geometric_mean([-1, 2, 3])
+
+    def test_geometric_mean_zero(self):
+        with pytest.raises(ValueError, match=r"All numbers must be positive"):
+            geometric_mean([0, 1, 2])
+
+    def test_geometric_mean_logarithm_empty_list(self):
+        with pytest.raises(ValueError, match=r"List cannot be empty"):
+            geometric_mean_logarithm([])
+
+    def test_geometric_mean_logarithm_negative_numbers(self):
+        with pytest.raises(ValueError, match=r"All numbers must be positive"):
+            geometric_mean_logarithm([-1, 2, 3])
 
 
 if __name__ == "__main__":
