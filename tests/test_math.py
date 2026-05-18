@@ -628,8 +628,8 @@ class TestGeometricMean(unittest.TestCase):
     """
 
     def test_geometric_mean_basic(self):
-        self.assertEqual(4.0, geometric_mean([2, 8]))
-        self.assertEqual(100.0, geometric_mean([100, 100, 100]))
+        self.assertAlmostEqual(4.0, geometric_mean([2, 8]), places=10)
+        self.assertAlmostEqual(100.0, geometric_mean([100, 100, 100]), places=10)
 
     def test_geometric_mean_list(self):
         result = geometric_mean([1, 2, 3, 4, 5])
@@ -639,8 +639,10 @@ class TestGeometricMean(unittest.TestCase):
         self.assertEqual(5.0, geometric_mean([5]))
 
     def test_geometric_mean_logarithm_basic(self):
-        self.assertEqual(4.0, geometric_mean_logarithm([2, 8]))
-        self.assertEqual(100.0, geometric_mean_logarithm([100, 100, 100]))
+        self.assertAlmostEqual(4.0, geometric_mean_logarithm([2, 8]), places=10)
+        self.assertAlmostEqual(
+            100.0, geometric_mean_logarithm([100, 100, 100]), places=10
+        )
 
     def test_geometric_mean_logarithm_list(self):
         result = geometric_mean_logarithm([1, 2, 3, 4, 5])

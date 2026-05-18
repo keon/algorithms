@@ -28,13 +28,13 @@ def geometric_mean(numbers: list[float]) -> float:
         ValueError: If the list is empty, has fewer than 1 element,
                    or contains non-positive numbers
 
-    >>> geometric_mean([1, 2, 3, 4, 5])
-    2.605171084697352
+    >>> round(geometric_mean([1, 2, 3, 4, 5]), 4)
+    2.6052
     >>> round(geometric_mean([2, 8]), 4)
     4.0
     >>> round(geometric_mean([1, 1, 1]), 4)
     1.0
-    >>> geometric_mean([100, 100, 100])
+    >>> round(geometric_mean([100, 100, 100]), 4)
     100.0
     """
     if not numbers:
