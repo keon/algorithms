@@ -33,9 +33,7 @@ def first_switch_pairs(stack: list[int]) -> list[int]:
     storage_stack: list[int] = []
     for _ in range(len(stack)):
         storage_stack.append(stack.pop())
-    for _ in range(len(storage_stack)):
-        if len(storage_stack) == 0:
-            break
+    for _ in range((len(storage_stack)+1)//2):
         first = storage_stack.pop()
         if len(storage_stack) == 0:
             stack.append(first)
