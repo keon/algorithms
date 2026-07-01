@@ -1,0 +1,10 @@
+{
+  "project_id": "189e9b57-b155-49e2-92ca-3d1e28c5bea3",
+  "project_name": "algorithms-branch-testing",
+  "agents": [],
+  "created_at": "2026-07-01T09:38:22.040Z",
+  "role": "contributor",
+  "default_branch": "test-push-branch",
+  "user_branch": "feature2-branch",
+  "source_branch": "test-push-branch"
+}

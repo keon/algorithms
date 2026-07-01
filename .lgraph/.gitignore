@@ -1,0 +1,4 @@
+*
+!.gitignore
+!config.json
+!scan_target.json

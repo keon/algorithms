@@ -1,5 +1,5 @@
 from .add_operators import add_operators
-from .anagram import anagram
+# from .anagram import anagram
 from .array_sum_combinations import (
     array_sum_combinations,
     unique_array_sum_combinations,
@@ -23,7 +23,7 @@ from .subsets_unique import subsets_unique
 
 __all__ = [
     "add_operators",
-    "anagram",
+    # "anagram",
     "array_sum_combinations",
     "unique_array_sum_combinations",
     "combination_sum",
