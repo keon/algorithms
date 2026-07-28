@@ -2,6 +2,7 @@ import unittest
 
 from algorithms.compression.elias import elias_delta, elias_gamma
 from algorithms.compression.huffman_coding import HuffmanCoding
+from algorithms.compression.lzw_compression import lzw_decode, lzw_encode
 from algorithms.compression.rle_compression import decode_rle, encode_rle
 
 
@@ -99,6 +100,26 @@ class TestEliasCoding(unittest.TestCase):
             result.append(elias_delta(i))
 
         self.assertEqual(correct_result, result)
+
+
+class TestLZWCompression(unittest.TestCase):
+    def test_lzw_encode(self):
+        codes, dictionary = lzw_encode("ABABABA")
+        self.assertEqual([0, 1, 2, 4], codes)
+        self.assertEqual({0: "A", 1: "B"}, dictionary)
+
+    def test_lzw_decode(self):
+        self.assertEqual("ABABABA", lzw_decode([0, 1, 2, 4], {0: "A", 1: "B"}))
+
+    def test_lzw_roundtrip(self):
+        data = "TOBEORNOTTOBEORTOBEORNOT"
+        encoded, dictionary = lzw_encode(data)
+        decoded = lzw_decode(encoded, dictionary)
+        self.assertEqual(data, decoded)
+
+    def test_lzw_empty(self):
+        self.assertEqual(([], {}), lzw_encode(""))
+        self.assertEqual("", lzw_decode([], {}))
 
 
 if __name__ == "__main__":
