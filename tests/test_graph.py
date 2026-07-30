@@ -517,7 +517,7 @@ class TestSudoku(unittest.TestCase):
         test_obj = Sudoku(board, 3, 3)
         test_obj.solve()
         self.assertEqual(
-            [["5", "3", "1"], ["6", "1", "2"], ["1", "9", "8"]], test_obj.board
+            [["5", "3", "1"], ["6", "2", "4"], ["7", "9", "8"]], test_obj.board
         )
 
 

@@ -33,8 +33,8 @@ class Monomial:
             coeff: The coefficient (defaults to 0 if empty, 1 otherwise).
 
         Examples:
-            >>> Monomial({1: 1})  # (a_1)^1
-            >>> Monomial({1: 3, 2: 2}, 12)  # 12(a_1)^3(a_2)^2
+            >>> _ = Monomial({1: 1})  # (a_1)^1
+            >>> _ = Monomial({1: 3, 2: 2}, 12)  # 12(a_1)^3(a_2)^2
         """
         self.variables = dict()
 

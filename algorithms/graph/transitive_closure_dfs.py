@@ -48,7 +48,7 @@ class Graph:
         """
         self.closure[source][target] = 1
 
-        for adjacent in self.graph[target]:
+        for adjacent in self.graph.get(target, []):
             if self.closure[source][adjacent] == 0:
                 self._dfs_util(source, adjacent)
 

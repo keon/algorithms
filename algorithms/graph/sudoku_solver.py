@@ -55,7 +55,9 @@ class Sudoku:
                     val[(i, j)] = []
         for i, j in val:
             inval = (
-                d.get(("r", i), []) + d.get(("c", j), []) + d.get((i / 3, j / 3), [])
+                d.get(("r", i), [])
+                + d.get(("c", j), [])
+                + d.get((i // 3, j // 3), [])
             )
             val[(i, j)] = [n for n in a if n not in inval]
         return val
@@ -100,7 +102,7 @@ class Sudoku:
             if n in self.val[ind] and (
                 ind[0] == i
                 or ind[1] == j
-                or (ind[0] / 3, ind[1] / 3) == (i / 3, j / 3)
+                or (ind[0] // 3, ind[1] // 3) == (i // 3, j // 3)
             ):
                     update[ind] = n
                     self.val[ind].remove(n)

@@ -4,6 +4,11 @@ RSA Encryption Algorithm
 Implements RSA key generation, encryption, and decryption. RSA uses separate
 public and private keys where ((x^e)^d) % n == x % n.
 
+Warning:
+    This is a textbook implementation for education. It does not implement
+    secure padding, hardened prime generation, side-channel protections, or
+    safe message encoding. Do not use it to protect real data.
+
 Reference: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
 Complexity:

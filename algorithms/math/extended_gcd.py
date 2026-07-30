@@ -28,17 +28,20 @@ def extended_gcd(num1: int, num2: int) -> tuple[int, int, int]:
         >>> extended_gcd(8, 2)
         (0, 1, 2)
         >>> extended_gcd(13, 17)
-        (0, 1, 17)
+        (4, -3, 1)
     """
     old_s, s = 1, 0
     old_t, t = 0, 1
     old_r, r = num1, num2
 
     while r != 0:
-        quotient = old_r / r
+        quotient = old_r // r
 
         old_r, r = r, old_r - quotient * r
         old_s, s = s, old_s - quotient * s
         old_t, t = t, old_t - quotient * t
+
+    if old_r < 0:
+        old_s, old_t, old_r = -old_s, -old_t, -old_r
 
     return old_s, old_t, old_r

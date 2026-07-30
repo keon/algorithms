@@ -47,8 +47,8 @@ def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
         ValueError: If vectors have different lengths.
 
     Examples:
-        >>> cosine_similarity([1, 1, 1], [1, 2, -1])
-        0.4714045207910317
+        >>> round(cosine_similarity([1, 1, 1], [1, 2, -1]), 15)
+        0.471404520791032
     """
     if len(vec1) != len(vec2):
         raise ValueError(

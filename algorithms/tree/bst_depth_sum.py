@@ -18,7 +18,7 @@ For example:
 
 import unittest
 
-from bst import bst
+from algorithms.data_structures.bst import BST
 
 
 def depth_sum(root, n):
@@ -57,7 +57,7 @@ def recur_depth_sum(root, n):
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
-        self.tree = bst()
+        self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
         self.tree.insert(12)

@@ -39,7 +39,7 @@ def num_perfect_squares(number: int) -> int:
         return 1
 
     while number > 0 and number % 4 == 0:
-        number /= 4
+        number //= 4
 
     if number % 8 == 7:
         return 4

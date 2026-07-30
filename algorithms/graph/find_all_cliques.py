@@ -51,4 +51,4 @@ def find_all_cliques(edges: dict[str, set[str]]) -> list[list[str]]:
 
     possibles = set(edges.keys())
     _expand_clique(possibles, set())
-    return solutions
+    return sorted(sorted(clique) for clique in solutions)

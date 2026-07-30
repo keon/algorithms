@@ -148,7 +148,7 @@ def solve_sat(
 
     Examples:
         >>> solve_sat([(('x', False), ('y', False)), (('x', True), ('y', True))])
-        {'x': False, 'y': False}
+        {'x': True, 'y': False}
     """
     graph = _build_graph(formula)
     vertex_scc = _scc(graph)
