@@ -33,7 +33,7 @@ def invert_matrix(
 
     Examples:
         >>> invert_matrix([[1, 1], [1, 2]])
-        [[2, -1], [-1, 1]]
+        [[2.0, -1.0], [-1.0, 1.0]]
     """
     if not _array_is_matrix(matrix):
         return [[-1]]

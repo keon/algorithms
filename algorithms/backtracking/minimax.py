@@ -25,7 +25,7 @@ def minimax(
     *depth* is the current depth (start with log2(len(scores))).
 
     >>> minimax(2, True, [3, 5, 2, 9])
-    5
+    3
     >>> minimax(3, True, [3, 5, 2, 9, 12, 5, 23, 23])
     12
     """

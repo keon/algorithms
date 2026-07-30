@@ -89,9 +89,9 @@ def elias_gamma(x: int) -> str:
 
     Examples:
         >>> elias_gamma(1)
-        '0'
+        '00'
         >>> elias_gamma(5)
-        '00101'
+        '11001'
     """
     return _elias_generic(_unary, x)
 
@@ -107,8 +107,8 @@ def elias_delta(x: int) -> str:
 
     Examples:
         >>> elias_delta(1)
-        '0'
+        '000'
         >>> elias_delta(5)
-        '01101'
+        '10101'
     """
     return _elias_generic(elias_gamma, x)

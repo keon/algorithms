@@ -33,6 +33,7 @@ from algorithms.tree.path_sum import has_path_sum, has_path_sum2, has_path_sum3
 from algorithms.tree.path_sum2 import path_sum, path_sum2, path_sum3
 from algorithms.tree.pretty_print import tree_print
 from algorithms.tree.same_tree import is_same_tree
+from algorithms.tree.traversal_inorder import inorder, inorder_rec
 from algorithms.tree.tree import TreeNode
 
 __all__ = [
@@ -53,6 +54,8 @@ __all__ = [
     "is_subtree",
     "is_symmetric",
     "is_symmetric_iterative",
+    "inorder",
+    "inorder_rec",
     "lca",
     "longest_consecutive",
     "max_height",

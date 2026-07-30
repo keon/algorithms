@@ -21,7 +21,7 @@ For example: the following tree has 10 empty branch (* is empty branch)
 
 import unittest
 
-from bst import bst
+from algorithms.data_structures.bst import BST
 
 
 def num_empty(root):
@@ -53,7 +53,7 @@ def num_empty(root):
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
-        self.tree = bst()
+        self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
         self.tree.insert(12)

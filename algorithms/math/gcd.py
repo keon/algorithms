@@ -37,7 +37,7 @@ def gcd(a: int, b: int) -> int:
     b_int = isinstance(b, int)
     a = abs(a)
     b = abs(b)
-    if not (a_int or b_int):
+    if not (a_int and b_int):
         raise ValueError("Input arguments are not integers")
 
     if (a == 0) or (b == 0):
@@ -62,7 +62,7 @@ def lcm(a: int, b: int) -> int:
         >>> lcm(8, 12)
         24
     """
-    return abs(a) * abs(b) / gcd(a, b)
+    return abs(a) * abs(b) // gcd(a, b)
 
 
 def trailing_zero(x: int) -> int:

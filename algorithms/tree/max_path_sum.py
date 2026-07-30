@@ -30,24 +30,25 @@ def max_path_sum(root: TreeNode | None) -> float:
         >>> max_path_sum(TreeNode(1))
         1
     """
-    maximum = float("-inf")
-    _helper(root, maximum)
+    _, maximum = _helper(root)
     return maximum
 
 
-def _helper(root: TreeNode | None, maximum: float) -> float:
-    """Recursively compute the maximum single-branch sum from each node.
+def _helper(root: TreeNode | None) -> tuple[float, float]:
+    """Compute the best branch and overall path sums below ``root``.
 
     Args:
         root: The current node.
-        maximum: The running maximum path sum.
-
     Returns:
-        The maximum sum of a path extending from this node to a descendant.
+        A tuple containing the best downward branch and the best complete
+        path found in the subtree.
     """
     if root is None:
-        return 0
-    left = _helper(root.left, maximum)
-    right = _helper(root.right, maximum)
-    maximum = max(maximum, left + right + root.val)
-    return root.val + maximum
+        return 0, float("-inf")
+
+    left_branch, left_maximum = _helper(root.left)
+    right_branch, right_maximum = _helper(root.right)
+    branch = root.val + max(0, left_branch, right_branch)
+    through_root = root.val + max(0, left_branch) + max(0, right_branch)
+    maximum = max(through_root, left_maximum, right_maximum)
+    return branch, maximum

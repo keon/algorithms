@@ -18,7 +18,7 @@ For example: height of tree is 4
 
 import unittest
 
-from bst import bst
+from algorithms.data_structures.bst import BST
 
 
 def height(root):
@@ -46,7 +46,7 @@ def height(root):
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
-        self.tree = bst()
+        self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
         self.tree.insert(12)

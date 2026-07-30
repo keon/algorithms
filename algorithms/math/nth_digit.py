@@ -35,6 +35,6 @@ def find_nth_digit(n: int) -> int:
         length += 1
         count *= 10
         start *= 10
-    start += (n - 1) / length
+    start += (n - 1) // length
     s = str(start)
     return int(s[(n - 1) % length])

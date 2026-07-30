@@ -30,7 +30,7 @@ def text_justification(words: list[str], max_width: int) -> list[str]:
 
     Examples:
         >>> text_justification(["What", "must", "be"], 16)
-        ['What   must   be']
+        ['What must be    ']
     """
     result: list[str] = []
     row_length = 0

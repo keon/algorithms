@@ -17,7 +17,7 @@ storing the values 6, 3, 7, and 10):
 
 import unittest
 
-from bst import bst
+from algorithms.data_structures.bst import BST
 
 
 def count_left_node(root):
@@ -47,7 +47,7 @@ def count_left_node(root):
 
 class TestSuite(unittest.TestCase):
     def setUp(self):
-        self.tree = bst()
+        self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
         self.tree.insert(12)

@@ -5,6 +5,11 @@ Implements the Diffie-Hellman key exchange protocol, which enables two parties
 to establish a shared secret over an insecure channel using discrete
 logarithm properties.
 
+Warning:
+    This implementation is for education only. It does not authenticate
+    peers, validate production-grade parameters, or derive keys from the raw
+    shared secret. Do not use it as a real key-exchange protocol.
+
 Reference: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
 
 Complexity:

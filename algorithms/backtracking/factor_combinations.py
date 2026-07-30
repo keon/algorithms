@@ -25,7 +25,7 @@ def get_factors(number: int) -> list[list[int]]:
 
     Examples:
         >>> get_factors(12)
-        [[2, 6], [2, 2, 3], [3, 4]]
+        [[2, 6], [3, 4], [2, 2, 3]]
     """
     todo: list[tuple[int, int, list[int]]] = [(number, 2, [])]
     combinations: list[list[int]] = []

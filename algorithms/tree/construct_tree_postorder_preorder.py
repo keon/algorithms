@@ -43,7 +43,7 @@ def construct_tree_util(
     """
     global pre_index
 
-    if pre_index == -1:
+    if low == 0 and high == size - 1:
         pre_index = 0
 
     if pre_index >= size or low > high:

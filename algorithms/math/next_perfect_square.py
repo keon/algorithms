@@ -14,7 +14,7 @@ Complexity:
 from __future__ import annotations
 
 
-def find_next_square(sq: float) -> float:
+def find_next_square(sq: float) -> int:
     """Find the next perfect square after sq.
 
     Args:
@@ -31,11 +31,11 @@ def find_next_square(sq: float) -> float:
     """
     root = sq**0.5
     if root.is_integer():
-        return (root + 1) ** 2
+        return int((root + 1) ** 2)
     return -1
 
 
-def find_next_square2(sq: float) -> float:
+def find_next_square2(sq: float) -> int:
     """Find the next perfect square using modulo check.
 
     Args:
@@ -51,4 +51,4 @@ def find_next_square2(sq: float) -> float:
         -1
     """
     root = sq**0.5
-    return -1 if root % 1 else (root + 1) ** 2
+    return -1 if root % 1 else int((root + 1) ** 2)

@@ -57,7 +57,7 @@ class OrderedStack:
         if self.is_empty() or item > self.peek():
             self._push_direct(item)
         else:
-            while item < self.peek() and not self.is_empty():
+            while not self.is_empty() and item < self.peek():
                 temp_stack._push_direct(self.pop())
             self._push_direct(item)
             while not temp_stack.is_empty():

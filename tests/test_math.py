@@ -135,7 +135,9 @@ class TestExtendedGcd(unittest.TestCase):
 
     def test_extended_gcd(self):
         self.assertEqual((0, 1, 2), extended_gcd(8, 2))
-        self.assertEqual((0, 1, 17), extended_gcd(13, 17))
+        s, t, result = extended_gcd(13, 17)
+        self.assertEqual(1, result)
+        self.assertEqual(result, 13 * s + 17 * t)
 
 
 class TestGcd(unittest.TestCase):

@@ -74,7 +74,7 @@ def search_rotate_recur(
         >>> search_rotate_recur([4, 5, 6, 7, 0, 1, 2], 0, 6, 0)
         4
     """
-    if low >= high:
+    if low > high:
         return -1
     mid = (low + high) // 2
     if val == array[mid]:
