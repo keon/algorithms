@@ -244,6 +244,7 @@ All core data structures live in [`algorithms/data_structures/`](algorithms/data
 
 - [elias](algorithms/compression/elias.py) &mdash; Elias gamma and delta universal integer coding
 - [huffman_coding](algorithms/compression/huffman_coding.py) &mdash; variable-length prefix codes for lossless compression
+- [lzw_compression](algorithms/compression/lzw_compression.py) &mdash; dictionary-based Lempel-Ziv-Welch compression
 - [rle_compression](algorithms/compression/rle_compression.py) &mdash; run-length encoding for consecutive character compression
 
 ### Dynamic Programming
