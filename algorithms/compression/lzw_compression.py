@@ -68,7 +68,11 @@ def lzw_encode(data: str) -> tuple[list[int], dict[int, str]]:
     if current:
         encoded.append(dictionary[current])
 
-    initial_dictionary = {code: char for char, code in dictionary.items() if len(char) == 1}
+    initial_dictionary = {
+        code: char
+        for char, code in dictionary.items()
+        if len(char) == 1
+    }
     return encoded, initial_dictionary
 
 
