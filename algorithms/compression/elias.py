@@ -14,6 +14,7 @@ Complexity:
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from math import log
 
 
@@ -50,48 +51,49 @@ def _unary(x: int) -> str:
         x: A positive integer.
 
     Returns:
-        A unary-coded string (x-1 ones followed by a zero).
+        A unary-coded string (x-1 zeros followed by a one).
     """
-    return (x - 1) * "1" + "0"
+    return (x - 1) * "0" + "1"
 
 
 def _elias_generic(
-    length_encoding: callable,
+    length_encoding: Callable[[int], str],
     x: int,
 ) -> str:
     """Generic Elias encoding using a pluggable length-encoding function.
 
     Args:
         length_encoding: A function to encode the length prefix.
-        x: A non-negative integer to encode.
+        x: A positive integer to encode.
 
     Returns:
         The Elias-coded bit string.
     """
-    if x == 0:
-        return "0"
+    if x <= 0:
+        raise ValueError("Elias coding is defined only for positive integers")
 
     first_part = 1 + int(_log2(x))
     remainder = x - 2 ** int(_log2(x))
     bit_count = int(_log2(x))
+    suffix = _binary(remainder, bit_count) if bit_count else ""
 
-    return length_encoding(first_part) + _binary(remainder, bit_count)
+    return length_encoding(first_part) + suffix
 
 
 def elias_gamma(x: int) -> str:
     """Encode a positive integer using Elias gamma coding.
 
     Args:
-        x: A non-negative integer.
+        x: A positive integer.
 
     Returns:
         The Elias gamma coded bit string.
 
     Examples:
         >>> elias_gamma(1)
-        '00'
+        '1'
         >>> elias_gamma(5)
-        '11001'
+        '00101'
     """
     return _elias_generic(_unary, x)
 
@@ -100,15 +102,15 @@ def elias_delta(x: int) -> str:
     """Encode a positive integer using Elias delta coding.
 
     Args:
-        x: A non-negative integer.
+        x: A positive integer.
 
     Returns:
         The Elias delta coded bit string.
 
     Examples:
         >>> elias_delta(1)
-        '000'
+        '1'
         >>> elias_delta(5)
-        '10101'
+        '01101'
     """
     return _elias_generic(elias_gamma, x)

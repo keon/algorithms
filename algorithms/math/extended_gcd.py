@@ -41,4 +41,7 @@ def extended_gcd(num1: int, num2: int) -> tuple[int, int, int]:
         old_s, s = s, old_s - quotient * s
         old_t, t = t, old_t - quotient * t
 
+    if old_r < 0:
+        old_s, old_t, old_r = -old_s, -old_t, -old_r
+
     return old_s, old_t, old_r

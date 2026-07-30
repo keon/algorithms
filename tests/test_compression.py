@@ -60,45 +60,43 @@ class TestRLECompression(unittest.TestCase):
 class TestEliasCoding(unittest.TestCase):
     def test_elias_gamma(self):
         correct_result = [
-            "0",
-            "00",
-            "100",
-            "101",
-            "11000",
-            "11001",
-            "11010",
-            "11011",
-            "1110000",
-            "1110001",
-            "1110010",
+            "1",
+            "010",
+            "011",
+            "00100",
+            "00101",
+            "00110",
+            "00111",
+            "0001000",
+            "0001001",
+            "0001010",
         ]
 
-        result = []
-        for i in range(11):
-            result.append(elias_gamma(i))
+        result = [elias_gamma(i) for i in range(1, 11)]
 
         self.assertEqual(correct_result, result)
+        with self.assertRaises(ValueError):
+            elias_gamma(0)
 
     def test_elias_delta(self):
         correct_result = [
-            "0",
-            "000",
-            "1000",
-            "1001",
-            "10100",
-            "10101",
-            "10110",
-            "10111",
-            "11000000",
-            "11000001",
-            "11000010",
+            "1",
+            "0100",
+            "0101",
+            "01100",
+            "01101",
+            "01110",
+            "01111",
+            "00100000",
+            "00100001",
+            "00100010",
         ]
 
-        result = []
-        for i in range(11):
-            result.append(elias_delta(i))
+        result = [elias_delta(i) for i in range(1, 11)]
 
         self.assertEqual(correct_result, result)
+        with self.assertRaises(ValueError):
+            elias_delta(0)
 
 
 if __name__ == "__main__":

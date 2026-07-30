@@ -59,7 +59,19 @@ def test_sudoku_solution_respects_rows_columns_and_subgrids() -> None:
     assert all(set(group) == expected for group in groups)
 
 
-@pytest.mark.parametrize("left,right", [(240, 46), (99, 78), (-25, 10)])
+@pytest.mark.parametrize(
+    "left,right",
+    [
+        (240, 46),
+        (99, 78),
+        (-25, 10),
+        (25, -10),
+        (-25, -10),
+        (0, -5),
+        (-5, 0),
+        (0, 0),
+    ],
+)
 def test_extended_gcd_satisfies_bezout_identity(left: int, right: int) -> None:
     s, t, result = extended_gcd(left, right)
 
