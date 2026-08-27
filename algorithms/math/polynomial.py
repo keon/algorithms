@@ -51,9 +51,9 @@ class Monomial:
             self.coeff = Monomial._rationalize_if_possible(coeff)
             return
 
-        for i in variables:
-            if variables[i] != 0:
-                self.variables[i] = variables[i]
+        for i, v in variables.items():
+            if v != 0:
+                self.variables[i] = v
         self.coeff = Monomial._rationalize_if_possible(coeff)
 
     @staticmethod

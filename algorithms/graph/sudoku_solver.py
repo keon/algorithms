@@ -126,11 +126,11 @@ class Sudoku:
 
         """
         self.board[kee[0]][kee[1]] = "."
-        for k in update:
+        for k, v in update.items():
             if k not in self.val:
-                self.val[k] = update[k]
+                self.val[k] = v
             else:
-                self.val[k].append(update[k])
+                self.val[k].append(v)
 
     def __str__(self) -> str:
         """Return a string representation of the board.

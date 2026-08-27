@@ -32,10 +32,10 @@ def simplify_path(path: str) -> str:
     skip = {"..", ".", ""}
     stack: list[str] = []
     tokens = path.split("/")
-    for token in tokens:
-        if token == "..":
+    for part in tokens:
+        if part == "..":
             if stack:
                 stack.pop()
-        elif token not in skip:
-            stack.append(token)
+        elif part not in skip:
+            stack.append(part)
     return "/" + "/".join(stack)

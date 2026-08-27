@@ -39,16 +39,14 @@ def bellman_ford(graph: dict[str, dict[str, float]], source: str) -> bool:
 
     num_vertices = len(graph)
     for _ in range(1, num_vertices):
-        for current_node in graph:
-            for neighbor in graph[current_node]:
-                edge_weight = graph[current_node][neighbor]
+        for current_node, neighbors in graph.items():
+            for neighbor, edge_weight in neighbors.items():
                 if distance[neighbor] > distance[current_node] + edge_weight:
                     distance[neighbor] = distance[current_node] + edge_weight
                     predecessor[neighbor] = current_node
 
-    for current_node in graph:
-        for neighbor in graph[current_node]:
-            edge_weight = graph[current_node][neighbor]
+    for current_node, neighbors in graph.items():
+        for neighbor, edge_weight in neighbors.items():
             if distance[neighbor] > distance[current_node] + edge_weight:
                 return False
 

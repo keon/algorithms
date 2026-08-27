@@ -31,9 +31,8 @@ def tree_print(tree: dict) -> list[str]:
 
     """
     lines: list[str] = []
-    for key in tree:
+    for key, tree_element in tree.items():
         parts = [str(key)]
-        tree_element = tree[key]
         for sub_elem in tree_element:
             parts.append(str(sub_elem))
         lines.append(" -> ".join(parts))

@@ -40,6 +40,8 @@ def all_pairs_shortest_path(
     for k in range(size):
         for i in range(size):
             for j in range(size):
-                new_array[i][j] = min(new_array[i][j], new_array[i][k] + new_array[k][j])
+                new_array[i][j] = min(
+                    new_array[i][j], new_array[i][k] + new_array[k][j],
+                )
 
     return new_array

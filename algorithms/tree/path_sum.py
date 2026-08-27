@@ -20,12 +20,12 @@ if TYPE_CHECKING:
     from algorithms.tree.tree import TreeNode
 
 
-def has_path_sum(root: TreeNode | None, sum: int) -> bool:
+def has_path_sum(root: TreeNode | None, target: int) -> bool:
     """Check if a root-to-leaf path with the given sum exists (recursive).
 
     Args:
         root: The root of the binary tree.
-        sum: The target sum.
+        target: The target sum.
 
     Returns:
         True if such a path exists, False otherwise.
@@ -37,18 +37,18 @@ def has_path_sum(root: TreeNode | None, sum: int) -> bool:
     """
     if root is None:
         return False
-    if root.left is None and root.right is None and root.val == sum:
+    if root.left is None and root.right is None and root.val == target:
         return True
-    sum -= root.val
-    return has_path_sum(root.left, sum) or has_path_sum(root.right, sum)
+    target -= root.val
+    return has_path_sum(root.left, target) or has_path_sum(root.right, target)
 
 
-def has_path_sum2(root: TreeNode | None, sum: int) -> bool:
+def has_path_sum2(root: TreeNode | None, target: int) -> bool:
     """Check if a root-to-leaf path with the given sum exists (DFS with stack).
 
     Args:
         root: The root of the binary tree.
-        sum: The target sum.
+        target: The target sum.
 
     Returns:
         True if such a path exists, False otherwise.
@@ -63,7 +63,7 @@ def has_path_sum2(root: TreeNode | None, sum: int) -> bool:
     stack: list[tuple[TreeNode, int]] = [(root, root.val)]
     while stack:
         node, val = stack.pop()
-        if node.left is None and node.right is None and val == sum:
+        if node.left is None and node.right is None and val == target:
             return True
         if node.left is not None:
             stack.append((node.left, val + node.left.val))
@@ -72,12 +72,12 @@ def has_path_sum2(root: TreeNode | None, sum: int) -> bool:
     return False
 
 
-def has_path_sum3(root: TreeNode | None, sum: int) -> bool:
+def has_path_sum3(root: TreeNode | None, target: int) -> bool:
     """Check if a root-to-leaf path with the given sum exists (BFS with queue).
 
     Args:
         root: The root of the binary tree.
-        sum: The target sum.
+        target: The target sum.
 
     Returns:
         True if such a path exists, False otherwise.
@@ -89,7 +89,7 @@ def has_path_sum3(root: TreeNode | None, sum: int) -> bool:
     """
     if root is None:
         return False
-    queue: deque[tuple[TreeNode, int]] = deque([(root, sum - root.val)])
+    queue: deque[tuple[TreeNode, int]] = deque([(root, target - root.val)])
     while queue:
         node, val = queue.popleft()
         if node.left is None and node.right is None and val == 0:
