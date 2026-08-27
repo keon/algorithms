@@ -7,14 +7,6 @@
 # that is closest to the target.
 
 
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-
 def closest_value(root, target):
     """:type root: TreeNode
     :type target: float
