@@ -1,5 +1,4 @@
-"""
-Zigzag Iterator
+"""Zigzag Iterator.
 
 Interleave elements from two lists in a zigzag fashion. Elements are
 yielded alternately from each list until both are exhausted.
@@ -25,6 +24,7 @@ class ZigZagIterator:
         1
         >>> it.next()
         3
+
     """
 
     def __init__(self, v1: list[int], v2: list[int]) -> None:
@@ -33,6 +33,7 @@ class ZigZagIterator:
         Args:
             v1: First input list.
             v2: Second input list.
+
         """
         self.queue: deque[list[int]] = deque(lst for lst in (v1, v2) if lst)
 
@@ -41,6 +42,7 @@ class ZigZagIterator:
 
         Returns:
             The next interleaved element.
+
         """
         current_list = self.queue.popleft()
         ret = current_list.pop(0)
@@ -53,5 +55,6 @@ class ZigZagIterator:
 
         Returns:
             True if elements remain, False otherwise.
+
         """
         return bool(self.queue)

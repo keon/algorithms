@@ -1,5 +1,4 @@
-"""
-N-Sum
+"""N-Sum.
 
 Given an array of integers, find all unique n-tuples that sum to a target
 value. Supports custom sum, comparison, and equality closures for advanced
@@ -14,8 +13,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Callable
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def n_sum(
@@ -41,6 +42,7 @@ def n_sum(
     Examples:
         >>> n_sum(3, [-1, 0, 1, 2, -1, -4], 0)
         [[-1, -1, 2], [-1, 0, 1]]
+
     """
 
     def _sum_closure_default(a: Any, b: Any) -> Any:
@@ -49,10 +51,9 @@ def n_sum(
     def _compare_closure_default(num: Any, target: Any) -> int:
         if num < target:
             return -1
-        elif num > target:
+        if num > target:
             return 1
-        else:
-            return 0
+        return 0
 
     def _same_closure_default(a: Any, b: Any) -> bool:
         return a == b
@@ -100,7 +101,7 @@ def n_sum(
         return results
 
     def _append_elem_to_each_list(
-        elem: Any, container: list[list[Any]]
+        elem: Any, container: list[list[Any]],
     ) -> list[list[Any]]:
         results = []
         for elems in container:

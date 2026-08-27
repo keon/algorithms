@@ -1,5 +1,4 @@
-"""
-Hailstone Sequence (Collatz Conjecture)
+"""Hailstone Sequence (Collatz Conjecture).
 
 Generate the hailstone sequence starting from n: if n is even, next is n/2;
 if n is odd, next is 3n + 1. The sequence ends when it reaches 1.
@@ -28,6 +27,7 @@ def hailstone(n: int) -> list[int]:
         [8, 4, 2, 1]
         >>> hailstone(10)
         [10, 5, 16, 8, 4, 2, 1]
+
     """
     sequence = [n]
     while n > 1:

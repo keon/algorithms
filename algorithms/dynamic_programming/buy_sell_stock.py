@@ -1,5 +1,4 @@
-"""
-Best Time to Buy and Sell Stock
+"""Best Time to Buy and Sell Stock.
 
 Given an array of stock prices, find the maximum profit from a single
 buy-sell transaction (buy before sell).
@@ -32,9 +31,10 @@ def max_profit_naive(prices: list[int]) -> int:
         5
         >>> max_profit_naive([7, 6, 4, 3, 1])
         0
+
     """
     max_so_far = 0
-    for i in range(0, len(prices) - 1):
+    for i in range(len(prices) - 1):
         for j in range(i + 1, len(prices)):
             max_so_far = max(max_so_far, prices[j] - prices[i])
     return max_so_far
@@ -54,6 +54,7 @@ def max_profit_optimized(prices: list[int]) -> int:
         5
         >>> max_profit_optimized([7, 6, 4, 3, 1])
         0
+
     """
     cur_max, max_so_far = 0, 0
     for i in range(1, len(prices)):

@@ -1,5 +1,4 @@
-"""
-Weighted Job Scheduling
+"""Weighted Job Scheduling.
 
 Given a set of jobs with start times, finish times, and profits, find
 the maximum profit subset such that no two jobs overlap.
@@ -32,6 +31,7 @@ def _binary_search(job: list[Job], start_index: int) -> int:
 
     Returns:
         Index of the latest compatible job, or -1 if none exists.
+
     """
     left = 0
     right = start_index - 1
@@ -60,6 +60,7 @@ def schedule(job: list[Job]) -> int:
     Examples:
         >>> schedule([Job(1, 3, 2), Job(2, 3, 4)])
         4
+
     """
     job = sorted(job, key=lambda j: j.finish)
 

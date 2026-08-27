@@ -1,5 +1,4 @@
-"""
-Transitive Closure via DFS
+"""Transitive Closure via DFS.
 
 Computes the transitive closure of a directed graph using depth-first
 search.
@@ -22,6 +21,7 @@ class Graph:
 
         Args:
             vertices: Number of vertices.
+
         """
         self.vertex_count = vertices
         self.graph: dict[int, list[int]] = {}
@@ -33,6 +33,7 @@ class Graph:
         Args:
             source: Source vertex.
             target: Target vertex.
+
         """
         if source in self.graph:
             self.graph[source].append(target)
@@ -45,6 +46,7 @@ class Graph:
         Args:
             source: Origin vertex.
             target: Current vertex being explored.
+
         """
         self.closure[source][target] = 1
 
@@ -61,6 +63,7 @@ class Graph:
         Examples:
             >>> g = Graph(2); g.add_edge(0, 1); g.transitive_closure()
             [[1, 1], [0, 1]]
+
         """
         for i in range(self.vertex_count):
             self._dfs_util(i, i)

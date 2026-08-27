@@ -1,5 +1,4 @@
-"""
-Primitive Root Finder
+"""Primitive Root Finder.
 
 Find all primitive roots of a positive integer n. A primitive root modulo n
 is an integer whose multiplicative order modulo n equals Euler's totient
@@ -26,6 +25,7 @@ def _find_order(a: int, n: int) -> int:
 
     Returns:
         The smallest positive k where a^k = 1 (mod n), or -1 if none exists.
+
     """
     if (a == 1) & (n == 1):
         return 1
@@ -45,6 +45,7 @@ def _euler_totient(n: int) -> int:
 
     Returns:
         The count of integers in [1, n] coprime to n.
+
     """
     result = n
     for i in range(2, int(n**0.5) + 1):
@@ -72,6 +73,7 @@ def find_primitive_root(n: int) -> list[int]:
         [2, 3]
         >>> find_primitive_root(1)
         [0]
+
     """
     if n == 1:
         return [0]

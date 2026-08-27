@@ -1,5 +1,4 @@
-"""
-Expression Add Operators
+"""Expression Add Operators.
 
 Given a string of digits and a target value, return all possibilities to
 insert binary operators (+, -, *) between the digits so they evaluate to
@@ -28,6 +27,7 @@ def add_operators(digits: str, target: int) -> list[str]:
     Examples:
         >>> add_operators("123", 6)
         ['1+2+3', '1*2*3']
+
     """
     result: list[str] = []
     if not digits:

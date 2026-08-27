@@ -1,5 +1,4 @@
-"""
-Palindrome Partitioning
+"""Palindrome Partitioning.
 
 Given a string, find all ways to partition it into palindromic substrings.
 There is always at least one way since single characters are palindromes.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Generator
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 
 def palindromic_substrings(text: str) -> list[list[str]]:
@@ -28,6 +30,7 @@ def palindromic_substrings(text: str) -> list[list[str]]:
     Examples:
         >>> palindromic_substrings("abc")
         [['a', 'b', 'c']]
+
     """
     if not text:
         return [[]]
@@ -36,7 +39,7 @@ def palindromic_substrings(text: str) -> list[list[str]]:
         substring = text[:i]
         if substring == substring[::-1]:
             for rest in palindromic_substrings(text[i:]):
-                results.append([substring] + rest)
+                results.append([substring, *rest])
     return results
 
 
@@ -54,6 +57,7 @@ def palindromic_substrings_iter(text: str) -> Generator[list[str], None, None]:
     Examples:
         >>> list(palindromic_substrings_iter("abc"))
         [['a', 'b', 'c']]
+
     """
     if not text:
         yield []
@@ -62,4 +66,4 @@ def palindromic_substrings_iter(text: str) -> Generator[list[str], None, None]:
         substring = text[:i]
         if substring == substring[::-1]:
             for rest in palindromic_substrings_iter(text[i:]):
-                yield [substring] + rest
+                yield [substring, *rest]

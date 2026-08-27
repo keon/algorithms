@@ -1,5 +1,4 @@
-"""
-Longest Consecutive Sequence in Binary Tree
+"""Longest Consecutive Sequence in Binary Tree.
 
 Given a binary tree, find the length of the longest consecutive sequence path
 from parent to child (values increasing by one).
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def longest_consecutive(root: TreeNode | None) -> int:
@@ -28,6 +30,7 @@ def longest_consecutive(root: TreeNode | None) -> int:
     Examples:
         >>> longest_consecutive(None)
         0
+
     """
     if root is None:
         return 0
@@ -44,6 +47,7 @@ def _dfs(root: TreeNode | None, current: int, target: int, max_len: int) -> None
         current: The current consecutive sequence length.
         target: The expected value for the current node to continue the sequence.
         max_len: The maximum sequence length found so far.
+
     """
     if root is None:
         return

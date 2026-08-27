@@ -1,5 +1,4 @@
-"""
-Repeated String Match
+"""Repeated String Match.
 
 Given two strings A and B, find the minimum number of times A has to be
 repeated such that B is a substring of the result. Return -1 if impossible.
@@ -27,6 +26,7 @@ def repeat_string(base: str, target: str) -> int:
     Examples:
         >>> repeat_string("abcd", "cdabcdab")
         3
+
     """
     repetition_count = 1
     repeated = base

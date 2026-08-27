@@ -1,8 +1,7 @@
-"""
-Write a function height returns the height of a tree. The height is defined to
+r"""Write a function height returns the height of a tree. The height is defined to
 be the number of levels. The empty tree has height 0, a tree of one node has
 height 1, a root node with one or two leaves as children has height 2, and so on
-For example: height of tree is 4
+For example: height of tree is 4.
 
                     9
                  /      \
@@ -24,8 +23,7 @@ from algorithms.data_structures.bst import BST
 def height(root):
     if root is None:
         return 0
-    else:
-        return 1 + max(height(root.left), height(root.right))
+    return 1 + max(height(root.left), height(root.right))
 
 
 """
@@ -45,7 +43,7 @@ def height(root):
 
 
 class TestSuite(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
@@ -57,8 +55,8 @@ class TestSuite(unittest.TestCase):
         self.tree.insert(7)
         self.tree.insert(18)
 
-    def test_height(self):
-        self.assertEqual(4, height(self.tree.root))
+    def test_height(self) -> None:
+        assert height(self.tree.root) == 4
 
 
 if __name__ == "__main__":

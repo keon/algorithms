@@ -1,5 +1,4 @@
-"""
-Search in Sorted Matrix
+"""Search in Sorted Matrix.
 
 Search for a key in a matrix that is sorted row-wise and column-wise
 in non-decreasing order. Start from the bottom-left corner and move
@@ -16,7 +15,7 @@ from __future__ import annotations
 
 
 def search_in_a_sorted_matrix(
-    mat: list[list[int]], rows: int, cols: int, key: int
+    mat: list[list[int]], rows: int, cols: int, key: int,
 ) -> bool:
     """Search for a key in a row-wise and column-wise sorted matrix.
 
@@ -34,6 +33,7 @@ def search_in_a_sorted_matrix(
         True
         >>> search_in_a_sorted_matrix([[2, 5, 7], [4, 8, 13], [9, 11, 15]], 3, 3, 6)
         False
+
     """
     i, j = rows - 1, 0
     while i >= 0 and j < cols:

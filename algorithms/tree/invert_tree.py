@@ -1,5 +1,4 @@
-"""
-Invert Binary Tree
+"""Invert Binary Tree.
 
 Inverts a binary tree by swapping the left and right children of every node.
 
@@ -12,7 +11,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def reverse(root: TreeNode | None) -> None:
@@ -23,6 +25,7 @@ def reverse(root: TreeNode | None) -> None:
 
     Examples:
         >>> reverse(None)
+
     """
     if root is None:
         return

@@ -1,5 +1,4 @@
-"""
-Integer to Roman Numeral
+"""Integer to Roman Numeral.
 
 Given an integer, convert it to a Roman numeral string. Input is guaranteed
 to be within the range from 1 to 3999.
@@ -26,6 +25,7 @@ def int_to_roman(num: int) -> str:
     Examples:
         >>> int_to_roman(644)
         'DCXLIV'
+
     """
     thousands = ["", "M", "MM", "MMM"]
     hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]

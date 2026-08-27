@@ -1,5 +1,4 @@
-"""
-Priority Queue (Linear Array)
+"""Priority Queue (Linear Array).
 
 A priority queue implementation using a sorted linear array. Elements
 are inserted in order so that extraction of the minimum is O(1).
@@ -14,8 +13,10 @@ Complexity:
 from __future__ import annotations
 
 import itertools
-from collections.abc import Iterable
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 
 class PriorityQueueNode:
@@ -24,6 +25,7 @@ class PriorityQueueNode:
     Args:
         data: The stored value.
         priority: The priority of this node.
+
     """
 
     def __init__(self, data: Any, priority: Any) -> None:
@@ -35,6 +37,7 @@ class PriorityQueueNode:
 
         Returns:
             Formatted string with data and priority.
+
         """
         return f"{self.data}: {self.priority}"
 
@@ -48,6 +51,7 @@ class PriorityQueue:
         1
         >>> pq.size()
         2
+
     """
 
     def __init__(
@@ -60,6 +64,7 @@ class PriorityQueue:
         Args:
             items: Initial items to insert.
             priorities: Corresponding priorities; defaults to item values.
+
         """
         self.priority_queue_list: list[PriorityQueueNode] = []
         if items is None:
@@ -74,6 +79,7 @@ class PriorityQueue:
 
         Returns:
             Formatted string.
+
         """
         return f"PriorityQueue({self.priority_queue_list!r})"
 
@@ -82,6 +88,7 @@ class PriorityQueue:
 
         Returns:
             The queue size.
+
         """
         return len(self.priority_queue_list)
 
@@ -91,6 +98,7 @@ class PriorityQueue:
         Args:
             item: The value to insert.
             priority: Priority value; defaults to the item itself.
+
         """
         priority = item if priority is None else priority
         node = PriorityQueueNode(item, priority)
@@ -105,5 +113,6 @@ class PriorityQueue:
 
         Returns:
             The data of the lowest-priority node.
+
         """
         return self.priority_queue_list.pop().data

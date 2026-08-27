@@ -1,5 +1,4 @@
-"""
-Maximum Depth of Binary Tree
+"""Maximum Depth of Binary Tree.
 
 Given a binary tree, find its maximum depth. The maximum depth is the number
 of nodes along the longest path from the root down to the farthest leaf.
@@ -14,8 +13,10 @@ Complexity:
 from __future__ import annotations
 
 from collections import deque
+from typing import TYPE_CHECKING
 
-from algorithms.tree.tree import TreeNode
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def max_height(root: TreeNode | None) -> int:
@@ -30,6 +31,7 @@ def max_height(root: TreeNode | None) -> int:
     Examples:
         >>> max_height(None)
         0
+
     """
     if root is None:
         return 0

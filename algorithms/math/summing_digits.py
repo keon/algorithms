@@ -1,5 +1,4 @@
-"""
-Summing Digits Power
+"""Summing Digits Power.
 
 Find all integers in a range where each digit raised to its positional power
 (1-indexed) sums to the number itself (e.g., 89 = 8^1 + 9^2).
@@ -29,6 +28,7 @@ def sum_dig_pow(low: int, high: int) -> list[int]:
         [1, 2, 3, 4, 5, 6, 7, 8, 9]
         >>> sum_dig_pow(1, 100)
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+
     """
     result = []
 

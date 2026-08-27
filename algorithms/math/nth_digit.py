@@ -1,5 +1,4 @@
-"""
-Find the Nth Digit
+"""Find the Nth Digit.
 
 Find the nth digit in the infinite sequence 1, 2, 3, ..., 9, 10, 11, 12, ...
 by determining which number contains it and extracting the specific digit.
@@ -26,6 +25,7 @@ def find_nth_digit(n: int) -> int:
     Examples:
         >>> find_nth_digit(11)
         0
+
     """
     length = 1
     count = 9

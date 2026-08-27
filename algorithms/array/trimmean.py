@@ -1,5 +1,4 @@
-"""
-Trimmed Mean
+"""Trimmed Mean.
 
 Compute the mean of an array after discarding a given percentage of the
 highest and lowest values. Useful for robust averaging in scoring systems.
@@ -31,6 +30,7 @@ def trimmean(array: list[float], percentage: float) -> float:
     Examples:
         >>> trimmean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 20)
         5.5
+
     """
     ratio = percentage / 200
     array.sort()

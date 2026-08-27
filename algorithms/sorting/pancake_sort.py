@@ -1,5 +1,4 @@
-"""
-Pancake Sort
+"""Pancake Sort.
 
 Pancake sort sorts an array by repeatedly finding the maximum element in
 the unsorted portion, flipping it to the front, and then flipping the
@@ -27,6 +26,7 @@ def pancake_sort(array: list[int]) -> list[int]:
     Examples:
         >>> pancake_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     if len(array) <= 1:
         return array

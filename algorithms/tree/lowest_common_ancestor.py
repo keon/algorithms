@@ -1,5 +1,4 @@
-"""
-Lowest Common Ancestor
+"""Lowest Common Ancestor.
 
 Given a binary tree, find the lowest common ancestor (LCA) of two given nodes.
 The LCA is the lowest node that has both nodes as descendants (a node can be a
@@ -14,7 +13,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def lca(root: TreeNode | None, p: TreeNode, q: TreeNode) -> TreeNode | None:
@@ -32,6 +34,7 @@ def lca(root: TreeNode | None, p: TreeNode, q: TreeNode) -> TreeNode | None:
         >>> node = TreeNode(1)
         >>> lca(node, node, node).val
         1
+
     """
     if root is None or root is p or root is q:
         return root
@@ -39,4 +42,4 @@ def lca(root: TreeNode | None, p: TreeNode, q: TreeNode) -> TreeNode | None:
     right = lca(root.right, p, q)
     if left is not None and right is not None:
         return root
-    return left if left else right
+    return left or right

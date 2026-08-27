@@ -1,5 +1,4 @@
-"""
-Sort Colors (Dutch National Flag)
+"""Sort Colors (Dutch National Flag).
 
 Given an array with n objects colored red, white, or blue (represented by
 0, 1, and 2), sort them in-place so that objects of the same color are
@@ -27,6 +26,7 @@ def sort_colors(array: list[int]) -> list[int]:
     Examples:
         >>> sort_colors([2, 0, 1, 2, 1, 0])
         [0, 0, 1, 1, 2, 2]
+
     """
     red = white = 0
     for k in range(len(array)):

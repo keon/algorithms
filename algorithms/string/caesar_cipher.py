@@ -1,5 +1,4 @@
-"""
-Caesar Cipher
+"""Caesar Cipher.
 
 Caesar's cipher shifts each letter by a fixed number of positions in the
 alphabet. Letters wrap around when they pass the end of the alphabet.
@@ -27,6 +26,7 @@ def caesar_cipher(text: str, shift: int) -> str:
     Examples:
         >>> caesar_cipher("Hello_World!", 4)
         'Lipps_Asvph!'
+
     """
     result = ""
     for char in text:

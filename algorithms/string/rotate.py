@@ -1,5 +1,4 @@
-"""
-Rotate String
+"""Rotate String.
 
 Given a string and an integer k, return the string rotated by k positions
 to the left. Two approaches are provided.
@@ -27,12 +26,12 @@ def rotate(text: str, positions: int) -> str:
     Examples:
         >>> rotate("hello", 2)
         'llohe'
+
     """
     long_string = text * (positions // len(text) + 2)
     if positions <= len(text):
         return long_string[positions : positions + len(text)]
-    else:
-        return long_string[positions - len(text) : positions]
+    return long_string[positions - len(text) : positions]
 
 
 def rotate_alt(string: str, positions: int) -> str:
@@ -48,6 +47,7 @@ def rotate_alt(string: str, positions: int) -> str:
     Examples:
         >>> rotate_alt("hello", 2)
         'llohe'
+
     """
     positions = positions % len(string)
     return string[positions:] + string[:positions]

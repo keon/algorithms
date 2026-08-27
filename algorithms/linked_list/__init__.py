@@ -47,10 +47,12 @@ from algorithms.linked_list.rotate_list import rotate_right
 from algorithms.linked_list.swap_in_pairs import swap_pairs
 
 __all__ = [
+    "DoublyLinkedListNode",
+    "RandomListNode",
+    "SinglyLinkedListNode",
     "add_two_numbers",
     "convert_to_list",
     "convert_to_str",
-    "RandomListNode",
     "copy_random_pointer_v1",
     "copy_random_pointer_v2",
     "delete_node",
@@ -64,8 +66,6 @@ __all__ = [
     "kth_to_last",
     "kth_to_last_dict",
     "kth_to_last_eval",
-    "DoublyLinkedListNode",
-    "SinglyLinkedListNode",
     "merge_two_list",
     "merge_two_list_recur",
     "partition",

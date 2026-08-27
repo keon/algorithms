@@ -1,5 +1,4 @@
-"""
-Queue Abstract Data Type
+"""Queue Abstract Data Type.
 
 Implementations of the queue ADT using both a fixed-size array and a
 linked list. Both support enqueue, dequeue, peek, is_empty, len, and iter.
@@ -14,7 +13,10 @@ Complexity:
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from collections.abc import Iterator
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 class AbstractQueue(metaclass=ABCMeta):
@@ -31,6 +33,7 @@ class AbstractQueue(metaclass=ABCMeta):
 
         Returns:
             True if the queue has no elements.
+
         """
         return self._size == 0
 
@@ -59,6 +62,7 @@ class ArrayQueue(AbstractQueue):
         >>> q.enqueue(1)
         >>> q.dequeue()
         1
+
     """
 
     def __init__(self, capacity: int = 10) -> None:
@@ -66,6 +70,7 @@ class ArrayQueue(AbstractQueue):
 
         Args:
             capacity: Initial capacity of the underlying array.
+
         """
         super().__init__()
         self._array: list[object | None] = [None] * capacity
@@ -85,6 +90,7 @@ class ArrayQueue(AbstractQueue):
 
         Args:
             value: The value to enqueue.
+
         """
         if self._rear == len(self._array):
             self._expand()
@@ -100,9 +106,11 @@ class ArrayQueue(AbstractQueue):
 
         Raises:
             IndexError: If the queue is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Queue is empty")
+            msg = "Queue is empty"
+            raise IndexError(msg)
         value = self._array[self._front]
         self._array[self._front] = None
         self._front += 1
@@ -117,9 +125,11 @@ class ArrayQueue(AbstractQueue):
 
         Raises:
             IndexError: If the queue is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Queue is empty")
+            msg = "Queue is empty"
+            raise IndexError(msg)
         return self._array[self._front]
 
     def _expand(self) -> None:
@@ -143,6 +153,7 @@ class LinkedListQueue(AbstractQueue):
         >>> q.enqueue(1)
         >>> q.dequeue()
         1
+
     """
 
     def __init__(self) -> None:
@@ -163,6 +174,7 @@ class LinkedListQueue(AbstractQueue):
 
         Args:
             value: The value to enqueue.
+
         """
         node = QueueNode(value)
         if self._front is None:
@@ -181,9 +193,11 @@ class LinkedListQueue(AbstractQueue):
 
         Raises:
             IndexError: If the queue is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Queue is empty")
+            msg = "Queue is empty"
+            raise IndexError(msg)
         value = self._front.value
         if self._front is self._rear:
             self._front = None
@@ -201,7 +215,9 @@ class LinkedListQueue(AbstractQueue):
 
         Raises:
             IndexError: If the queue is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Queue is empty")
+            msg = "Queue is empty"
+            raise IndexError(msg)
         return self._front.value

@@ -1,5 +1,4 @@
-"""
-Longest Common Substring
+"""Longest Common Substring.
 
 Given two strings where the second contains all distinct characters,
 find the longest common substring using index mapping.
@@ -30,6 +29,7 @@ def max_common_sub_string(s1: str, s2: str) -> str:
     Examples:
         >>> max_common_sub_string("abcdef", "acdbef")
         'cd'
+
     """
     char_index = {s2[i]: i for i in range(len(s2))}
     max_length = 0

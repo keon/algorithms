@@ -1,5 +1,4 @@
-"""
-Fast Fourier Transform (Cooley-Tukey)
+"""Fast Fourier Transform (Cooley-Tukey).
 
 Compute the Discrete Fourier Transform of a sequence using the Cooley-Tukey
 radix-2 decimation-in-time algorithm. Input length must be a power of 2.
@@ -28,6 +27,7 @@ def fft(x: list[complex]) -> list[complex]:
     Examples:
         >>> fft([1.0, 1.0, 1.0, 1.0])
         [(4+0j), 0j, 0j, 0j]
+
     """
     n = len(x)
     if n == 1:

@@ -1,5 +1,4 @@
-"""
-Is Consecutive
+"""Is Consecutive.
 
 Check whether a stack contains a sequence of consecutive integers
 starting from the bottom. Two approaches are provided: one using an
@@ -31,6 +30,7 @@ def first_is_consecutive(stack: list[int]) -> bool:
         True
         >>> first_is_consecutive([3, 4, 6, 7])
         False
+
     """
     storage_stack: list[int] = []
     for _ in range(len(stack)):
@@ -62,6 +62,7 @@ def second_is_consecutive(stack: list[int]) -> bool:
         True
         >>> second_is_consecutive([3, 4, 6, 7])
         False
+
     """
     queue: collections.deque[int] = collections.deque()
     for _ in range(len(stack)):

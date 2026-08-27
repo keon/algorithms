@@ -1,5 +1,4 @@
-"""
-Maze Search (DFS)
+"""Maze Search (DFS).
 
 Find the shortest path from the top-left corner to the bottom-right corner
 of a grid using depth-first search with backtracking.  Only cells with
@@ -25,9 +24,9 @@ def find_path(maze: list[list[int]]) -> int:
     Examples:
         >>> find_path([[1, 1], [1, 1]])
         2
+
     """
-    cnt = _dfs(maze, 0, 0, 0, -1)
-    return cnt
+    return _dfs(maze, 0, 0, 0, -1)
 
 
 def _dfs(
@@ -48,6 +47,7 @@ def _dfs(
 
     Returns:
         Updated best path length.
+
     """
     directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 
@@ -55,11 +55,8 @@ def _dfs(
     col = len(maze[0])
 
     if i == row - 1 and j == col - 1:
-        if cnt == -1:
+        if cnt == -1 or cnt > depth:
             cnt = depth
-        else:
-            if cnt > depth:
-                cnt = depth
         return cnt
 
     maze[i][j] = 0

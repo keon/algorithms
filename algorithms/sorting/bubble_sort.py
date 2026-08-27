@@ -1,5 +1,4 @@
-"""
-Bubble Sort
+"""Bubble Sort.
 
 Bubble sort repeatedly steps through the list, compares adjacent elements
 and swaps them if they are in the wrong order.
@@ -26,6 +25,7 @@ def bubble_sort(array: list[int]) -> list[int]:
     Examples:
         >>> bubble_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     swapped = True

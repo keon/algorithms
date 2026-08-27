@@ -1,17 +1,15 @@
-"""
-Time complexity : O(n)
-"""
+"""Time complexity : O(n)."""
 
 
 class Node:
-    def __init__(self, val, left=None, right=None):
+    def __init__(self, val, left=None, right=None) -> None:
         self.val = val
         self.left = left
         self.right = right
 
 
 def inorder(root):
-    """In order function"""
+    """In order function."""
     res = []
     if not root:
         return res
@@ -27,7 +25,7 @@ def inorder(root):
 
 
 def inorder_rec(root, res=None):
-    """Recursive Implementation"""
+    """Recursive Implementation."""
     if root is None:
         return []
     if res is None:

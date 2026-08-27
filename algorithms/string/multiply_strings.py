@@ -1,5 +1,4 @@
-"""
-Multiply Strings
+"""Multiply Strings.
 
 Given two non-negative integers represented as strings, return their product
 as a string without using built-in BigInteger or direct integer conversion.
@@ -27,6 +26,7 @@ def multiply(num1: str, num2: str) -> str:
     Examples:
         >>> multiply("23", "23")
         '529'
+
     """
     intermediate: list[int] = []
     zero = ord("0")

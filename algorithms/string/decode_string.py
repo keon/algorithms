@@ -1,5 +1,4 @@
-"""
-Decode String
+"""Decode String.
 
 Given an encoded string, return its decoded string. The encoding rule is
 k[encoded_string], where the encoded_string inside the brackets is repeated
@@ -27,6 +26,7 @@ def decode_string(text: str) -> str:
     Examples:
         >>> decode_string("3[a]2[bc]")
         'aaabcbc'
+
     """
     stack: list[tuple[str, int]] = []
     current_num = 0

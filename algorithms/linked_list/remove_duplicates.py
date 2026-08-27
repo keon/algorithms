@@ -1,5 +1,4 @@
-"""
-Remove Duplicates from Linked List
+"""Remove Duplicates from Linked List.
 
 Remove duplicate values from an unsorted linked list. Two approaches are
 provided: hash-set-based (O(n) time, O(n) space) and runner technique
@@ -36,6 +35,7 @@ def remove_dups(head: Node | None) -> None:
         >>> remove_dups(a)
         >>> a.next.val
         2
+
     """
     seen: set[object] = set()
     prev = Node()
@@ -65,6 +65,7 @@ def remove_dups_wothout_set(head: Node | None) -> None:
         >>> remove_dups_wothout_set(a)
         >>> a.next.val
         2
+
     """
     current = head
     while current:

@@ -1,5 +1,4 @@
-"""
-Bead Sort
+"""Bead Sort.
 
 Bead sort (also known as gravity sort) simulates how beads settle under
 gravity on an abacus.  It only works with non-negative integers.
@@ -29,9 +28,11 @@ def bead_sort(array: list[int]) -> list[int]:
     Examples:
         >>> bead_sort([6, 3, 4, 1, 5, 2])
         [1, 2, 3, 4, 5, 6]
+
     """
     if any(num < 0 for num in array):
-        raise ValueError("Bead sort only works with non-negative integers.")
+        msg = "Bead sort only works with non-negative integers."
+        raise ValueError(msg)
 
     max_value = max(array) if array else 0
     grid = [[0] * len(array) for _ in range(max_value)]

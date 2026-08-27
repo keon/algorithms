@@ -1,5 +1,4 @@
-"""
-Recursive Binomial Coefficient
+"""Recursive Binomial Coefficient.
 
 Calculate the binomial coefficient C(n, k) using a recursive formula with
 the identity C(n, k) = (n/k) * C(n-1, k-1).
@@ -32,10 +31,12 @@ def recursive_binomial_coefficient(n: int, k: int) -> int:
         1
         >>> recursive_binomial_coefficient(8, 2)
         28
+
     """
     if k > n:
-        raise ValueError("Invalid Inputs, ensure that n >= k")
-    if k == 0 or n == k:
+        msg = "Invalid Inputs, ensure that n >= k"
+        raise ValueError(msg)
+    if k in (0, n):
         return 1
     if k > n / 2:
         return recursive_binomial_coefficient(n, n - k)

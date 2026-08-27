@@ -1,5 +1,4 @@
-"""
-Path Between Two Vertices in a Directed Graph
+"""Path Between Two Vertices in a Directed Graph.
 
 Determines whether there is a directed path from a source vertex to a
 target vertex using DFS.
@@ -22,6 +21,7 @@ class Graph:
 
         Args:
             vertex_count: Number of vertices.
+
         """
         self.vertex_count = vertex_count
         self.graph: dict[int, list[int]] = defaultdict(list)
@@ -33,6 +33,7 @@ class Graph:
         Args:
             source: Source vertex.
             target: Target vertex.
+
         """
         self.graph[source].append(target)
 
@@ -42,6 +43,7 @@ class Graph:
         Args:
             source: Source vertex.
             target: Target vertex.
+
         """
         visited = [False] * self.vertex_count
         self._dfs_util(visited, source, target)
@@ -53,6 +55,7 @@ class Graph:
             visited: Visited flags.
             source: Current vertex.
             target: Destination vertex.
+
         """
         visited[source] = True
         for i in self.graph[source]:
@@ -75,6 +78,7 @@ class Graph:
         Examples:
             >>> g = Graph(2); g.add_edge(0, 1); g.is_reachable(0, 1)
             True
+
         """
         self.has_path = False
         self._dfs(source, target)

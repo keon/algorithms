@@ -1,5 +1,4 @@
-"""
-Bomb Enemy
+"""Bomb Enemy.
 
 Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0'
 (the number zero). Return the maximum enemies you can kill using one bomb.
@@ -29,6 +28,7 @@ def max_killed_enemies(grid: list[list[str]]) -> int:
     Examples:
         >>> max_killed_enemies([["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]])
         3
+
     """
     if not grid:
         return 0
@@ -56,6 +56,7 @@ def _row_kills(grid: list[list[str]], row: int, col: int) -> int:
 
     Returns:
         Number of enemies in the row segment.
+
     """
     count = 0
     num_cols = len(grid[0])
@@ -76,6 +77,7 @@ def _col_kills(grid: list[list[str]], row: int, col: int) -> int:
 
     Returns:
         Number of enemies in the column segment.
+
     """
     count = 0
     num_rows = len(grid)

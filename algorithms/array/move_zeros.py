@@ -1,5 +1,4 @@
-"""
-Move Zeros
+"""Move Zeros.
 
 Move all zeros in an array to the end while preserving the relative order
 of the non-zero (and non-integer-zero) elements.
@@ -30,6 +29,7 @@ def move_zeros(array: list[Any]) -> list[Any]:
     Examples:
         >>> move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"])
         [False, 1, 1, 2, 1, 3, 'a', 0, 0]
+
     """
     result = []
     zeros = 0

@@ -1,5 +1,4 @@
-"""
-Flip Bit Longest Sequence
+"""Flip Bit Longest Sequence.
 
 Given an integer, find the length of the longest sequence of 1-bits you
 can create by flipping exactly one 0-bit to a 1-bit.
@@ -32,6 +31,7 @@ def flip_bit_longest_seq(number: int) -> int:
         8
         >>> flip_bit_longest_seq(0)
         1
+
     """
     current_length = 0
     previous_length = 0

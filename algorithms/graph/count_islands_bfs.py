@@ -1,5 +1,4 @@
-"""
-Count Islands (BFS)
+"""Count Islands (BFS).
 
 Given a 2D grid of 1s (land) and 0s (water), count the number of islands
 using breadth-first search.  An island is a group of adjacent lands
@@ -29,6 +28,7 @@ def count_islands(grid: list[list[int]]) -> int:
     Examples:
         >>> count_islands([[1, 0], [0, 1]])
         2
+
     """
     row = len(grid)
     col = len(grid[0])

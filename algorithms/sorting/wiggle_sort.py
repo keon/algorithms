@@ -1,5 +1,4 @@
-"""
-Wiggle Sort
+"""Wiggle Sort.
 
 Given an unsorted array, reorder it in-place such that
 nums[0] < nums[1] > nums[2] < nums[3] ...
@@ -26,6 +25,7 @@ def wiggle_sort(array: list[int]) -> list[int]:
     Examples:
         >>> wiggle_sort([3, 5, 2, 1, 6, 4])
         [3, 5, 1, 6, 2, 4]
+
     """
     for i in range(len(array)):
         if (i % 2 == 1) == (array[i - 1] > array[i]):

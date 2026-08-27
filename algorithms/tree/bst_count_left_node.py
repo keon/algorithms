@@ -1,5 +1,4 @@
-"""
-Write a function count_left_node returns the number of left children in the
+r"""Write a function count_left_node returns the number of left children in the
 tree. For example: the following tree has four left children (the nodes
 storing the values 6, 3, 7, and 10):
 
@@ -23,10 +22,9 @@ from algorithms.data_structures.bst import BST
 def count_left_node(root):
     if root is None:
         return 0
-    elif root.left is None:
+    if root.left is None:
         return count_left_node(root.right)
-    else:
-        return 1 + count_left_node(root.left) + count_left_node(root.right)
+    return 1 + count_left_node(root.left) + count_left_node(root.right)
 
 
 """
@@ -46,7 +44,7 @@ def count_left_node(root):
 
 
 class TestSuite(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
@@ -58,8 +56,8 @@ class TestSuite(unittest.TestCase):
         self.tree.insert(7)
         self.tree.insert(18)
 
-    def test_count_left_node(self):
-        self.assertEqual(4, count_left_node(self.tree.root))
+    def test_count_left_node(self) -> None:
+        assert count_left_node(self.tree.root) == 4
 
 
 if __name__ == "__main__":

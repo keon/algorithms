@@ -1,5 +1,4 @@
-"""
-Walls and Gates
+"""Walls and Gates.
 
 Fill each empty room (INF) with the distance to its nearest gate (0).
 Walls are represented by -1.
@@ -23,6 +22,7 @@ def walls_and_gates(rooms: list[list[int]]) -> None:
     Examples:
         >>> r = [[float('inf'), 0]]; walls_and_gates(r); r
         [[1, 0]]
+
     """
     for i in range(len(rooms)):
         for j in range(len(rooms[0])):
@@ -38,6 +38,7 @@ def _dfs(rooms: list[list[int]], i: int, j: int, depth: int) -> None:
         i: Row index.
         j: Column index.
         depth: Current distance from the gate.
+
     """
     if i < 0 or i >= len(rooms) or j < 0 or j >= len(rooms[0]):
         return

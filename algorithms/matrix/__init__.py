@@ -1,4 +1,4 @@
-from algorithms.matrix import (  # noqa: F401
+from algorithms.matrix import (
     bomb_enemy,
     cholesky_matrix_decomposition,
     copy_transform,

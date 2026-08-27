@@ -1,5 +1,4 @@
-"""
-K-Factor of a String
+"""K-Factor of a String.
 
 The K factor of a string is the number of times 'abba' appears as a
 substring. Given a length and a k_factor, count the number of strings of
@@ -30,6 +29,7 @@ def find_k_factor(length: int, k_factor: int) -> int:
         1
         >>> find_k_factor(7, 1)
         70302
+
     """
     mat = [
         [[0 for i in range(4)] for j in range((length - 1) // 3 + 2)]

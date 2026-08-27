@@ -1,5 +1,4 @@
-"""
-RSA Encryption Algorithm
+"""RSA Encryption Algorithm.
 
 Implements RSA key generation, encryption, and decryption. RSA uses separate
 public and private keys where ((x^e)^d) % n == x % n.
@@ -14,6 +13,7 @@ Reference: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 Complexity:
     Time:  O(k^3) for key generation (k = bit length)
     Space: O(k)
+
 """
 
 from __future__ import annotations
@@ -36,7 +36,8 @@ def _extended_gcd(a: int, b: int) -> tuple[int, int, int]:
 def _modinv(a: int, m: int) -> int:
     g, x, _ = _extended_gcd(a, m)
     if g != 1:
-        raise ValueError(f"Modular inverse does not exist: gcd({a}, {m}) = {g}")
+        msg = f"Modular inverse does not exist: gcd({a}, {m}) = {g}"
+        raise ValueError(msg)
     return x % m
 
 
@@ -54,6 +55,7 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
 
     Examples:
         >>> n, e, d = generate_key(16)
+
     """
 
     def _gen_prime(k: int, seed: int | None = None) -> int:
@@ -65,6 +67,7 @@ def generate_key(k: int, seed: int | None = None) -> tuple[int, int, int]:
 
         Returns:
             A prime number.
+
         """
 
         def _is_prime(num: int) -> bool:
@@ -116,6 +119,7 @@ def encrypt(data: int, e: int, n: int) -> int:
     Examples:
         >>> encrypt(7, 23, 143)
         2
+
     """
     return pow(int(data), int(e), int(n))
 
@@ -134,5 +138,6 @@ def decrypt(data: int, d: int, n: int) -> int:
     Examples:
         >>> decrypt(2, 47, 143)
         7
+
     """
     return pow(int(data), int(d), int(n))

@@ -1,5 +1,4 @@
-"""
-Generate Strobogrammatic Numbers
+"""Generate Strobogrammatic Numbers.
 
 A strobogrammatic number looks the same when rotated 180 degrees. Generate
 all strobogrammatic numbers of a given length or count them within a range.
@@ -26,6 +25,7 @@ def gen_strobogrammatic(n: int) -> list[str]:
     Examples:
         >>> gen_strobogrammatic(2)
         ['88', '11', '96', '69']
+
     """
     return _helper(n, n)
 
@@ -39,6 +39,7 @@ def _helper(n: int, length: int) -> list[str]:
 
     Returns:
         List of strobogrammatic number strings.
+
     """
     if n == 0:
         return [""]
@@ -69,6 +70,7 @@ def strobogrammatic_in_range(low: str, high: str) -> int:
     Examples:
         >>> strobogrammatic_in_range("10", "100")
         4
+
     """
     res: list[str] = []
     count = 0
@@ -94,6 +96,7 @@ def _helper2(n: int, length: int) -> list[str]:
 
     Returns:
         List of strobogrammatic number strings.
+
     """
     if n == 0:
         return [""]

@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, val, left=None, right=None):
+    def __init__(self, val, left=None, right=None) -> None:
         self.val = val
         self.left = left
         self.right = right
@@ -21,8 +21,7 @@ def kth_smallest(root, k):
 
 class Solution:
     def kth_smallest(self, root, k):
-        """
-        :type root: TreeNode
+        """:type root: TreeNode
         :type k: int
         :rtype: int
         """
@@ -30,7 +29,7 @@ class Solution:
         self.helper(root, count)
         return count[k - 1]
 
-    def helper(self, node, count):
+    def helper(self, node, count) -> None:
         if not node:
             return
 
@@ -50,5 +49,3 @@ if __name__ == "__main__":
     n1.left, n1.right = n2, n3
     n2.left, n2.right = n4, n5
     n3.left, n3.right = n6, n7
-    print(kth_smallest(n1, 2))
-    print(Solution().kth_smallest(n1, 2))

@@ -1,5 +1,4 @@
-"""
-Graph Data Structures
+"""Graph Data Structures.
 
 Reusable classes for representing nodes, directed edges and directed graphs.
 These can be shared across graph algorithms.
@@ -23,6 +22,7 @@ class Node:
 
         Returns:
             The string name.
+
         """
         if isinstance(obj, Node):
             return obj.name
@@ -82,6 +82,7 @@ class DirectedGraph:
 
         Args:
             load_dict: Optional adjacency dict ``{vertex: [neighbours]}``.
+
         """
         if load_dict is None:
             load_dict = {}
@@ -106,6 +107,7 @@ class DirectedGraph:
 
         Returns:
             The Node instance.
+
         """
         try:
             return self.nodes[self.nodes.index(node_name)]
@@ -120,6 +122,7 @@ class DirectedGraph:
         Args:
             node_name_from: Source node name.
             node_name_to: Target node name.
+
         """
         try:
             node_from = self.nodes[self.nodes.index(node_name_from)]

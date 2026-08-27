@@ -1,5 +1,4 @@
-"""
-Modular Multiplicative Inverse
+"""Modular Multiplicative Inverse.
 
 Find x such that a * x = 1 (mod m) using the Extended Euclidean Algorithm.
 Requires a and m to be coprime.
@@ -23,6 +22,7 @@ def _extended_gcd(a: int, b: int) -> tuple[int, int, int]:
 
     Returns:
         A tuple (s, t, g) where a * s + b * t = g = gcd(a, b).
+
     """
     old_s, s = 1, 0
     old_t, t = 0, 1
@@ -54,8 +54,10 @@ def modular_inverse(a: int, m: int) -> int:
     Examples:
         >>> modular_inverse(2, 19)
         10
+
     """
     s, _, g = _extended_gcd(a, m)
     if g != 1:
-        raise ValueError("a and m must be coprime")
+        msg = "a and m must be coprime"
+        raise ValueError(msg)
     return s % m

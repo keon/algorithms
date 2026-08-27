@@ -1,5 +1,4 @@
-"""
-Pattern Matching
+"""Pattern Matching.
 
 Given a pattern and a string, determine if the string follows the same
 pattern. A full match means a bijection between each letter in the pattern
@@ -30,6 +29,7 @@ def pattern_match(pattern: str, string: str) -> bool:
         True
         >>> pattern_match("aabb", "xyzabcxzyabc")
         False
+
     """
     return _backtrack(pattern, string, {})
 

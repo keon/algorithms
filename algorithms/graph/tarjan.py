@@ -1,5 +1,4 @@
-"""
-Tarjan's Strongly Connected Components Algorithm
+"""Tarjan's Strongly Connected Components Algorithm.
 
 Finds all strongly connected components in a directed graph.
 
@@ -23,6 +22,7 @@ class Tarjan:
 
         Args:
             dict_graph: Adjacency dict ``{vertex: [neighbours]}``.
+
         """
         self.graph = DirectedGraph(dict_graph)
         self.index = 0
@@ -42,6 +42,7 @@ class Tarjan:
         Args:
             vertex: Current vertex node.
             sccs: Accumulated list of SCCs.
+
         """
         vertex.index = self.index
         vertex.lowlink = self.index

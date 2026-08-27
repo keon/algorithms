@@ -1,5 +1,4 @@
-"""
-Extended Euclidean Algorithm
+"""Extended Euclidean Algorithm.
 
 Find coefficients s and t (Bezout's identity) such that:
 num1 * s + num2 * t = gcd(num1, num2).
@@ -29,6 +28,7 @@ def extended_gcd(num1: int, num2: int) -> tuple[int, int, int]:
         (0, 1, 2)
         >>> extended_gcd(13, 17)
         (4, -3, 1)
+
     """
     old_s, s = 1, 0
     old_t, t = 0, 1

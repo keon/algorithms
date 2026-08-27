@@ -1,5 +1,4 @@
-"""
-Factor Combinations
+"""Factor Combinations.
 
 Given an integer n, return all possible combinations of its factors
 (excluding 1 and n itself in the factorisation).
@@ -26,6 +25,7 @@ def get_factors(n: int) -> list[list[int]]:
     Examples:
         >>> get_factors(12)
         [[2, 6], [2, 2, 3], [3, 4]]
+
     """
 
     def _factor(
@@ -36,8 +36,8 @@ def get_factors(n: int) -> list[list[int]]:
     ) -> list[list[int]]:
         while i * i <= n:
             if n % i == 0:
-                res += (combi + [i, int(n / i)],)
-                _factor(n / i, i, combi + [i], res)
+                res += ([*combi, i, int(n / i)],)
+                _factor(n / i, i, [*combi, i], res)
             i += 1
         return res
 
@@ -56,6 +56,7 @@ def get_factors_iterative1(n: int) -> list[list[int]]:
     Examples:
         >>> get_factors_iterative1(12)
         [[2, 6], [3, 4], [2, 2, 3]]
+
     """
     todo: list[tuple[int, int, list[int]]] = [(n, 2, [])]
     res: list[list[int]] = []
@@ -63,8 +64,8 @@ def get_factors_iterative1(n: int) -> list[list[int]]:
         n, i, combi = todo.pop()
         while i * i <= n:
             if n % i == 0:
-                res += (combi + [i, n // i],)
-                todo.append((n // i, i, combi + [i]))
+                res += ([*combi, i, n // i],)
+                todo.append((n // i, i, [*combi, i]))
             i += 1
     return res
 
@@ -81,6 +82,7 @@ def get_factors_iterative2(n: int) -> list[list[int]]:
     Examples:
         >>> get_factors_iterative2(12)
         [[2, 2, 3], [2, 6], [3, 4]]
+
     """
     ans: list[list[int]] = []
     stack: list[int] = []
@@ -89,7 +91,7 @@ def get_factors_iterative2(n: int) -> list[list[int]]:
         if x > n // x:
             if not stack:
                 return ans
-            ans.append(stack + [n])
+            ans.append([*stack, n])
             x = stack.pop()
             n *= x
             x += 1

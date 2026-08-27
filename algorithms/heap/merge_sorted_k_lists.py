@@ -1,5 +1,4 @@
-"""
-Merge K Sorted Linked Lists
+"""Merge K Sorted Linked Lists.
 
 Merge k sorted linked lists into one sorted linked list using a heap
 for efficient minimum extraction.
@@ -21,6 +20,7 @@ class ListNode:
 
     Args:
         val: The node value.
+
     """
 
     def __init__(self, val: int) -> None:
@@ -43,6 +43,7 @@ def merge_k_lists(lists: list[ListNode | None]) -> ListNode | None:
         >>> result = merge_k_lists([n1, n2])
         >>> result.val
         1
+
     """
     dummy = node = ListNode(0)
     heap: list[tuple[int, int, ListNode]] = []
@@ -51,7 +52,7 @@ def merge_k_lists(lists: list[ListNode | None]) -> ListNode | None:
             heap.append((head.val, idx, head))
     heapify(heap)
     while heap:
-        val, idx, n_val = heap[0]
+        _val, idx, n_val = heap[0]
         if n_val.next is None:
             heappop(heap)
         else:

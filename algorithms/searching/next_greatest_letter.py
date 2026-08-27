@@ -1,5 +1,4 @@
-"""
-Next Greatest Letter
+"""Next Greatest Letter.
 
 Given a sorted list of lowercase letters and a target letter, find the
 smallest letter in the list that is larger than the target. Letters wrap
@@ -35,6 +34,7 @@ def next_greatest_letter(letters: list[str], target: str) -> str:
         'c'
         >>> next_greatest_letter(["c", "f", "j"], "c")
         'f'
+
     """
     index = bisect.bisect(letters, target)
     return letters[index % len(letters)]
@@ -54,6 +54,7 @@ def next_greatest_letter_v1(letters: list[str], target: str) -> str:
     Examples:
         >>> next_greatest_letter_v1(["c", "f", "j"], "d")
         'f'
+
     """
     if letters[0] > target:
         return letters[0]
@@ -83,6 +84,7 @@ def next_greatest_letter_v2(letters: list[str], target: str) -> str:
     Examples:
         >>> next_greatest_letter_v2(["c", "f", "j"], "d")
         'f'
+
     """
     for letter in letters:
         if letter > target:

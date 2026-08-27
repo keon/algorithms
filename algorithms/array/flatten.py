@@ -1,5 +1,4 @@
-"""
-Flatten Arrays
+"""Flatten Arrays.
 
 Given an array that may contain nested arrays, produce a single
 flat resultant array.
@@ -30,6 +29,7 @@ def flatten(input_arr: Iterable[Any], output_arr: list[Any] | None = None) -> li
     Examples:
         >>> flatten([2, 1, [3, [4, 5], 6], 7, [8]])
         [2, 1, 3, 4, 5, 6, 7, 8]
+
     """
     if output_arr is None:
         output_arr = []
@@ -53,6 +53,7 @@ def flatten_iter(iterable: Iterable[Any]) -> Generator[Any, None, None]:
     Examples:
         >>> list(flatten_iter([2, 1, [3, [4, 5], 6], 7, [8]]))
         [2, 1, 3, 4, 5, 6, 7, 8]
+
     """
     for element in iterable:
         if not isinstance(element, str) and isinstance(element, Iterable):

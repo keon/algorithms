@@ -1,5 +1,4 @@
-"""
-Radix Sort
+"""Radix Sort.
 
 Radix sort processes digits from least significant to most significant,
 distributing elements into buckets for each digit and collecting them
@@ -27,6 +26,7 @@ def radix_sort(array: list[int]) -> list[int]:
     Examples:
         >>> radix_sort([170, 45, 75, 90, 802, 24, 2, 66])
         [2, 24, 45, 66, 75, 90, 170, 802]
+
     """
     position = 1
     max_number = max(array)

@@ -1,5 +1,4 @@
-"""
-Sieve of Eratosthenes
+"""Sieve of Eratosthenes.
 
 Generate all prime numbers less than n using an optimized sieve that skips
 even numbers.
@@ -29,9 +28,11 @@ def get_primes(n: int) -> list[int]:
     Examples:
         >>> get_primes(7)
         [2, 3, 5, 7]
+
     """
     if n <= 0:
-        raise ValueError("'n' must be a positive integer.")
+        msg = "'n' must be a positive integer."
+        raise ValueError(msg)
     sieve_size = (n // 2 - 1) if n % 2 == 0 else (n // 2)
     sieve = [True for _ in range(sieve_size)]
     primes: list[int] = []

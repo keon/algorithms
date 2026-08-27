@@ -1,5 +1,4 @@
-"""
-Distance Between Two Points in 2D Space
+"""Distance Between Two Points in 2D Space.
 
 Calculate the Euclidean distance between two points using the distance
 formula derived from the Pythagorean theorem.
@@ -33,5 +32,6 @@ def distance_between_two_points(x1: float, y1: float, x2: float, y2: float) -> f
         5.0
         >>> distance_between_two_points(-1, -1, 2, 3)
         5.0
+
     """
     return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)

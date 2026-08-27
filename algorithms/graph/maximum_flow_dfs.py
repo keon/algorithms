@@ -1,5 +1,4 @@
-"""
-Maximum Flow via DFS
+"""Maximum Flow via DFS.
 
 Computes maximum flow in a network represented as an adjacency matrix,
 using DFS to find augmenting paths.
@@ -31,6 +30,7 @@ def maximum_flow_dfs(adjacency_matrix: list[list[int]]) -> int:
     Examples:
         >>> maximum_flow_dfs([[0, 10, 0], [0, 0, 10], [0, 0, 0]])
         10
+
     """
     new_array = copy.deepcopy(adjacency_matrix)
     total = 0
@@ -59,8 +59,7 @@ def maximum_flow_dfs(adjacency_matrix: list[list[int]]) -> int:
         tmp = len(new_array) - 1
 
         while tmp != 0:
-            if min_flow > new_array[path[tmp]][tmp]:
-                min_flow = new_array[path[tmp]][tmp]
+            min_flow = min(min_flow, new_array[path[tmp]][tmp])
             tmp = path[tmp]
 
         tmp = len(new_array) - 1

@@ -1,5 +1,4 @@
-"""
-Minimum Perfect Squares Sum
+"""Minimum Perfect Squares Sum.
 
 Determine the minimum number of perfect squares that sum to a given integer.
 By Lagrange's four-square theorem, the answer is always between 1 and 4.
@@ -34,6 +33,7 @@ def num_perfect_squares(number: int) -> int:
         3
         >>> num_perfect_squares(31)
         4
+
     """
     if int(math.sqrt(number)) ** 2 == number:
         return 1

@@ -1,5 +1,4 @@
-"""
-Plus One
+"""Plus One.
 
 Given a non-negative number represented as an array of digits (big-endian),
 add one to the number and return the resulting digit array.
@@ -26,6 +25,7 @@ def plus_one_v1(digits: list[int]) -> list[int]:
     Examples:
         >>> plus_one_v1([1, 2, 9])
         [1, 3, 0]
+
     """
     digits[-1] = digits[-1] + 1
     result = []
@@ -55,6 +55,7 @@ def plus_one_v2(digits: list[int]) -> list[int]:
     Examples:
         >>> plus_one_v2([1, 2, 9])
         [1, 3, 0]
+
     """
     length = len(digits)
     for index in range(length - 1, -1, -1):
@@ -78,9 +79,10 @@ def plus_one_v3(num_arr: list[int]) -> list[int]:
     Examples:
         >>> plus_one_v3([1, 2, 9])
         [1, 3, 0]
+
     """
     for idx in reversed(list(enumerate(num_arr))):
         num_arr[idx[0]] = (num_arr[idx[0]] + 1) % 10
         if num_arr[idx[0]]:
             return num_arr
-    return [1] + num_arr
+    return [1, *num_arr]

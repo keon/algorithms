@@ -1,5 +1,4 @@
-"""
-Unique Morse Code Representations
+"""Unique Morse Code Representations.
 
 Given a list of words, determine the number of unique Morse code
 transformations among all the words.
@@ -55,6 +54,7 @@ def convert_morse_word(word: str) -> str:
     Examples:
         >>> convert_morse_word("gin")
         '--...-.'
+
     """
     morse_word = ""
     word = word.lower()
@@ -75,6 +75,7 @@ def unique_morse(words: list[str]) -> int:
     Examples:
         >>> unique_morse(["gin", "zen", "gig", "msg"])
         2
+
     """
     unique_transformations: list[str] = []
     for word in words:

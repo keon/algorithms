@@ -1,5 +1,4 @@
-"""
-Cycle Sort
+"""Cycle Sort.
 
 Cycle sort decomposes the permutation into cycles and rotates each cycle
 to produce a sorted result.  It minimises the number of writes to the
@@ -27,6 +26,7 @@ def cycle_sort(array: list[int]) -> list[int]:
     Examples:
         >>> cycle_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     length = len(array)
 

@@ -1,5 +1,4 @@
-"""
-Search in Rotated Sorted Array
+"""Search in Rotated Sorted Array.
 
 Search for a target value in an array that was sorted in ascending order and
 then rotated at some unknown pivot.  One half of the array is always in sorted
@@ -31,6 +30,7 @@ def search_rotate(array: list[int], val: int) -> int:
         4
         >>> search_rotate([4, 5, 6, 7, 0, 1, 2], 3)
         -1
+
     """
     low, high = 0, len(array) - 1
     while low <= high:
@@ -43,11 +43,10 @@ def search_rotate(array: list[int], val: int) -> int:
                 high = mid - 1
             else:
                 low = mid + 1
+        elif array[mid] <= val <= array[high]:
+            low = mid + 1
         else:
-            if array[mid] <= val <= array[high]:
-                low = mid + 1
-            else:
-                high = mid - 1
+            high = mid - 1
 
     return -1
 
@@ -73,6 +72,7 @@ def search_rotate_recur(
     Examples:
         >>> search_rotate_recur([4, 5, 6, 7, 0, 1, 2], 0, 6, 0)
         4
+
     """
     if low > high:
         return -1

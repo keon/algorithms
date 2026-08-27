@@ -1,5 +1,4 @@
-"""
-Bogo Sort
+"""Bogo Sort.
 
 Bogo sort repeatedly shuffles the array at random until it happens to be
 sorted.  It is extremely inefficient and used only for educational purposes.
@@ -28,6 +27,7 @@ def bogo_sort(array: list[int]) -> list[int]:
     Examples:
         >>> bogo_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     while not _is_sorted(array):
         random.shuffle(array)

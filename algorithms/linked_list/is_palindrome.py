@@ -1,5 +1,4 @@
-"""
-Palindrome Linked List
+"""Palindrome Linked List.
 
 Determine whether a singly linked list is a palindrome. Three approaches are
 provided: reverse-half, stack-based, and dictionary-based.
@@ -26,6 +25,7 @@ def is_palindrome(head: object | None) -> bool:
     Examples:
         >>> is_palindrome(None)
         True
+
     """
     if not head:
         return True
@@ -61,6 +61,7 @@ def is_palindrome_stack(head: object | None) -> bool:
     Examples:
         >>> is_palindrome_stack(None)
         True
+
     """
     if not head or not head.next:
         return True
@@ -97,6 +98,7 @@ def is_palindrome_dict(head: object | None) -> bool:
     Examples:
         >>> is_palindrome_dict(None)
         True
+
     """
     if not head or not head.next:
         return True

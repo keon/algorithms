@@ -1,5 +1,4 @@
-"""
-Moving Average from Data Stream
+"""Moving Average from Data Stream.
 
 Calculate the moving average of integers in a sliding window of fixed
 size using a bounded deque.
@@ -25,6 +24,7 @@ class MovingAverage:
         1.0
         >>> m.next(10)
         5.5
+
     """
 
     def __init__(self, size: int) -> None:
@@ -32,6 +32,7 @@ class MovingAverage:
 
         Args:
             size: The window size for the moving average.
+
         """
         self.queue: deque[int] = deque(maxlen=size)
 
@@ -43,6 +44,7 @@ class MovingAverage:
 
         Returns:
             The current moving average as a float.
+
         """
         self.queue.append(val)
         return sum(self.queue) / len(self.queue)

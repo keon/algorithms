@@ -1,5 +1,4 @@
-"""
-Merge Sort
+"""Merge Sort.
 
 Merge sort divides the array in half, recursively sorts each half, and
 then merges the two sorted halves back together.
@@ -26,6 +25,7 @@ def merge_sort(array: list[int]) -> list[int]:
     Examples:
         >>> merge_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     if len(array) <= 1:
         return array
@@ -45,6 +45,7 @@ def _merge(left: list[int], right: list[int], merged: list[int]) -> None:
         left:   Sorted left half.
         right:  Sorted right half.
         merged: Destination list (length == len(left) + len(right)).
+
     """
     left_cursor = 0
     right_cursor = 0

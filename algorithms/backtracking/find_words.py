@@ -1,5 +1,4 @@
-"""
-Word Search II
+"""Word Search II.
 
 Given a board of characters and a list of words, find all words that can
 be constructed from adjacent cells (horizontally or vertically). Each cell
@@ -32,6 +31,7 @@ def find_words(board: list[list[str]], words: list[str]) -> list[str]:
         >>> board = [['o','a','a','n'], ['e','t','a','e']]
         >>> sorted(find_words(board, ['eat', 'oath']))
         ['eat']
+
     """
     trie: dict = {}
     for word in words:
@@ -72,15 +72,15 @@ def _backtrack(
         used[row][col] = True
         next_char = board[row][col]
         _backtrack(
-            board, row + 1, col, trie[next_char], prefix + next_char, used, found
+            board, row + 1, col, trie[next_char], prefix + next_char, used, found,
         )
         _backtrack(
-            board, row, col + 1, trie[next_char], prefix + next_char, used, found
+            board, row, col + 1, trie[next_char], prefix + next_char, used, found,
         )
         _backtrack(
-            board, row - 1, col, trie[next_char], prefix + next_char, used, found
+            board, row - 1, col, trie[next_char], prefix + next_char, used, found,
         )
         _backtrack(
-            board, row, col - 1, trie[next_char], prefix + next_char, used, found
+            board, row, col - 1, trie[next_char], prefix + next_char, used, found,
         )
         used[row][col] = False

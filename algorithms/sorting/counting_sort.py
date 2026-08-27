@@ -1,5 +1,4 @@
-"""
-Counting Sort
+"""Counting Sort.
 
 Counting sort counts the occurrences of each value and uses cumulative
 counts to place each element in its correct position.  It supports
@@ -27,6 +26,7 @@ def counting_sort(array: list[int]) -> list[int]:
     Examples:
         >>> counting_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     min_value = min(array)
     offset = -min_value if min_value < 0 else 0

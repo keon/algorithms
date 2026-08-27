@@ -1,7 +1,6 @@
 # ===============================================================================
 # Validate Binary Search Tree
-"""
-To check if the given binary tree is a valid binary search
+"""To check if the given binary tree is a valid binary search
 tree (BST), we need to ensure that:
     1. The left subtree of a node contains only nodes with
        keys less than the node's key.
@@ -17,16 +16,14 @@ from algorithms.common.tree_node import TreeNode
 
 # Function to validate if a binary tree is a BST
 def validate_bst(node):
-    """
-    Validate if a binary tree is a binary search tree (BST).
+    """Validate if a binary tree is a binary search tree (BST).
     Input params : Tree Node to be validated
     Returns : Tuple (
         is_bst: bool,
         min_value: int | None,
         max_value: int | None
-    )
+    ).
     """
-
     # Base case: An empty tree is a valid BST
     if not node:
         return (True, None, None)
@@ -86,4 +83,3 @@ if __name__ == "__main__":
 
     # Validate if the constructed tree is a BST
     is_bst, _, _ = validate_bst(root)
-    print(f"The tree is a valid BST: {is_bst}")

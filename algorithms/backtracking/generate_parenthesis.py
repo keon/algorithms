@@ -1,5 +1,4 @@
-"""
-Generate Parentheses
+"""Generate Parentheses.
 
 Given n pairs of parentheses, generate all combinations of well-formed
 parentheses.
@@ -29,6 +28,7 @@ def generate_parenthesis_v1(count: int) -> list[str]:
     Examples:
         >>> generate_parenthesis_v1(2)
         ['()()', '(())']
+
     """
     result: list[str] = []
     _add_pair_v1(result, "", count, 0)
@@ -66,6 +66,7 @@ def generate_parenthesis_v2(count: int) -> list[str]:
     Examples:
         >>> generate_parenthesis_v2(2)
         ['(())', '()()']
+
     """
     result: list[str] = []
     _add_pair_v2(result, "", count, count)

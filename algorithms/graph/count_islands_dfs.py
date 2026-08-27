@@ -1,5 +1,4 @@
-"""
-Count Islands (DFS)
+"""Count Islands (DFS).
 
 Given a 2D grid of 1s (land) and 0s (water), count the number of islands
 using depth-first search.
@@ -26,6 +25,7 @@ def num_islands(grid: list[list[int]]) -> int:
     Examples:
         >>> num_islands([[1, 0], [0, 1]])
         2
+
     """
     count = 0
     for i in range(len(grid)):
@@ -43,6 +43,7 @@ def _dfs(grid: list[list[int]], i: int, j: int) -> None:
         grid: The grid (modified in place).
         i: Row index.
         j: Column index.
+
     """
     if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]):
         return

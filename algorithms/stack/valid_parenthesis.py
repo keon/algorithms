@@ -1,5 +1,4 @@
-"""
-Valid Parentheses
+"""Valid Parentheses.
 
 Determine if a string containing only '(', ')', '{', '}', '[' and ']'
 has valid (properly closed and nested) brackets.
@@ -28,6 +27,7 @@ def is_valid(s: str) -> bool:
         True
         >>> is_valid("(]")
         False
+
     """
     stack: list[str] = []
     matching = {")": "(", "}": "{", "]": "["}

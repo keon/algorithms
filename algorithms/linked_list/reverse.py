@@ -1,5 +1,4 @@
-"""
-Reverse Linked List
+"""Reverse Linked List.
 
 Reverse a singly linked list. Both iterative and recursive solutions are
 provided.
@@ -26,6 +25,7 @@ def reverse_list(head: object | None) -> object | None:
     Examples:
         >>> reverse_list(None) is None
         True
+
     """
     if not head or not head.next:
         return head
@@ -50,6 +50,7 @@ def reverse_list_recursive(head: object | None) -> object | None:
     Examples:
         >>> reverse_list_recursive(None) is None
         True
+
     """
     if head is None or head.next is None:
         return head

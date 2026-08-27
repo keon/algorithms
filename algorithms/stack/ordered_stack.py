@@ -1,5 +1,4 @@
-"""
-Ordered Stack
+"""Ordered Stack.
 
 A stack that maintains elements in sorted order, with the highest value
 at the top and the lowest at the bottom. Push operations preserve the
@@ -25,6 +24,7 @@ class OrderedStack:
         >>> s.push(2)
         >>> s.pop()
         3
+
     """
 
     def __init__(self) -> None:
@@ -36,6 +36,7 @@ class OrderedStack:
 
         Returns:
             True if the stack has no elements.
+
         """
         return self.items == []
 
@@ -44,6 +45,7 @@ class OrderedStack:
 
         Args:
             item: The value to append.
+
         """
         self.items.append(item)
 
@@ -52,6 +54,7 @@ class OrderedStack:
 
         Args:
             item: The value to push.
+
         """
         temp_stack = OrderedStack()
         if self.is_empty() or item > self.peek():
@@ -71,9 +74,11 @@ class OrderedStack:
 
         Raises:
             IndexError: If the stack is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Stack is empty")
+            msg = "Stack is empty"
+            raise IndexError(msg)
         return self.items.pop()
 
     def peek(self) -> int:
@@ -81,6 +86,7 @@ class OrderedStack:
 
         Returns:
             The top (largest) element.
+
         """
         return self.items[len(self.items) - 1]
 
@@ -89,5 +95,6 @@ class OrderedStack:
 
         Returns:
             The stack size.
+
         """
         return len(self.items)

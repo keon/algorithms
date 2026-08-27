@@ -1,5 +1,4 @@
-"""
-Multiplicative Order
+"""Multiplicative Order.
 
 Find the multiplicative order of a modulo n, which is the smallest positive
 integer k such that a^k = 1 (mod n). Requires gcd(a, n) = 1.
@@ -32,6 +31,7 @@ def find_order(a: int, n: int) -> int:
         6
         >>> find_order(1, 1)
         1
+
     """
     if (a == 1) & (n == 1):
         return 1

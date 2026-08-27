@@ -1,5 +1,4 @@
-"""
-Reverse Bits
+"""Reverse Bits.
 
 Reverse the bits of a 32-bit unsigned integer.
 
@@ -27,6 +26,7 @@ def reverse_bits(number: int) -> int:
         964176192
         >>> reverse_bits(0)
         0
+
     """
     result = 0
     for _ in range(32):

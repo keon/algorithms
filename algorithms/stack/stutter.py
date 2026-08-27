@@ -1,5 +1,4 @@
-"""
-Stutter
+"""Stutter.
 
 Replace every value in a stack with two occurrences of that value.
 Two approaches: one using an auxiliary stack, one using an auxiliary queue.
@@ -28,6 +27,7 @@ def first_stutter(stack: list[int]) -> list[int]:
     Examples:
         >>> first_stutter([3, 7, 1, 14, 9])
         [3, 3, 7, 7, 1, 1, 14, 14, 9, 9]
+
     """
     storage_stack: list[int] = []
     for _ in range(len(stack)):
@@ -52,6 +52,7 @@ def second_stutter(stack: list[int]) -> list[int]:
     Examples:
         >>> second_stutter([3, 7, 1, 14, 9])
         [3, 3, 7, 7, 1, 1, 14, 14, 9, 9]
+
     """
     queue: collections.deque[int] = collections.deque()
     for _ in range(len(stack)):

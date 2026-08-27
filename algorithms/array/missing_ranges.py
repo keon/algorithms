@@ -1,5 +1,4 @@
-"""
-Missing Ranges
+"""Missing Ranges.
 
 Find the ranges of numbers that are missing between a given low and high
 bound, given a sorted array of integers.
@@ -28,6 +27,7 @@ def missing_ranges(array: list[int], low: int, high: int) -> list[tuple[int, int
     Examples:
         >>> missing_ranges([3, 5], 1, 10)
         [(1, 2), (4, 4), (6, 10)]
+
     """
     result = []
     start = low

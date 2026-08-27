@@ -1,5 +1,4 @@
-"""
-Delete Node in a Linked List
+"""Delete Node in a Linked List.
 
 Given only access to a node (not the tail) in a singly linked list, delete
 that node by copying the next node's value and skipping over it.
@@ -37,6 +36,7 @@ def delete_node(node: Node | None) -> None:
         >>> delete_node(head.next)
         >>> head.next.val
         3
+
     """
     if node is None or node.next is None:
         raise ValueError

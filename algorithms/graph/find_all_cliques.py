@@ -1,5 +1,4 @@
-"""
-Find All Cliques (Bron-Kerbosch)
+"""Find All Cliques (Bron-Kerbosch).
 
 Finds every maximal clique in an undirected graph.
 
@@ -26,6 +25,7 @@ def find_all_cliques(edges: dict[str, set[str]]) -> list[list[str]]:
     Examples:
         >>> find_all_cliques({'0': {'1'}, '1': {'0'}})
         [['0', '1']]
+
     """
     compsub: list[str] = []
     solutions: list[list[str]] = []

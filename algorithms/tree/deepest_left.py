@@ -1,5 +1,4 @@
-"""
-Deepest Left Leaf
+"""Deepest Left Leaf.
 
 Given a binary tree, find the deepest node that is the left child of its
 parent node.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 class DeepestLeft:
@@ -23,6 +25,7 @@ class DeepestLeft:
         >>> dl = DeepestLeft()
         >>> dl.depth
         0
+
     """
 
     def __init__(self) -> None:
@@ -31,7 +34,7 @@ class DeepestLeft:
 
 
 def find_deepest_left(
-    root: TreeNode | None, is_left: bool, depth: int, res: DeepestLeft
+    root: TreeNode | None, is_left: bool, depth: int, res: DeepestLeft,
 ) -> None:
     """Recursively find the deepest left child in a binary tree.
 
@@ -44,6 +47,7 @@ def find_deepest_left(
     Examples:
         >>> res = DeepestLeft()
         >>> find_deepest_left(None, True, 1, res)
+
     """
     if not root:
         return

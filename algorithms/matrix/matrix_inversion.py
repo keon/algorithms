@@ -1,5 +1,4 @@
-"""
-Matrix Inversion
+"""Matrix Inversion.
 
 Compute the inverse of an invertible n x n matrix A, returning an n x n
 matrix B such that A * B = B * A = I (the identity matrix). Uses cofactor
@@ -34,16 +33,17 @@ def invert_matrix(
     Examples:
         >>> invert_matrix([[1, 1], [1, 2]])
         [[2.0, -1.0], [-1.0, 1.0]]
+
     """
     if not _array_is_matrix(matrix):
         return [[-1]]
-    elif len(matrix) != len(matrix[0]):
+    if len(matrix) != len(matrix[0]):
         return [[-2]]
-    elif len(matrix) < 2:
+    if len(matrix) < 2:
         return [[-3]]
-    elif get_determinant(matrix) == 0:
+    if get_determinant(matrix) == 0:
         return [[-4]]
-    elif len(matrix) == 2:
+    if len(matrix) == 2:
         multiplier = 1 / get_determinant(matrix)
         inverted = [[multiplier] * len(matrix) for _ in range(len(matrix))]
         inverted[0][1] = inverted[0][1] * -1 * matrix[0][1]
@@ -51,11 +51,9 @@ def invert_matrix(
         inverted[0][0] = multiplier * matrix[1][1]
         inverted[1][1] = multiplier * matrix[0][0]
         return inverted
-    else:
-        matrix_of_minors = _get_matrix_of_minors(matrix)
-        multiplier = fractions.Fraction(1, get_determinant(matrix))
-        inverted = _transpose_and_multiply(matrix_of_minors, multiplier)
-        return inverted
+    matrix_of_minors = _get_matrix_of_minors(matrix)
+    multiplier = fractions.Fraction(1, get_determinant(matrix))
+    return _transpose_and_multiply(matrix_of_minors, multiplier)
 
 
 def get_determinant(matrix: list[list[int | float]]) -> int | float:
@@ -70,6 +68,7 @@ def get_determinant(matrix: list[list[int | float]]) -> int | float:
     Examples:
         >>> get_determinant([[1, 2], [3, 4]])
         -2
+
     """
     if len(matrix) == 2:
         return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
@@ -91,6 +90,7 @@ def _get_matrix_of_minors(
 
     Returns:
         Cofactor matrix.
+
     """
     size = len(matrix)
     result = [[0] * size for _ in range(size)]
@@ -102,7 +102,7 @@ def _get_matrix_of_minors(
 
 
 def _get_minor(
-    matrix: list[list[int | float]], row: int, col: int
+    matrix: list[list[int | float]], row: int, col: int,
 ) -> list[list[int | float]]:
     """Extract the minor by removing the given row and column.
 
@@ -113,6 +113,7 @@ def _get_minor(
 
     Returns:
         Sub-matrix with the specified row and column removed.
+
     """
     minors = []
     for i in range(len(matrix)):
@@ -125,7 +126,7 @@ def _get_minor(
 
 def _transpose_and_multiply(
     matrix: list[list[int | float]],
-    multiplier: int | float | fractions.Fraction = 1,
+    multiplier: float | fractions.Fraction = 1,
 ) -> list[list[int | float | fractions.Fraction]]:
     """Transpose the matrix and multiply each element by a scalar.
 
@@ -135,6 +136,7 @@ def _transpose_and_multiply(
 
     Returns:
         Transposed and scaled matrix.
+
     """
     for row in range(len(matrix)):
         for col in range(row + 1):
@@ -152,6 +154,7 @@ def _array_is_matrix(matrix: list[list]) -> bool:
 
     Returns:
         True if all rows have the same length, False otherwise.
+
     """
     if len(matrix) == 0:
         return False

@@ -1,5 +1,4 @@
-"""
-First Cyclic Node
+"""First Cyclic Node.
 
 Given a linked list, find the first node of a cycle in it using Floyd's
 cycle-finding algorithm (Tortoise and Hare).
@@ -34,6 +33,7 @@ def first_cyclic_node(head: Node | None) -> Node | None:
         >>> a.next = b; b.next = c; c.next = b
         >>> first_cyclic_node(a).val
         2
+
     """
     runner = walker = head
     while runner and runner.next:

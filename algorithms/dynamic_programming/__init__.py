@@ -1,5 +1,4 @@
-"""
-Dynamic Programming Algorithms
+"""Dynamic Programming Algorithms.
 
 A collection of dynamic programming algorithm implementations.
 """
@@ -37,25 +36,35 @@ from .rod_cut import cut_rod
 from .word_break import word_break
 
 __all__ = [
-    # buy_sell_stock
-    "max_profit_naive",
-    "max_profit_optimized",
+    # knapsack
+    "Item",
+    # job_scheduling
+    "Job",
     # climbing_stairs
     "climb_stairs",
     "climb_stairs_optimized",
-    # coin_change
-    "count",
+    "combination_sum_bottom_up",
     # combination_sum
     "combination_sum_topdown",
-    "combination_sum_bottom_up",
+    # coin_change
+    "count",
+    # count_paths_dp
+    "count_paths_dp",
+    "count_paths_memo",
+    "count_paths_recursive",
+    # rod_cut
+    "cut_rod",
     # edit_distance
     "edit_distance",
     # egg_drop
     "egg_drop",
+    "fib_iter",
+    "fib_list",
     # fib
     "fib_recursive",
-    "fib_list",
-    "fib_iter",
+    # k_factor
+    "find_k_factor",
+    "get_maximum_value",
     # hosoya_triangle
     "hosoya",
     "hosoya_testing",
@@ -63,14 +72,7 @@ __all__ = [
     "house_robber",
     # int_divide
     "int_divide",
-    # job_scheduling
-    "Job",
-    "schedule",
-    # k_factor
-    "find_k_factor",
-    # knapsack
-    "Item",
-    "get_maximum_value",
+    "is_match",
     # longest_common_subsequence
     "longest_common_subsequence",
     # longest_increasing
@@ -81,7 +83,9 @@ __all__ = [
     "matrix_chain_order",
     # max_product_subarray
     "max_product",
-    "subarray_with_max_product",
+    # buy_sell_stock
+    "max_profit_naive",
+    "max_profit_optimized",
     # max_subarray
     "max_subarray",
     # min_cost_path
@@ -93,15 +97,10 @@ __all__ = [
     "planting_trees",
     # regex_matching
     "regex_matching",
-    "is_match",
-    # rod_cut
-    "cut_rod",
-    # word_break
-    "word_break",
+    "schedule",
+    "subarray_with_max_product",
     # bitmask
     "tsp",
-    # count_paths_dp
-    "count_paths_dp",
-    "count_paths_memo",
-    "count_paths_recursive",
+    # word_break
+    "word_break",
 ]

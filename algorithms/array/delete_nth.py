@@ -1,5 +1,4 @@
-"""
-Delete Nth Occurrence
+"""Delete Nth Occurrence.
 
 Given a list and a number N, create a new list that contains each element
 of the original list at most N times, without reordering.
@@ -33,6 +32,7 @@ def delete_nth_naive(array: list[int], n: int) -> list[int]:
     Examples:
         >>> delete_nth_naive([1, 2, 3, 1, 2, 1, 2, 3], 2)
         [1, 2, 3, 1, 2, 3]
+
     """
     result = []
     for num in array:
@@ -54,6 +54,7 @@ def delete_nth(array: list[int], n: int) -> list[int]:
     Examples:
         >>> delete_nth([1, 2, 3, 1, 2, 1, 2, 3], 2)
         [1, 2, 3, 1, 2, 3]
+
     """
     result = []
     counts = collections.defaultdict(int)

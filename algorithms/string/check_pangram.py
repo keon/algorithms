@@ -1,5 +1,4 @@
-"""
-Check Pangram
+"""Check Pangram.
 
 Checks whether a given string is a pangram, meaning it contains every
 letter of the English alphabet at least once.
@@ -26,6 +25,7 @@ def check_pangram(input_string: str) -> bool:
     Examples:
         >>> check_pangram("The quick brown fox jumps over the lazy dog")
         True
+
     """
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     return all(char in input_string.lower() for char in alphabet)

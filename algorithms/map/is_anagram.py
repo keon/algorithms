@@ -1,5 +1,4 @@
-"""
-Is Anagram
+"""Is Anagram.
 
 Determine whether two strings are anagrams of each other by comparing
 character frequency maps.
@@ -29,6 +28,7 @@ def is_anagram(s: str, t: str) -> bool:
         True
         >>> is_anagram("rat", "car")
         False
+
     """
     freq_s: dict[str, int] = {}
     freq_t: dict[str, int] = {}

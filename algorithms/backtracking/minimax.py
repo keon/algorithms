@@ -45,16 +45,15 @@ def minimax(
                 minimax(depth - 1, False, scores[mid:], alpha, beta),
             )
         return value
-    else:
-        value = math.inf
+    value = math.inf
+    value = min(
+        value,
+        minimax(depth - 1, True, scores[:mid], alpha, beta),
+    )
+    beta = min(beta, value)
+    if alpha < beta:
         value = min(
             value,
-            minimax(depth - 1, True, scores[:mid], alpha, beta),
+            minimax(depth - 1, True, scores[mid:], alpha, beta),
         )
-        beta = min(beta, value)
-        if alpha < beta:
-            value = min(
-                value,
-                minimax(depth - 1, True, scores[mid:], alpha, beta),
-            )
-        return value
+    return value

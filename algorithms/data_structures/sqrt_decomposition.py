@@ -1,5 +1,4 @@
-"""
-Square Root (Sqrt) Decomposition
+"""Square Root (Sqrt) Decomposition.
 
 Divides an array into blocks of size √n to allow O(√n) range queries and
 point updates — a simple alternative to segment trees for range-aggregate
@@ -40,6 +39,7 @@ class SqrtDecomposition:
         >>> sd.update(4, 10)
         >>> sd.query(0, 8)
         50
+
     """
 
     def __init__(self, arr: list[int | float]) -> None:
@@ -47,6 +47,7 @@ class SqrtDecomposition:
 
         Args:
             arr: Input array of numbers.
+
         """
         self.data = list(arr)
         n = len(self.data)
@@ -57,7 +58,7 @@ class SqrtDecomposition:
         for i, val in enumerate(self.data):
             self.blocks[i // self.block_size] += val
 
-    def update(self, index: int, value: int | float) -> None:
+    def update(self, index: int, value: float) -> None:
         """Set ``data[index]`` to *value* and update the block sum.
 
         Args:
@@ -72,6 +73,7 @@ class SqrtDecomposition:
             >>> sd.update(1, 10)
             >>> sd.query(0, 2)
             14
+
         """
         if index < 0 or index >= len(self.data):
             msg = f"index {index} out of range for length {len(self.data)}"
@@ -98,6 +100,7 @@ class SqrtDecomposition:
             >>> sd = SqrtDecomposition([1, 2, 3, 4, 5])
             >>> sd.query(1, 3)
             9
+
         """
         if left < 0 or right >= len(self.data) or left > right:
             msg = f"invalid range [{left}, {right}] for length {len(self.data)}"

@@ -1,23 +1,19 @@
-"""Imports TreeNodes"""
+"""Imports TreeNodes."""
 
 from algorithms.common.tree_node import TreeNode
 
 
 class AvlTree:
-    """
-    An avl tree.
-    """
+    """An avl tree."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         # Root node of the tree.
         self.node = None
         self.height = -1
         self.balance = 0
 
-    def insert(self, key):
-        """
-        Insert new key into node
-        """
+    def insert(self, key) -> None:
+        """Insert new key into node."""
         # Create new node
         node = TreeNode(key)
         if not self.node:
@@ -30,10 +26,8 @@ class AvlTree:
             self.node.right.insert(key)
         self.re_balance()
 
-    def re_balance(self):
-        """
-        Re balance tree. After inserting or deleting a node,
-        """
+    def re_balance(self) -> None:
+        """Re balance tree. After inserting or deleting a node,."""
         self.update_heights(recursive=False)
         self.update_balances(False)
 
@@ -56,10 +50,8 @@ class AvlTree:
                 self.update_heights()
                 self.update_balances()
 
-    def update_heights(self, recursive=True):
-        """
-        Update tree height
-        """
+    def update_heights(self, recursive=True) -> None:
+        """Update tree height."""
         if self.node:
             if recursive:
                 if self.node.left:
@@ -71,11 +63,8 @@ class AvlTree:
         else:
             self.height = -1
 
-    def update_balances(self, recursive=True):
-        """
-        Calculate tree balance factor
-
-        """
+    def update_balances(self, recursive=True) -> None:
+        """Calculate tree balance factor."""
         if self.node:
             if recursive:
                 if self.node.left:
@@ -87,10 +76,8 @@ class AvlTree:
         else:
             self.balance = 0
 
-    def rotate_right(self):
-        """
-        Right rotation
-        """
+    def rotate_right(self) -> None:
+        """Right rotation."""
         new_root = self.node.left.node
         new_left_sub = new_root.right.node
         old_root = self.node
@@ -99,10 +86,8 @@ class AvlTree:
         old_root.left.node = new_left_sub
         new_root.right.node = old_root
 
-    def rotate_left(self):
-        """
-        Left rotation
-        """
+    def rotate_left(self) -> None:
+        """Left rotation."""
         new_root = self.node.right.node
         new_left_sub = new_root.left.node
         old_root = self.node
@@ -112,9 +97,7 @@ class AvlTree:
         new_root.left.node = old_root
 
     def in_order_traverse(self):
-        """
-        In-order traversal of the tree
-        """
+        """In-order traversal of the tree."""
         result = []
 
         if not self.node:

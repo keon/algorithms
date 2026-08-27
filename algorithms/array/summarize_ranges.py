@@ -1,5 +1,4 @@
-"""
-Summarize Ranges
+"""Summarize Ranges.
 
 Given a sorted integer array without duplicates, return the summary of its
 ranges as a list of (start, end) tuples.
@@ -26,6 +25,7 @@ def summarize_ranges(array: list[int]) -> list[tuple[int, ...]]:
     Examples:
         >>> summarize_ranges([0, 1, 2, 4, 5, 7])
         [(0, 2), (4, 5), (7, 7)]
+
     """
     result = []
     if len(array) == 0:

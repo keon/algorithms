@@ -1,5 +1,4 @@
-"""
-Remove Bit
+"""Remove Bit.
 
 Remove a single bit at a specific position from an integer, shifting
 higher bits down to fill the gap.
@@ -34,6 +33,7 @@ def remove_bit(number: int, position: int) -> int:
         5
         >>> remove_bit(21, 0)
         10
+
     """
     upper = number >> (position + 1)
     upper = upper << position

@@ -56,5 +56,5 @@ def rmse(x: list[float], y: list[float]) -> float:
     n = len(y)
     return math.sqrt(
         sum((yi - (slope * xi + intercept)) ** 2 for xi, yi in zip(x, y, strict=False))
-        / n
+        / n,
     )

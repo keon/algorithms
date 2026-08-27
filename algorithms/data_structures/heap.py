@@ -1,5 +1,4 @@
-r"""
-Binary Heap
+r"""Binary Heap.
 
 A min heap is a complete binary tree where each node is smaller than
 its children. The root is the minimum element. Uses an array
@@ -29,6 +28,7 @@ class AbstractHeap(metaclass=ABCMeta):
 
         Args:
             index: Index of the element to percolate up.
+
         """
 
     @abstractmethod
@@ -37,6 +37,7 @@ class AbstractHeap(metaclass=ABCMeta):
 
         Args:
             val: The value to insert.
+
         """
 
     @abstractmethod
@@ -45,6 +46,7 @@ class AbstractHeap(metaclass=ABCMeta):
 
         Args:
             index: Index of the element to percolate down.
+
         """
 
     @abstractmethod
@@ -56,6 +58,7 @@ class AbstractHeap(metaclass=ABCMeta):
 
         Returns:
             Index of the smaller child.
+
         """
 
     @abstractmethod
@@ -64,6 +67,7 @@ class AbstractHeap(metaclass=ABCMeta):
 
         Returns:
             The minimum value in the heap.
+
         """
 
 
@@ -76,6 +80,7 @@ class BinaryHeap(AbstractHeap):
         >>> heap.insert(3)
         >>> heap.remove_min()
         3
+
     """
 
     def __init__(self) -> None:
@@ -88,6 +93,7 @@ class BinaryHeap(AbstractHeap):
 
         Args:
             index: Index of the element to percolate up.
+
         """
         while index // 2 > 0:
             if self.heap[index] < self.heap[index // 2]:
@@ -104,6 +110,7 @@ class BinaryHeap(AbstractHeap):
 
         Args:
             val: The value to insert.
+
         """
         self.heap.append(val)
         self.current_size = self.current_size + 1
@@ -117,6 +124,7 @@ class BinaryHeap(AbstractHeap):
 
         Returns:
             Index of the smaller child.
+
         """
         if 2 * index + 1 > self.current_size:
             return 2 * index
@@ -129,6 +137,7 @@ class BinaryHeap(AbstractHeap):
 
         Args:
             index: Index of the element to percolate down.
+
         """
         while 2 * index <= self.current_size:
             smaller_child = self.min_child(index)
@@ -144,6 +153,7 @@ class BinaryHeap(AbstractHeap):
 
         Returns:
             The minimum value.
+
         """
         ret = self.heap[1]
         self.heap[1] = self.heap[self.current_size]

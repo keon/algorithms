@@ -1,5 +1,4 @@
-"""
-Top 1 (Mode)
+"""Top 1 (Mode).
 
 Find the most frequently occurring value(s) in an array. When multiple
 values share the highest frequency, all are returned.
@@ -28,6 +27,7 @@ def top_1(array: list[Any]) -> list[Any]:
     Examples:
         >>> top_1([1, 1, 2, 2, 3])
         [1, 2]
+
     """
     frequency = {}
     for element in array:

@@ -1,5 +1,4 @@
-"""
-Heap Sort
+"""Heap Sort.
 
 Heap sort builds a heap from the data and repeatedly extracts the
 extreme element to produce a sorted array.  Two variants are provided:
@@ -27,6 +26,7 @@ def max_heap_sort(array: list[int]) -> list[int]:
     Examples:
         >>> max_heap_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     for i in range(len(array) - 1, 0, -1):
         _max_heapify(array, i)
@@ -64,6 +64,7 @@ def min_heap_sort(array: list[int]) -> list[int]:
     Examples:
         >>> min_heap_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     for i in range(len(array) - 1):
         _min_heapify(array, i)

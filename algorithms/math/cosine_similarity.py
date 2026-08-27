@@ -1,5 +1,4 @@
-"""
-Cosine Similarity
+"""Cosine Similarity.
 
 Calculate the cosine similarity between two vectors, which measures the
 cosine of the angle between them. Values range from -1 (opposite) to 1
@@ -25,12 +24,12 @@ def _l2_distance(vec: list[float]) -> float:
 
     Returns:
         The L2 norm of the vector.
+
     """
     norm = 0.0
     for element in vec:
         norm += element * element
-    norm = math.sqrt(norm)
-    return norm
+    return math.sqrt(norm)
 
 
 def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
@@ -49,13 +48,14 @@ def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
     Examples:
         >>> round(cosine_similarity([1, 1, 1], [1, 2, -1]), 15)
         0.471404520791032
+
     """
     if len(vec1) != len(vec2):
         raise ValueError(
             "The two vectors must be the same length. Got shape "
             + str(len(vec1))
             + " and "
-            + str(len(vec2))
+            + str(len(vec2)),
         )
 
     norm_a = _l2_distance(vec1)

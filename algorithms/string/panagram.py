@@ -1,5 +1,4 @@
-"""
-Panagram Checker
+"""Panagram Checker.
 
 Check whether a given string is a panagram (a sentence using every letter
 of the English alphabet at least once).
@@ -28,6 +27,7 @@ def panagram(string: str) -> bool:
     Examples:
         >>> panagram("the quick brown fox jumps over the lazy dog")
         True
+
     """
     letters = set(ascii_lowercase)
     for char in string:

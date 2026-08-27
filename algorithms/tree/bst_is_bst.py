@@ -1,5 +1,4 @@
-"""
-Given a binary tree, determine if it is a valid binary search tree (BST).
+"""Given a binary tree, determine if it is a valid binary search tree (BST).
 
 Assume a BST is defined as follows:
 
@@ -21,12 +20,10 @@ Binary tree [1,2,3], return false.
 """
 
 
-def is_bst(root):
-    """
-    :type root: TreeNode
+def is_bst(root) -> bool:
+    """:type root: TreeNode
     :rtype: bool
     """
-
     stack = []
     pre = None
 

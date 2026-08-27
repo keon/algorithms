@@ -1,5 +1,4 @@
-"""
-Two Sum
+"""Two Sum.
 
 Given a sorted array of integers and a target sum, find the 1-based indices of
 the two numbers that add up to the target.  Three approaches are provided:
@@ -33,6 +32,7 @@ def two_sum(numbers: list[int], target: int) -> list[int] | None:
         [1, 2]
         >>> two_sum([1, 2, 3], 7) is None
         True
+
     """
     for i, number in enumerate(numbers):
         second_val = target - number
@@ -63,6 +63,7 @@ def two_sum1(numbers: list[int], target: int) -> list[int] | None:
     Examples:
         >>> two_sum1([2, 7, 11, 15], 9)
         [1, 2]
+
     """
     seen: dict[int, int] = {}
     for i, num in enumerate(numbers):
@@ -87,6 +88,7 @@ def two_sum2(numbers: list[int], target: int) -> list[int] | None:
     Examples:
         >>> two_sum2([2, 7, 11, 15], 9)
         [1, 2]
+
     """
     left = 0
     right = len(numbers) - 1

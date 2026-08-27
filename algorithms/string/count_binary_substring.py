@@ -1,5 +1,4 @@
-"""
-Count Binary Substrings
+"""Count Binary Substrings.
 
 Count the number of non-empty contiguous substrings that have the same number
 of 0s and 1s, where all 0s and all 1s are grouped consecutively.
@@ -26,6 +25,7 @@ def count_binary_substring(text: str) -> int:
     Examples:
         >>> count_binary_substring("00110011")
         6
+
     """
     current = 1
     previous = 0
@@ -37,5 +37,4 @@ def count_binary_substring(text: str) -> int:
             current = 1
         else:
             current = current + 1
-    count = count + min(previous, current)
-    return count
+    return count + min(previous, current)

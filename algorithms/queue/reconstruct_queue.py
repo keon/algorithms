@@ -1,5 +1,4 @@
-"""
-Reconstruct Queue by Height
+"""Reconstruct Queue by Height.
 
 Given a list of people described by (height, k) pairs where k is the
 number of taller-or-equal people in front, reconstruct the queue by
@@ -27,6 +26,7 @@ def reconstruct_queue(people: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> reconstruct_queue([[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]])
         [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
+
     """
     queue: list[list[int]] = []
     people.sort(key=lambda x: (-x[0], x[1]))

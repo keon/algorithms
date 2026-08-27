@@ -1,5 +1,4 @@
-"""
-Binary Tree Paths
+"""Binary Tree Paths.
 
 Given a binary tree, return all root-to-leaf paths as a list of strings
 in the format "root->...->leaf".
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def binary_tree_paths(root: TreeNode | None) -> list[str]:
@@ -28,6 +30,7 @@ def binary_tree_paths(root: TreeNode | None) -> list[str]:
     Examples:
         >>> binary_tree_paths(None)
         []
+
     """
     result: list[str] = []
     if root is None:
@@ -43,6 +46,7 @@ def _dfs(result: list[str], root: TreeNode, current: str) -> None:
         result: The list accumulating path strings.
         root: The current node being visited.
         current: The path string built so far.
+
     """
     if root.left is None and root.right is None:
         result.append(current)

@@ -1,5 +1,4 @@
-"""
-Surface Area of a Torus
+"""Surface Area of a Torus.
 
 Calculate the surface area of a torus given its major and minor radii
 using the formula A = 4 * pi^2 * R * r.
@@ -33,8 +32,10 @@ def surface_area_of_torus(major_radius: float, minor_radius: float) -> float:
     Examples:
         >>> surface_area_of_torus(3.0, 1.0)
         118.4352528130723
+
     """
     if major_radius < 0 or minor_radius < 0:
-        raise ValueError("Radii must be non-negative")
+        msg = "Radii must be non-negative"
+        raise ValueError(msg)
 
     return 4 * pi**2 * major_radius * minor_radius

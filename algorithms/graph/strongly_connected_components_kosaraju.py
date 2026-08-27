@@ -1,5 +1,4 @@
-"""
-Strongly Connected Components (Kosaraju's Algorithm)
+"""Strongly Connected Components (Kosaraju's Algorithm).
 
 Counts the number of strongly connected components in a directed graph
 using two DFS passes.
@@ -33,6 +32,7 @@ class Kosaraju:
             adj: Adjacency list.
             visited: Visited flags (-1 = unvisited).
             stk: Stack recording finish order.
+
         """
         visited[i] = 1
 
@@ -55,6 +55,7 @@ class Kosaraju:
         Examples:
             >>> Kosaraju().kosaraju(3, [[1], [2], [0]])
             1
+
         """
         stk: list[int] = []
         visited = [-1] * (vertices + 1)

@@ -1,5 +1,4 @@
-"""
-Union-Find (Disjoint Set) Data Structure
+"""Union-Find (Disjoint Set) Data Structure.
 
 A Union-Find data structure supporting add, find (root), and unite operations.
 Uses union by size and path compression for near-constant amortized time.
@@ -28,6 +27,7 @@ class Union:
         True
         >>> uf.root(1) == uf.root(3)
         False
+
     """
 
     def __init__(self) -> None:
@@ -40,6 +40,7 @@ class Union:
 
         Args:
             element: The element to add.
+
         """
         self.parents[element] = element
         self.size[element] = 1
@@ -53,6 +54,7 @@ class Union:
 
         Returns:
             The root representative of the element's set.
+
         """
         while element != self.parents[element]:
             self.parents[element] = self.parents[self.parents[element]]
@@ -65,6 +67,7 @@ class Union:
         Args:
             element1: An element in the first set.
             element2: An element in the second set.
+
         """
         root1, root2 = self.root(element1), self.root(element2)
         if root1 == root2:

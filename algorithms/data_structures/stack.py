@@ -1,5 +1,4 @@
-"""
-Stack Abstract Data Type
+"""Stack Abstract Data Type.
 
 Implementations of the stack ADT using both a fixed-size array and a
 linked list. Both support push, pop, peek, is_empty, len, iter, and str.
@@ -14,7 +13,10 @@ Complexity:
 from __future__ import annotations
 
 from abc import ABCMeta, abstractmethod
-from collections.abc import Iterator
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 class AbstractStack(metaclass=ABCMeta):
@@ -35,6 +37,7 @@ class AbstractStack(metaclass=ABCMeta):
 
         Returns:
             True if the stack has no elements.
+
         """
         return self._top == -1
 
@@ -63,6 +66,7 @@ class ArrayStack(AbstractStack):
         >>> s.push(1)
         >>> s.pop()
         1
+
     """
 
     def __init__(self, size: int = 10) -> None:
@@ -70,6 +74,7 @@ class ArrayStack(AbstractStack):
 
         Args:
             size: Initial capacity of the underlying array.
+
         """
         super().__init__()
         self._array: list[object | None] = [None] * size
@@ -87,6 +92,7 @@ class ArrayStack(AbstractStack):
 
         Args:
             value: The value to push.
+
         """
         self._top += 1
         if self._top == len(self._array):
@@ -101,9 +107,11 @@ class ArrayStack(AbstractStack):
 
         Raises:
             IndexError: If the stack is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Stack is empty")
+            msg = "Stack is empty"
+            raise IndexError(msg)
         value = self._array[self._top]
         self._top -= 1
         return value
@@ -116,9 +124,11 @@ class ArrayStack(AbstractStack):
 
         Raises:
             IndexError: If the stack is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Stack is empty")
+            msg = "Stack is empty"
+            raise IndexError(msg)
         return self._array[self._top]
 
     def _expand(self) -> None:
@@ -142,6 +152,7 @@ class LinkedListStack(AbstractStack):
         >>> s.push(1)
         >>> s.pop()
         1
+
     """
 
     def __init__(self) -> None:
@@ -161,6 +172,7 @@ class LinkedListStack(AbstractStack):
 
         Args:
             value: The value to push.
+
         """
         node = StackNode(value)
         node.next = self.head
@@ -175,9 +187,11 @@ class LinkedListStack(AbstractStack):
 
         Raises:
             IndexError: If the stack is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Stack is empty")
+            msg = "Stack is empty"
+            raise IndexError(msg)
         value = self.head.value
         self.head = self.head.next
         self._top -= 1
@@ -191,7 +205,9 @@ class LinkedListStack(AbstractStack):
 
         Raises:
             IndexError: If the stack is empty.
+
         """
         if self.is_empty():
-            raise IndexError("Stack is empty")
+            msg = "Stack is empty"
+            raise IndexError(msg)
         return self.head.value

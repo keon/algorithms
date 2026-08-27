@@ -1,5 +1,4 @@
-"""
-Strobogrammatic Number Check
+"""Strobogrammatic Number Check.
 
 Determine whether a number (as a string) is strobogrammatic, meaning it
 looks the same when rotated 180 degrees.
@@ -28,6 +27,7 @@ def is_strobogrammatic(num: str) -> bool:
         True
         >>> is_strobogrammatic("14")
         False
+
     """
     comb = "00 11 88 69 96"
     i = 0
@@ -54,5 +54,6 @@ def is_strobogrammatic2(num: str) -> bool:
         True
         >>> is_strobogrammatic2("14")
         False
+
     """
     return num == num[::-1].replace("6", "#").replace("9", "6").replace("#", "9")

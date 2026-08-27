@@ -1,5 +1,4 @@
-"""
-Cocktail Shaker Sort
+"""Cocktail Shaker Sort.
 
 Cocktail shaker sort is a variation of bubble sort that traverses the
 list alternately from left-to-right and right-to-left.
@@ -26,6 +25,7 @@ def cocktail_shaker_sort(array: list[int]) -> list[int]:
     Examples:
         >>> cocktail_shaker_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     swapped = True

@@ -1,5 +1,4 @@
-"""
-Repeated Substring Pattern
+"""Repeated Substring Pattern.
 
 Given a non-empty string, check if it can be constructed by taking a
 substring of it and appending multiple copies of the substring together.
@@ -26,6 +25,7 @@ def repeat_substring(text: str) -> bool:
     Examples:
         >>> repeat_substring("abab")
         True
+
     """
     doubled = (text + text)[1:-1]
     return text in doubled

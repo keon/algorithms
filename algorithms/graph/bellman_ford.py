@@ -1,5 +1,4 @@
-"""
-Bellman-Ford Algorithm for Single-Source Shortest Path
+"""Bellman-Ford Algorithm for Single-Source Shortest Path.
 
 Finds the shortest paths from a source vertex to all other vertices in a
 weighted directed graph.  Unlike Dijkstra's algorithm it can handle graphs
@@ -31,6 +30,7 @@ def bellman_ford(graph: dict[str, dict[str, float]], source: str) -> bool:
         >>> g = {'a': {'b': 1}, 'b': {'c': 2}, 'c': {}}
         >>> bellman_ford(g, 'a')
         True
+
     """
     distance: dict[str, float] = {}
     predecessor: dict[str, str | None] = {}
@@ -68,6 +68,7 @@ def _initialize_single_source(
         source: The source vertex.
         distance: Dictionary to store shortest distances (modified in place).
         predecessor: Dictionary to store path predecessors (modified in place).
+
     """
     all_nodes: set[str] = set(graph.keys())
     for neighbors in graph.values():

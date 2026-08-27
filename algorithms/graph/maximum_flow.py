@@ -1,5 +1,4 @@
-"""
-Maximum Flow Algorithms
+"""Maximum Flow Algorithms.
 
 Implements Ford-Fulkerson (DFS), Edmonds-Karp (BFS) and Dinic's algorithm
 for computing maximum flow in a flow network.
@@ -39,6 +38,7 @@ def _dfs(
 
     Returns:
         Flow pushed along the augmenting path found.
+
     """
     if idx == sink:
         return current_flow
@@ -68,6 +68,7 @@ def ford_fulkerson(capacity: list[list[int]], source: int, sink: int) -> int:
     Examples:
         >>> ford_fulkerson([[0, 10, 0], [0, 0, 10], [0, 0, 0]], 0, 2)
         10
+
     """
     vertices = len(capacity)
     ret = 0
@@ -96,6 +97,7 @@ def edmonds_karp(capacity: list[list[int]], source: int, sink: int) -> int:
     Examples:
         >>> edmonds_karp([[0, 10, 0], [0, 0, 10], [0, 0, 0]], 0, 2)
         10
+
     """
     vertices = len(capacity)
     ret = 0
@@ -118,7 +120,7 @@ def edmonds_karp(capacity: list[list[int]], source: int, sink: int) -> int:
                     visit[nxt] = True
                     par[nxt] = idx
                     queue.put(
-                        (nxt, min(current_flow, capacity[idx][nxt] - flow[idx][nxt]))
+                        (nxt, min(current_flow, capacity[idx][nxt] - flow[idx][nxt])),
                     )
         if par[sink] == -1:
             break
@@ -151,6 +153,7 @@ def _dinic_bfs(
 
     Returns:
         True if sink is reachable from source.
+
     """
     vertices = len(capacity)
     queue: Queue[int] = Queue()
@@ -187,6 +190,7 @@ def _dinic_dfs(
 
     Returns:
         Flow pushed.
+
     """
     if idx == sink:
         return current_flow
@@ -218,6 +222,7 @@ def dinic(capacity: list[list[int]], source: int, sink: int) -> int:
     Examples:
         >>> dinic([[0, 10, 0], [0, 0, 10], [0, 0, 0]], 0, 2)
         10
+
     """
     vertices = len(capacity)
     flow = [[0] * vertices for _ in range(vertices)]

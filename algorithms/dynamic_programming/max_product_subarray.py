@@ -1,5 +1,4 @@
-"""
-Maximum Product Subarray
+"""Maximum Product Subarray.
 
 Find the contiguous subarray within an array that has the largest product.
 
@@ -31,13 +30,14 @@ def max_product(nums: list[int]) -> int:
     Examples:
         >>> max_product([2, 3, -2, 4])
         6
+
     """
     lmin = lmax = gmax = nums[0]
     for num in nums[1:]:
         t_1 = num * lmax
         t_2 = num * lmin
-        lmax = max(max(t_1, t_2), num)
-        lmin = min(min(t_1, t_2), num)
+        lmax = max(t_1, t_2, num)
+        lmin = min(t_1, t_2, num)
         gmax = max(gmax, lmax)
     return gmax
 
@@ -55,6 +55,7 @@ def subarray_with_max_product(arr: list[int]) -> tuple[int, list[int]]:
     Examples:
         >>> subarray_with_max_product([-2, -3, 6, 0, -7, -5])
         (36, [-2, -3, 6])
+
     """
     length = len(arr)
     product_so_far = max_product_end = 1

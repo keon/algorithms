@@ -1,5 +1,4 @@
-"""
-Shortest Distance from All Buildings
+"""Shortest Distance from All Buildings.
 
 Given a 2D grid with buildings (1), empty land (0) and obstacles (2), find
 the empty land with the smallest total distance to all buildings.
@@ -28,6 +27,7 @@ def shortest_distance(grid: list[list[int]]) -> int:
     Examples:
         >>> shortest_distance([[1, 0, 1]])
         2
+
     """
     if not grid or not grid[0]:
         return -1
@@ -65,6 +65,7 @@ def _bfs(
         i: Row of the building.
         j: Column of the building.
         count: Number of buildings visited so far.
+
     """
     q: deque[tuple[int, int, int]] = deque([(i, j, 0)])
     while q:

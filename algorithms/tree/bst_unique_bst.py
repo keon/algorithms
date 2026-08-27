@@ -1,5 +1,4 @@
-"""
-Given n, how many structurally unique BST's
+r"""Given n, how many structurally unique BST's
 (binary search trees) that store values 1...n?
 
 For example,
@@ -28,8 +27,7 @@ F(n) = F(0) * F(n-1) + F(1) * F(n-2) + F(2) * F(n-3)
 
 
 def num_trees(n):
-    """
-    :type n: int
+    """:type n: int
     :rtype: int
     """
     dp = [0] * (n + 1)

@@ -1,5 +1,4 @@
-"""
-Subsets via Bit Manipulation
+"""Subsets via Bit Manipulation.
 
 Generate all possible subsets of a set of distinct integers using bitmask
 enumeration. Each integer from 0 to 2^n - 1 represents a unique subset.
@@ -29,6 +28,7 @@ def subsets(nums: list[int]) -> set[tuple[int, ...]]:
     Examples:
         >>> sorted(subsets([1, 2, 3]))
         [(), (1,), (1, 2), (1, 2, 3), (1, 3), (2,), (2, 3), (3,)]
+
     """
     length = len(nums)
     total = 1 << length

@@ -1,5 +1,4 @@
-"""
-Josephus Problem
+"""Josephus Problem.
 
 People sit in a circular fashion; every k-th person is eliminated until
 everyone has been removed. Yield the elimination order.
@@ -13,8 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Generator
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 
 def josephus(items: list[Any], skip: int) -> Generator[Any, None, None]:
@@ -30,6 +31,7 @@ def josephus(items: list[Any], skip: int) -> Generator[Any, None, None]:
     Examples:
         >>> list(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9], 3))
         [3, 6, 9, 4, 8, 5, 2, 7, 1]
+
     """
     skip = skip - 1
     index = 0

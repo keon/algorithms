@@ -1,5 +1,4 @@
-"""
-Hash Table (Open Addressing)
+"""Hash Table (Open Addressing).
 
 Hash map implementation using open addressing with linear probing
 for collision resolution. Includes a resizable variant that doubles
@@ -23,6 +22,7 @@ class HashTable:
         >>> ht.put(1, 'one')
         >>> ht.get(1)
         'one'
+
     """
 
     _empty = object()
@@ -33,6 +33,7 @@ class HashTable:
 
         Args:
             size: Number of slots in the underlying array.
+
         """
         self.size = size
         self._len = 0
@@ -48,6 +49,7 @@ class HashTable:
 
         Raises:
             ValueError: If the table is full.
+
         """
         initial_hash = hash_ = self.hash(key)
 
@@ -57,7 +59,7 @@ class HashTable:
                 self._values[hash_] = value
                 self._len += 1
                 return
-            elif self._keys[hash_] == key:
+            if self._keys[hash_] == key:
                 self._keys[hash_] = key
                 self._values[hash_] = value
                 return
@@ -65,7 +67,8 @@ class HashTable:
             hash_ = self._rehash(hash_)
 
             if initial_hash == hash_:
-                raise ValueError("Table is full")
+                msg = "Table is full"
+                raise ValueError(msg)
 
     def get(self, key: int) -> object | None:
         """Retrieve the value for a given key.
@@ -75,12 +78,13 @@ class HashTable:
 
         Returns:
             The value associated with the key, or None if not found.
+
         """
         initial_hash = hash_ = self.hash(key)
         while True:
             if self._keys[hash_] is self._empty:
                 return None
-            elif self._keys[hash_] == key:
+            if self._keys[hash_] == key:
                 return self._values[hash_]
 
             hash_ = self._rehash(hash_)
@@ -92,12 +96,13 @@ class HashTable:
 
         Args:
             key: The key to delete.
+
         """
         initial_hash = hash_ = self.hash(key)
         while True:
             if self._keys[hash_] is self._empty:
-                return None
-            elif self._keys[hash_] == key:
+                return
+            if self._keys[hash_] == key:
                 self._keys[hash_] = self._deleted
                 self._values[hash_] = self._deleted
                 self._len -= 1
@@ -105,7 +110,7 @@ class HashTable:
 
             hash_ = self._rehash(hash_)
             if initial_hash == hash_:
-                return None
+                return
 
     def hash(self, key: int) -> int:
         """Compute the hash index for a key.
@@ -115,6 +120,7 @@ class HashTable:
 
         Returns:
             Index into the internal array.
+
         """
         return key % self.size
 
@@ -126,6 +132,7 @@ class HashTable:
 
         Returns:
             Next index to probe.
+
         """
         return (old_hash + 1) % self.size
 
@@ -150,6 +157,7 @@ class ResizableHashTable(HashTable):
         >>> rht.put(1, 'a')
         >>> rht.get(1)
         'a'
+
     """
 
     MIN_SIZE = 8
@@ -163,6 +171,7 @@ class ResizableHashTable(HashTable):
         Args:
             key: The key to insert.
             value: The value associated with the key.
+
         """
         super().put(key, value)
         if len(self) >= (self.size * 2) / 3:

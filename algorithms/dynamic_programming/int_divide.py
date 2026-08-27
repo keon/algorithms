@@ -1,5 +1,4 @@
-"""
-Integer Partition
+"""Integer Partition.
 
 Count the number of ways a positive integer can be represented as a sum
 of positive integers (order does not matter).
@@ -28,6 +27,7 @@ def int_divide(decompose: int) -> int:
         5
         >>> int_divide(7)
         15
+
     """
     arr = [[0 for i in range(decompose + 1)] for j in range(decompose + 1)]
     arr[1][1] = 1

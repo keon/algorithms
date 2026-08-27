@@ -1,5 +1,4 @@
-"""
-Longest Substring Without Repeating Characters
+"""Longest Substring Without Repeating Characters.
 
 Given a string, find the length of the longest substring without repeating
 characters. Multiple algorithm variants are provided.
@@ -26,6 +25,7 @@ def longest_non_repeat_v1(string: str) -> int:
     Examples:
         >>> longest_non_repeat_v1("abcabcbb")
         3
+
     """
     if string is None:
         return 0
@@ -52,6 +52,7 @@ def longest_non_repeat_v2(string: str) -> int:
     Examples:
         >>> longest_non_repeat_v2("abcabcbb")
         3
+
     """
     if string is None:
         return 0
@@ -78,6 +79,7 @@ def get_longest_non_repeat_v1(string: str) -> tuple[int, str]:
     Examples:
         >>> get_longest_non_repeat_v1("abcabcbb")
         (3, 'abc')
+
     """
     if string is None:
         return 0, ""
@@ -107,6 +109,7 @@ def get_longest_non_repeat_v2(string: str) -> tuple[int, str]:
     Examples:
         >>> get_longest_non_repeat_v2("abcabcbb")
         (3, 'abc')
+
     """
     if string is None:
         return 0, ""
@@ -116,10 +119,9 @@ def get_longest_non_repeat_v2(string: str) -> tuple[int, str]:
     for index, char in enumerate(string):
         if char in used_char and start <= used_char[char]:
             start = used_char[char] + 1
-        else:
-            if index - start + 1 > max_length:
-                max_length = index - start + 1
-                substring = string[start : index + 1]
+        elif index - start + 1 > max_length:
+            max_length = index - start + 1
+            substring = string[start : index + 1]
         used_char[char] = index
     return max_length, substring
 
@@ -136,6 +138,7 @@ def get_longest_non_repeat_v3(string: str) -> tuple[int, str]:
     Examples:
         >>> get_longest_non_repeat_v3("abcabcbb")
         (3, 'abc')
+
     """
     longest_substring = ""
     seen = set()

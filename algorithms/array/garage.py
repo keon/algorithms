@@ -1,5 +1,4 @@
-"""
-Garage Parking Rearrangement
+"""Garage Parking Rearrangement.
 
 There is a parking lot with only one empty spot (represented by 0). Given the
 initial and final states, find the minimum number of moves to rearrange the lot.
@@ -29,6 +28,7 @@ def garage(initial: list[int], final: list[int]) -> tuple[int, list[list[int]]]:
     Examples:
         >>> garage([1, 2, 3, 0, 4], [0, 3, 2, 1, 4])
         (4, [[0, 2, 3, 1, 4], [2, 0, 3, 1, 4], [2, 3, 0, 1, 4], [0, 3, 2, 1, 4]])
+
     """
     current = initial[::]
     sequence = []

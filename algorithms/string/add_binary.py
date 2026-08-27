@@ -1,5 +1,4 @@
-"""
-Add Binary
+"""Add Binary.
 
 Given two binary strings, return their sum as a binary string.
 
@@ -26,6 +25,7 @@ def add_binary(first: str, second: str) -> str:
     Examples:
         >>> add_binary("11", "1")
         '100'
+
     """
     result = ""
     carry, index_a, index_b = 0, len(first) - 1, len(second) - 1

@@ -27,7 +27,7 @@ def exponential_search(arr: list[int], target: int) -> int:
         mid = (low + high) // 2
         if arr[mid] == target:
             return mid
-        elif arr[mid] < target:
+        if arr[mid] < target:
             low = mid + 1
         else:
             high = mid - 1

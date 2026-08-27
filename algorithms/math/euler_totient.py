@@ -1,5 +1,4 @@
-"""
-Euler's Totient Function
+"""Euler's Totient Function.
 
 Compute Euler's totient function phi(n), which counts the number of integers
 from 1 to n inclusive that are coprime to n.
@@ -28,6 +27,7 @@ def euler_totient(n: int) -> int:
         4
         >>> euler_totient(21)
         12
+
     """
     result = n
     for i in range(2, int(n**0.5) + 1):

@@ -1,5 +1,4 @@
-"""
-Symmetry Group Cycle Index
+"""Symmetry Group Cycle Index.
 
 Compute the cycle index polynomial of the symmetric group S_n and use it
 to count distinct configurations of grids under row/column permutations
@@ -29,11 +28,13 @@ def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
 
     Returns:
         The resultant monomial from the Cartesian product merging.
+
     """
-    assert isinstance(m1, Monomial) and isinstance(m2, Monomial)
+    assert isinstance(m1, Monomial)
+    assert isinstance(m2, Monomial)
     a_vars = m1.variables
     b_vars = m2.variables
-    result_variables: dict[int, int] = dict()
+    result_variables: dict[int, int] = {}
     for i in a_vars:
         for j in b_vars:
             k = lcm(i, j)
@@ -47,7 +48,7 @@ def cycle_product(m1: Monomial, m2: Monomial) -> Monomial:
 
 
 def cycle_product_for_two_polynomials(
-    p1: Polynomial, p2: Polynomial, q: float | int | Fraction
+    p1: Polynomial, p2: Polynomial, q: float | Fraction,
 ) -> float | int | Fraction:
     """Compute the product of two cycle indices and evaluate at q.
 
@@ -58,6 +59,7 @@ def cycle_product_for_two_polynomials(
 
     Returns:
         The evaluated result.
+
     """
     ans = Fraction(0, 1)
     for m1 in p1.monomials:
@@ -76,6 +78,7 @@ def _cycle_index_sym_helper(n: int, memo: dict[int, Polynomial]) -> Polynomial:
 
     Returns:
         The cycle index polynomial of S_n.
+
     """
     if n in memo:
         return memo[n]
@@ -83,7 +86,7 @@ def _cycle_index_sym_helper(n: int, memo: dict[int, Polynomial]) -> Polynomial:
     for t in range(1, n + 1):
         ans = ans.__add__(
             Polynomial([Monomial({t: 1}, Fraction(1, 1))])
-            * _cycle_index_sym_helper(n - t, memo)
+            * _cycle_index_sym_helper(n - t, memo),
         )
     ans *= Fraction(1, n)
     memo[n] = ans
@@ -105,22 +108,24 @@ def get_cycle_index_sym(n: int) -> Polynomial:
     Examples:
         >>> get_cycle_index_sym(1)  # doctest: +SKIP
         Polynomial(...)
+
     """
     if n < 0:
-        raise ValueError("n should be a non-negative integer.")
+        msg = "n should be a non-negative integer."
+        raise ValueError(msg)
 
     memo = {
         0: Polynomial([Monomial({}, Fraction(1, 1))]),
         1: Polynomial([Monomial({1: 1}, Fraction(1, 1))]),
         2: Polynomial(
-            [Monomial({1: 2}, Fraction(1, 2)), Monomial({2: 1}, Fraction(1, 2))]
+            [Monomial({1: 2}, Fraction(1, 2)), Monomial({2: 1}, Fraction(1, 2))],
         ),
         3: Polynomial(
             [
                 Monomial({1: 3}, Fraction(1, 6)),
                 Monomial({1: 1, 2: 1}, Fraction(1, 2)),
                 Monomial({3: 1}, Fraction(1, 3)),
-            ]
+            ],
         ),
         4: Polynomial(
             [
@@ -129,8 +134,7 @@ def get_cycle_index_sym(n: int) -> Polynomial:
                 Monomial({3: 1, 1: 1}, Fraction(1, 3)),
                 Monomial({2: 2}, Fraction(1, 8)),
                 Monomial({4: 1}, Fraction(1, 4)),
-            ]
+            ],
         ),
     }
-    result = _cycle_index_sym_helper(n, memo)
-    return result
+    return _cycle_index_sym_helper(n, memo)

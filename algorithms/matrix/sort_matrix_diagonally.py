@@ -1,5 +1,4 @@
-"""
-Sort Matrix Diagonally
+"""Sort Matrix Diagonally.
 
 Given an m x n matrix of integers, sort each diagonal from top-left to
 bottom-right in ascending order and return the sorted matrix. Uses a
@@ -29,6 +28,7 @@ def sort_diagonally(mat: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> sort_diagonally([[3, 3, 1, 1], [2, 2, 1, 2], [1, 1, 1, 2]])
         [[1, 1, 1, 1], [1, 2, 2, 2], [1, 2, 3, 3]]
+
     """
     if len(mat) == 1 or len(mat[0]) == 1:
         return mat

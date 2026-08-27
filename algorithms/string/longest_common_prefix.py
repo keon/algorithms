@@ -1,5 +1,4 @@
-"""
-Longest Common Prefix
+"""Longest Common Prefix.
 
 Find the longest common prefix string amongst an array of strings.
 Three approaches: horizontal scanning, vertical scanning, and divide and conquer.
@@ -23,6 +22,7 @@ def _common_prefix(first: str, second: str) -> str:
 
     Returns:
         The common prefix shared by both strings.
+
     """
     if not first or not second:
         return ""
@@ -46,6 +46,7 @@ def longest_common_prefix_v1(strings: list[str]) -> str:
     Examples:
         >>> longest_common_prefix_v1(["flower", "flow", "flight"])
         'fl'
+
     """
     if not strings:
         return ""
@@ -67,6 +68,7 @@ def longest_common_prefix_v2(strings: list[str]) -> str:
     Examples:
         >>> longest_common_prefix_v2(["flower", "flow", "flight"])
         'fl'
+
     """
     if not strings:
         return ""
@@ -89,6 +91,7 @@ def longest_common_prefix_v3(strings: list[str]) -> str:
     Examples:
         >>> longest_common_prefix_v3(["flower", "flow", "flight"])
         'fl'
+
     """
     if not strings:
         return ""
@@ -105,6 +108,7 @@ def _longest_common_recursive(strings: list[str], left: int, right: int) -> str:
 
     Returns:
         The longest common prefix for the partition.
+
     """
     if left == right:
         return strings[left]

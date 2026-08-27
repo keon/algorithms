@@ -1,10 +1,8 @@
-"""
-Time complexity : O(n)
-"""
+"""Time complexity : O(n)."""
 
 
 class Node:
-    def __init__(self, val, left=None, right=None):
+    def __init__(self, val, left=None, right=None) -> None:
         self.val = val
         self.left = left
         self.right = right

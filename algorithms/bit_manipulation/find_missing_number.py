@@ -1,5 +1,4 @@
-"""
-Find Missing Number
+"""Find Missing Number.
 
 Given a sequence of unique integers in the range [0..n] with one value
 missing, find and return that missing number. Two approaches are provided:
@@ -32,6 +31,7 @@ def find_missing_number(nums: list[int]) -> int:
         7
         >>> find_missing_number([0])
         1
+
     """
     missing = 0
     for index, number in enumerate(nums):
@@ -57,6 +57,7 @@ def find_missing_number2(nums: list[int]) -> int:
         7
         >>> find_missing_number2([0])
         1
+
     """
     total = sum(nums)
     length = len(nums)

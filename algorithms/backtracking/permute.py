@@ -1,5 +1,4 @@
-"""
-Permutations
+"""Permutations.
 
 Given a collection of distinct elements, return all possible permutations.
 
@@ -12,7 +11,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Generator
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 
 def permute(elements: list | str) -> list:
@@ -27,6 +29,7 @@ def permute(elements: list | str) -> list:
     Examples:
         >>> permute([1, 2, 3])
         [[1, 2, 3], [2, 1, 3], [2, 3, 1], [1, 3, 2], [3, 1, 2], [3, 2, 1]]
+
     """
     if len(elements) <= 1:
         return [elements]
@@ -49,6 +52,7 @@ def permute_iter(elements: list | str) -> Generator:
     Examples:
         >>> list(permute_iter([1, 2]))
         [[1, 2], [2, 1]]
+
     """
     if len(elements) <= 1:
         yield elements
@@ -70,6 +74,7 @@ def permute_recursive(nums: list[int]) -> list[list[int]]:
     Examples:
         >>> sorted(permute_recursive([1, 2]))
         [[1, 2], [2, 1]]
+
     """
     result: list[list[int]] = []
     _dfs(result, nums, [])
@@ -85,4 +90,4 @@ def _dfs(
     if not nums:
         result.append(path)
     for i in range(len(nums)):
-        _dfs(result, nums[:i] + nums[i + 1 :], path + [nums[i]])
+        _dfs(result, nums[:i] + nums[i + 1 :], [*path, nums[i]])

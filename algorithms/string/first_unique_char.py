@@ -1,5 +1,4 @@
-"""
-First Unique Character in a String
+"""First Unique Character in a String.
 
 Given a string, find the first non-repeating character and return its index.
 If no unique character exists, return -1.
@@ -26,6 +25,7 @@ def first_unique_char(text: str) -> int:
     Examples:
         >>> first_unique_char("leetcode")
         0
+
     """
     if len(text) == 1:
         return 0
@@ -36,6 +36,5 @@ def first_unique_char(text: str) -> int:
             and text[index] not in banned
         ):
             return index
-        else:
-            banned.append(text[index])
+        banned.append(text[index])
     return -1

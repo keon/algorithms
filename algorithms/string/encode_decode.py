@@ -1,5 +1,4 @@
-"""
-Encode and Decode Strings
+"""Encode and Decode Strings.
 
 Design an algorithm to encode a list of strings to a single string, and
 decode it back to the original list of strings.
@@ -26,6 +25,7 @@ def encode(strs: str) -> str:
     Examples:
         >>> encode("keon is awesome")
         '4:keon2:is7:awesome'
+
     """
     result = ""
     for word in strs.split():
@@ -45,6 +45,7 @@ def decode(text: str) -> list[str]:
     Examples:
         >>> decode("4:keon2:is7:awesome")
         ['keon', 'is', 'awesome']
+
     """
     words: list[str] = []
     index = 0

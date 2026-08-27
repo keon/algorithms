@@ -1,5 +1,4 @@
-"""
-Next Bigger Number with Same Digits
+"""Next Bigger Number with Same Digits.
 
 Given a number, find the next higher number that uses the exact same set of
 digits. This is equivalent to finding the next permutation.
@@ -29,6 +28,7 @@ def next_bigger(num: int) -> int:
         38627
         >>> next_bigger(99999)
         -1
+
     """
     digits = [int(i) for i in str(num)]
     idx = len(digits) - 1

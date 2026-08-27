@@ -1,5 +1,4 @@
-"""
-Add Bitwise Operator
+"""Add Bitwise Operator.
 
 Add two positive integers without using the '+' operator, using only
 bitwise operations (AND, XOR, shift).
@@ -29,9 +28,11 @@ def add_bitwise_operator(first: int, second: int) -> int:
         5
         >>> add_bitwise_operator(0, 0)
         0
+
     """
     if first < 0 or second < 0:
-        raise ValueError("The provided values must be non-negative!")
+        msg = "The provided values must be non-negative!"
+        raise ValueError(msg)
     while second:
         carry = first & second
         first = first ^ second

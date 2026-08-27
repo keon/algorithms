@@ -1,5 +1,4 @@
-"""
-Misra-Gries Frequency Estimation
+"""Misra-Gries Frequency Estimation.
 
 Given a list of items and a value k, returns every item that appears at least
 n/k times, where n is the length of the list. Defaults to k=2 (majority
@@ -33,6 +32,7 @@ def misras_gries(array: list[int], k: int = 2) -> dict[str, int] | None:
         {'1': 4}
         >>> misras_gries([0, 0, 0, 0, 1, 1, 1, 2, 2], 3)
         {'0': 4, '1': 3}
+
     """
     keys: dict[str, int] = {}
     for item in array:
@@ -54,7 +54,7 @@ def misras_gries(array: list[int], k: int = 2) -> dict[str, int] | None:
         if freq >= len(array) / k:
             frequencies[suspect] = freq
 
-    return frequencies if frequencies else None
+    return frequencies or None
 
 
 def _count_frequency(array: list[int], element: int) -> int:
@@ -66,5 +66,6 @@ def _count_frequency(array: list[int], element: int) -> int:
 
     Returns:
         The number of occurrences.
+
     """
     return array.count(element)

@@ -1,5 +1,4 @@
-"""
-Edit Distance (Levenshtein Distance)
+"""Edit Distance (Levenshtein Distance).
 
 Find the minimum number of insertions, deletions, and substitutions
 required to transform one word into another.
@@ -29,6 +28,7 @@ def edit_distance(word_a: str, word_b: str) -> int:
         4
         >>> edit_distance('horse', 'ros')
         3
+
     """
     length_a, length_b = len(word_a) + 1, len(word_b) + 1
 

@@ -1,5 +1,4 @@
-"""
-Subtree Check
+"""Subtree Check.
 
 Given two binary trees s and t, check whether t is a subtree of s. A subtree
 of s is a tree consisting of a node in s and all of its descendants.
@@ -14,8 +13,10 @@ Complexity:
 from __future__ import annotations
 
 import collections
+from typing import TYPE_CHECKING
 
-from algorithms.tree.tree import TreeNode
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def is_subtree(big: TreeNode, small: TreeNode) -> bool:
@@ -32,6 +33,7 @@ def is_subtree(big: TreeNode, small: TreeNode) -> bool:
         >>> node = TreeNode(1)
         >>> is_subtree(node, node)
         True
+
     """
     flag = False
     queue: collections.deque[TreeNode] = collections.deque()
@@ -41,9 +43,8 @@ def is_subtree(big: TreeNode, small: TreeNode) -> bool:
         if node.val == small.val:
             flag = _comp(node, small)
             break
-        else:
-            queue.append(node.left)
-            queue.append(node.right)
+        queue.append(node.left)
+        queue.append(node.right)
     return flag
 
 
@@ -56,6 +57,7 @@ def _comp(p: TreeNode | None, q: TreeNode | None) -> bool:
 
     Returns:
         True if both subtrees are identical, False otherwise.
+
     """
     if p is None and q is None:
         return True

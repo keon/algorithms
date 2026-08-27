@@ -1,5 +1,4 @@
-"""
-Shell Sort
+"""Shell Sort.
 
 Shell sort is a generalisation of insertion sort that allows the exchange
 of elements that are far apart.  The gap between compared elements is
@@ -28,6 +27,7 @@ def shell_sort(array: list[int]) -> list[int]:
     Examples:
         >>> shell_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     gap = n // 2

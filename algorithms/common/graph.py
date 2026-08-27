@@ -31,6 +31,7 @@ class Graph:
         >>> g = Graph.unweighted({"a": ["b", "c"], "b": ["c"]})
         >>> g.adj["a"]
         {'b': 1, 'c': 1}
+
     """
 
     adj: dict[str, dict[str, float]] = field(default_factory=dict)
@@ -51,9 +52,10 @@ class Graph:
             >>> g = Graph.unweighted({"a": ["b", "c"], "b": ["c"]})
             >>> g.adj["b"]
             {'c': 1}
+
         """
         weighted = {
-            node: {neighbor: 1 for neighbor in neighbors}
+            node: dict.fromkeys(neighbors, 1)
             for node, neighbors in adj.items()
         }
         return cls(adj=weighted, directed=directed)
@@ -69,6 +71,7 @@ class Graph:
             >>> g = Graph({"a": {"b": 1}})
             >>> sorted(g.nodes())
             ['a', 'b']
+
         """
         all_nodes: set[str] = set(self.adj.keys())
         for neighbors in self.adj.values():
@@ -90,6 +93,7 @@ class Graph:
             >>> g.add_edge("a", "b", 5)
             >>> g.adj["a"]["b"]
             5
+
         """
         if source not in self.adj:
             self.adj[source] = {}

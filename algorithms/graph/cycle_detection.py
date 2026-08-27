@@ -1,5 +1,4 @@
-"""
-Cycle Detection in a Directed Graph
+"""Cycle Detection in a Directed Graph.
 
 Uses DFS with three-colour marking to determine whether a directed graph
 contains a cycle.
@@ -38,6 +37,7 @@ def is_in_cycle(
 
     Returns:
         True if a cycle is detected through *vertex*.
+
     """
     if traversal_states[vertex] == TraversalState.GRAY:
         return True
@@ -63,11 +63,12 @@ def contains_cycle(graph: dict[str, list[str]]) -> bool:
         True
         >>> contains_cycle({'A': ['B'], 'B': []})
         False
+
     """
-    traversal_states = {vertex: TraversalState.WHITE for vertex in graph}
+    traversal_states = dict.fromkeys(graph, TraversalState.WHITE)
     for vertex, state in traversal_states.items():
         if state == TraversalState.WHITE and is_in_cycle(
-            graph, traversal_states, vertex
+            graph, traversal_states, vertex,
         ):
             return True
     return False

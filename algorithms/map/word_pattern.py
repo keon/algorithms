@@ -1,5 +1,4 @@
-"""
-Word Pattern
+"""Word Pattern.
 
 Given a pattern and a string, determine if the string follows the same
 pattern via a bijection between pattern letters and words.
@@ -29,6 +28,7 @@ def word_pattern(pattern: str, string: str) -> bool:
         True
         >>> word_pattern("abba", "dog cat cat fish")
         False
+
     """
     mapping: dict[str, str] = {}
     mapped_values: set[str] = set()
@@ -41,7 +41,6 @@ def word_pattern(pattern: str, string: str) -> bool:
                 return False
             mapping[pattern[i]] = words[i]
             mapped_values.add(words[i])
-        else:
-            if mapping[pattern[i]] != words[i]:
-                return False
+        elif mapping[pattern[i]] != words[i]:
+            return False
     return True

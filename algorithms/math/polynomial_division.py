@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 def polynomial_division(
-    dividend: list[float], divisor: list[float]
+    dividend: list[float], divisor: list[float],
 ) -> tuple[list[float], list[float]]:
     """Perform polynomial long division.
 

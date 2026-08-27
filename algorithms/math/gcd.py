@@ -1,5 +1,4 @@
-"""
-Greatest Common Divisor and Least Common Multiple
+"""Greatest Common Divisor and Least Common Multiple.
 
 Compute the GCD and LCM of two integers using Euclid's algorithm and
 a bitwise variant.
@@ -32,16 +31,19 @@ def gcd(a: int, b: int) -> int:
         4
         >>> gcd(13, 17)
         1
+
     """
     a_int = isinstance(a, int)
     b_int = isinstance(b, int)
     a = abs(a)
     b = abs(b)
     if not (a_int and b_int):
-        raise ValueError("Input arguments are not integers")
+        msg = "Input arguments are not integers"
+        raise ValueError(msg)
 
     if (a == 0) or (b == 0):
-        raise ValueError("One or more input arguments equals zero")
+        msg = "One or more input arguments equals zero"
+        raise ValueError(msg)
 
     while b != 0:
         a, b = b, a % b
@@ -61,6 +63,7 @@ def lcm(a: int, b: int) -> int:
     Examples:
         >>> lcm(8, 12)
         24
+
     """
     return abs(a) * abs(b) // gcd(a, b)
 
@@ -79,6 +82,7 @@ def trailing_zero(x: int) -> int:
         1
         >>> trailing_zero(40)
         3
+
     """
     count = 0
     while x and not x & 1:
@@ -100,6 +104,7 @@ def gcd_bit(a: int, b: int) -> int:
     Examples:
         >>> gcd_bit(8, 12)
         4
+
     """
     tza = trailing_zero(a)
     tzb = trailing_zero(b)

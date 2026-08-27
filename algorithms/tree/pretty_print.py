@@ -1,5 +1,4 @@
-"""
-Pretty Print Tree
+"""Pretty Print Tree.
 
 Prints a dictionary-based tree structure in a human-readable format showing
 keys and their nested elements.
@@ -29,6 +28,7 @@ def tree_print(tree: dict) -> list[str]:
     Examples:
         >>> tree_print({"a": ["Adam", "Book", 4]})
         ['a -> Adam -> Book -> 4']
+
     """
     lines: list[str] = []
     for key in tree:

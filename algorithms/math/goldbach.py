@@ -1,5 +1,4 @@
-"""
-Goldbach's Conjecture
+"""Goldbach's Conjecture.
 
 Every even integer greater than 2 can be expressed as the sum of two primes.
 This module provides a function to find such a pair of primes and a helper
@@ -23,6 +22,7 @@ def _is_prime(n: int) -> bool:
         True
         >>> _is_prime(10)
         False
+
     """
     if n < 2:
         return False
@@ -59,6 +59,7 @@ def goldbach(n: int) -> tuple[int, int]:
         >>> p, q = goldbach(100)
         >>> p + q == 100 and _is_prime(p) and _is_prime(q)
         True
+
     """
     if n <= 2 or n % 2 != 0:
         msg = f"n must be an even integer greater than 2, got {n}"
@@ -88,5 +89,6 @@ def verify_goldbach(limit: int) -> bool:
         True
         >>> verify_goldbach(1000)
         True
+
     """
     return all(goldbach(n) is not None for n in range(4, limit + 1, 2))

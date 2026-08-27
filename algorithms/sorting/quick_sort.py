@@ -1,5 +1,4 @@
-"""
-Quick Sort
+"""Quick Sort.
 
 Quick sort selects a pivot element, partitions the array around the
 pivot, and recursively sorts the two partitions.
@@ -26,6 +25,7 @@ def quick_sort(array: list[int]) -> list[int]:
     Examples:
         >>> quick_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     _quick_sort_recursive(array, 0, len(array) - 1)
     return array
@@ -44,6 +44,7 @@ def _partition(array: list[int], first: int, last: int) -> int:
 
     Returns:
         The final index of the pivot element.
+
     """
     wall = first
     for pos in range(first, last):

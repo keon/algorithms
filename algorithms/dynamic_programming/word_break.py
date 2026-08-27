@@ -1,5 +1,4 @@
-"""
-Word Break
+"""Word Break.
 
 Given a string and a dictionary of words, determine whether the string
 can be segmented into a sequence of dictionary words.
@@ -29,11 +28,12 @@ def word_break(word: str, word_dict: set[str]) -> bool:
         True
         >>> word_break("catsandog", {"cats", "dog", "sand", "and", "cat"})
         False
+
     """
     dp_array = [False] * (len(word) + 1)
     dp_array[0] = True
     for i in range(1, len(word) + 1):
-        for j in range(0, i):
+        for j in range(i):
             if dp_array[j] and word[j:i] in word_dict:
                 dp_array[i] = True
                 break

@@ -1,5 +1,4 @@
-"""
-Copy Transform
+"""Copy Transform.
 
 Rotate and invert a matrix by creating transformed copies.
 Provides clockwise rotation, counterclockwise rotation, top-left
@@ -27,6 +26,7 @@ def rotate_clockwise(matrix: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> rotate_clockwise([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+
     """
     result: list[list[int]] = []
     for row in reversed(matrix):
@@ -51,6 +51,7 @@ def rotate_counterclockwise(matrix: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> rotate_counterclockwise([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [[3, 6, 9], [2, 5, 8], [1, 4, 7]]
+
     """
     result: list[list[int]] = []
     for row in matrix:
@@ -75,6 +76,7 @@ def top_left_invert(matrix: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> top_left_invert([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+
     """
     result: list[list[int]] = []
     for row in matrix:
@@ -99,6 +101,7 @@ def bottom_left_invert(matrix: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> bottom_left_invert([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [[9, 6, 3], [8, 5, 2], [7, 4, 1]]
+
     """
     result: list[list[int]] = []
     for row in reversed(matrix):

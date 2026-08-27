@@ -1,5 +1,4 @@
-"""
-Write a function depthSum returns the sum of the values stored
+r"""Write a function depthSum returns the sum of the values stored
 in a binary search tree of integers weighted by the depth of each value.
 
 For example:
@@ -24,19 +23,19 @@ from algorithms.data_structures.bst import BST
 def depth_sum(root, n):
     if root:
         return recur_depth_sum(root, 1)
+    return None
 
 
 def recur_depth_sum(root, n):
     if root is None:
         return 0
-    elif root.left is None and root.right is None:
+    if root.left is None and root.right is None:
         return root.data * n
-    else:
-        return (
-            n * root.data
-            + recur_depth_sum(root.left, n + 1)
-            + recur_depth_sum(root.right, n + 1)
-        )
+    return (
+        n * root.data
+        + recur_depth_sum(root.left, n + 1)
+        + recur_depth_sum(root.right, n + 1)
+    )
 
 
 """
@@ -56,7 +55,7 @@ def recur_depth_sum(root, n):
 
 
 class TestSuite(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.tree = BST()
         self.tree.insert(9)
         self.tree.insert(6)
@@ -68,8 +67,8 @@ class TestSuite(unittest.TestCase):
         self.tree.insert(7)
         self.tree.insert(18)
 
-    def test_depth_sum(self):
-        self.assertEqual(253, depth_sum(self.tree.root, 4))
+    def test_depth_sum(self) -> None:
+        assert depth_sum(self.tree.root, 4) == 253
 
 
 if __name__ == "__main__":

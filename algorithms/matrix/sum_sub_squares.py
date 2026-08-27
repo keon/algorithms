@@ -1,5 +1,4 @@
-"""
-Sum of Sub-Squares
+"""Sum of Sub-Squares.
 
 Given a square matrix of size n x n and an integer k, compute the sum
 of all k x k sub-squares and return the results as a matrix.
@@ -27,6 +26,7 @@ def sum_sub_squares(matrix: list[list[int]], k: int) -> list[list[int]] | None:
     Examples:
         >>> sum_sub_squares([[1, 1, 1], [2, 2, 2], [3, 3, 3]], 2)
         [[6, 6], [10, 10]]
+
     """
     size = len(matrix)
     if k > size:

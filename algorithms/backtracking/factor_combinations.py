@@ -1,5 +1,4 @@
-"""
-Factor Combinations
+"""Factor Combinations.
 
 Given an integer n, return all possible combinations of its factors.
 Factors should be greater than 1 and less than n.
@@ -26,6 +25,7 @@ def get_factors(number: int) -> list[list[int]]:
     Examples:
         >>> get_factors(12)
         [[2, 6], [3, 4], [2, 2, 3]]
+
     """
     todo: list[tuple[int, int, list[int]]] = [(number, 2, [])]
     combinations: list[list[int]] = []
@@ -33,8 +33,8 @@ def get_factors(number: int) -> list[list[int]]:
         remaining, divisor, partial = todo.pop()
         while divisor * divisor <= remaining:
             if remaining % divisor == 0:
-                combinations.append(partial + [divisor, remaining // divisor])
-                todo.append((remaining // divisor, divisor, partial + [divisor]))
+                combinations.append([*partial, divisor, remaining // divisor])
+                todo.append((remaining // divisor, divisor, [*partial, divisor]))
             divisor += 1
     return combinations
 
@@ -51,6 +51,7 @@ def recursive_get_factors(number: int) -> list[list[int]]:
     Examples:
         >>> recursive_get_factors(12)
         [[2, 6], [2, 2, 3], [3, 4]]
+
     """
 
     def _factor(
@@ -61,9 +62,9 @@ def recursive_get_factors(number: int) -> list[list[int]]:
     ) -> list[list[int]]:
         while divisor * divisor <= remaining:
             if remaining % divisor == 0:
-                combinations.append(partial + [divisor, remaining // divisor])
+                combinations.append([*partial, divisor, remaining // divisor])
                 _factor(
-                    remaining // divisor, divisor, partial + [divisor], combinations
+                    remaining // divisor, divisor, [*partial, divisor], combinations,
                 )
             divisor += 1
         return combinations

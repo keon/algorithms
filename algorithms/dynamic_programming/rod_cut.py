@@ -1,5 +1,4 @@
-"""
-Rod Cutting Problem
+"""Rod Cutting Problem.
 
 Given a rod of length n and a list of prices for each piece length,
 determine the maximum revenue obtainable by cutting and selling the pieces.
@@ -28,6 +27,7 @@ def cut_rod(price: list[int]) -> int:
     Examples:
         >>> cut_rod([1, 5, 8, 9, 10, 17, 17, 20])
         22
+
     """
     n = len(price)
     val = [0] * (n + 1)

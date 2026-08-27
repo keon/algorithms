@@ -1,5 +1,4 @@
-"""
-Matrix Chain Multiplication
+"""Matrix Chain Multiplication.
 
 Find the optimal parenthesization of a chain of matrices to minimize
 the total number of scalar multiplications.
@@ -32,6 +31,7 @@ def matrix_chain_order(array: list[int]) -> tuple[list[list[int]], list[list[int
         >>> m, s = matrix_chain_order([30, 35, 15, 5, 10, 20, 25])
         >>> m[1][6]
         15125
+
     """
     n = len(array)
     matrix = [[0 for x in range(n)] for x in range(n)]

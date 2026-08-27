@@ -1,5 +1,4 @@
-"""
-Max Sliding Window (Deque-based)
+"""Max Sliding Window (Deque-based).
 
 Given an array and a window size k, find the maximum element in each
 sliding window using a monotonic deque that stores indices of elements
@@ -34,6 +33,7 @@ def max_sliding_window(arr: list[int], k: int) -> list[int]:
     Examples:
         >>> max_sliding_window([1, 3, -1, -3, 5, 3, 6, 7], 3)
         [3, 3, 5, 5, 6, 7]
+
     """
     index_deque: collections.deque[int] = collections.deque()
     result: list[int] = []

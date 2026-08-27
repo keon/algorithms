@@ -1,5 +1,4 @@
-"""
-Graph Traversal Algorithms
+"""Graph Traversal Algorithms.
 
 Provides DFS and BFS traversal of a graph represented as an adjacency
 dictionary.
@@ -28,6 +27,7 @@ def dfs_traverse(graph: dict[Any, list[Any]], start: Any) -> set[Any]:
     Examples:
         >>> sorted(dfs_traverse({'a': ['b'], 'b': []}, 'a'))
         ['a', 'b']
+
     """
     visited: set[Any] = set()
     stack = [start]
@@ -54,6 +54,7 @@ def bfs_traverse(graph: dict[Any, list[Any]], start: Any) -> set[Any]:
     Examples:
         >>> sorted(bfs_traverse({'a': ['b'], 'b': []}, 'a'))
         ['a', 'b']
+
     """
     visited: set[Any] = set()
     queue = deque([start])
@@ -85,6 +86,7 @@ def dfs_traverse_recursive(
     Examples:
         >>> sorted(dfs_traverse_recursive({'a': ['b'], 'b': []}, 'a'))
         ['a', 'b']
+
     """
     if visited is None:
         visited = set()

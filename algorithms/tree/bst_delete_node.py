@@ -1,5 +1,4 @@
-"""
-Given a root node reference of a BST and a key, delete the node
+r"""Given a root node reference of a BST and a key, delete the node
 with the given key in the BST. Return the root node reference
 (possibly updated) of the BST.
 
@@ -10,7 +9,6 @@ If the node is found, delete the node.
 Note: Time complexity should be O(height of tree).
 
 Example:
-
 root = [5,3,6,2,4,null,7]
 key = 3
 
@@ -37,13 +35,13 @@ Another valid answer is [5,2,6,null,4,null,7].
   2   6
    \\   \
     4   7
+
 """
 
 
 class Solution:
     def delete_node(self, root, key):
-        """
-        :type root: TreeNode
+        """:type root: TreeNode
         :type key: int
         :rtype: TreeNode
         """
@@ -60,11 +58,10 @@ class Solution:
                 left_right_most.right = root.right
                 # Return left child instead of root, a.k.a delete root
                 return root.left
-            else:
-                return root.right
+            return root.right
         # If left or right child got deleted, the returned root is
         # the child of the deleted node.
-        elif root.val > key:
+        if root.val > key:
             root.left = self.delete_node(root.left, key)
         else:
             root.right = self.delete_node(root.right, key)

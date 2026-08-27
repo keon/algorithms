@@ -1,5 +1,4 @@
-"""
-Factorial
+"""Factorial.
 
 Compute the factorial of a non-negative integer, with optional modular
 arithmetic support.
@@ -32,11 +31,14 @@ def factorial(n: int, mod: int | None = None) -> int:
         120
         >>> factorial(10)
         3628800
+
     """
     if not (isinstance(n, int) and n >= 0):
-        raise ValueError("'n' must be a non-negative integer.")
+        msg = "'n' must be a non-negative integer."
+        raise ValueError(msg)
     if mod is not None and not (isinstance(mod, int) and mod > 0):
-        raise ValueError("'mod' must be a positive integer")
+        msg = "'mod' must be a positive integer"
+        raise ValueError(msg)
     result = 1
     if n == 0:
         return 1
@@ -63,11 +65,14 @@ def factorial_recur(n: int, mod: int | None = None) -> int:
     Examples:
         >>> factorial_recur(5)
         120
+
     """
     if not (isinstance(n, int) and n >= 0):
-        raise ValueError("'n' must be a non-negative integer.")
+        msg = "'n' must be a non-negative integer."
+        raise ValueError(msg)
     if mod is not None and not (isinstance(mod, int) and mod > 0):
-        raise ValueError("'mod' must be a positive integer")
+        msg = "'mod' must be a positive integer"
+        raise ValueError(msg)
     if n == 0:
         return 1
     result = n * factorial(n - 1, mod)

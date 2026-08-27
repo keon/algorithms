@@ -1,5 +1,4 @@
-"""
-Combinations (nCr)
+"""Combinations (nCr).
 
 Calculate the number of ways to choose r items from n items (binomial
 coefficient) using recursive and memoized approaches.
@@ -29,8 +28,9 @@ def combination(n: int, r: int) -> int:
         10
         >>> combination(10, 5)
         252
+
     """
-    if n == r or r == 0:
+    if r in (n, 0):
         return 1
     return combination(n - 1, r - 1) + combination(n - 1, r)
 
@@ -48,11 +48,12 @@ def combination_memo(n: int, r: int) -> int:
     Examples:
         >>> combination_memo(50, 10)
         10272278170
+
     """
     memo: dict[tuple[int, int], int] = {}
 
     def _recur(n: int, r: int) -> int:
-        if n == r or r == 0:
+        if r in (n, 0):
             return 1
         if (n, r) not in memo:
             memo[(n, r)] = _recur(n - 1, r - 1) + _recur(n - 1, r)

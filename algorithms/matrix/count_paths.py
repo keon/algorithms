@@ -1,5 +1,4 @@
-"""
-Count Paths
+"""Count Paths.
 
 Count the number of unique paths from the top-left corner to the
 bottom-right corner of an m x n grid. Movement is restricted to
@@ -28,6 +27,7 @@ def count_paths(rows: int, cols: int) -> int:
     Examples:
         >>> count_paths(3, 3)
         6
+
     """
     if rows < 1 or cols < 1:
         return -1

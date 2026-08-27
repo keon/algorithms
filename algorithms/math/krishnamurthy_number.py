@@ -1,5 +1,4 @@
-"""
-Krishnamurthy Number
+"""Krishnamurthy Number.
 
 A Krishnamurthy number is a number whose sum of the factorials of its digits
 equals the number itself (e.g., 145 = 1! + 4! + 5!).
@@ -22,6 +21,7 @@ def _find_factorial(n: int) -> int:
 
     Returns:
         The factorial of n.
+
     """
     fact = 1
     while n != 0:
@@ -44,6 +44,7 @@ def krishnamurthy_number(n: int) -> bool:
         True
         >>> krishnamurthy_number(357)
         False
+
     """
     if n == 0:
         return False

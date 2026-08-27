@@ -1,5 +1,4 @@
-"""
-FizzBuzz
+"""FizzBuzz.
 
 Return an array of numbers from 1 to N, replacing multiples of 3 with 'Fizz',
 multiples of 5 with 'Buzz', and multiples of both with 'FizzBuzz'.
@@ -31,11 +30,14 @@ def fizzbuzz(number: int) -> list[int | str]:
     Examples:
         >>> fizzbuzz(5)
         [1, 2, 'Fizz', 4, 'Buzz']
+
     """
     if number < 1:
-        raise ValueError("n cannot be less than one")
+        msg = "n cannot be less than one"
+        raise ValueError(msg)
     if number is None:
-        raise TypeError("n cannot be None")
+        msg = "n cannot be None"
+        raise TypeError(msg)
 
     result: list[int | str] = []
     for value in range(1, number + 1):
@@ -62,6 +64,7 @@ def fizzbuzz_with_helper_func(number: int) -> list[int | str]:
     Examples:
         >>> fizzbuzz_with_helper_func(3)
         [1, 2, 'Fizz']
+
     """
     return [_fb(value) for value in range(1, number + 1)]
 
@@ -74,6 +77,7 @@ def _fb(value: int) -> int | str:
 
     Returns:
         'Fizz', 'Buzz', 'FizzBuzz', or the number itself.
+
     """
     result = (value % 3 == 0) * "Fizz" + (value % 5 == 0) * "Buzz"
     return result if result != "" else value

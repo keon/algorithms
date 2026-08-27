@@ -1,5 +1,4 @@
-"""
-Binary Tree to Doubly Linked List
+"""Binary Tree to Doubly Linked List.
 
 Converts a binary tree to a sorted doubly linked list in-place by
 rearranging the left and right pointers of each node.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def bin_tree_to_list(root: TreeNode | None) -> TreeNode | None:
@@ -29,6 +31,7 @@ def bin_tree_to_list(root: TreeNode | None) -> TreeNode | None:
     Examples:
         >>> bin_tree_to_list(None) is None
         True
+
     """
     if not root:
         return root
@@ -46,6 +49,7 @@ def _bin_tree_to_list_util(root: TreeNode | None) -> TreeNode | None:
 
     Returns:
         The root of the partially converted subtree.
+
     """
     if not root:
         return root

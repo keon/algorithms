@@ -1,5 +1,4 @@
-"""
-Topological Sort (Kahn's Algorithm / BFS)
+"""Topological Sort (Kahn's Algorithm / BFS).
 
 Computes a topological ordering of a directed acyclic graph.  Raises
 ValueError when a cycle is detected.
@@ -32,6 +31,7 @@ def topological_sort(vertices: int, edges: list[tuple[int, int]]) -> list[int]:
     Examples:
         >>> topological_sort(3, [(0, 1), (1, 2)])
         [0, 1, 2]
+
     """
     graph: dict[int, list[int]] = defaultdict(list)
 
@@ -60,6 +60,7 @@ def topological_sort(vertices: int, edges: list[tuple[int, int]]) -> list[int]:
                 queue.append(neighbor)
 
     if processed != vertices:
-        raise ValueError("Cycle detected, topological sort failed")
+        msg = "Cycle detected, topological sort failed"
+        raise ValueError(msg)
 
     return sorted_order

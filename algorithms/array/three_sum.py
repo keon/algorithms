@@ -1,5 +1,4 @@
-"""
-Three Sum
+"""Three Sum.
 
 Given an array of integers, find all unique triplets that sum to zero
 using the two-pointer technique.
@@ -26,6 +25,7 @@ def three_sum(array: list[int]) -> set[tuple[int, int, int]]:
     Examples:
         >>> three_sum([-1, 0, 1, 2, -1, -4]) == {(-1, 0, 1), (-1, -1, 2)}
         True
+
     """
     result = set()
     array.sort()

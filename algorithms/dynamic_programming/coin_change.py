@@ -1,5 +1,4 @@
-"""
-Coin Change (Number of Ways)
+"""Coin Change (Number of Ways).
 
 Given a value and a set of coin denominations, count how many distinct
 combinations of coins sum to the given value.
@@ -29,6 +28,7 @@ def count(coins: list[int], value: int) -> int:
         4
         >>> count([2, 5, 3, 6], 10)
         5
+
     """
     dp_array = [1] + [0] * value
 

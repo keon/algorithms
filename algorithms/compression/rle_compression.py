@@ -1,5 +1,4 @@
-"""
-Run-Length Encoding (RLE)
+"""Run-Length Encoding (RLE).
 
 A simple lossless compression algorithm that encodes consecutive repeated
 characters as a count followed by the character. Decompression fully recovers
@@ -29,6 +28,7 @@ def encode_rle(data: str) -> str:
         '3a2b1c'
         >>> encode_rle("")
         ''
+
     """
     if not data:
         return ""
@@ -63,6 +63,7 @@ def decode_rle(data: str) -> str:
         'aaabbc'
         >>> decode_rle("")
         ''
+
     """
     decoded: str = ""
     count: str = ""

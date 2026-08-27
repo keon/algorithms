@@ -1,5 +1,4 @@
-"""
-Intersection of Two Linked Lists
+"""Intersection of Two Linked Lists.
 
 Given two singly linked lists that converge at some node, find and return the
 intersecting node. The node identity (not value) is the unique identifier.
@@ -36,6 +35,7 @@ def intersection(h1: Node, h2: Node) -> Node | None:
         >>> b = Node(2); b.next = shared
         >>> intersection(a, b).val
         7
+
     """
     count = 0
     flag = None
@@ -70,8 +70,7 @@ def intersection(h1: Node, h2: Node) -> Node | None:
 
         if longer == shorter:
             return longer
-        else:
-            longer = longer.next
-            shorter = shorter.next
+        longer = longer.next
+        shorter = shorter.next
 
     return None

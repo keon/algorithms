@@ -1,5 +1,4 @@
-"""
-Swap Nodes in Pairs
+"""Swap Nodes in Pairs.
 
 Given a linked list, swap every two adjacent nodes and return the new head.
 Only node links are changed, not node values.
@@ -34,6 +33,7 @@ def swap_pairs(head: Node | None) -> Node | None:
         >>> result = swap_pairs(a)
         >>> result.val
         2
+
     """
     if not head:
         return head

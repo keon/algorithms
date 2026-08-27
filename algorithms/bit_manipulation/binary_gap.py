@@ -1,5 +1,4 @@
-"""
-Binary Gap
+"""Binary Gap.
 
 Given a positive integer N, find and return the longest distance between two
 consecutive 1-bits in the binary representation of N. If there are not two
@@ -30,6 +29,7 @@ def binary_gap(number: int) -> int:
         2
         >>> binary_gap(8)
         0
+
     """
     last_one_position = None
     longest_gap = 0

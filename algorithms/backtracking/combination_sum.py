@@ -1,5 +1,4 @@
-"""
-Combination Sum
+"""Combination Sum.
 
 Given a set of candidate numbers (without duplicates) and a target number,
 find all unique combinations where the candidate numbers sum to the target.
@@ -28,6 +27,7 @@ def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
     Examples:
         >>> combination_sum([2, 3, 6, 7], 7)
         [[2, 2, 3], [7]]
+
     """
     result: list[list[int]] = []
     candidates.sort()
@@ -49,4 +49,4 @@ def _dfs(
         result.append(path)
         return
     for i in range(index, len(nums)):
-        _dfs(nums, target - nums[i], i, path + [nums[i]], result)
+        _dfs(nums, target - nums[i], i, [*path, nums[i]], result)

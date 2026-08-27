@@ -1,5 +1,4 @@
-"""
-Reverse String
+"""Reverse String.
 
 Reverse a string using four different approaches: recursive, iterative,
 pythonic (using reversed), and ultra-pythonic (using slicing).
@@ -26,6 +25,7 @@ def recursive(text: str) -> str:
     Examples:
         >>> recursive("hello there")
         'ereht olleh'
+
     """
     length = len(text)
     if length < 2:
@@ -45,6 +45,7 @@ def iterative(text: str) -> str:
     Examples:
         >>> iterative("hello there")
         'ereht olleh'
+
     """
     characters = list(text)
     left, right = 0, len(text) - 1
@@ -70,6 +71,7 @@ def pythonic(text: str) -> str:
     Examples:
         >>> pythonic("hello there")
         'ereht olleh'
+
     """
     characters = list(reversed(text))
     return "".join(characters)
@@ -87,5 +89,6 @@ def ultra_pythonic(text: str) -> str:
     Examples:
         >>> ultra_pythonic("hello there")
         'ereht olleh'
+
     """
     return text[::-1]

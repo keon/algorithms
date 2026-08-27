@@ -1,5 +1,4 @@
-"""
-Merge Two Sorted Lists
+"""Merge Two Sorted Lists.
 
 Merge two sorted linked lists into a single sorted list by splicing together
 the nodes of the two input lists.
@@ -36,6 +35,7 @@ def merge_two_list(l1: Node | None, l2: Node | None) -> Node | None:
         >>> result = merge_two_list(a, b)
         >>> result.val
         1
+
     """
     sentinel = current = Node(0)
     while l1 and l2:
@@ -66,12 +66,12 @@ def merge_two_list_recur(l1: Node | None, l2: Node | None) -> Node | None:
         >>> result = merge_two_list_recur(a, b)
         >>> result.val
         1
+
     """
     if not l1 or not l2:
         return l1 or l2
     if l1.val < l2.val:
         l1.next = merge_two_list_recur(l1.next, l2)
         return l1
-    else:
-        l2.next = merge_two_list_recur(l1, l2.next)
-        return l2
+    l2.next = merge_two_list_recur(l1, l2.next)
+    return l2

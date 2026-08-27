@@ -1,5 +1,4 @@
-"""
-Word Squares
+"""Word Squares.
 
 Given a set of words (without duplicates), find all word squares that can be
 built from them. A word square reads the same horizontally and vertically.
@@ -28,6 +27,7 @@ def word_squares(words: list[str]) -> list[list[str]]:
     Examples:
         >>> word_squares(["area", "lead", "wall", "lady", "ball"])
         [['wall', 'area', 'lead', 'lady'], ['ball', 'area', 'lead', 'lady']]
+
     """
     word_length = len(words[0])
     prefix_map: dict[str, list[str]] = collections.defaultdict(list)
@@ -43,7 +43,7 @@ def word_squares(words: list[str]) -> list[list[str]]:
         for row in range(len(square)):
             prefix += square[row][len(square)]
         for word in prefix_map[prefix]:
-            _build(square + [word])
+            _build([*square, word])
 
     squares: list[list[str]] = []
     for word in words:

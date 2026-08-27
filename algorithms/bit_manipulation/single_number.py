@@ -1,5 +1,4 @@
-"""
-Single Number
+"""Single Number.
 
 Given an array of integers where every element appears twice except for
 one, find the unique element using XOR.
@@ -32,6 +31,7 @@ def single_number(nums: list[int]) -> int:
         0
         >>> single_number([101])
         101
+
     """
     result = 0
     for number in nums:

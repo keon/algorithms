@@ -1,5 +1,4 @@
-"""
-Meeting Rooms
+"""Meeting Rooms.
 
 Given an array of meeting time intervals consisting of start and end times
 [[s1, e1], [s2, e2], ...] (si < ei), determine if a person could attend
@@ -27,6 +26,7 @@ def can_attend_meetings(intervals: list) -> bool:
     Examples:
         >>> # With intervals [[0,30],[5,10],[15,20]] the answer is False.
         >>> # With intervals [[7,10],[2,4]] the answer is True.
+
     """
     intervals = sorted(intervals, key=lambda x: x.start)
     for i in range(1, len(intervals)):

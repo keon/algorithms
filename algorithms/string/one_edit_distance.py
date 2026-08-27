@@ -1,5 +1,4 @@
-"""
-One Edit Distance
+"""One Edit Distance.
 
 Given two strings, determine if they are exactly one edit distance apart.
 An edit is an insertion, deletion, or replacement of a single character.
@@ -27,6 +26,7 @@ def is_one_edit(source: str, target: str) -> bool:
     Examples:
         >>> is_one_edit("abc", "abd")
         True
+
     """
     if len(source) > len(target):
         return is_one_edit(target, source)
@@ -54,6 +54,7 @@ def is_one_edit2(source: str, target: str) -> bool:
     Examples:
         >>> is_one_edit2("abc", "abd")
         True
+
     """
     source_length, target_length = len(source), len(target)
     if source_length > target_length:

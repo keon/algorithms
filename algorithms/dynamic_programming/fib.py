@@ -1,5 +1,4 @@
-"""
-Fibonacci Number
+"""Fibonacci Number.
 
 Compute the n-th Fibonacci number using three different approaches:
 recursive, list-based DP, and iterative.
@@ -33,6 +32,7 @@ def fib_recursive(n: int) -> int:
     Examples:
         >>> fib_recursive(10)
         55
+
     """
     assert n >= 0, "n must be a positive integer"
 
@@ -53,6 +53,7 @@ def fib_list(n: int) -> int:
     Examples:
         >>> fib_list(10)
         55
+
     """
     assert n >= 0, "n must be a positive integer"
 
@@ -74,6 +75,7 @@ def fib_iter(n: int) -> int:
     Examples:
         >>> fib_iter(10)
         55
+
     """
     assert n >= 0, "n must be positive integer"
 

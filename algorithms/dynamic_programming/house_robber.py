@@ -1,5 +1,4 @@
-"""
-House Robber
+"""House Robber.
 
 Determine the maximum amount of money that can be robbed from a row of
 houses without robbing two adjacent houses.
@@ -26,6 +25,7 @@ def house_robber(houses: list[int]) -> int:
     Examples:
         >>> house_robber([1, 2, 16, 3, 15, 3, 12, 1])
         44
+
     """
     last, now = 0, 0
     for house in houses:

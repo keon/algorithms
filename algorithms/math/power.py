@@ -1,5 +1,4 @@
-"""
-Binary Exponentiation
+"""Binary Exponentiation.
 
 Compute a^n efficiently using binary exponentiation (exponentiation by
 squaring), with optional modular arithmetic.
@@ -30,6 +29,7 @@ def power(a: int, n: int, mod: int | None = None) -> int:
         8
         >>> power(10, 3, 5)
         0
+
     """
     ans = 1
     while n:
@@ -57,6 +57,7 @@ def power_recur(a: int, n: int, mod: int | None = None) -> int:
     Examples:
         >>> power_recur(2, 3)
         8
+
     """
     if n == 0:
         ans = 1

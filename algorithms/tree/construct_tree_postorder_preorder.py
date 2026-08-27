@@ -1,5 +1,4 @@
-"""
-Construct Tree from Preorder and Postorder Traversal
+"""Construct Tree from Preorder and Postorder Traversal.
 
 Given preorder and postorder traversals of a full binary tree, construct the
 tree and return its inorder traversal. A full binary tree has either zero or
@@ -20,7 +19,7 @@ pre_index = 0
 
 
 def construct_tree_util(
-    pre: list[int], post: list[int], low: int, high: int, size: int
+    pre: list[int], post: list[int], low: int, high: int, size: int,
 ) -> TreeNode | None:
     """Recursively construct a binary tree from preorder and postorder arrays.
 
@@ -40,6 +39,7 @@ def construct_tree_util(
     Examples:
         >>> construct_tree_util([1, 2, 3], [2, 3, 1], 0, 2, 3) is not None
         True
+
     """
     global pre_index
 
@@ -83,6 +83,7 @@ def construct_tree(pre: list[int], post: list[int], size: int) -> list[int]:
     Examples:
         >>> construct_tree([1, 2, 4, 5, 3, 6, 7], [4, 5, 2, 6, 7, 3, 1], 7)
         [4, 2, 5, 1, 6, 3, 7]
+
     """
     root = construct_tree_util(pre, post, 0, size - 1, size)
     return _inorder(root)
@@ -97,6 +98,7 @@ def _inorder(root: TreeNode | None, result: list[int] | None = None) -> list[int
 
     Returns:
         A list of node values in inorder sequence.
+
     """
     if root is None:
         return []

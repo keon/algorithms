@@ -1,5 +1,4 @@
-"""
-Power of Two
+"""Power of Two.
 
 Determine whether a given integer is a power of two using bit manipulation.
 A power of two has exactly one set bit, so ``n & (n - 1)`` clears that bit
@@ -31,5 +30,6 @@ def is_power_of_two(number: int) -> bool:
         False
         >>> is_power_of_two(0)
         False
+
     """
     return number > 0 and not number & (number - 1)

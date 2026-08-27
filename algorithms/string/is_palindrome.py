@@ -1,5 +1,4 @@
-"""
-Is Palindrome
+"""Is Palindrome.
 
 Determine if a string is a palindrome, considering only alphanumeric
 characters and ignoring cases. Multiple approaches are provided.
@@ -34,6 +33,7 @@ def is_palindrome(text: str) -> bool:
         True
         >>> is_palindrome("a1b2a")
         False
+
     """
     left = 0
     right = len(text) - 1
@@ -56,6 +56,7 @@ def _remove_punctuation(text: str) -> str:
 
     Returns:
         A lowercase string containing only alphanumeric characters.
+
     """
     return "".join(char.lower() for char in text if char.isalnum())
 
@@ -68,6 +69,7 @@ def _string_reverse(text: str) -> str:
 
     Returns:
         The reversed string.
+
     """
     return text[::-1]
 
@@ -90,6 +92,7 @@ def is_palindrome_reverse(text: str) -> bool:
         True
         >>> is_palindrome_reverse("a1b2a")
         False
+
     """
     text = _remove_punctuation(text)
     return text == _string_reverse(text)
@@ -113,9 +116,10 @@ def is_palindrome_two_pointer(text: str) -> bool:
         True
         >>> is_palindrome_two_pointer("a1b2a")
         False
+
     """
     text = _remove_punctuation(text)
-    for index in range(0, len(text) // 2):
+    for index in range(len(text) // 2):
         if text[index] != text[len(text) - index - 1]:
             return False
     return True
@@ -139,12 +143,13 @@ def is_palindrome_stack(text: str) -> bool:
         True
         >>> is_palindrome_stack("a1b2a")
         False
+
     """
     stack: list[str] = []
     text = _remove_punctuation(text)
     for index in range(len(text) // 2, len(text)):
         stack.append(text[index])
-    return all(text[index] == stack.pop() for index in range(0, len(text) // 2))
+    return all(text[index] == stack.pop() for index in range(len(text) // 2))
 
 
 def is_palindrome_deque(text: str) -> bool:
@@ -165,6 +170,7 @@ def is_palindrome_deque(text: str) -> bool:
         True
         >>> is_palindrome_deque("a1b2a")
         False
+
     """
     text = _remove_punctuation(text)
     character_deque: deque[str] = deque()

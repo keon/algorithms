@@ -1,5 +1,4 @@
-"""
-Maximum Contiguous Subsequence Sum (Kadane's Algorithm)
+"""Maximum Contiguous Subsequence Sum (Kadane's Algorithm).
 
 Finds the maximum sum of a contiguous sub-array within a one-dimensional
 array of numbers.  The algorithm is greedy / dynamic-programming hybrid.
@@ -33,6 +32,7 @@ def max_contiguous_subsequence_sum(arr: list[int]) -> int:
         -1
         >>> max_contiguous_subsequence_sum([])
         0
+
     """
     if not arr:
         return 0

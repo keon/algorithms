@@ -1,5 +1,4 @@
-"""
-Fenwick Tree / Binary Indexed Tree
+"""Fenwick Tree / Binary Indexed Tree.
 
 Consider we have an array arr[0 . . . n-1]. We would like to
 1. Compute the sum of the first i elements.
@@ -28,17 +27,15 @@ space and is easier to implement.
 
 
 class Fenwick_Tree:  # noqa: N801
-    def __init__(self, freq):
+    def __init__(self, freq) -> None:
         self.arr = freq
         self.n = len(freq)
 
     def get_sum(self, bit_tree, i):
-        """
-        Returns sum of arr[0..index]. This function assumes
+        """Returns sum of arr[0..index]. This function assumes
         that the array is preprocessed and partial sums of
         array elements are stored in bit_tree[].
         """
-
         s = 0
 
         # index in bit_tree[] is 1 more than the index in arr[]
@@ -53,13 +50,11 @@ class Fenwick_Tree:  # noqa: N801
             i -= i & (-i)
         return s
 
-    def update_bit(self, bit_tree, i, v):
-        """
-        Updates a node in Binary Index Tree (bit_tree) at
+    def update_bit(self, bit_tree, i, v) -> None:
+        """Updates a node in Binary Index Tree (bit_tree) at
         given index in bit_tree. The given value 'val' is
         added to bit_tree[i] and all of its ancestors in tree.
         """
-
         # index in bit_ree[] is 1 more than the index in arr[]
         i += 1
 
@@ -72,11 +67,9 @@ class Fenwick_Tree:  # noqa: N801
             i += i & (-i)
 
     def construct(self):
-        """
-        Constructs and returns a Binary Indexed Tree for given
+        """Constructs and returns a Binary Indexed Tree for given
         array of size n.
         """
-
         # Create and initialize bit_ree[] as 0
         bit_tree = [0] * (self.n + 1)
 

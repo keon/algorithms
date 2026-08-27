@@ -1,5 +1,4 @@
-"""
-Pacific Atlantic Water Flow
+"""Pacific Atlantic Water Flow.
 
 Given an m*n matrix of heights, find all cells from which water can flow
 to both the Pacific (top / left edges) and Atlantic (bottom / right edges)
@@ -27,6 +26,7 @@ def pacific_atlantic(matrix: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> pacific_atlantic([[1]])
         [[0, 0]]
+
     """
     n = len(matrix)
     if not n:
@@ -65,6 +65,7 @@ def _dfs(
         height: Previous cell height.
         i: Row index.
         j: Column index.
+
     """
     if i < 0 or i >= len(matrix) or j < 0 or j >= len(matrix[0]):
         return

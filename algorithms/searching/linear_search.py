@@ -1,5 +1,4 @@
-"""
-Linear Search
+"""Linear Search.
 
 Search for a target value in an array by checking every element sequentially.
 The array does not need to be sorted.
@@ -29,6 +28,7 @@ def linear_search(array: list[int], query: int) -> int:
         2
         >>> linear_search([5, 1, 3, 2, 4], 6)
         -1
+
     """
     for i, value in enumerate(array):
         if value == query:

@@ -1,5 +1,4 @@
-"""
-Gale-Shapley Stable Matching
+"""Gale-Shapley Stable Matching.
 
 Solves the stable matching (stable marriage) problem. Given N men and N women
 with ranked preferences, produces a stable matching where no pair would prefer
@@ -35,10 +34,11 @@ def gale_shapley(
         >>> women = {"W1": ["M2", "M1"], "W2": ["M1", "M2"]}
         >>> sorted(gale_shapley(men, women).items())
         [('M1', 'W2'), ('M2', 'W1')]
+
     """
     men_available: list[str] = list(men.keys())
     married: dict[str, str] = {}
-    proposal_counts: dict[str, int] = {man: 0 for man in men}
+    proposal_counts: dict[str, int] = dict.fromkeys(men, 0)
 
     while men_available:
         man = men_available.pop(0)

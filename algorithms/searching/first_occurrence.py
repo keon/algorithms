@@ -1,5 +1,4 @@
-"""
-First Occurrence
+"""First Occurrence.
 
 Find the index of the first occurrence of a target value in a sorted array
 using binary search.
@@ -29,6 +28,7 @@ def first_occurrence(array: list[int], query: int) -> int:
         1
         >>> first_occurrence([1, 2, 3, 4, 5], 6)
         -1
+
     """
     low, high = 0, len(array) - 1
     while low <= high:

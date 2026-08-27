@@ -1,5 +1,4 @@
-"""
-Is Sorted
+"""Is Sorted.
 
 Check whether a stack is sorted in ascending order from bottom to top
 using a single auxiliary stack.
@@ -33,6 +32,7 @@ def is_sorted(stack: list[int]) -> bool:
         True
         >>> stack  # original stack is preserved on True
         [1, 2, 3]
+
     """
     storage_stack: list[int] = []
     for _ in range(len(stack)):

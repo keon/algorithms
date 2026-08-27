@@ -1,5 +1,4 @@
-"""
-Sliding Window Maximum (Heap-based)
+"""Sliding Window Maximum (Heap-based).
 
 Given an array and a window size k, find the maximum element in each
 sliding window using a deque that maintains decreasing order of values.
@@ -29,6 +28,7 @@ def max_sliding_window(nums: list[int], k: int) -> list[int]:
     Examples:
         >>> max_sliding_window([1, 3, -1, -3, 5, 3, 6, 7], 3)
         [3, 3, 5, 5, 6, 7]
+
     """
     if not nums:
         return nums

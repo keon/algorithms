@@ -1,5 +1,4 @@
-"""
-Matrix Exponentiation
+"""Matrix Exponentiation.
 
 Compute the n-th power of a square matrix using repeated squaring
 (exponentiation by squaring). Useful for computing Fibonacci numbers,
@@ -28,6 +27,7 @@ def multiply(mat_a: list[list[int]], mat_b: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> multiply([[1, 0], [0, 1]], [[2, 3], [4, 5]])
         [[2, 3], [4, 5]]
+
     """
     size = len(mat_a)
     result = [[0] * size for _ in range(size)]
@@ -50,6 +50,7 @@ def identity(size: int) -> list[list[int]]:
     Examples:
         >>> identity(3)
         [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+
     """
     result = [[0] * size for _ in range(size)]
     for i in range(size):
@@ -70,11 +71,11 @@ def matrix_exponentiation(mat: list[list[int]], power: int) -> list[list[int]]:
     Examples:
         >>> matrix_exponentiation([[1, 0], [0, 1]], 5)
         [[1, 0], [0, 1]]
+
     """
     if power == 0:
         return identity(len(mat))
-    elif power % 2 == 1:
+    if power % 2 == 1:
         return multiply(matrix_exponentiation(mat, power - 1), mat)
-    else:
-        half = matrix_exponentiation(mat, power // 2)
-        return multiply(half, half)
+    half = matrix_exponentiation(mat, power // 2)
+    return multiply(half, half)

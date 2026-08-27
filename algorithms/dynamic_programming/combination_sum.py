@@ -1,5 +1,4 @@
-"""
-Combination Sum IV
+"""Combination Sum IV.
 
 Given an array of distinct positive integers and a target, find the number
 of possible combinations (order matters) that add up to the target.
@@ -28,6 +27,7 @@ def _helper_topdown(nums: list[int], target: int, dp: list[int]) -> int:
 
     Returns:
         Number of combinations that sum to target.
+
     """
     if dp[target] != -1:
         return dp[target]
@@ -52,6 +52,7 @@ def combination_sum_topdown(nums: list[int], target: int) -> int:
     Examples:
         >>> combination_sum_topdown([1, 2, 3], 4)
         7
+
     """
     dp = [-1] * (target + 1)
     dp[0] = 1
@@ -71,10 +72,11 @@ def combination_sum_bottom_up(nums: list[int], target: int) -> int:
     Examples:
         >>> combination_sum_bottom_up([1, 2, 3], 4)
         7
+
     """
     combs = [0] * (target + 1)
     combs[0] = 1
-    for i in range(0, len(combs)):
+    for i in range(len(combs)):
         for num in nums:
             if i - num >= 0:
                 combs[i] += combs[i - num]

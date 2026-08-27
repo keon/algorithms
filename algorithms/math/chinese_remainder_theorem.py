@@ -1,5 +1,4 @@
-"""
-Chinese Remainder Theorem
+"""Chinese Remainder Theorem.
 
 Solves a system of simultaneous congruences using the Chinese Remainder
 Theorem. Given pairwise coprime moduli, finds the smallest positive integer
@@ -33,16 +32,21 @@ def solve_chinese_remainder(nums: list[int], rems: list[int]) -> int:
     Examples:
         >>> solve_chinese_remainder([3, 7, 10], [2, 3, 3])
         143
+
     """
-    if not len(nums) == len(rems):
-        raise Exception("nums and rems should have equal length")
+    if len(nums) != len(rems):
+        msg = "nums and rems should have equal length"
+        raise Exception(msg)
     if not len(nums) > 0:
-        raise Exception("Lists nums and rems need to contain at least one element")
+        msg = "Lists nums and rems need to contain at least one element"
+        raise Exception(msg)
     for num in nums:
         if not num > 1:
-            raise Exception("All numbers in nums needs to be > 1")
+            msg = "All numbers in nums needs to be > 1"
+            raise Exception(msg)
     if not _check_coprime(nums):
-        raise Exception("All pairs of numbers in nums are not coprime")
+        msg = "All pairs of numbers in nums are not coprime"
+        raise Exception(msg)
     k = len(nums)
     x = 1
     while True:
@@ -64,6 +68,7 @@ def _check_coprime(list_to_check: list[int]) -> bool:
 
     Returns:
         True if all pairs are coprime, False otherwise.
+
     """
     for ind, num in enumerate(list_to_check):
         for num2 in list_to_check[ind + 1 :]:

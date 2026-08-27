@@ -1,5 +1,4 @@
-"""
-Atbash Cipher
+"""Atbash Cipher.
 
 Atbash cipher maps each letter of the alphabet to its reverse.
 The first letter 'a' maps to 'z', 'b' maps to 'y', and so on.
@@ -26,6 +25,7 @@ def atbash(text: str) -> str:
     Examples:
         >>> atbash("abcdefghijklmno")
         'zyxwvutsrqponml'
+
     """
     translated = ""
     for char in text:

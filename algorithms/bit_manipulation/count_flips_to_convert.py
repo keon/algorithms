@@ -1,5 +1,4 @@
-"""
-Count Flips to Convert
+"""Count Flips to Convert.
 
 Determine the minimal number of bits you would need to flip to convert
 integer A to integer B. Uses XOR to find differing bits and Brian
@@ -30,6 +29,7 @@ def count_flips_to_convert(first: int, second: int) -> int:
         2
         >>> count_flips_to_convert(34, 34)
         0
+
     """
     diff = first ^ second
     count = 0

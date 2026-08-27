@@ -1,5 +1,4 @@
-"""
-Linked List Cycle Detection
+"""Linked List Cycle Detection.
 
 Given a linked list, determine if it has a cycle using Floyd's Tortoise and
 Hare algorithm without extra space.
@@ -36,6 +35,7 @@ def is_cyclic(head: Node | None) -> bool:
         >>> c = Node(3); c.next = Node(4)
         >>> is_cyclic(c)
         False
+
     """
     if not head:
         return False

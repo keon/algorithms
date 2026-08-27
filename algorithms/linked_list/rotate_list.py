@@ -1,5 +1,4 @@
-"""
-Rotate List
+"""Rotate List.
 
 Given a linked list, rotate the list to the right by k places, where k is
 non-negative.
@@ -27,6 +26,7 @@ def rotate_right(head: object | None, k: int) -> object | None:
     Examples:
         >>> rotate_right(None, 5) is None
         True
+
     """
     if not head or not head.next:
         return head

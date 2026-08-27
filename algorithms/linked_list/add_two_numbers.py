@@ -1,5 +1,4 @@
-"""
-Add Two Numbers (Linked List)
+"""Add Two Numbers (Linked List).
 
 Given two non-empty linked lists representing two non-negative integers with
 digits stored in reverse order, add the two numbers and return the sum as a
@@ -37,6 +36,7 @@ def add_two_numbers(left: Node, right: Node) -> Node:
         >>> l2 = Node(5); l2.next = Node(6); l2.next.next = Node(4)
         >>> convert_to_str(add_two_numbers(l1, l2))
         '708'
+
     """
     head = Node(0)
     current = head
@@ -68,6 +68,7 @@ def convert_to_list(number: int) -> Node | None:
     Examples:
         >>> convert_to_str(convert_to_list(112))
         '211'
+
     """
     if number < 0:
         return None
@@ -98,6 +99,7 @@ def convert_to_str(node: Node | None) -> str:
         >>> n = Node(2); n.next = Node(4); n.next.next = Node(3)
         >>> convert_to_str(n)
         '243'
+
     """
     result = ""
     while node:

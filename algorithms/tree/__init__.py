@@ -1,5 +1,4 @@
-"""
-Tree Algorithms
+"""Tree Algorithms.
 
 A collection of binary tree and general tree algorithms including traversal,
 search, construction, and property-checking operations.
@@ -43,20 +42,22 @@ __all__ = [
     "TreeNode",
     "bin_tree_to_list",
     "binary_tree_paths",
+    "bottom_view",
     "construct_tree",
     "construct_tree_util",
     "find_deepest_left",
     "has_path_sum",
     "has_path_sum2",
     "has_path_sum3",
+    "inorder",
+    "inorder_rec",
     "is_balanced",
     "is_same_tree",
     "is_subtree",
     "is_symmetric",
     "is_symmetric_iterative",
-    "inorder",
-    "inorder_rec",
     "lca",
+    "left_view",
     "longest_consecutive",
     "max_height",
     "max_path_sum",
@@ -66,9 +67,7 @@ __all__ = [
     "path_sum2",
     "path_sum3",
     "reverse",
-    "tree_print",
-    "left_view",
     "right_view",
     "top_view",
-    "bottom_view",
+    "tree_print",
 ]

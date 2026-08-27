@@ -1,5 +1,4 @@
-"""
-Switch Pairs
+"""Switch Pairs.
 
 Switch successive pairs of values in a stack starting from the bottom.
 If there is an odd number of values, the top element is not moved.
@@ -29,6 +28,7 @@ def first_switch_pairs(stack: list[int]) -> list[int]:
     Examples:
         >>> first_switch_pairs([3, 8, 17, 9, 1, 10])
         [8, 3, 9, 17, 10, 1]
+
     """
     storage_stack: list[int] = []
     for _ in range(len(stack)):
@@ -56,6 +56,7 @@ def second_switch_pairs(stack: list[int]) -> list[int]:
     Examples:
         >>> second_switch_pairs([3, 8, 17, 9, 1, 10])
         [8, 3, 9, 17, 10, 1]
+
     """
     queue: collections.deque[int] = collections.deque()
     for _ in range(len(stack)):

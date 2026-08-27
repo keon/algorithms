@@ -1,5 +1,4 @@
-"""
-Array Sum Combinations
+"""Array Sum Combinations.
 
 Given three arrays and a target sum, find all three-element combinations
 (one element from each array) that add up to the target.
@@ -39,6 +38,7 @@ def array_sum_combinations(
     Examples:
         >>> array_sum_combinations([1], [2], [3], 6)
         [[1, 2, 3]]
+
     """
     arrays = [array_a, array_b, array_c]
 
@@ -98,13 +98,13 @@ def unique_array_sum_combinations(
     Examples:
         >>> sorted(unique_array_sum_combinations([1, 2], [2, 3], [3, 4], 6))
         [(1, 2, 3)]
+
     """
 
     def _check_sum(expected: int, *nums: int) -> tuple[bool, tuple[int, ...]]:
         if sum(nums) == expected:
             return (True, nums)
-        else:
-            return (False, nums)
+        return (False, nums)
 
     product = itertools.product(array_a, array_b, array_c)
     func = partial(_check_sum, target)

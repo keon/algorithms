@@ -1,5 +1,4 @@
-"""
-Cholesky Matrix Decomposition
+"""Cholesky Matrix Decomposition.
 
 Decompose a Hermitian positive-definite matrix A into a lower-triangular
 matrix V such that V * V^T = A. Mainly used for numerical solution of
@@ -30,6 +29,7 @@ def cholesky_decomposition(matrix: list[list[float]]) -> list[list[float]] | Non
     Examples:
         >>> cholesky_decomposition([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
         [[2.0, 0.0, 0.0], [6.0, 1.0, 0.0], [-8.0, 5.0, 3.0]]
+
     """
     size = len(matrix)
     for row in matrix:

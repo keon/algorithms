@@ -7,7 +7,7 @@ Shared types are available at the top level::
     >>> from algorithms.graph import dijkstra
 """
 
-import algorithms.data_structures as data_structures  # noqa: F401
+from algorithms import data_structures
 from algorithms.common import Graph, ListNode, TreeNode
 
-__all__ = ["TreeNode", "ListNode", "Graph", "data_structures"]
+__all__ = ["Graph", "ListNode", "TreeNode", "data_structures"]

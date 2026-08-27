@@ -1,5 +1,4 @@
-"""
-Maze Search (BFS)
+"""Maze Search (BFS).
 
 Find the minimum number of steps from the top-left corner to the
 bottom-right corner of a grid.  Only cells with value 1 may be traversed.
@@ -29,6 +28,7 @@ def maze_search(maze: list[list[int]]) -> int:
         2
         >>> maze_search([[1, 0], [0, 1]])
         -1
+
     """
     blocked, allowed = 0, 1
     unvisited, visited = 0, 1

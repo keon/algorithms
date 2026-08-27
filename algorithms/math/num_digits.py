@@ -1,5 +1,4 @@
-"""
-Number of Digits
+"""Number of Digits.
 
 Count the number of digits in an integer using logarithmic computation
 for O(1) time complexity.
@@ -32,6 +31,7 @@ def num_digits(n: int) -> int:
         1
         >>> num_digits(-254)
         3
+
     """
     n = abs(n)
     if n == 0:

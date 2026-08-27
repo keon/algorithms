@@ -1,5 +1,4 @@
-"""
-Delete Reoccurring Characters
+"""Delete Reoccurring Characters.
 
 Given a string, delete any reoccurring characters and return the new string
 containing only the first occurrence of each character.
@@ -26,6 +25,7 @@ def delete_reoccurring_characters(string: str) -> str:
     Examples:
         >>> delete_reoccurring_characters("aaabcccc")
         'abc'
+
     """
     seen_characters: set[str] = set()
     output_string = ""

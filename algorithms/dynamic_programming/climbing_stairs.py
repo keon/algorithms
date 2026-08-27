@@ -1,5 +1,4 @@
-"""
-Climbing Stairs
+"""Climbing Stairs.
 
 Count the number of distinct ways to climb a staircase of n steps,
 where each move is either 1 or 2 steps.
@@ -32,6 +31,7 @@ def climb_stairs(steps: int) -> int:
         2
         >>> climb_stairs(10)
         89
+
     """
     arr = [1, 1]
     for _ in range(1, steps):
@@ -53,6 +53,7 @@ def climb_stairs_optimized(steps: int) -> int:
         2
         >>> climb_stairs_optimized(10)
         89
+
     """
     a_steps = b_steps = 1
     for _ in range(steps):

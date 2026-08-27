@@ -1,5 +1,4 @@
-"""
-Separate Chaining Hash Table
+"""Separate Chaining Hash Table.
 
 Hash table implementation using separate chaining (linked lists) for
 collision resolution.
@@ -21,6 +20,7 @@ class _Node:
         key: The key stored in this node.
         value: The value stored in this node.
         next_node: Reference to the next node in the chain.
+
     """
 
     def __init__(
@@ -47,6 +47,7 @@ class SeparateChainingHashTable:
         >>> del table['hello']
         >>> table.get('hello') is None
         True
+
     """
 
     _empty = None
@@ -56,6 +57,7 @@ class SeparateChainingHashTable:
 
         Args:
             size: Number of buckets.
+
         """
         self.size = size
         self._len = 0
@@ -67,6 +69,7 @@ class SeparateChainingHashTable:
         Args:
             key: The key to insert.
             value: The value associated with the key.
+
         """
         hash_ = self.hash(key)
         node_ = self._table[hash_]
@@ -89,6 +92,7 @@ class SeparateChainingHashTable:
 
         Returns:
             The associated value, or None if the key is not found.
+
         """
         hash_ = self.hash(key)
         node_ = self._table[hash_]
@@ -103,6 +107,7 @@ class SeparateChainingHashTable:
 
         Args:
             key: The key to delete.
+
         """
         hash_ = self.hash(key)
         node_ = self._table[hash_]
@@ -125,6 +130,7 @@ class SeparateChainingHashTable:
 
         Returns:
             Bucket index.
+
         """
         return hash(key) % self.size
 

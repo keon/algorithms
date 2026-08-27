@@ -1,5 +1,4 @@
-"""
-Isomorphic Strings
+"""Isomorphic Strings.
 
 Determine if two strings are isomorphic. Two strings are isomorphic if
 characters in s can be mapped to characters in t while preserving order,
@@ -30,6 +29,7 @@ def is_isomorphic(s: str, t: str) -> bool:
         True
         >>> is_isomorphic("foo", "bar")
         False
+
     """
     if len(s) != len(t):
         return False
@@ -41,7 +41,6 @@ def is_isomorphic(s: str, t: str) -> bool:
                 return False
             mapping[s[i]] = t[i]
             mapped_values.add(t[i])
-        else:
-            if mapping[s[i]] != t[i]:
-                return False
+        elif mapping[s[i]] != t[i]:
+            return False
     return True

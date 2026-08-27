@@ -36,6 +36,7 @@ def geometric_mean(numbers: list[float]) -> float:
     1.0
     >>> round(geometric_mean([100, 100, 100]), 4)
     100.0
+
     """
     if not numbers:
         msg = "List cannot be empty"
@@ -72,6 +73,7 @@ def geometric_mean_logarithm(numbers: list[float]) -> float:
     4.0
     >>> round(geometric_mean_logarithm([1, 2, 3, 4, 5]), 4)
     2.6052
+
     """
     if not numbers:
         msg = "List cannot be empty"

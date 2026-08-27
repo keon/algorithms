@@ -1,5 +1,4 @@
-"""
-Text Justification
+"""Text Justification.
 
 Given an array of words and a max width, format the text such that each line
 has exactly max_width characters and is fully justified. Extra spaces are
@@ -31,6 +30,7 @@ def text_justification(words: list[str], max_width: int) -> list[str]:
     Examples:
         >>> text_justification(["What", "must", "be"], 16)
         ['What must be    ']
+
     """
     result: list[str] = []
     row_length = 0
@@ -41,8 +41,9 @@ def text_justification(words: list[str], max_width: int) -> list[str]:
     while index < len(words):
         while row_length <= max_width and index < len(words):
             if len(words[index]) > max_width:
+                msg = "there exists word whose length is larger than max_width"
                 raise ValueError(
-                    "there exists word whose length is larger than max_width"
+                    msg,
                 )
             tentative_length = row_length
             row_words.append(words[index])

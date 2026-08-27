@@ -1,5 +1,4 @@
-"""
-Simplify Path
+"""Simplify Path.
 
 Given an absolute Unix-style file path, simplify it by resolving '.'
 (current directory), '..' (parent directory), and multiple slashes.
@@ -28,6 +27,7 @@ def simplify_path(path: str) -> str:
         '/home'
         >>> simplify_path("/a/./b/../../c/")
         '/c'
+
     """
     skip = {"..", ".", ""}
     stack: list[str] = []

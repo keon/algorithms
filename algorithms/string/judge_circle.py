@@ -1,5 +1,4 @@
-"""
-Judge Route Circle
+"""Judge Route Circle.
 
 Given a sequence of robot moves (R, L, U, D), determine whether the robot
 returns to its starting position after completing all moves.
@@ -26,6 +25,7 @@ def judge_circle(moves: str) -> bool:
     Examples:
         >>> judge_circle("UD")
         True
+
     """
     move_counts = {
         "U": 0,

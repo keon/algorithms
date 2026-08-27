@@ -1,5 +1,4 @@
-"""
-Insertion Sort
+"""Insertion Sort.
 
 Insertion sort builds the sorted list one element at a time by repeatedly
 picking the next element and inserting it into its correct position.
@@ -26,6 +25,7 @@ def insertion_sort(array: list[int]) -> list[int]:
     Examples:
         >>> insertion_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     for i in range(len(array)):
         cursor = array[i]

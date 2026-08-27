@@ -1,5 +1,4 @@
-"""
-Single Number 2
+"""Single Number 2.
 
 Given an array of integers where every element appears three times except
 for one (which appears exactly once), find that unique element using
@@ -32,6 +31,7 @@ def single_number2(nums: list[int]) -> int:
     Examples:
         >>> single_number2([4, 2, 3, 2, 1, 1, 4, 2, 4, 1])
         3
+
     """
     ones, twos = 0, 0
     for index in range(len(nums)):

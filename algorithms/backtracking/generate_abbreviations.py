@@ -1,5 +1,4 @@
-"""
-Generalized Abbreviations
+"""Generalized Abbreviations.
 
 Given a word, return all possible generalized abbreviations. Each
 abbreviation replaces contiguous substrings with their lengths.
@@ -26,6 +25,7 @@ def generate_abbreviations(word: str) -> list[str]:
     Examples:
         >>> sorted(generate_abbreviations("ab"))
         ['1b', '2', 'a1', 'ab']
+
     """
     result: list[str] = []
     _backtrack(result, word, 0, 0, "")

@@ -1,5 +1,4 @@
-"""
-Reverse Words in a String
+"""Reverse Words in a String.
 
 Given a string, reverse the order of words. Leading and trailing spaces
 are trimmed and words are separated by single spaces.
@@ -21,6 +20,7 @@ def _reverse_list(array: list[str], left: int, right: int) -> None:
         array: The list to modify.
         left: The starting index.
         right: The ending index.
+
     """
     while left < right:
         array[left], array[right] = array[right], array[left]
@@ -40,6 +40,7 @@ def reverse_words(string: str) -> str:
     Examples:
         >>> reverse_words("I am keon kim and I like pizza")
         'pizza like I and kim keon am I'
+
     """
     words = string.strip().split()
     word_count = len(words)

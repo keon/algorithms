@@ -1,5 +1,4 @@
-"""
-Minimum Spanning Tree (Kruskal's Algorithm)
+"""Minimum Spanning Tree (Kruskal's Algorithm).
 
 Finds the MST of an undirected graph using Kruskal's algorithm with a
 disjoint-set (union-find) data structure.
@@ -31,6 +30,7 @@ class DisjointSet:
 
         Args:
             size: Number of elements.
+
         """
         self.parent = list(range(size))
         self.size = [1] * size
@@ -41,6 +41,7 @@ class DisjointSet:
         Args:
             node1: First element.
             node2: Second element.
+
         """
         node1 = self.find_set(node1)
         node2 = self.find_set(node2)
@@ -60,6 +61,7 @@ class DisjointSet:
 
         Returns:
             Root representative.
+
         """
         if self.parent[node] != node:
             self.parent[node] = self.find_set(self.parent[node])
@@ -81,6 +83,7 @@ def kruskal(vertex_count: int, edges: list[Edge], forest: DisjointSet) -> int:
         >>> e = [Edge(0, 1, 1), Edge(1, 2, 2), Edge(0, 2, 3)]
         >>> kruskal(3, e, DisjointSet(3))
         3
+
     """
     edges.sort(key=lambda edge: edge.weight)
 

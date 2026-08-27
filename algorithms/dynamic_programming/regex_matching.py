@@ -1,5 +1,4 @@
-"""
-Regular Expression Matching
+"""Regular Expression Matching.
 
 Implement regular expression matching with support for '.' (matches any
 single character) and '*' (matches zero or more of the preceding element).
@@ -29,6 +28,7 @@ def is_match(str_a: str, str_b: str) -> bool:
         False
         >>> is_match("aa", "a*")
         True
+
     """
     len_a, len_b = len(str_a) + 1, len(str_b) + 1
     matches = [[False] * len_b for _ in range(len_a)]

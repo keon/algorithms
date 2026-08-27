@@ -1,5 +1,4 @@
-"""
-Binary Tree Views
+"""Binary Tree Views.
 
 Compute different "views" of a binary tree — the nodes visible when looking
 at the tree from a particular direction.
@@ -20,8 +19,10 @@ Complexity (all views):
 from __future__ import annotations
 
 from collections import deque
+from typing import TYPE_CHECKING
 
-from algorithms.common.tree_node import TreeNode
+if TYPE_CHECKING:
+    from algorithms.common.tree_node import TreeNode
 
 
 def left_view(root: TreeNode | None) -> list[int]:
@@ -38,6 +39,7 @@ def left_view(root: TreeNode | None) -> list[int]:
         >>> root = TreeNode(1, TreeNode(2, TreeNode(4)), TreeNode(3))
         >>> left_view(root)
         [1, 2, 4]
+
     """
     if root is None:
         return []
@@ -70,6 +72,7 @@ def right_view(root: TreeNode | None) -> list[int]:
         >>> root = TreeNode(1, TreeNode(2, TreeNode(4)), TreeNode(3))
         >>> right_view(root)
         [1, 3, 4]
+
     """
     if root is None:
         return []
@@ -105,6 +108,7 @@ def top_view(root: TreeNode | None) -> list[int]:
         ...                    TreeNode(3, None, TreeNode(6)))
         >>> top_view(root)
         [4, 2, 1, 3, 6]
+
     """
     if root is None:
         return []
@@ -141,6 +145,7 @@ def bottom_view(root: TreeNode | None) -> list[int]:
         ...                    TreeNode(3, None, TreeNode(6)))
         >>> bottom_view(root)
         [4, 2, 5, 3, 6]
+
     """
     if root is None:
         return []

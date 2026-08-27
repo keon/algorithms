@@ -1,5 +1,4 @@
-"""
-Linked List Node Definitions
+"""Linked List Node Definitions.
 
 Basic node classes for singly and doubly linked lists, serving as foundational
 building blocks for linked list algorithms.
@@ -20,6 +19,7 @@ class SinglyLinkedListNode:
     Attributes:
         value: The value stored in the node.
         next: Reference to the next node, or None.
+
     """
 
     def __init__(self, value: object) -> None:
@@ -34,6 +34,7 @@ class DoublyLinkedListNode:
         value: The value stored in the node.
         next: Reference to the next node, or None.
         prev: Reference to the previous node, or None.
+
     """
 
     def __init__(self, value: object) -> None:

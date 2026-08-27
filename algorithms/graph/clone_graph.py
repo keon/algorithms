@@ -1,5 +1,4 @@
-"""
-Clone an Undirected Graph
+"""Clone an Undirected Graph.
 
 Each node contains a label and a list of its neighbours.  Three strategies
 are provided: BFS-based, iterative DFS, and recursive DFS.
@@ -28,6 +27,7 @@ class UndirectedGraphNode:
 
         Returns:
             A new node with the same label.
+
         """
         return UndirectedGraphNode(self.label)
 
@@ -36,6 +36,7 @@ class UndirectedGraphNode:
 
         Args:
             node: Neighbour to add.
+
         """
         self.neighbors.append(node)
 
@@ -48,6 +49,7 @@ def clone_graph1(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None
 
     Returns:
         The corresponding node in the cloned graph, or None.
+
     """
     if not node:
         return None
@@ -75,6 +77,7 @@ def clone_graph2(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None
 
     Returns:
         The corresponding node in the cloned graph, or None.
+
     """
     if not node:
         return None
@@ -102,6 +105,7 @@ def clone_graph(node: UndirectedGraphNode | None) -> UndirectedGraphNode | None:
 
     Returns:
         The corresponding node in the cloned graph, or None.
+
     """
     if not node:
         return None
@@ -120,6 +124,7 @@ def _dfs(
     Args:
         node: Current node being cloned.
         dic: Mapping from original nodes to their clones.
+
     """
     for neighbor in node.neighbors:
         if neighbor not in dic:

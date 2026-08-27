@@ -1,5 +1,4 @@
-"""
-2-SAT Satisfiability
+"""2-SAT Satisfiability.
 
 Given a formula in conjunctive normal form (2-CNF), finds an assignment of
 True/False values that satisfies all clauses, or reports that no solution
@@ -30,6 +29,7 @@ def _dfs_transposed(
         graph: Transposed graph adjacency list.
         order: Finish order (appended to).
         visited: Visited flags.
+
     """
     visited[vertex] = True
     for adjacent in graph[vertex]:
@@ -53,6 +53,7 @@ def _dfs(
         vertex_scc: SCC mapping (modified in place).
         graph: Graph adjacency list.
         visited: Visited flags.
+
     """
     visited[vertex] = True
     vertex_scc[vertex] = current_comp
@@ -68,6 +69,7 @@ def _add_edge(graph: dict[Any, list[Any]], vertex_from: Any, vertex_to: Any) -> 
         graph: Adjacency list (modified in place).
         vertex_from: Source vertex.
         vertex_to: Target vertex.
+
     """
     if vertex_from not in graph:
         graph[vertex_from] = []
@@ -82,9 +84,10 @@ def _scc(graph: dict[Any, list[Any]]) -> dict[Any, int]:
 
     Returns:
         Mapping from vertex to its SCC index.
+
     """
     order: list[Any] = []
-    visited = {vertex: False for vertex in graph}
+    visited = dict.fromkeys(graph, False)
 
     graph_transposed: dict[Any, list[Any]] = {vertex: [] for vertex in graph}
 
@@ -96,7 +99,7 @@ def _scc(graph: dict[Any, list[Any]]) -> dict[Any, int]:
         if not visited[vertex]:
             _dfs_transposed(vertex, graph_transposed, order, visited)
 
-    visited = {vertex: False for vertex in graph}
+    visited = dict.fromkeys(graph, False)
     vertex_scc: dict[Any, int] = {}
 
     current_comp = 0
@@ -119,6 +122,7 @@ def _build_graph(
 
     Returns:
         Implication graph as an adjacency list.
+
     """
     graph: dict[tuple[str, bool], list[tuple[str, bool]]] = {}
 
@@ -149,6 +153,7 @@ def solve_sat(
     Examples:
         >>> solve_sat([(('x', False), ('y', False)), (('x', True), ('y', True))])
         {'x': True, 'y': False}
+
     """
     graph = _build_graph(formula)
     vertex_scc = _scc(graph)
@@ -172,6 +177,5 @@ def solve_sat(
             lit, neg = comp_repr[comp]
             comp_value[vertex_scc[(lit, not neg)]] = True
 
-    value = {var: comp_value[vertex_scc[(var, False)]] for var, _ in graph}
+    return {var: comp_value[vertex_scc[(var, False)]] for var, _ in graph}
 
-    return value

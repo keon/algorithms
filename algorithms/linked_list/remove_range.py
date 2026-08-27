@@ -1,5 +1,4 @@
-"""
-Remove Range from Linked List
+"""Remove Range from Linked List.
 
 Given a linked list and a start and end index, remove the elements at those
 indexes (inclusive) from the list.
@@ -28,6 +27,7 @@ def remove_range(head: object | None, start: int, end: int) -> object | None:
     Examples:
         >>> remove_range(None, 0, 0) is None
         True
+
     """
     assert start <= end
     if start == 0:

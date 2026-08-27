@@ -1,5 +1,4 @@
-"""
-Kahn's Algorithm (Topological Sort via BFS)
+"""Kahn's Algorithm (Topological Sort via BFS).
 
 Computes a topological ordering of a directed acyclic graph using an
 in-degree based BFS approach.
@@ -20,7 +19,7 @@ class Solution:
     """Wrapper class for Kahn's topological sort."""
 
     def topological_sort(
-        self, vertices: int, adj: list[list[int]]
+        self, vertices: int, adj: list[list[int]],
     ) -> list[int]:
         """Return a topological ordering of the graph.
 
@@ -35,6 +34,7 @@ class Solution:
         Examples:
             >>> Solution().topological_sort(3, [[1], [2], []])
             [0, 1, 2]
+
         """
         in_degree = [0] * vertices
         for i in range(vertices):
@@ -42,7 +42,7 @@ class Solution:
                 in_degree[neighbor] += 1
 
         queue = deque(
-            [i for i in range(vertices) if in_degree[i] == 0]
+            [i for i in range(vertices) if in_degree[i] == 0],
         )
         topo_order: list[int] = []
 

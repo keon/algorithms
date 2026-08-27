@@ -1,5 +1,4 @@
-"""
-Strong Password Checker
+"""Strong Password Checker.
 
 Given a password string, determine the minimum number of characters that
 must be added to make it strong. A strong password has at least 6 characters,
@@ -28,6 +27,7 @@ def strong_password(length: int, password: str) -> int:
     Examples:
         >>> strong_password(3, "Ab1")
         3
+
     """
     missing_types = 0
     if not any(char.isdigit() for char in password):

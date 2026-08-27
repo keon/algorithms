@@ -1,5 +1,4 @@
-"""
-Letter Combinations of a Phone Number
+"""Letter Combinations of a Phone Number.
 
 Given a digit string, return all possible letter combinations that the
 number could represent using a telephone keypad mapping.
@@ -26,6 +25,7 @@ def letter_combinations(digits: str) -> list[str]:
     Examples:
         >>> letter_combinations("23")
         ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']
+
     """
     if digits == "":
         return []

@@ -1,5 +1,4 @@
-"""
-Binary Search
+"""Binary Search.
 
 Search for an element in a sorted array by repeatedly dividing the search
 interval in half.
@@ -29,6 +28,7 @@ def binary_search(array: list[int], query: int) -> int:
         2
         >>> binary_search([1, 2, 3, 4, 5], 6)
         -1
+
     """
     low, high = 0, len(array) - 1
     while low <= high:
@@ -60,6 +60,7 @@ def binary_search_recur(array: list[int], low: int, high: int, val: int) -> int:
         2
         >>> binary_search_recur([1, 2, 3, 4, 5], 0, 4, 6)
         -1
+
     """
     if low > high:
         return -1

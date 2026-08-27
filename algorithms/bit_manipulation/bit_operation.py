@@ -1,5 +1,4 @@
-"""
-Fundamental Bit Operations
+"""Fundamental Bit Operations.
 
 Basic bit manipulation operations: get, set, clear, and update individual
 bits at a specific position in an integer.
@@ -32,6 +31,7 @@ def get_bit(number: int, position: int) -> int:
         1
         >>> get_bit(22, 3)
         0
+
     """
     return (number & (1 << position)) != 0
 
@@ -52,6 +52,7 @@ def set_bit(number: int, position: int) -> int:
     Examples:
         >>> set_bit(22, 3)
         30
+
     """
     return number | (1 << position)
 
@@ -72,6 +73,7 @@ def clear_bit(number: int, position: int) -> int:
     Examples:
         >>> clear_bit(22, 2)
         18
+
     """
     mask = ~(1 << position)
     return number & mask
@@ -96,6 +98,7 @@ def update_bit(number: int, position: int, bit: int) -> int:
         30
         >>> update_bit(22, 2, 0)
         18
+
     """
     mask = ~(1 << position)
     return (number & mask) | (bit << position)

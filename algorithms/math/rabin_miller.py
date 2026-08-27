@@ -1,5 +1,4 @@
-"""
-Rabin-Miller Primality Test
+"""Rabin-Miller Primality Test.
 
 A probabilistic primality test where returning False guarantees the number
 is composite, and returning True means the number is probably prime with
@@ -32,6 +31,7 @@ def is_prime(n: int, k: int) -> bool:
         True
         >>> is_prime(6, 2)
         False
+
     """
 
     def _pow2_factor(num: int) -> tuple[int, int]:
@@ -42,6 +42,7 @@ def is_prime(n: int, k: int) -> bool:
 
         Returns:
             A tuple (power, odd_part).
+
         """
         power = 0
         while num % 2 == 0:
@@ -57,6 +58,7 @@ def is_prime(n: int, k: int) -> bool:
 
         Returns:
             True if a proves n is composite, False otherwise.
+
         """
         x = pow(int(a), int(d), int(n))
 
@@ -74,7 +76,7 @@ def is_prime(n: int, k: int) -> bool:
         return True
 
     if n < 5:
-        return n == 2 or n == 3
+        return n in {2, 3}
 
     r, d = _pow2_factor(n - 1)
 

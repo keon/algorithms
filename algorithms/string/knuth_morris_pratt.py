@@ -1,5 +1,4 @@
-"""
-Knuth-Morris-Pratt String Search
+"""Knuth-Morris-Pratt String Search.
 
 Given two sequences (text and pattern), return the list of start indexes in
 text that match the pattern using the KMP algorithm.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 
 def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> list[int]:
@@ -29,6 +31,7 @@ def knuth_morris_pratt(text: Sequence, pattern: Sequence) -> list[int]:
     Examples:
         >>> knuth_morris_pratt('hello there hero!', 'he')
         [0, 7, 12]
+
     """
     text_length = len(text)
     pattern_length = len(pattern)

@@ -1,5 +1,4 @@
-"""
-Bitonic Sort
+"""Bitonic Sort.
 
 Bitonic sort is a comparison-based sorting algorithm designed for parallel
 execution.  This implementation is sequential.  The input size must be a
@@ -31,12 +30,14 @@ def bitonic_sort(array: list[int], reverse: bool = False) -> list[int]:
     Examples:
         >>> bitonic_sort([4, 2, 1, 3])
         [1, 2, 3, 4]
+
     """
     n = len(array)
     if n <= 1:
         return array
     if not (n and not (n & (n - 1))):
-        raise ValueError("the size of input should be power of two")
+        msg = "the size of input should be power of two"
+        raise ValueError(msg)
 
     left = bitonic_sort(array[: n // 2], True)
     right = bitonic_sort(array[n // 2 :], False)

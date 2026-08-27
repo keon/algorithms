@@ -1,5 +1,4 @@
-"""
-Longest Increasing Subsequence
+"""Longest Increasing Subsequence.
 
 Find the length of the longest strictly increasing subsequence in an array.
 
@@ -32,11 +31,12 @@ def longest_increasing_subsequence(sequence: list[int]) -> int:
     Examples:
         >>> longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18])
         4
+
     """
     length = len(sequence)
     counts = [1 for _ in range(length)]
     for i in range(1, length):
-        for j in range(0, i):
+        for j in range(i):
             if sequence[i] > sequence[j]:
                 counts[i] = max(counts[i], counts[j] + 1)
     return max(counts)
@@ -54,6 +54,7 @@ def longest_increasing_subsequence_optimized(sequence: list[int]) -> int:
     Examples:
         >>> longest_increasing_subsequence_optimized([10, 9, 2, 5, 3, 7, 101, 18])
         4
+
     """
     max_val = max(sequence)
     tree = [0] * (max_val << 2)
@@ -100,6 +101,7 @@ def longest_increasing_subsequence_optimized2(sequence: list[int]) -> int:
     Examples:
         >>> longest_increasing_subsequence_optimized2([10, 9, 2, 5, 3, 7, 101, 18])
         4
+
     """
     length = len(sequence)
     tree = [0] * (length << 2)

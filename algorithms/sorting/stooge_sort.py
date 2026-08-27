@@ -1,5 +1,4 @@
-"""
-Stooge Sort
+"""Stooge Sort.
 
 Stooge sort is a recursive sorting algorithm notable for its unusually
 bad time complexity.  It works by recursively sorting the first 2/3, then
@@ -27,6 +26,7 @@ def stooge_sort(array: list[int]) -> list[int]:
     Examples:
         >>> stooge_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     _stooge_sort(array, 0, len(array) - 1)
     return array

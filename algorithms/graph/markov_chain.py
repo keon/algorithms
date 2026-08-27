@@ -1,5 +1,4 @@
-"""
-Markov Chain
+"""Markov Chain.
 
 Provides utilities for stepping through and iterating a discrete Markov chain
 described as a dictionary of transition probabilities.
@@ -14,8 +13,10 @@ Complexity:
 from __future__ import annotations
 
 import random
-from collections.abc import Iterator
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 def _choose_state(state_map: dict[Any, float]) -> Any | None:
@@ -26,6 +27,7 @@ def _choose_state(state_map: dict[Any, float]) -> Any | None:
 
     Returns:
         The selected state, or None if probabilities don't sum to 1.
+
     """
     choice = random.random()
     probability_reached = 0.0
@@ -50,6 +52,7 @@ def next_state(chain: dict[Any, dict[Any, float]], current_state: Any) -> Any:
         >>> c = {'A': {'A': 1.0}}
         >>> next_state(c, 'A')
         'A'
+
     """
     next_state_map = chain.get(current_state)
     return _choose_state(next_state_map)
@@ -67,6 +70,7 @@ def iterating_markov_chain(
 
     Yields:
         Successive states of the chain.
+
     """
     while True:
         state = next_state(chain, state)

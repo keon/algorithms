@@ -1,5 +1,4 @@
-"""
-Unique Subsets
+"""Unique Subsets.
 
 Given a collection of integers that might contain duplicates, return all
 possible unique subsets (the power set without duplicates).
@@ -26,6 +25,7 @@ def subsets_unique(nums: list[int]) -> list[tuple[int, ...]]:
     Examples:
         >>> sorted(subsets_unique([1, 2, 2]))
         [(), (1,), (1, 2), (1, 2, 2), (2,), (2, 2)]
+
     """
     found: set[tuple[int, ...]] = set()
     _backtrack(found, nums, [], 0)

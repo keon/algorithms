@@ -1,5 +1,4 @@
-"""
-Find Paths in a Graph
+"""Find Paths in a Graph.
 
 Provides functions to find a single path, all paths, or the shortest path
 between two nodes using recursion and backtracking.
@@ -34,18 +33,18 @@ def find_path(
     Examples:
         >>> find_path({'A': ['B'], 'B': ['C'], 'C': []}, 'A', 'C')
         ['A', 'B', 'C']
+
     """
     if path is None:
         path = []
-    path = path + [start]
+    path = [*path, start]
     if start == end:
         return path
     if start not in graph:
         return None
     for node in graph[start]:
         if node not in path:
-            newpath = find_path(graph, node, end, path)
-            return newpath
+            return find_path(graph, node, end, path)
     return None
 
 
@@ -69,10 +68,11 @@ def find_all_path(
     Examples:
         >>> find_all_path({'A': ['B', 'C'], 'B': ['C'], 'C': []}, 'A', 'C')
         [['A', 'B', 'C'], ['A', 'C']]
+
     """
     if path is None:
         path = []
-    path = path + [start]
+    path = [*path, start]
     if start == end:
         return [path]
     if start not in graph:
@@ -106,10 +106,11 @@ def find_shortest_path(
     Examples:
         >>> find_shortest_path({'A': ['B', 'C'], 'B': ['C'], 'C': []}, 'A', 'C')
         ['A', 'C']
+
     """
     if path is None:
         path = []
-    path = path + [start]
+    path = [*path, start]
     if start == end:
         return path
     if start not in graph:

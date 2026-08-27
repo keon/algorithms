@@ -25,20 +25,20 @@ from .trimmean import trimmean
 from .two_sum import two_sum
 
 __all__ = [
+    "Interval",
     "delete_nth",
     "delete_nth_naive",
     "flatten",
     "flatten_iter",
     "garage",
-    "josephus",
-    "limit",
     "get_longest_non_repeat_v1",
     "get_longest_non_repeat_v2",
     "get_longest_non_repeat_v3",
+    "josephus",
+    "limit",
     "longest_non_repeat_v1",
     "longest_non_repeat_v2",
     "max_ones_index",
-    "Interval",
     "merge_intervals",
     "missing_ranges",
     "move_zeros",

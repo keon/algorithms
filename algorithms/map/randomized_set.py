@@ -1,5 +1,4 @@
-"""
-Randomized Set
+"""Randomized Set.
 
 Design a data structure that supports insert, remove, and getRandom
 in average O(1) time. Uses a list for random access and a dictionary
@@ -28,6 +27,7 @@ class RandomizedSet:
         False
         >>> rs.remove(1)
         True
+
     """
 
     def __init__(self) -> None:
@@ -43,6 +43,7 @@ class RandomizedSet:
 
         Returns:
             True if the value was inserted, False if already present.
+
         """
         if val not in self.idxs:
             self.nums.append(val)
@@ -58,6 +59,7 @@ class RandomizedSet:
 
         Returns:
             True if the value was removed, False if not present.
+
         """
         if val in self.idxs:
             idx, last = self.idxs[val], self.nums[-1]
@@ -72,6 +74,7 @@ class RandomizedSet:
 
         Returns:
             A randomly chosen element.
+
         """
         idx = random.randint(0, len(self.nums) - 1)
         return self.nums[idx]

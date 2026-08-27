@@ -1,5 +1,4 @@
-"""
-Decode Ways
+"""Decode Ways.
 
 Given an encoded message of digits, count the total number of ways to
 decode it where 'A' = 1, 'B' = 2, ..., 'Z' = 26.
@@ -28,6 +27,7 @@ def num_decodings(enc_mes: str) -> int:
         2
         >>> num_decodings("226")
         3
+
     """
     if not enc_mes or enc_mes[0] == "0":
         return 0
@@ -58,6 +58,7 @@ def num_decodings2(enc_mes: str) -> int:
         2
         >>> num_decodings2("226")
         3
+
     """
     if not enc_mes or enc_mes.startswith("0"):
         return 0

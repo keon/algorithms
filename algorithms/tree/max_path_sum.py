@@ -1,5 +1,4 @@
-"""
-Binary Tree Maximum Path Sum
+"""Binary Tree Maximum Path Sum.
 
 Given a binary tree, find the maximum path sum. A path is any sequence of nodes
 from some starting node to any node in the tree along parent-child connections.
@@ -14,7 +13,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def max_path_sum(root: TreeNode | None) -> float:
@@ -29,6 +31,7 @@ def max_path_sum(root: TreeNode | None) -> float:
     Examples:
         >>> max_path_sum(TreeNode(1))
         1
+
     """
     _, maximum = _helper(root)
     return maximum
@@ -39,9 +42,11 @@ def _helper(root: TreeNode | None) -> tuple[float, float]:
 
     Args:
         root: The current node.
+
     Returns:
         A tuple containing the best downward branch and the best complete
         path found in the subtree.
+
     """
     if root is None:
         return 0, float("-inf")

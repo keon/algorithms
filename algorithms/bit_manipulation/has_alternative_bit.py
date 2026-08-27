@@ -1,5 +1,4 @@
-"""
-Has Alternating Bits
+"""Has Alternating Bits.
 
 Check whether a positive integer has alternating bits, meaning no two
 adjacent bits share the same value.
@@ -28,6 +27,7 @@ def has_alternative_bit(number: int) -> bool:
         True
         >>> has_alternative_bit(7)
         False
+
     """
     first_bit = 0
     second_bit = 0
@@ -57,6 +57,7 @@ def has_alternative_bit_fast(number: int) -> bool:
         True
         >>> has_alternative_bit_fast(7)
         False
+
     """
     mask_even_bits = int("aaaaaaaa", 16)  # ...10101010
     mask_odd_bits = int("55555555", 16)  # ...01010101

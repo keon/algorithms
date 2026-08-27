@@ -1,5 +1,4 @@
-"""
-Keyboard Row Filter
+"""Keyboard Row Filter.
 
 Given a list of words, return the words that can be typed using letters from
 only one row of an American QWERTY keyboard.
@@ -32,6 +31,7 @@ def find_keyboard_row(words: list[str]) -> list[str]:
     Examples:
         >>> find_keyboard_row(["Hello", "Alaska", "Dad", "Peace"])
         ['Alaska', 'Dad']
+
     """
     result: list[str] = []
     for word in words:

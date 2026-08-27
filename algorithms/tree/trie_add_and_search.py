@@ -1,5 +1,4 @@
-"""
-We are asked to design an efficient data structure
+"""We are asked to design an efficient data structure
 that allows us to add and search for words.
 The search can be a literal word or regular expression
 containing “.”, where “.” can be any letter.
@@ -12,23 +11,24 @@ search(“pad”) -> false
 search(“bad”) -> true
 search(“.ad”) -> true
 search(“b..”) -> true
+
 """
 
 import collections
 
 
 class TrieNode:
-    def __init__(self, letter, is_terminal=False):
-        self.children = dict()
+    def __init__(self, letter, is_terminal=False) -> None:
+        self.children = {}
         self.letter = letter
         self.is_terminal = is_terminal
 
 
 class WordDictionary:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = TrieNode("")
 
-    def add_word(self, word):
+    def add_word(self, word) -> None:
         cur = self.root
         for letter in word:
             if letter not in cur.children:
@@ -60,10 +60,10 @@ class WordDictionary:
 
 
 class WordDictionary2:
-    def __init__(self):
+    def __init__(self) -> None:
         self.word_dict = collections.defaultdict(list)
 
-    def add_word(self, word):
+    def add_word(self, word) -> None:
         if word:
             self.word_dict[len(word)].append(word)
 

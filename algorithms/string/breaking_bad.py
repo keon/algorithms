@@ -1,5 +1,4 @@
-"""
-Breaking Bad Symbol Matching
+"""Breaking Bad Symbol Matching.
 
 Given an array of words and an array of symbols, display each word with its
 matched symbol surrounded by square brackets. If a word matches more than one
@@ -31,6 +30,7 @@ def match_symbol(words: list[str], symbols: list[str]) -> list[str]:
     Examples:
         >>> match_symbol(['Google'], ['le'])
         ['Goog[le]']
+
     """
     combined = []
     for symbol in symbols:
@@ -54,9 +54,10 @@ def match_symbol_1(words: list[str], symbols: list[str]) -> list[str]:
     Examples:
         >>> match_symbol_1(['Microsoft'], ['i', 'cro'])
         ['Mi[cro]soft']
+
     """
     result = []
-    symbols = sorted(symbols, key=lambda item: len(item), reverse=True)
+    symbols = sorted(symbols, key=len, reverse=True)
     for word in words:
         word_replaced = ""
         for symbol in symbols:
@@ -90,6 +91,7 @@ def bracket(words: list[str], symbols: list[str]) -> tuple[str, ...]:
     Examples:
         >>> bracket(['Amazon', 'Microsoft', 'Google'], ['Am', 'cro', 'le'])
         ('[Am]azon', 'Mi[cro]soft', 'Goog[le]')
+
     """
     root = _TrieNode()
     for symbol in symbols:
@@ -110,7 +112,7 @@ def bracket(words: list[str], symbols: list[str]) -> tuple[str, ...]:
                 node = node.children[word[cursor]]
                 if node.symbol is not None:
                     symbol_list.append(
-                        (cursor + 1 - len(node.symbol), cursor + 1, node.symbol)
+                        (cursor + 1 - len(node.symbol), cursor + 1, node.symbol),
                     )
                 cursor += 1
             index += 1

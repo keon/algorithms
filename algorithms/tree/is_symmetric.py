@@ -1,5 +1,4 @@
-"""
-Symmetric Tree
+"""Symmetric Tree.
 
 Given a binary tree, check whether it is a mirror of itself (i.e., symmetric
 around its center). Provides both recursive and iterative solutions.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def is_symmetric(root: TreeNode | None) -> bool:
@@ -28,6 +30,7 @@ def is_symmetric(root: TreeNode | None) -> bool:
     Examples:
         >>> is_symmetric(None)
         True
+
     """
     if root is None:
         return True
@@ -43,6 +46,7 @@ def _helper(p: TreeNode | None, q: TreeNode | None) -> bool:
 
     Returns:
         True if the subtrees are mirror images, False otherwise.
+
     """
     if p is None and q is None:
         return True
@@ -63,6 +67,7 @@ def is_symmetric_iterative(root: TreeNode | None) -> bool:
     Examples:
         >>> is_symmetric_iterative(None)
         True
+
     """
     if root is None:
         return True

@@ -1,5 +1,4 @@
-"""
-Kth to Last Element
+"""Kth to Last Element.
 
 Find the kth to last element of a singly linked list. Three approaches are
 provided: eval-based, dictionary-based, and two-pointer iterative.
@@ -34,6 +33,7 @@ def kth_to_last_eval(head: Node, k: int) -> Node | bool:
         >>> a = Node(1); b = Node(2); a.next = b
         >>> kth_to_last_eval(a, 1).val
         2
+
     """
     if not isinstance(k, int) or not head.val:
         return False
@@ -65,6 +65,7 @@ def kth_to_last_dict(head: Node | None, k: int) -> Node | bool:
         >>> a = Node(1); b = Node(2); a.next = b
         >>> kth_to_last_dict(a, 1).val
         2
+
     """
     if not (head and k > -1):
         return False
@@ -97,6 +98,7 @@ def kth_to_last(head: Node | None, k: int) -> Node | bool:
         >>> a = Node(1); b = Node(2); a.next = b
         >>> kth_to_last(a, 1).val
         2
+
     """
     if not (head or k > -1):
         return False

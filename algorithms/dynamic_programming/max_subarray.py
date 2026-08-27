@@ -1,5 +1,4 @@
-"""
-Maximum Subarray (Kadane's Algorithm)
+"""Maximum Subarray (Kadane's Algorithm).
 
 Find the contiguous subarray with the largest sum.
 
@@ -25,6 +24,7 @@ def max_subarray(array: list[int]) -> int:
     Examples:
         >>> max_subarray([1, 2, -3, 4, 5, -7, 23])
         25
+
     """
     max_so_far = max_now = array[0]
     for i in range(1, len(array)):

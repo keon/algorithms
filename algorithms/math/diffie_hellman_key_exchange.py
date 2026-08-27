@@ -1,5 +1,4 @@
-"""
-Diffie-Hellman Key Exchange
+"""Diffie-Hellman Key Exchange.
 
 Implements the Diffie-Hellman key exchange protocol, which enables two parties
 to establish a shared secret over an insecure channel using discrete
@@ -15,6 +14,7 @@ Reference: https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
 Complexity:
     Time:  O(p) for primitive root finding, O(log(p)) for key generation
     Space: O(p) for primitive root list
+
 """
 
 from __future__ import annotations
@@ -31,10 +31,11 @@ def _prime_check(num: int) -> bool:
 
     Returns:
         True if num is prime, False otherwise.
+
     """
     if num <= 1:
         return False
-    if num == 2 or num == 3:
+    if num in {2, 3}:
         return True
     if num % 2 == 0 or num % 3 == 0:
         return False
@@ -55,6 +56,7 @@ def _find_order(a: int, n: int) -> int:
 
     Returns:
         The smallest positive k such that a^k = 1 (mod n), or -1 if none exists.
+
     """
     if (a == 1) & (n == 1):
         return 1
@@ -74,6 +76,7 @@ def _euler_totient(n: int) -> int:
 
     Returns:
         The number of integers from 1 to n that are coprime with n.
+
     """
     result = n
     for i in range(2, int(n**0.5) + 1):
@@ -94,6 +97,7 @@ def _find_primitive_root(n: int) -> list[int]:
 
     Returns:
         List of all primitive roots of n, or empty list if none exist.
+
     """
     if n == 1:
         return [0]
@@ -116,6 +120,7 @@ def alice_private_key(p: int) -> int:
 
     Returns:
         A random private key.
+
     """
     return secrets.randbelow(p - 1) + 1
 
@@ -130,6 +135,7 @@ def alice_public_key(a_pr_k: int, a: int, p: int) -> int:
 
     Returns:
         Alice's public key.
+
     """
     return pow(a, a_pr_k, p)
 
@@ -142,6 +148,7 @@ def bob_private_key(p: int) -> int:
 
     Returns:
         A random private key.
+
     """
     return secrets.randbelow(p - 1) + 1
 
@@ -156,6 +163,7 @@ def bob_public_key(b_pr_k: int, a: int, p: int) -> int:
 
     Returns:
         Bob's public key.
+
     """
     return pow(a, b_pr_k, p)
 
@@ -170,6 +178,7 @@ def alice_shared_key(b_pu_k: int, a_pr_k: int, p: int) -> int:
 
     Returns:
         The shared secret key.
+
     """
     return pow(b_pu_k, a_pr_k, p)
 
@@ -184,6 +193,7 @@ def bob_shared_key(a_pu_k: int, b_pr_k: int, p: int) -> int:
 
     Returns:
         The shared secret key.
+
     """
     return pow(a_pu_k, b_pr_k, p)
 
@@ -203,6 +213,7 @@ def diffie_hellman_key_exchange(a: int, p: int, option: int | None = None) -> bo
     Examples:
         >>> diffie_hellman_key_exchange(3, 353)
         True
+
     """
     if _prime_check(p) is False:
         return False

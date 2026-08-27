@@ -1,5 +1,4 @@
-"""
-Is Rotated String
+"""Is Rotated String.
 
 Given two strings, determine if the second is a rotated version of the first.
 Two approaches are provided: concatenation check and brute force.
@@ -27,11 +26,11 @@ def is_rotated(first: str, second: str) -> bool:
     Examples:
         >>> is_rotated("hello", "llohe")
         True
+
     """
     if len(first) == len(second):
         return second in first + first
-    else:
-        return False
+    return False
 
 
 def is_rotated_v1(first: str, second: str) -> bool:
@@ -47,6 +46,7 @@ def is_rotated_v1(first: str, second: str) -> bool:
     Examples:
         >>> is_rotated_v1("hello", "llohe")
         True
+
     """
     if len(first) != len(second):
         return False

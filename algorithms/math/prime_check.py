@@ -1,5 +1,4 @@
-"""
-Primality Test
+"""Primality Test.
 
 Check whether a given integer is prime using trial division with 6k +/- 1
 optimization.
@@ -28,10 +27,11 @@ def prime_check(n: int) -> bool:
         True
         >>> prime_check(4)
         False
+
     """
     if n <= 1:
         return False
-    if n == 2 or n == 3:
+    if n in {2, 3}:
         return True
     if n % 2 == 0 or n % 3 == 0:
         return False

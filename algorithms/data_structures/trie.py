@@ -1,24 +1,24 @@
-"""
-Implement a trie with insert, search, and startsWith methods.
+"""Implement a trie with insert, search, and startsWith methods.
 
 Note:
 You may assume that all inputs are consist of lowercase letters a-z.
+
 """
 
 import collections
 
 
 class TrieNode:
-    def __init__(self):
+    def __init__(self) -> None:
         self.children = collections.defaultdict(TrieNode)
         self.is_word = False
 
 
 class Trie:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = TrieNode()
 
-    def insert(self, word):
+    def insert(self, word) -> None:
         current = self.root
         for letter in word:
             current = current.children[letter]
@@ -32,7 +32,7 @@ class Trie:
                 return False
         return current.is_word
 
-    def starts_with(self, prefix):
+    def starts_with(self, prefix) -> bool:
         current = self.root
         for letter in prefix:
             current = current.children.get(letter)

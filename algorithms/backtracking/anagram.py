@@ -1,5 +1,4 @@
-"""
-Anagram Checker
+"""Anagram Checker.
 
 Given two strings, determine if they are anagrams of each other (i.e. one
 can be rearranged to form the other).
@@ -29,6 +28,7 @@ def anagram(first: str, second: str) -> bool:
         True
         >>> anagram('apple', 'cherry')
         False
+
     """
     count_first = [0] * 26
     count_second = [0] * 26

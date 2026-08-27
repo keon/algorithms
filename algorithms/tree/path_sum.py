@@ -1,5 +1,4 @@
-"""
-Path Sum
+"""Path Sum.
 
 Given a binary tree and a target sum, determine if the tree has a root-to-leaf
 path such that adding up all values along the path equals the given sum.
@@ -15,8 +14,10 @@ Complexity:
 from __future__ import annotations
 
 from collections import deque
+from typing import TYPE_CHECKING
 
-from algorithms.tree.tree import TreeNode
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def has_path_sum(root: TreeNode | None, sum: int) -> bool:
@@ -32,6 +33,7 @@ def has_path_sum(root: TreeNode | None, sum: int) -> bool:
     Examples:
         >>> has_path_sum(None, 0)
         False
+
     """
     if root is None:
         return False
@@ -54,6 +56,7 @@ def has_path_sum2(root: TreeNode | None, sum: int) -> bool:
     Examples:
         >>> has_path_sum2(None, 0)
         False
+
     """
     if root is None:
         return False
@@ -82,6 +85,7 @@ def has_path_sum3(root: TreeNode | None, sum: int) -> bool:
     Examples:
         >>> has_path_sum3(None, 0)
         False
+
     """
     if root is None:
         return False

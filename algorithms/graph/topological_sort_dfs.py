@@ -1,5 +1,4 @@
-"""
-Topological Sort
+"""Topological Sort.
 
 Topological sort produces a linear ordering of vertices in a directed
 acyclic graph (DAG) such that for every directed edge (u, v), vertex u
@@ -33,6 +32,7 @@ def top_sort_recursive(graph: dict[str, list[str]]) -> list[str]:
     Examples:
         >>> top_sort_recursive({'a': ['b'], 'b': []})
         ['b', 'a']
+
     """
     order: list[str] = []
     enter = set(graph)
@@ -43,7 +43,8 @@ def top_sort_recursive(graph: dict[str, list[str]]) -> list[str]:
         for neighbour in graph.get(node, ()):
             neighbour_state = state.get(neighbour)
             if neighbour_state == _GRAY:
-                raise ValueError("cycle")
+                msg = "cycle"
+                raise ValueError(msg)
             if neighbour_state == _BLACK:
                 continue
             enter.discard(neighbour)
@@ -71,6 +72,7 @@ def top_sort(graph: dict[str, list[str]]) -> list[str]:
     Examples:
         >>> top_sort({'a': ['b'], 'b': []})
         ['b', 'a']
+
     """
     order: list[str] = []
     enter = set(graph)
@@ -83,7 +85,8 @@ def top_sort(graph: dict[str, list[str]]) -> list[str]:
         for neighbour in neighbours:
             neighbour_state = state.get(neighbour)
             if neighbour_state == _GRAY:
-                raise ValueError("cycle")
+                msg = "cycle"
+                raise ValueError(msg)
             if neighbour_state != _BLACK:
                 return False
         return True
@@ -97,7 +100,8 @@ def top_sort(graph: dict[str, list[str]]) -> list[str]:
             for neighbour in graph.get(node, ()):
                 neighbour_state = state.get(neighbour)
                 if neighbour_state == _GRAY:
-                    raise ValueError("cycle")
+                    msg = "cycle"
+                    raise ValueError(msg)
                 if neighbour_state == _BLACK:
                     continue
                 enter.discard(neighbour)

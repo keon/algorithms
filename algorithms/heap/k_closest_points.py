@@ -1,5 +1,4 @@
-"""
-K Closest Points to Origin
+"""K Closest Points to Origin.
 
 Given a list of points, find the k closest to the origin using a max
 heap of size k. For each subsequent point, replace the heap root if
@@ -35,6 +34,7 @@ def k_closest(
     Examples:
         >>> k_closest([(1, 0), (-1, 0), (2, 3)], 2)
         [(-1, 0), (1, 0)]
+
     """
     heap = [(-_distance(p, origin), p) for p in points[:k]]
     heapify(heap)
@@ -55,5 +55,6 @@ def _distance(point: tuple[int, int], origin: tuple[int, int] = (0, 0)) -> int:
 
     Returns:
         Squared Euclidean distance.
+
     """
     return (point[0] - origin[0]) ** 2 + (point[1] - origin[1]) ** 2

@@ -1,5 +1,4 @@
-"""
-Longest Absolute File Path
+"""Longest Absolute File Path.
 
 Given a string representing a file system in a special format, find the
 length of the longest absolute path to a file. Directories and files
@@ -16,7 +15,7 @@ from __future__ import annotations
 
 
 def length_longest_path(input_str: str) -> int:
-    """Find the length of the longest absolute path to a file.
+    r"""Find the length of the longest absolute path to a file.
 
     Args:
         input_str: A string encoding the file system structure using
@@ -28,6 +27,7 @@ def length_longest_path(input_str: str) -> int:
     Examples:
         >>> length_longest_path("dir\\n\\tfile.txt")
         12
+
     """
     current_length = 0
     max_length = 0

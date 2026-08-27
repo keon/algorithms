@@ -1,5 +1,4 @@
-"""
-Remove Min from Stack
+"""Remove Min from Stack.
 
 Remove the smallest value from a stack, preserving the relative order
 of the remaining elements.
@@ -26,6 +25,7 @@ def remove_min(stack: list[int]) -> list[int]:
     Examples:
         >>> remove_min([2, 8, 3, -6, 7, 3])
         [2, 8, 3, 7, 3]
+
     """
     storage_stack: list[int] = []
     if len(stack) == 0:
@@ -34,8 +34,7 @@ def remove_min(stack: list[int]) -> list[int]:
     stack.append(minimum)
     for _ in range(len(stack)):
         val = stack.pop()
-        if val <= minimum:
-            minimum = val
+        minimum = min(val, minimum)
         storage_stack.append(val)
     for _ in range(len(storage_stack)):
         val = storage_stack.pop()

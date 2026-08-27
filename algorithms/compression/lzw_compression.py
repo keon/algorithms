@@ -1,5 +1,4 @@
-"""
-Lempel-Ziv-Welch (LZW) Compression
+"""Lempel-Ziv-Welch (LZW) Compression.
 
 A dictionary-based lossless compression algorithm. It builds a dictionary of
 substrings during encoding and replaces repeated substrings with dictionary
@@ -24,6 +23,7 @@ def _build_initial_dictionary(data: str) -> dict[str, int]:
 
     Returns:
         A dictionary mapping characters to integer codes.
+
     """
     return {char: index for index, char in enumerate(sorted(set(data)))}
 
@@ -46,6 +46,7 @@ def lzw_encode(data: str) -> tuple[list[int], dict[int, str]]:
         {0: 'A', 1: 'B'}
         >>> lzw_encode("")
         ([], {})
+
     """
     if not data:
         return [], {}
@@ -92,6 +93,7 @@ def lzw_decode(encoded: list[int], initial_dictionary: dict[int, str]) -> str:
         'ABABABA'
         >>> lzw_decode([], {})
         ''
+
     """
     if not encoded:
         return ""
@@ -107,7 +109,8 @@ def lzw_decode(encoded: list[int], initial_dictionary: dict[int, str]) -> str:
         elif code == next_code and previous:
             current = previous + previous[0]
         else:
-            raise ValueError(f"Invalid LZW code: {code}")
+            msg = f"Invalid LZW code: {code}"
+            raise ValueError(msg)
 
         decoded += current
 

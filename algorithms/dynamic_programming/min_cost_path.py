@@ -1,5 +1,4 @@
-"""
-Minimum Cost Path
+"""Minimum Cost Path.
 
 Find the minimum cost to travel from station 0 to station N-1 given
 a cost matrix where cost[i][j] is the price of going from station i
@@ -31,6 +30,7 @@ def min_cost(cost: list[list[int]]) -> int:
         >>> min_cost([[0, 15, 80, 90], [-1, 0, 40, 50],
         ...          [-1, -1, 0, 70], [-1, -1, -1, 0]])
         65
+
     """
     length = len(cost)
     dist = [_INF] * length

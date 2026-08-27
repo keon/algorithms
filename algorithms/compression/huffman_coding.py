@@ -1,5 +1,4 @@
-"""
-Huffman Coding
+"""Huffman Coding.
 
 An efficient method of lossless data compression. Symbols appearing more
 frequently are encoded with shorter bit strings while less frequent symbols
@@ -64,6 +63,7 @@ class HuffmanReader:
 
         Returns:
             The number of additional padding bits in the last byte.
+
         """
         bin_num = self.get_bit() + self.get_bit() + self.get_bit()
         return int(bin_num, 2)
@@ -73,6 +73,7 @@ class HuffmanReader:
 
         Returns:
             The root node of the reconstructed tree.
+
         """
         node_stack: deque[Node] = deque()
         queue_leaves: deque[Node] = deque()
@@ -102,6 +103,7 @@ class HuffmanReader:
 
         Args:
             leaves_queue: Queue of leaf nodes to populate.
+
         """
         leaves_queue.reverse()
         while leaves_queue:
@@ -117,6 +119,7 @@ class HuffmanReader:
 
         Returns:
             True if enough bits are available for reading.
+
         """
         if len(self.buffer) <= buff_limit:
             byte = self.file.read(1)
@@ -134,6 +137,7 @@ class HuffmanReader:
 
         Returns:
             A '0' or '1' character, or -1 if at end of file.
+
         """
         if self._load_byte(buff_limit):
             return self.buffer.pop(0)
@@ -144,6 +148,7 @@ class HuffmanReader:
 
         Returns:
             An 8-character binary string, or -1 if at end of file.
+
         """
         if self._load_byte():
             byte_list = self.buffer[:8]
@@ -165,6 +170,7 @@ class HuffmanWriter:
 
         Args:
             char: A single character to write.
+
         """
         self.write_int(ord(char))
 
@@ -173,6 +179,7 @@ class HuffmanWriter:
 
         Args:
             num: An integer (0-255) to write.
+
         """
         bin_int = f"{num:08b}"
         self.write_bits(bin_int)
@@ -182,6 +189,7 @@ class HuffmanWriter:
 
         Args:
             bits: A string of '0' and '1' characters.
+
         """
         self.saved_bits += len(bits)
         self.buffer += bits
@@ -195,6 +203,7 @@ class HuffmanWriter:
 
         Args:
             tree: The root node of the Huffman tree.
+
         """
         signs: list[int] = []
         tree_code = ""
@@ -220,6 +229,7 @@ class HuffmanWriter:
 
         Args:
             additional_bits: The number of padding bits appended.
+
         """
         self.file.seek(0)
         first_byte_raw = self.file.read(1)
@@ -252,6 +262,7 @@ class TreeFinder:
 
         Returns:
             True if a symbol was found at the current node.
+
         """
         if bit == "0":
             self.current_node = self.current_node.left
@@ -271,6 +282,7 @@ class TreeFinder:
 
         Args:
             found: The decoded symbol value.
+
         """
         self.found = found
         self.current_node = self.root
@@ -289,13 +301,14 @@ class HuffmanCoding:
         Args:
             file_in_name: Path to the encoded input file.
             file_out_name: Path to the decoded output file.
+
         """
         with open(file_in_name, "rb") as file_in, open(file_out_name, "wb") as file_out:
             reader = HuffmanReader(file_in)
             additional_bits = reader.get_number_of_additional_bits_in_the_last_byte()
             tree = reader.load_tree()
             HuffmanCoding._decode_and_write_signs_to_file(
-                file_out, reader, tree, additional_bits
+                file_out, reader, tree, additional_bits,
             )
 
     @staticmethod
@@ -312,6 +325,7 @@ class HuffmanCoding:
             reader: The HuffmanReader providing encoded bits.
             tree: The root of the Huffman tree.
             additional_bits: Number of padding bits in the last byte.
+
         """
         tree_finder = TreeFinder(tree)
         is_end_of_file = False
@@ -337,6 +351,7 @@ class HuffmanCoding:
         Args:
             file_in_name: Path to the raw input file.
             file_out_name: Path to the encoded output file.
+
         """
         with (
             open(file_in_name, "rb") as file_in,
@@ -355,7 +370,7 @@ class HuffmanCoding:
 
     @staticmethod
     def _encode_and_write_signs_to_file(
-        file: object, writer: HuffmanWriter, codes: dict[int, str]
+        file: object, writer: HuffmanWriter, codes: dict[int, str],
     ) -> None:
         """Read bytes from file and write their Huffman codes.
 
@@ -363,6 +378,7 @@ class HuffmanCoding:
             file: The input file object.
             writer: The HuffmanWriter for output.
             codes: Mapping of byte values to Huffman code strings.
+
         """
         sign = file.read(1)
         while sign:
@@ -379,6 +395,7 @@ class HuffmanCoding:
 
         Returns:
             A dict mapping byte values to their frequencies.
+
         """
         is_end_of_file = False
         signs_frequency: dict[int, int] = defaultdict(lambda: 0)
@@ -401,6 +418,7 @@ class HuffmanCoding:
 
         Returns:
             A dict mapping byte values to their binary code strings.
+
         """
         codes: dict[int, str] = {}
         HuffmanCoding._go_through_tree_and_create_codes(tree, "", codes)
@@ -415,6 +433,7 @@ class HuffmanCoding:
 
         Returns:
             The root node of the constructed Huffman tree.
+
         """
         nodes = [
             Node(frequency=frequency, sign=char_int)
@@ -436,7 +455,7 @@ class HuffmanCoding:
 
     @staticmethod
     def _go_through_tree_and_create_codes(
-        tree: Node, code: str, dict_codes: dict[int, str]
+        tree: Node, code: str, dict_codes: dict[int, str],
     ) -> None:
         """Recursively traverse the tree to build code mappings.
 
@@ -444,16 +463,17 @@ class HuffmanCoding:
             tree: The current node being visited.
             code: The accumulated bit string for this path.
             dict_codes: The output dict to populate.
+
         """
         if tree.sign is not None:
             dict_codes[tree.sign] = code
 
         if tree.left:
             HuffmanCoding._go_through_tree_and_create_codes(
-                tree.left, code + "0", dict_codes
+                tree.left, code + "0", dict_codes,
             )
 
         if tree.right:
             HuffmanCoding._go_through_tree_and_create_codes(
-                tree.right, code + "1", dict_codes
+                tree.right, code + "1", dict_codes,
             )

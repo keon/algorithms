@@ -1,5 +1,4 @@
-"""
-All-Pairs Shortest Path (Floyd-Warshall)
+"""All-Pairs Shortest Path (Floyd-Warshall).
 
 Given an n*n adjacency matrix, computes the shortest path between every pair
 of vertices using the Floyd-Warshall algorithm.
@@ -33,6 +32,7 @@ def all_pairs_shortest_path(
         ...     [[0, 1, float('inf')], [float('inf'), 0, 1],
         ...      [1, float('inf'), 0]])
         [[0, 1, 2], [2, 0, 1], [1, 2, 0]]
+
     """
     new_array = copy.deepcopy(adjacency_matrix)
 
@@ -40,7 +40,6 @@ def all_pairs_shortest_path(
     for k in range(size):
         for i in range(size):
             for j in range(size):
-                if new_array[i][j] > new_array[i][k] + new_array[k][j]:
-                    new_array[i][j] = new_array[i][k] + new_array[k][j]
+                new_array[i][j] = min(new_array[i][j], new_array[i][k] + new_array[k][j])
 
     return new_array

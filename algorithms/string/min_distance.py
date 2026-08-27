@@ -1,5 +1,4 @@
-"""
-Minimum Edit Distance (Delete Operation)
+"""Minimum Edit Distance (Delete Operation).
 
 Given two words, find the minimum number of steps required to make them the
 same, where each step deletes one character from either string.
@@ -27,6 +26,7 @@ def min_distance(word1: str, word2: str) -> int:
     Examples:
         >>> min_distance("sea", "eat")
         2
+
     """
     return len(word1) + len(word2) - 2 * _lcs(word1, word2, len(word1), len(word2))
 
@@ -42,6 +42,7 @@ def _lcs(word1: str, word2: str, length1: int, length2: int) -> int:
 
     Returns:
         The length of the longest common subsequence.
+
     """
     if length1 == 0 or length2 == 0:
         return 0
@@ -66,6 +67,7 @@ def min_distance_dp(word1: str, word2: str) -> int:
     Examples:
         >>> min_distance_dp("sea", "eat")
         2
+
     """
     rows, cols = len(word1) + 1, len(word2) + 1
     table = [[0 for _ in range(cols)] for _ in range(rows)]

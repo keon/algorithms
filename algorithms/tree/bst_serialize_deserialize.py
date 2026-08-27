@@ -2,7 +2,7 @@ from algorithms.common.tree_node import TreeNode
 
 
 def serialize(root):
-    def build_string(node):
+    def build_string(node) -> None:
         if node:
             vals.append(str(node.val))
             build_string(node.left)

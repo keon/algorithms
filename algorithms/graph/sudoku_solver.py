@@ -1,5 +1,4 @@
-"""
-Sudoku Solver (DFS / Backtracking)
+"""Sudoku Solver (DFS / Backtracking).
 
 Solves a Sudoku puzzle using constraint propagation and depth-first search
 with backtracking, starting from the cell with the fewest possible values.
@@ -29,6 +28,7 @@ class Sudoku:
             board: 2D list of digits or '.' for empty cells.
             row: Number of rows.
             col: Number of columns.
+
         """
         self.board = board
         self.row = row
@@ -40,6 +40,7 @@ class Sudoku:
 
         Returns:
             Mapping from (row, col) to list of candidate digits.
+
         """
         a = "123456789"
         d: dict[tuple[str, int] | tuple[int, int], list[str]] = {}
@@ -48,9 +49,9 @@ class Sudoku:
             for j in range(self.col):
                 ele = self.board[i][j]
                 if ele != ".":
-                    d[("r", i)] = d.get(("r", i), []) + [ele]
-                    d[("c", j)] = d.get(("c", j), []) + [ele]
-                    d[(i // 3, j // 3)] = d.get((i // 3, j // 3), []) + [ele]
+                    d[("r", i)] = [*d.get(("r", i), []), ele]
+                    d[("c", j)] = [*d.get(("c", j), []), ele]
+                    d[(i // 3, j // 3)] = [*d.get((i // 3, j // 3), []), ele]
                 else:
                     val[(i, j)] = []
         for i, j in val:
@@ -67,6 +68,7 @@ class Sudoku:
 
         Returns:
             True if a solution was found.
+
         """
         if len(self.val) == 0:
             return True
@@ -94,6 +96,7 @@ class Sudoku:
 
         Returns:
             True if placement is valid.
+
         """
         self.board[kee[0]][kee[1]] = n
         del self.val[kee]
@@ -120,6 +123,7 @@ class Sudoku:
         Args:
             kee: (row, col) coordinate.
             update: Undo log.
+
         """
         self.board[kee[0]][kee[1]] = "."
         for k in update:
@@ -133,6 +137,7 @@ class Sudoku:
 
         Returns:
             Formatted board string.
+
         """
         resp = ""
         for i in range(self.row):

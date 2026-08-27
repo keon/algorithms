@@ -1,5 +1,4 @@
-"""
-Rotate Array
+"""Rotate Array.
 
 Rotate an array of n elements to the right by k steps.
 Three algorithm variants are provided with different time complexities.
@@ -28,6 +27,7 @@ def rotate_v1(array: list[int], k: int) -> list[int]:
     Examples:
         >>> rotate_v1([1, 2, 3, 4, 5, 6, 7], 3)
         [5, 6, 7, 1, 2, 3, 4]
+
     """
     array = array[:]
     length = len(array)
@@ -52,6 +52,7 @@ def rotate_v2(array: list[int], k: int) -> list[int]:
     Examples:
         >>> rotate_v2([1, 2, 3, 4, 5, 6, 7], 3)
         [5, 6, 7, 1, 2, 3, 4]
+
     """
     array = array[:]
 
@@ -82,6 +83,7 @@ def rotate_v3(array: list[int] | None, k: int) -> list[int] | None:
     Examples:
         >>> rotate_v3([1, 2, 3, 4, 5, 6, 7], 3)
         [5, 6, 7, 1, 2, 3, 4]
+
     """
     if array is None:
         return None

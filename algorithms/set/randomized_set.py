@@ -1,5 +1,4 @@
-"""
-Randomized Set
+"""Randomized Set.
 
 A data structure that supports insert, remove, and get-random-element
 operations, all in average O(1) time.
@@ -28,6 +27,7 @@ class RandomizedSet:
 
         Args:
             new_one: The value to insert.
+
         """
         if new_one in self.index_map:
             return
@@ -39,6 +39,7 @@ class RandomizedSet:
 
         Args:
             old_one: The value to remove.
+
         """
         if old_one not in self.index_map:
             return
@@ -55,5 +56,6 @@ class RandomizedSet:
 
         Returns:
             A randomly chosen element.
+
         """
         return random.choice(self.elements)

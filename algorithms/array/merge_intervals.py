@@ -1,5 +1,4 @@
-"""
-Merge Intervals
+"""Merge Intervals.
 
 Given a collection of intervals, merge all overlapping intervals into a
 consolidated set.
@@ -20,6 +19,7 @@ class Interval:
     Args:
         start: Lower bound of the interval.
         end: Upper bound of the interval.
+
     """
 
     def __init__(self, start: int = 0, end: int = 0) -> None:
@@ -53,6 +53,7 @@ class Interval:
 
         Returns:
             List of integers in the interval range.
+
         """
         return list(self)
 
@@ -69,6 +70,7 @@ class Interval:
         Examples:
             >>> Interval.merge([Interval(1, 3), Interval(2, 6)])
             [Interval (1, 6)]
+
         """
         out = []
         for interval in sorted(intervals, key=lambda i: i.start):
@@ -91,6 +93,7 @@ class Interval:
         Examples:
             >>> Interval.print_intervals([Interval(1, 3)])
             'Interval (1, 3)'
+
         """
         result = []
         for interval in intervals:
@@ -110,6 +113,7 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]] | None:
     Examples:
         >>> merge_intervals([[1, 3], [2, 6], [8, 10]])
         [[1, 6], [8, 10]]
+
     """
     if intervals is None:
         return None

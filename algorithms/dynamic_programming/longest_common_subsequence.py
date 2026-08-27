@@ -1,5 +1,4 @@
-"""
-Longest Common Subsequence
+"""Longest Common Subsequence.
 
 Find the length of the longest subsequence common to two strings.
 
@@ -26,6 +25,7 @@ def longest_common_subsequence(s_1: str, s_2: str) -> int:
     Examples:
         >>> longest_common_subsequence('abcdgh', 'aedfhr')
         3
+
     """
     m = len(s_1)
     n = len(s_2)

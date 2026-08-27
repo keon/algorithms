@@ -1,5 +1,4 @@
-"""
-Pigeonhole Sort
+"""Pigeonhole Sort.
 
 Pigeonhole sort is suitable for sorting lists where the number of
 elements and the range of possible key values are approximately equal.
@@ -26,6 +25,7 @@ def pigeonhole_sort(array: list[int]) -> list[int]:
     Examples:
         >>> pigeonhole_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     max_value = max(array)
     min_value = min(array)

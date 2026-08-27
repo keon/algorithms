@@ -1,5 +1,4 @@
-"""
-Rabin-Karp String Search
+"""Rabin-Karp String Search.
 
 A string searching algorithm that uses hashing to find a pattern in text.
 Uses a rolling hash to efficiently compare the pattern hash with substrings.
@@ -20,6 +19,7 @@ class RollingHash:
     Args:
         text: The text to compute the hash over.
         window_size: The size of the hash window.
+
     """
 
     def __init__(self, text: str, window_size: int) -> None:
@@ -27,7 +27,7 @@ class RollingHash:
         self.hash = 0
         self.window_size = window_size
 
-        for index in range(0, window_size):
+        for index in range(window_size):
             self.hash += (ord(self.text[index]) - ord("a") + 1) * (
                 26 ** (window_size - index - 1)
             )
@@ -51,6 +51,7 @@ class RollingHash:
 
         Returns:
             The substring currently covered by the rolling hash window.
+
         """
         return self.text[self.window_start : self.window_end]
 
@@ -68,6 +69,7 @@ def rabin_karp(word: str, text: str) -> int | None:
     Examples:
         >>> rabin_karp("abc", "zsnabckfkd")
         3
+
     """
     if word == "" or text == "":
         return None

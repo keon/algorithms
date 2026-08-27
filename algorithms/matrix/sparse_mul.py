@@ -1,5 +1,4 @@
-"""
-Sparse Matrix Multiplication
+"""Sparse Matrix Multiplication.
 
 Given two sparse matrices A and B, return their product A * B.
 Skips zero elements for efficiency. A's column count must equal
@@ -16,7 +15,7 @@ from __future__ import annotations
 
 
 def sparse_multiply(
-    mat_a: list[list[int]], mat_b: list[list[int]]
+    mat_a: list[list[int]], mat_b: list[list[int]],
 ) -> list[list[int]] | None:
     """Multiply two sparse matrices, skipping zero elements.
 
@@ -33,13 +32,15 @@ def sparse_multiply(
     Examples:
         >>> sparse_multiply([[1, 0, 0], [-1, 0, 3]], [[7, 0, 0], [0, 0, 0], [0, 0, 1]])
         [[7, 0, 0], [-7, 0, 3]]
+
     """
     if mat_a is None or mat_b is None:
         return None
     rows_a, cols_a = len(mat_a), len(mat_a[0])
     cols_b = len(mat_b[0])
     if len(mat_b) != cols_a:
-        raise Exception("A's column number must be equal to B's row number.")
+        msg = "A's column number must be equal to B's row number."
+        raise Exception(msg)
     result = [[0] * cols_b for _ in range(rows_a)]
     for i, row in enumerate(mat_a):
         for k, elem_a in enumerate(row):

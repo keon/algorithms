@@ -1,5 +1,4 @@
-"""
-Reverse Vowels of a String
+"""Reverse Vowels of a String.
 
 Given a string, reverse only the vowels while keeping all other characters
 in their original positions.
@@ -26,6 +25,7 @@ def reverse_vowel(text: str) -> str:
     Examples:
         >>> reverse_vowel("hello")
         'holle'
+
     """
     vowels = "AEIOUaeiou"
     left, right = 0, len(text) - 1

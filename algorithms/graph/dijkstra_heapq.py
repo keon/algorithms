@@ -1,5 +1,4 @@
-"""
-Dijkstra's Shortest-Path Algorithm (Heap-Optimised)
+"""Dijkstra's Shortest-Path Algorithm (Heap-Optimised).
 
 Computes single-source shortest paths in a graph with non-negative edge
 weights using a min-heap (priority queue) for efficient vertex selection.
@@ -52,10 +51,11 @@ def dijkstra(
         ... }
         >>> dijkstra(g, "s", "t")
         (8, ['s', 'b', 'd', 't'])
+
     """
     dist: dict[str, int | float] = {v: float("inf") for v in graph}
     dist[source] = 0
-    prev: dict[str, str | None] = {v: None for v in graph}
+    prev: dict[str, str | None] = dict.fromkeys(graph)
     heap: list[tuple[int | float, str]] = [(0, source)]
 
     while heap:
@@ -73,7 +73,7 @@ def dijkstra(
 
     # Reconstruct path
     path: list[str] = []
-    node: str | None = target if target else None
+    node: str | None = target or None
     if node and dist.get(node, float("inf")) < float("inf"):
         while node is not None:
             path.append(node)

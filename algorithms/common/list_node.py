@@ -25,6 +25,7 @@ class ListNode:
         1
         >>> head.next.val
         2
+
     """
 
     val: int = 0

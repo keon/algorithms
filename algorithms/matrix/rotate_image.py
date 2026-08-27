@@ -1,5 +1,4 @@
-"""
-Rotate Image
+"""Rotate Image.
 
 Rotate an n x n 2D matrix representing an image by 90 degrees clockwise,
 in-place. First reverse the rows top-to-bottom, then transpose.
@@ -26,6 +25,7 @@ def rotate(mat: list[list[int]]) -> list[list[int]]:
     Examples:
         >>> rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+
     """
     if not mat:
         return mat

@@ -16,8 +16,7 @@
 
 
 def closest_value(root, target):
-    """
-    :type root: TreeNode
+    """:type root: TreeNode
     :type target: float
     :rtype: int
     """

@@ -1,5 +1,4 @@
-"""
-Generalized Binary Search
+"""Generalized Binary Search.
 
 Find the smallest value in a numeric range for which a monotonic boolean
 predicate evaluates to True.  Instead of searching for a specific value in
@@ -15,7 +14,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def binary_search_first_true(
@@ -44,6 +46,7 @@ def binary_search_first_true(
         5
         >>> binary_search_first_true(0, 5, lambda x: x > 10)
         -1
+
     """
     result = -1
 
@@ -60,6 +63,4 @@ def binary_search_first_true(
 
 
 if __name__ == "__main__":
-    print(binary_search_first_true(0, 10, lambda x: x >= 7))  # 7
-    print(binary_search_first_true(0, 10, lambda x: x * x >= 25))  # 5
-    print(binary_search_first_true(0, 5, lambda x: x > 10))  # -1
+    pass  # -1

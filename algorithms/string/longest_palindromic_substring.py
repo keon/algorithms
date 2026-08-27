@@ -1,5 +1,4 @@
-"""
-Longest Palindromic Substring
+"""Longest Palindromic Substring.
 
 Given a string, find the longest palindromic substring using Manacher's
 algorithm, which runs in linear time.
@@ -26,6 +25,7 @@ def longest_palindrome(text: str) -> str:
     Examples:
         >>> longest_palindrome("cbbd")
         'bb'
+
     """
     if len(text) < 2:
         return text

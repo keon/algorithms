@@ -1,5 +1,4 @@
-"""
-Remove Duplicates
+"""Remove Duplicates.
 
 Remove duplicate elements from an array while preserving the original order.
 Handles both hashable and unhashable items.
@@ -32,6 +31,7 @@ def remove_duplicates(array: list[Any]) -> list[Any]:
     Examples:
         >>> remove_duplicates([1, 1, 2, 2, 3])
         [1, 2, 3]
+
     """
     seen = set()
     unique_array = []
@@ -41,8 +41,7 @@ def remove_duplicates(array: list[Any]) -> list[Any]:
             if item not in seen:
                 seen.add(item)
                 unique_array.append(item)
-        else:
-            if item not in unique_array:
-                unique_array.append(item)
+        elif item not in unique_array:
+            unique_array.append(item)
 
     return unique_array

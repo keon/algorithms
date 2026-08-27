@@ -1,5 +1,4 @@
-"""
-Group Anagrams
+"""Group Anagrams.
 
 Given an array of strings, group anagrams together. Anagrams are words that
 contain the same letters in a different order.
@@ -26,6 +25,7 @@ def group_anagrams(strings: list[str]) -> list[list[str]]:
     Examples:
         >>> group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
         [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
+
     """
     anagram_map: dict[str, int] = {}
     groups: list[list[str]] = []

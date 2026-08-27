@@ -1,5 +1,4 @@
-"""
-License Key Formatting
+"""License Key Formatting.
 
 Given a license key string and a group size k, reformat the key so that each
 group contains exactly k characters, separated by dashes.
@@ -27,6 +26,7 @@ def license_number(key: str, group_size: int) -> str:
     Examples:
         >>> license_number("a-bc-dfd-df", 2)
         'ab-cd-fd-df'
+
     """
     result: list[str] = []
     alphanumeric: list[str] = []

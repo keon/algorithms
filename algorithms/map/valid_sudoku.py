@@ -1,5 +1,4 @@
-"""
-Valid Sudoku
+"""Valid Sudoku.
 
 Determine if a partially filled 9x9 Sudoku board is valid. A board is
 valid if each row, column, and 3x3 sub-box contains no duplicate digits.
@@ -26,6 +25,7 @@ def is_valid_sudoku(board: list[list[str]]) -> bool:
     Examples:
         >>> is_valid_sudoku([['.' for _ in range(9)] for _ in range(9)])
         True
+
     """
     seen: list[tuple[str, ...]] = []
     for i, row in enumerate(board):

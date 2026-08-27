@@ -1,5 +1,4 @@
-"""
-Magic Number
+"""Magic Number.
 
 A magic number is a number where recursively summing its digits eventually
 yields 1. For example, 199 -> 1+9+9=19 -> 1+9=10 -> 1+0=1.
@@ -28,6 +27,7 @@ def magic_number(n: int) -> bool:
         True
         >>> magic_number(111)
         False
+
     """
     total_sum = 0
 

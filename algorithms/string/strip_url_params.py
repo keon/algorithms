@@ -1,5 +1,4 @@
-"""
-Strip URL Parameters
+"""Strip URL Parameters.
 
 Remove duplicate query string parameters from a URL and optionally remove
 specified parameters. Three approaches of increasing Pythonic style.
@@ -31,6 +30,7 @@ def strip_url_params1(url: str, params_to_strip: list[str] | None = None) -> str
     Examples:
         >>> strip_url_params1("www.saadbenn.com?a=1&b=2&a=2")
         'www.saadbenn.com?a=1&b=2'
+
     """
     if not params_to_strip:
         params_to_strip = []
@@ -44,50 +44,47 @@ def strip_url_params1(url: str, params_to_strip: list[str] | None = None) -> str
             result += "?"
         if not query_string:
             return url
-        else:
-            key_value_pairs: list[str] = []
-            fragment = ""
-            for char in query_string:
-                if char.isdigit():
-                    key_value_pairs.append(fragment + char)
-                    fragment = ""
+        key_value_pairs: list[str] = []
+        fragment = ""
+        for char in query_string:
+            if char.isdigit():
+                key_value_pairs.append(fragment + char)
+                fragment = ""
+            else:
+                fragment += char
+        seen: dict[str, int] = defaultdict(int)
+        for pair in key_value_pairs:
+            token_parts = pair.split("=")
+            if token_parts[0]:
+                length = len(token_parts[0])
+                if length == 1:
+                    if token_parts and (token_parts[0] not in seen):
+                        if params_to_strip:
+                            if token_parts[0] != params_to_strip[0]:
+                                seen[token_parts[0]] = token_parts[1]
+                                result = (
+                                    result + token_parts[0] + "=" + token_parts[1]
+                                )
+                        elif token_parts[0] not in seen:
+                            seen[token_parts[0]] = token_parts[1]
+                            result = (
+                                result + token_parts[0] + "=" + token_parts[1]
+                            )
                 else:
-                    fragment += char
-            seen: dict[str, int] = defaultdict(int)
-            for pair in key_value_pairs:
-                token_parts = pair.split("=")
-                if token_parts[0]:
-                    length = len(token_parts[0])
-                    if length == 1:
-                        if token_parts and (token_parts[0] not in seen):
-                            if params_to_strip:
-                                if token_parts[0] != params_to_strip[0]:
-                                    seen[token_parts[0]] = token_parts[1]
-                                    result = (
-                                        result + token_parts[0] + "=" + token_parts[1]
-                                    )
-                            else:
-                                if token_parts[0] not in seen:
-                                    seen[token_parts[0]] = token_parts[1]
-                                    result = (
-                                        result + token_parts[0] + "=" + token_parts[1]
-                                    )
-                    else:
-                        check = token_parts[0]
-                        letter = check[1]
-                        if token_parts and (letter not in seen):
-                            if params_to_strip:
-                                if letter != params_to_strip[0]:
-                                    seen[letter] = token_parts[1]
-                                    result = (
-                                        result + token_parts[0] + "=" + token_parts[1]
-                                    )
-                            else:
-                                if letter not in seen:
-                                    seen[letter] = token_parts[1]
-                                    result = (
-                                        result + token_parts[0] + "=" + token_parts[1]
-                                    )
+                    check = token_parts[0]
+                    letter = check[1]
+                    if token_parts and (letter not in seen):
+                        if params_to_strip:
+                            if letter != params_to_strip[0]:
+                                seen[letter] = token_parts[1]
+                                result = (
+                                    result + token_parts[0] + "=" + token_parts[1]
+                                )
+                        elif letter not in seen:
+                            seen[letter] = token_parts[1]
+                            result = (
+                                result + token_parts[0] + "=" + token_parts[1]
+                            )
     return result
 
 
@@ -104,6 +101,7 @@ def strip_url_params2(url: str, param_to_strip: list[str] | None = None) -> str:
     Examples:
         >>> strip_url_params2("www.saadbenn.com?a=1&b=2&a=2")
         'www.saadbenn.com?a=1&b=2'
+
     """
     if param_to_strip is None:
         param_to_strip = []
@@ -119,7 +117,7 @@ def strip_url_params2(url: str, param_to_strip: list[str] | None = None) -> str:
         ):
             queries.pop(index)
 
-    return url.split("?")[0] + "?" + "&".join(queries)
+    return url.split("?", maxsplit=1)[0] + "?" + "&".join(queries)
 
 
 def strip_url_params3(url: str, strip: list[str] | None = None) -> str:
@@ -135,6 +133,7 @@ def strip_url_params3(url: str, strip: list[str] | None = None) -> str:
     Examples:
         >>> strip_url_params3("www.saadbenn.com?a=1&b=2&a=2")
         'www.saadbenn.com?a=1&b=2'
+
     """
     if not strip:
         strip = []

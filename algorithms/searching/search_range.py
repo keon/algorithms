@@ -1,5 +1,4 @@
-"""
-Search Range
+"""Search Range.
 
 Given a sorted array of integers and a target value, find the starting and
 ending positions of the target.  Returns [-1, -1] if the target is not found.
@@ -31,6 +30,7 @@ def search_range(nums: list[int], target: int) -> list[int]:
         [3, 5]
         >>> search_range([5, 7, 7, 8, 8, 8, 10], 11)
         [-1, -1]
+
     """
     low = 0
     high = len(nums) - 1

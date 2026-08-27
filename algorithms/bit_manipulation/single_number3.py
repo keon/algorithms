@@ -1,5 +1,4 @@
-"""
-Single Number 3
+"""Single Number 3.
 
 Given an array where exactly two elements appear once and all others
 appear exactly twice, find those two unique elements in O(n) time and
@@ -31,6 +30,7 @@ def single_number3(nums: list[int]) -> list[int]:
     Examples:
         >>> sorted(single_number3([1, 2, 1, 3, 2, 5]))
         [3, 5]
+
     """
     xor_both = 0
     for number in nums:

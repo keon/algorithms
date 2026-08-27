@@ -1,5 +1,4 @@
-"""
-Validate Coordinates
+"""Validate Coordinates.
 
 Validate if given parameters are valid geographical coordinates.
 Latitude must be between -90 and 90, longitude between -180 and 180.
@@ -28,6 +27,7 @@ def is_valid_coordinates_0(coordinates: str) -> bool:
     Examples:
         >>> is_valid_coordinates_0("-23, 25")
         True
+
     """
     for char in coordinates:
         if not (char.isdigit() or char in ["-", ".", ",", " "]):
@@ -55,6 +55,7 @@ def is_valid_coordinates_1(coordinates: str) -> bool:
     Examples:
         >>> is_valid_coordinates_1("43.91343345, 143")
         True
+
     """
     try:
         latitude, longitude = [
@@ -77,10 +78,11 @@ def is_valid_coordinates_regular_expression(coordinates: str) -> bool:
     Examples:
         >>> is_valid_coordinates_regular_expression("4, -3")
         True
+
     """
     return bool(
         re.match(
             r"-?(\d|[1-8]\d|90)\.?\d*, -?(\d|[1-9]\d|1[0-7]\d|180)\.?\d*$",
             coordinates,
-        )
+        ),
     )

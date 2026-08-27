@@ -1,5 +1,4 @@
-"""
-Word Ladder (Bidirectional BFS)
+"""Word Ladder (Bidirectional BFS).
 
 Given two words and a dictionary, find the length of the shortest
 transformation sequence where only one letter changes at each step and
@@ -14,7 +13,10 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Iterator
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 def ladder_length(begin_word: str, end_word: str, word_list: list[str]) -> int:
@@ -31,6 +33,7 @@ def ladder_length(begin_word: str, end_word: str, word_list: list[str]) -> int:
     Examples:
         >>> ladder_length('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'])
         5
+
     """
     if len(begin_word) != len(end_word):
         return -1
@@ -71,6 +74,7 @@ def _word_range(word: str) -> Iterator[str]:
 
     Yields:
         Words with a single character changed.
+
     """
     for ind in range(len(word)):
         temp = word[ind]

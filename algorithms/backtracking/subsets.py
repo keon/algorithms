@@ -1,5 +1,4 @@
-"""
-Subsets
+"""Subsets.
 
 Given a set of distinct integers, return all possible subsets (the power
 set). The solution set must not contain duplicate subsets.
@@ -26,6 +25,7 @@ def subsets(nums: list[int]) -> list[list[int]]:
     Examples:
         >>> sorted(subsets([1, 2]), key=lambda item: (len(item), item))
         [[], [1], [2], [1, 2]]
+
     """
     result: list[list[int]] = []
     _backtrack(result, nums, [], 0)
@@ -63,8 +63,9 @@ def subsets_v2(nums: list[int]) -> list[list[int]]:
     Examples:
         >>> sorted(subsets_v2([1, 2]), key=lambda item: (len(item), item))
         [[], [1], [2], [1, 2]]
+
     """
     result: list[list[int]] = [[]]
     for number in sorted(nums):
-        result += [item + [number] for item in result]
+        result += [[*item, number] for item in result]
     return result

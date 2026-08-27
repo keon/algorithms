@@ -47,10 +47,9 @@ class BST:
             return False
         if root.data == data:
             return True
-        elif data > root.data:
+        if data > root.data:
             return self._recur_search(root.right, data)
-        else:
-            return self._recur_search(root.left, data)
+        return self._recur_search(root.left, data)
 
     def insert(self, data: int) -> bool:
         """Insert data into the tree.
@@ -60,25 +59,21 @@ class BST:
         """
         if self.root:
             return self._recur_insert(self.root, data)
-        else:
-            self.root = Node(data)
-            return True
+        self.root = Node(data)
+        return True
 
     def _recur_insert(self, root: Node, data: int) -> bool:
         if root.data == data:
             return False
-        elif data < root.data:
+        if data < root.data:
             if root.left:
                 return self._recur_insert(root.left, data)
-            else:
-                root.left = Node(data)
-                return True
-        else:
-            if root.right:
-                return self._recur_insert(root.right, data)
-            else:
-                root.right = Node(data)
-                return True
+            root.left = Node(data)
+            return True
+        if root.right:
+            return self._recur_insert(root.right, data)
+        root.right = Node(data)
+        return True
 
     def preorder(self, root: Node | None) -> list[int]:
         """Return list of node values in preorder (root, left, right)."""

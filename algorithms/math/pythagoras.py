@@ -1,5 +1,4 @@
-"""
-Pythagorean Theorem
+"""Pythagorean Theorem.
 
 Given the lengths of two sides of a right-angled triangle, compute the
 length of the third side using the Pythagorean theorem.
@@ -15,7 +14,7 @@ from __future__ import annotations
 
 
 def pythagoras(
-    opposite: float | str, adjacent: float | str, hypotenuse: float | str
+    opposite: float | str, adjacent: float | str, hypotenuse: float | str,
 ) -> str:
     """Compute the unknown side of a right triangle.
 
@@ -35,6 +34,7 @@ def pythagoras(
     Examples:
         >>> pythagoras(3, 4, "?")
         'Hypotenuse = 5.0'
+
     """
     try:
         if opposite == "?":
@@ -45,4 +45,5 @@ def pythagoras(
             return "Hypotenuse = " + str(((opposite**2) + (adjacent**2)) ** 0.5)
         return "You already know the answer!"
     except Exception as err:
-        raise ValueError("invalid argument(s) were given.") from err
+        msg = "invalid argument(s) were given."
+        raise ValueError(msg) from err

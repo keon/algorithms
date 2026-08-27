@@ -1,5 +1,4 @@
-"""
-Integer Base Conversion
+"""Integer Base Conversion.
 
 Convert integers between arbitrary bases (2-36). Supports conversion from
 integer to string representation in a given base, and vice versa.
@@ -33,6 +32,7 @@ def int_to_base(num: int, base: int) -> str:
         'FF'
         >>> int_to_base(0, 2)
         '0'
+
     """
     is_negative = False
     if num == 0:
@@ -65,6 +65,7 @@ def base_to_int(str_to_convert: str, base: int) -> int:
         5
         >>> base_to_int('FF', 16)
         255
+
     """
     digit = {}
     for ind, char in enumerate(string.digits + string.ascii_uppercase):

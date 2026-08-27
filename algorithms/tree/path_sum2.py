@@ -1,5 +1,4 @@
-"""
-Path Sum II
+"""Path Sum II.
 
 Given a binary tree and a target sum, find all root-to-leaf paths where each
 path's sum equals the given sum. Provides recursive, DFS, and BFS solutions.
@@ -14,8 +13,10 @@ Complexity:
 from __future__ import annotations
 
 from collections import deque
+from typing import TYPE_CHECKING
 
-from algorithms.tree.tree import TreeNode
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def path_sum(root: TreeNode | None, sum: int) -> list[list[int]]:
@@ -31,6 +32,7 @@ def path_sum(root: TreeNode | None, sum: int) -> list[list[int]]:
     Examples:
         >>> path_sum(None, 0)
         []
+
     """
     if root is None:
         return []
@@ -47,14 +49,15 @@ def _dfs(root: TreeNode, sum: int, path: list[int], result: list[list[int]]) -> 
         sum: The remaining target sum.
         path: The path accumulated so far.
         result: The list accumulating valid paths.
+
     """
     if root.left is None and root.right is None and root.val == sum:
         path.append(root.val)
         result.append(path)
     if root.left is not None:
-        _dfs(root.left, sum - root.val, path + [root.val], result)
+        _dfs(root.left, sum - root.val, [*path, root.val], result)
     if root.right is not None:
-        _dfs(root.right, sum - root.val, path + [root.val], result)
+        _dfs(root.right, sum - root.val, [*path, root.val], result)
 
 
 def path_sum2(root: TreeNode | None, target: int) -> list[list[int]]:
@@ -70,6 +73,7 @@ def path_sum2(root: TreeNode | None, target: int) -> list[list[int]]:
     Examples:
         >>> path_sum2(None, 0)
         []
+
     """
     if root is None:
         return []
@@ -80,9 +84,9 @@ def path_sum2(root: TreeNode | None, target: int) -> list[list[int]]:
         if node.left is None and node.right is None and sum(path) == target:
             result.append(path)
         if node.left is not None:
-            stack.append((node.left, path + [node.left.val]))
+            stack.append((node.left, [*path, node.left.val]))
         if node.right is not None:
-            stack.append((node.right, path + [node.right.val]))
+            stack.append((node.right, [*path, node.right.val]))
     return result
 
 
@@ -99,6 +103,7 @@ def path_sum3(root: TreeNode | None, sum: int) -> list[list[int]]:
     Examples:
         >>> path_sum3(None, 0)
         []
+
     """
     if root is None:
         return []
@@ -110,7 +115,7 @@ def path_sum3(root: TreeNode | None, sum: int) -> list[list[int]]:
         if node.left is None and node.right is None and val == sum:
             result.append(path)
         if node.left is not None:
-            queue.append((node.left, val + node.left.val, path + [node.left.val]))
+            queue.append((node.left, val + node.left.val, [*path, node.left.val]))
         if node.right is not None:
-            queue.append((node.right, val + node.right.val, path + [node.right.val]))
+            queue.append((node.right, val + node.right.val, [*path, node.right.val]))
     return result

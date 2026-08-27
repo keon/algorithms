@@ -1,5 +1,4 @@
-"""
-Bucket Sort
+"""Bucket Sort.
 
 Bucket sort distributes elements into a number of buckets, sorts each
 bucket individually (here using insertion sort), and then concatenates
@@ -27,6 +26,7 @@ def bucket_sort(array: list[int]) -> list[int]:
     Examples:
         >>> bucket_sort([3, 1, 2, 4])
         [1, 2, 3, 4]
+
     """
     num_buckets = len(array)
     buckets: list[list[int]] = [[] for _ in range(num_buckets)]

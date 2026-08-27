@@ -1,5 +1,5 @@
 class BSTIterator:
-    def __init__(self, root):
+    def __init__(self, root) -> None:
         self.stack = []
         while root:
             self.stack.append(root)

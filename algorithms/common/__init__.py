@@ -10,4 +10,4 @@ from algorithms.common.graph import Graph
 from algorithms.common.list_node import ListNode
 from algorithms.common.tree_node import TreeNode
 
-__all__ = ["TreeNode", "ListNode", "Graph"]
+__all__ = ["Graph", "ListNode", "TreeNode"]

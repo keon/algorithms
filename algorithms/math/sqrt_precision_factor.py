@@ -1,5 +1,4 @@
-"""
-Square Root by Newton's Method
+"""Square Root by Newton's Method.
 
 Compute the square root of a positive number using Newton's method
 (Babylonian method) with a configurable precision factor.
@@ -27,6 +26,7 @@ def square_root(n: float, epsilon: float = 0.001) -> float:
     Examples:
         >>> abs(square_root(5, 0.001) - 2.236) < 0.002
         True
+
     """
     guess = n / 2
 

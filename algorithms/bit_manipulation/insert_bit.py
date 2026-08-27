@@ -1,5 +1,4 @@
-"""
-Insert Bit
+"""Insert Bit.
 
 Insert one or more bits into an integer at a specific bit position.
 
@@ -32,6 +31,7 @@ def insert_one_bit(number: int, bit: int, position: int) -> int:
         45
         >>> insert_one_bit(21, 0, 2)
         41
+
     """
     upper = number >> position
     upper = (upper << 1) | bit
@@ -61,6 +61,7 @@ def insert_mult_bits(number: int, bits: int, length: int, position: int) -> int:
         47
         >>> insert_mult_bits(5, 7, 3, 3)
         61
+
     """
     upper = number >> position
     upper = (upper << length) | bits

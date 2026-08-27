@@ -1,5 +1,4 @@
-"""
-Crout Matrix Decomposition
+"""Crout Matrix Decomposition.
 
 Decompose a matrix A into lower-triangular matrix L and upper-triangular
 matrix U such that L * U = A. L has non-zero elements only on and below
@@ -30,6 +29,7 @@ def crout_matrix_decomposition(
     Examples:
         >>> crout_matrix_decomposition([[9, 9], [7, 7]])
         ([[9.0, 0.0], [7.0, 0.0]], [[1.0, 1.0], [0.0, 1.0]])
+
     """
     size = len(matrix)
     lower = [[0.0] * size for _ in range(size)]

@@ -1,5 +1,4 @@
-"""
-Next Perfect Square
+"""Next Perfect Square.
 
 Given a number, find the next perfect square if the input is itself a perfect
 square. Otherwise, return -1.
@@ -28,6 +27,7 @@ def find_next_square(sq: float) -> int:
         144
         >>> find_next_square(10)
         -1
+
     """
     root = sq**0.5
     if root.is_integer():
@@ -49,6 +49,7 @@ def find_next_square2(sq: float) -> int:
         144
         >>> find_next_square2(10)
         -1
+
     """
     root = sq**0.5
     return -1 if root % 1 else int((root + 1) ** 2)

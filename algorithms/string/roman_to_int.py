@@ -1,5 +1,4 @@
-"""
-Roman Numeral to Integer
+"""Roman Numeral to Integer.
 
 Given a Roman numeral string, convert it to an integer. Input is guaranteed
 to be within the range from 1 to 3999.
@@ -32,6 +31,7 @@ def roman_to_int(text: str) -> int:
         1994
         >>> roman_to_int("")
         0
+
     """
     if not text:
         return 0

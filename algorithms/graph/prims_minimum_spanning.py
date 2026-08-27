@@ -1,5 +1,4 @@
-"""
-Prim's Minimum Spanning Tree
+"""Prim's Minimum Spanning Tree.
 
 Computes the weight of a minimum spanning tree for a connected weighted
 undirected graph using a priority queue.
@@ -31,6 +30,7 @@ def prims_minimum_spanning(
     Examples:
         >>> prims_minimum_spanning({1: [[1, 2]], 2: [[1, 1]]})
         1
+
     """
     vis: list[Any] = []
     heap: list[list[int | Any]] = [[0, 1]]

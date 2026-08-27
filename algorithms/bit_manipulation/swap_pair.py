@@ -1,5 +1,4 @@
-"""
-Swap Pair
+"""Swap Pair.
 
 Swap odd and even bits of an integer using bitmask operations. Bit 0 is
 swapped with bit 1, bit 2 with bit 3, and so on.
@@ -32,6 +31,7 @@ def swap_pair(number: int) -> int:
         41
         >>> swap_pair(10)
         5
+
     """
     odd_bits = (number & int("AAAAAAAA", 16)) >> 1
     even_bits = (number & int("55555555", 16)) << 1

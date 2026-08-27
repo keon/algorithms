@@ -1,5 +1,4 @@
-"""
-Sparse Dot Vector
+"""Sparse Dot Vector.
 
 Compute the dot product of two large sparse vectors efficiently by
 converting them to index-value pair representations and merging.
@@ -28,6 +27,7 @@ def vector_to_index_value_list(
     Examples:
         >>> vector_to_index_value_list([0.0, 2.0, 0.0, 3.0])
         [(1, 2.0), (3, 3.0)]
+
     """
     return [(i, v) for i, v in enumerate(vector) if v != 0.0]
 
@@ -48,6 +48,7 @@ def dot_product(
     Examples:
         >>> dot_product([(0, 1.0), (1, 2.0), (2, 3.0)], [(1, 2.0), (2, 2.0)])
         10.0
+
     """
     product = 0
     p1 = len(iv_list1) - 1

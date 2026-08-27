@@ -1,5 +1,4 @@
-"""
-Copy List with Random Pointer
+"""Copy List with Random Pointer.
 
 Given a linked list where each node contains an additional random pointer that
 could point to any node in the list or null, return a deep copy of the list.
@@ -40,6 +39,7 @@ def copy_random_pointer_v1(head: RandomListNode | None) -> RandomListNode | None
         >>> copied = copy_random_pointer_v1(node)
         >>> copied.label == 1 and copied.random is copied
         True
+
     """
     node_map: dict[RandomListNode, RandomListNode] = {}
     current = head
@@ -69,9 +69,10 @@ def copy_random_pointer_v2(head: RandomListNode | None) -> RandomListNode | None
         >>> copied = copy_random_pointer_v2(node)
         >>> copied.label == 1 and copied.random is copied
         True
+
     """
     copy: defaultdict[RandomListNode | None, RandomListNode | None] = defaultdict(
-        lambda: RandomListNode(0)
+        lambda: RandomListNode(0),
     )
     copy[None] = None
     node = head

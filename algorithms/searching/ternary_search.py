@@ -1,5 +1,4 @@
-"""
-Ternary Search
+"""Ternary Search.
 
 Search for a target value in a sorted array by dividing the search range into
 three equal parts instead of two.  At each step two midpoints are computed and
@@ -32,6 +31,7 @@ def ternary_search(left: int, right: int, key: int, array: list[int]) -> int:
         4
         >>> ternary_search(0, 4, 0, [1, 2, 3, 4, 5])
         -1
+
     """
     while right >= left:
         mid1 = left + (right - left) // 3

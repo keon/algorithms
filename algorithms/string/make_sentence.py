@@ -1,5 +1,4 @@
-"""
-Make Sentence
+"""Make Sentence.
 
 For a given string and dictionary, count how many sentences can be formed
 from the string such that all words are contained in the dictionary.
@@ -31,11 +30,12 @@ def make_sentence(text_piece: str, dictionaries: list[str]) -> bool:
     Examples:
         >>> make_sentence("applet", ["", "app", "let", "t", "apple", "applet"])
         True
+
     """
     global count
     if len(text_piece) == 0:
         return True
-    for index in range(0, len(text_piece)):
+    for index in range(len(text_piece)):
         prefix, suffix = text_piece[0:index], text_piece[index:]
         if (prefix in dictionaries
                 and (suffix in dictionaries

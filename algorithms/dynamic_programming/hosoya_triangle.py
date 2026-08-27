@@ -1,5 +1,4 @@
-"""
-Hosoya Triangle
+"""Hosoya Triangle.
 
 The Hosoya triangle (originally Fibonacci triangle) is a triangular arrangement
 of numbers where each entry is the sum of two entries above it.
@@ -27,6 +26,7 @@ def hosoya(height: int, width: int) -> int:
     Examples:
         >>> hosoya(4, 2)
         4
+
     """
     if (width == 0) and (height in (0, 1)):
         return 1
@@ -51,6 +51,7 @@ def hosoya_testing(height: int) -> list[int]:
     Examples:
         >>> hosoya_testing(1)
         [1]
+
     """
     res = []
     for i in range(height):

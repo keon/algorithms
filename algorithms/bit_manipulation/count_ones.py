@@ -1,5 +1,4 @@
-"""
-Count Ones (Hamming Weight)
+"""Count Ones (Hamming Weight).
 
 Count the number of 1-bits in the binary representation of an unsigned
 integer using Brian Kernighan's algorithm.
@@ -28,6 +27,7 @@ def count_ones_recur(number: int) -> int:
         1
         >>> count_ones_recur(63)
         6
+
     """
     if not number:
         return 0
@@ -48,6 +48,7 @@ def count_ones_iter(number: int) -> int:
         1
         >>> count_ones_iter(63)
         6
+
     """
     count = 0
     while number:

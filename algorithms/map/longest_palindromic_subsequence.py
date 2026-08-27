@@ -1,5 +1,4 @@
-"""
-Longest Palindromic Substring
+"""Longest Palindromic Substring.
 
 Find the length of the longest palindromic substring using dynamic
 programming with two rolling arrays.
@@ -28,6 +27,7 @@ def longest_palindromic_subsequence(s: str) -> int:
         3
         >>> longest_palindromic_subsequence("cbbd")
         2
+
     """
     length = len(s)
     previous_row = [0] * length
@@ -40,14 +40,11 @@ def longest_palindromic_subsequence(s: str) -> int:
                 if s[start] == s[end]:
                     current_row[start] = 1
                     span = end - start + 1
-                    if longest_length < span:
-                        longest_length = span
-            else:
-                if s[start] == s[end] and previous_row[start + 1]:
-                    current_row[start] = 1
-                    span = end - start + 1
-                    if longest_length < span:
-                        longest_length = span
+                    longest_length = max(longest_length, span)
+            elif s[start] == s[end] and previous_row[start + 1]:
+                current_row[start] = 1
+                span = end - start + 1
+                longest_length = max(longest_length, span)
         previous_row = current_row
         current_row = [0] * length
 

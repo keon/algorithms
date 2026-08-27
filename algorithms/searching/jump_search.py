@@ -1,5 +1,4 @@
-"""
-Jump Search
+"""Jump Search.
 
 Search for a target value in a sorted array by jumping ahead in fixed-size
 blocks and then performing a linear search within the identified block.
@@ -31,6 +30,7 @@ def jump_search(array: list[int], target: int) -> int:
         4
         >>> jump_search([1, 2, 3, 4, 5], 0)
         -1
+
     """
     length = len(array)
     block_size = int(math.sqrt(length))

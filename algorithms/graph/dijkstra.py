@@ -1,5 +1,4 @@
-"""
-Dijkstra's Single-Source Shortest-Path Algorithm
+"""Dijkstra's Single-Source Shortest-Path Algorithm.
 
 Finds shortest distances from a source vertex to every other vertex in a
 graph with non-negative edge weights.
@@ -22,6 +21,7 @@ class Dijkstra:
 
         Args:
             vertex_count: Number of vertices.
+
         """
         self.vertex_count = vertex_count
         self.graph: list[list[int]] = [
@@ -37,6 +37,7 @@ class Dijkstra:
 
         Returns:
             Index of the closest unvisited vertex.
+
         """
         min_dist = float("inf")
         min_index = 0
@@ -62,6 +63,7 @@ class Dijkstra:
             >>> g.graph = [[0, 1, 4], [1, 0, 2], [4, 2, 0]]
             >>> g.dijkstra(0)
             [0, 1, 3]
+
         """
         dist: list[float] = [float("inf")] * self.vertex_count
         dist[src] = 0
@@ -74,7 +76,6 @@ class Dijkstra:
             for target in range(self.vertex_count):
                 if self.graph[source][target] <= 0 or min_dist_set[target]:
                     continue
-                if dist[target] > dist[source] + self.graph[source][target]:
-                    dist[target] = dist[source] + self.graph[source][target]
+                dist[target] = min(dist[target], dist[source] + self.graph[source][target])
 
         return dist

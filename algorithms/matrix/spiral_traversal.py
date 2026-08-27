@@ -1,5 +1,4 @@
-"""
-Spiral Traversal
+"""Spiral Traversal.
 
 Return all elements of an m x n matrix in spiral order, traversing
 right, down, left, and up repeatedly while shrinking the boundaries.
@@ -26,6 +25,7 @@ def spiral_traversal(matrix: list[list[int]]) -> list[int]:
     Examples:
         >>> spiral_traversal([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
         [1, 2, 3, 6, 9, 8, 7, 4, 5]
+
     """
     result: list[int] = []
     if len(matrix) == 0:

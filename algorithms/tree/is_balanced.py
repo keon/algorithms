@@ -1,5 +1,4 @@
-"""
-Balanced Binary Tree
+"""Balanced Binary Tree.
 
 Determines whether a binary tree is height-balanced, meaning the depth of the
 left and right subtrees of every node differ by at most one.
@@ -13,7 +12,10 @@ Complexity:
 
 from __future__ import annotations
 
-from algorithms.tree.tree import TreeNode
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from algorithms.tree.tree import TreeNode
 
 
 def is_balanced(root: TreeNode | None) -> bool:
@@ -28,6 +30,7 @@ def is_balanced(root: TreeNode | None) -> bool:
     Examples:
         >>> is_balanced(None)
         True
+
     """
     return _get_depth(root) != -1
 
@@ -40,6 +43,7 @@ def _get_depth(root: TreeNode | None) -> int:
 
     Returns:
         The depth of the subtree, or -1 if it is unbalanced.
+
     """
     if root is None:
         return 0

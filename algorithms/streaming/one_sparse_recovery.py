@@ -1,5 +1,4 @@
-"""
-Non-negative 1-Sparse Recovery
+"""Non-negative 1-Sparse Recovery.
 
 Determines whether a dynamic stream of (value, sign) tuples is 1-sparse,
 meaning all values cancel out except for a single unique number. If so,
@@ -29,6 +28,7 @@ def one_sparse(array: list[tuple[int, str]]) -> int | None:
         4
         >>> one_sparse([(2, '+'), (2, '+'), (2, '+'),
         ...            (2, '+'), (2, '+'), (2, '+'), (1, '+')])
+
     """
     sum_signs = 0
     bitsum: list[int] = [0] * 32
@@ -57,8 +57,9 @@ def _check_bit_sum_consistency(bitsum: list[int], sum_signs: int) -> bool:
 
     Returns:
         True if the bitsum is consistent with a 1-sparse stream.
+
     """
-    return all(val == 0 or val == sum_signs for val in bitsum)
+    return all(val in (0, sum_signs) for val in bitsum)
 
 
 def _update_bit_sum(bitsum: list[int], val: int, sign: str) -> None:
@@ -68,6 +69,7 @@ def _update_bit_sum(bitsum: list[int], val: int, sign: str) -> None:
         bitsum: The accumulated bit sums to update in place.
         val: The integer value whose bits to process.
         sign: '+' to add or '-' to subtract.
+
     """
     idx = 0
     if sign == "+":

@@ -1,5 +1,4 @@
-"""
-Exchange Sort
+"""Exchange Sort.
 
 Exchange sort compares every pair of elements and swaps them if they are
 out of order.  It is conceptually similar to bubble sort.
@@ -26,6 +25,7 @@ def exchange_sort(array: list[int]) -> list[int]:
     Examples:
         >>> exchange_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     for i in range(n - 1):

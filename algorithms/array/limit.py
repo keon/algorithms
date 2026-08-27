@@ -1,5 +1,4 @@
-"""
-Limit Array Values
+"""Limit Array Values.
 
 Filter an array to include only elements within a specified minimum and
 maximum range (inclusive).
@@ -32,6 +31,7 @@ def limit(
     Examples:
         >>> limit([1, 2, 3, 4, 5], 2, 4)
         [2, 3, 4]
+
     """
     if len(array) == 0:
         return array

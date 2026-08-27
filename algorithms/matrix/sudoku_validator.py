@@ -1,5 +1,4 @@
-"""
-Sudoku Validator
+"""Sudoku Validator.
 
 Validate whether a completed 9x9 Sudoku board is a valid solution.
 Each row, column, and 3x3 sub-box must contain digits 1-9 without
@@ -14,6 +13,8 @@ Complexity:
 
 from __future__ import annotations
 
+import functools
+import operator
 from collections import defaultdict
 
 
@@ -34,6 +35,7 @@ def valid_solution_hashtable(board: list[list[int]]) -> bool:
         ...          [3,4,5,2,8,6,1,7,9]]
         >>> valid_solution_hashtable(board)
         True
+
     """
     for i in range(len(board)):
         row_seen = defaultdict(int)
@@ -45,12 +47,10 @@ def valid_solution_hashtable(board: list[list[int]]) -> bool:
                 return False
             if value_row in row_seen:
                 return False
-            else:
-                row_seen[value_row] += 1
+            row_seen[value_row] += 1
             if value_col in col_seen:
                 return False
-            else:
-                col_seen[value_col] += 1
+            col_seen[value_col] += 1
 
     for i in range(3):
         for j in range(3):
@@ -80,6 +80,7 @@ def valid_solution(board: list[list[int]]) -> bool:
         ...          [3,4,5,2,8,6,1,7,9]]
         >>> valid_solution(board)
         True
+
     """
     correct = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -119,6 +120,7 @@ def valid_solution_set(board: list[list[int]]) -> bool:
         ...          [3,4,5,2,8,6,1,7,9]]
         >>> valid_solution_set(board)
         True
+
     """
     valid = set(range(1, 10))
 
@@ -134,13 +136,10 @@ def valid_solution_set(board: list[list[int]]) -> bool:
         for y in range(3):
             if (
                 set(
-                    sum(
-                        [
+                    functools.reduce(operator.iadd, [
                             row[x * 3 : (x + 1) * 3]
                             for row in board[y * 3 : (y + 1) * 3]
-                        ],
-                        [],
-                    )
+                        ], []),
                 )
                 != valid
             ):

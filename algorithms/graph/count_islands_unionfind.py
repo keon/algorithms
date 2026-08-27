@@ -1,5 +1,4 @@
-"""
-Count Islands via Union-Find
+"""Count Islands via Union-Find.
 
 Uses the Union-Find (Disjoint Set) data structure to solve the "Number of
 Islands" problem. After each addLand operation, counts distinct connected
@@ -33,6 +32,7 @@ def num_islands(positions: list[list[int]]) -> list[int]:
     Examples:
         >>> num_islands([[0, 0], [0, 1], [1, 2], [2, 1]])
         [1, 1, 2, 3]
+
     """
     result: list[int] = []
     islands = Union()

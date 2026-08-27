@@ -1,5 +1,4 @@
-"""
-A* (A-star) Search Algorithm
+"""A* (A-star) Search Algorithm.
 
 Finds the shortest path in a weighted graph using a heuristic function.
 
@@ -13,8 +12,10 @@ Complexity:
 from __future__ import annotations
 
 import heapq
-from collections.abc import Callable
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def a_star(
@@ -38,13 +39,14 @@ def a_star(
         >>> g = {'A': [('B', 1)], 'B': [('C', 2)], 'C': []}
         >>> a_star(g, 'A', 'C', lambda n: 0)
         (['A', 'B', 'C'], 3)
+
     """
     open_set: list[tuple[float, float, Any, list[Any]]] = []
     heapq.heappush(open_set, (h(start), 0, start, [start]))
     visited: set[Any] = set()
 
     while open_set:
-        f_score, g_score, current, path = heapq.heappop(open_set)
+        _f_score, g_score, current, path = heapq.heappop(open_set)
         if current == goal:
             return path, g_score
 
@@ -56,6 +58,6 @@ def a_star(
             if neighbor not in visited:
                 g = g_score + cost
                 f = g + h(neighbor)
-                heapq.heappush(open_set, (f, g, neighbor, path + [neighbor]))
+                heapq.heappush(open_set, (f, g, neighbor, [*path, neighbor]))
 
     return None, float("inf")

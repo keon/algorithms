@@ -1,5 +1,4 @@
-"""
-Contain String (strStr)
+"""Contain String (strStr).
 
 Return the index of the first occurrence of needle in haystack, or -1 if
 needle is not part of haystack.
@@ -27,6 +26,7 @@ def contain_string(haystack: str, needle: str) -> int:
     Examples:
         >>> contain_string("hello", "ll")
         2
+
     """
     if len(needle) == 0:
         return 0

@@ -1,5 +1,4 @@
-"""
-Set Cover Problem
+"""Set Cover Problem.
 
 Given a universe U of n elements, a collection S of subsets of U, and a cost
 for each subset, find the minimum-cost sub-collection that covers all of U.
@@ -28,6 +27,7 @@ def _powerset(iterable: list[str]) -> chain[tuple[str, ...]]:
 
     Returns:
         An iterator over all subsets (the power set).
+
     """
     items = list(iterable)
     return chain.from_iterable(combinations(items, r) for r in range(len(items) + 1))
@@ -57,6 +57,7 @@ def optimal_set_cover(
         >>> costs = {'S1': 5, 'S2': 10, 'S3': 3}
         >>> optimal_set_cover(universe, subsets, costs)
         ('S2', 'S3')
+
     """
     pset = _powerset(list(subsets.keys()))
     best_set: tuple[str, ...] | None = None
@@ -95,8 +96,9 @@ def greedy_set_cover(
         >>> costs = {'S1': 5, 'S2': 10, 'S3': 3}
         >>> greedy_set_cover(universe, subsets, costs)
         ['S3', 'S2']
+
     """
-    all_elements = set(e for s in subsets.values() for e in s)
+    all_elements = {e for s in subsets.values() for e in s}
     if all_elements != universe:
         return None
 

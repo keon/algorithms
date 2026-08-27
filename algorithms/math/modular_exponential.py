@@ -1,5 +1,4 @@
-"""
-Modular Exponentiation
+"""Modular Exponentiation.
 
 Compute (base ^ exponent) % mod efficiently using binary exponentiation
 (repeated squaring).
@@ -31,9 +30,11 @@ def modular_exponential(base: int, exponent: int, mod: int) -> int:
     Examples:
         >>> modular_exponential(5, 117, 19)
         1
+
     """
     if exponent < 0:
-        raise ValueError("Exponent must be positive.")
+        msg = "Exponent must be positive."
+        raise ValueError(msg)
     base %= mod
     result = 1
 

@@ -38,6 +38,8 @@ __all__ = [
     "find_missing_number2",
     "flip_bit_longest_seq",
     "get_bit",
+    "gray_code",
+    "gray_to_binary",
     "has_alternative_bit",
     "has_alternative_bit_fast",
     "insert_mult_bits",
@@ -54,6 +56,4 @@ __all__ = [
     "subsets",
     "swap_pair",
     "update_bit",
-    "gray_code",
-    "gray_to_binary",
 ]

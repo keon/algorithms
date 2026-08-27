@@ -1,5 +1,4 @@
-"""
-Comb Sort
+"""Comb Sort.
 
 Comb sort improves on bubble sort by using a gap sequence that shrinks by
 a factor of approximately 1.3 on each pass, eliminating small values near
@@ -27,6 +26,7 @@ def comb_sort(array: list[int]) -> list[int]:
     Examples:
         >>> comb_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     gap = n

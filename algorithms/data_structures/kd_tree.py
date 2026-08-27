@@ -14,7 +14,7 @@ from typing import Any
 class KDNode:
     """A single node in a KD-tree."""
 
-    __slots__ = ("point", "left", "right", "axis")
+    __slots__ = ("axis", "left", "point", "right")
 
     def __init__(
         self,

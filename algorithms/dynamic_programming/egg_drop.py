@@ -1,5 +1,4 @@
-"""
-Egg Drop Problem
+"""Egg Drop Problem.
 
 Given K eggs and a building with N floors, determine the minimum number
 of moves needed to find the critical floor F in the worst case.
@@ -31,6 +30,7 @@ def egg_drop(n: int, k: int) -> int:
         2
         >>> egg_drop(2, 6)
         3
+
     """
     egg_floor = [[0 for _ in range(k + 1)] for _ in range(n + 1)]
 
@@ -46,7 +46,6 @@ def egg_drop(n: int, k: int) -> int:
             egg_floor[i][j] = _INT_MAX
             for x in range(1, j + 1):
                 res = 1 + max(egg_floor[i - 1][x - 1], egg_floor[i][j - x])
-                if res < egg_floor[i][j]:
-                    egg_floor[i][j] = res
+                egg_floor[i][j] = min(egg_floor[i][j], res)
 
     return egg_floor[n][k]

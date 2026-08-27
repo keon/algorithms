@@ -1,5 +1,4 @@
-"""
-Is Sorted Linked List
+"""Is Sorted Linked List.
 
 Given a linked list, determine whether the list is sorted in non-decreasing
 order. An empty list is considered sorted.
@@ -26,6 +25,7 @@ def is_sorted(head: object | None) -> bool:
     Examples:
         >>> is_sorted(None)
         True
+
     """
     if not head:
         return True

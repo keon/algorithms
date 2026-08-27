@@ -1,5 +1,4 @@
-"""
-Elias Gamma and Delta Coding
+"""Elias Gamma and Delta Coding.
 
 Universal codes for encoding positive integers. Elias gamma code uses a unary
 prefix followed by a binary suffix. Elias delta code nests gamma coding for
@@ -14,11 +13,14 @@ Complexity:
 
 from __future__ import annotations
 
-from collections.abc import Callable
-from math import log
+from math import log2
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
-def _log2(x: int | float) -> float:
+def _log2(x: float) -> float:
     """Compute log base 2.
 
     Args:
@@ -26,8 +28,9 @@ def _log2(x: int | float) -> float:
 
     Returns:
         The base-2 logarithm of x.
+
     """
-    return log(x, 2)
+    return log2(x)
 
 
 def _binary(x: int, length: int = 1) -> str:
@@ -39,6 +42,7 @@ def _binary(x: int, length: int = 1) -> str:
 
     Returns:
         A binary string.
+
     """
     fmt = f"{{0:0{length}b}}"
     return fmt.format(x)
@@ -52,6 +56,7 @@ def _unary(x: int) -> str:
 
     Returns:
         A unary-coded string (x-1 zeros followed by a one).
+
     """
     return (x - 1) * "0" + "1"
 
@@ -68,9 +73,11 @@ def _elias_generic(
 
     Returns:
         The Elias-coded bit string.
+
     """
     if x <= 0:
-        raise ValueError("Elias coding is defined only for positive integers")
+        msg = "Elias coding is defined only for positive integers"
+        raise ValueError(msg)
 
     first_part = 1 + int(_log2(x))
     remainder = x - 2 ** int(_log2(x))
@@ -94,6 +101,7 @@ def elias_gamma(x: int) -> str:
         '1'
         >>> elias_gamma(5)
         '00101'
+
     """
     return _elias_generic(_unary, x)
 
@@ -112,5 +120,6 @@ def elias_delta(x: int) -> str:
         '1'
         >>> elias_delta(5)
         '01101'
+
     """
     return _elias_generic(elias_gamma, x)

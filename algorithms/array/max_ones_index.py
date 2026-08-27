@@ -1,5 +1,4 @@
-"""
-Max Ones Index
+"""Max Ones Index.
 
 Find the index of the 0 that, when replaced with 1, produces the longest
 continuous sequence of 1s in a binary array. Returns -1 if no 0 exists.
@@ -26,6 +25,7 @@ def max_ones_index(array: list[int]) -> int:
     Examples:
         >>> max_ones_index([1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1])
         3
+
     """
     length = len(array)
     max_count = 0

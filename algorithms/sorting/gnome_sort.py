@@ -1,5 +1,4 @@
-"""
-Gnome Sort
+"""Gnome Sort.
 
 Gnome sort moves an element toward the front of the list until it finds
 an element that is smaller or equal, then steps forward again.  It is
@@ -27,6 +26,7 @@ def gnome_sort(array: list[int]) -> list[int]:
     Examples:
         >>> gnome_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     n = len(array)
     index = 0

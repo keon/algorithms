@@ -1,5 +1,4 @@
-"""
-Check Bipartite Graph
+"""Check Bipartite Graph.
 
 Determine whether an undirected graph is bipartite using BFS colouring.
 
@@ -28,6 +27,7 @@ def check_bipartite(adj_list: list[list[int]]) -> bool:
     Examples:
         >>> check_bipartite([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
         True
+
     """
     vertices = len(adj_list)
 

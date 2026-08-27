@@ -1,5 +1,4 @@
-"""
-Merge String Checker
+"""Merge String Checker.
 
 Determine if a given string can be formed by interleaving two other strings,
 preserving the character order from each part.
@@ -28,6 +27,7 @@ def is_merge_recursive(text: str, part1: str, part2: str) -> bool:
     Examples:
         >>> is_merge_recursive("codewars", "cdw", "oears")
         True
+
     """
     if not part1:
         return text == part2
@@ -55,6 +55,7 @@ def is_merge_iterative(text: str, part1: str, part2: str) -> bool:
     Examples:
         >>> is_merge_iterative("codewars", "cdw", "oears")
         True
+
     """
     tuple_list = [(text, part1, part2)]
     while tuple_list:
@@ -64,7 +65,6 @@ def is_merge_iterative(text: str, part1: str, part2: str) -> bool:
                 tuple_list.append((string[1:], first_part[1:], second_part))
             if second_part and string[0] == second_part[0]:
                 tuple_list.append((string[1:], first_part, second_part[1:]))
-        else:
-            if not first_part and not second_part:
-                return True
+        elif not first_part and not second_part:
+            return True
     return False

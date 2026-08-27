@@ -1,5 +1,4 @@
-"""
-Partition Linked List
+"""Partition Linked List.
 
 Partition a linked list around a value x so that all nodes with values less
 than x come before nodes with values greater than or equal to x.
@@ -37,6 +36,7 @@ def partition(head: Node | None, x: int) -> None:
         >>> a = Node(3); b = Node(5); c = Node(1)
         >>> a.next = b; b.next = c
         >>> partition(a, 5)
+
     """
     left = None
     right = None
@@ -46,14 +46,13 @@ def partition(head: Node | None, x: int) -> None:
         if int(current.val) >= x:
             if not right:
                 right = current
+        elif not left:
+            left = current
         else:
-            if not left:
-                left = current
-            else:
-                prev.next = current.next
-                left.next = current
-                left = current
-                left.next = right
+            prev.next = current.next
+            left.next = current
+            left = current
+            left.next = right
         if prev and prev.next is None:
             break
         prev = current

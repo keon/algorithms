@@ -1,5 +1,4 @@
-"""
-Decimal to Binary IP Conversion
+"""Decimal to Binary IP Conversion.
 
 Convert an IP address from dotted-decimal notation to its binary
 representation.
@@ -26,6 +25,7 @@ def decimal_to_binary_util(val: str) -> str:
     Examples:
         >>> decimal_to_binary_util('192')
         '11000000'
+
     """
     bits = [128, 64, 32, 16, 8, 4, 2, 1]
     val_int = int(val)
@@ -52,6 +52,7 @@ def decimal_to_binary_ip(ip: str) -> str:
     Examples:
         >>> decimal_to_binary_ip('192.168.0.1')
         '11000000.10101000.00000000.00000001'
+
     """
     values = ip.split(".")
     binary_list = []

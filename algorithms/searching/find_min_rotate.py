@@ -1,5 +1,4 @@
-"""
-Find Minimum in Rotated Sorted Array
+"""Find Minimum in Rotated Sorted Array.
 
 Find the minimum element in a sorted array that has been rotated at some
 unknown pivot. Assumes no duplicates exist in the array.
@@ -28,6 +27,7 @@ def find_min_rotate(array: list[int]) -> int:
         0
         >>> find_min_rotate([1, 2, 3])
         1
+
     """
     low = 0
     high = len(array) - 1
@@ -54,6 +54,7 @@ def find_min_rotate_recur(array: list[int], low: int, high: int) -> int:
     Examples:
         >>> find_min_rotate_recur([4, 5, 6, 7, 0, 1, 2], 0, 6)
         0
+
     """
     mid = (low + high) // 2
     if mid == low:

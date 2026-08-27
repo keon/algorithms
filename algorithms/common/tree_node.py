@@ -25,6 +25,7 @@ class TreeNode:
         2
         >>> root.right.val
         3
+
     """
 
     val: int = 0

@@ -1,5 +1,4 @@
-"""
-Check if a Directed Graph is Strongly Connected
+"""Check if a Directed Graph is Strongly Connected.
 
 A directed graph is strongly connected if every vertex is reachable from
 every other vertex.  This implementation uses two DFS passes (one on the
@@ -25,6 +24,7 @@ class Graph:
 
         Args:
             vertex_count: Number of vertices (labelled 0 .. vertex_count-1).
+
         """
         self.vertex_count = vertex_count
         self.graph: dict[int, list[int]] = defaultdict(list)
@@ -35,6 +35,7 @@ class Graph:
         Args:
             source: Source vertex.
             target: Target vertex.
+
         """
         self.graph[source].append(target)
 
@@ -50,6 +51,7 @@ class Graph:
         Args:
             source: Current vertex.
             visited: Visited flags (modified in place).
+
         """
         visited[source] = True
         for adjacent in self.graph[source]:
@@ -61,6 +63,7 @@ class Graph:
 
         Returns:
             A new Graph instance with reversed edges.
+
         """
         reverse = Graph(self.vertex_count)
         for source, adjacent in self.graph.items():
@@ -73,6 +76,7 @@ class Graph:
 
         Returns:
             True when every vertex can reach every other vertex.
+
         """
         if self.dfs():
             reversed_graph = self.reverse_graph()

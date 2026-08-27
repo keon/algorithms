@@ -1,5 +1,4 @@
-"""
-Selection Sort
+"""Selection Sort.
 
 Selection sort repeatedly selects the smallest element from the unsorted
 portion and moves it to the end of the sorted portion.
@@ -26,6 +25,7 @@ def selection_sort(array: list[int]) -> list[int]:
     Examples:
         >>> selection_sort([3, 1, 2])
         [1, 2, 3]
+
     """
     for i in range(len(array)):
         minimum = i

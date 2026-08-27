@@ -1,5 +1,4 @@
-"""
-0/1 Knapsack Problem
+"""0/1 Knapsack Problem.
 
 Given items with values and weights, and a knapsack capacity, find the
 maximum total value that fits in the knapsack.
@@ -35,11 +34,12 @@ def get_maximum_value(items: list[Item], capacity: int) -> int:
     Examples:
         >>> get_maximum_value([Item(60, 5), Item(50, 3), Item(70, 4), Item(30, 2)], 5)
         80
+
     """
     dp = [0] * (capacity + 1)
     for item in items:
         for cur_weight in reversed(range(item.weight, capacity + 1)):
             dp[cur_weight] = max(
-                dp[cur_weight], item.value + dp[cur_weight - item.weight]
+                dp[cur_weight], item.value + dp[cur_weight - item.weight],
             )
     return dp[capacity]

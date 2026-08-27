@@ -1,5 +1,4 @@
-"""
-Count Connected Components in an Undirected Graph
+"""Count Connected Components in an Undirected Graph.
 
 Uses DFS to count the number of connected components.
 
@@ -27,6 +26,7 @@ def count_components(adjacency_list: list[list[int]], size: int) -> int:
     Examples:
         >>> count_components([[], [2], [1]], 2)
         1
+
     """
     count = 0
     visited = [False] * (size + 1)
@@ -48,6 +48,7 @@ def _dfs(
         source: Starting vertex.
         visited: Visited flags (modified in place).
         adjacency_list: Graph adjacency list.
+
     """
     visited[source] = True
     for child in adjacency_list[source]:
