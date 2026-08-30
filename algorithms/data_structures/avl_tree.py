@@ -27,7 +27,7 @@ class AvlTree:
         self.re_balance()
 
     def re_balance(self) -> None:
-        """Re balance tree. After inserting or deleting a node,."""
+        """Re balance tree. After inserting or deleting a node."""
         self.update_heights(recursive=False)
         self.update_balances(False)
 
