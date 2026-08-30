@@ -76,3 +76,55 @@ def _initialize_single_source(
         distance[node] = float("inf")
         predecessor[node] = None
     distance[source] = 0
+
+
+
+def bellman_ford_paths(
+    graph: dict[str, dict[str, float]], source: str
+) -> tuple[dict[str, float] | None, dict[str, str | None] | None, bool]:
+    """Compute shortest-path distances and predecessors via Bellman-Ford."""
+    distance: dict[str, float] = {}
+    predecessor: dict[str, str | None] = {}
+
+    _initialize_single_source(graph, source, distance, predecessor)
+
+    num_vertices = len(graph)
+    for _ in range(1, num_vertices):
+        for current_node in graph:
+            if distance[current_node] == float("inf"):
+                continue
+            for neighbor, edge_weight in graph[current_node].items():
+                if distance[neighbor] > distance[current_node] + edge_weight:
+                    distance[neighbor] = distance[current_node] + edge_weight
+                    predecessor[neighbor] = current_node
+
+    for current_node in graph:
+        if distance[current_node] == float("inf"):
+            continue
+        for neighbor, edge_weight in graph[current_node].items():
+            if distance[neighbor] > distance[current_node] + edge_weight:
+                return None, None, True
+
+    return distance, predecessor, False
+
+
+def reconstruct_shortest_path(
+    predecessor: dict[str, str | None], source: str, target: str
+) -> list[str]:
+    """Rebuild the shortest path from *source* to *target*."""
+    path: list[str] = []
+    visited: set[str] = set()
+    node: str | None = target
+
+    while node is not None and node not in visited:
+        visited.add(node)
+        path.append(node)
+        if node == source:
+            break
+        node = predecessor.get(node)
+
+    if not path or path[-1] != source:
+        return []
+
+    path.reverse()
+    return path
