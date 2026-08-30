@@ -10,6 +10,11 @@ from algorithms.math import (
     modular_inverse,  # type: ignore[no-redef]
 )
 from algorithms.math.base_conversion import base_to_int, int_to_base
+from algorithms.math.all_factors import (
+    get_factors,
+    get_factors_iterative1,
+    get_factors_iterative2,
+)
 from algorithms.math.chebyshev_distance import chebyshev_distance
 from algorithms.math.combination import combination, combination_memo
 from algorithms.math.cosine_similarity import cosine_similarity
@@ -92,6 +97,9 @@ __all__ = [
     "find_nth_digit",
     "find_order",
     "find_primitive_root",
+    "get_factors",
+    "get_factors_iterative1",
+    "get_factors_iterative2",
     "gcd",
     "gcd_bit",
     "gen_strobogrammatic",

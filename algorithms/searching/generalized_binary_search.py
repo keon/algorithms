@@ -60,7 +60,3 @@ def binary_search_first_true(
             low = mid + 1
 
     return result
-
-
-if __name__ == "__main__":
-    pass  # -1

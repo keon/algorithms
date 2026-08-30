@@ -15,49 +15,8 @@ For example: height of tree is 4.
 
 """
 
-import unittest
-
-from algorithms.data_structures.bst import BST
-
 
 def height(root):
     if root is None:
         return 0
     return 1 + max(height(root.left), height(root.right))
-
-
-"""
-    The tree is created for testing:
-
-                    9
-                 /      \
-               6         12
-              / \\       /   \
-            3     8   10      15
-                 /              \
-                7                18
-
-    count_left_node = 4
-
-"""
-
-
-class TestSuite(unittest.TestCase):
-    def setUp(self) -> None:
-        self.tree = BST()
-        self.tree.insert(9)
-        self.tree.insert(6)
-        self.tree.insert(12)
-        self.tree.insert(3)
-        self.tree.insert(8)
-        self.tree.insert(10)
-        self.tree.insert(15)
-        self.tree.insert(7)
-        self.tree.insert(18)
-
-    def test_height(self) -> None:
-        assert height(self.tree.root) == 4
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -18,10 +18,6 @@ For example: the following tree has 10 empty branch (* is empty branch).
 
 """
 
-import unittest
-
-from algorithms.data_structures.bst import BST
-
 
 def num_empty(root):
     if root is None:
@@ -31,40 +27,3 @@ def num_empty(root):
     if root.right is None and root.left:
         return 1 + num_empty(root.left)
     return num_empty(root.left) + num_empty(root.right)
-
-
-"""
-    The tree is created for testing:
-
-                    9
-                 /      \
-               6         12
-              / \\       /   \
-            3     8   10      15
-                 /              \
-                7                18
-
-    num_empty = 10
-
-"""
-
-
-class TestSuite(unittest.TestCase):
-    def setUp(self) -> None:
-        self.tree = BST()
-        self.tree.insert(9)
-        self.tree.insert(6)
-        self.tree.insert(12)
-        self.tree.insert(3)
-        self.tree.insert(8)
-        self.tree.insert(10)
-        self.tree.insert(15)
-        self.tree.insert(7)
-        self.tree.insert(18)
-
-    def test_num_empty(self) -> None:
-        assert num_empty(self.tree.root) == 10
-
-
-if __name__ == "__main__":
-    unittest.main()

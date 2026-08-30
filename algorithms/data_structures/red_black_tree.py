@@ -275,11 +275,3 @@ class RBTree:
             res.append({"val": root.val, "color": root.color})
             root = root.right
         return res
-
-
-if __name__ == "__main__":
-    rb = RBTree()
-    children = [11, 2, 14, 1, 7, 15, 5, 8, 4]
-    for child in children:
-        node = RBNode(child, 1)
-        rb.insert(node)

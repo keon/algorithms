@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from algorithms.data_structures.graph import DirectedEdge, DirectedGraph, Node
 from algorithms.graph.a_star import a_star
-from algorithms.graph.all_factors import (
+from algorithms.math.all_factors import (
     get_factors,
     get_factors_iterative1,
     get_factors_iterative2,
@@ -41,7 +41,7 @@ from algorithms.graph.pacific_atlantic import pacific_atlantic
 from algorithms.graph.prims_minimum_spanning import prims_minimum_spanning
 from algorithms.graph.satisfiability import solve_sat
 from algorithms.graph.shortest_distance_from_all_buildings import shortest_distance
-from algorithms.graph.sudoku_solver import Sudoku
+from algorithms.matrix.sudoku_solver import Sudoku
 from algorithms.graph.tarjan import Tarjan
 from algorithms.graph.topological_sort_bfs import topological_sort
 from algorithms.graph.topological_sort_dfs import top_sort, top_sort_recursive

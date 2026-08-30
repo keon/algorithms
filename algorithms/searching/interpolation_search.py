@@ -49,9 +49,3 @@ def interpolation_search(array: list[int], search_key: int) -> int:
             high = pos - 1
 
     return -1
-
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()

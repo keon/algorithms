@@ -62,24 +62,3 @@ def validate_bst(node):
         minn_left if minn_left is not None else node.val,
         maxx_right if maxx_right is not None else node.val,
     )
-
-
-# Example usage
-if __name__ == "__main__":
-    # Constructing a simple binary tree
-    root = TreeNode(10)
-    root.left = TreeNode(5)
-    root.right = TreeNode(15)
-    root.right.left = TreeNode(12)
-    root.right.right = TreeNode(20)
-
-    """
-          10
-         /  \
-        5    15
-            /  \
-           12   20
-    """
-
-    # Validate if the constructed tree is a BST
-    is_bst, _, _ = validate_bst(root)

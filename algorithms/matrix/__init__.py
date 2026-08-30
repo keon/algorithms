@@ -13,9 +13,11 @@ from algorithms.matrix import (
     sparse_dot_vector,
     sparse_mul,
     spiral_traversal,
+    sudoku_solver,
     sudoku_validator,
     sum_sub_squares,
 )
+from algorithms.matrix.sudoku_solver import Sudoku
 
 __all__ = [
     "bomb_enemy",
@@ -32,6 +34,8 @@ __all__ = [
     "sparse_dot_vector",
     "sparse_mul",
     "spiral_traversal",
+    "sudoku_solver",
     "sudoku_validator",
     "sum_sub_squares",
+    "Sudoku",
 ]
