@@ -30,7 +30,10 @@ def longest_palindrome(text: str) -> str:
     if len(text) < 2:
         return text
 
-    expanded = "#" + "#".join(text) + "#"
+    separator = object()
+    expanded: list[object] = [separator]
+    for char in text:
+        expanded.extend((char, separator))
     palindrome_radii = [0] * len(expanded)
     center, right_boundary = 0, 0
     best_index, best_length = 0, 0
@@ -60,8 +63,5 @@ def longest_palindrome(text: str) -> str:
             best_index = index
             best_length = palindrome_radii[index]
 
-    substring = expanded[
-        best_index - palindrome_radii[best_index] + 1 : best_index
-        + palindrome_radii[best_index]
-    ]
-    return substring.replace("#", "")
+    start = (best_index - best_length + 1) // 2
+    return text[start : start + best_length - 1]
