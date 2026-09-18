@@ -636,6 +636,8 @@ class TestLongestPalindromicSubstring(unittest.TestCase):
         self.assertEqual("abba", longest_palindrome("abba"))
         self.assertEqual("asdadsa", longest_palindrome("dasdasdasdasdasdadsa"))
         self.assertEqual("abba", longest_palindrome("cabba"))
+        self.assertEqual("a#a", longest_palindrome("a#a"))
+        self.assertEqual("##", longest_palindrome("##"))
 
 
 class TestKnuthMorrisPratt(unittest.TestCase):
