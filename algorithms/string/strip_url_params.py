@@ -110,16 +110,16 @@ def strip_url_params2(url: str, param_to_strip: list[str] | None = None) -> str:
     if "?" not in url:
         return url
 
-    queries = (url.split("?")[1]).split("&")
-    query_keys = [query[0] for query in queries]
-    for index in range(len(query_keys) - 1, 0, -1):
-        if (
-            query_keys[index] in param_to_strip
-            or query_keys[index] in query_keys[0:index]
-        ):
-            queries.pop(index)
+    domain, query_string = url.split("?", 1)
+    seen: set[str] = set()
+    queries: list[str] = []
+    for query in query_string.split("&"):
+        key = query.split("=", 1)[0]
+        if key not in param_to_strip and key not in seen:
+            seen.add(key)
+            queries.append(query)
 
-    return url.split("?")[0] + "?" + "&".join(queries)
+    return domain + "?" + "&".join(queries)
 
 
 def strip_url_params3(url: str, strip: list[str] | None = None) -> str:
