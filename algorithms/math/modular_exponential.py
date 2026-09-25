@@ -20,7 +20,7 @@ def modular_exponential(base: int, exponent: int, mod: int) -> int:
     Args:
         base: The base value.
         exponent: The exponent (must be non-negative).
-        mod: The modulus.
+        mod: The nonzero modulus (positive or negative, as with Python pow).
 
     Returns:
         The result of (base ^ exponent) % mod.
@@ -35,7 +35,7 @@ def modular_exponential(base: int, exponent: int, mod: int) -> int:
     if exponent < 0:
         raise ValueError("Exponent must be positive.")
     base %= mod
-    result = 1
+    result = 1 % mod
 
     while exponent > 0:
         if exponent & 1:
