@@ -447,6 +447,14 @@ class TestStripUrlParams(unittest.TestCase):
             strip_url_params2("www.saadbenn.com?a=1&b=2", ["b"]),
             "www.saadbenn.com?a=1",
         )
+        self.assertEqual(
+            strip_url_params2("https://x.test?ab=1&ac=2&ab=3"),
+            "https://x.test?ab=1&ac=2",
+        )
+        self.assertEqual(
+            strip_url_params2("https://x.test?ab=1&ac=2", ["ab"]),
+            "https://x.test?ac=2",
+        )
 
     def test_strip_url_params3(self):
         self.assertEqual(
