@@ -28,3 +28,16 @@ def test_noisy_offset_matches_standard_library():
 def test_constant_x_still_raises():
     with pytest.raises(ValueError, match="undefined"):
         linear_regression([10**12, 10**12], [1, 2])
+
+
+@pytest.mark.parametrize("offset", [1e16, -1e16])
+def test_two_point_midpoint_is_not_rounded(offset):
+    slope, intercept = linear_regression([offset, offset + 2], [0, 4])
+    assert slope == 2
+    assert intercept == -2 * offset
+
+
+def test_large_offsets_on_both_axes():
+    slope, intercept = linear_regression([1e16, 1e16 + 2], [1e16, 1e16 + 4])
+    assert slope == 2
+    assert intercept == -1e16
