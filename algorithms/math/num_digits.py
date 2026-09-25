@@ -1,14 +1,14 @@
 """
 Number of Digits
 
-Count the number of digits in an integer using logarithmic computation
-for O(1) time complexity.
+Count decimal digits using a logarithmic estimate corrected with integer
+comparisons. Floating-point rounding at powers of ten cannot change the result.
 
 Reference: https://en.wikipedia.org/wiki/Logarithm
 
 Complexity:
-    Time:  O(1)
-    Space: O(1)
+    Time:  Integer exponentiation and comparisons depend on the number of digits.
+    Space: O(d) bits for d decimal digits (a constant number of integers).
 """
 
 from __future__ import annotations
@@ -36,4 +36,12 @@ def num_digits(n: int) -> int:
     n = abs(n)
     if n == 0:
         return 1
-    return int(math.log10(n)) + 1
+    digits = int(math.log10(n)) + 1
+    boundary = 10 ** (digits - 1)
+    while n < boundary:
+        digits -= 1
+        boundary //= 10
+    while n >= boundary * 10:
+        digits += 1
+        boundary *= 10
+    return digits
