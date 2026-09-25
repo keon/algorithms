@@ -14,6 +14,9 @@ import math
 def linear_regression(x: list[float], y: list[float]) -> tuple[float, float]:
     """Return (slope, intercept) for the best-fit line.
 
+    Center observations before computing sums of products to avoid cancellation
+    when x or y have a large common offset.
+
     >>> m, b = linear_regression([1, 2, 3, 4, 5], [2, 4, 5, 4, 5])
     >>> round(m, 4)
     0.6
@@ -24,16 +27,17 @@ def linear_regression(x: list[float], y: list[float]) -> tuple[float, float]:
     if n != len(y) or n < 2:
         msg = "x and y must have at least 2 equal-length elements"
         raise ValueError(msg)
-    sum_x = sum(x)
-    sum_y = sum(y)
-    sum_xy = sum(xi * yi for xi, yi in zip(x, y, strict=False))
-    sum_x2 = sum(xi * xi for xi in x)
-    denom = n * sum_x2 - sum_x * sum_x
+    x_mean = math.fsum(x) / n
+    y_mean = math.fsum(y) / n
+    denom = math.fsum((xi - x_mean) ** 2 for xi in x)
     if denom == 0:
         msg = "Vertical line — slope is undefined"
         raise ValueError(msg)
-    slope = (n * sum_xy - sum_x * sum_y) / denom
-    intercept = (sum_y - slope * sum_x) / n
+    numerator = math.fsum(
+        (xi - x_mean) * (yi - y_mean) for xi, yi in zip(x, y, strict=False)
+    )
+    slope = numerator / denom
+    intercept = y_mean - slope * x_mean
     return slope, intercept
 
 
