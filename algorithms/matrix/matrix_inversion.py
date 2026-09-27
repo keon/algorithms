@@ -53,7 +53,7 @@ def invert_matrix(
         return inverted
     else:
         matrix_of_minors = _get_matrix_of_minors(matrix)
-        multiplier = fractions.Fraction(1, get_determinant(matrix))
+        multiplier = fractions.Fraction(1) / get_determinant(matrix)
         inverted = _transpose_and_multiply(matrix_of_minors, multiplier)
         return inverted
 
