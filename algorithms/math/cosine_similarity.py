@@ -15,26 +15,26 @@ Complexity:
 from __future__ import annotations
 
 import math
+from collections.abc import Iterable
 
 
-def _l2_distance(vec: list[float]) -> float:
+def _l2_distance(vec: Iterable[float]) -> float:
     """Calculate the L2 (Euclidean) norm of a vector.
 
     Args:
-        vec: Input vector as a list of numbers.
+        vec: Input vector as an iterable of numbers.
 
     Returns:
         The L2 norm of the vector.
     """
-    norm = 0.0
-    for element in vec:
-        norm += element * element
-    norm = math.sqrt(norm)
-    return norm
+    return math.sqrt(math.fsum(element * element for element in vec))
 
 
 def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
     """Calculate cosine similarity between two vectors.
+
+    Scale each vector before multiplying components to avoid overflow and
+    underflow for very large or very small finite inputs.
 
     Args:
         vec1: First vector.
@@ -58,14 +58,12 @@ def cosine_similarity(vec1: list[float], vec2: list[float]) -> float:
             + str(len(vec2))
         )
 
-    norm_a = _l2_distance(vec1)
-    norm_b = _l2_distance(vec2)
-
-    similarity = 0.0
-
-    for vec1_element, vec2_element in zip(vec1, vec2, strict=False):
-        similarity += vec1_element * vec2_element
-
-    similarity /= norm_a * norm_b
-
-    return similarity
+    scale_a = max((abs(element) for element in vec1), default=1.0)
+    scale_b = max((abs(element) for element in vec2), default=1.0)
+    norm_a = _l2_distance(element / scale_a for element in vec1)
+    norm_b = _l2_distance(element / scale_b for element in vec2)
+    similarity = math.fsum(
+        (left / scale_a) * (right / scale_b)
+        for left, right in zip(vec1, vec2, strict=False)
+    )
+    return similarity / (norm_a * norm_b)
