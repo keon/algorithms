@@ -36,6 +36,9 @@ def interpolation_search(array: list[int], search_key: int) -> int:
     low = 0
 
     while (low <= high) and (array[low] <= search_key <= array[high]):
+        # The loop condition guarantees a match if both bounds are equal.
+        if array[low] == array[high]:
+            return low
         pos = low + int(
             ((search_key - array[low]) * (high - low)) / (array[high] - array[low])
         )
