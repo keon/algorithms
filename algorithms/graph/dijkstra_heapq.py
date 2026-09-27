@@ -28,7 +28,8 @@ def dijkstra(
 
     Args:
         graph: Adjacency-list mapping each vertex to a dict of
-               {neighbour: weight}.
+               {neighbour: weight}. Vertices appearing only as neighbours
+               are treated as having no outgoing edges.
         source: Starting vertex.
         target: Destination vertex.  When empty, compute shortest
                 distances to all reachable vertices and return the path
@@ -64,7 +65,7 @@ def dijkstra(
             continue
         if u == target:
             break
-        for v, weight in graph[u].items():
+        for v, weight in graph.get(u, {}).items():
             alt = dist[u] + weight
             if alt < dist.get(v, float("inf")):
                 dist[v] = alt
