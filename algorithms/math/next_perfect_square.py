@@ -6,19 +6,20 @@ square. Otherwise, return -1.
 
 Reference: https://en.wikipedia.org/wiki/Square_number
 
-Complexity:
-    Time:  O(1)
-    Space: O(1)
+Uses integer square roots and exact square verification. The arithmetic cost
+depends on the bit length of the input.
 """
 
 from __future__ import annotations
 
+from math import isqrt
 
-def find_next_square(sq: float) -> int:
+
+def find_next_square(sq: int | float) -> int:
     """Find the next perfect square after sq.
 
     Args:
-        sq: A non-negative number to check.
+        sq: A non-negative finite number to check.
 
     Returns:
         The next perfect square if sq is a perfect square, otherwise -1.
@@ -29,17 +30,17 @@ def find_next_square(sq: float) -> int:
         >>> find_next_square(10)
         -1
     """
-    root = sq**0.5
-    if root.is_integer():
-        return int((root + 1) ** 2)
+    root = isqrt(int(sq))
+    if root * root == sq:
+        return (root + 1) ** 2
     return -1
 
 
-def find_next_square2(sq: float) -> int:
-    """Find the next perfect square using modulo check.
+def find_next_square2(sq: int | float) -> int:
+    """Find the next perfect square using exact square verification.
 
     Args:
-        sq: A non-negative number to check.
+        sq: A non-negative finite number to check.
 
     Returns:
         The next perfect square if sq is a perfect square, otherwise -1.
@@ -50,5 +51,5 @@ def find_next_square2(sq: float) -> int:
         >>> find_next_square2(10)
         -1
     """
-    root = sq**0.5
-    return -1 if root % 1 else int((root + 1) ** 2)
+    root = isqrt(int(sq))
+    return (root + 1) ** 2 if root * root == sq else -1
