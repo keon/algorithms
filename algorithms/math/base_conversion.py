@@ -54,18 +54,29 @@ def base_to_int(str_to_convert: str, base: int) -> int:
     """Convert a string in a given base to a base-10 integer.
 
     Args:
-        str_to_convert: The string representation of the number.
+        str_to_convert: The string representation of the number, optionally
+            prefixed with a minus sign as produced by int_to_base.
         base: The base of the input string (2-36).
 
     Returns:
         The base-10 integer value.
+
+    Raises:
+        ValueError: If the input contains no digits after removing its sign.
 
     Examples:
         >>> base_to_int('101', 2)
         5
         >>> base_to_int('FF', 16)
         255
+        >>> base_to_int('-FF', 16)
+        -255
     """
+    is_negative = str_to_convert.startswith("-")
+    if is_negative:
+        str_to_convert = str_to_convert[1:]
+    if not str_to_convert:
+        raise ValueError("number must contain at least one digit")
     digit = {}
     for ind, char in enumerate(string.digits + string.ascii_uppercase):
         digit[char] = ind
@@ -74,4 +85,4 @@ def base_to_int(str_to_convert: str, base: int) -> int:
     for char in str_to_convert[::-1]:
         res += digit[char] * multiplier
         multiplier *= base
-    return res
+    return -res if is_negative else res
