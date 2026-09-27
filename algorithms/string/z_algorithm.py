@@ -3,7 +3,9 @@
 The Z-array for a string S stores at Z[i] the length of the longest
 substring starting at S[i] that is also a prefix of S. By concatenating
 pattern + '$' + text, occurrences of the pattern correspond to positions
-where Z[i] == len(pattern).
+where Z[i] >= len(pattern). A match can extend past the separator when
+the input itself contains '$', but the first len(pattern) characters
+still identify a valid occurrence.
 
 Inspired by PR #930 (Simranstha045).
 """
@@ -36,4 +38,4 @@ def z_search(text: str, pattern: str) -> list[int]:
     concat = pattern + "$" + text
     z = compute_z_array(concat)
     m = len(pattern)
-    return [i - m - 1 for i in range(m + 1, len(concat)) if z[i] == m]
+    return [i - m - 1 for i in range(m + 1, len(concat)) if z[i] >= m]
