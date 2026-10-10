@@ -37,7 +37,7 @@ def bellman_ford(graph: dict[str, dict[str, float]], source: str) -> bool:
 
     _initialize_single_source(graph, source, distance, predecessor)
 
-    num_vertices = len(graph)
+    num_vertices = len(distance)
     for _ in range(1, num_vertices):
         for current_node in graph:
             for neighbor in graph[current_node]:
@@ -88,7 +88,7 @@ def bellman_ford_paths(
 
     _initialize_single_source(graph, source, distance, predecessor)
 
-    num_vertices = len(graph)
+    num_vertices = len(distance)
     for _ in range(1, num_vertices):
         for current_node in graph:
             if distance[current_node] == float("inf"):
