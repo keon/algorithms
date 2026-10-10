@@ -169,6 +169,19 @@ class TestMaximumFlowBfs(unittest.TestCase):
 
         self.assertEqual(maximum_flow, 23)
 
+    def test_maximum_flow_bfs_reroutes_earlier_flow(self):
+        graph = [
+            [0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0],
+        ]
+        # The first path is 0->1->3->5. Reaching flow 2 requires
+        # canceling 1->3 so the final paths use 0->1->4->5 and 0->2->3->5.
+        self.assertEqual(maximum_flow_bfs(graph), 2)
+
 
 class TestMaximumFlowDfs(unittest.TestCase):
     """
@@ -189,6 +202,19 @@ class TestMaximumFlowDfs(unittest.TestCase):
         maximum_flow = maximum_flow_dfs(graph)
 
         self.assertEqual(maximum_flow, 23)
+
+    def test_maximum_flow_dfs_reroutes_earlier_flow(self):
+        graph = [
+            [0, 1, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0],
+        ]
+        # The first path is 0->2->4->5. Reaching flow 2 requires
+        # canceling 2->4 so the final paths use 0->1->4->5 and 0->2->3->5.
+        self.assertEqual(maximum_flow_dfs(graph), 2)
 
 
 class TestAllPairsShortestPath(unittest.TestCase):
