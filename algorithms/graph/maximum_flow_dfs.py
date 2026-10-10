@@ -67,6 +67,7 @@ def maximum_flow_dfs(adjacency_matrix: list[list[int]]) -> int:
 
         while tmp != 0:
             new_array[path[tmp]][tmp] = new_array[path[tmp]][tmp] - min_flow
+            new_array[tmp][path[tmp]] += min_flow
             tmp = path[tmp]
 
         total = total + min_flow
