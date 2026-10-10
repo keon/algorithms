@@ -32,6 +32,7 @@ from algorithms.graph import (
     topological_sort,
     walls_and_gates,
 )
+from algorithms.graph.bellman_ford import bellman_ford_paths
 from algorithms.graph.dijkstra import Dijkstra
 
 
@@ -232,6 +233,47 @@ class TestBellmanFord(unittest.TestCase):
             "e": {"a": 7, "b": 5, "d": 1},
         }
         self.assertEqual(True, bellman_ford(graph2, "a"))
+
+    def test_single_edge_to_neighbor_only_vertex(self):
+        graph = {"a": {"b": 1}}
+
+        self.assertTrue(bellman_ford(graph, "a"))
+        self.assertEqual(
+            bellman_ford_paths(graph, "a"),
+            ({"a": 0, "b": 1}, {"a": None, "b": "a"}, False),
+        )
+
+    def test_neighbor_only_sink_independent_of_vertex_order(self):
+        graphs = (
+            {"a": {"b": 1}, "b": {"c": 1}},
+            {"b": {"c": 1}, "a": {"b": 1}},
+        )
+        for graph in graphs:
+            with self.subTest(graph=graph):
+                self.assertTrue(bellman_ford(graph, "a"))
+                self.assertEqual(
+                    bellman_ford_paths(graph, "a"),
+                    (
+                        {"a": 0, "b": 1, "c": 2},
+                        {"a": None, "b": "a", "c": "b"},
+                        False,
+                    ),
+                )
+
+    def test_negative_edge_to_neighbor_only_vertex(self):
+        graph = {"a": {"b": -1}}
+
+        self.assertTrue(bellman_ford(graph, "a"))
+        self.assertEqual(
+            bellman_ford_paths(graph, "a"),
+            ({"a": 0, "b": -1}, {"a": None, "b": "a"}, False),
+        )
+
+    def test_negative_cycle_with_neighbor_only_sink(self):
+        graph = {"a": {"b": 1}, "b": {"a": -2, "c": 1}}
+
+        self.assertFalse(bellman_ford(graph, "a"))
+        self.assertEqual(bellman_ford_paths(graph, "a"), (None, None, True))
 
 
 class TestConnectedComponentInGraph(unittest.TestCase):
